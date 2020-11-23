@@ -1,6 +1,9 @@
-import React from "react"
-import { Link, useStaticQuery, graphql } from "gatsby"
-import parse from "html-react-parser"
+/** @jsx jsx */
+import { jsx } from 'theme-ui'
+// import React from "react"
+import { Link, useStaticQuery, graphql } from 'gatsby'
+import parse from 'html-react-parser'
+import 'normalize.css'
 
 const Layout = ({ isHomePage, children }) => {
   const {
@@ -19,27 +22,51 @@ const Layout = ({ isHomePage, children }) => {
   `)
 
   return (
-    <div className="global-wrapper" data-is-root-path={isHomePage}>
-      <header className="global-header">
+    // <div className="global-wrapper" data-is-root-path={isHomePage}>
+    <div
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        minHeight: '100vh',
+        variant: 'layout.root',
+      }}
+    >
+      <header
+        sx={{
+          width: '100%',
+          variant: 'layout.header',
+        }}
+      >
         {isHomePage ? (
-          <h1 className="main-heading">
-            <Link to="/">{parse(title)}</Link>
+          <h1 className='main-heading'>
+            <Link to='/'>{parse(title)}</Link>
           </h1>
         ) : (
-          <Link className="header-link-home" to="/">
+          <Link className='header-link-home' to='/'>
             {title}
           </Link>
         )}
       </header>
-
-      <main>{children}</main>
-
-      <footer>
+      <main
+        sx={{
+          width: '100%',
+          flex: '1 1 auto',
+          variant: 'layout.main',
+        }}
+      >
+        {children}
+      </main>
+      <footer
+        sx={{
+          width: '100%',
+          variant: 'layout.footer',
+        }}
+      >
         © {new Date().getFullYear()}, Built with
         {` `}
-        <a href="https://www.gatsbyjs.com">Gatsby</a>
+        <a href='https://www.gatsbyjs.com'>Gatsby</a>
         {` `}
-        And <a href="https://wordpress.org/">WordPress</a>
+        And <a href='https://wordpress.org/'>WordPress</a>
       </footer>
     </div>
   )

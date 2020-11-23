@@ -1,34 +1,38 @@
-/**
- * 👋 Hey there!
- * This file is the starting point for your new WordPress/Gatsby site! 🚀
- * For more information about what this file is and does, see
- * https://www.gatsbyjs.com/docs/gatsby-config/
- *
- */
-
 module.exports = {
-  /**
-   * Adding plugins to this array adds them to your Gatsby site.
-   *
-   * Gatsby has a rich ecosystem of plugins.
-   * If you need any more you can search here: https://www.gatsbyjs.com/plugins/
-   */
+  siteMetadata: {
+    title: `Black Alsatian Web Artisans`,
+    description: `Hand crafted web applications and bespoke digital marketing solutions`,
+    author: `Björn Potgieter`,
+    siteUrl: `https://www.blackalsatian.co.za`,
+    social: [
+      {
+        name: `Twitter`,
+        url: `https://twitter.com/blackalsatian`,
+      },
+      {
+        name: `Facebook`,
+        url: `https://www.facebook.com/blackalsatian`,
+      },
+      {
+        name: `Instagram`,
+        url: `https://instagram.com/theblackalsatian`,
+      },
+      {
+        name: `LinkedIn`,
+        url: `https://www.linkedin.com/company/blackalsatian`,
+      },
+    ],
+  },
   plugins: [
+    // See https://www.gatsbyjs.com/plugins/gatsby-plugin-react-helmet/?=gatsby-plugin-react-helmet
+    `gatsby-plugin-react-helmet`,
     {
-      /**
-       * First up is the WordPress source plugin that connects Gatsby
-       * to your WordPress site.
-       *
-       * visit the plugin docs to learn more
-       * https://github.com/gatsbyjs/gatsby-source-wordpress-experimental/blob/master/README.md
-       *
-       */
       resolve: `gatsby-source-wordpress-experimental`,
       options: {
         // the only required plugin option for WordPress is the GraphQL url.
         url:
           process.env.WPGRAPHQL_URL ||
-          `https://wpgatsbydemo.wpengine.com/graphql`,
+          `https://api.blackalsatian.co.za/graphql`,
       },
     },
 
@@ -45,7 +49,8 @@ module.exports = {
         path: `${__dirname}/content/assets`,
       },
     },
-
+    `gatsby-plugin-theme-ui`,
+    `gatsby-theme-style-guide`,
     /**
      * The following two plugins are required if you want to use Gatsby image
      * See https://www.gatsbyjs.com/docs/gatsby-image/#setting-up-gatsby-image
@@ -58,18 +63,15 @@ module.exports = {
       // See https://www.gatsbyjs.com/plugins/gatsby-plugin-manifest/?=gatsby-plugin-manifest
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Gatsby Starter WordPress Blog`,
-        short_name: `GatsbyJS & WP`,
+        name: `Black Alsatian Web Artisans`,
+        short_name: `Black Alsatian`,
         start_url: `/`,
         background_color: `#ffffff`,
-        theme_color: `#663399`,
+        theme_color: `#1a202c`,
         display: `minimal-ui`,
-        icon: `content/assets/gatsby-icon.png`,
+        icon: `content/assets/blackalsatian-icon.png`,
       },
     },
-
-    // See https://www.gatsbyjs.com/plugins/gatsby-plugin-react-helmet/?=gatsby-plugin-react-helmet
-    `gatsby-plugin-react-helmet`,
 
     /**
      * this (optional) plugin enables Progressive Web App + Offline functionality
