@@ -10,8 +10,7 @@
   "dependencies": {
     "@emotion/react": "^11.1.1",
     "@theme-ui/components": "^0.3.4",
-    "@theme-ui/presets": "^0.3.4",
-    "@wordpress/block-library": "^2.26.4",
+    "@theme-ui/tailwind": "^0.3.4",
     "gatsby": "^2.27.0",
     "gatsby-image": "^2.6.0",
     "gatsby-plugin-manifest": "^2.7.0",
