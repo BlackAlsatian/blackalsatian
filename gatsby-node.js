@@ -13,9 +13,10 @@ const chunk = require(`lodash/chunk`)
 exports.createPages = async gatsbyUtilities => {
   // Query our posts from the GraphQL server
   const posts = await getPosts(gatsbyUtilities)
+  const pages = await getPages(gatsbyUtilities)
 
   // If there are no posts in WordPress, don't do anything
-  if (!posts.length) {
+  if (!posts.length && !pages.length) {
     return
   }
 
@@ -24,6 +25,8 @@ exports.createPages = async gatsbyUtilities => {
 
   // And a paginated archive
   await createBlogPostArchive({ posts, gatsbyUtilities })
+
+  await createIndividualPages({ pages, gatsbyUtilities })
 }
 
 // This function creates all the individual blog pages in this site
@@ -45,6 +48,30 @@ const createIndividualBlogPostPages = async ({ posts, gatsbyUtilities }) =>
           // We also use the next and previous id's to query them and add links!
           previousPostId: previous ? previous.id : null,
           nextPostId: next ? next.id : null,
+        },
+      }),
+    ),
+  )
+
+// This function creates all the individual pages in this site
+const createIndividualPages = async ({ pages, gatsbyUtilities }) =>
+  Promise.all(
+    pages.map(({ page }) =>
+      // createPage is an action passed to createPages
+      gatsbyUtilities.actions.createPage({
+        // Use the WordPress uri as the Gatsby page path
+        path: page.isFrontPage ? '/' : page.uri,
+        // blog post template
+        component: path.resolve(`./src/templates/page.js`),
+        // `context` is available in the template as a prop and
+        // as a variable in GraphQL.
+        context: {
+          // we add post id here so blog post template knows which blog post
+          // the current page is
+          id: page.id,
+          // We also use the next and previous id's to query them and add links!
+          // previousPostId: previous ? previous.id : null,
+          // nextPostId: next ? next.id : null,
         },
       }),
     ),
@@ -100,7 +127,7 @@ async function createBlogPostArchive({ posts, gatsbyUtilities }) {
 }
 
 /**
- * This function queries Gatsby's GraphQL server or All WordPress blog posts. If error it throws an error
+ * This function queries Gatsby's GraphQL server or All WordPress blog posts. If it throws an error
  * We're passing in the utilities we got from createPages.
  */
 async function getPosts({ graphql, reporter }) {
@@ -135,4 +162,30 @@ async function getPosts({ graphql, reporter }) {
     return
   }
   return graphqlResult.data.allWpPost.edges
+}
+
+async function getPages({ graphql, reporter }) {
+  const graphqlResult = await graphql(/* GraphQL */ `
+    query WpPages {
+      # Query all WordPress blog posts sorted by date
+      allWpPage(filter: { status: { eq: "publish" } }) {
+        edges {
+          # note: this is GraphQL alias. Renames "node" to "page" because this "node" is a page!
+          page: node {
+            id
+            uri
+            isFrontPage
+          }
+        }
+      }
+    }
+  `)
+  if (graphqlResult.errors) {
+    reporter.panicOnBuild(
+      `There was an error loading your pages`,
+      graphqlResult.errors,
+    )
+    return
+  }
+  return graphqlResult.data.allWpPage.edges
 }

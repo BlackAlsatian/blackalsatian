@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
 import { Link } from 'gatsby'
-import Logo from '../../assets/img/black-alsatian-logo.svg'
+import Logo from '../../assets/images/black-alsatian-logo.svg'
 
 const Header = () => {
   return (
@@ -24,6 +24,30 @@ const Header = () => {
       </Link>
       <div sx={{ mx: 'auto' }} />
       <Link
+        to='/about/'
+        sx={{
+          variant: 'layout.navlink',
+        }}
+      >
+        About
+      </Link>
+      <Link
+        to='/services/'
+        sx={{
+          variant: 'layout.navlink',
+        }}
+      >
+        Services
+      </Link>
+      <Link
+        to='/portfolio/'
+        sx={{
+          variant: 'layout.navlink',
+        }}
+      >
+        Portfolio
+      </Link>
+      <Link
         to='/blog/'
         sx={{
           variant: 'layout.navlink',
@@ -32,12 +56,12 @@ const Header = () => {
         Blog
       </Link>
       <Link
-        to='/'
+        to='/contact/'
         sx={{
           variant: 'layout.navlink',
         }}
       >
-        About
+        Contact
       </Link>
     </header>
   )

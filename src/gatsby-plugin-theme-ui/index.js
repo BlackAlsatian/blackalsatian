@@ -42,10 +42,23 @@ export default {
   root: {
     bg: 'white',
   },
-  // blockquote: {
-  //   borderLeft: `${tailwind.borderWidths[2]}`,
-  //   p: '0.5rem 1rem 1rem 2rem',
-  // },
+  blog: {
+    post: {
+      width: '90%',
+      mx: 'auto',
+      blockquote: {
+        borderLeft: '5px solid black',
+        p: '1rem 1rem 1rem 2rem',
+        m: '3rem',
+      },
+      figure: {
+        textAlign: 'center',
+        span: {
+          m: '0 auto',
+        },
+      },
+    },
+  },
   layout: {
     root: {
       h2: {

@@ -1,66 +1,64 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
-import { Link, graphql } from 'gatsby'
-import Image from 'gatsby-image'
+import { graphql } from 'gatsby'
+// import Image from 'gatsby-image'
 import parse from 'html-react-parser'
 
-import Bio from '../components/bio'
+// import Bio from '../components/bio'
 import Layout from '../components/template/layout'
 import SEO from '../components/seo'
 
-const BlogPostTemplate = ({ data: { previous, next, post } }) => {
-  const featuredImage = {
-    fluid: post.featuredImage?.node?.localFile?.childImageSharp?.fluid,
-    alt: post.featuredImage?.node?.alt || ``,
-  }
+const PageTemplate = ({ data: { page } }) => {
+  //   const featuredImage = {
+  //     fluid: page.featuredImage?.node?.localFile?.childImageSharp?.fluid,
+  //     alt: page.featuredImage?.node?.alt || ``,
+  //   }
 
   return (
     <Layout>
-      <SEO title={post.title} description={post.excerpt} />
+      <SEO title={page.title} description={page.excerpt} />
 
       <article
-        className='blog-post'
+        className='site-page'
         itemScope
         itemType='http://schema.org/Article'
       >
         <header>
-          <h1 itemProp='headline'>{parse(post.title)}</h1>
+          <h1 itemProp='headline'>{parse(page.title)}</h1>
 
-          <p>{post.date}</p>
+          {/* <p>{page.date}</p> */}
 
-          {/* if we have a featured image for this post let's display it */}
-          {featuredImage?.fluid && (
+          {/* if we have a featured image for this page let's display it */}
+          {/* {featuredImage?.fluid && (
             <Image
               fluid={featuredImage.fluid}
               alt={featuredImage.alt}
               style={{ marginBottom: 50 }}
             />
-          )}
+          )} */}
         </header>
 
-        {!!post.content && (
+        {!!page.content && (
           <section itemProp='articleBody'>
             <div
               sx={{
                 display: 'flex',
                 flexDirection: 'column',
                 minHeight: '100vh',
-                variant: 'blog.post',
+                variant: 'blog.page',
               }}
             >
-              {parse(post.content)}
+              {parse(page.content)}
             </div>
           </section>
         )}
 
         <hr />
 
-        <footer>
-          <Bio />
-        </footer>
+        <footer>{/* <Bio /> */}</footer>
       </article>
-
-      <nav className='blog-post-nav'>
+      {/* 
+      <nav className='blog-page-nav'>
         <ul
           style={{
             display: `flex`,
@@ -86,41 +84,39 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
             )}
           </li>
         </ul>
-      </nav>
+      </nav> */}
     </Layout>
   )
 }
 
-export default BlogPostTemplate
+export default PageTemplate
 
 export const pageQuery = graphql`
-  query BlogPostById(
+  query PageById(
     # these variables are passed in via createPage.pageContext in gatsby-node.js
-    $id: String!
-    $previousPostId: String
-    $nextPostId: String
+    $id: String! # $previousPostId: String # $nextPostId: String
   ) {
     # selecting the current post by id
-    post: wpPost(id: { eq: $id }) {
+    page: wpPage(id: { eq: $id }) {
       id
-      excerpt
+      #   excerpt
       content
       title
-      date(formatString: "MMMM DD, YYYY")
+      #   date(formatString: "MMMM DD, YYYY")
 
-      ...FeaturedMediaFragment
+      #   ...FeaturedMediaFragment
     }
 
     # this gets us the previous post by id (if it exists)
-    previous: wpPost(id: { eq: $previousPostId }) {
-      uri
-      title
-    }
+    # previous: wpPost(id: { eq: $previousPostId }) {
+    #   uri
+    #   title
+    # }
 
     # this gets us the next post by id (if it exists)
-    next: wpPost(id: { eq: $nextPostId }) {
-      uri
-      title
-    }
+    # next: wpPost(id: { eq: $nextPostId }) {
+    #   uri
+    #   title
+    # }
   }
 `

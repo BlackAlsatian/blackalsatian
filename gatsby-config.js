@@ -33,6 +33,8 @@ module.exports = {
         url:
           process.env.WPGRAPHQL_URL ||
           `https://api.blackalsatian.co.za/graphql`,
+        verbose: true,
+        excludeFieldNames: ['blocksJSON', 'saveContent'],
       },
     },
 
@@ -46,7 +48,7 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
-        path: `${__dirname}/src/assets/img`,
+        path: `${__dirname}/src/assets/images`,
       },
     },
     `gatsby-plugin-theme-ui`,
@@ -69,7 +71,7 @@ module.exports = {
         background_color: `#ffffff`,
         theme_color: `#1a202c`,
         display: `minimal-ui`,
-        icon: `src/assets/img/blackalsatian-icon.png`,
+        icon: `src/assets/images/blackalsatian-icon.png`,
       },
     },
 
