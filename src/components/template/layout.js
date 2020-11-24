@@ -1,13 +1,10 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
-// import React from "react"
 
 import { useStaticQuery, graphql } from 'gatsby'
 
 import Header from './header'
 import Footer from './footer'
-
-// import 'normalize.css'
 
 const Layout = ({ children }) => {
   const {
