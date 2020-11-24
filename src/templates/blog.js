@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link, graphql } from 'gatsby'
+import Image from 'gatsby-image'
 import parse from 'html-react-parser'
 
 import Bio from '../components/bio'
@@ -34,7 +35,10 @@ const BlogIndex = ({
       <ol style={{ listStyle: `none` }}>
         {posts.map(post => {
           const title = post.title
-
+          const featuredImage = {
+            fluid: post.featuredImage?.node?.localFile?.childImageSharp?.fluid,
+            alt: post.featuredImage?.node?.alt || ``,
+          }
           return (
             <li key={post.uri}>
               <article
@@ -43,6 +47,13 @@ const BlogIndex = ({
                 itemType='http://schema.org/Article'
               >
                 <header>
+                  {featuredImage?.fluid && (
+                    <Image
+                      fluid={featuredImage.fluid}
+                      alt={featuredImage.alt}
+                      style={{ marginBottom: 50 }}
+                    />
+                  )}
                   <h2>
                     <Link to={post.uri} itemProp='url'>
                       <span itemProp='headline'>{parse(title)}</span>
@@ -78,11 +89,11 @@ export const pageQuery = graphql`
       skip: $offset
     ) {
       nodes {
-        excerpt
         uri
         date(formatString: "MMMM DD, YYYY")
         title
         excerpt
+        ...FeaturedMediaFragment
       }
     }
   }

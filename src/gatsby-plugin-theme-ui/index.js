@@ -42,6 +42,10 @@ export default {
   root: {
     bg: 'white',
   },
+  // blockquote: {
+  //   borderLeft: `${tailwind.borderWidths[2]}`,
+  //   p: '0.5rem 1rem 1rem 2rem',
+  // },
   layout: {
     root: {
       h2: {

@@ -96,18 +96,7 @@ export const pageQuery = graphql`
       title
       date(formatString: "MMMM DD, YYYY")
 
-      featuredImage {
-        node {
-          altText
-          localFile {
-            childImageSharp {
-              fluid(maxWidth: 1000, quality: 100) {
-                ...GatsbyImageSharpFluid_tracedSVG
-              }
-            }
-          }
-        }
-      }
+      ...FeaturedMediaFragment
     }
 
     # this gets us the previous post by id (if it exists)

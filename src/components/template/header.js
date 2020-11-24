@@ -32,7 +32,7 @@ const Header = () => {
         Blog
       </Link>
       <Link
-        to='/about/'
+        to='/'
         sx={{
           variant: 'layout.navlink',
         }}
