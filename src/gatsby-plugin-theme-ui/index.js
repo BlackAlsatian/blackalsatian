@@ -27,6 +27,10 @@ export default {
     ...tailwind.fontWeights,
     heading: '900',
   },
+  sizes: {
+    container: 1536,
+  },
+  breakpoints: [...tailwind.breakpoints, '1520px'],
   // styles: {
   //   ...tailwind.styles,
   //   h2: {
@@ -35,9 +39,11 @@ export default {
   //     },
   //   },
   // },
+  root: {
+    bg: 'white',
+  },
   layout: {
     root: {
-      background: 'white',
       h2: {
         fontWeight: 'heading',
         a: {
@@ -50,11 +56,26 @@ export default {
       },
     },
     header: {
+      p: `${tailwind.space[3]} ${tailwind.space[4]}`,
+    },
+    navlink: {
       color: 'black',
-      background: 'white',
+      fontSize: `${tailwind.fontSizes[2]}`,
+      fontWeight: 'extrabold',
+      textDecoration: 'none',
+      px: `${tailwind.space[3]}`,
+      '&:last-child': {
+        pr: 0,
+      },
     },
     footer: {
-      background: 'white',
+      bg: 'white',
+      fontSize: `${tailwind.fontSizes[0]}`,
+      color: 'muted',
+      a: {
+        color: 'muted',
+        textDecoration: 'none',
+      },
     },
   },
 }
