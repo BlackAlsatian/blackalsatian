@@ -45,8 +45,8 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `assets`,
-        path: `${__dirname}/content/assets`,
+        name: `images`,
+        path: `${__dirname}/src/assets/img`,
       },
     },
     `gatsby-plugin-theme-ui`,
@@ -69,7 +69,7 @@ module.exports = {
         background_color: `#ffffff`,
         theme_color: `#1a202c`,
         display: `minimal-ui`,
-        icon: `content/assets/blackalsatian-icon.png`,
+        icon: `src/assets/img/blackalsatian-icon.png`,
       },
     },
 

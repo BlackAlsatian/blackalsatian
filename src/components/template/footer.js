@@ -17,11 +17,11 @@ const Footer = ({ siteTitle }) => {
           p: 3,
         }}
       >
-        <Link to='/privacy-policy/' sx={{ color: 'inherit' }}>
+        <Link to='/' sx={{ color: 'inherit' }}>
           Privacy Policy
         </Link>
         <div sx={{ mx: 1 }} />
-        <Link to='/terms-of-use/' sx={{ color: 'inherit' }}>
+        <Link to='/' sx={{ color: 'inherit' }}>
           Terms of Use
         </Link>
         <div sx={{ mx: 1 }} /> &copy; 2003 - {new Date().getFullYear()}{' '}
