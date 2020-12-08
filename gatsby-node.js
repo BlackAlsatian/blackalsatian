@@ -15,6 +15,7 @@ exports.createPages = async gatsbyUtilities => {
   const posts = await getPosts(gatsbyUtilities)
   const pages = await getPages(gatsbyUtilities)
   const services = await getServices(gatsbyUtilities)
+  const portfolio = await getPortfolio(gatsbyUtilities)
 
   // If there are no posts in WordPress, don't do anything
   if (!posts.length && !pages.length) {
@@ -35,6 +36,9 @@ exports.createPages = async gatsbyUtilities => {
 
   // Now the service pages
   await createIndividualServices({ services, gatsbyUtilities })
+
+  //And the portfolio page
+  await createPortfolioPage({ portfolio, gatsbyUtilities })
 }
 
 // This function creates all the individual blog pages in this site
@@ -151,6 +155,17 @@ async function createServicesPage({ services, gatsbyUtilities }) {
   })
 }
 
+// This function creates the portfolio page
+async function createPortfolioPage({ portfolio, gatsbyUtilities }) {
+  await gatsbyUtilities.actions.createPage({
+    path: '/portfolio/',
+    component: path.resolve(`./src/templates/portfolio.js`),
+    context: {
+      ...portfolio,
+    },
+  })
+}
+
 /**
  * This function queries Gatsby's GraphQL server or All WordPress blog posts. If it throws an error
  * We're passing in the utilities we got from createPages.
@@ -240,4 +255,27 @@ async function getServices({ graphql, reporter }) {
     return
   }
   return graphqlResult.data.allWpService.edges
+}
+
+async function getPortfolio({ graphql, reporter }) {
+  const graphqlResult = await graphql(/* GraphQL */ `
+    query WpPortfolio {
+      allWpPortfolio(filter: { status: { eq: "publish" } }) {
+        edges {
+          portfolio: node {
+            id
+            uri
+          }
+        }
+      }
+    }
+  `)
+  if (graphqlResult.errors) {
+    reporter.panicOnBuild(
+      `There was an error loading your portfolio`,
+      graphqlResult.errors,
+    )
+    return
+  }
+  return graphqlResult.data.allWpPortfolio.edges
 }

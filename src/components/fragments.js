@@ -43,6 +43,20 @@ export const fragments = graphql`
       }
     }
   }
+  fragment PortfolioFeaturedMediaFragment on WpPortfolio {
+    featuredImage {
+      node {
+        altText
+        localFile {
+          childImageSharp {
+            fluid(maxWidth: 1000, quality: 100) {
+              ...GatsbyImageSharpFluid_tracedSVG
+            }
+          }
+        }
+      }
+    }
+  }
   fragment CoreCoverblock on WpCoreCoverBlock {
     __typename
     name
