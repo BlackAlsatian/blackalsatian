@@ -5,66 +5,6 @@ const chunk = require(`lodash/chunk`)
 // dd() will prettily dump to the terminal and kill the process
 // const { dd } = require(`dumper.js`)
 
-// exports.createSchemaCustomization = ({ actions, schema }) => {
-//   const { createTypes } = actions
-//   const typeDefs = [
-//     schema.buildObjectType({
-//       name: 'MarkdownRemark',
-//       fields: {
-//         frontmatter: 'Frontmatter!'
-//       },
-//       interfaces: ['Node'],
-//       extensions: {
-//         infer: true,
-//       },
-//     }),
-//     schema.buildObjectType({
-//       name: 'Frontmatter',
-//       fields: {
-//         title: {
-//           type: 'String!',
-//           resolve(parent) {
-//             return parent.title || '(Untitled)'
-//           }
-//         },
-//         author: {
-//           type: 'AuthorJson'
-//           extensions: {
-//             link: {},
-//           },
-//         }
-//         date: {
-//           type: 'Date!'
-//           extensions: {
-//             dateformat: {},
-//           },
-//         },
-//         published: 'Boolean!',
-//         tags: '[String!]!',
-//       }
-//     }),
-//     schema.buildObjectType({
-//       name: 'AuthorJson',
-//       fields: {
-//         name: 'String!'
-//         birthday: {
-//           type: 'Date!'
-//           extensions: {
-//             dateformat: {
-//               locale: 'ru',
-//             },
-//           },
-//         },
-//       },
-//       interfaces: ['Node'],
-//       extensions: {
-//         infer: false,
-//       },
-//     }),
-//   ]
-//   createTypes(typeDefs)
-// }
-
 /**
  * exports.createPages, built-in Gatsby Node API to create pages 💡
  *
@@ -89,6 +29,9 @@ exports.createPages = async gatsbyUtilities => {
 
   //Build the pages
   await createIndividualPages({ pages, gatsbyUtilities })
+
+  //A services page
+  await createServicesPage({ services, gatsbyUtilities })
 
   // Now the service pages
   await createIndividualServices({ services, gatsbyUtilities })
@@ -195,6 +138,17 @@ async function createBlogPostArchive({ posts, gatsbyUtilities }) {
       })
     }),
   )
+}
+
+// This function creates the services page
+async function createServicesPage({ services, gatsbyUtilities }) {
+  await gatsbyUtilities.actions.createPage({
+    path: '/services/',
+    component: path.resolve(`./src/templates/services.js`),
+    context: {
+      ...services,
+    },
+  })
 }
 
 /**

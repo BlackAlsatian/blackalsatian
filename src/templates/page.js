@@ -21,7 +21,9 @@ const PageTemplate = ({ data: { page } }) => {
       {/* <header>
         <h1 itemProp='headline'>{parse(page.title)}</h1>
       </header> */}
-      {!page.isFrontPage && !page.title.includes('About') ? (
+      {!page.isFrontPage &&
+      !page.title.includes('About') &&
+      !page.title.includes('Services') ? (
         <section itemProp='articleBody'>
           <div
             sx={{
