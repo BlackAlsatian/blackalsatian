@@ -33,8 +33,19 @@ module.exports = {
         url:
           process.env.WPGRAPHQL_URL ||
           `https://api.blackalsatian.co.za/graphql`,
+        debug: {
+          graphql: {
+            showQueryOnError: true,
+            showQueryVarsOnError: true,
+            copyQueryOnError: true,
+            panicOnError: true,
+          },
+        },
+        // schema: {
+        //   perPage: 1,
+        // },
         verbose: true,
-        excludeFieldNames: ['blocksJSON', 'saveContent'],
+        // excludeFieldNames: ['blocksJSON'],
       },
     },
 
@@ -51,6 +62,7 @@ module.exports = {
         path: `${__dirname}/src/assets/images`,
       },
     },
+    // `gatsby-theme-wordpress-gutenberg`,
     `gatsby-plugin-theme-ui`,
     `gatsby-theme-style-guide`,
     /**

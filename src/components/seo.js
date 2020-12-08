@@ -27,7 +27,7 @@ const SEO = ({ description, lang, meta, title }) => {
           twitter: name
         }
       }
-    `
+    `,
   )
 
   const metaDescription = description || wp.generalSettings?.description

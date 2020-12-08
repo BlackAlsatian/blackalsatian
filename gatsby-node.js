@@ -5,6 +5,66 @@ const chunk = require(`lodash/chunk`)
 // dd() will prettily dump to the terminal and kill the process
 // const { dd } = require(`dumper.js`)
 
+// exports.createSchemaCustomization = ({ actions, schema }) => {
+//   const { createTypes } = actions
+//   const typeDefs = [
+//     schema.buildObjectType({
+//       name: 'MarkdownRemark',
+//       fields: {
+//         frontmatter: 'Frontmatter!'
+//       },
+//       interfaces: ['Node'],
+//       extensions: {
+//         infer: true,
+//       },
+//     }),
+//     schema.buildObjectType({
+//       name: 'Frontmatter',
+//       fields: {
+//         title: {
+//           type: 'String!',
+//           resolve(parent) {
+//             return parent.title || '(Untitled)'
+//           }
+//         },
+//         author: {
+//           type: 'AuthorJson'
+//           extensions: {
+//             link: {},
+//           },
+//         }
+//         date: {
+//           type: 'Date!'
+//           extensions: {
+//             dateformat: {},
+//           },
+//         },
+//         published: 'Boolean!',
+//         tags: '[String!]!',
+//       }
+//     }),
+//     schema.buildObjectType({
+//       name: 'AuthorJson',
+//       fields: {
+//         name: 'String!'
+//         birthday: {
+//           type: 'Date!'
+//           extensions: {
+//             dateformat: {
+//               locale: 'ru',
+//             },
+//           },
+//         },
+//       },
+//       interfaces: ['Node'],
+//       extensions: {
+//         infer: false,
+//       },
+//     }),
+//   ]
+//   createTypes(typeDefs)
+// }
+
 /**
  * exports.createPages, built-in Gatsby Node API to create pages 💡
  *
@@ -14,6 +74,7 @@ exports.createPages = async gatsbyUtilities => {
   // Query our posts from the GraphQL server
   const posts = await getPosts(gatsbyUtilities)
   const pages = await getPages(gatsbyUtilities)
+  const services = await getServices(gatsbyUtilities)
 
   // If there are no posts in WordPress, don't do anything
   if (!posts.length && !pages.length) {
@@ -26,7 +87,11 @@ exports.createPages = async gatsbyUtilities => {
   // And a paginated archive
   await createBlogPostArchive({ posts, gatsbyUtilities })
 
+  //Build the pages
   await createIndividualPages({ pages, gatsbyUtilities })
+
+  // Now the service pages
+  await createIndividualServices({ services, gatsbyUtilities })
 }
 
 // This function creates all the individual blog pages in this site
@@ -57,21 +122,27 @@ const createIndividualBlogPostPages = async ({ posts, gatsbyUtilities }) =>
 const createIndividualPages = async ({ pages, gatsbyUtilities }) =>
   Promise.all(
     pages.map(({ page }) =>
-      // createPage is an action passed to createPages
       gatsbyUtilities.actions.createPage({
-        // Use the WordPress uri as the Gatsby page path
         path: page.isFrontPage ? '/' : page.uri,
-        // blog post template
         component: path.resolve(`./src/templates/page.js`),
-        // `context` is available in the template as a prop and
-        // as a variable in GraphQL.
         context: {
-          // we add post id here so blog post template knows which blog post
-          // the current page is
           id: page.id,
-          // We also use the next and previous id's to query them and add links!
-          // previousPostId: previous ? previous.id : null,
-          // nextPostId: next ? next.id : null,
+        },
+      }),
+    ),
+  )
+
+// This function creates all the individual service pages in this site
+const createIndividualServices = async ({ services, gatsbyUtilities }) =>
+  Promise.all(
+    services.map(({ previous, service, next }) =>
+      gatsbyUtilities.actions.createPage({
+        path: service.uri,
+        component: path.resolve(`./src/templates/service.js`),
+        context: {
+          id: service.id,
+          previousPostId: previous ? previous.id : null,
+          nextPostId: next ? next.id : null,
         },
       }),
     ),
@@ -167,10 +238,8 @@ async function getPosts({ graphql, reporter }) {
 async function getPages({ graphql, reporter }) {
   const graphqlResult = await graphql(/* GraphQL */ `
     query WpPages {
-      # Query all WordPress blog posts sorted by date
-      allWpPage(filter: { status: { eq: "publish" } }) {
+      allWpPage(filter: { status: { eq: "publish" }, uri: { ne: "/blog/" } }) {
         edges {
-          # note: this is GraphQL alias. Renames "node" to "page" because this "node" is a page!
           page: node {
             id
             uri
@@ -188,4 +257,33 @@ async function getPages({ graphql, reporter }) {
     return
   }
   return graphqlResult.data.allWpPage.edges
+}
+
+async function getServices({ graphql, reporter }) {
+  const graphqlResult = await graphql(/* GraphQL */ `
+    query WpServices {
+      allWpService(filter: { status: { eq: "publish" } }) {
+        edges {
+          previous {
+            id
+          }
+          service: node {
+            id
+            uri
+          }
+          next {
+            id
+          }
+        }
+      }
+    }
+  `)
+  if (graphqlResult.errors) {
+    reporter.panicOnBuild(
+      `There was an error loading your pages`,
+      graphqlResult.errors,
+    )
+    return
+  }
+  return graphqlResult.data.allWpService.edges
 }
