@@ -10,6 +10,7 @@ const LatestPostsBlock = () => {
       allWpPost(limit: 6, filter: { status: { eq: "publish" } }) {
         edges {
           node {
+            id
             uri
             title
             excerpt
