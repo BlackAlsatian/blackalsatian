@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx } from 'theme-ui'
+import { jsx, Container } from 'theme-ui'
 
 import { useStaticQuery, graphql } from 'gatsby'
 
@@ -22,12 +22,11 @@ const Layout = ({ children }) => {
     }
   `)
   return (
-    <div
+    <Container
       sx={{
         display: 'flex',
         flexDirection: 'column',
         minHeight: '100vh',
-        variant: 'layout.root',
       }}
     >
       <Header />
@@ -35,13 +34,12 @@ const Layout = ({ children }) => {
         sx={{
           width: '100%',
           flex: '1 1 auto',
-          variant: 'layout.main',
         }}
       >
         {children}
       </main>
       <Footer siteTitle={title} />
-    </div>
+    </Container>
   )
 }
 

@@ -34,12 +34,9 @@ const LatestPostsBlock = () => {
   return (
     <section
       sx={{
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-around',
-        flexShrink: '3',
-        height: '100%',
-        minheight: '50vh',
+        display: 'grid',
+        gridGap: 3,
+        gridTemplateColumns: `repeat(auto-fit, minmax(30%, 1fr))`,
       }}
     >
       {data.allWpPost.edges.map(({ node }) => (

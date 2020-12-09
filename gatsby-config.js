@@ -1,3 +1,7 @@
+require('dotenv').config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
+
 module.exports = {
   siteMetadata: {
     title: `Black Alsatian Web Artisans`,
@@ -30,9 +34,10 @@ module.exports = {
       resolve: `gatsby-source-wordpress-experimental`,
       options: {
         // the only required plugin option for WordPress is the GraphQL url.
-        url:
-          process.env.WPGRAPHQL_URL ||
-          `https://api.blackalsatian.co.za/graphql`,
+        url: process.env.GATSBY_WPGRAPHQL_URL,
+        // url: `${process.env.GATSBY_API_URL}`,
+        // process.env.WPGRAPHQL_URL ||
+        // `https://api.blackalsatian.co.za/graphql`,
         debug: {
           graphql: {
             showQueryOnError: true,

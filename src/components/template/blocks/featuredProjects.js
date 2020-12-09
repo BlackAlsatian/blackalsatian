@@ -34,11 +34,9 @@ const FeaturedProjectsBlock = () => {
   return (
     <section
       sx={{
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-around',
-        height: '100%',
-        minheight: '50vh',
+        display: 'grid',
+        gridGap: 3,
+        gridTemplateColumns: `repeat(auto-fit, minmax(30%, 1fr))`,
       }}
     >
       {data.allWpPortfolio.edges.map(({ node }) => (

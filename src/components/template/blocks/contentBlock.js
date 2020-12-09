@@ -16,6 +16,7 @@ export default function ContentBlock(props) {
         padding: '3rem',
         minHeight: '30vh',
         color: 'black',
+        zIndex: 15,
       }}
       id={attributes.anchor}
     >

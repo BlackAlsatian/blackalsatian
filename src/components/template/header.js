@@ -4,12 +4,45 @@ import { Link } from 'gatsby'
 import Logo from '../../assets/images/black-alsatian-logo.svg'
 
 const Header = () => {
+  const menuLinks = [
+    {
+      id: 1,
+      name: 'About',
+      url: '/about/',
+    },
+    {
+      id: 2,
+      name: 'Services',
+      url: '/services/',
+    },
+    {
+      id: 3,
+      name: 'Portfolio',
+      url: '/portfolio/',
+    },
+    {
+      id: 4,
+      name: 'Blog',
+      url: '/blog/',
+    },
+    {
+      id: 5,
+      name: 'Contact',
+      url: '/contact/',
+    },
+  ]
   return (
     <header
       sx={{
         display: 'flex',
         alignItems: 'center',
-        variant: 'layout.header',
+        py: 3,
+        px: 4,
+        top: 0,
+        left: 0,
+        right: 0,
+        position: 'fixed',
+        zIndex: 10,
       }}
     >
       <Link to='/'>
@@ -23,46 +56,24 @@ const Header = () => {
         />
       </Link>
       <div sx={{ mx: 'auto' }} />
-      <Link
-        to='/about/'
-        sx={{
-          variant: 'layout.navlink',
-        }}
-      >
-        About
-      </Link>
-      <Link
-        to='/services/'
-        sx={{
-          variant: 'layout.navlink',
-        }}
-      >
-        Services
-      </Link>
-      <Link
-        to='/portfolio/'
-        sx={{
-          variant: 'layout.navlink',
-        }}
-      >
-        Portfolio
-      </Link>
-      <Link
-        to='/blog/'
-        sx={{
-          variant: 'layout.navlink',
-        }}
-      >
-        Blog
-      </Link>
-      <Link
-        to='/contact/'
-        sx={{
-          variant: 'layout.navlink',
-        }}
-      >
-        Contact
-      </Link>
+      {menuLinks.map(({ name, url, id }) => (
+        <Link
+          key={id}
+          to={url}
+          sx={{
+            color: 'black',
+            fontSize: 2,
+            fontWeight: 'extrabold',
+            textDecoration: 'none',
+            px: 3,
+            '&:last-child': {
+              pr: 0,
+            },
+          }}
+        >
+          {name}
+        </Link>
+      ))}
     </header>
   )
 }

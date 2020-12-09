@@ -12,14 +12,24 @@ const HeroBlock = props => {
         backgroundImage: `url(${backgroundImage})`,
         backgroundAttachment: 'scroll',
         backgroundSize: 'cover',
-        backgroundRepeat: 'none',
+        backgroundRepeat: 'no-repeat',
         flexDirection: 'column',
         minHeight: '100vh',
         color: `${color}`,
+        pt: '40vh',
+        zIndex: 5,
       }}
       id={anchor}
     >
-      <h1>{title}</h1>
+      <h1
+        sx={{
+          fontSize: 9,
+          lineHeight: 'heading',
+          my: 0,
+        }}
+      >
+        {title}
+      </h1>
       {parse(intro)}
     </section>
   )

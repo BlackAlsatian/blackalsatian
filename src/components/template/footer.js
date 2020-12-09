@@ -7,7 +7,10 @@ const Footer = ({ siteTitle }) => {
     <footer
       sx={{
         width: '100%',
-        variant: 'layout.footer',
+        bg: 'white',
+        fontSize: 0,
+        color: 'muted',
+        variant: 'footer',
       }}
     >
       <div
