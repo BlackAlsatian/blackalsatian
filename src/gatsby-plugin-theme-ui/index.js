@@ -27,7 +27,7 @@ export default {
     ...tailwind.fonts,
     body: 'Montserrat, sans-serif',
   },
-  fontSizes: [...tailwind.fontSizes, '9rem'],
+  fontSizes: [...tailwind.fontSizes, '8rem'],
   fontWeights: {
     ...tailwind.fontWeights,
     heading: '900',

@@ -36,12 +36,11 @@ const Header = () => {
       sx={{
         display: 'flex',
         alignItems: 'center',
-        py: 3,
-        px: 4,
+        p: [2, 3],
         top: 0,
         left: 0,
         right: 0,
-        position: 'fixed',
+        position: 'absolute',
         zIndex: 10,
       }}
     >
@@ -51,7 +50,7 @@ const Header = () => {
           alt='Black Alsatian Web Development Agency'
           sx={{
             width: 'sizes.full',
-            maxWidth: 250,
+            maxWidth: 200,
           }}
         />
       </Link>
@@ -62,7 +61,7 @@ const Header = () => {
           to={url}
           sx={{
             color: 'black',
-            fontSize: 2,
+            fontSize: 1,
             fontWeight: 'extrabold',
             textDecoration: 'none',
             px: 3,
