@@ -13,6 +13,7 @@ const HeroBlock = props => {
         backgroundAttachment: 'scroll',
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
+        backgroundPosition: '50% 50%',
         flexDirection: 'column',
         minHeight: '100vh',
         color: `${color}`,
@@ -25,7 +26,7 @@ const HeroBlock = props => {
         <Heading
           as='h1'
           sx={{
-            fontSize: [8, 9],
+            fontSize: [7, 9],
             // lineHeight: 'heading',
             // my: 0,
           }}

@@ -11,7 +11,7 @@ export default function ContentBlock(props) {
       sx={{
         width: '100%',
         backgroundColor: 'white',
-        py: 4,
+        py: 5,
         minHeight: '30vh',
         color: 'black',
         zIndex: 15,
@@ -19,18 +19,31 @@ export default function ContentBlock(props) {
       id={attributes.anchor}
     >
       <Container px={1}>
-        <Flex>
+        <Flex
+          sx={{
+            flexDirection: ['column', 'row'],
+          }}
+        >
           <Box
-            p={3}
+            p={[5, 2, 3, 5]}
             sx={{
               textAlign: 'right',
-              flex: '1',
+              flex: [null, 2, 1],
+              width: ['100%', null],
+              display: 'flex',
+              // alignItems: 'center',
+              flexDirection: 'column',
+              justifyContent: 'center',
+
+              borderRight: [0, '1px solid black'],
             }}
           >
             <Heading
               sx={{
-                fontSize: '2rem',
-                marginTop: 0,
+                fontSize: [4, 3, 4, 5],
+                // marginTop: 0,
+                fontWeight: 'light',
+                lineHeight: 1,
               }}
             >
               {attributes.contentHeading}
@@ -39,14 +52,20 @@ export default function ContentBlock(props) {
               as='h4'
               sx={{
                 textTransform: 'uppercase',
-                fontSize: '0.9rem',
-                marginTop: 0,
+                fontSize: 0,
+                // marginTop: 0,
               }}
             >
               {attributes.contentTitle}
             </Heading>
           </Box>
-          <Box p={3} sx={{ flex: '3' }}>
+          <Box
+            p={5}
+            sx={{
+              flex: [null, 3, 3],
+              width: ['100%', null],
+            }}
+          >
             {innerBlocks.map(({ copy }) => (
               <Fragment key={randomID()}>{parse(copy)}</Fragment>
             ))}

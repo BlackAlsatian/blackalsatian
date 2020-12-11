@@ -1,7 +1,8 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
 import { Link } from 'gatsby'
-import Logo from '../../assets/images/black-alsatian-logo.svg'
+// import Logo from '../../assets/images/black-alsatian-logo.svg'
+import LogoWhite from '../../assets/images/black-alsatian-logo-wht.svg'
 
 const Header = () => {
   const menuLinks = [
@@ -46,11 +47,12 @@ const Header = () => {
     >
       <Link to='/'>
         <img
-          src={Logo}
+          src={LogoWhite}
           alt='Black Alsatian Web Development Agency'
           sx={{
             width: 'sizes.full',
             maxWidth: 200,
+            variant: 'logo',
           }}
         />
       </Link>
@@ -60,7 +62,7 @@ const Header = () => {
           key={id}
           to={url}
           sx={{
-            color: 'black',
+            color: 'white',
             fontSize: 1,
             fontWeight: 'extrabold',
             textDecoration: 'none',

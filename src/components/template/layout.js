@@ -28,6 +28,10 @@ const Layout = ({ children }) => {
         flexDirection: 'column',
         minHeight: '100vh',
         width: '100vw',
+        '::selection': {
+          background: 'yellow',
+          backgroundColor: 'yellow',
+        },
       }}
     >
       <Header />

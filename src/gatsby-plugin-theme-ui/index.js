@@ -5,6 +5,12 @@ export default {
   styles: {
     ...tailwind.styles,
   },
+  logo: {
+    fill: 'white',
+  },
+  '::selection': {
+    backgroundColor: 'highlight',
+  },
   colors: {
     ...tailwind.colors,
     // background: '#F9FAFB',
@@ -13,11 +19,13 @@ export default {
     // white: '#F9FAFB',
     blue: '#2563EB',
     // yellow: '#FEF08A',
-    yellow: '#ffff33',
+    // yellow: '#facc15',
+    yellow: '#FED700',
+    // yellow: '#ffff33',
     red: '#EF4444',
     primary: '#111827',
     secondary: '#FEF08A',
-    highlight: '#FEF08A',
+    highlight: '#FED700',
     info: '#2563EB',
     warning: '#FEF08A',
     danger: '#EF4444',
@@ -27,7 +35,7 @@ export default {
     ...tailwind.fonts,
     body: 'Montserrat, sans-serif',
   },
-  fontSizes: [...tailwind.fontSizes, '8rem'],
+  fontSizes: [...tailwind.fontSizes, '7rem'],
   fontWeights: {
     ...tailwind.fontWeights,
     heading: '900',
