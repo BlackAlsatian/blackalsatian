@@ -1,22 +1,19 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
-import { Link } from 'gatsby'
-import { useState } from 'react'
-import MenuIcon from '../menuIcon'
-import FullMenu from './fullMenu'
-import Logo from '../logo'
+// import { Link } from 'gatsby'
+// import { useState } from 'react'
 import Nav from '../nav'
 
-const Header = () => {
-    const [isOpen, setIsOpen] = useState(false)
-
-    const handleBurgerMenuClick = () => {
-        setIsOpen(!isOpen)
-    }
-
-    console.log(isOpen)
+const FullMenu = ({ isOpen }) => {
+    //     const [isOpen, setIsOpen] = useState(false)
+    //
+    //     const handleBurgerMenuClick = () => {
+    //         setIsOpen(!isOpen)
+    //     }
+    //
+    //     console.log(isOpen)
     return (
-        <header
+        <div
             sx={{
                 display: 'flex',
                 alignItems: 'center',
@@ -24,23 +21,20 @@ const Header = () => {
                 top: 0,
                 left: 0,
                 right: 0,
-                variant: 'layout.header.closedMenu',
+                variant: 'layout.header.openMenu',
+                transition: 'transform 300ms',
+                transform: isOpen ? 'translateX(0)' : 'translateX(100%)',
             }}
         >
-            <Link to='/'>
-                <Logo />
-            </Link>
             <Nav />
-            <FullMenu isOpen={isOpen} />
-            <div
+            {/* <div
                 sx={{
-                    position: 'fixed',
+                    position: 'absolute',
                     top: 0,
                     bottom: 0,
                     right: 0,
                     alignItems: 'center',
                     display: ['flex', 'flex', 'none'],
-                    zIndex: 30,
                 }}
             >
                 <MenuIcon
@@ -49,7 +43,7 @@ const Header = () => {
                 />
                 <span
                     sx={{
-                        position: 'fixed',
+                        position: 'absolute',
                         width: 1,
                         height: 1,
                         padding: 0,
@@ -62,9 +56,9 @@ const Header = () => {
                 >
                     Open main menu
                 </span>
-            </div>
-        </header>
+            </div> */}
+        </div>
     )
 }
 
-export default Header
+export default FullMenu

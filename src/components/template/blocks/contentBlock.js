@@ -14,7 +14,7 @@ export default function ContentBlock(props) {
         py: 5,
         minHeight: '30vh',
         color: 'black',
-        zIndex: 15,
+        zIndex: 20,
       }}
       id={attributes.anchor}
     >
@@ -27,22 +27,19 @@ export default function ContentBlock(props) {
           <Box
             p={[5, 2, 3, 5]}
             sx={{
-              textAlign: 'right',
+              textAlign: ['left', 'left', 'right'],
               flex: [null, 2, 1],
               width: ['100%', null],
               display: 'flex',
-              // alignItems: 'center',
               flexDirection: 'column',
               justifyContent: 'center',
-
               borderRight: [0, '1px solid black'],
             }}
           >
             <Heading
               sx={{
                 fontSize: [4, 3, 4, 5],
-                // marginTop: 0,
-                fontWeight: 'light',
+                fontWeight: 'thin',
                 lineHeight: 1,
               }}
             >
@@ -53,7 +50,8 @@ export default function ContentBlock(props) {
               sx={{
                 textTransform: 'uppercase',
                 fontSize: 0,
-                // marginTop: 0,
+                mt: [4, 4, 0],
+                ml: ['auto', 'auto', null],
               }}
             >
               {attributes.contentTitle}

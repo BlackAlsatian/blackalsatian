@@ -55,7 +55,7 @@ const CTABlock = props => {
               sx={{
                 fontSize: [4, 3, 4, 5],
                 // marginTop: 0,
-                fontWeight: 'light',
+                fontWeight: 'thin',
                 lineHeight: 1,
               }}
             >
