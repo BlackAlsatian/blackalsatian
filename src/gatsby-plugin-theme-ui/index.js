@@ -1,13 +1,56 @@
 import { tailwind } from '@theme-ui/preset-tailwind'
 
 export default {
+    '::selection': 'yellow',
     ...tailwind,
     styles: {
+        root: {
+            '--hue': '220',
+            '--sat': '100',
+            '--light': '81',
+            '::selection': 'yellow',
+        },
         ...tailwind.styles,
-        overflowX: 'hidden',
     },
-    '::selection': {
-        backgroundColor: 'highlight',
+    colors: {
+        ...tailwind.colors,
+        text: '#111827',
+        black: '#111827',
+        // white: '#F9FAFB',
+        // blue: '#2563EB',
+        blue: '#2EC4B6',
+        //##pantone of the year
+        yellow: '#f5df4d',
+        gray: '#939597',
+        // yellow: '#FEF08A',
+        // yellow: '#facc15',
+        // yellow: '#FED700',
+        // yellow: '#FFC703',
+        // yellow: '#ffff33',
+        // red: '#EF4444',
+        // red: '#E71D36',
+        red: '#E71D36',
+        primary: '#111827',
+        secondary: '#FEF08A',
+        highlight: '#FED700',
+        info: '#2563EB',
+        warning: '#FEF08A',
+        danger: '#EF4444',
+        muted: '#6B7280',
+        header: '#ffffff',
+        offWhite: `${tailwind.colors.gray[2]}`,
+        // offWhite: '#939597',
+        // mainOpenMenu: `${tailwind.colors.gray[5]}`,
+        mainOpenMenu: '#939597',
+        //##### from theme ui
+        //     text	Body foreground color
+        // background	Body background color
+        // primary	Primary brand color for links, buttons, etc.
+        // secondary	A secondary brand color for alternative styling
+        // accent	A contrast color for emphasizing UI
+        // highlight	A background color for highlighting text
+        // muted	A faint color for backgrounds, borders, and accents that do not require high contrast with the background color
+        //#####
     },
     buttons: {
         ...tailwind.buttons,
@@ -31,43 +74,9 @@ export default {
             },
             '&:focus': {
                 outline: 'none',
-                // boxShadow: '2px 2px 2px 2px black',
                 color: 'offWhite',
             },
         },
-    },
-    colors: {
-        ...tailwind.colors,
-        // background: '#F9FAFB',
-        text: '#111827',
-        black: '#111827',
-        // white: '#F9FAFB',
-        blue: '#2563EB',
-        // yellow: '#FEF08A',
-        // yellow: '#facc15',
-        // yellow: '#FED700',
-        yellow: '#FFC703',
-        // yellow: '#ffff33',
-        red: '#EF4444',
-        primary: '#111827',
-        secondary: '#FEF08A',
-        highlight: '#FED700',
-        info: '#2563EB',
-        warning: '#FEF08A',
-        danger: '#EF4444',
-        muted: '#6B7280',
-        header: '#ffffff',
-        offWhite: `${tailwind.colors.gray[2]}`,
-        mainOpenMenu: `${tailwind.colors.gray[5]}`,
-        //##### from theme ui
-        //     text	Body foreground color
-        // background	Body background color
-        // primary	Primary brand color for links, buttons, etc.
-        // secondary	A secondary brand color for alternative styling
-        // accent	A contrast color for emphasizing UI
-        // highlight	A background color for highlighting text
-        // muted	A faint color for backgrounds, borders, and accents that do not require high contrast with the background color
-        //#####
     },
     fonts: {
         ...tailwind.fonts,
@@ -99,10 +108,10 @@ export default {
                     ml: 'auto',
                     display: ['none', 'none', 'flex'],
                     a: {
-                        color: 'white',
-                        '&:hover, &:focus, &.active': {
-                            color: 'offWhite',
-                        },
+                        // color: 'white',
+                        // '&:hover, &:focus, &.active': {
+                        //     color: 'offWhite',
+                        // },
                         cursor: 'pointer',
                         fontSize: 1,
                         fontWeight: 'extrabold',
@@ -113,8 +122,6 @@ export default {
                         },
                     },
                 },
-                // transition: 'transform 2000ms',
-                // transform: isOpen ? 'translateX(0)' : 'translateX(100%)',
             },
             openMenu: {
                 p: [2, 3],
@@ -142,17 +149,11 @@ export default {
                         },
                     },
                 },
-                // transition: 'transform 2000ms',
-                // transform: isOpen ? 'translateX(0)' : 'translateX(100%)',
             },
         },
     },
 }
 
-// export default {
-
-//
-//
 //   styles: {
 //     ...tailwind.styles,
 //     // Footer: {

@@ -1,75 +1,28 @@
-/** @jsx jsx */
-import { jsx, Container, Flex, Box, Heading } from 'theme-ui'
-import { Fragment } from 'react'
-import parse from 'html-react-parser'
-import { randomID } from '../../helpers'
+import React from 'react'
+import BlockSection from '../blockSection'
 
 export default function ContentBlock(props) {
-  const { attributes, innerBlocks } = props
-  return (
-    <section
-      sx={{
-        width: '100%',
-        backgroundColor: 'white',
-        py: 5,
-        minHeight: '30vh',
-        color: 'black',
-        zIndex: 20,
-      }}
-      id={attributes.anchor}
-    >
-      <Container px={1}>
-        <Flex
-          sx={{
-            flexDirection: ['column', 'row'],
-          }}
-        >
-          <Box
-            p={[5, 2, 3, 5]}
-            sx={{
-              textAlign: ['left', 'left', 'right'],
-              flex: [null, 2, 1],
-              width: ['100%', null],
-              display: 'flex',
-              flexDirection: 'column',
-              justifyContent: 'center',
-              borderRight: [0, '1px solid black'],
-            }}
-          >
-            <Heading
-              sx={{
-                fontSize: [4, 3, 4, 5],
-                fontWeight: 'thin',
-                lineHeight: 1,
-              }}
-            >
-              {attributes.contentHeading}
-            </Heading>
-            <Heading
-              as='h4'
-              sx={{
-                textTransform: 'uppercase',
-                fontSize: 0,
-                mt: [4, 4, 0],
-                ml: ['auto', 'auto', null],
-              }}
-            >
-              {attributes.contentTitle}
-            </Heading>
-          </Box>
-          <Box
-            p={5}
-            sx={{
-              flex: [null, 3, 3],
-              width: ['100%', null],
-            }}
-          >
-            {innerBlocks.map(({ copy }) => (
-              <Fragment key={randomID()}>{parse(copy)}</Fragment>
-            ))}
-          </Box>
-        </Flex>
-      </Container>
-    </section>
-  )
+    const { attributes, innerBlocks } = props
+    const backgroundColor = null
+    const color = null
+    const anchor = null
+    const heading = attributes.contentHeading
+    const title = attributes.contentTitle
+    const text = innerBlocks
+    const buttonBackground = null
+    const buttonName = null
+    const buttonUrl = null
+    return (
+        <BlockSection
+            backgroundColor={backgroundColor}
+            color={color}
+            anchor={anchor}
+            heading={heading}
+            title={title}
+            text={text}
+            buttonBackground={buttonBackground}
+            buttonName={buttonName}
+            buttonUrl={buttonUrl}
+        />
+    )
 }

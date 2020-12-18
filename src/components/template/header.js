@@ -6,21 +6,27 @@ import MenuIcon from '../menuIcon'
 import FullMenu from './fullMenu'
 import Logo from '../logo'
 import Nav from '../nav'
+// import { useThemeUI } from 'theme-ui'
 
-const Header = () => {
+const Header = ({ color, props }) => {
+    console.log(color)
+    console.log(props)
     const [isOpen, setIsOpen] = useState(false)
 
     const handleBurgerMenuClick = () => {
         setIsOpen(!isOpen)
     }
-
     console.log(isOpen)
+
+    // const context = useThemeUI()
+    // const { theme, colorMode, setColorMode } = context
+    // console.log(theme)
     return (
         <header
             sx={{
                 display: 'flex',
                 alignItems: 'center',
-                width: 'screenWidth',
+                // width: 'screenWidth',
                 top: 0,
                 left: 0,
                 right: 0,
@@ -30,7 +36,7 @@ const Header = () => {
             <Link to='/'>
                 <Logo />
             </Link>
-            <Nav />
+            <Nav color={color} />
             <FullMenu isOpen={isOpen} />
             <div
                 sx={{
