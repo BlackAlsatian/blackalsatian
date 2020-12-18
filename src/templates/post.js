@@ -1,5 +1,6 @@
 /** @jsx jsx */
-import { jsx } from 'theme-ui'
+import { jsx, Container, Heading } from 'theme-ui'
+import React from 'react'
 import { Link, graphql } from 'gatsby'
 import Image from 'gatsby-image'
 import parse from 'html-react-parser'
@@ -17,38 +18,62 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
         <>
             <SEO title={post.title} description={post.excerpt} />
 
-            <article
-                className='blog-post'
-                itemScope
-                itemType='http://schema.org/Article'
-            >
-                <header>
-                    <h1 itemProp='headline'>{parse(post.title)}</h1>
-
-                    <p>{post.date}</p>
-
+            <article itemScope itemType='http://schema.org/Article'>
+                <header
+                    sx={{
+                        position: 'relative',
+                        minHeight: '100vh',
+                    }}
+                >
                     {/* if we have a featured image for this post let's display it */}
                     {featuredImage?.fluid && (
                         <Image
                             fluid={featuredImage.fluid}
                             alt={featuredImage.alt}
-                            style={{ marginBottom: 50 }}
+                            style={{ width: '100%', minHeight: '100vh' }}
                         />
                     )}
+
+                    <div
+                        sx={{
+                            position: 'absolute',
+                            top: 0,
+                            left: 0,
+                            pt: '30vh',
+                            color: 'white',
+                            backgroundColor: 'rgba(0, 0, 0, 0.6)',
+                            minHeight: '100vh',
+                        }}
+                    >
+                        <Heading
+                            as='h1'
+                            sx={{
+                                fontSize: [6, 9],
+                            }}
+                            itemProp='headline'
+                        >
+                            {parse(post.title)}
+                        </Heading>
+                        <p sx={{ fontSize: [2, 3], my: 0 }}>
+                            {parse(post.excerpt)}
+                        </p>
+
+                        <p>{post.date}</p>
+                    </div>
                 </header>
 
                 {!!post.content && (
                     <section itemProp='articleBody'>
-                        <div
+                        <Container
+                            p={6}
                             sx={{
                                 display: 'flex',
                                 flexDirection: 'column',
                                 minHeight: '100vh',
-                                variant: 'blog.post',
                             }}
                         >
                             {parse(post.content)}
-                        </div>
+                        </Container>
                     </section>
                 )}
 

@@ -28,73 +28,84 @@ const PortfolioIndex = ({ data }) => {
     return (
         <>
             <SEO title='All portfolio' />
-            <section
+            <div
                 sx={{
                     display: 'flex',
-                    alignItems: 'center',
-                    color: 'white',
-                    backgroundColor: 'red',
-                    minHeight: '60vh',
-                    pt: '25vh',
+                    flexDirection: 'column',
+                    minHeight: '100vh',
                 }}
             >
-                <Container p={4}>
-                    <Heading
-                        as='h1'
-                        sx={{
-                            fontSize: [7, 10],
-                        }}
-                    >
-                        {parse(page.title)}
-                    </Heading>
-                    <div sx={{ fontSize: [3, 4], my: 1 }}>
-                        {/* {parse(page.excerpt)} */}
-                        {parse(page.content.substring(0, MAX_LENGTH))}
-                        {/* {page.excerpt} */}
-                    </div>
-                </Container>
-            </section>
+                <section
+                    sx={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        color: 'white',
+                        backgroundColor: 'red',
+                        minHeight: '60vh',
+                        pt: '25vh',
+                    }}
+                >
+                    <Container p={4}>
+                        <Heading
+                            as='h1'
+                            sx={{
+                                fontSize: [7, 10],
+                            }}
+                        >
+                            {parse(page.title)}
+                        </Heading>
+                        <div sx={{ fontSize: [3, 4], my: 1 }}>
+                            {/* {parse(page.excerpt)} */}
+                            {parse(page.content.substring(0, MAX_LENGTH))}
+                            {/* {page.excerpt} */}
+                        </div>
+                    </Container>
+                </section>
 
-            <ol style={{ listStyle: `none` }}>
-                {portfolio.map((portfolio) => {
-                    const title = portfolio.title
-                    const featuredImage = {
-                        fluid:
-                            portfolio.featuredImage?.node?.localFile
-                                ?.childImageSharp?.fluid,
-                        alt: portfolio.featuredImage?.node?.alt || ``,
-                    }
-                    return (
-                        <li key={portfolio.uri}>
-                            <article
-                                className='portfolio-list-item'
-                                itemScope
-                                itemType='http://schema.org/Article'
-                            >
-                                <header>
-                                    {featuredImage?.fluid && (
-                                        <Image
-                                            fluid={featuredImage.fluid}
-                                            alt={featuredImage.alt}
-                                            style={{ marginBottom: 50 }}
-                                        />
-                                    )}
-                                    <h2>
-                                        <Link to={portfolio.uri} itemProp='url'>
-                                            <span itemProp='headline'>
-                                                {parse(title)}
-                                            </span>
-                                        </Link>
-                                    </h2>
-                                </header>
-                                <section itemProp='description'>
-                                    {parse(portfolio.excerpt)}
-                                </section>
-                            </article>
-                        </li>
-                    )
-                })}
-            </ol>
+                <ol style={{ listStyle: `none` }}>
+                    {portfolio.map((portfolio) => {
+                        const title = portfolio.title
+                        const featuredImage = {
+                            fluid:
+                                portfolio.featuredImage?.node?.localFile
+                                    ?.childImageSharp?.fluid,
+                            alt: portfolio.featuredImage?.node?.alt || ``,
+                        }
+                        return (
+                            <li key={portfolio.uri}>
+                                <article
+                                    className='portfolio-list-item'
+                                    itemScope
+                                    itemType='http://schema.org/Article'
+                                >
+                                    <header>
+                                        {featuredImage?.fluid && (
+                                            <Image
+                                                fluid={featuredImage.fluid}
+                                                alt={featuredImage.alt}
+                                                style={{ marginBottom: 50 }}
+                                            />
+                                        )}
+                                        <h2>
+                                            <Link
+                                                to={portfolio.uri}
+                                                itemProp='url'
+                                            >
+                                                <span itemProp='headline'>
+                                                    {parse(title)}
+                                                </span>
+                                            </Link>
+                                        </h2>
+                                    </header>
+                                    <section itemProp='description'>
+                                        {parse(portfolio.excerpt)}
+                                    </section>
+                                </article>
+                            </li>
+                        )
+                    })}
+                </ol>
+            </div>
         </>
     )
 }

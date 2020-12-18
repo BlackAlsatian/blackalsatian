@@ -7,7 +7,7 @@ import { handleHeaderColor } from './helpers'
 import Header from './template/header'
 import Footer from './template/footer'
 
-const duration = 0.5
+const duration = 0.1
 const variants = {
     initial: {
         opacity: 0,
@@ -21,7 +21,7 @@ const variants = {
         },
     },
     exit: {
-        opacity: 0,
+        opacity: 0.2,
         transition: { duration: duration },
     },
 }
