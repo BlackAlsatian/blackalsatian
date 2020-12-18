@@ -40,7 +40,7 @@ const Header = ({ color }) => {
                     bottom: 0,
                     right: 0,
                     alignItems: 'center',
-                    display: ['flex', 'flex', 'none'],
+                    display: ['flex', 'flex', 'flex'],
                     zIndex: 30,
                 }}
             >

@@ -14,8 +14,8 @@ export function handleHeaderColor(path) {
             return 'black'
         case '/blog/':
             return 'black'
-        // case 'error':
-        //   return <Error text={text} />;
+        case '/contact/':
+            return 'black'
         default:
             return 'white'
     }

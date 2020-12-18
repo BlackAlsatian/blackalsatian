@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx, Container, Heading } from 'theme-ui'
+import { jsx, Container, Heading, Flex, Box } from 'theme-ui'
 import React from 'react'
 import { Link, graphql } from 'gatsby'
 import Image from 'gatsby-image'
@@ -30,7 +30,7 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
                         <Image
                             fluid={featuredImage.fluid}
                             alt={featuredImage.alt}
-                            style={{ width: '100%', minHeight: '100vh' }}
+                            style={{ width: '100%', height: '100vh' }}
                         />
                     )}
 
@@ -39,40 +39,106 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
                             position: 'absolute',
                             top: 0,
                             left: 0,
-                            pt: '30vh',
+                            display: 'flex',
+                            flexDirection: 'column',
+                            pt: '36vh',
+                            px: 4,
                             color: 'white',
                             backgroundColor: 'rgba(0, 0, 0, 0.6)',
-                            minHeight: '100vh',
+                            height: '100vh',
                         }}
                     >
                         <Heading
                             as='h1'
                             sx={{
-                                fontSize: [6, 9],
+                                fontSize: [6, 7, 7, 9],
                             }}
                             itemProp='headline'
                         >
                             {parse(post.title)}
                         </Heading>
-                        <p sx={{ fontSize: [2, 3], my: 0 }}>
+                        <div sx={{ fontSize: [2, 2, 3], my: 0 }}>
                             {parse(post.excerpt)}
-                        </p>
-
-                        <p>{post.date}</p>
+                        </div>
                     </div>
                 </header>
 
                 {!!post.content && (
-                    <section itemProp='articleBody'>
-                        <Container
-                            p={6}
-                            sx={{
-                                display: 'flex',
-                                flexDirection: 'column',
-                                minHeight: '100vh',
-                            }}
-                        >
-                            {parse(post.content)}
+                    <section itemProp='articleBody' sx={{ py: 6, zIndex: 20 }}>
+                        <Container px={1}>
+                            <Flex
+                                sx={{
+                                    flexDirection: ['column', 'column', 'row'],
+                                }}
+                            >
+                                <Box
+                                    pr={3}
+                                    py={4}
+                                    sx={{
+                                        textAlign: ['left', 'left', 'right'],
+                                        flex: [null, null, 1],
+                                        width: ['100%', null],
+                                        display: 'flex',
+                                        flexDirection: 'column',
+                                        alignItems: 'flex-end',
+                                        // justifyContent: 'flex-end',
+                                        borderRight: [0, '1px solid black'],
+                                    }}
+                                >
+                                    <Heading as='h3'>
+                                        {parse(post.title)}
+                                    </Heading>
+                                    <p>
+                                        <span
+                                            sx={{
+                                                color: 'muted',
+                                                textAlign: 'right',
+                                            }}
+                                        >
+                                            Written by:
+                                        </span>
+                                        <br />
+                                        <span sx={{ fontWeight: 'bold' }}>
+                                            {post.author.node.name}
+                                        </span>
+                                    </p>
+                                    <p>
+                                        <span
+                                            sx={{
+                                                color: 'muted',
+                                                textAlign: 'right',
+                                            }}
+                                        >
+                                            {post.date}
+                                        </span>
+                                    </p>
+                                    <div sx={{ py: 5, pl: 5 }}>
+                                        {post.tags.nodes.map(({ name, id }) => (
+                                            <span
+                                                sx={{
+                                                    backgroundColor: 'black',
+                                                    color: 'white',
+                                                    p: 1,
+                                                    m: 1,
+                                                }}
+                                                key={id}
+                                            >
+                                                {name}
+                                            </span>
+                                        ))}
+                                    </div>
+                                </Box>
+                                <Box
+                                    py={4}
+                                    px={5}
+                                    sx={{
+                                        flex: [null, null, 3],
+                                        width: ['100%', null],
+                                    }}
+                                >
+                                    {parse(post.content)}
+                                </Box>
+                            </Flex>
                         </Container>
                     </section>
                 )}
@@ -131,7 +197,19 @@ export const pageQuery = graphql`
             content
             title
             date(formatString: "MMMM DD, YYYY")
-
+            author {
+                node {
+                    name
+                }
+            }
+            tags {
+                nodes {
+                    id
+                    slug
+                    uri
+                    name
+                }
+            }
             ...FeaturedMediaFragment
         }
 
