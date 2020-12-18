@@ -1,16 +1,17 @@
 /** @jsx jsx */
 import { jsx, Container, Heading } from 'theme-ui'
+import React from 'react'
 import { graphql } from 'gatsby'
 // import Image from 'gatsby-image'
 import parse from 'html-react-parser'
 import ComponentParser from '../components/componentParser'
-import Layout from '../components/template/layout'
+// import Layout from '../components/layout'
 import SEO from '../components/seo'
 
 const PageTemplate = ({ data: { page } }) => {
     const MAX_LENGTH = 51
     return (
-        <Layout>
+        <>
             <SEO title={page.title} description={page.excerpt} />
             {!page.isFrontPage &&
             // !page.title.includes('About') &&
@@ -68,7 +69,7 @@ const PageTemplate = ({ data: { page } }) => {
                     featuredImage={page.featuredImage}
                 />
             )}
-        </Layout>
+        </>
     )
 }
 

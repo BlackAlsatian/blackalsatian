@@ -8,19 +8,14 @@ import Logo from '../logo'
 import Nav from '../nav'
 // import { useThemeUI } from 'theme-ui'
 
-const Header = ({ color, props }) => {
+const Header = ({ color }) => {
     console.log(color)
-    console.log(props)
     const [isOpen, setIsOpen] = useState(false)
 
     const handleBurgerMenuClick = () => {
         setIsOpen(!isOpen)
     }
     console.log(isOpen)
-
-    // const context = useThemeUI()
-    // const { theme, colorMode, setColorMode } = context
-    // console.log(theme)
     return (
         <header
             sx={{
@@ -34,7 +29,7 @@ const Header = ({ color, props }) => {
             }}
         >
             <Link to='/'>
-                <Logo />
+                <Logo color={color} />
             </Link>
             <Nav color={color} />
             <FullMenu isOpen={isOpen} />

@@ -12,8 +12,8 @@ export function handleHeaderColor(path) {
     switch (path) {
         case '/about/':
             return 'black'
-        // case 'warning':
-        //   return <Warning text={text} />;
+        case '/blog/':
+            return 'black'
         // case 'error':
         //   return <Error text={text} />;
         default:

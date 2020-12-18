@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { jsx, Container, Flex, Box, Heading } from 'theme-ui'
-import React, { Fragment } from 'react'
+import React from 'react'
 // import parse from 'html-react-parser'
 // import { randomID } from '../helpers'
 import BlockText from '../blockText'
