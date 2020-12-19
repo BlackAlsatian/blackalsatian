@@ -1,6 +1,7 @@
 /** @jsx jsx */
 import { jsx, Container, Flex, Box, Heading } from 'theme-ui'
 import React from 'react'
+import { Link } from 'gatsby'
 // import parse from 'html-react-parser'
 // import { randomID } from '../helpers'
 import BlockText from '../blockText'
@@ -77,15 +78,19 @@ export default function ContentBlock(props) {
                         <BlockText text={text} />
                         {buttonName && (
                             <>
-                                <button
+                                <Link
+                                    // as='button'
+                                    to={buttonUrl}
                                     sx={{
+                                        variant: 'buttons.simple',
                                         backgroundColor: `${buttonBackground}`,
-                                        color: '#fff',
+                                        color: `${backgroundColor || 'white'}`,
+                                        textDecoration: 'none',
                                     }}
                                 >
                                     {buttonName}
-                                </button>
-                                <p>{buttonUrl}</p>
+                                </Link>
+                                {/* <p>{buttonUrl}</p> */}
                             </>
                         )}
                     </Box>

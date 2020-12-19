@@ -38,6 +38,7 @@ export default {
         danger: '#EF4444',
         muted: '#6B7280',
         header: '#ffffff',
+        primaryHover: `${tailwind.colors.gray[8]}`,
         offWhite: `${tailwind.colors.gray[2]}`,
         // offWhite: '#939597',
         // mainOpenMenu: `${tailwind.colors.gray[5]}`,

@@ -1,7 +1,7 @@
 /** @jsx jsx */
-import { jsx, Container, Heading } from 'theme-ui'
+import { jsx, Container, Heading, Flex, Box } from 'theme-ui'
 import React from 'react'
-import { graphql } from 'gatsby'
+import { useStaticQuery, graphql } from 'gatsby'
 // import Image from 'gatsby-image'
 import parse from 'html-react-parser'
 import ComponentParser from '../components/componentParser'
@@ -9,7 +9,11 @@ import ComponentParser from '../components/componentParser'
 import SEO from '../components/seo'
 
 const PageTemplate = ({ data: { page } }) => {
+    console.log(page)
     const MAX_LENGTH = 51
+    const subheading = `Crafting websites for the love of building websites.`
+    const subtitle = `Web Artisans`
+    const intro = `Not just another web design agency. Black Alsatian is your new best friend on the web.`
     return (
         <>
             <SEO title={page.title} description={page.excerpt} />
@@ -43,23 +47,75 @@ const PageTemplate = ({ data: { page } }) => {
                             >
                                 {parse(page.title)}
                             </Heading>
-                            <div sx={{ fontSize: [3, 4], my: 1 }}>
-                                {/* {parse(page.excerpt)} */}
-                                {parse(page.content.substring(0, MAX_LENGTH))}
-                                {/* {page.excerpt} */}
-                            </div>
+                            {page.pageintro && (
+                                <div sx={{ fontSize: [3, 4], my: 1 }}>
+                                    {/* {parse(page.excerpt)} */}
+                                    {/* {parse(page.content.substring(0, MAX_LENGTH))} */}
+                                    {/* {page.excerpt} */}
+                                    {page.pageintro}
+                                </div>
+                            )}
                         </Container>
                     </section>
                     <section>
-                        <Container p={4}>
-                            <div
+                        <Container p={1}>
+                            <Flex
                                 sx={{
-                                    width: ['full', 'full', '8/12'],
-                                    mx: 'auto',
+                                    flexDirection: ['column', 'column', 'row'],
                                 }}
                             >
-                                {parse(page.content)}
-                            </div>
+                                <Box
+                                    pr={3}
+                                    py={4}
+                                    sx={{
+                                        textAlign: ['left', 'left', 'right'],
+                                        flex: [null, null, 1],
+                                        width: ['100%', null],
+                                        display: 'flex',
+                                        flexDirection: 'column',
+                                        alignItems: 'flex-end',
+                                        // justifyContent: 'flex-end',
+                                        borderRight: [0, '1px solid black'],
+                                    }}
+                                >
+                                    {page.pagesubheading && (
+                                        <Heading
+                                            as='h3'
+                                            sx={{
+                                                fontSize: [4, 3, 4, 5],
+                                                fontWeight: 'thin',
+                                                lineHeight: 1,
+                                            }}
+                                        >
+                                            {page.pagesubheading}
+                                        </Heading>
+                                    )}
+
+                                    {page.pagesubtitle && (
+                                        <Heading
+                                            as='h4'
+                                            sx={{
+                                                textTransform: 'uppercase',
+                                                fontSize: 0,
+                                                mt: [4, 4, 0],
+                                                ml: ['auto', 'auto', null],
+                                            }}
+                                        >
+                                            {page.pagesubtitle}
+                                        </Heading>
+                                    )}
+                                </Box>
+                                <Box
+                                    py={4}
+                                    px={5}
+                                    sx={{
+                                        flex: [null, null, 3],
+                                        width: ['100%', null],
+                                    }}
+                                >
+                                    {parse(page.content)}
+                                </Box>
+                            </Flex>
                         </Container>
                     </section>
                 </div>
@@ -85,11 +141,16 @@ export const pageQuery = graphql`
             id
             title
             content
+            slug
             isFrontPage
             ...PageFeaturedMediaFragment
+            pageintro
+            pagesubheading
+            pagesubtitle
             blocks {
                 ...CoreCoverblock
                 ...BlackalsatianContentBlock
+                ...BlackalsatianPageMetaBlock
             }
         }
     }
