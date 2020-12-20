@@ -26,15 +26,15 @@ const Footer = ({ siteTitle }) => {
         >
             <section>
                 <Flex
-                    p={1}
+                    p={4}
                     sx={{
-                        alignItems: 'center',
+                        alignItems: 'flex-start',
                         justifyContent: 'space-around',
                         py: 4,
                         px: 6,
                     }}
                 >
-                    <div sx={{ flex: 1, p: 2 }}>
+                    <div sx={{ flex: 1, p: 4 }}>
                         <div
                             sx={{
                                 display: 'flex',
@@ -144,8 +144,9 @@ const Footer = ({ siteTitle }) => {
                             </div>
                         </div>
                     </div>
-                    <div sx={{ flex: 1, p: 2 }}>
-                        Something something goes here
+                    <div sx={{ flex: 1, p: 4 }}>
+                        List of services or something or other. What about
+                        latest blog posts?
                     </div>
                     <div sx={{ flex: 2, p: 2 }}>
                         <EnquiryForm />
