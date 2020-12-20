@@ -2,8 +2,6 @@
 import { jsx, Container, Flex, Box, Heading } from 'theme-ui'
 import React from 'react'
 import { Link } from 'gatsby'
-// import parse from 'html-react-parser'
-// import { randomID } from '../helpers'
 import BlockText from '../blockText'
 
 export default function ContentBlock(props) {
@@ -13,9 +11,11 @@ export default function ContentBlock(props) {
     const heading = props.heading
     const title = props.title
     const text = props.text
+    const option = props.option
     const buttonBackground = props.buttonBackground
     const buttonName = props.buttonName
     const buttonUrl = props.buttonUrl
+    console.log(option)
     return (
         <section
             sx={{
@@ -51,6 +51,8 @@ export default function ContentBlock(props) {
                                 fontSize: [4, 3, 4, 5],
                                 fontWeight: 'thin',
                                 lineHeight: 1,
+                                mb: 4,
+                                letterSpacing: 'tighter',
                             }}
                         >
                             {heading}
@@ -76,10 +78,9 @@ export default function ContentBlock(props) {
                         }}
                     >
                         <BlockText text={text} />
-                        {buttonName && (
+                        {buttonName && option !== 'none' && (
                             <>
                                 <Link
-                                    // as='button'
                                     to={buttonUrl}
                                     sx={{
                                         variant: 'buttons.simple',

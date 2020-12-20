@@ -9,6 +9,7 @@ const CTABlock = (props) => {
         title,
         heading,
         text,
+        option,
         buttonBackground,
         buttonName,
         buttonUrl,
@@ -21,6 +22,7 @@ const CTABlock = (props) => {
             heading={heading}
             title={title}
             text={text}
+            option={option}
             buttonBackground={buttonBackground}
             buttonName={buttonName}
             buttonUrl={buttonUrl}

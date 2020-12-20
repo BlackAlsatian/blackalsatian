@@ -32,7 +32,7 @@ const Header = ({ color }) => {
                 <Logo color={color} />
             </Link>
             <Nav color={color} />
-            <FullMenu isOpen={isOpen} />
+            <FullMenu isOpen={isOpen} handleMenuClick={handleBurgerMenuClick} />
             <div
                 sx={{
                     position: 'fixed',
@@ -40,13 +40,14 @@ const Header = ({ color }) => {
                     bottom: 0,
                     right: 0,
                     alignItems: 'center',
-                    display: ['flex', 'flex', 'flex'],
+                    display: ['flex', 'flex', 'none'],
                     zIndex: 30,
                 }}
             >
                 <MenuIcon
                     handleBurgerMenuClick={handleBurgerMenuClick}
                     isOpen={isOpen}
+                    color={color}
                 />
                 <span
                     sx={{

@@ -89,6 +89,7 @@ export const fragments = graphql`
                     color
                     heading
                     title
+                    option
                 }
                 innerBlocks {
                     copy: originalContent

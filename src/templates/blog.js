@@ -5,8 +5,7 @@ import { Link, graphql } from 'gatsby'
 import Image from 'gatsby-image'
 import parse from 'html-react-parser'
 
-import Bio from '../components/bio'
-// import Layout from '../components/template/layout'
+// import Bio from '../components/bio'
 import SEO from '../components/seo'
 
 const BlogIndex = ({
@@ -22,7 +21,7 @@ const BlogIndex = ({
         return (
             <>
                 <SEO title='All posts' />
-                <Bio />
+                {/* <Bio /> */}
                 <p>
                     No blog posts found. Add posts to your WordPress site and
                     they'll appear here!
@@ -67,7 +66,7 @@ const BlogIndex = ({
                         </div>
                     </Container>
                 </section>
-                <Bio />
+                {/* <Bio /> */}
                 <ol style={{ listStyle: `none` }}>
                     {posts.map((post) => {
                         const title = post.title

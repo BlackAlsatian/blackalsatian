@@ -6,7 +6,6 @@ import Image from 'gatsby-image'
 import parse from 'html-react-parser'
 
 import Bio from '../components/bio'
-// import Layout from '../components/template/layout'
 import SEO from '../components/seo'
 
 const BlogPostTemplate = ({ data: { previous, next, post } }) => {
@@ -33,38 +32,40 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
                             style={{ width: '100%', height: '100vh' }}
                         />
                     )}
-
-                    <div
-                        sx={{
-                            position: 'absolute',
-                            top: 0,
-                            left: 0,
-                            display: 'flex',
-                            flexDirection: 'column',
-                            pt: '36vh',
-                            px: 4,
-                            color: 'white',
-                            backgroundColor: 'rgba(0, 0, 0, 0.6)',
-                            height: '100vh',
-                        }}
-                    >
-                        <Heading
-                            as='h1'
+                    <Container>
+                        <div
                             sx={{
-                                fontSize: [6, 7, 7, 9],
+                                position: 'absolute',
+                                top: 0,
+                                left: 0,
+                                display: 'flex',
+                                flexDirection: 'column',
+                                pt: '36vh',
+                                px: 4,
+                                color: 'white',
+                                backgroundColor: 'rgba(0, 0, 0, 0.6)',
+                                height: '100vh',
                             }}
-                            itemProp='headline'
                         >
-                            {parse(post.title)}
-                        </Heading>
-                        <div sx={{ fontSize: [2, 2, 3], my: 0 }}>
-                            {parse(post.excerpt)}
+                            <Heading
+                                as='h1'
+                                sx={{
+                                    fontSize: [6, 7, 7, 9],
+                                    letterSpacing: 'tighter',
+                                }}
+                                itemProp='headline'
+                            >
+                                {parse(post.title)}
+                            </Heading>
+                            <div sx={{ fontSize: [2, 2, 3], my: 0 }}>
+                                {parse(post.excerpt)}
+                            </div>
                         </div>
-                    </div>
+                    </Container>
                 </header>
 
                 {!!post.content && (
-                    <section itemProp='articleBody' sx={{ py: 6, zIndex: 20 }}>
+                    <section itemProp='articleBody' sx={{ py: 5, zIndex: 20 }}>
                         <Container px={1}>
                             <Flex
                                 sx={{
@@ -72,7 +73,7 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
                                 }}
                             >
                                 <Box
-                                    pr={3}
+                                    pr={5}
                                     py={4}
                                     sx={{
                                         textAlign: ['left', 'left', 'right'],
@@ -85,10 +86,20 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
                                         borderRight: [0, '1px solid black'],
                                     }}
                                 >
-                                    <Heading as='h3'>
+                                    <Heading
+                                        as='h3'
+                                        sx={{
+                                            fontSize: [4, 3, 4, 5],
+                                            fontWeight: 'thin',
+                                            lineHeight: 1,
+                                            mb: 4,
+                                            letterSpacing: 'tighter',
+                                        }}
+                                    >
                                         {parse(post.title)}
                                     </Heading>
-                                    <p>
+                                    <Bio />
+                                    {/* <p>
                                         <span
                                             sx={{
                                                 color: 'muted',
@@ -101,7 +112,7 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
                                         <span sx={{ fontWeight: 'bold' }}>
                                             {post.author.node.name}
                                         </span>
-                                    </p>
+                                    </p> */}
                                     <p>
                                         <span
                                             sx={{
@@ -112,14 +123,20 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
                                             {post.date}
                                         </span>
                                     </p>
-                                    <div sx={{ py: 5, pl: 5 }}>
+                                    <div
+                                        sx={{
+                                            py: 5,
+                                            pl: 5,
+                                            lineHeight: 'loose',
+                                        }}
+                                    >
                                         {post.tags.nodes.map(({ name, id }) => (
                                             <span
                                                 sx={{
                                                     backgroundColor: 'black',
                                                     color: 'white',
                                                     p: 1,
-                                                    m: 1,
+                                                    m: 2,
                                                 }}
                                                 key={id}
                                             >
@@ -134,6 +151,7 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
                                     sx={{
                                         flex: [null, null, 3],
                                         width: ['100%', null],
+                                        variant: 'layout',
                                     }}
                                 >
                                     {parse(post.content)}
@@ -145,24 +163,31 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
 
                 <hr />
 
-                <footer>
-                    <Bio />
-                </footer>
+                <footer>{/* <Bio /> */}</footer>
             </article>
 
             <nav className='blog-post-nav'>
                 <ul
-                    style={{
+                    sx={{
                         display: `flex`,
                         flexWrap: `wrap`,
                         justifyContent: `space-between`,
                         listStyle: `none`,
-                        padding: 0,
+                        p: 4,
                     }}
                 >
                     <li>
                         {previous && (
-                            <Link to={previous.uri} rel='prev'>
+                            <Link
+                                to={previous.uri}
+                                rel='prev'
+                                sx={{
+                                    variant: 'buttons.simple',
+                                    backgroundColor: 'black',
+                                    color: 'white',
+                                    textDecoration: 'none',
+                                }}
+                            >
                                 ← {parse(previous.title)}
                             </Link>
                         )}
@@ -170,7 +195,16 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
 
                     <li>
                         {next && (
-                            <Link to={next.uri} rel='next'>
+                            <Link
+                                to={next.uri}
+                                rel='next'
+                                sx={{
+                                    variant: 'buttons.simple',
+                                    backgroundColor: 'black',
+                                    color: 'white',
+                                    textDecoration: 'none',
+                                }}
+                            >
                                 {parse(next.title)} →
                             </Link>
                         )}

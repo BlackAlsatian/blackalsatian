@@ -1,19 +1,14 @@
 /** @jsx jsx */
 import { jsx, Container, Heading, Flex, Box } from 'theme-ui'
 import React from 'react'
-import { useStaticQuery, graphql } from 'gatsby'
-// import Image from 'gatsby-image'
+import { graphql } from 'gatsby'
 import parse from 'html-react-parser'
 import ComponentParser from '../components/componentParser'
-// import Layout from '../components/layout'
 import SEO from '../components/seo'
 
+import PageHeader from '../components/template/pageHeader'
+
 const PageTemplate = ({ data: { page } }) => {
-    console.log(page)
-    const MAX_LENGTH = 51
-    const subheading = `Crafting websites for the love of building websites.`
-    const subtitle = `Web Artisans`
-    const intro = `Not just another web design agency. Black Alsatian is your new best friend on the web.`
     return (
         <>
             <SEO title={page.title} description={page.excerpt} />
@@ -28,36 +23,13 @@ const PageTemplate = ({ data: { page } }) => {
                         minHeight: '100vh',
                     }}
                 >
-                    <section
-                        sx={{
-                            display: 'flex',
-                            alignItems: 'center',
-                            color: 'black',
-                            backgroundColor: 'yellow',
-                            minHeight: '60vh',
-                            pt: '25vh',
-                        }}
-                    >
-                        <Container p={4}>
-                            <Heading
-                                as='h1'
-                                sx={{
-                                    fontSize: [7, 10],
-                                }}
-                            >
-                                {parse(page.title)}
-                            </Heading>
-                            {page.pageintro && (
-                                <div sx={{ fontSize: [3, 4], my: 1 }}>
-                                    {/* {parse(page.excerpt)} */}
-                                    {/* {parse(page.content.substring(0, MAX_LENGTH))} */}
-                                    {/* {page.excerpt} */}
-                                    {page.pageintro}
-                                </div>
-                            )}
-                        </Container>
-                    </section>
-                    <section>
+                    <PageHeader
+                        title={parse(page.title)}
+                        intro={page.pageintro}
+                        backgroundColor='yellow'
+                        color='black'
+                    />
+                    <section sx={{ py: 5 }}>
                         <Container p={1}>
                             <Flex
                                 sx={{
@@ -65,7 +37,7 @@ const PageTemplate = ({ data: { page } }) => {
                                 }}
                             >
                                 <Box
-                                    pr={3}
+                                    pr={5}
                                     py={4}
                                     sx={{
                                         textAlign: ['left', 'left', 'right'],
@@ -85,6 +57,8 @@ const PageTemplate = ({ data: { page } }) => {
                                                 fontSize: [4, 3, 4, 5],
                                                 fontWeight: 'thin',
                                                 lineHeight: 1,
+                                                mb: 4,
+                                                letterSpacing: 'tighter',
                                             }}
                                         >
                                             {page.pagesubheading}
@@ -111,6 +85,7 @@ const PageTemplate = ({ data: { page } }) => {
                                     sx={{
                                         flex: [null, null, 3],
                                         width: ['100%', null],
+                                        variant: 'layout',
                                     }}
                                 >
                                     {parse(page.content)}

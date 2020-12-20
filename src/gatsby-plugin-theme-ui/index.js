@@ -4,54 +4,31 @@ export default {
     '::selection': 'yellow',
     ...tailwind,
     styles: {
-        root: {
-            '--hue': '220',
-            '--sat': '100',
-            '--light': '81',
-            '::selection': 'yellow',
-        },
         ...tailwind.styles,
     },
     colors: {
         ...tailwind.colors,
         text: '#111827',
-        black: '#111827',
-        // white: '#F9FAFB',
-        // blue: '#2563EB',
-        blue: '#2EC4B6',
-        //##pantone of the year
-        yellow: '#f5df4d',
-        gray: '#939597',
-        // yellow: '#FEF08A',
-        // yellow: '#facc15',
-        // yellow: '#FED700',
-        // yellow: '#FFC703',
-        // yellow: '#ffff33',
-        // red: '#EF4444',
-        // red: '#E71D36',
-        red: '#E71D36',
+        background: '#ffffff',
         primary: '#111827',
-        secondary: '#FEF08A',
-        highlight: '#FED700',
-        info: '#2563EB',
-        warning: '#FEF08A',
-        danger: '#EF4444',
+        secondary: '#fef08a',
+        accent: '#f5df4d',
+        highlight: '#fed700',
+        info: '#2563eb',
+        warning: '#fef08a',
+        danger: '#ef4444',
         muted: '#6B7280',
         header: '#ffffff',
         primaryHover: `${tailwind.colors.gray[8]}`,
+        black: '#111827',
+        blue: '#2ec4b6',
+        //##pantone of the year
+        yellow: '#f5df4d',
+        gray: '#939597',
+        // ##
+        red: '#e71d36',
         offWhite: `${tailwind.colors.gray[2]}`,
-        // offWhite: '#939597',
-        // mainOpenMenu: `${tailwind.colors.gray[5]}`,
         mainOpenMenu: '#939597',
-        //##### from theme ui
-        //     text	Body foreground color
-        // background	Body background color
-        // primary	Primary brand color for links, buttons, etc.
-        // secondary	A secondary brand color for alternative styling
-        // accent	A contrast color for emphasizing UI
-        // highlight	A background color for highlighting text
-        // muted	A faint color for backgrounds, borders, and accents that do not require high contrast with the background color
-        //#####
     },
     buttons: {
         ...tailwind.buttons,
@@ -90,15 +67,9 @@ export default {
     },
     sizes: {
         ...tailwind.sizes,
-        container: 1536,
+        container: 1280,
     },
     breakpoints: [...tailwind.breakpoints, '1520px'],
-    footer: {
-        a: {
-            color: 'muted',
-            textDecoration: 'none',
-        },
-    },
     layout: {
         header: {
             closedMenu: {
@@ -150,6 +121,27 @@ export default {
                         },
                     },
                 },
+            },
+        },
+        p: {
+            a: {
+                color: 'black',
+                textDecoration: 'underline',
+                fontWeight: 'medium',
+                '&:hover': {
+                    textDecoration: 'none',
+                },
+            },
+        },
+        blockquote: {
+            borderLeft: '5px solid black',
+            p: '1rem 1rem 1rem 2rem',
+            m: '3rem',
+        },
+        figure: {
+            textAlign: 'center',
+            span: {
+                m: '0 auto',
             },
         },
     },

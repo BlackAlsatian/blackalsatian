@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
 
-export default function MenuIcon({ handleBurgerMenuClick, isOpen }) {
+export default function MenuIcon({ handleBurgerMenuClick, isOpen, color }) {
     return (
         <button
             onClick={handleBurgerMenuClick}
@@ -14,7 +14,7 @@ export default function MenuIcon({ handleBurgerMenuClick, isOpen }) {
                 sx={{
                     width: 6,
                     height: 'px',
-                    background: 'white',
+                    background: isOpen ? 'white' : `${color}`,
                     borderRadius: '5px',
                     position: 'relative',
                     ml: 'auto',
@@ -28,7 +28,7 @@ export default function MenuIcon({ handleBurgerMenuClick, isOpen }) {
                 sx={{
                     width: 6,
                     height: 'px',
-                    background: 'white',
+                    background: isOpen ? 'white' : `${color}`,
                     borderRadius: '5px',
                     position: 'relative',
                     ml: 'auto',
@@ -42,7 +42,7 @@ export default function MenuIcon({ handleBurgerMenuClick, isOpen }) {
                 sx={{
                     width: 6,
                     height: 'px',
-                    background: 'white',
+                    background: isOpen ? 'white' : `${color}`,
                     borderRadius: '5px',
                     position: 'relative',
                     ml: 'auto',

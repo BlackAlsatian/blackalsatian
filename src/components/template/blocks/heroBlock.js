@@ -27,6 +27,7 @@ const HeroBlock = (props) => {
                     as='h1'
                     sx={{
                         fontSize: [7, 10],
+                        letterSpacing: 'tighter',
                     }}
                 >
                     {title}
