@@ -10,6 +10,7 @@ import Phone from '../icons/phoneIcon'
 import Home from '../icons/homeIcon'
 import Fax from '../icons/faxIcon'
 // import Email from '../icons/emailIcon'
+import EnquiryForm from '../forms/enquiryForm'
 
 const Footer = ({ siteTitle }) => {
     return (
@@ -33,7 +34,7 @@ const Footer = ({ siteTitle }) => {
                         px: 6,
                     }}
                 >
-                    <div>
+                    <div sx={{ flex: 1, p: 2 }}>
                         <div
                             sx={{
                                 display: 'flex',
@@ -143,9 +144,12 @@ const Footer = ({ siteTitle }) => {
                             </div>
                         </div>
                     </div>
-                    <div>Something something goes here</div>
-                    <div>A list item</div>
-                    <div>A list item</div>
+                    <div sx={{ flex: 1, p: 2 }}>
+                        Something something goes here
+                    </div>
+                    <div sx={{ flex: 2, p: 2 }}>
+                        <EnquiryForm />
+                    </div>
                 </Flex>
             </section>
             <section
