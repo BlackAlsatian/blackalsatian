@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx, Flex } from 'theme-ui'
+import { jsx, Flex, Heading } from 'theme-ui'
 import { Link } from 'gatsby'
 import Facebook from '../icons/facebookIcon'
 import Twitter from '../icons/twitterIcon'
@@ -8,8 +8,10 @@ import LinkedIn from '../icons/linkedinIcon'
 import WhatsApp from '../icons/whatsappIcon'
 import Phone from '../icons/phoneIcon'
 import Home from '../icons/homeIcon'
-import Fax from '../icons/faxIcon'
+// import Fax from '../icons/faxIcon'
 // import Email from '../icons/emailIcon'
+import Logo from '../logo'
+import ServiceNav from '../serviceNav'
 import EnquiryForm from '../forms/enquiryForm'
 
 const Footer = ({ siteTitle }) => {
@@ -28,93 +30,42 @@ const Footer = ({ siteTitle }) => {
                 <Flex
                     p={4}
                     sx={{
-                        alignItems: 'flex-start',
+                        alignItems: [null, null, 'flex-start'],
                         justifyContent: 'space-around',
-                        py: 4,
-                        px: 6,
+                        flexDirection: ['column', 'column', 'column', 'row'],
+                        px: [4, 4, 6, 7],
+                        pt: [5, 5, 4],
+                        pb: [0, 0, 4],
                     }}
                 >
-                    <div sx={{ flex: 1, p: 4 }}>
-                        <div
-                            sx={{
-                                display: 'flex',
-                                alignItems: 'center',
-                                justifyContent: 'space-between',
-                                p: 2,
-                            }}
-                        >
-                            <a
-                                href='https://facebook.com/blackalsatian'
-                                title='Follow Us on Facebook'
-                                target='_blank'
-                                rel='noreferrer noopener'
-                            >
-                                <Facebook
-                                    color='white'
-                                    width={28}
-                                    height={28}
-                                />
-                            </a>
-                            <a
-                                href='twitter.com/blackalsatian'
-                                title='Follow Us on Twitter'
-                                target='_blank'
-                                rel='noreferrer noopener'
-                            >
-                                <Twitter color='white' width={28} height={28} />
-                            </a>
-                            <a
-                                href='instagram.com/theblackalsatian'
-                                title='Follow Us on Instagram'
-                                target='_blank'
-                                rel='noreferrer noopener'
-                            >
-                                <Instagram
-                                    color='white'
-                                    width={28}
-                                    height={28}
-                                />
-                            </a>
-                            <a
-                                href='linkedin.com/company/blackalsatian'
-                                title='Follow Us on LinkedIn'
-                                target='_blank'
-                                rel='noreferrer noopener'
-                            >
-                                <LinkedIn
-                                    color='white'
-                                    width={28}
-                                    height={28}
-                                />
-                            </a>
-                            <a
-                                href='https://wa.me/27605036601?text=Hi,%20I%20was%20just%20browsing%20your%20website%20and...'
-                                title='WhatsApp Us'
-                                target='_blank'
-                                rel='noreferrer noopener nofollow'
-                            >
-                                <WhatsApp
-                                    color='white'
-                                    width={28}
-                                    height={28}
-                                />
-                            </a>
-                            {/* <a href='' title='Email Us' target='_blank'>
-                                <Email color='white' width={28} height={28} />
-                            </a> */}
-                        </div>
+                    <div sx={{ flex: [null, null, 1], p: [null, null, 4] }}>
                         <div sx={{ display: 'flex', alignItems: 'flex-start' }}>
                             <div sx={{ p: 2 }}>
-                                <Home color='white' width={28} height={28} />
+                                <a
+                                    href='https://wa.me/27605036601?text=Hi,%20I%20was%20just%20browsing%20your%20website%20and...'
+                                    title='WhatsApp Us'
+                                    target='_blank'
+                                    rel='noreferrer noopener nofollow'
+                                >
+                                    <WhatsApp
+                                        color='white'
+                                        width={28}
+                                        height={28}
+                                    />
+                                </a>
                             </div>
                             <div sx={{ p: 2 }}>
-                                <p sx={{ pt: 0, mt: 0 }}>
-                                    PO Box 211126
-                                    <br />
-                                    The Fig Tree
-                                    <br />
-                                    6033
-                                </p>
+                                <a
+                                    href='https://wa.me/27605036601?text=Hi,%20I%20was%20just%20browsing%20your%20website%20and...'
+                                    title='WhatsApp Us'
+                                    target='_blank'
+                                    rel='noreferrer noopener nofollow'
+                                    sx={{
+                                        color: 'white',
+                                    }}
+                                >
+                                    WhatsApp Business during office hours
+                                </a>
                             </div>
                         </div>
                         <div sx={{ display: 'flex', alignItems: 'flex-start' }}>
@@ -137,47 +88,156 @@ const Footer = ({ siteTitle }) => {
                         </div>
                         <div sx={{ display: 'flex', alignItems: 'flex-start' }}>
                             <div sx={{ p: 2 }}>
+                                <Home color='white' width={28} height={28} />
+                            </div>
+                            <div sx={{ p: 2 }}>
+                                <p sx={{ pt: 0, mt: 0 }}>
+                                    PO Box 211126
+                                    <br />
+                                    The Fig Tree
+                                    <br />
+                                    6033
+                                </p>
+                            </div>
+                        </div>
+                        {/* <div sx={{ display: 'flex', alignItems: 'flex-start' }}>
+                            <div sx={{ p: 2 }}>
                                 <Fax color='white' width={28} height={28} />
                             </div>
                             <div sx={{ p: 2 }}>
                                 <p sx={{ pt: 0, mt: 0 }}>+27 86 688 3504</p>
                             </div>
-                        </div>
+                        </div> */}
                     </div>
-                    <div sx={{ flex: 1, p: 4 }}>
-                        List of services or something or other. What about
-                        latest blog posts?
+                    <div sx={{ flex: [null, null, 1], p: 4 }}>
+                        <Heading as='h4' sx={{ pb: 3 }}>
+                            Get
+                        </Heading>
+                        <ServiceNav color='white' />
                     </div>
-                    <div sx={{ flex: 2, p: 2 }}>
-                        <EnquiryForm />
+                    <div
+                        sx={{
+                            flex: [null, null, 2],
+                            p: 4,
+                            width: [null, null, '100%'],
+                        }}
+                    >
+                        <EnquiryForm
+                            style='inputs.underline'
+                            buttonBackground='white'
+                            btnColor='black'
+                        />
                     </div>
                 </Flex>
             </section>
             <section
                 sx={{
                     display: 'flex',
+                    alignItems: [null, null, 'flex-end'],
                     justifyContent: 'center',
+                    flexDirection: ['column', 'column', 'row'],
                     p: 4,
+                    width: '100%',
                 }}
             >
-                <Link to='/privacy-policy/' sx={{ color: 'inherit' }}>
-                    Privacy Policy
-                </Link>
-                <div sx={{ mx: 1 }} />
-                <Link to='/terms-of-use/' sx={{ color: 'inherit' }}>
-                    Terms of Use
-                </Link>
-                <div sx={{ mx: 1 }} /> &copy; 2003 - {new Date().getFullYear()}{' '}
-                <Link
-                    to='/'
+                <div sx={{ flex: 1, mx: 1, my: [3, 3, null] }}>
+                    <Logo color='white' />
+                    <br />
+                    Port Elizabeth, South Africa
+                </div>
+
+                <div
                     sx={{
-                        ml: 1,
-                        color: 'inherit',
+                        flex: 2,
+                        mx: 1,
+                        my: [3, 3, null],
+                        textAlign: [null, null, 'center'],
                     }}
                 >
-                    {siteTitle}
-                </Link>
-                , All Rights Reserved.
+                    {' '}
+                    &copy; 2003 - {new Date().getFullYear()}{' '}
+                    <Link
+                        to='/'
+                        sx={{
+                            ml: 1,
+                            color: 'inherit',
+                        }}
+                    >
+                        {siteTitle}
+                    </Link>
+                    , All Rights Reserved.
+                </div>
+                <div
+                    sx={{
+                        flex: 1,
+                        mx: 1,
+                        my: [3, 3, null],
+                        textAlign: [null, null, 'right'],
+                    }}
+                >
+                    <div
+                        sx={{
+                            display: 'flex',
+                            justifyContent: 'space-between',
+                            width: '60%',
+                            ml: [null, null, 'auto'],
+                        }}
+                    >
+                        <a
+                            href='https://www.facebook.com/blackalsatian'
+                            title='Follow Us on Facebook'
+                            target='_blank'
+                            rel='noreferrer noopener'
+                        >
+                            <Facebook color='white' width={28} height={28} />
+                        </a>
+                        <a
+                            href='https://instagram.com/theblackalsatian'
+                            title='Follow Us on Instagram'
+                            target='_blank'
+                            rel='noreferrer noopener'
+                        >
+                            <Instagram color='white' width={28} height={28} />
+                        </a>
+                        <a
+                            href='https://twitter.com/blackalsatian'
+                            title='Follow Us on Twitter'
+                            target='_blank'
+                            rel='noreferrer noopener'
+                        >
+                            <Twitter color='white' width={28} height={28} />
+                        </a>
+                        <a
+                            href='https://linkedin.com/company/blackalsatian'
+                            title='Follow Us on LinkedIn'
+                            target='_blank'
+                            rel='noreferrer noopener'
+                        >
+                            <LinkedIn color='white' width={28} height={28} />
+                        </a>
+                        <a
+                            href='https://wa.me/27605036601?text=Hi,%20I%20was%20just%20browsing%20your%20website%20and...'
+                            title='WhatsApp Us'
+                            target='_blank'
+                            rel='noreferrer noopener nofollow'
+                        >
+                            <WhatsApp color='white' width={28} height={28} />
+                        </a>
+                        {/* <a href='' title='Email Us' target='_blank'>
+                                <Email color='white' width={28} height={28} />
+                            </a> */}
+                    </div>
+
+                    <div>
+                        <Link to='/terms-of-use/' sx={{ color: 'inherit' }}>
+                            Terms of Use
+                        </Link>
+                        {` `}|{` `}
+                        <Link to='/privacy-policy/' sx={{ color: 'inherit' }}>
+                            Privacy Policy
+                        </Link>
+                    </div>
+                </div>
             </section>
         </footer>
     )

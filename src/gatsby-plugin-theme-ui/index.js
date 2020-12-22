@@ -22,11 +22,13 @@ export default {
         primaryHover: `${tailwind.colors.gray[8]}`,
         black: '#111827',
         blue: '#2ec4b6',
+        // blue: '#31cdff',
         //##pantone of the year
         yellow: '#f5df4d',
         gray: '#939597',
         // ##
-        red: '#e71d36',
+        // red: '#e71d36',
+        red: '#de4a50',
         offWhite: `${tailwind.colors.gray[2]}`,
         mainOpenMenu: '#939597',
     },
@@ -70,6 +72,58 @@ export default {
         container: 1280,
     },
     breakpoints: [...tailwind.breakpoints, '1520px'],
+    inputs: {
+        ...tailwind.inputs,
+        underline: {
+            py: 2,
+            px: 3,
+            fontSize: '100%',
+            borderRadius: '0px',
+            appearance: 'none',
+            lineHeight: 'tight',
+            backgroundColor: 'transparent',
+            border: 'none',
+            borderBottomWidth: '2px',
+            borderBottomStyle: 'solid',
+            borderBottomColor: 'primary',
+            color: 'black',
+            '&:focus': {
+                outline: 'none',
+                borderColor: 'primary',
+                backgroundColor: 'white',
+                fontFamily: 'body',
+            },
+        },
+        background: {
+            py: 2,
+            px: 3,
+            fontSize: '100%',
+            borderRadius: 'none',
+            appearance: 'none',
+            lineHeight: 'tight',
+            border: 'none',
+            color: 'black',
+            boxShadow: 'xl',
+            backgroundColor: 'white',
+            '&:focus': {
+                outline: 'none',
+                boxShadow: 'xl',
+                backgroundColor: 'white',
+                fontFamily: 'body',
+            },
+        },
+    },
+    // textarea: {
+    //     '&:focus': {
+    //         backgroundColor: 'white',
+    //         color: 'black',
+    //     },
+    // },
+    // footer: {
+    //     textarea: {
+    //         color: 'black',
+    //     },
+    // },
     layout: {
         header: {
             closedMenu: {

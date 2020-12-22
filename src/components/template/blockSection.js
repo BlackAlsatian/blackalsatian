@@ -36,11 +36,32 @@ export default function ContentBlock(props) {
                 </>
             )
         } else if (option === 'lead') {
-            return <LeadForm />
+            return (
+                <LeadForm
+                    buttonBackground={buttonBackground}
+                    color={`${backgroundColor || 'black'}`}
+                    style='inputs.background'
+                    btnColor={`${backgroundColor || 'white'}`}
+                />
+            )
         } else if (option === 'contact') {
-            return <EnquiryForm />
+            return (
+                <EnquiryForm
+                    buttonBackground={buttonBackground}
+                    color={`${backgroundColor || 'black'}`}
+                    style='inputs.background'
+                    btnColor={`${backgroundColor || 'white'}`}
+                />
+            )
         } else if (option === 'quote') {
-            return <QuoteForm />
+            return (
+                <QuoteForm
+                    buttonBackground={buttonBackground}
+                    color={`${backgroundColor || 'black'}`}
+                    style='inputs.background'
+                    btnColor={`${backgroundColor || 'white'}`}
+                />
+            )
         }
     }
     return (
@@ -49,9 +70,11 @@ export default function ContentBlock(props) {
                 backgroundColor: `${backgroundColor || 'white'}`,
                 color: `${color || 'black'}`,
                 width: '100%',
-                py: 5,
-                minHeight: '30vh',
+                py: 6,
+                minHeight: '100vh',
                 zIndex: 20,
+                display: 'flex',
+                alignItems: 'center',
             }}
             id={anchor}
         >
@@ -62,7 +85,7 @@ export default function ContentBlock(props) {
                     }}
                 >
                     <Box
-                        p={[5, 5, 3, 5]}
+                        p={[5, 5, 3, 6]}
                         sx={{
                             textAlign: ['left', 'left', 'right'],
                             flex: [null, null, 1],
@@ -70,7 +93,11 @@ export default function ContentBlock(props) {
                             display: 'flex',
                             flexDirection: 'column',
                             justifyContent: 'center',
-                            borderRight: [0, '1px solid black'],
+                            borderRight: [
+                                0,
+                                0,
+                                `1px solid ${color || 'black'}`,
+                            ],
                         }}
                     >
                         <Heading
@@ -97,8 +124,8 @@ export default function ContentBlock(props) {
                         </Heading>
                     </Box>
                     <Box
-                        py={4}
-                        px={5}
+                        py={5}
+                        px={6}
                         sx={{
                             flex: [null, null, 3],
                             width: ['100%', null],

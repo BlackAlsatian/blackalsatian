@@ -7,6 +7,7 @@ import parse from 'html-react-parser'
 
 // import Bio from '../components/bio'
 import SEO from '../components/seo'
+import PageHeader from '../components/template/pageHeader'
 
 const BlogIndex = ({
     data,
@@ -33,6 +34,7 @@ const BlogIndex = ({
     return (
         <>
             <SEO title='All posts' />
+
             <div
                 sx={{
                     display: 'flex',
@@ -40,33 +42,12 @@ const BlogIndex = ({
                     minHeight: '100vh',
                 }}
             >
-                <section
-                    sx={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        color: 'black',
-                        backgroundColor: 'yellow',
-                        minHeight: '60vh',
-                        pt: '25vh',
-                    }}
-                >
-                    <Container p={4}>
-                        <Heading
-                            as='h1'
-                            sx={{
-                                fontSize: [7, 10],
-                            }}
-                        >
-                            {title}
-                        </Heading>
-                        <div sx={{ fontSize: [3, 4], my: 1 }}>
-                            {/* {parse(page.excerpt)} */}
-                            {content}
-                            {/* {page.excerpt} */}
-                        </div>
-                    </Container>
-                </section>
-                {/* <Bio /> */}
+                <PageHeader
+                    title={title}
+                    intro={content}
+                    backgroundColor='yellow'
+                    color='black'
+                />
                 <ol style={{ listStyle: `none` }}>
                     {posts.map((post) => {
                         const title = post.title

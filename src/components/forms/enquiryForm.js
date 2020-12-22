@@ -2,7 +2,7 @@
 import { jsx } from 'theme-ui'
 import { Label, Input, Textarea, Box, Button } from 'theme-ui'
 
-function EnquiryForm() {
+function EnquiryForm({ buttonBackground, btnColor, style }) {
     return (
         <Box as='form' onSubmit={(e) => e.preventDefault()}>
             <Label htmlFor='name'>Name</Label>
@@ -10,7 +10,7 @@ function EnquiryForm() {
                 type='text'
                 name='name'
                 mb={3}
-                variant='inputs.underline'
+                variant={style}
                 sx={{ borderBottomColor: 'white' }}
             />
             <Label type='tel' htmlFor='number'>
@@ -19,7 +19,7 @@ function EnquiryForm() {
             <Input
                 name='number'
                 mb={3}
-                variant='inputs.underline'
+                variant={style}
                 sx={{ borderBottomColor: 'white' }}
             />
             <Label htmlFor='email'>Email</Label>
@@ -27,7 +27,7 @@ function EnquiryForm() {
                 type='email'
                 name='email'
                 mb={3}
-                variant='inputs.underline'
+                variant={style}
                 sx={{ borderBottomColor: 'white' }}
             />
             <Label htmlFor='comment'>Comment</Label>
@@ -35,13 +35,16 @@ function EnquiryForm() {
                 name='comment'
                 rows='4'
                 mb={3}
-                variant='inputs.underline'
+                variant={style}
                 sx={{ borderBottomColor: 'white' }}
             />
             <Button
                 variant='simple'
                 ml='auto'
-                sx={{ backgroundColor: 'white', color: 'black' }}
+                sx={{
+                    backgroundColor: `${buttonBackground}`,
+                    color: `${btnColor}`,
+                }}
             >
                 Fetch!
             </Button>

@@ -36,8 +36,8 @@ const LatestPostsBlock = () => {
             sx={{
                 width: '100%',
                 display: 'grid',
-                gridGap: 3,
-                gridTemplateColumns: `repeat(auto-fit, minmax(25%, 1fr))`,
+                gridGap: 4,
+                gridTemplateColumns: `repeat(auto-fit, minmax(400px, 1fr))`,
             }}
         >
             {data.allWpPost.edges.map(({ node }) => (
@@ -47,10 +47,24 @@ const LatestPostsBlock = () => {
                             node.featuredImage.node.localFile.childImageSharp
                                 .fluid
                         }
+                        alt={node.featuredImage.alt}
                         id={node.featuredImage.node.altText}
+                        style={{ width: '100%' }}
                     />
-                    <h4>{node.title}</h4>
-                    {parse(node.excerpt)}
+                    <div
+                        sx={{
+                            position: 'absolute',
+                            // top: 0,
+                            // left: 0,
+                            display: 'flex',
+                            flexDirection: 'column',
+                            color: 'white',
+                            backgroundColor: 'rgba(0, 0, 0, 0.6)',
+                        }}
+                    >
+                        <h4>{node.title}</h4>
+                        {parse(node.excerpt)}
+                    </div>
                 </div>
             ))}
         </section>

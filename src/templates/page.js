@@ -5,7 +5,6 @@ import { graphql } from 'gatsby'
 import parse from 'html-react-parser'
 import ComponentParser from '../components/componentParser'
 import SEO from '../components/seo'
-
 import PageHeader from '../components/template/pageHeader'
 
 const PageTemplate = ({ data: { page } }) => {

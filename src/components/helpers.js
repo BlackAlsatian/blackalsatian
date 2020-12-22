@@ -16,6 +16,24 @@ export function handleHeaderColor(path) {
             return 'black'
         case '/contact/':
             return 'black'
+        // case '/services/website-design/':
+        //     return 'white'
+        // case '/services/online-marketing/':
+        //     return 'white'
+        // case '/services/search-engine-marketing-seo/':
+        //     return 'white'
+        // case '/services/lead-generation/':
+        //     return 'white'
+        // case '/services/copywriting/':
+        //     return 'white'
+        // case '/services/graphic-design/':
+        //     return 'white'
+        // case '/services/web-hosting/':
+        //     return 'white'
+        // case '/services/personalised-email/':
+        //     return 'white'
+        // case '/services/diy-websites/':
+        //     return 'white'
         default:
             return 'white'
     }

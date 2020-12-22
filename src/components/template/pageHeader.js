@@ -9,7 +9,7 @@ function PageHeader({ title, intro, backgroundColor, color }) {
                 alignItems: 'center',
                 color: `${color}`,
                 backgroundColor: `${backgroundColor}`,
-                minHeight: '60vh',
+                minHeight: '100vh',
                 pt: '25vh',
             }}
         >
