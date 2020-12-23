@@ -1,8 +1,9 @@
 /** @jsx jsx */
-import { jsx } from 'theme-ui'
-import { useStaticQuery, graphql } from 'gatsby'
+import { jsx, Heading } from 'theme-ui'
+import { useStaticQuery, graphql, Link } from 'gatsby'
 import Img from 'gatsby-image'
-import parse from 'html-react-parser'
+// import parse from 'html-react-parser'
+import { getHeight } from '../../helpers'
 
 const LatestPostsBlock = () => {
     const data = useStaticQuery(graphql`
@@ -35,38 +36,110 @@ const LatestPostsBlock = () => {
         <section
             sx={{
                 width: '100%',
-                display: 'grid',
-                gridGap: 4,
-                gridTemplateColumns: `repeat(auto-fit, minmax(400px, 1fr))`,
+                minHeight: '100vh',
+                my: 6,
+                zIndex: 20,
             }}
         >
-            {data.allWpPost.edges.map(({ node }) => (
-                <div key={node.id}>
-                    <Img
-                        fluid={
-                            node.featuredImage.node.localFile.childImageSharp
-                                .fluid
-                        }
-                        alt={node.featuredImage.alt}
-                        id={node.featuredImage.node.altText}
-                        style={{ width: '100%' }}
-                    />
-                    <div
-                        sx={{
-                            position: 'absolute',
-                            // top: 0,
-                            // left: 0,
-                            display: 'flex',
-                            flexDirection: 'column',
-                            color: 'white',
-                            backgroundColor: 'rgba(0, 0, 0, 0.6)',
-                        }}
-                    >
-                        <h4>{node.title}</h4>
-                        {parse(node.excerpt)}
-                    </div>
-                </div>
-            ))}
+            <div
+                sx={{
+                    width: '100%',
+                    pb: 6,
+                }}
+            >
+                <Heading
+                    as='h3'
+                    sx={{ ml: 5, fontSize: 5, fontWeight: 'light' }}
+                >
+                    Latest From The Blogosphere
+                </Heading>
+            </div>
+            <div
+                sx={{
+                    width: '100%',
+                    columnCount: [1, 2, 3],
+                    columnGap: 0,
+                    counterReset: 'item-counter',
+                }}
+            >
+                {data.allWpPost.edges.map(({ node }) => (
+                    <Link to={node.uri} key={node.id} title={node.title}>
+                        <div
+                            sx={{
+                                height: getHeight(),
+                                position: 'relative',
+                                transition: 'all .25s ease 0s',
+                                breakInside: 'avoid',
+                                counterIncrement: 'item-counter',
+                                m: 3,
+                                '&:first-of-type': {
+                                    mt: 0,
+                                },
+                                boxShadow: 'xl',
+                            }}
+                        >
+                            <Img
+                                fluid={
+                                    node.featuredImage.node.localFile
+                                        .childImageSharp.fluid
+                                }
+                                alt={node.featuredImage.alt}
+                                id={node.featuredImage.node.altText}
+                                style={{
+                                    display: 'block',
+                                    position: 'relative',
+                                    height: '100%',
+                                }}
+                            />
+                            <div
+                                sx={{
+                                    position: 'absolute',
+                                    bottom: 0,
+                                    width: '100%',
+                                    height: '100%',
+                                    px: 4,
+                                    py: 5,
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    justifyContent: 'flex-end',
+                                    color: 'white',
+                                    backgroundColor: 'rgba(0, 0, 0, 0.8)',
+                                    '&:hover': {
+                                        backgroundColor: 'rgba(0, 0, 0, 0.6)',
+                                    },
+                                }}
+                            >
+                                <Heading as='h4' sx={{ fontSize: 3 }}>
+                                    {node.title}
+                                </Heading>
+                                {/* {parse(node.excerpt)} */}
+                            </div>
+                        </div>
+                    </Link>
+                ))}
+            </div>
+            <div
+                sx={{
+                    width: '100%',
+                    pt: 4,
+                    pb: 6,
+                    backgroundColor: 'transparent',
+                    textAlign: 'center',
+                }}
+            >
+                <Link
+                    to='/blog/'
+                    title='Web company blog'
+                    sx={{
+                        variant: 'buttons.simple',
+                        backgroundColor: 'black',
+                        color: 'white',
+                        textDecoration: 'none',
+                    }}
+                >
+                    View All...
+                </Link>
+            </div>
         </section>
     )
 }

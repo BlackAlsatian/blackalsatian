@@ -123,7 +123,7 @@ const Footer = ({ siteTitle }) => {
                         }}
                     >
                         <EnquiryForm
-                            style='inputs.underline'
+                            formStyle='inputs.underline'
                             buttonBackground='white'
                             btnColor='black'
                         />

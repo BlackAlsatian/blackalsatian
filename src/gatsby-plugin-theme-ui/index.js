@@ -189,8 +189,10 @@ export default {
         },
         blockquote: {
             borderLeft: '5px solid black',
-            p: '1rem 1rem 1rem 2rem',
+            p: '0 1rem 0 2rem',
             m: '3rem',
+            textAlign: 'left',
+            fontStyle: 'oblique',
         },
         figure: {
             textAlign: 'center',

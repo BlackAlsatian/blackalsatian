@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx, Container, Heading } from 'theme-ui'
+import { jsx } from 'theme-ui'
 import React from 'react'
 import { Link, graphql } from 'gatsby'
 import Image from 'gatsby-image'
@@ -90,13 +90,80 @@ const BlogIndex = ({
                     })}
                 </ol>
 
-                {previousPagePath && (
+                <nav>
+                    <ul
+                        sx={{
+                            display: `flex`,
+                            flexWrap: `wrap`,
+                            justifyContent: `space-between`,
+                            listStyle: `none`,
+                            p: 4,
+                        }}
+                    >
+                        <li>
+                            {previousPagePath && (
+                                <>
+                                    <Link
+                                        to={previousPagePath}
+                                        sx={{
+                                            variant: 'buttons.simple',
+                                            backgroundColor: 'yellow',
+                                            color: 'black',
+                                            textDecoration: 'none',
+                                        }}
+                                    >
+                                        Previous page
+                                    </Link>
+                                    <br />
+                                </>
+                            )}
+                        </li>
+                        <li>
+                            {nextPagePath && (
+                                <Link
+                                    to={nextPagePath}
+                                    sx={{
+                                        variant: 'buttons.simple',
+                                        backgroundColor: 'yellow',
+                                        color: 'black',
+                                        textDecoration: 'none',
+                                    }}
+                                >
+                                    Next page
+                                </Link>
+                            )}
+                        </li>
+                    </ul>
+                </nav>
+                {/* {previousPagePath && (
                     <>
-                        <Link to={previousPagePath}>Previous page</Link>
+                        <Link
+                            to={previousPagePath}
+                            sx={{
+                                variant: 'buttons.simple',
+                                backgroundColor: 'yellow',
+                                color: 'black',
+                                textDecoration: 'none',
+                            }}
+                        >
+                            Previous page
+                        </Link>
                         <br />
                     </>
                 )}
-                {nextPagePath && <Link to={nextPagePath}>Next page</Link>}
+                {nextPagePath && (
+                    <Link
+                        to={nextPagePath}
+                        sx={{
+                            variant: 'buttons.simple',
+                            backgroundColor: 'yellow',
+                            color: 'black',
+                            textDecoration: 'none',
+                        }}
+                    >
+                        Next page
+                    </Link>
+                )} */}
             </div>
         </>
     )

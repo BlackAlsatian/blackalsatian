@@ -27,7 +27,7 @@ const variants = {
 }
 
 const Layout = ({ children, location }) => {
-    console.log(location.pathname)
+    // console.log(location.pathname)
     const {
         wp: {
             generalSettings: { title },

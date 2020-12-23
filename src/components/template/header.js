@@ -9,13 +9,13 @@ import Nav from '../nav'
 // import { useThemeUI } from 'theme-ui'
 
 const Header = ({ color }) => {
-    console.log(color)
+    // console.log(color)
     const [isOpen, setIsOpen] = useState(false)
 
     const handleBurgerMenuClick = () => {
         setIsOpen(!isOpen)
     }
-    console.log(isOpen)
+    // console.log(isOpen)
     return (
         <header
             sx={{

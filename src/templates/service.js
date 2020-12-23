@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx, Container, Heading } from 'theme-ui'
+import { jsx, Container } from 'theme-ui'
 import React from 'react'
 import { Link, graphql } from 'gatsby'
 import Image from 'gatsby-image'
@@ -12,7 +12,7 @@ const PageTemplate = ({ data: { previous, next, service } }) => {
         fluid: service.featuredImage?.node?.localFile?.childImageSharp?.fluid,
         alt: service.featuredImage?.node?.alt || ``,
     }
-    const MAX_LENGTH = 100
+    // const MAX_LENGTH = 100
     return (
         <>
             <SEO title={service.title} description={service.excerpt} />

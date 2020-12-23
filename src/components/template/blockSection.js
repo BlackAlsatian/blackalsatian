@@ -1,11 +1,7 @@
 /** @jsx jsx */
 import { jsx, Container, Flex, Box, Heading } from 'theme-ui'
-import React from 'react'
-import { Link } from 'gatsby'
 import BlockText from '../blockText'
-import EnquiryForm from '../forms/enquiryForm'
-import LeadForm from '../forms/leadForm'
-import QuoteForm from '../forms/quoteForm'
+import { getForm } from '../getForm'
 
 export default function ContentBlock(props) {
     const backgroundColor = props.backgroundColor
@@ -18,52 +14,7 @@ export default function ContentBlock(props) {
     const buttonBackground = props.buttonBackground
     const buttonName = props.buttonName
     const buttonUrl = props.buttonUrl
-    function getForm(option) {
-        if (option === 'btnonly') {
-            return (
-                <>
-                    <Link
-                        to={buttonUrl}
-                        sx={{
-                            variant: 'buttons.simple',
-                            backgroundColor: `${buttonBackground}`,
-                            color: `${backgroundColor || 'white'}`,
-                            textDecoration: 'none',
-                        }}
-                    >
-                        {buttonName}
-                    </Link>
-                </>
-            )
-        } else if (option === 'lead') {
-            return (
-                <LeadForm
-                    buttonBackground={buttonBackground}
-                    color={`${backgroundColor || 'black'}`}
-                    style='inputs.background'
-                    btnColor={`${backgroundColor || 'white'}`}
-                />
-            )
-        } else if (option === 'contact') {
-            return (
-                <EnquiryForm
-                    buttonBackground={buttonBackground}
-                    color={`${backgroundColor || 'black'}`}
-                    style='inputs.background'
-                    btnColor={`${backgroundColor || 'white'}`}
-                />
-            )
-        } else if (option === 'quote') {
-            return (
-                <QuoteForm
-                    buttonBackground={buttonBackground}
-                    color={`${backgroundColor || 'black'}`}
-                    style='inputs.background'
-                    btnColor={`${backgroundColor || 'white'}`}
-                />
-            )
-        }
-    }
+
     return (
         <section
             sx={{
@@ -132,7 +83,15 @@ export default function ContentBlock(props) {
                         }}
                     >
                         <BlockText text={text} />
-                        {buttonName && option !== 'none' && getForm(option)}
+                        {buttonName &&
+                            option !== 'none' &&
+                            getForm(
+                                option,
+                                buttonName,
+                                buttonUrl,
+                                backgroundColor,
+                                buttonBackground,
+                            )}
                     </Box>
                 </Flex>
             </Container>

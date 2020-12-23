@@ -2,17 +2,23 @@ export function randomID() {
     return Math.random().toString(36).substring(7)
 }
 
-// export function handleHeaderColor(path, color) {
-//     if (path === '/about/') {
-//         return (color = 'black')
-//     }
-// }
+export function getHeight() {
+    return Math.floor(Math.random() * 400 + 200)
+}
 export function handleHeaderColor(path) {
-    console.log(path)
+    // console.log(path)
     switch (path) {
         case '/about/':
             return 'black'
         case '/blog/':
+            return 'black'
+        case '/blog/2/':
+            return 'black'
+        case '/blog/3/':
+            return 'black'
+        case '/blog/4/':
+            return 'black'
+        case '/blog/5/':
             return 'black'
         case '/contact/':
             return 'black'

@@ -2,7 +2,7 @@
 import { jsx } from 'theme-ui'
 import { Label, Input, Box, Button } from 'theme-ui'
 
-function EnquiryForm({ buttonBackground, btnColor, style }) {
+function EnquiryForm({ buttonBackground, btnColor, formStyle }) {
     return (
         <Box as='form' onSubmit={(e) => e.preventDefault()}>
             <Label htmlFor='name'>Name</Label>
@@ -10,7 +10,7 @@ function EnquiryForm({ buttonBackground, btnColor, style }) {
                 type='text'
                 name='name'
                 mb={3}
-                variant={style}
+                variant={formStyle}
                 sx={{ borderBottomColor: 'white' }}
             />
             <Label htmlFor='email'>Email</Label>
@@ -18,7 +18,7 @@ function EnquiryForm({ buttonBackground, btnColor, style }) {
                 type='email'
                 name='email'
                 mb={3}
-                variant={style}
+                variant={formStyle}
                 sx={{ borderBottomColor: 'white' }}
             />
             <Button
