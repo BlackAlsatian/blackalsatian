@@ -1,9 +1,10 @@
 /** @jsx jsx */
-import { jsx } from 'theme-ui'
+import { jsx, Container, Heading } from 'theme-ui'
 import React from 'react'
 import { Link, graphql } from 'gatsby'
 import Image from 'gatsby-image'
 import parse from 'html-react-parser'
+import { getHeight } from '../components/helpers'
 
 // import Bio from '../components/bio'
 import SEO from '../components/seo'
@@ -48,47 +49,97 @@ const BlogIndex = ({
                     backgroundColor='yellow'
                     color='black'
                 />
-                <ol style={{ listStyle: `none` }}>
-                    {posts.map((post) => {
-                        const title = post.title
-                        const featuredImage = {
-                            fluid:
-                                post.featuredImage?.node?.localFile
-                                    ?.childImageSharp?.fluid,
-                            alt: post.featuredImage?.node?.alt || ``,
-                        }
-                        return (
-                            <li key={post.uri}>
-                                <article
-                                    className='post-list-item'
-                                    itemScope
-                                    itemType='http://schema.org/Article'
+                <section>
+                    <Container
+                        sx={{
+                            width: '100%',
+                            columnCount: [1, 2, 3],
+                            columnGap: 4,
+                            // rowGap: 5,
+                            counterReset: 'item-counter',
+                            px: 3,
+                            py: 5,
+                        }}
+                    >
+                        {posts.map((post) => {
+                            const title = post.title
+                            const featuredImage = {
+                                fluid:
+                                    post.featuredImage?.node?.localFile
+                                        ?.childImageSharp?.fluid,
+                                alt: post.featuredImage?.node?.alt || ``,
+                            }
+                            return (
+                                <Link
+                                    to={post.uri}
+                                    key={post.uri}
+                                    title={post.title}
                                 >
-                                    <header>
+                                    <article
+                                        sx={{
+                                            height: getHeight(),
+                                            position: 'relative',
+                                            transition: 'all .25s ease 0s',
+                                            breakInside: 'avoid',
+                                            counterIncrement: 'item-counter',
+                                            // mx: 3,
+                                            mt: 4,
+                                            mb: 4,
+                                            '&:first-of-type': {
+                                                mt: 0,
+                                            },
+                                            boxShadow: 'xl',
+                                        }}
+                                    >
                                         {featuredImage?.fluid && (
                                             <Image
                                                 fluid={featuredImage.fluid}
                                                 alt={featuredImage.alt}
-                                                style={{ marginBottom: 50 }}
+                                                // id={node.featuredImage.node.altText}
+                                                style={{
+                                                    display: 'block',
+                                                    position: 'relative',
+                                                    height: '100%',
+                                                }}
                                             />
                                         )}
-                                        <h2>
-                                            <Link to={post.uri} itemProp='url'>
-                                                <span itemProp='headline'>
-                                                    {parse(title)}
-                                                </span>
-                                            </Link>
-                                        </h2>
-                                        <small>{post.date}</small>
-                                    </header>
-                                    <section itemProp='description'>
-                                        {parse(post.excerpt)}
-                                    </section>
-                                </article>
-                            </li>
-                        )
-                    })}
-                </ol>
+                                        <div
+                                            sx={{
+                                                position: 'absolute',
+                                                bottom: 0,
+                                                width: '100%',
+                                                height: '100%',
+                                                px: 4,
+                                                py: 5,
+                                                display: 'flex',
+                                                flexDirection: 'column',
+                                                justifyContent: 'flex-end',
+                                                color: 'white',
+                                                backgroundColor:
+                                                    'rgba(0, 0, 0, 0.8)',
+                                                '&:hover': {
+                                                    backgroundColor:
+                                                        'rgba(0, 0, 0, 0.6)',
+                                                },
+                                            }}
+                                        >
+                                            <Heading
+                                                as='h4'
+                                                sx={{ fontSize: 3 }}
+                                            >
+                                                {parse(title)}
+                                            </Heading>
+                                            <small>{post.date}</small>
+                                            <section itemProp='description'>
+                                                {/* {parse(post.excerpt)} */}
+                                            </section>
+                                        </div>
+                                    </article>
+                                </Link>
+                            )
+                        })}
+                    </Container>
+                </section>
 
                 <nav>
                     <ul
@@ -135,35 +186,6 @@ const BlogIndex = ({
                         </li>
                     </ul>
                 </nav>
-                {/* {previousPagePath && (
-                    <>
-                        <Link
-                            to={previousPagePath}
-                            sx={{
-                                variant: 'buttons.simple',
-                                backgroundColor: 'yellow',
-                                color: 'black',
-                                textDecoration: 'none',
-                            }}
-                        >
-                            Previous page
-                        </Link>
-                        <br />
-                    </>
-                )}
-                {nextPagePath && (
-                    <Link
-                        to={nextPagePath}
-                        sx={{
-                            variant: 'buttons.simple',
-                            backgroundColor: 'yellow',
-                            color: 'black',
-                            textDecoration: 'none',
-                        }}
-                    >
-                        Next page
-                    </Link>
-                )} */}
             </div>
         </>
     )
@@ -179,6 +201,7 @@ export const pageQuery = graphql`
             skip: $offset
         ) {
             nodes {
+                id
                 uri
                 date(formatString: "MMMM DD, YYYY")
                 title
