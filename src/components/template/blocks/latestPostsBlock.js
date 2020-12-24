@@ -58,8 +58,10 @@ const LatestPostsBlock = () => {
                 sx={{
                     width: '100%',
                     columnCount: [1, 2, 3],
-                    columnGap: 0,
+                    columnGap: 4,
+                    // rowGap: 5,
                     counterReset: 'item-counter',
+                    px: 3,
                 }}
             >
                 {data.allWpPost.edges.map(({ node }) => (
@@ -71,7 +73,9 @@ const LatestPostsBlock = () => {
                                 transition: 'all .25s ease 0s',
                                 breakInside: 'avoid',
                                 counterIncrement: 'item-counter',
-                                m: 3,
+                                // mx: 3,
+                                mt: 4,
+                                mb: 4,
                                 '&:first-of-type': {
                                     mt: 0,
                                 },

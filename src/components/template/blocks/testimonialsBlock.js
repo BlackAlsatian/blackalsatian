@@ -30,7 +30,7 @@ const TestimonialsBlock = () => {
     const [node, setNode] = useState(0)
 
     const testimonials = data.allWpTestimonial.edges.map(({ node }) => (
-        <div key={node.id} sx={{ px: 5 }}>
+        <div key={node.id} sx={{ px: 5, fontStyle: 'oblique' }}>
             {parse(node.content)}
             <p sx={{ textAlign: 'right' }}>
                 <i>- {node.testimonialAuthor}</i>

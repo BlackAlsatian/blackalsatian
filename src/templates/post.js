@@ -98,7 +98,7 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
                                     >
                                         {parse(post.title)}
                                     </Heading>
-                                    <Bio />
+                                    <Bio author={post.author.node} />
                                     {/* <p>
                                         <span
                                             sx={{
@@ -233,7 +233,13 @@ export const pageQuery = graphql`
             date(formatString: "MMMM DD, YYYY")
             author {
                 node {
-                    name
+                    id
+                    firstName
+                    lastName
+                    description
+                    avatar {
+                        url
+                    }
                 }
             }
             tags {

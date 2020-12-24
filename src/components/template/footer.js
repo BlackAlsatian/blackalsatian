@@ -184,7 +184,7 @@ const Footer = ({ siteTitle }) => {
                         }}
                     >
                         <a
-                            href='https://www.facebook.com/blackalsatian'
+                            href='https://www.facebook.com/blackalsatian/'
                             title='Follow Us on Facebook'
                             target='_blank'
                             rel='noreferrer noopener'
@@ -192,7 +192,7 @@ const Footer = ({ siteTitle }) => {
                             <Facebook color='white' width={28} height={28} />
                         </a>
                         <a
-                            href='https://instagram.com/theblackalsatian'
+                            href='https://instagram.com/theblackalsatian/'
                             title='Follow Us on Instagram'
                             target='_blank'
                             rel='noreferrer noopener'
@@ -200,7 +200,7 @@ const Footer = ({ siteTitle }) => {
                             <Instagram color='white' width={28} height={28} />
                         </a>
                         <a
-                            href='https://twitter.com/blackalsatian'
+                            href='https://twitter.com/blackalsatian/'
                             title='Follow Us on Twitter'
                             target='_blank'
                             rel='noreferrer noopener'
@@ -208,7 +208,7 @@ const Footer = ({ siteTitle }) => {
                             <Twitter color='white' width={28} height={28} />
                         </a>
                         <a
-                            href='https://linkedin.com/company/blackalsatian'
+                            href='https://linkedin.com/company/blackalsatian/'
                             title='Follow Us on LinkedIn'
                             target='_blank'
                             rel='noreferrer noopener'
