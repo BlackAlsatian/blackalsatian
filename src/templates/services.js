@@ -38,8 +38,79 @@ const ServicesIndex = ({ data }) => {
                     backgroundColor='blue'
                     color='white'
                 />
-
-                <ol style={{ listStyle: `none` }}>
+                <section>
+                    {services.map((service) => {
+                        const title = service.title
+                        const featuredImage = {
+                            fluid:
+                                service.featuredImage?.node?.localFile
+                                    ?.childImageSharp?.fluid,
+                            alt: service.featuredImage?.node?.alt || ``,
+                        }
+                        return (
+                            <Link
+                                to={service.uri}
+                                itemProp='url'
+                                sx={{ color: 'black', textDecoration: 'none' }}
+                            >
+                                <div
+                                    sx={{
+                                        display: 'grid',
+                                        gridGap: 4, // theme.space[4]
+                                        // use arrays for mobile-first responsive styles
+                                        gridTemplateColumns: [
+                                            'auto', // default to a stacked layout on small screens
+                                            '1fr 2fr 1fr', // use columns for larger screens
+                                        ],
+                                        gridAutoRows: '25vmin',
+                                    }}
+                                >
+                                    <div
+                                        sx={{
+                                            gridColumnStart: 1,
+                                            gridColumnEnd: 3,
+                                            gridRowStart: 1,
+                                            gridRowEnd: 4,
+                                        }}
+                                    >
+                                        {featuredImage?.fluid && (
+                                            <Image
+                                                fluid={featuredImage.fluid}
+                                                alt={featuredImage.alt}
+                                                style={{ marginBottom: 50 }}
+                                                sx={{
+                                                    height: '100%',
+                                                    minHeight: '300px',
+                                                }}
+                                            />
+                                        )}
+                                    </div>
+                                    <div
+                                        sx={{
+                                            gridColumnStart: 2,
+                                            gridColumnEnd: 4,
+                                            gridRowStart: 2,
+                                            gridRowEnd: 3,
+                                            backgroundColor:
+                                                'rgba(255, 255, 255, 0.6)',
+                                            zIndex: 30,
+                                            p: 5,
+                                        }}
+                                    >
+                                        <h2>
+                                            <span itemProp='headline'>
+                                                {parse(title)}
+                                            </span>
+                                            {/* </Link> */}
+                                        </h2>
+                                        {parse(service.excerpt)}
+                                    </div>
+                                </div>
+                            </Link>
+                        )
+                    })}
+                </section>
+                {/* <ol style={{ listStyle: `none` }}>
                     {services.map((service) => {
                         const title = service.title
                         const featuredImage = {
@@ -81,7 +152,7 @@ const ServicesIndex = ({ data }) => {
                             </li>
                         )
                     })}
-                </ol>
+                </ol> */}
             </div>
         </>
     )
