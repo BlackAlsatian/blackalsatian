@@ -87,8 +87,8 @@ const LatestPostsBlock = () => {
                                     node.featuredImage.node.localFile
                                         .childImageSharp.fluid
                                 }
-                                alt={node.featuredImage.alt}
-                                id={node.featuredImage.node.altText}
+                                alt={node.featuredImage.node.altText}
+                                // id={node.featuredImage.node.altText}
                                 style={{
                                     display: 'block',
                                     position: 'relative',
