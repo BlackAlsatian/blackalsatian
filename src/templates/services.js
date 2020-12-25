@@ -51,7 +51,7 @@ const ServicesIndex = ({ data }) => {
                             <Link
                                 to={service.uri}
                                 itemProp='url'
-                                sx={{ color: 'black', textDecoration: 'none' }}
+                                sx={{ color: 'white', textDecoration: 'none' }}
                             >
                                 <div
                                     sx={{
@@ -68,7 +68,7 @@ const ServicesIndex = ({ data }) => {
                                     <div
                                         sx={{
                                             gridColumnStart: 1,
-                                            gridColumnEnd: 3,
+                                            gridColumnEnd: [4, 3],
                                             gridRowStart: 1,
                                             gridRowEnd: 4,
                                         }}
@@ -87,14 +87,15 @@ const ServicesIndex = ({ data }) => {
                                     </div>
                                     <div
                                         sx={{
-                                            gridColumnStart: 2,
+                                            gridColumnStart: [1, 2],
                                             gridColumnEnd: 4,
                                             gridRowStart: 2,
-                                            gridRowEnd: 3,
+                                            gridRowEnd: [4, 3],
                                             backgroundColor:
-                                                'rgba(255, 255, 255, 0.6)',
+                                                // 'rgba(255, 255, 255, 0.6)',
+                                                'rgba(46, 196, 182, 0.6)',
                                             zIndex: 30,
-                                            p: 5,
+                                            p: [2, 2, 5],
                                         }}
                                     >
                                         <h2>
