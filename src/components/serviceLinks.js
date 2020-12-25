@@ -14,7 +14,7 @@ const navLinks = [
     {
         id: 3,
         name: 'SEO',
-        url: '/services/search-engine-marketing-seo/',
+        url: '/services/search-engine-optimisation-seo/',
         color: 'white',
     },
     {

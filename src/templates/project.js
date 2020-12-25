@@ -7,15 +7,15 @@ import parse from 'html-react-parser'
 import SEO from '../components/seo'
 import PageHeader from '../components/template/pageHeader'
 
-const PageTemplate = ({ data: { previous, next, service } }) => {
+const ProjectTemplate = ({ data: { previous, next, portfolio } }) => {
     const featuredImage = {
-        fluid: service.featuredImage?.node?.localFile?.childImageSharp?.fluid,
-        alt: service.featuredImage?.node?.alt || ``,
+        fluid: portfolio.featuredImage?.node?.localFile?.childImageSharp?.fluid,
+        alt: portfolio.featuredImage?.node?.alt || ``,
     }
     // const MAX_LENGTH = 100
     return (
         <>
-            <SEO title={service.title} description={service.excerpt} />
+            <SEO title={portfolio.title} description={portfolio.excerpt} />
 
             <div
                 sx={{
@@ -25,8 +25,8 @@ const PageTemplate = ({ data: { previous, next, service } }) => {
                 }}
             >
                 <PageHeader
-                    title={parse(service.title)}
-                    intro={parse(service.excerpt)}
+                    title={parse(portfolio.title)}
+                    intro={parse(portfolio.excerpt)}
                     backgroundColor='blue'
                     color='white'
                 />
@@ -38,7 +38,7 @@ const PageTemplate = ({ data: { previous, next, service } }) => {
                         <div sx={{ flex: 2 }}>
                             <header>
                                 <h1 itemProp='headline'>
-                                    {parse(service.title)}
+                                    {parse(portfolio.title)}
                                 </h1>
 
                                 {/* if we have a featured image for this page let's display it */}
@@ -53,17 +53,17 @@ const PageTemplate = ({ data: { previous, next, service } }) => {
                         </div>
 
                         <div sx={{ flex: 2 }}>
-                            {!!service.content && (
+                            {!!portfolio.content && (
                                 <section itemProp='articleBody'>
                                     <div
                                         sx={{
                                             display: 'flex',
                                             flexDirection: 'column',
                                             minHeight: '100vh',
-                                            variant: 'blog.service',
+                                            variant: 'blog.portfolio',
                                         }}
                                     >
-                                        {parse(service.content)}
+                                        {parse(portfolio.content)}
                                     </div>
                                 </section>
                             )}
@@ -74,7 +74,7 @@ const PageTemplate = ({ data: { previous, next, service } }) => {
                     <hr />
 
                     <Container p={4}>
-                        <nav className='service-page-nav'>
+                        <nav className='portfolio-page-nav'>
                             <ul
                                 style={{
                                     display: `flex`,
@@ -108,32 +108,32 @@ const PageTemplate = ({ data: { previous, next, service } }) => {
     )
 }
 
-export default PageTemplate
+export default ProjectTemplate
 
-export const serviceQuery = graphql`
-    query ServiceById(
+export const portfolioQuery = graphql`
+    query PortfolioById(
         # these variables are passed in via createPage.pageContext in gatsby-node.js
         $id: String!
         $previousPostId: String
         $nextPostId: String
     ) {
         # selecting the current post by id
-        service: wpService(id: { eq: $id }) {
+        portfolio: wpPortfolio(id: { eq: $id }) {
             id
             excerpt
             content
             title
-            ...ServiceMediaFragment
+            ...PortfolioFeaturedMediaFragment
         }
 
         # this gets us the previous post by id (if it exists)
-        previous: wpService(id: { eq: $previousPostId }) {
+        previous: wpPortfolio(id: { eq: $previousPostId }) {
             uri
             title
         }
 
         # this gets us the next post by id (if it exists)
-        next: wpService(id: { eq: $nextPostId }) {
+        next: wpPortfolio(id: { eq: $nextPostId }) {
             uri
             title
         }

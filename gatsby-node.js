@@ -39,6 +39,9 @@ exports.createPages = async (gatsbyUtilities) => {
 
     //And the portfolio page
     await createPortfolioPage({ portfolio, gatsbyUtilities })
+
+    // Finally, the projects
+    await createIndividualProjects({ portfolio, gatsbyUtilities })
 }
 
 // This function creates all the individual blog pages in this site
@@ -91,6 +94,22 @@ const createIndividualServices = async ({ services, gatsbyUtilities }) =>
                 component: path.resolve(`./src/templates/service.js`),
                 context: {
                     id: service.id,
+                    previousPostId: previous ? previous.id : null,
+                    nextPostId: next ? next.id : null,
+                },
+            }),
+        ),
+    )
+
+// This function creates all the individual service pages in this site
+const createIndividualProjects = async ({ portfolio, gatsbyUtilities }) =>
+    Promise.all(
+        portfolio.map(({ previous, portfolio, next }) =>
+            gatsbyUtilities.actions.createPage({
+                path: portfolio.uri,
+                component: path.resolve(`./src/templates/project.js`),
+                context: {
+                    id: portfolio.id,
                     previousPostId: previous ? previous.id : null,
                     nextPostId: next ? next.id : null,
                 },
