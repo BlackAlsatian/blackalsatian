@@ -1,7 +1,8 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
-import { Link } from 'gatsby'
+// import { Link } from 'gatsby'
 import { useState } from 'react'
+import AniLink from 'gatsby-plugin-transition-link/AniLink'
 import MenuIcon from '../menuIcon'
 import FullMenu from './fullMenu'
 import Logo from '../logo'
@@ -28,9 +29,19 @@ const Header = ({ color }) => {
                 variant: 'layout.header.closedMenu',
             }}
         >
-            <Link to='/'>
+            {/* <AniLink
+                fade
+                duration={0.5}
+                hex='#ebc8de'
+                to='/'
+                style={{
+                    color: `white`,
+                    textDecoration: `none`,
+                }}
+            > */}
+            <AniLink fade duration={0.5} hex='black' direction='down' to='/'>
                 <Logo color={color} />
-            </Link>
+            </AniLink>
             <Nav color={color} />
             <FullMenu isOpen={isOpen} handleMenuClick={handleBurgerMenuClick} />
             <div
@@ -65,6 +76,7 @@ const Header = ({ color }) => {
                     Open main menu
                 </span>
             </div>
+            {/* </AniLink> */}
         </header>
     )
 }

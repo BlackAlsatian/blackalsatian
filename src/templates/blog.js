@@ -18,7 +18,7 @@ const BlogIndex = ({
     const title = 'Blog'
     const content =
         'This is an intro to say something about this blog of crazy folk.'
-    console.log(posts)
+    // console.log(posts)
     if (!posts.length) {
         return (
             <>

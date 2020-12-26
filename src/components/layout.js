@@ -1,8 +1,9 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
 import { useStaticQuery, graphql } from 'gatsby'
-import { motion, AnimatePresence } from 'framer-motion'
+// import { motion, AnimatePresence } from 'framer-motion'
 import { handleHeaderColor } from './helpers'
+// import { TransitionPortal } from 'gatsby-plugin-transition-link'
 
 import Header from './template/header'
 import Footer from './template/footer'
@@ -17,7 +18,7 @@ const variants = {
         transition: {
             duration: duration,
             delay: duration,
-            when: 'beforeChildren',
+            when: 'exitBeforeEnter',
         },
     },
     exit: {
@@ -51,9 +52,11 @@ const Layout = ({ children, location }) => {
                 // maxWidth: '100vw',
             }}
         >
+            {/* <TransitionPortal> */}
             <Header color={handleHeaderColor(location.pathname)} />
+            {/* </TransitionPortal> */}
             {/* <Header /> */}
-            <AnimatePresence>
+            {/* <AnimatePresence>
                 <motion.main
                     key={location.pathname}
                     variants={variants}
@@ -63,7 +66,8 @@ const Layout = ({ children, location }) => {
                 >
                     {children}
                 </motion.main>
-            </AnimatePresence>
+            </AnimatePresence> */}
+            <main>{children}</main>
             <Footer siteTitle={title} />
         </div>
     )

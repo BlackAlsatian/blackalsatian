@@ -30,6 +30,7 @@ const ServicesIndex = ({ data }) => {
                     display: 'flex',
                     flexDirection: 'column',
                     minHeight: '100vh',
+                    overflow: 'hidden',
                 }}
             >
                 <PageHeader
@@ -49,9 +50,10 @@ const ServicesIndex = ({ data }) => {
                         }
                         return (
                             <Link
+                                key={service.slug}
                                 to={service.uri}
                                 itemProp='url'
-                                sx={{ color: 'white', textDecoration: 'none' }}
+                                sx={{ color: 'black', textDecoration: 'none' }}
                             >
                                 <div
                                     sx={{
@@ -92,9 +94,11 @@ const ServicesIndex = ({ data }) => {
                                             gridRowStart: 2,
                                             gridRowEnd: [4, 3],
                                             backgroundColor:
-                                                // 'rgba(255, 255, 255, 0.6)',
-                                                'rgba(46, 196, 182, 0.6)',
+                                                'rgba(255, 255, 255, 0.8)',
+                                            // 'rgba(0, 0, 0, 0.8)',
+                                            // 'rgba(46, 196, 182, 0.6)',
                                             zIndex: 30,
+                                            borderRadius: 10,
                                             p: [2, 2, 5],
                                         }}
                                     >
@@ -168,6 +172,7 @@ export const pageQuery = graphql`
                 uri
                 title
                 excerpt
+                slug
                 ...ServiceMediaFragment
             }
         }

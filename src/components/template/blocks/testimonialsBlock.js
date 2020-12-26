@@ -2,6 +2,7 @@
 import { jsx, Flex, Container } from 'theme-ui'
 import { useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
+// import { useTransition, animated, config } from 'react-spring'
 import { useStaticQuery, graphql } from 'gatsby'
 import parse from 'html-react-parser'
 
@@ -40,6 +41,10 @@ const TestimonialsBlock = () => {
         </div>
     ))
 
+    // const testimonials = data.allWpTestimonial.edges.map(({ node }) => [
+    //     {id: node.id, content: node.content, author: node.testimonialAuthor, role: node.testimonialRole, company: node.testimonialCompany}
+    // ])
+
     const paginate = (newPage) => {
         if (newPage < 0) {
             setNode(testimonials.length - 1)
@@ -49,6 +54,32 @@ const TestimonialsBlock = () => {
             setNode(newPage)
         }
     }
+
+    // const [index, set] = useState(0)
+    // const transitions = useTransition(testimonials[index], (item) => item.id, {
+    //     from: { opacity: 0 },
+    //     enter: { opacity: 1 },
+    //     leave: { opacity: 0 },
+    //     config: config.molasses,
+    // })
+    // useEffect(
+    //     () => void setInterval(() => set((state) => (state + 1) % 4), 2000),
+    //     [],
+    // )
+    // return transitions.map(({ item, props, key }) => (
+    //     <animated.div
+    //         key={key}
+    //         class='bg'
+    //         sx={{ px: 5, fontStyle: 'oblique' }}
+    //     >
+    //         {parse(item.content)}
+    //         <p sx={{ textAlign: 'right' }}>
+    //             <i>- {item.author}</i>
+    //             {item.role && `, ${item.role}`}
+    //             {item.company && ` - ${item.company}`}
+    //         </p>
+    //     </animated.div>
+    // ))
     return (
         <section
             sx={{

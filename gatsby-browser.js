@@ -1,14 +1,14 @@
-import React from 'react'
-import Layout from './src/components/layout'
+// import React from 'react'
+// import Layout from './src/components/layout'
 
 // // custom typefaces
 import 'typeface-montserrat'
 
 const transitionDelay = 250
 
-export const wrapPageElement = ({ element, props }) => {
-    return <Layout {...props}>{element}</Layout>
-}
+// export const wrapPageElement = ({ element, props }) => {
+//     return <Layout {...props}>{element}</Layout>
+// }
 
 export const shouldUpdateScroll = ({
     routerProps: { location },
