@@ -12,7 +12,7 @@ export default function Nav({ color, handleMenuClick }) {
                     paintDrip
                     duration={0.35}
                     // direction='left'
-                    color={color}
+                    color={color || 'black'}
                     // bg={color}
                     key={id}
                     to={url}

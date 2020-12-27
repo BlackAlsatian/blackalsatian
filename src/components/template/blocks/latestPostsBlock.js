@@ -139,6 +139,10 @@ const LatestPostsBlock = () => {
                         backgroundColor: 'black',
                         color: 'white',
                         textDecoration: 'none',
+                        boxShadow: 'xl',
+                        '&:hover': {
+                            boxShadow: 'none',
+                        },
                     }}
                 >
                     View All...

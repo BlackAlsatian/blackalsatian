@@ -77,6 +77,10 @@ export function getForm(
                         backgroundColor: `${buttonBackground}`,
                         color: `${backgroundColor || 'white'}`,
                         textDecoration: 'none',
+                        boxShadow: 'xl',
+                        '&:hover': {
+                            boxShadow: 'none',
+                        },
                     }}
                 >
                     {buttonName}

@@ -44,6 +44,11 @@ function EnquiryForm({ buttonBackground, btnColor, formStyle }) {
                 sx={{
                     backgroundColor: `${buttonBackground}`,
                     color: `${btnColor}`,
+                    boxShadow: 'xl',
+                    '&:hover': {
+                        backgroundColor: `${buttonBackground}`,
+                        boxShadow: 'none',
+                    },
                 }}
             >
                 Fetch!
