@@ -22,15 +22,17 @@ export function handleColor(path) {
         case '/about/':
             return 'white'
         case '/blog/':
-            return 'white'
+            return 'black'
         case '/blog/2/':
-            return 'white'
+            return 'black'
         case '/blog/3/':
-            return 'white'
+            return 'black'
         case '/blog/4/':
-            return 'white'
+            return 'black'
         case '/blog/5/':
-            return 'white'
+            return 'black'
+        case '/blog/6/':
+            return 'black'
         case '/contact/':
             return 'white'
         case '/services/':

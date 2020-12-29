@@ -52,7 +52,7 @@ const Layout = ({ children, location }) => {
                 </motion.main>
             </AnimatePresence> */}
             <main>{children}</main>
-            <Footer siteTitle={title} />
+            <Footer siteTitle={title} path={location.pathname} />
         </div>
     )
 }

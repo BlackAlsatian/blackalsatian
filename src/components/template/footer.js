@@ -14,15 +14,22 @@ import Logo from '../logo'
 import ServiceNav from '../serviceNav'
 import EnquiryForm from '../forms/enquiryForm'
 
-const Footer = ({ siteTitle }) => {
+const Footer = ({ siteTitle, path }) => {
+    // console.log(path)
+    let bgcolor = 'black'
+    let textcolor = 'white'
+    if (path.includes('blog')) {
+        bgcolor = 'white'
+        textcolor = 'black'
+    }
     return (
         <footer
             sx={{
-                bg: 'black',
+                bg: `${bgcolor}`,
                 width: '100%',
                 fontSize: 0,
                 fontWeight: 'medium',
-                color: 'white',
+                color: `${textcolor}`,
                 variant: 'footer',
             }}
         >
@@ -34,7 +41,7 @@ const Footer = ({ siteTitle }) => {
                         justifyContent: 'space-around',
                         flexDirection: ['column', 'column', 'column', 'row'],
                         px: [4, 4, 6, 7],
-                        pt: [5, 5, 4],
+                        pt: [5, 5, 6],
                         pb: [0, 0, 4],
                     }}
                 >
@@ -48,7 +55,7 @@ const Footer = ({ siteTitle }) => {
                                     rel='noreferrer noopener nofollow'
                                 >
                                     <WhatsApp
-                                        color='white'
+                                        color={textcolor}
                                         width={28}
                                         height={28}
                                     />
@@ -61,7 +68,7 @@ const Footer = ({ siteTitle }) => {
                                     target='_blank'
                                     rel='noreferrer noopener nofollow'
                                     sx={{
-                                        color: 'white',
+                                        color: `${textcolor}`,
                                     }}
                                 >
                                     WhatsApp Business during office hours
@@ -70,7 +77,11 @@ const Footer = ({ siteTitle }) => {
                         </div>
                         <div sx={{ display: 'flex', alignItems: 'flex-start' }}>
                             <div sx={{ p: 2 }}>
-                                <Phone color='white' width={28} height={28} />
+                                <Phone
+                                    color={textcolor}
+                                    width={28}
+                                    height={28}
+                                />
                             </div>
                             <div sx={{ p: 2 }}>
                                 <a
@@ -88,7 +99,11 @@ const Footer = ({ siteTitle }) => {
                         </div>
                         <div sx={{ display: 'flex', alignItems: 'flex-start' }}>
                             <div sx={{ p: 2 }}>
-                                <Home color='white' width={28} height={28} />
+                                <Home
+                                    color={textcolor}
+                                    width={28}
+                                    height={28}
+                                />
                             </div>
                             <div sx={{ p: 2 }}>
                                 <p sx={{ pt: 0, mt: 0 }}>
@@ -113,7 +128,7 @@ const Footer = ({ siteTitle }) => {
                         <Heading as='h4' sx={{ pb: 3 }}>
                             Get
                         </Heading>
-                        <ServiceNav color='white' />
+                        <ServiceNav color={textcolor} />
                     </div>
                     <div
                         sx={{
@@ -124,8 +139,8 @@ const Footer = ({ siteTitle }) => {
                     >
                         <EnquiryForm
                             formStyle='inputs.underline'
-                            buttonBackground='white'
-                            btnColor='black'
+                            buttonBackground={bgcolor}
+                            btnColor={textcolor}
                         />
                     </div>
                 </Flex>
@@ -141,7 +156,7 @@ const Footer = ({ siteTitle }) => {
                 }}
             >
                 <div sx={{ flex: 1, mx: 1, my: [3, 3, null] }}>
-                    <Logo color='white' />
+                    <Logo color={textcolor} />
                     <br />
                     Port Elizabeth, South Africa
                 </div>
@@ -189,7 +204,11 @@ const Footer = ({ siteTitle }) => {
                             target='_blank'
                             rel='noreferrer noopener'
                         >
-                            <Facebook color='white' width={28} height={28} />
+                            <Facebook
+                                color={textcolor}
+                                width={28}
+                                height={28}
+                            />
                         </a>
                         <a
                             href='https://instagram.com/theblackalsatian/'
@@ -197,7 +216,11 @@ const Footer = ({ siteTitle }) => {
                             target='_blank'
                             rel='noreferrer noopener'
                         >
-                            <Instagram color='white' width={28} height={28} />
+                            <Instagram
+                                color={textcolor}
+                                width={28}
+                                height={28}
+                            />
                         </a>
                         <a
                             href='https://twitter.com/blackalsatian/'
@@ -205,7 +228,7 @@ const Footer = ({ siteTitle }) => {
                             target='_blank'
                             rel='noreferrer noopener'
                         >
-                            <Twitter color='white' width={28} height={28} />
+                            <Twitter color={textcolor} width={28} height={28} />
                         </a>
                         <a
                             href='https://linkedin.com/company/blackalsatian/'
@@ -213,7 +236,11 @@ const Footer = ({ siteTitle }) => {
                             target='_blank'
                             rel='noreferrer noopener'
                         >
-                            <LinkedIn color='white' width={28} height={28} />
+                            <LinkedIn
+                                color={textcolor}
+                                width={28}
+                                height={28}
+                            />
                         </a>
                         <a
                             href='https://wa.me/27605036601?text=Hi,%20I%20was%20just%20browsing%20your%20website%20and...'
@@ -221,7 +248,11 @@ const Footer = ({ siteTitle }) => {
                             target='_blank'
                             rel='noreferrer noopener nofollow'
                         >
-                            <WhatsApp color='white' width={28} height={28} />
+                            <WhatsApp
+                                color={textcolor}
+                                width={28}
+                                height={28}
+                            />
                         </a>
                         {/* <a href='' title='Email Us' target='_blank'>
                                 <Email color='white' width={28} height={28} />

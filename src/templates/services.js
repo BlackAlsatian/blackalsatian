@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx } from 'theme-ui'
+import { jsx, Container, Heading } from 'theme-ui'
 import React from 'react'
 import { Link, graphql } from 'gatsby'
 import Image from 'gatsby-image'
@@ -40,80 +40,86 @@ const ServicesIndex = ({ data }) => {
                     color='black'
                 />
                 <section>
-                    {services.map((service) => {
-                        const title = service.title
-                        const featuredImage = {
-                            fluid:
-                                service.featuredImage?.node?.localFile
-                                    ?.childImageSharp?.fluid,
-                            alt: service.featuredImage?.node?.alt || ``,
-                        }
-                        return (
-                            <Link
-                                key={service.slug}
-                                to={service.uri}
-                                itemProp='url'
-                                sx={{ color: 'black', textDecoration: 'none' }}
-                            >
-                                <div
+                    <Container>
+                        {services.map((service) => {
+                            const title = service.title
+                            const featuredImage = {
+                                fluid:
+                                    service.featuredImage?.node?.localFile
+                                        ?.childImageSharp?.fluid,
+                                alt: service.featuredImage?.node?.alt || ``,
+                            }
+                            return (
+                                <Link
+                                    key={service.slug}
+                                    to={service.uri}
+                                    itemProp='url'
                                     sx={{
-                                        display: 'grid',
-                                        gridGap: 4, // theme.space[4]
-                                        // use arrays for mobile-first responsive styles
-                                        gridTemplateColumns: [
-                                            'auto', // default to a stacked layout on small screens
-                                            '1fr 2fr 1fr', // use columns for larger screens
-                                        ],
-                                        gridAutoRows: '25vmin',
+                                        color: 'black',
+                                        textDecoration: 'none',
                                     }}
                                 >
                                     <div
                                         sx={{
-                                            gridColumnStart: 1,
-                                            gridColumnEnd: [4, 3],
-                                            gridRowStart: 1,
-                                            gridRowEnd: 4,
+                                            display: 'grid',
+                                            gridGap: 4, // theme.space[4]
+                                            // use arrays for mobile-first responsive styles
+                                            gridTemplateColumns: [
+                                                'auto', // default to a stacked layout on small screens
+                                                '1fr 2fr 1fr', // use columns for larger screens
+                                            ],
+                                            gridAutoRows: '25vmin',
                                         }}
                                     >
-                                        {featuredImage?.fluid && (
-                                            <Image
-                                                fluid={featuredImage.fluid}
-                                                alt={featuredImage.alt}
-                                                style={{ marginBottom: 50 }}
-                                                sx={{
-                                                    height: '100%',
-                                                    minHeight: '300px',
-                                                }}
-                                            />
-                                        )}
+                                        <div
+                                            sx={{
+                                                gridColumnStart: 1,
+                                                gridColumnEnd: [4, 3],
+                                                gridRowStart: 1,
+                                                gridRowEnd: 4,
+                                            }}
+                                        >
+                                            {featuredImage?.fluid && (
+                                                <Image
+                                                    fluid={featuredImage.fluid}
+                                                    alt={featuredImage.alt}
+                                                    style={{ marginBottom: 50 }}
+                                                    sx={{
+                                                        height: '100%',
+                                                        width: '100%',
+                                                        minHeight: '300px',
+                                                    }}
+                                                />
+                                            )}
+                                        </div>
+                                        <div
+                                            sx={{
+                                                gridColumnStart: [1, 2],
+                                                gridColumnEnd: 4,
+                                                gridRowStart: 2,
+                                                gridRowEnd: [4, 3],
+                                                backgroundColor:
+                                                    'rgba(255, 255, 255, 0.9)',
+                                                // 'rgba(0, 0, 0, 0.8)',
+                                                // 'rgba(46, 196, 182, 0.6)',
+                                                zIndex: 30,
+                                                borderRadius: 10,
+                                                p: [2, 2, 5],
+                                            }}
+                                        >
+                                            <Heading>
+                                                <span itemProp='headline'>
+                                                    {parse(title)}
+                                                </span>
+                                                {/* </Link> */}
+                                            </Heading>
+                                            {parse(service.excerpt)}
+                                        </div>
                                     </div>
-                                    <div
-                                        sx={{
-                                            gridColumnStart: [1, 2],
-                                            gridColumnEnd: 4,
-                                            gridRowStart: 2,
-                                            gridRowEnd: [4, 3],
-                                            backgroundColor:
-                                                'rgba(255, 255, 255, 0.8)',
-                                            // 'rgba(0, 0, 0, 0.8)',
-                                            // 'rgba(46, 196, 182, 0.6)',
-                                            zIndex: 30,
-                                            borderRadius: 10,
-                                            p: [2, 2, 5],
-                                        }}
-                                    >
-                                        <h2>
-                                            <span itemProp='headline'>
-                                                {parse(title)}
-                                            </span>
-                                            {/* </Link> */}
-                                        </h2>
-                                        {parse(service.excerpt)}
-                                    </div>
-                                </div>
-                            </Link>
-                        )
-                    })}
+                                </Link>
+                            )
+                        })}
+                    </Container>
                 </section>
             </div>
         </>

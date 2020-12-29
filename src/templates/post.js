@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx, Container, Heading, Flex, Box } from 'theme-ui'
+import { jsx, Container, Heading, Flex, Box, Badge } from 'theme-ui'
 import React from 'react'
 import { Link, graphql } from 'gatsby'
 import Image from 'gatsby-image'
@@ -45,6 +45,7 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
                                 color: 'white',
                                 backgroundColor: 'rgba(0, 0, 0, 0.6)',
                                 height: '100vh',
+                                width: '100%',
                             }}
                         >
                             <Heading
@@ -99,20 +100,6 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
                                         {parse(post.title)}
                                     </Heading>
                                     <Bio author={post.author.node} />
-                                    {/* <p>
-                                        <span
-                                            sx={{
-                                                color: 'muted',
-                                                textAlign: 'right',
-                                            }}
-                                        >
-                                            Written by:
-                                        </span>
-                                        <br />
-                                        <span sx={{ fontWeight: 'bold' }}>
-                                            {post.author.node.name}
-                                        </span>
-                                    </p> */}
                                     <p>
                                         <span
                                             sx={{
@@ -131,17 +118,20 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
                                         }}
                                     >
                                         {post.tags.nodes.map(({ name, id }) => (
-                                            <span
-                                                sx={{
-                                                    backgroundColor: 'black',
-                                                    color: 'white',
-                                                    p: 1,
-                                                    m: 2,
-                                                }}
-                                                key={id}
-                                            >
+                                            // <span
+                                            //     sx={{
+                                            //         backgroundColor: 'black',
+                                            //         color: 'white',
+                                            //         p: 1,
+                                            //         m: 2,
+                                            //     }}
+                                            //     key={id}
+                                            // >
+                                            //     {name}
+                                            // </span>
+                                            <Badge key={id} variant='primary'>
                                                 {name}
-                                            </span>
+                                            </Badge>
                                         ))}
                                     </div>
                                 </Box>
@@ -161,8 +151,6 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
                     </section>
                 )}
 
-                <hr />
-
                 <footer>{/* <Bio /> */}</footer>
             </article>
 
@@ -176,7 +164,7 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
                         p: 4,
                     }}
                 >
-                    <li>
+                    <li sx={{ m: 3 }}>
                         {previous && (
                             <Link
                                 to={previous.uri}
@@ -186,6 +174,16 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
                                     backgroundColor: 'black',
                                     color: 'white',
                                     textDecoration: 'none',
+                                    boxShadow: 'xl',
+                                    transition: '200ms',
+                                    py: 3,
+                                    px: 4,
+                                    fontSize: 3,
+                                    fontWeight: 'black',
+                                    '&:hover': {
+                                        backgroundColor: 'black',
+                                        boxShadow: 'none',
+                                    },
                                 }}
                             >
                                 ← {parse(previous.title)}
@@ -193,7 +191,7 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
                         )}
                     </li>
 
-                    <li>
+                    <li sx={{ m: 3 }}>
                         {next && (
                             <Link
                                 to={next.uri}
@@ -203,6 +201,16 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
                                     backgroundColor: 'black',
                                     color: 'white',
                                     textDecoration: 'none',
+                                    boxShadow: 'xl',
+                                    transition: '200ms',
+                                    py: 3,
+                                    px: 4,
+                                    fontSize: 3,
+                                    fontWeight: 'black',
+                                    '&:hover': {
+                                        backgroundColor: 'black',
+                                        boxShadow: 'none',
+                                    },
                                 }}
                             >
                                 {parse(next.title)} →

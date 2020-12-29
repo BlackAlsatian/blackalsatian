@@ -21,8 +21,9 @@ export default {
         header: '#ffffff',
         primaryHover: `${tailwind.colors.gray[8]}`,
         black: '#111827',
-        blue: '#2ec4b6',
+        // blue: '#2ec4b6',
         // blue: '#31cdff',
+        blue: '#0060b4',
         //##pantone of the year
         yellow: '#f5df4d',
         gray: '#939597',
@@ -56,6 +57,18 @@ export default {
                 outline: 'none',
                 color: 'offWhite',
             },
+        },
+    },
+    badges: {
+        ...tailwind.badges,
+        primary: {
+            color: 'background',
+            bg: 'primary',
+        },
+        outline: {
+            color: 'white',
+            bg: 'transparent',
+            boxShadow: 'inset 0 0 0 1px',
         },
     },
     fonts: {

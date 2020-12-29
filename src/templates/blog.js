@@ -13,6 +13,7 @@ import PageHeader from '../components/template/pageHeader'
 const BlogIndex = ({
     data,
     pageContext: { nextPagePath, previousPagePath },
+    location: { pathname },
 }) => {
     const posts = data.allWpPost.nodes
     const title = 'Blog'
@@ -43,12 +44,14 @@ const BlogIndex = ({
                     minHeight: '100vh',
                 }}
             >
-                <PageHeader
-                    title={title}
-                    intro={content}
-                    backgroundColor='blue'
-                    color='white'
-                />
+                {pathname === '/blog/' && (
+                    <PageHeader
+                        title={title}
+                        intro={content}
+                        backgroundColor='white'
+                        color='black'
+                    />
+                )}
                 <section>
                     <Container
                         sx={{
@@ -59,6 +62,7 @@ const BlogIndex = ({
                             counterReset: 'item-counter',
                             px: 3,
                             py: 5,
+                            mt: pathname !== '/blog/' ? 6 : null,
                         }}
                     >
                         {posts.map((post) => {
@@ -116,10 +120,10 @@ const BlogIndex = ({
                                                 justifyContent: 'flex-end',
                                                 color: 'white',
                                                 backgroundColor:
-                                                    'rgba(0, 0, 0, 0.8)',
+                                                    'rgba(0, 0, 0, 0.6)',
                                                 '&:hover': {
                                                     backgroundColor:
-                                                        'rgba(0, 0, 0, 0.6)',
+                                                        'rgba(0, 0, 0, 0.3)',
                                                 },
                                             }}
                                         >
@@ -158,8 +162,8 @@ const BlogIndex = ({
                                         to={previousPagePath}
                                         sx={{
                                             variant: 'buttons.simple',
-                                            backgroundColor: 'blue',
-                                            color: 'white',
+                                            backgroundColor: 'white',
+                                            color: 'black',
                                             textDecoration: 'none',
                                             boxShadow: 'xl',
                                             transition: '200ms',
@@ -168,7 +172,7 @@ const BlogIndex = ({
                                             fontSize: 3,
                                             fontWeight: 'black',
                                             '&:hover': {
-                                                backgroundColor: 'blue',
+                                                backgroundColor: 'white',
                                                 boxShadow: 'none',
                                             },
                                         }}
@@ -185,8 +189,8 @@ const BlogIndex = ({
                                     to={nextPagePath}
                                     sx={{
                                         variant: 'buttons.simple',
-                                        backgroundColor: 'blue',
-                                        color: 'white',
+                                        backgroundColor: 'white',
+                                        color: 'black',
                                         textDecoration: 'none',
                                         boxShadow: 'xl',
                                         transition: '200ms',
@@ -195,7 +199,7 @@ const BlogIndex = ({
                                         fontSize: 3,
                                         fontWeight: 'black',
                                         '&:hover': {
-                                            backgroundColor: 'blue',
+                                            backgroundColor: 'white',
                                             boxShadow: 'none',
                                         },
                                     }}

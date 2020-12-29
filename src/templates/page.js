@@ -29,7 +29,7 @@ const PageTemplate = ({ data: { page } }) => {
                         title={parse(page.title)}
                         intro={page.pageintro}
                         backgroundColor={
-                            page.title.includes('About') ? 'black' : 'red'
+                            page.title.includes('About') ? 'black' : 'blue'
                         }
                         color='white'
                     />
