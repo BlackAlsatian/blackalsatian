@@ -5,9 +5,20 @@ export function randomID() {
 export function getHeight() {
     return Math.floor(Math.random() * 400 + 200)
 }
-export function handleHeaderColor(path) {
+export function handleColor(path) {
     // console.log(path)
     switch (path) {
+        // case '/about/':
+        //     return {
+        //         colors: {
+        //             nav: 'black',
+        //             variant: 'layout.about',
+        //             footer: {
+        //                 background: 'yellow',
+        //                 color: 'black',
+        //             },
+        //         },
+        //     }
         case '/about/':
             return 'black'
         case '/blog/':

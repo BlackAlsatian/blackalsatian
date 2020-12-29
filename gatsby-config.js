@@ -26,6 +26,23 @@ module.exports = {
                 url: `https://www.linkedin.com/company/blackalsatian`,
             },
         ],
+        page: [
+            {
+                url: '/about/',
+                header: {
+                    text: 'black',
+                    background: 'yellow',
+                },
+                body: {
+                    text: 'black',
+                    background: 'yellow',
+                },
+                footer: {
+                    text: 'black',
+                    background: 'yellow',
+                },
+            },
+        ],
     },
     plugins: [
         // See https://www.gatsbyjs.com/plugins/gatsby-plugin-react-helmet/?=gatsby-plugin-react-helmet

@@ -7,7 +7,9 @@ import ComponentParser from '../components/componentParser'
 import SEO from '../components/seo'
 import PageHeader from '../components/template/pageHeader'
 
-const PageTemplate = ({ data: { page } }) => {
+const PageTemplate = ({ data: { page, site } }) => {
+    const headerStyle = site.siteMetadata.page[0].header
+    console.log(headerStyle)
     return (
         <>
             <SEO title={page.title} description={page.excerpt} />
@@ -20,13 +22,14 @@ const PageTemplate = ({ data: { page } }) => {
                         display: 'flex',
                         flexDirection: 'column',
                         minHeight: '100vh',
+                        // variant: 'layout.about',
                     }}
                 >
                     <PageHeader
                         title={parse(page.title)}
                         intro={page.pageintro}
-                        backgroundColor='yellow'
-                        color='black'
+                        backgroundColor={headerStyle.background}
+                        color={headerStyle.text}
                     />
                     <section sx={{ py: 5 }}>
                         <Container p={1}>
@@ -109,6 +112,7 @@ export const pageQuery = graphql`
     query PageById(
         # these variables are passed in via createPage.pageContext in gatsby-node.js
         $id: String!
+        $uri: String!
     ) {
         # selecting the current post by id
         page: wpPage(id: { eq: $id }) {
@@ -125,6 +129,22 @@ export const pageQuery = graphql`
                 ...CoreCoverblock
                 ...BlackalsatianContentBlock
                 ...BlackalsatianPageMetaBlock
+            }
+            uri
+        }
+        site(siteMetadata: { page: { elemMatch: { url: { eq: $uri } } } }) {
+            siteMetadata {
+                page {
+                    url
+                    header {
+                        text
+                        background
+                    }
+                    body {
+                        text
+                        background
+                    }
+                }
             }
         }
     }

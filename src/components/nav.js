@@ -9,10 +9,10 @@ export default function Nav({ color, handleMenuClick }) {
         <Flex as='nav'>
             {navLinks.map(({ name, url, id }) => (
                 <AniLink
-                    paintDrip
+                    swipe
                     duration={0.35}
-                    // direction='left'
-                    color={color || 'black'}
+                    direction='left'
+                    color={'color'}
                     // bg={color}
                     key={id}
                     to={url}

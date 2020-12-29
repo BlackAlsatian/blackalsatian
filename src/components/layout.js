@@ -2,30 +2,11 @@
 import { jsx } from 'theme-ui'
 import { useStaticQuery, graphql } from 'gatsby'
 // import { motion, AnimatePresence } from 'framer-motion'
-import { handleHeaderColor } from './helpers'
+import { handleColor } from './helpers'
 // import { TransitionPortal } from 'gatsby-plugin-transition-link'
 
 import Header from './template/header'
 import Footer from './template/footer'
-
-const duration = 0
-const variants = {
-    initial: {
-        opacity: 0,
-    },
-    enter: {
-        opacity: 1,
-        transition: {
-            duration: duration,
-            delay: duration,
-            when: 'exitBeforeEnter',
-        },
-    },
-    exit: {
-        opacity: 0,
-        transition: { duration: duration },
-    },
-}
 
 const Layout = ({ children, location }) => {
     // console.log(location.pathname)
@@ -53,7 +34,10 @@ const Layout = ({ children, location }) => {
             }}
         >
             {/* <TransitionPortal> */}
-            <Header color={handleHeaderColor(location.pathname)} />
+            <Header
+                color={handleColor(location.pathname)}
+                uri={location.pathname}
+            />
             {/* </TransitionPortal> */}
             {/* <Header /> */}
             {/* <AnimatePresence>

@@ -161,6 +161,12 @@ const BlogIndex = ({
                                             backgroundColor: 'yellow',
                                             color: 'black',
                                             textDecoration: 'none',
+                                            boxShadow: 'xl',
+                                            transition: '200ms',
+                                            '&:hover': {
+                                                backgroundColor: 'yellow',
+                                                boxShadow: 'none',
+                                            },
                                         }}
                                     >
                                         Previous page
@@ -178,6 +184,12 @@ const BlogIndex = ({
                                         backgroundColor: 'yellow',
                                         color: 'black',
                                         textDecoration: 'none',
+                                        boxShadow: 'xl',
+                                        transition: '200ms',
+                                        '&:hover': {
+                                            backgroundColor: 'yellow',
+                                            boxShadow: 'none',
+                                        },
                                     }}
                                 >
                                     Next page

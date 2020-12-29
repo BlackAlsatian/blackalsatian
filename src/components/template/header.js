@@ -10,7 +10,6 @@ import Nav from '../nav'
 // import { useThemeUI } from 'theme-ui'
 
 const Header = ({ color }) => {
-    // console.log(color)
     const [isOpen, setIsOpen] = useState(false)
 
     const handleBurgerMenuClick = () => {
@@ -29,17 +28,7 @@ const Header = ({ color }) => {
                 variant: 'layout.header.closedMenu',
             }}
         >
-            {/* <AniLink
-                fade
-                duration={0.5}
-                hex='#ebc8de'
-                to='/'
-                style={{
-                    color: `white`,
-                    textDecoration: `none`,
-                }}
-            > */}
-            <AniLink fade duration={0.5} hex='black' direction='down' to='/'>
+            <AniLink paintDrip duration={0.5} color='black' to='/'>
                 <Logo color={color} />
             </AniLink>
             <Nav color={color} />
@@ -76,7 +65,6 @@ const Header = ({ color }) => {
                     Open main menu
                 </span>
             </div>
-            {/* </AniLink> */}
         </header>
     )
 }
