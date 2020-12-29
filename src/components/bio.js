@@ -38,8 +38,8 @@ const Bio = ({ author }) => {
                     alt={author?.firstName || ``}
                     className='bio-avatar'
                     src={avatarUrl}
-                    width={60}
-                    height={60}
+                    width={96}
+                    height={96}
                 />
             )}
             {author?.firstName && (

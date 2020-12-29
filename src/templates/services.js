@@ -36,8 +36,8 @@ const ServicesIndex = ({ data }) => {
                 <PageHeader
                     title={parse(page.title)}
                     intro={page.pageintro}
-                    backgroundColor='blue'
-                    color='white'
+                    backgroundColor='yellow'
+                    color='black'
                 />
                 <section>
                     {services.map((service) => {
@@ -115,49 +115,6 @@ const ServicesIndex = ({ data }) => {
                         )
                     })}
                 </section>
-                {/* <ol style={{ listStyle: `none` }}>
-                    {services.map((service) => {
-                        const title = service.title
-                        const featuredImage = {
-                            fluid:
-                                service.featuredImage?.node?.localFile
-                                    ?.childImageSharp?.fluid,
-                            alt: service.featuredImage?.node?.alt || ``,
-                        }
-                        return (
-                            <li key={service.uri}>
-                                <article
-                                    className='service-list-item'
-                                    itemScope
-                                    itemType='http://schema.org/Article'
-                                >
-                                    <header>
-                                        {featuredImage?.fluid && (
-                                            <Image
-                                                fluid={featuredImage.fluid}
-                                                alt={featuredImage.alt}
-                                                style={{ marginBottom: 50 }}
-                                            />
-                                        )}
-                                        <h2>
-                                            <Link
-                                                to={service.uri}
-                                                itemProp='url'
-                                            >
-                                                <span itemProp='headline'>
-                                                    {parse(title)}
-                                                </span>
-                                            </Link>
-                                        </h2>
-                                    </header>
-                                    <section itemProp='description'>
-                                        {parse(service.excerpt)}
-                                    </section>
-                                </article>
-                            </li>
-                        )
-                    })}
-                </ol> */}
             </div>
         </>
     )

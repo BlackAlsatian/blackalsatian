@@ -46,8 +46,8 @@ const BlogIndex = ({
                 <PageHeader
                     title={title}
                     intro={content}
-                    backgroundColor='yellow'
-                    color='black'
+                    backgroundColor='blue'
+                    color='white'
                 />
                 <section>
                     <Container
@@ -158,18 +158,22 @@ const BlogIndex = ({
                                         to={previousPagePath}
                                         sx={{
                                             variant: 'buttons.simple',
-                                            backgroundColor: 'yellow',
-                                            color: 'black',
+                                            backgroundColor: 'blue',
+                                            color: 'white',
                                             textDecoration: 'none',
                                             boxShadow: 'xl',
                                             transition: '200ms',
+                                            py: 3,
+                                            px: 4,
+                                            fontSize: 3,
+                                            fontWeight: 'black',
                                             '&:hover': {
-                                                backgroundColor: 'yellow',
+                                                backgroundColor: 'blue',
                                                 boxShadow: 'none',
                                             },
                                         }}
                                     >
-                                        Previous page
+                                        ← Previous page
                                     </Link>
                                     <br />
                                 </>
@@ -181,18 +185,22 @@ const BlogIndex = ({
                                     to={nextPagePath}
                                     sx={{
                                         variant: 'buttons.simple',
-                                        backgroundColor: 'yellow',
-                                        color: 'black',
+                                        backgroundColor: 'blue',
+                                        color: 'white',
                                         textDecoration: 'none',
                                         boxShadow: 'xl',
                                         transition: '200ms',
+                                        py: 3,
+                                        px: 4,
+                                        fontSize: 3,
+                                        fontWeight: 'black',
                                         '&:hover': {
-                                            backgroundColor: 'yellow',
+                                            backgroundColor: 'blue',
                                             boxShadow: 'none',
                                         },
                                     }}
                                 >
-                                    Next page
+                                    Next page →
                                 </Link>
                             )}
                         </li>

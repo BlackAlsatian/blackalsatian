@@ -7,9 +7,9 @@ import ComponentParser from '../components/componentParser'
 import SEO from '../components/seo'
 import PageHeader from '../components/template/pageHeader'
 
-const PageTemplate = ({ data: { page, site } }) => {
-    const headerStyle = site.siteMetadata.page[0].header
-    console.log(headerStyle)
+const PageTemplate = ({ data: { page } }) => {
+    // const headerStyle = site.siteMetadata.page[0].header
+    // console.log(headerStyle)
     return (
         <>
             <SEO title={page.title} description={page.excerpt} />
@@ -28,8 +28,10 @@ const PageTemplate = ({ data: { page, site } }) => {
                     <PageHeader
                         title={parse(page.title)}
                         intro={page.pageintro}
-                        backgroundColor={headerStyle.background}
-                        color={headerStyle.text}
+                        backgroundColor={
+                            page.title.includes('About') ? 'black' : 'red'
+                        }
+                        color='white'
                     />
                     <section sx={{ py: 5 }}>
                         <Container p={1}>
@@ -111,8 +113,7 @@ export default PageTemplate
 export const pageQuery = graphql`
     query PageById(
         # these variables are passed in via createPage.pageContext in gatsby-node.js
-        $id: String!
-        $uri: String!
+        $id: String! # $uri: String!
     ) {
         # selecting the current post by id
         page: wpPage(id: { eq: $id }) {
@@ -130,22 +131,22 @@ export const pageQuery = graphql`
                 ...BlackalsatianContentBlock
                 ...BlackalsatianPageMetaBlock
             }
-            uri
+            # uri
         }
-        site(siteMetadata: { page: { elemMatch: { url: { eq: $uri } } } }) {
-            siteMetadata {
-                page {
-                    url
-                    header {
-                        text
-                        background
-                    }
-                    body {
-                        text
-                        background
-                    }
-                }
-            }
-        }
+        # site(siteMetadata: { page: { elemMatch: { url: { eq: $uri } } } }) {
+        #     siteMetadata {
+        #         page {
+        #             url
+        #             header {
+        #                 text
+        #                 background
+        #             }
+        #             body {
+        #                 text
+        #                 background
+        #             }
+        #         }
+        #     }
+        # }
     }
 `

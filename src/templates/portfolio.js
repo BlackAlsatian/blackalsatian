@@ -35,7 +35,7 @@ const PortfolioIndex = ({ data }) => {
                 <PageHeader
                     title={parse(page.title)}
                     intro={page.pageintro}
-                    backgroundColor='red'
+                    backgroundColor='black'
                     color='white'
                 />
 

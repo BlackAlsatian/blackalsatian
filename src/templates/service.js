@@ -27,8 +27,8 @@ const PageTemplate = ({ data: { previous, next, service } }) => {
                 <PageHeader
                     title={parse(service.title)}
                     intro={parse(service.excerpt)}
-                    backgroundColor='blue'
-                    color='white'
+                    backgroundColor='yellow'
+                    color='black'
                 />
                 <section>
                     <Container
@@ -86,7 +86,26 @@ const PageTemplate = ({ data: { previous, next, service } }) => {
                             >
                                 <li>
                                     {previous && (
-                                        <Link to={previous.uri} rel='prev'>
+                                        <Link
+                                            to={previous.uri}
+                                            rel='prev'
+                                            sx={{
+                                                variant: 'buttons.simple',
+                                                backgroundColor: 'yellow',
+                                                color: 'black',
+                                                textDecoration: 'none',
+                                                boxShadow: 'xl',
+                                                transition: '200ms',
+                                                py: 3,
+                                                px: 4,
+                                                fontSize: 3,
+                                                fontWeight: 'black',
+                                                '&:hover': {
+                                                    backgroundColor: 'yellow',
+                                                    boxShadow: 'none',
+                                                },
+                                            }}
+                                        >
                                             ← {parse(previous.title)}
                                         </Link>
                                     )}
@@ -94,7 +113,26 @@ const PageTemplate = ({ data: { previous, next, service } }) => {
 
                                 <li>
                                     {next && (
-                                        <Link to={next.uri} rel='next'>
+                                        <Link
+                                            to={next.uri}
+                                            rel='next'
+                                            sx={{
+                                                variant: 'buttons.simple',
+                                                backgroundColor: 'yellow',
+                                                color: 'black',
+                                                textDecoration: 'none',
+                                                boxShadow: 'xl',
+                                                transition: '200ms',
+                                                py: 3,
+                                                px: 4,
+                                                fontSize: 3,
+                                                fontWeight: 'black',
+                                                '&:hover': {
+                                                    backgroundColor: 'yellow',
+                                                    boxShadow: 'none',
+                                                },
+                                            }}
+                                        >
                                             {parse(next.title)} →
                                         </Link>
                                     )}

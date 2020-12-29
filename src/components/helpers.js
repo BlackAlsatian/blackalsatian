@@ -20,37 +20,39 @@ export function handleColor(path) {
         //         },
         //     }
         case '/about/':
-            return 'black'
+            return 'white'
         case '/blog/':
-            return 'black'
+            return 'white'
         case '/blog/2/':
-            return 'black'
+            return 'white'
         case '/blog/3/':
-            return 'black'
+            return 'white'
         case '/blog/4/':
-            return 'black'
+            return 'white'
         case '/blog/5/':
-            return 'black'
+            return 'white'
         case '/contact/':
+            return 'white'
+        case '/services/':
             return 'black'
-        // case '/services/website-design/':
-        //     return 'white'
-        // case '/services/online-marketing/':
-        //     return 'white'
-        // case '/services/search-engine-marketing-seo/':
-        //     return 'white'
-        // case '/services/lead-generation/':
-        //     return 'white'
-        // case '/services/copywriting/':
-        //     return 'white'
-        // case '/services/graphic-design/':
-        //     return 'white'
-        // case '/services/web-hosting/':
-        //     return 'white'
-        // case '/services/personalised-email/':
-        //     return 'white'
-        // case '/services/diy-websites/':
-        //     return 'white'
+        case '/services/website-design/':
+            return 'black'
+        case '/services/online-marketing/':
+            return 'black'
+        case '/services/search-engine-optimisation-seo/':
+            return 'black'
+        case '/services/lead-generation/':
+            return 'black'
+        case '/services/copywriting/':
+            return 'black'
+        case '/services/graphic-design/':
+            return 'black'
+        case '/services/web-hosting/':
+            return 'black'
+        case '/services/personalised-email/':
+            return 'black'
+        case '/services/diy-websites/':
+            return 'black'
         default:
             return 'white'
     }
