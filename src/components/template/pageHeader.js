@@ -1,6 +1,5 @@
 /** @jsx jsx */
 import { jsx, Container, Heading } from 'theme-ui'
-// import AniLink from 'gatsby-plugin-transition-link/AniLink'
 
 function PageHeader({ title, intro, backgroundColor, color }) {
     return (
@@ -14,16 +13,6 @@ function PageHeader({ title, intro, backgroundColor, color }) {
                 pt: '25vh',
             }}
         >
-            {/* <AniLink
-                paintDrip
-                duration={0.5}
-                hex='#ebc8de'
-                to='/'
-                style={{
-                    color: `white`,
-                    textDecoration: `none`,
-                }}
-            > */}
             <Container p={4}>
                 <Heading
                     as='h1'
@@ -36,7 +25,6 @@ function PageHeader({ title, intro, backgroundColor, color }) {
                 </Heading>
                 {intro && <div sx={{ fontSize: [3, 4], my: 1 }}>{intro}</div>}
             </Container>
-            {/* </AniLink> */}
         </section>
     )
 }

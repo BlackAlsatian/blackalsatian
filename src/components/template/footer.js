@@ -40,9 +40,9 @@ const Footer = ({ siteTitle, path }) => {
                         alignItems: [null, null, 'flex-start'],
                         justifyContent: 'space-around',
                         flexDirection: ['column', 'column', 'column', 'row'],
-                        px: [4, 4, 6, 7],
-                        pt: [5, 5, 6],
-                        pb: [0, 0, 4],
+                        px: [3, 3, 3, 5],
+                        pt: [5, 5, 6, 6],
+                        pb: [0, 0, 4, 4],
                     }}
                 >
                     <div sx={{ flex: [null, null, 1], p: [null, null, 4] }}>
@@ -139,8 +139,8 @@ const Footer = ({ siteTitle, path }) => {
                     >
                         <EnquiryForm
                             formStyle='inputs.underline'
-                            buttonBackground={bgcolor}
-                            btnColor={textcolor}
+                            buttonBackground='white'
+                            btnColor='black'
                         />
                     </div>
                 </Flex>

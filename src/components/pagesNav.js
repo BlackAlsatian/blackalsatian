@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
 import React from 'react'
-import { Link } from 'gatsby'
+import AniLink from 'gatsby-plugin-transition-link/AniLink'
 
 function PagesNav({
     previousPagePath,
@@ -25,7 +25,11 @@ function PagesNav({
                 <li sx={{ m: 3 }}>
                     {previousPagePath && (
                         <>
-                            <Link
+                            <AniLink
+                                swipe
+                                duration={0.35}
+                                direction='right'
+                                color='yellow'
                                 to={previousPagePath}
                                 rel='prev'
                                 title={previousName || 'Previous'}
@@ -47,14 +51,18 @@ function PagesNav({
                                 }}
                             >
                                 ← {previousName || 'Previous'}
-                            </Link>
+                            </AniLink>
                             <br />
                         </>
                     )}
                 </li>
                 <li sx={{ m: 3 }}>
                     {nextPagePath && (
-                        <Link
+                        <AniLink
+                            swipe
+                            duration={0.35}
+                            direction='left'
+                            color='yellow'
                             to={nextPagePath}
                             rel='next'
                             title={nextName || 'Next'}
@@ -76,7 +84,7 @@ function PagesNav({
                             }}
                         >
                             {nextName || 'Next'} →
-                        </Link>
+                        </AniLink>
                     )}
                 </li>
             </ul>

@@ -1,7 +1,8 @@
 /** @jsx jsx */
 import { jsx, Container, Heading } from 'theme-ui'
 import React from 'react'
-import { Link, graphql } from 'gatsby'
+import { graphql } from 'gatsby'
+import AniLink from 'gatsby-plugin-transition-link/AniLink'
 import Image from 'gatsby-image'
 import parse from 'html-react-parser'
 import SEO from '../components/seo'
@@ -47,7 +48,11 @@ const ServicesIndex = ({ data }) => {
                                 alt: service.featuredImage?.node?.alt || ``,
                             }
                             return (
-                                <Link
+                                <AniLink
+                                    swipe
+                                    duration={0.35}
+                                    direction='left'
+                                    color='yellow'
                                     key={service.slug}
                                     to={service.uri}
                                     itemProp='url'
@@ -113,7 +118,7 @@ const ServicesIndex = ({ data }) => {
                                             {parse(service.excerpt)}
                                         </div>
                                     </div>
-                                </Link>
+                                </AniLink>
                             )
                         })}
                     </Container>

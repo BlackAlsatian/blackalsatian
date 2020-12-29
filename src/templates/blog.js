@@ -1,14 +1,16 @@
 /** @jsx jsx */
 import { jsx, Container, Heading } from 'theme-ui'
 import React from 'react'
-import { Link, graphql } from 'gatsby'
+import { graphql } from 'gatsby'
 import Image from 'gatsby-image'
 import parse from 'html-react-parser'
+import AniLink from 'gatsby-plugin-transition-link/AniLink'
 import { getHeight } from '../components/helpers'
 
 // import Bio from '../components/bio'
 import SEO from '../components/seo'
 import PageHeader from '../components/template/pageHeader'
+import PagesNav from '../components/pagesNav'
 
 const BlogIndex = ({
     data,
@@ -71,7 +73,11 @@ const BlogIndex = ({
                                 alt: post.featuredImage?.node?.alt || ``,
                             }
                             return (
-                                <Link
+                                <AniLink
+                                    paintDrip
+                                    duration={0.5}
+                                    // direction='right'
+                                    color='white'
                                     to={post.uri}
                                     key={post.uri}
                                     title={post.title}
@@ -136,77 +142,22 @@ const BlogIndex = ({
                                             </section>
                                         </div>
                                     </article>
-                                </Link>
+                                </AniLink>
                             )
                         })}
                     </Container>
                 </section>
 
-                <nav>
-                    <ul
-                        sx={{
-                            display: `flex`,
-                            flexWrap: `wrap`,
-                            justifyContent: `space-between`,
-                            listStyle: `none`,
-                            p: 4,
-                        }}
-                    >
-                        <li>
-                            {previousPagePath && (
-                                <>
-                                    <Link
-                                        to={previousPagePath}
-                                        sx={{
-                                            variant: 'buttons.simple',
-                                            backgroundColor: 'white',
-                                            color: 'black',
-                                            textDecoration: 'none',
-                                            boxShadow: 'xl',
-                                            transition: '200ms',
-                                            py: 3,
-                                            px: 4,
-                                            fontSize: 3,
-                                            fontWeight: 'black',
-                                            '&:hover': {
-                                                backgroundColor: 'white',
-                                                boxShadow: 'none',
-                                            },
-                                        }}
-                                    >
-                                        ← Previous page
-                                    </Link>
-                                    <br />
-                                </>
-                            )}
-                        </li>
-                        <li>
-                            {nextPagePath && (
-                                <Link
-                                    to={nextPagePath}
-                                    sx={{
-                                        variant: 'buttons.simple',
-                                        backgroundColor: 'white',
-                                        color: 'black',
-                                        textDecoration: 'none',
-                                        boxShadow: 'xl',
-                                        transition: '200ms',
-                                        py: 3,
-                                        px: 4,
-                                        fontSize: 3,
-                                        fontWeight: 'black',
-                                        '&:hover': {
-                                            backgroundColor: 'white',
-                                            boxShadow: 'none',
-                                        },
-                                    }}
-                                >
-                                    Next page →
-                                </Link>
-                            )}
-                        </li>
-                    </ul>
-                </nav>
+                <section>
+                    <PagesNav
+                        previousPagePath={previousPagePath && previousPagePath}
+                        nextPagePath={nextPagePath && nextPagePath}
+                        // previousName='Previous'
+                        // nextName='Next'
+                        backgroundColor='white'
+                        color='black'
+                    />
+                </section>
             </div>
         </>
     )

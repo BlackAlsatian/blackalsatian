@@ -1,8 +1,8 @@
 /** @jsx jsx */
 import { jsx, Container, Flex, Heading, Box } from 'theme-ui'
 import React from 'react'
-import { Link, graphql } from 'gatsby'
-// import Image from 'gatsby-image'
+import { graphql } from 'gatsby'
+import AniLink from 'gatsby-plugin-transition-link/AniLink'
 import parse from 'html-react-parser'
 import SEO from '../components/seo'
 import PageHeader from '../components/template/pageHeader'
@@ -27,6 +27,8 @@ const PortfolioIndex = ({ data }) => {
                     display: 'flex',
                     flexDirection: 'column',
                     minHeight: '100vh',
+                    backgroundColor: 'black',
+                    color: 'white',
                 }}
             >
                 <PageHeader
@@ -39,8 +41,6 @@ const PortfolioIndex = ({ data }) => {
                 <section
                     sx={{
                         py: 5,
-                        backgroundColor: 'black',
-                        color: 'white',
                     }}
                 >
                     <Container p={1}>
@@ -50,8 +50,7 @@ const PortfolioIndex = ({ data }) => {
                             }}
                         >
                             <Box
-                                pr={5}
-                                py={4}
+                                p={[5, 5, 3, 6]}
                                 sx={{
                                     textAlign: ['left', 'left', 'right'],
                                     flex: [null, null, 1],
@@ -59,7 +58,8 @@ const PortfolioIndex = ({ data }) => {
                                     display: 'flex',
                                     flexDirection: 'column',
                                     alignItems: 'flex-end',
-                                    borderRight: [0, '1px solid white'],
+                                    // justifyContent: 'center',
+                                    borderRight: [0, 0, '1px solid white'],
                                 }}
                             >
                                 {page.pagesubheading && (
@@ -92,19 +92,25 @@ const PortfolioIndex = ({ data }) => {
                                 )}
                             </Box>
                             <Box
-                                py={4}
-                                pr={5}
+                                py={[4, 4, 5]}
+                                pr={[5, 5, 6]}
                                 sx={{
                                     flex: [null, null, 3],
                                     width: ['100%', null],
                                     variant: 'layout',
                                 }}
                             >
-                                <div sx={{ pl: 5 }}>{parse(page.content)}</div>
+                                <div sx={{ pl: [5, 5, 6], pb: 5 }}>
+                                    {parse(page.content)}
+                                </div>
                                 {portfolio.map((portfolio) => {
                                     const title = portfolio.title
                                     return (
-                                        <Link
+                                        <AniLink
+                                            swipe
+                                            duration={0.35}
+                                            direction='left'
+                                            color='yellow'
                                             key={portfolio.uri}
                                             to={portfolio.uri}
                                             title={parse(title)}
@@ -125,7 +131,7 @@ const PortfolioIndex = ({ data }) => {
                                                     alignItems: 'center',
                                                     justifyContent:
                                                         'space-between',
-                                                    pl: 5,
+                                                    pl: [5, 5, 6],
                                                     minHeight: [
                                                         '3rem',
                                                         '3rem',
@@ -172,7 +178,7 @@ const PortfolioIndex = ({ data }) => {
                                                         )}
                                                 </div>
                                             </div>
-                                        </Link>
+                                        </AniLink>
                                     )
                                 })}
                             </Box>
@@ -194,7 +200,6 @@ export const pageQuery = graphql`
                 title
                 excerpt
                 projectFeatured
-                projectUrl
                 projectYear
                 tags {
                     nodes {
@@ -202,7 +207,6 @@ export const pageQuery = graphql`
                         name
                     }
                 }
-                ...PortfolioFeaturedMediaFragment
             }
         }
         wpPage(slug: { eq: "portfolio" }) {

@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx, Container, Heading, Flex, Box, Badge } from 'theme-ui'
 import React from 'react'
-import { Link, graphql } from 'gatsby'
+import { graphql } from 'gatsby'
 import Image from 'gatsby-image'
 import parse from 'html-react-parser'
 
@@ -119,17 +119,6 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
                                         }}
                                     >
                                         {post.tags.nodes.map(({ name, id }) => (
-                                            // <span
-                                            //     sx={{
-                                            //         backgroundColor: 'black',
-                                            //         color: 'white',
-                                            //         p: 1,
-                                            //         m: 2,
-                                            //     }}
-                                            //     key={id}
-                                            // >
-                                            //     {name}
-                                            // </span>
                                             <Badge key={id} variant='primary'>
                                                 {name}
                                             </Badge>

@@ -41,8 +41,7 @@ const PageTemplate = ({ data: { page } }) => {
                                 }}
                             >
                                 <Box
-                                    pr={5}
-                                    py={4}
+                                    p={[5, 5, 3, 6]}
                                     sx={{
                                         textAlign: ['left', 'left', 'right'],
                                         flex: [null, null, 1],
@@ -50,8 +49,8 @@ const PageTemplate = ({ data: { page } }) => {
                                         display: 'flex',
                                         flexDirection: 'column',
                                         alignItems: 'flex-end',
-                                        // justifyContent: 'flex-end',
-                                        borderRight: [0, '1px solid black'],
+                                        // justifyContent: 'center',
+                                        borderRight: [0, 0, '1px solid black'],
                                     }}
                                 >
                                     {page.pagesubheading && (
@@ -84,8 +83,8 @@ const PageTemplate = ({ data: { page } }) => {
                                     )}
                                 </Box>
                                 <Box
-                                    py={4}
-                                    px={5}
+                                    py={[4, 4, 5]}
+                                    px={[5, 5, 6]}
                                     sx={{
                                         flex: [null, null, 3],
                                         width: ['100%', null],
@@ -113,7 +112,7 @@ export default PageTemplate
 export const pageQuery = graphql`
     query PageById(
         # these variables are passed in via createPage.pageContext in gatsby-node.js
-        $id: String! # $uri: String!
+        $id: String!
     ) {
         # selecting the current post by id
         page: wpPage(id: { eq: $id }) {
@@ -131,22 +130,6 @@ export const pageQuery = graphql`
                 ...BlackalsatianContentBlock
                 ...BlackalsatianPageMetaBlock
             }
-            # uri
         }
-        # site(siteMetadata: { page: { elemMatch: { url: { eq: $uri } } } }) {
-        #     siteMetadata {
-        #         page {
-        #             url
-        #             header {
-        #                 text
-        #                 background
-        #             }
-        #             body {
-        #                 text
-        #                 background
-        #             }
-        #         }
-        #     }
-        # }
     }
 `

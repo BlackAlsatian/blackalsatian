@@ -1,11 +1,11 @@
 /** @jsx jsx */
-import { jsx, Container } from 'theme-ui'
+import { jsx, Container, Heading, Flex, Box, Badge, Button } from 'theme-ui'
 import React from 'react'
-import { Link, graphql } from 'gatsby'
+import { graphql } from 'gatsby'
 import Image from 'gatsby-image'
 import parse from 'html-react-parser'
 import SEO from '../components/seo'
-import PageHeader from '../components/template/pageHeader'
+// import PageHeader from '../components/template/pageHeader'
 import PagesNav from '../components/pagesNav'
 
 const ProjectTemplate = ({ data: { previous, next, portfolio } }) => {
@@ -13,9 +13,8 @@ const ProjectTemplate = ({ data: { previous, next, portfolio } }) => {
         fluid: portfolio.featuredImage?.node?.localFile?.childImageSharp?.fluid,
         alt: portfolio.featuredImage?.node?.alt || ``,
     }
-    // const MAX_LENGTH = 100
-    console.log(previous)
-    console.log(next)
+    // console.log(previous)
+    // console.log(next)
     return (
         <>
             <SEO title={portfolio.title} description={portfolio.excerpt} />
@@ -25,52 +24,148 @@ const ProjectTemplate = ({ data: { previous, next, portfolio } }) => {
                     display: 'flex',
                     flexDirection: 'column',
                     minHeight: '100vh',
+                    backgroundColor: 'black',
+                    color: 'white',
                 }}
             >
-                <PageHeader
-                    title={parse(portfolio.title)}
-                    intro={parse(portfolio.excerpt)}
-                    backgroundColor='blue'
-                    color='white'
-                />
-                <section>
-                    <Container
-                        p={4}
-                        sx={{ display: 'flex', alignItems: 'center' }}
+                <section
+                    sx={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        // alignItems: 'center',
+                        // justifyContent: 'space-between',
+                        minHeight: '100vh',
+                        pt: '10vh',
+                    }}
+                >
+                    <Flex
+                        sx={{
+                            display: 'flex',
+                            justifyContent: 'space-between',
+                            flexDirection: 'row',
+                            px: 5,
+                        }}
                     >
-                        <div sx={{ flex: 2 }}>
-                            <header>
-                                <h1 itemProp='headline'>
-                                    {parse(portfolio.title)}
-                                </h1>
-
-                                {/* if we have a featured image for this page let's display it */}
-                                {featuredImage?.fluid && (
-                                    <Image
-                                        fluid={featuredImage.fluid}
-                                        alt={featuredImage.alt}
-                                        style={{ marginBottom: 50 }}
-                                    />
-                                )}
-                            </header>
+                        <Heading
+                            as='h1'
+                            sx={{
+                                fontSize: [7, 8],
+                                lineHeight: 'none',
+                                letterSpacing: 'tighter',
+                                pr: 5,
+                                // color: 'black',
+                            }}
+                        >
+                            {parse(portfolio.title)}
+                        </Heading>
+                        <div
+                            sx={{
+                                pl: 5,
+                                textAlign: 'right',
+                                // color: 'black'
+                            }}
+                        >
+                            {parse(portfolio.excerpt)}
                         </div>
-
-                        <div sx={{ flex: 2 }}>
-                            {!!portfolio.content && (
-                                <section itemProp='articleBody'>
-                                    <div
+                    </Flex>
+                    <Container p={5}>
+                        {featuredImage?.fluid && (
+                            <Image
+                                fluid={featuredImage.fluid}
+                                alt={featuredImage.alt}
+                            />
+                        )}
+                    </Container>
+                </section>
+                <section sx={{ py: 5 }}>
+                    <Container p={5}>
+                        <Flex
+                            sx={{
+                                flexDirection: ['column', 'column', 'row'],
+                            }}
+                        >
+                            <Box
+                                p={[5, 5, 3, 6]}
+                                sx={{
+                                    textAlign: ['left', 'left', 'right'],
+                                    flex: [null, null, 1],
+                                    width: ['100%', null],
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    alignItems: 'flex-end',
+                                    // justifyContent: 'center',
+                                    borderRight: [0, 0, '1px solid white'],
+                                }}
+                            >
+                                {portfolio.projectYear && (
+                                    <Heading
+                                        as='h3'
                                         sx={{
-                                            display: 'flex',
-                                            flexDirection: 'column',
-                                            minHeight: '100vh',
-                                            variant: 'blog.portfolio',
+                                            fontSize: [4, 3, 4, 5],
+                                            fontWeight: 'thin',
+                                            lineHeight: 1,
+                                            mb: 4,
+                                            letterSpacing: 'tighter',
                                         }}
                                     >
-                                        {parse(portfolio.content)}
-                                    </div>
-                                </section>
-                            )}
-                        </div>
+                                        {portfolio.projectYear}
+                                    </Heading>
+                                )}
+
+                                {portfolio.projectUrl && (
+                                    <a
+                                        href={portfolio.projectUrl}
+                                        title={parse(portfolio.title)}
+                                        target='_blank'
+                                        rel='noopener nofollow noreferrer'
+                                        sx={{
+                                            variant: 'buttons.simple',
+                                            display: 'inline-block',
+                                            backgroundColor: 'white',
+                                            color: 'black',
+                                            textDecoration: 'none',
+                                            boxShadow: 'xl',
+                                            '&:hover': {
+                                                boxShadow: 'none',
+                                            },
+                                        }}
+                                    >
+                                        Visit
+                                    </a>
+                                )}
+
+                                <div
+                                    sx={{
+                                        py: 5,
+                                        pl: 5,
+                                        lineHeight: 'loose',
+                                    }}
+                                >
+                                    {portfolio.tags.nodes &&
+                                        portfolio.tags.nodes.map(
+                                            ({ name, id }) => (
+                                                <Badge
+                                                    key={id}
+                                                    variant='outline'
+                                                >
+                                                    {name}
+                                                </Badge>
+                                            ),
+                                        )}
+                                </div>
+                            </Box>
+                            <Box
+                                py={[4, 4, 5]}
+                                px={[5, 5, 6]}
+                                sx={{
+                                    flex: [null, null, 3],
+                                    width: ['100%', null],
+                                    variant: 'layout',
+                                }}
+                            >
+                                {parse(portfolio.content)}
+                            </Box>
+                        </Flex>
                     </Container>
                 </section>
                 <section>
@@ -79,7 +174,7 @@ const ProjectTemplate = ({ data: { previous, next, portfolio } }) => {
                         nextPagePath={next && next.uri}
                         previousName={previous && parse(previous.title)}
                         nextName={next && parse(next.title)}
-                        backgroundColor='blue'
+                        backgroundColor='black'
                         color='white'
                     />
                 </section>
@@ -100,9 +195,17 @@ export const portfolioQuery = graphql`
         # selecting the current post by id
         portfolio: wpPortfolio(id: { eq: $id }) {
             id
+            title
             excerpt
             content
-            title
+            projectUrl
+            projectYear
+            tags {
+                nodes {
+                    id
+                    name
+                }
+            }
             ...PortfolioFeaturedMediaFragment
         }
 

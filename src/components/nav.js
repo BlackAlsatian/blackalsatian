@@ -1,6 +1,5 @@
 /** @jsx jsx */
 import { jsx, Flex } from 'theme-ui'
-// import { Link } from 'gatsby'
 import AniLink from 'gatsby-plugin-transition-link/AniLink'
 import navLinks from './navLinks'
 
@@ -12,7 +11,7 @@ export default function Nav({ color, handleMenuClick }) {
                     swipe
                     duration={0.35}
                     direction='left'
-                    color={'color'}
+                    color={color}
                     // bg={color}
                     key={id}
                     to={url}

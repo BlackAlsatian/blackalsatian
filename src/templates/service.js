@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx, Container } from 'theme-ui'
 import React from 'react'
-import { Link, graphql } from 'gatsby'
+import { graphql } from 'gatsby'
 import Image from 'gatsby-image'
 import parse from 'html-react-parser'
 import SEO from '../components/seo'
@@ -13,8 +13,8 @@ const PageTemplate = ({ data: { previous, next, service } }) => {
         fluid: service.featuredImage?.node?.localFile?.childImageSharp?.fluid,
         alt: service.featuredImage?.node?.alt || ``,
     }
-    console.log(previous)
-    console.log(next)
+    // console.log(previous)
+    // console.log(next)
     return (
         <>
             <SEO title={service.title} description={service.excerpt} />
