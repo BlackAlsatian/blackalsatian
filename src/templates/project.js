@@ -6,6 +6,7 @@ import Image from 'gatsby-image'
 import parse from 'html-react-parser'
 import SEO from '../components/seo'
 import PageHeader from '../components/template/pageHeader'
+import PagesNav from '../components/pagesNav'
 
 const ProjectTemplate = ({ data: { previous, next, portfolio } }) => {
     const featuredImage = {
@@ -13,6 +14,8 @@ const ProjectTemplate = ({ data: { previous, next, portfolio } }) => {
         alt: portfolio.featuredImage?.node?.alt || ``,
     }
     // const MAX_LENGTH = 100
+    console.log(previous)
+    console.log(next)
     return (
         <>
             <SEO title={portfolio.title} description={portfolio.excerpt} />
@@ -71,37 +74,14 @@ const ProjectTemplate = ({ data: { previous, next, portfolio } }) => {
                     </Container>
                 </section>
                 <section>
-                    <hr />
-
-                    <Container p={4}>
-                        <nav className='portfolio-page-nav'>
-                            <ul
-                                style={{
-                                    display: `flex`,
-                                    flexWrap: `wrap`,
-                                    justifyContent: `space-between`,
-                                    listStyle: `none`,
-                                    padding: 0,
-                                }}
-                            >
-                                <li>
-                                    {previous && (
-                                        <Link to={previous.uri} rel='prev'>
-                                            ← {parse(previous.title)}
-                                        </Link>
-                                    )}
-                                </li>
-
-                                <li>
-                                    {next && (
-                                        <Link to={next.uri} rel='next'>
-                                            {parse(next.title)} →
-                                        </Link>
-                                    )}
-                                </li>
-                            </ul>
-                        </nav>
-                    </Container>
+                    <PagesNav
+                        previousPagePath={previous && previous.uri}
+                        nextPagePath={next && next.uri}
+                        previousName={previous && parse(previous.title)}
+                        nextName={next && parse(next.title)}
+                        backgroundColor='blue'
+                        color='white'
+                    />
                 </section>
             </div>
         </>

@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
-import { Fragment } from 'react'
+// import { Fragment } from 'react'
 import { Link } from 'gatsby'
 
 import EnquiryForm from '../components/forms/enquiryForm'
@@ -69,11 +69,12 @@ export function getForm(
     // console.log(buttonUrl)
     if (option === 'btnonly') {
         return (
-            <Fragment>
+            <p>
                 <Link
                     to={buttonUrl}
                     sx={{
                         variant: 'buttons.simple',
+                        display: 'inline-block',
                         backgroundColor: `${buttonBackground}`,
                         color: `${backgroundColor || 'white'}`,
                         textDecoration: 'none',
@@ -85,7 +86,7 @@ export function getForm(
                 >
                     {buttonName}
                 </Link>
-            </Fragment>
+            </p>
         )
     }
     if (option === 'lead') {
@@ -95,6 +96,7 @@ export function getForm(
                 color={`${backgroundColor || 'black'}`}
                 formStyle='inputs.background'
                 btnColor={`${backgroundColor || 'white'}`}
+                buttonName={buttonName}
             />
         )
     }
@@ -105,6 +107,7 @@ export function getForm(
                 color={`${backgroundColor || 'black'}`}
                 formStyle='inputs.background'
                 btnColor={`${backgroundColor || 'white'}`}
+                buttonName={buttonName}
             />
         )
     }
@@ -115,6 +118,7 @@ export function getForm(
                 color={`${backgroundColor || 'black'}`}
                 formStyle='inputs.background'
                 btnColor={`${backgroundColor || 'white'}`}
+                buttonName={buttonName}
             />
         )
     }

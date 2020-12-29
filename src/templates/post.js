@@ -7,6 +7,7 @@ import parse from 'html-react-parser'
 
 import Bio from '../components/bio'
 import SEO from '../components/seo'
+import PagesNav from '../components/pagesNav'
 
 const BlogPostTemplate = ({ data: { previous, next, post } }) => {
     const featuredImage = {
@@ -153,72 +154,16 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
 
                 <footer>{/* <Bio /> */}</footer>
             </article>
-
-            <nav className='blog-post-nav'>
-                <ul
-                    sx={{
-                        display: `flex`,
-                        flexWrap: `wrap`,
-                        justifyContent: `space-between`,
-                        listStyle: `none`,
-                        p: 4,
-                    }}
-                >
-                    <li sx={{ m: 3 }}>
-                        {previous && (
-                            <Link
-                                to={previous.uri}
-                                rel='prev'
-                                sx={{
-                                    variant: 'buttons.simple',
-                                    backgroundColor: 'black',
-                                    color: 'white',
-                                    textDecoration: 'none',
-                                    boxShadow: 'xl',
-                                    transition: '200ms',
-                                    py: 3,
-                                    px: 4,
-                                    fontSize: 3,
-                                    fontWeight: 'black',
-                                    '&:hover': {
-                                        backgroundColor: 'black',
-                                        boxShadow: 'none',
-                                    },
-                                }}
-                            >
-                                ← {parse(previous.title)}
-                            </Link>
-                        )}
-                    </li>
-
-                    <li sx={{ m: 3 }}>
-                        {next && (
-                            <Link
-                                to={next.uri}
-                                rel='next'
-                                sx={{
-                                    variant: 'buttons.simple',
-                                    backgroundColor: 'black',
-                                    color: 'white',
-                                    textDecoration: 'none',
-                                    boxShadow: 'xl',
-                                    transition: '200ms',
-                                    py: 3,
-                                    px: 4,
-                                    fontSize: 3,
-                                    fontWeight: 'black',
-                                    '&:hover': {
-                                        backgroundColor: 'black',
-                                        boxShadow: 'none',
-                                    },
-                                }}
-                            >
-                                {parse(next.title)} →
-                            </Link>
-                        )}
-                    </li>
-                </ul>
-            </nav>
+            <section>
+                <PagesNav
+                    previousPagePath={previous && previous.uri}
+                    nextPagePath={next && next.uri}
+                    previousName={previous && parse(previous.title)}
+                    nextName={next && parse(next.title)}
+                    backgroundColor='black'
+                    color='white'
+                />
+            </section>
         </>
     )
 }

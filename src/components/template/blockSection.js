@@ -75,11 +75,14 @@ export default function ContentBlock(props) {
                         </Heading>
                     </Box>
                     <Box
-                        py={5}
-                        px={6}
+                        py={[4, 4, 5]}
+                        px={[5, 5, 6]}
                         sx={{
                             flex: [null, null, 3],
                             width: ['100%', null],
+                            display: 'flex',
+                            flexDirection: 'column',
+                            justifyContent: 'center',
                         }}
                     >
                         <BlockText text={text} />

@@ -286,9 +286,15 @@ async function getPortfolio({ graphql, reporter }) {
         query WpPortfolio {
             allWpPortfolio(filter: { status: { eq: "publish" } }) {
                 edges {
+                    previous {
+                        id
+                    }
                     portfolio: node {
                         id
                         uri
+                    }
+                    next {
+                        id
                     }
                 }
             }

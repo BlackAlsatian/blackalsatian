@@ -6,13 +6,15 @@ import Image from 'gatsby-image'
 import parse from 'html-react-parser'
 import SEO from '../components/seo'
 import PageHeader from '../components/template/pageHeader'
+import PagesNav from '../components/pagesNav'
 
 const PageTemplate = ({ data: { previous, next, service } }) => {
     const featuredImage = {
         fluid: service.featuredImage?.node?.localFile?.childImageSharp?.fluid,
         alt: service.featuredImage?.node?.alt || ``,
     }
-    // const MAX_LENGTH = 100
+    console.log(previous)
+    console.log(next)
     return (
         <>
             <SEO title={service.title} description={service.excerpt} />
@@ -71,75 +73,14 @@ const PageTemplate = ({ data: { previous, next, service } }) => {
                     </Container>
                 </section>
                 <section>
-                    <hr />
-
-                    <Container p={4}>
-                        <nav className='service-page-nav'>
-                            <ul
-                                style={{
-                                    display: `flex`,
-                                    flexWrap: `wrap`,
-                                    justifyContent: `space-between`,
-                                    listStyle: `none`,
-                                    padding: 0,
-                                }}
-                            >
-                                <li>
-                                    {previous && (
-                                        <Link
-                                            to={previous.uri}
-                                            rel='prev'
-                                            sx={{
-                                                variant: 'buttons.simple',
-                                                backgroundColor: 'yellow',
-                                                color: 'black',
-                                                textDecoration: 'none',
-                                                boxShadow: 'xl',
-                                                transition: '200ms',
-                                                py: 3,
-                                                px: 4,
-                                                fontSize: 3,
-                                                fontWeight: 'black',
-                                                '&:hover': {
-                                                    backgroundColor: 'yellow',
-                                                    boxShadow: 'none',
-                                                },
-                                            }}
-                                        >
-                                            ← {parse(previous.title)}
-                                        </Link>
-                                    )}
-                                </li>
-
-                                <li>
-                                    {next && (
-                                        <Link
-                                            to={next.uri}
-                                            rel='next'
-                                            sx={{
-                                                variant: 'buttons.simple',
-                                                backgroundColor: 'yellow',
-                                                color: 'black',
-                                                textDecoration: 'none',
-                                                boxShadow: 'xl',
-                                                transition: '200ms',
-                                                py: 3,
-                                                px: 4,
-                                                fontSize: 3,
-                                                fontWeight: 'black',
-                                                '&:hover': {
-                                                    backgroundColor: 'yellow',
-                                                    boxShadow: 'none',
-                                                },
-                                            }}
-                                        >
-                                            {parse(next.title)} →
-                                        </Link>
-                                    )}
-                                </li>
-                            </ul>
-                        </nav>
-                    </Container>
+                    <PagesNav
+                        previousPagePath={previous && previous.uri}
+                        nextPagePath={next && next.uri}
+                        previousName={previous && parse(previous.title)}
+                        nextName={next && parse(next.title)}
+                        backgroundColor='yellow'
+                        color='black'
+                    />
                 </section>
             </div>
         </>

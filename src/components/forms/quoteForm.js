@@ -2,7 +2,7 @@
 import { jsx } from 'theme-ui'
 import { Label, Input, Textarea, Box, Button } from 'theme-ui'
 
-function EnquiryForm({ buttonBackground, btnColor, formStyle }) {
+function EnquiryForm({ buttonBackground, btnColor, formStyle, buttonName }) {
     return (
         <Box as='form' onSubmit={(e) => e.preventDefault()}>
             <Label htmlFor='name'>Name</Label>
@@ -51,7 +51,7 @@ function EnquiryForm({ buttonBackground, btnColor, formStyle }) {
                     },
                 }}
             >
-                Fetch!
+                {buttonName || 'Fetch!'}
             </Button>
         </Box>
     )

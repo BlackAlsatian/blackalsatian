@@ -28,7 +28,7 @@ const Header = ({ color }) => {
                 variant: 'layout.header.closedMenu',
             }}
         >
-            <AniLink paintDrip duration={0.2} color='black' to='/'>
+            <AniLink fade duration={1.5} color='black' to='/'>
                 <Logo color={color} />
             </AniLink>
             <Nav color={color} />

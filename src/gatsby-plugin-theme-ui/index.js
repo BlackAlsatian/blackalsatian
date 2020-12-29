@@ -29,7 +29,8 @@ export default {
         gray: '#939597',
         // ##
         // red: '#e71d36',
-        red: '#de4a50',
+        // red: '#de4a50',
+        red: '#e54b42',
         offWhite: `${tailwind.colors.gray[2]}`,
         mainOpenMenu: '#939597',
     },
