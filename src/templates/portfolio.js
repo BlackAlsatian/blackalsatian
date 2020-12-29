@@ -14,10 +14,7 @@ const PortfolioIndex = ({ data }) => {
         return (
             <>
                 <SEO title='All portfolio' />
-                <p>
-                    No blog portfolio found. Add portfolio to your WordPress
-                    site and they'll appear here!
-                </p>
+                <p>No blog projects found.</p>
             </>
         )
     }

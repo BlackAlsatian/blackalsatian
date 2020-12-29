@@ -14,10 +14,7 @@ const ServicesIndex = ({ data }) => {
         return (
             <>
                 <SEO title='All services' />
-                <p>
-                    No blog services found. Add services to your WordPress site
-                    and they'll appear here!
-                </p>
+                <p>No blog services found.</p>
             </>
         )
     }
