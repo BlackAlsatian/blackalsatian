@@ -116,6 +116,15 @@ export const fragments = graphql`
             intro
         }
     }
+    fragment WpMenuItems on WpMenu {
+        menuItems {
+            nodes {
+                id
+                label
+                url
+            }
+        }
+    }
 
     # fragment AllBlocksFragment on WpBlock {
     #   name

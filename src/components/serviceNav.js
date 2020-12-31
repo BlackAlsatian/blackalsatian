@@ -1,13 +1,20 @@
 /** @jsx jsx */
 import { jsx, Flex } from 'theme-ui'
-// import { Link } from 'gatsby'
+import { useStaticQuery, graphql } from 'gatsby'
 import AniLink from 'gatsby-plugin-transition-link/AniLink'
-import serviceLinks from './serviceLinks'
 
 export default function ServiceNav({ color, handleMenuClick }) {
+    const data = useStaticQuery(graphql`
+        {
+            wpMenu(slug: { eq: "services-menu" }) {
+                ...WpMenuItems
+            }
+        }
+    `)
+    const serviceLinks = data.wpMenu.menuItems.nodes
     return (
         <Flex as='nav' sx={{ flexDirection: 'column' }}>
-            {serviceLinks.map(({ name, url, id }) => (
+            {serviceLinks.map((item) => (
                 <AniLink
                     swipe
                     // duration={0.7}
@@ -15,12 +22,12 @@ export default function ServiceNav({ color, handleMenuClick }) {
                     // top='entry'
                     entryOffset={80}
                     color='black'
-                    key={id}
-                    to={url}
+                    key={item.id}
+                    to={item.url}
                     sx={{ color: `${color}`, pb: 3 }}
                     onClick={handleMenuClick}
                 >
-                    {name}
+                    {item.label}
                 </AniLink>
             ))}
         </Flex>

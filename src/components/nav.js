@@ -1,9 +1,19 @@
 /** @jsx jsx */
 import { jsx, Flex } from 'theme-ui'
+import { useStaticQuery, graphql } from 'gatsby'
 import AniLink from 'gatsby-plugin-transition-link/AniLink'
-import navLinks from './navLinks'
+// import navLinks from './navLinks'
+// import useMenuQuery from '../hooks/useMenuQuery'
 
-export default function Nav({ isOpen, color, handleMenuClick }) {
+export default function Nav({ color, handleMenuClick }) {
+    const data = useStaticQuery(graphql`
+        {
+            wpMenu(slug: { eq: "primary-menu" }) {
+                ...WpMenuItems
+            }
+        }
+    `)
+    const navLinks = data.wpMenu.menuItems.nodes
     return (
         <Flex
             as='nav'
@@ -12,15 +22,15 @@ export default function Nav({ isOpen, color, handleMenuClick }) {
                 display: ['none', 'none', 'flex'],
             }}
         >
-            {navLinks.map(({ name, url, id }) => (
+            {navLinks.map((item) => (
                 <AniLink
                     swipe
                     duration={0.35}
                     direction='left'
                     color={color}
                     // bg={color}
-                    key={id}
-                    to={url}
+                    key={item.id}
+                    to={item.url}
                     sx={{
                         color: `${color}`,
                         '&:hover, &:focus, &.active': {
@@ -37,7 +47,7 @@ export default function Nav({ isOpen, color, handleMenuClick }) {
                     }}
                     onClick={handleMenuClick}
                 >
-                    {name}
+                    {item.label}
                 </AniLink>
             ))}
         </Flex>

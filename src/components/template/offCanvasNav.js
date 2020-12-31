@@ -1,11 +1,19 @@
 /** @jsx jsx */
 import { jsx, Flex } from 'theme-ui'
 import AniLink from 'gatsby-plugin-transition-link/AniLink'
-// import { Link } from 'gatsby'
+import { useStaticQuery, graphql } from 'gatsby'
 import { animated, useSpring } from 'react-spring'
-import navLinks from '../navLinks'
+// import navLinks from '../navLinks'
 
 function OffCanvas({ isOpen, handleMenuClick }) {
+    const data = useStaticQuery(graphql`
+        {
+            wpMenu(slug: { eq: "primary-menu" }) {
+                ...WpMenuItems
+            }
+        }
+    `)
+    const navLinks = data.wpMenu.menuItems.nodes
     // const [show, setShow] = useState(true)
     // const toggle = () => {
     //     setShow(!show)
@@ -104,11 +112,11 @@ function OffCanvas({ isOpen, handleMenuClick }) {
                     m: 0,
                     display: 'flex',
                     flexDirection: 'column',
-                    transition: 'color 1000ms ease-in',
+                    transition: 'opacity 750ms ease-in',
                     opacity: isOpen ? 0.9 : 0,
                 }}
             >
-                {navLinks.map(({ name, url, id }) => {
+                {navLinks.map((item) => {
                     return (
                         <AniLink
                             fade
@@ -116,8 +124,8 @@ function OffCanvas({ isOpen, handleMenuClick }) {
                             // direction='left'
                             // color={color}
                             // bg={color}
-                            key={id}
-                            to={url}
+                            key={item.id}
+                            to={item.url}
                             sx={{
                                 color: 'offWhite',
                                 '&:hover, &:focus, &.active': {
@@ -135,7 +143,7 @@ function OffCanvas({ isOpen, handleMenuClick }) {
                             }}
                             onClick={handleMenuClick}
                         >
-                            {name}
+                            {item.label}
                         </AniLink>
                     )
                 })}
