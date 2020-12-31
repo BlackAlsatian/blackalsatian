@@ -107,10 +107,11 @@ const PortfolioIndex = ({ data }) => {
                                     const title = portfolio.title
                                     return (
                                         <AniLink
-                                            swipe
-                                            duration={0.35}
+                                            cover
+                                            duration={0.5}
                                             direction='left'
-                                            color='yellow'
+                                            // color='yellow'
+                                            bg='#f5df4d'
                                             key={portfolio.uri}
                                             to={portfolio.uri}
                                             title={parse(title)}

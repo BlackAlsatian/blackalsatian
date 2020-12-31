@@ -75,7 +75,7 @@ const BlogIndex = ({
                             return (
                                 <AniLink
                                     paintDrip
-                                    duration={0.5}
+                                    duration={1}
                                     // direction='right'
                                     color='white'
                                     to={post.uri}
@@ -156,6 +156,7 @@ const BlogIndex = ({
                         // nextName='Next'
                         backgroundColor='white'
                         color='black'
+                        swipeColor='black'
                     />
                 </section>
             </div>

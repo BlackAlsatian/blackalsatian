@@ -22,6 +22,14 @@ const Footer = ({ siteTitle, path }) => {
         bgcolor = 'white'
         textcolor = 'black'
     }
+    if (
+        path.includes('contact') ||
+        path.includes('terms-of-use') ||
+        path.includes('privacy-policy')
+    ) {
+        bgcolor = 'yellow'
+        textcolor = 'black'
+    }
     return (
         <footer
             sx={{
@@ -139,8 +147,8 @@ const Footer = ({ siteTitle, path }) => {
                     >
                         <EnquiryForm
                             formStyle='inputs.underline'
-                            buttonBackground='white'
-                            btnColor='black'
+                            buttonBackground={textcolor}
+                            btnColor={bgcolor}
                         />
                     </div>
                 </Flex>

@@ -47,6 +47,23 @@ export default function ComponentParser(props) {
     //         opacity: 1,
     //     },
     // }
+    // const callback = (
+    //     id,
+    //     phase,
+    //     actualDuration,
+    //     baseDuration,
+    //     startTime,
+    //     commitTime,
+    //     interactions,
+    // ) => {
+    //     console.log(`id: ${id}`)
+    //     console.log(`phase: ${phase}`)
+    //     console.log(`actualDuration: ${actualDuration}`)
+    //     console.log(`baseDuration: ${baseDuration}`)
+    //     console.log(`startTime: ${startTime}`)
+    //     console.log(`commitTime: ${commitTime}`)
+    //     console.log(`interactions: ${JSON.stringify(interactions)}`)
+    // }
 
     return (
         <>
@@ -67,7 +84,9 @@ export default function ComponentParser(props) {
                             />
                         )}
                         {__typename === 'WpBlackalsatianServicesBlock' && (
+                            // <Profiler id='servicesblock' onRender={callback}>
                             <ServicesBlock />
+                            // </Profiler>
                         )}
                         {__typename === 'WpBlackalsatianLatestPostsBlock' && (
                             <LatestPostsBlock />

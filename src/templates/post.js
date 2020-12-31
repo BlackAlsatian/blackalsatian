@@ -151,6 +151,7 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
                     nextName={next && parse(next.title)}
                     backgroundColor='black'
                     color='white'
+                    swipeColor='white'
                 />
             </section>
         </>

@@ -49,10 +49,10 @@ const ServicesIndex = ({ data }) => {
                             }
                             return (
                                 <AniLink
-                                    swipe
-                                    duration={0.35}
+                                    cover
+                                    duration={0.5}
                                     direction='left'
-                                    color='yellow'
+                                    bg='#f5df4d'
                                     key={service.slug}
                                     to={service.uri}
                                     itemProp='url'
@@ -68,7 +68,7 @@ const ServicesIndex = ({ data }) => {
                                             // use arrays for mobile-first responsive styles
                                             gridTemplateColumns: [
                                                 'auto', // default to a stacked layout on small screens
-                                                '1fr 2fr 1fr', // use columns for larger screens
+                                                '1fr 1fr 1fr 1fr', // use columns for larger screens
                                             ],
                                             gridAutoRows: '25vmin',
                                         }}
@@ -76,7 +76,7 @@ const ServicesIndex = ({ data }) => {
                                         <div
                                             sx={{
                                                 gridColumnStart: 1,
-                                                gridColumnEnd: [4, 3],
+                                                gridColumnEnd: [5, 4],
                                                 gridRowStart: 1,
                                                 gridRowEnd: 4,
                                             }}
@@ -96,12 +96,12 @@ const ServicesIndex = ({ data }) => {
                                         </div>
                                         <div
                                             sx={{
-                                                gridColumnStart: [1, 2],
-                                                gridColumnEnd: 4,
+                                                gridColumnStart: [1, 3],
+                                                gridColumnEnd: 5,
                                                 gridRowStart: 2,
                                                 gridRowEnd: [4, 3],
                                                 backgroundColor:
-                                                    'rgba(255, 255, 255, 0.9)',
+                                                    'rgba(255, 255, 255, 0.7)',
                                                 // 'rgba(0, 0, 0, 0.8)',
                                                 // 'rgba(46, 196, 182, 0.6)',
                                                 zIndex: 30,
@@ -132,7 +132,7 @@ export default ServicesIndex
 
 export const pageQuery = graphql`
     query WordPressServicesIndex {
-        allWpService {
+        allWpService(sort: { order: DESC, fields: date }) {
             nodes {
                 uri
                 title

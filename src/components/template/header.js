@@ -1,13 +1,12 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
-// import { Link } from 'gatsby'
 import { useState } from 'react'
 import AniLink from 'gatsby-plugin-transition-link/AniLink'
 import MenuIcon from '../menuIcon'
-import FullMenu from './fullMenu'
+import OffCanvas from './offCanvasNav'
 import Logo from '../logo'
 import Nav from '../nav'
-// import { useThemeUI } from 'theme-ui'
+// import { useSpring } from 'react-spring'
 
 const Header = ({ color }) => {
     const [isOpen, setIsOpen] = useState(false)
@@ -15,24 +14,26 @@ const Header = ({ color }) => {
     const handleBurgerMenuClick = () => {
         setIsOpen(!isOpen)
     }
-    // console.log(isOpen)
+
     return (
         <header
             sx={{
                 display: 'flex',
                 alignItems: 'center',
-                // width: 'screenWidth',
                 top: 0,
                 left: 0,
                 right: 0,
+                p: [3, 3],
+                position: 'absolute',
+                zIndex: 10,
                 variant: 'layout.header.closedMenu',
             }}
         >
-            <AniLink fade duration={1.5} color='black' to='/'>
+            <AniLink fade duration={1} to='/'>
                 <Logo color={color} />
             </AniLink>
             <Nav color={color} />
-            <FullMenu isOpen={isOpen} handleMenuClick={handleBurgerMenuClick} />
+            <OffCanvas isOpen={isOpen} handleMenuClick={handleBurgerMenuClick} />
             <div
                 sx={{
                     position: 'fixed',
@@ -44,11 +45,7 @@ const Header = ({ color }) => {
                     zIndex: 30,
                 }}
             >
-                <MenuIcon
-                    handleBurgerMenuClick={handleBurgerMenuClick}
-                    isOpen={isOpen}
-                    color={color}
-                />
+                <MenuIcon handleBurgerMenuClick={handleBurgerMenuClick} isOpen={isOpen} color={color} />
                 <span
                     sx={{
                         position: 'fixed',

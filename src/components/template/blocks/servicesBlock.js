@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx, Container, Flex, Box, Heading } from 'theme-ui'
-import { useStaticQuery, graphql, Link } from 'gatsby'
-// import parse from 'html-react-parser'
+import { useStaticQuery, graphql } from 'gatsby'
+import AniLink from 'gatsby-plugin-transition-link/AniLink'
 
 const ServicesBlock = () => {
     const data = useStaticQuery(graphql`
@@ -12,8 +12,8 @@ const ServicesBlock = () => {
                         id
                         uri
                         title
-                        slug
-                        excerpt
+                        # slug
+                        # excerpt
                     }
                 }
             }
@@ -84,14 +84,17 @@ const ServicesBlock = () => {
                         }}
                     >
                         {data.allWpService.edges.map(({ node }) => (
-                            <Link
-                                key={node.slug}
+                            <AniLink
+                                cover
+                                // duration={0.5}
+                                direction='left'
+                                bg='#f5df4d'
+                                key={node.id}
                                 to={node.uri}
                                 title={node.title}
                                 sx={{ color: 'black', textDecoration: 'none' }}
                             >
                                 <div
-                                    key={node.id}
                                     sx={{
                                         maxWidth: '100%',
                                         display: 'flex',
@@ -99,9 +102,13 @@ const ServicesBlock = () => {
                                         px: 2,
                                         minHeight: ['4rem', '4rem', '7rem'],
                                         borderBottom: '0.01rem solid black',
-                                        transition: 'background 500ms ease-in',
+                                        background: 'offWhite',
+                                        transition:
+                                            'background 1000ms ease-in-out, padding 600ms ease-out',
+
                                         '&:hover': {
                                             backgroundColor: 'yellow',
+                                            padding: '0 20px',
                                         },
                                     }}
                                 >
@@ -116,7 +123,7 @@ const ServicesBlock = () => {
                                     </Heading>
                                     {/* {parse(node.excerpt)} */}
                                 </div>
-                            </Link>
+                            </AniLink>
                         ))}
                     </Box>
                 </Flex>

@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx, Container, Heading, Flex, Box, Badge, Button } from 'theme-ui'
+import { jsx, Container, Heading, Flex, Box, Badge } from 'theme-ui'
 import React from 'react'
 import { graphql } from 'gatsby'
 import Image from 'gatsby-image'
@@ -174,8 +174,10 @@ const ProjectTemplate = ({ data: { previous, next, portfolio } }) => {
                         nextPagePath={next && next.uri}
                         previousName={previous && parse(previous.title)}
                         nextName={next && parse(next.title)}
-                        backgroundColor='black'
-                        color='white'
+                        backgroundColor='white'
+                        color='black'
+                        swipeColor='#111827'
+                        // swipeColor='#f5df4d'
                     />
                 </section>
             </div>

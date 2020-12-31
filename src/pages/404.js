@@ -1,7 +1,5 @@
 import React, { Fragment } from 'react'
 import { graphql } from 'gatsby'
-
-// import Layout from '../components/template/layout'
 import SEO from '../components/seo'
 
 const NotFoundPage = ({ data, location }) => {

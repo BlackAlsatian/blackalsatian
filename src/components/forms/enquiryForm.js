@@ -2,7 +2,13 @@
 import { jsx } from 'theme-ui'
 import { Label, Input, Textarea, Box, Button } from 'theme-ui'
 
-function EnquiryForm({ buttonBackground, btnColor, formStyle, buttonName }) {
+function EnquiryForm({
+    buttonBackground,
+    btnColor,
+    formStyle,
+    buttonName,
+    // borderColor,
+}) {
     return (
         <Box as='form' onSubmit={(e) => e.preventDefault()}>
             <Label htmlFor='name'>Name</Label>
@@ -11,7 +17,7 @@ function EnquiryForm({ buttonBackground, btnColor, formStyle, buttonName }) {
                 name='name'
                 mb={3}
                 variant={formStyle}
-                sx={{ borderBottomColor: 'white' }}
+                sx={{ borderBottomColor: `${buttonBackground}` || 'white' }}
             />
             <Label type='tel' htmlFor='number'>
                 Number
@@ -20,7 +26,7 @@ function EnquiryForm({ buttonBackground, btnColor, formStyle, buttonName }) {
                 name='number'
                 mb={3}
                 variant={formStyle}
-                sx={{ borderBottomColor: 'white' }}
+                sx={{ borderBottomColor: `${buttonBackground}` || 'white' }}
             />
             <Label htmlFor='email'>Email</Label>
             <Input
@@ -28,7 +34,7 @@ function EnquiryForm({ buttonBackground, btnColor, formStyle, buttonName }) {
                 name='email'
                 mb={3}
                 variant={formStyle}
-                sx={{ borderBottomColor: 'white' }}
+                sx={{ borderBottomColor: `${buttonBackground}` || 'white' }}
             />
             <Label htmlFor='comment'>Comment</Label>
             <Textarea
@@ -36,7 +42,7 @@ function EnquiryForm({ buttonBackground, btnColor, formStyle, buttonName }) {
                 rows='4'
                 mb={3}
                 variant={formStyle}
-                sx={{ borderBottomColor: 'white' }}
+                sx={{ borderBottomColor: `${buttonBackground}` || 'white' }}
             />
             <Button
                 variant='simple'

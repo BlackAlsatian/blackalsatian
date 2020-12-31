@@ -10,6 +10,7 @@ function PagesNav({
     nextName,
     backgroundColor,
     color,
+    swipeColor,
 }) {
     return (
         <nav>
@@ -26,10 +27,10 @@ function PagesNav({
                     {previousPagePath && (
                         <>
                             <AniLink
-                                swipe
-                                duration={0.35}
+                                cover
+                                duration={0.5}
                                 direction='right'
-                                color='yellow'
+                                bg={swipeColor || '#111827'}
                                 to={previousPagePath}
                                 rel='prev'
                                 title={previousName || 'Previous'}
@@ -59,10 +60,10 @@ function PagesNav({
                 <li sx={{ m: 3 }}>
                     {nextPagePath && (
                         <AniLink
-                            swipe
-                            duration={0.35}
+                            cover
+                            duration={0.5}
                             direction='left'
-                            color='yellow'
+                            bg={swipeColor || '#111827'}
                             to={nextPagePath}
                             rel='next'
                             title={nextName || 'Next'}

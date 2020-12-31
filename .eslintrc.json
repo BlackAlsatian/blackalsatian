@@ -1,0 +1,35 @@
+{
+    "env": {
+        "browser": true,
+        // "es2021": true
+        "node": true,
+        "es6": true
+    },
+    "parser": "@babel/eslint-parser",
+    "extends": [
+        "eslint:recommended",
+        "plugin:react/recommended",
+        "plugin:prettier/recommended",
+        "prettier/prettier",
+        "prettier/react"
+    ],
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "ecmaVersion": 6,
+        "sourceType": "module"
+    },
+    "plugins": ["@babel", "react", "prettier"],
+    "rules": {
+        // "semi": ["off", "always"],
+        // "quotes": ["error", "single"]
+        "react/jsx-pascal-case": "off",
+        "strict": 0,
+        "no-console": "warn",
+        "quotes": ["warn", "single"],
+        "prettier/prettier": "error",
+        "arrow-body-style": "off",
+        "prefer-arrow-callback": "off"
+    }
+}

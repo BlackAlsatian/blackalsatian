@@ -13,7 +13,7 @@ export default {
         primary: '#111827',
         secondary: '#fef08a',
         accent: '#f5df4d',
-        highlight: '#fed700',
+        highlight: `${tailwind.colors.gray[2]}`,
         info: '#2563eb',
         warning: '#fef08a',
         danger: '#ef4444',
@@ -66,10 +66,23 @@ export default {
             color: 'background',
             bg: 'primary',
         },
+        // outline: {
+        //     color: 'white',
+        //     bg: 'transparent',
+        //     boxShadow: 'inset 0 0 0 1px',
+        // },
+        pill: {
+            borderRadius: 'circle',
+            px: 3,
+            py: 1,
+            fontSize: 1,
+        },
         outline: {
-            color: 'white',
+            variant: 'badges.pill',
             bg: 'transparent',
-            boxShadow: 'inset 0 0 0 1px',
+            border: '1px solid',
+            borderColor: 'currentColor',
+            fontWeight: 'body',
         },
     },
     fonts: {
@@ -127,6 +140,7 @@ export default {
             },
         },
     },
+
     // textarea: {
     //     '&:focus': {
     //         backgroundColor: 'white',
@@ -139,58 +153,90 @@ export default {
     //     },
     // },
     layout: {
-        header: {
-            closedMenu: {
-                p: [3, 3],
-                position: 'absolute',
-                zIndex: 10,
-                nav: {
-                    ml: 'auto',
-                    display: ['none', 'none', 'flex'],
-                    a: {
-                        // color: 'white',
-                        // '&:hover, &:focus, &.active': {
-                        //     color: 'offWhite',
-                        // },
-                        cursor: 'pointer',
-                        fontSize: 1,
-                        fontWeight: 'extrabold',
-                        textDecoration: 'none',
-                        px: 3,
-                        '&:last-child': {
-                            pr: 0,
-                        },
+        nav: {
+            closed: {
+                ml: 'auto',
+                display: ['none', 'none', 'flex'],
+                a: {
+                    color: 'white',
+                    '&:hover, &:focus, &.active': {
+                        color: 'offWhite',
+                    },
+                    cursor: 'pointer',
+                    fontSize: 1,
+                    fontWeight: 'extrabold',
+                    textDecoration: 'none',
+                    px: 3,
+                    '&:last-child': {
+                        pr: 0,
                     },
                 },
             },
-            openMenu: {
-                p: [2, 3],
-                position: 'fixed',
-                zIndex: 20,
-                height: '100vh',
-                backgroundColor: 'rgba(0, 0, 0, 0.9)',
-                nav: {
-                    m: 0,
-                    display: 'flex',
-                    flexDirection: 'column',
-                    a: {
-                        color: 'mainOpenMenu',
-                        '&:hover, &:focus, &.active': {
-                            color: 'offWhite',
-                        },
-                        cursor: 'pointer',
-                        fontSize: [6, 7, 9],
-                        lineHeight: 'tight',
-                        fontWeight: 'extrabold',
-                        textDecoration: 'none',
-                        px: 3,
-                        '&:last-child': {
-                            pr: 0,
-                        },
+            open: {
+                m: 0,
+                display: 'flex',
+                flexDirection: 'column',
+                a: {
+                    color: 'mainOpenMenu',
+                    '&:hover, &:focus, &.active': {
+                        color: 'offWhite',
+                    },
+                    cursor: 'pointer',
+                    fontSize: [6, 7, 9],
+                    lineHeight: 'tight',
+                    fontWeight: 'extrabold',
+                    textDecoration: 'none',
+                    px: 3,
+                    '&:last-child': {
+                        pr: 0,
                     },
                 },
             },
         },
+        // header: {
+        //     closedMenu: {
+        //         nav: {
+        //             ml: 'auto',
+        //             display: ['none', 'none', 'flex'],
+        //             a: {
+        //                 // color: 'white',
+        //                 // '&:hover, &:focus, &.active': {
+        //                 //     color: 'offWhite',
+        //                 // },
+        //                 cursor: 'pointer',
+        //                 fontSize: 1,
+        //                 fontWeight: 'extrabold',
+        //                 textDecoration: 'none',
+        //                 px: 3,
+        //                 '&:last-child': {
+        //                     pr: 0,
+        //                 },
+        //             },
+        //         },
+        //     },
+        //     openMenu: {
+        //         nav: {
+        //             m: 0,
+        //             display: 'flex',
+        //             flexDirection: 'column',
+        //             a: {
+        //                 color: 'mainOpenMenu',
+        //                 '&:hover, &:focus, &.active': {
+        //                     color: 'offWhite',
+        //                 },
+        //                 cursor: 'pointer',
+        //                 fontSize: [6, 7, 9],
+        //                 lineHeight: 'tight',
+        //                 fontWeight: 'extrabold',
+        //                 textDecoration: 'none',
+        //                 px: 3,
+        //                 '&:last-child': {
+        //                     pr: 0,
+        //                 },
+        //             },
+        //         },
+        //     },
+        // },
         p: {
             a: {
                 color: 'black',

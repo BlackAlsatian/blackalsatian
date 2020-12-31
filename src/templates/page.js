@@ -22,6 +22,13 @@ const PageTemplate = ({ data: { page } }) => {
                         display: 'flex',
                         flexDirection: 'column',
                         minHeight: '100vh',
+                        backgroundColor:
+                            page.title.includes('Contact') ||
+                            page.title.includes('Terms of Use') ||
+                            page.title.includes('Privacy Policy')
+                                ? 'yellow'
+                                : 'white',
+
                         // variant: 'layout.about',
                     }}
                 >
@@ -29,9 +36,15 @@ const PageTemplate = ({ data: { page } }) => {
                         title={parse(page.title)}
                         intro={page.pageintro}
                         backgroundColor={
-                            page.title.includes('About') ? 'black' : 'blue'
+                            page.title.includes('About') ? 'black' : 'yellow'
                         }
-                        color='white'
+                        color={
+                            page.title.includes('Contact') ||
+                            page.title.includes('Terms of Use') ||
+                            page.title.includes('Privacy Policy')
+                                ? 'black'
+                                : 'white'
+                        }
                     />
                     <section sx={{ py: 5 }}>
                         <Container p={1}>

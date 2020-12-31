@@ -80,6 +80,7 @@ const PageTemplate = ({ data: { previous, next, service } }) => {
                         nextName={next && parse(next.title)}
                         backgroundColor='yellow'
                         color='black'
+                        swipeColor='#f5df4d'
                     />
                 </section>
             </div>

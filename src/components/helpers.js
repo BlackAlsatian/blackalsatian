@@ -34,7 +34,7 @@ export function handleColor(path) {
         case '/blog/6/':
             return 'black'
         case '/contact/':
-            return 'white'
+            return 'black'
         case '/services/':
             return 'black'
         case '/services/website-design/':
@@ -54,6 +54,10 @@ export function handleColor(path) {
         case '/services/personalised-email/':
             return 'black'
         case '/services/diy-websites/':
+            return 'black'
+        case '/terms-of-use/':
+            return 'black'
+        case '/privacy-policy/':
             return 'black'
         default:
             return 'white'
