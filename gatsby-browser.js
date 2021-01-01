@@ -19,6 +19,11 @@ export const shouldUpdateScroll = ({ routerProps: { location }, getSavedScrollPo
     }
     return false
 }
+
+// export const onPreRouteUpdate = ({ location, prevLocation }) => {
+//     console.log('Gatsby started to change location to', location.pathname)
+//     console.log('Gatsby started to change location from', prevLocation ? prevLocation.pathname : null)
+// }
 // const React = require('react')
 // const Layout = require('./src/components/template/layout')
 // // Logs when the client route changes

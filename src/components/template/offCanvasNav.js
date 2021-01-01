@@ -2,7 +2,7 @@
 import { jsx, Flex } from 'theme-ui'
 import AniLink from 'gatsby-plugin-transition-link/AniLink'
 import { useStaticQuery, graphql } from 'gatsby'
-import { animated, useSpring } from 'react-spring'
+import { animated, config, useSpring } from 'react-spring'
 // import navLinks from '../navLinks'
 
 function OffCanvas({ isOpen, handleMenuClick }) {
@@ -22,13 +22,13 @@ function OffCanvas({ isOpen, handleMenuClick }) {
     const OffCanvasAnimation = useSpring({
         // const { transform, opacity, ...springProps } = useSpring({
         // ref: springRef,
-        // config: config.stiff,
         opacity: isOpen ? 0.9 : 0,
         transform: isOpen ? `translateX(0)` : `translateX(100%)`,
         from: {
             opacity: 0,
             transform: `translateX(100%)`,
         },
+        config: config.wobbly,
         // to: {
         //     transform: isOpen ? `translateX(0)` : `translateX(100%)`,
         //     opacity: isOpen ? 0.9 : 0,
@@ -101,8 +101,8 @@ function OffCanvas({ isOpen, handleMenuClick }) {
                 p: [2, 3],
                 zIndex: 20,
                 height: '100vh',
-                backgroundColor: 'rgba(0, 0, 0, 0.9)',
-                // backgroundColor: 'transparent',
+                // backgroundColor: 'rgba(0, 0, 0, 0.9)',
+                backgroundColor: '#000',
             }}
             style={OffCanvasAnimation}
         >
@@ -120,7 +120,7 @@ function OffCanvas({ isOpen, handleMenuClick }) {
                     return (
                         <AniLink
                             fade
-                            // duration={0.35}
+                            duration={0.35}
                             // direction='left'
                             // color={color}
                             // bg={color}

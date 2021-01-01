@@ -8,15 +8,10 @@ import SEO from '../components/seo'
 import PageHeader from '../components/template/pageHeader'
 
 const PageTemplate = ({ data: { page } }) => {
-    // const headerStyle = site.siteMetadata.page[0].header
-    // console.log(headerStyle)
     return (
         <>
             <SEO title={page.title} description={page.excerpt} />
-            {!page.isFrontPage &&
-            // !page.title.includes('About') &&
-            !page.title.includes('Services') &&
-            !page.title.includes('Portfolio') ? (
+            {!page.isFrontPage && !page.title.includes('Services') && !page.title.includes('Portfolio') ? (
                 <div
                     sx={{
                         display: 'flex',
@@ -35,9 +30,7 @@ const PageTemplate = ({ data: { page } }) => {
                     <PageHeader
                         title={parse(page.title)}
                         intro={page.pageintro}
-                        backgroundColor={
-                            page.title.includes('About') ? 'black' : 'yellow'
-                        }
+                        backgroundColor={page.title.includes('About') ? 'black' : 'yellow'}
                         color={
                             page.title.includes('Contact') ||
                             page.title.includes('Terms of Use') ||
@@ -111,10 +104,7 @@ const PageTemplate = ({ data: { page } }) => {
                     </section>
                 </div>
             ) : (
-                <ComponentParser
-                    blocks={page.blocks}
-                    featuredImage={page.featuredImage}
-                />
+                <ComponentParser blocks={page.blocks} featuredImage={page.featuredImage} />
             )}
         </>
     )

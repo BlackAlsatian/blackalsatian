@@ -196,10 +196,7 @@ async function getPosts({ graphql, reporter }) {
     const graphqlResult = await graphql(/* GraphQL */ `
         query WpPosts {
             # Query all WordPress blog posts sorted by date
-            allWpPost(
-                sort: { fields: [date], order: DESC }
-                filter: { status: { eq: "publish" } }
-            ) {
+            allWpPost(sort: { fields: [date], order: DESC }, filter: { status: { eq: "publish" } }) {
                 edges {
                     previous {
                         id
@@ -217,10 +214,7 @@ async function getPosts({ graphql, reporter }) {
         }
     `)
     if (graphqlResult.errors) {
-        reporter.panicOnBuild(
-            `There was an error loading your blog posts`,
-            graphqlResult.errors,
-        )
+        reporter.panicOnBuild(`There was an error loading your blog posts`, graphqlResult.errors)
         return
     }
     return graphqlResult.data.allWpPost.edges
@@ -229,9 +223,7 @@ async function getPosts({ graphql, reporter }) {
 async function getPages({ graphql, reporter }) {
     const graphqlResult = await graphql(/* GraphQL */ `
         query WpPages {
-            allWpPage(
-                filter: { status: { eq: "publish" }, uri: { ne: "/blog/" } }
-            ) {
+            allWpPage(filter: { status: { eq: "publish" }, uri: { ne: "/blog/" } }) {
                 edges {
                     page: node {
                         id
@@ -243,10 +235,7 @@ async function getPages({ graphql, reporter }) {
         }
     `)
     if (graphqlResult.errors) {
-        reporter.panicOnBuild(
-            `There was an error loading your pages`,
-            graphqlResult.errors,
-        )
+        reporter.panicOnBuild(`There was an error loading your pages`, graphqlResult.errors)
         return
     }
     return graphqlResult.data.allWpPage.edges
@@ -272,10 +261,7 @@ async function getServices({ graphql, reporter }) {
         }
     `)
     if (graphqlResult.errors) {
-        reporter.panicOnBuild(
-            `There was an error loading your pages`,
-            graphqlResult.errors,
-        )
+        reporter.panicOnBuild(`There was an error loading your pages`, graphqlResult.errors)
         return
     }
     return graphqlResult.data.allWpService.edges
@@ -301,10 +287,7 @@ async function getPortfolio({ graphql, reporter }) {
         }
     `)
     if (graphqlResult.errors) {
-        reporter.panicOnBuild(
-            `There was an error loading your portfolio`,
-            graphqlResult.errors,
-        )
+        reporter.panicOnBuild(`There was an error loading your portfolio`, graphqlResult.errors)
         return
     }
     return graphqlResult.data.allWpPortfolio.edges

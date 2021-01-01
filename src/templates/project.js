@@ -2,19 +2,18 @@
 import { jsx, Container, Heading, Flex, Box, Badge } from 'theme-ui'
 import React from 'react'
 import { graphql } from 'gatsby'
+import AniLink from 'gatsby-plugin-transition-link/AniLink'
 import Image from 'gatsby-image'
 import parse from 'html-react-parser'
 import SEO from '../components/seo'
-// import PageHeader from '../components/template/pageHeader'
 import PagesNav from '../components/pagesNav'
+import { navigate } from '@reach/router'
 
-const ProjectTemplate = ({ data: { previous, next, portfolio } }) => {
+const ProjectTemplate = ({ data: { previous, next, portfolio, location } }) => {
     const featuredImage = {
         fluid: portfolio.featuredImage?.node?.localFile?.childImageSharp?.fluid,
         alt: portfolio.featuredImage?.node?.alt || ``,
     }
-    // console.log(previous)
-    // console.log(next)
     return (
         <>
             <SEO title={portfolio.title} description={portfolio.excerpt} />
@@ -53,7 +52,6 @@ const ProjectTemplate = ({ data: { previous, next, portfolio } }) => {
                                 lineHeight: 'none',
                                 letterSpacing: 'tighter',
                                 pr: 5,
-                                // color: 'black',
                             }}
                         >
                             {parse(portfolio.title)}
@@ -62,19 +60,44 @@ const ProjectTemplate = ({ data: { previous, next, portfolio } }) => {
                             sx={{
                                 pl: 5,
                                 textAlign: 'right',
-                                // color: 'black'
                             }}
                         >
                             {parse(portfolio.excerpt)}
                         </div>
                     </Flex>
+                    {/* #############  need a back button ########## */}
+                    {/* {console.log(location)} */}
+                    <Container px={5}>
+                        <AniLink
+                            as='button'
+                            cover
+                            duration={0.5}
+                            direction='left'
+                            bg='#111827'
+                            to='/portfolio/'
+                            // navigate='(-1)'
+                            rel='back'
+                            title='Maybe we should take a step back there for a sec'
+                            sx={{
+                                variant: 'buttons.simple',
+                                backgroundColor: 'transparent',
+                                color: 'white',
+                                textDecoration: 'none',
+                                boxShadow: 'xl',
+                                transition: '200ms',
+                                fontSize: 3,
+                                fontWeight: 'black',
+                                '&:hover': {
+                                    backgroundColor: 'transparent',
+                                    boxShadow: 'none',
+                                },
+                            }}
+                        >
+                            ← Back That Way
+                        </AniLink>
+                    </Container>
                     <Container p={5}>
-                        {featuredImage?.fluid && (
-                            <Image
-                                fluid={featuredImage.fluid}
-                                alt={featuredImage.alt}
-                            />
-                        )}
+                        {featuredImage?.fluid && <Image fluid={featuredImage.fluid} alt={featuredImage.alt} />}
                     </Container>
                 </section>
                 <section sx={{ py: 5 }}>
@@ -142,16 +165,11 @@ const ProjectTemplate = ({ data: { previous, next, portfolio } }) => {
                                     }}
                                 >
                                     {portfolio.tags.nodes &&
-                                        portfolio.tags.nodes.map(
-                                            ({ name, id }) => (
-                                                <Badge
-                                                    key={id}
-                                                    variant='outline'
-                                                >
-                                                    {name}
-                                                </Badge>
-                                            ),
-                                        )}
+                                        portfolio.tags.nodes.map(({ name, id }) => (
+                                            <Badge key={id} variant='outline'>
+                                                {name}
+                                            </Badge>
+                                        ))}
                                 </div>
                             </Box>
                             <Box

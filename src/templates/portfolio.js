@@ -31,12 +31,7 @@ const PortfolioIndex = ({ data }) => {
                     color: 'white',
                 }}
             >
-                <PageHeader
-                    title={parse(page.title)}
-                    intro={page.pageintro}
-                    backgroundColor='black'
-                    color='white'
-                />
+                <PageHeader title={parse(page.title)} intro={page.pageintro} backgroundColor='black' color='white' />
 
                 <section
                     sx={{
@@ -100,9 +95,7 @@ const PortfolioIndex = ({ data }) => {
                                     variant: 'layout',
                                 }}
                             >
-                                <div sx={{ pl: [5, 5, 6], pb: 5 }}>
-                                    {parse(page.content)}
-                                </div>
+                                <div sx={{ pl: [5, 5, 6], pb: 5 }}>{parse(page.content)}</div>
                                 {portfolio.map((portfolio) => {
                                     const title = portfolio.title
                                     return (
@@ -110,7 +103,6 @@ const PortfolioIndex = ({ data }) => {
                                             cover
                                             duration={0.5}
                                             direction='left'
-                                            // color='yellow'
                                             bg='#f5df4d'
                                             key={portfolio.uri}
                                             to={portfolio.uri}
@@ -130,23 +122,14 @@ const PortfolioIndex = ({ data }) => {
                                                     maxWidth: '100%',
                                                     display: 'flex',
                                                     alignItems: 'center',
-                                                    justifyContent:
-                                                        'space-between',
+                                                    justifyContent: 'space-between',
                                                     pl: [5, 5, 6],
-                                                    minHeight: [
-                                                        '3rem',
-                                                        '3rem',
-                                                        '5rem',
-                                                    ],
-                                                    borderBottom:
-                                                        '0.01rem solid white',
-                                                    transition:
-                                                        'background 500ms ease-in',
+                                                    minHeight: ['3rem', '3rem', '5rem'],
+                                                    borderBottom: '0.01rem solid white',
+                                                    transition: 'background 500ms ease-in',
                                                 }}
                                             >
-                                                <p sx={{ flex: 1 }}>
-                                                    {portfolio.projectYear}
-                                                </p>
+                                                <p sx={{ flex: 1 }}>{portfolio.projectYear}</p>
                                                 <Heading
                                                     as='h3'
                                                     sx={{
@@ -164,19 +147,17 @@ const PortfolioIndex = ({ data }) => {
                                                     }}
                                                 >
                                                     {portfolio.tags.nodes &&
-                                                        portfolio.tags.nodes.map(
-                                                            ({ name, id }) => (
-                                                                <span
-                                                                    sx={{
-                                                                        m: 0,
-                                                                    }}
-                                                                    key={id}
-                                                                >
-                                                                    {' '}
-                                                                    + {name}
-                                                                </span>
-                                                            ),
-                                                        )}
+                                                        portfolio.tags.nodes.map(({ name, id }) => (
+                                                            <span
+                                                                sx={{
+                                                                    m: 0,
+                                                                }}
+                                                                key={id}
+                                                            >
+                                                                {' '}
+                                                                + {name}
+                                                            </span>
+                                                        ))}
                                                 </div>
                                             </div>
                                         </AniLink>
