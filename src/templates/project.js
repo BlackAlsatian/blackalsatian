@@ -75,7 +75,7 @@ const ProjectTemplate = ({ data: { previous, next, portfolio, location } }) => {
                             direction='left'
                             bg='#111827'
                             to='/portfolio/'
-                            // navigate='(-1)'
+                            replace
                             rel='back'
                             title='Maybe we should take a step back there for a sec'
                             sx={{

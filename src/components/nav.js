@@ -24,12 +24,12 @@ export default function Nav({ color, handleMenuClick }) {
                 (item) =>
                     item.label !== 'Home' && (
                         <AniLink
+                            to={item.url}
                             swipe
-                            duration={0.35}
+                            duration={0.3}
                             direction='left'
                             color={color}
                             key={item.id}
-                            to={item.url}
                             sx={{
                                 color: `${color}`,
                                 '&:hover, &:focus, &.active': {
@@ -46,6 +46,7 @@ export default function Nav({ color, handleMenuClick }) {
                                 },
                             }}
                             onClick={handleMenuClick}
+                            title={item.label}
                         >
                             {item.label}
                         </AniLink>
