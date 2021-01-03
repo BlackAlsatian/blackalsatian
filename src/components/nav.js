@@ -1,17 +1,8 @@
 /** @jsx jsx */
 import { jsx, Flex } from 'theme-ui'
-import { useStaticQuery, graphql } from 'gatsby'
-import AniLink from 'gatsby-plugin-transition-link/AniLink'
+import { Link } from 'gatsby'
 
-export default function Nav({ color, handleMenuClick }) {
-    const data = useStaticQuery(graphql`
-        {
-            wpMenu(slug: { eq: "primary-menu" }) {
-                ...WpMenuItems
-            }
-        }
-    `)
-    const navLinks = data.wpMenu.menuItems.nodes
+export default function Nav({ color, navLinks }) {
     return (
         <Flex
             as='nav'
@@ -23,12 +14,8 @@ export default function Nav({ color, handleMenuClick }) {
             {navLinks.map(
                 (item) =>
                     item.label !== 'Home' && (
-                        <AniLink
+                        <Link
                             to={item.url}
-                            swipe
-                            duration={0.3}
-                            direction='left'
-                            color={color}
                             key={item.id}
                             sx={{
                                 color: `${color}`,
@@ -45,11 +32,10 @@ export default function Nav({ color, handleMenuClick }) {
                                     pr: 0,
                                 },
                             }}
-                            onClick={handleMenuClick}
                             title={item.label}
                         >
                             {item.label}
-                        </AniLink>
+                        </Link>
                     ),
             )}
         </Flex>

@@ -1,7 +1,6 @@
 /** @jsx jsx */
 import { jsx, Flex } from 'theme-ui'
-import { useStaticQuery, graphql } from 'gatsby'
-import AniLink from 'gatsby-plugin-transition-link/AniLink'
+import { useStaticQuery, graphql, Link } from 'gatsby'
 
 export default function ServiceNav({ color, handleMenuClick }) {
     const data = useStaticQuery(graphql`
@@ -15,20 +14,9 @@ export default function ServiceNav({ color, handleMenuClick }) {
     return (
         <Flex as='nav' sx={{ flexDirection: 'column' }}>
             {serviceLinks.map((item) => (
-                <AniLink
-                    swipe
-                    // duration={0.7}
-                    direction='down'
-                    // top='entry'
-                    entryOffset={80}
-                    color='black'
-                    key={item.id}
-                    to={item.url}
-                    sx={{ color: `${color}`, pb: 3 }}
-                    onClick={handleMenuClick}
-                >
+                <Link key={item.id} to={item.url} sx={{ color: `${color}`, pb: 3 }} onClick={handleMenuClick}>
                     {item.label}
-                </AniLink>
+                </Link>
             ))}
         </Flex>
     )

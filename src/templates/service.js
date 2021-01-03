@@ -13,77 +13,61 @@ const PageTemplate = ({ data: { previous, next, service } }) => {
         fluid: service.featuredImage?.node?.localFile?.childImageSharp?.fluid,
         alt: service.featuredImage?.node?.alt || ``,
     }
-    // console.log(previous)
-    // console.log(next)
     return (
         <>
             <SEO title={service.title} description={service.excerpt} />
+            <PageHeader
+                title={parse(service.title)}
+                intro={parse(service.excerpt)}
+                backgroundColor='yellow'
+                color='black'
+            />
+            <section>
+                <Container p={4} sx={{ display: 'flex', alignItems: 'center' }}>
+                    <div sx={{ flex: 2 }}>
+                        <header>
+                            <h1 itemProp='headline'>{parse(service.title)}</h1>
 
-            <div
-                sx={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    minHeight: '100vh',
-                }}
-            >
-                <PageHeader
-                    title={parse(service.title)}
-                    intro={parse(service.excerpt)}
+                            {/* if we have a featured image for this page let's display it */}
+                            {featuredImage?.fluid && (
+                                <Image
+                                    fluid={featuredImage.fluid}
+                                    alt={featuredImage.alt}
+                                    style={{ marginBottom: 50 }}
+                                />
+                            )}
+                        </header>
+                    </div>
+
+                    <div sx={{ flex: 2 }}>
+                        {!!service.content && (
+                            <section itemProp='articleBody'>
+                                <div
+                                    sx={{
+                                        display: 'flex',
+                                        flexDirection: 'column',
+                                        minHeight: '100vh',
+                                        variant: 'blog.service',
+                                    }}
+                                >
+                                    {parse(service.content)}
+                                </div>
+                            </section>
+                        )}
+                    </div>
+                </Container>
+            </section>
+            <section>
+                <PagesNav
+                    previousPagePath={previous && previous.uri}
+                    nextPagePath={next && next.uri}
+                    previousName={previous && parse(previous.title)}
+                    nextName={next && parse(next.title)}
                     backgroundColor='yellow'
                     color='black'
+                    swipeColor='#f5df4d'
                 />
-                <section>
-                    <Container
-                        p={4}
-                        sx={{ display: 'flex', alignItems: 'center' }}
-                    >
-                        <div sx={{ flex: 2 }}>
-                            <header>
-                                <h1 itemProp='headline'>
-                                    {parse(service.title)}
-                                </h1>
-
-                                {/* if we have a featured image for this page let's display it */}
-                                {featuredImage?.fluid && (
-                                    <Image
-                                        fluid={featuredImage.fluid}
-                                        alt={featuredImage.alt}
-                                        style={{ marginBottom: 50 }}
-                                    />
-                                )}
-                            </header>
-                        </div>
-
-                        <div sx={{ flex: 2 }}>
-                            {!!service.content && (
-                                <section itemProp='articleBody'>
-                                    <div
-                                        sx={{
-                                            display: 'flex',
-                                            flexDirection: 'column',
-                                            minHeight: '100vh',
-                                            variant: 'blog.service',
-                                        }}
-                                    >
-                                        {parse(service.content)}
-                                    </div>
-                                </section>
-                            )}
-                        </div>
-                    </Container>
-                </section>
-                <section>
-                    <PagesNav
-                        previousPagePath={previous && previous.uri}
-                        nextPagePath={next && next.uri}
-                        previousName={previous && parse(previous.title)}
-                        nextName={next && parse(next.title)}
-                        backgroundColor='yellow'
-                        color='black'
-                        swipeColor='#f5df4d'
-                    />
-                </section>
-            </div>
+            </section>
         </>
     )
 }

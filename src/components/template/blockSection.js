@@ -44,18 +44,14 @@ export default function ContentBlock(props) {
                             display: 'flex',
                             flexDirection: 'column',
                             justifyContent: 'center',
-                            borderRight: [
-                                0,
-                                0,
-                                `1px solid ${color || 'black'}`,
-                            ],
+                            borderRight: [0, 0, `1px solid ${color || 'black'}`],
                         }}
                     >
                         <Heading
                             sx={{
                                 fontSize: [4, 3, 4, 5],
                                 fontWeight: 'thin',
-                                lineHeight: 1,
+                                lineHeight: 'none',
                                 mb: 4,
                                 letterSpacing: 'tighter',
                             }}
@@ -88,13 +84,7 @@ export default function ContentBlock(props) {
                         <BlockText text={text} />
                         {buttonName &&
                             option !== 'none' &&
-                            getForm(
-                                option,
-                                buttonName,
-                                buttonUrl,
-                                backgroundColor,
-                                buttonBackground,
-                            )}
+                            getForm(option, buttonName, buttonUrl, backgroundColor, buttonBackground)}
                     </Box>
                 </Flex>
             </Container>

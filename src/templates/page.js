@@ -12,21 +12,7 @@ const PageTemplate = ({ data: { page } }) => {
         <>
             <SEO title={page.title} description={page.excerpt} />
             {!page.isFrontPage && !page.title.includes('Services') && !page.title.includes('Portfolio') ? (
-                <div
-                    sx={{
-                        display: 'flex',
-                        flexDirection: 'column',
-                        minHeight: '100vh',
-                        backgroundColor:
-                            page.title.includes('Contact') ||
-                            page.title.includes('Terms of Use') ||
-                            page.title.includes('Privacy Policy')
-                                ? 'yellow'
-                                : 'white',
-
-                        // variant: 'layout.about',
-                    }}
-                >
+                <>
                     <PageHeader
                         title={parse(page.title)}
                         intro={page.pageintro}
@@ -55,7 +41,6 @@ const PageTemplate = ({ data: { page } }) => {
                                         display: 'flex',
                                         flexDirection: 'column',
                                         alignItems: 'flex-end',
-                                        // justifyContent: 'center',
                                         borderRight: [0, 0, '1px solid black'],
                                     }}
                                 >
@@ -102,7 +87,7 @@ const PageTemplate = ({ data: { page } }) => {
                             </Flex>
                         </Container>
                     </section>
-                </div>
+                </>
             ) : (
                 <ComponentParser blocks={page.blocks} featuredImage={page.featuredImage} />
             )}

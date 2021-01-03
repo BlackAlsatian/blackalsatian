@@ -1,7 +1,6 @@
 import { tailwind } from '@theme-ui/preset-tailwind'
 
 export default {
-    '::selection': 'yellow',
     ...tailwind,
     styles: {
         ...tailwind.styles,
@@ -66,11 +65,6 @@ export default {
             color: 'background',
             bg: 'primary',
         },
-        // outline: {
-        //     color: 'white',
-        //     bg: 'transparent',
-        //     boxShadow: 'inset 0 0 0 1px',
-        // },
         pill: {
             borderRadius: 'circle',
             px: 3,
@@ -140,103 +134,7 @@ export default {
             },
         },
     },
-
-    // textarea: {
-    //     '&:focus': {
-    //         backgroundColor: 'white',
-    //         color: 'black',
-    //     },
-    // },
-    // footer: {
-    //     textarea: {
-    //         color: 'black',
-    //     },
-    // },
     layout: {
-        nav: {
-            closed: {
-                ml: 'auto',
-                display: ['none', 'none', 'flex'],
-                a: {
-                    color: 'white',
-                    '&:hover, &:focus, &.active': {
-                        color: 'offWhite',
-                    },
-                    cursor: 'pointer',
-                    fontSize: 1,
-                    fontWeight: 'extrabold',
-                    textDecoration: 'none',
-                    px: 3,
-                    '&:last-child': {
-                        pr: 0,
-                    },
-                },
-            },
-            open: {
-                m: 0,
-                display: 'flex',
-                flexDirection: 'column',
-                a: {
-                    color: 'mainOpenMenu',
-                    '&:hover, &:focus, &.active': {
-                        color: 'offWhite',
-                    },
-                    cursor: 'pointer',
-                    fontSize: [6, 7, 9],
-                    lineHeight: 'tight',
-                    fontWeight: 'extrabold',
-                    textDecoration: 'none',
-                    px: 3,
-                    '&:last-child': {
-                        pr: 0,
-                    },
-                },
-            },
-        },
-        // header: {
-        //     closedMenu: {
-        //         nav: {
-        //             ml: 'auto',
-        //             display: ['none', 'none', 'flex'],
-        //             a: {
-        //                 // color: 'white',
-        //                 // '&:hover, &:focus, &.active': {
-        //                 //     color: 'offWhite',
-        //                 // },
-        //                 cursor: 'pointer',
-        //                 fontSize: 1,
-        //                 fontWeight: 'extrabold',
-        //                 textDecoration: 'none',
-        //                 px: 3,
-        //                 '&:last-child': {
-        //                     pr: 0,
-        //                 },
-        //             },
-        //         },
-        //     },
-        //     openMenu: {
-        //         nav: {
-        //             m: 0,
-        //             display: 'flex',
-        //             flexDirection: 'column',
-        //             a: {
-        //                 color: 'mainOpenMenu',
-        //                 '&:hover, &:focus, &.active': {
-        //                     color: 'offWhite',
-        //                 },
-        //                 cursor: 'pointer',
-        //                 fontSize: [6, 7, 9],
-        //                 lineHeight: 'tight',
-        //                 fontWeight: 'extrabold',
-        //                 textDecoration: 'none',
-        //                 px: 3,
-        //                 '&:last-child': {
-        //                     pr: 0,
-        //                 },
-        //             },
-        //         },
-        //     },
-        // },
         p: {
             a: {
                 color: 'black',
@@ -262,60 +160,3 @@ export default {
         },
     },
 }
-
-//   styles: {
-//     ...tailwind.styles,
-//     // Footer: {
-//     //   bg: 'white',
-//     //   fontSize: `${tailwind.fontSizes[0]}`,
-//     //   color: 'muted',
-//     //   a: {
-//     //     color: 'muted',
-//     //     textDecoration: 'none',
-//     //   },
-//     // },
-//     h2: {
-//       a: {
-//         color: 'primary',
-//       },
-//     },
-//   },
-//
-//   //#####
-//   root: {
-//     bg: 'white',
-//   },
-//   blog: {
-//     post: {
-//       width: '90%',
-//       mx: 'auto',
-//       blockquote: {
-//         borderLeft: '5px solid black',
-//         p: '1rem 1rem 1rem 2rem',
-//         m: '3rem',
-//       },
-//       figure: {
-//         textAlign: 'center',
-//         span: {
-//           m: '0 auto',
-//         },
-//       },
-//     },
-//   },
-//   layout: {
-//     root: {
-//       h2: {
-//         fontWeight: 'heading',
-//         a: {
-//           color: 'primary',
-//           textDecoration: 'none',
-//           // ':hover': {
-//           //   textDecoration: 'underline',
-//           // },
-//         },
-//       },
-//     },
-//
-//
-//   },
-// }

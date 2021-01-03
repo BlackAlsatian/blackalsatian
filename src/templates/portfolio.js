@@ -22,152 +22,142 @@ const PortfolioIndex = ({ data }) => {
     return (
         <>
             <SEO title='All portfolio' />
-            <div
+            <PageHeader title={parse(page.title)} intro={page.pageintro} backgroundColor='black' color='white' />
+
+            <section
                 sx={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    minHeight: '100vh',
-                    backgroundColor: 'black',
-                    color: 'white',
+                    py: 5,
                 }}
             >
-                <PageHeader title={parse(page.title)} intro={page.pageintro} backgroundColor='black' color='white' />
-
-                <section
-                    sx={{
-                        py: 5,
-                    }}
-                >
-                    <Container p={1}>
-                        <Flex
+                <Container p={1}>
+                    <Flex
+                        sx={{
+                            flexDirection: ['column', 'column', 'row'],
+                        }}
+                    >
+                        <Box
+                            p={[5, 5, 3, 6]}
                             sx={{
-                                flexDirection: ['column', 'column', 'row'],
+                                textAlign: ['left', 'left', 'right'],
+                                flex: [null, null, 1],
+                                width: ['100%', null],
+                                display: 'flex',
+                                flexDirection: 'column',
+                                alignItems: 'flex-end',
+                                // justifyContent: 'center',
+                                borderRight: [0, 0, '1px solid white'],
                             }}
                         >
-                            <Box
-                                p={[5, 5, 3, 6]}
-                                sx={{
-                                    textAlign: ['left', 'left', 'right'],
-                                    flex: [null, null, 1],
-                                    width: ['100%', null],
-                                    display: 'flex',
-                                    flexDirection: 'column',
-                                    alignItems: 'flex-end',
-                                    // justifyContent: 'center',
-                                    borderRight: [0, 0, '1px solid white'],
-                                }}
-                            >
-                                {page.pagesubheading && (
-                                    <Heading
-                                        as='h3'
-                                        sx={{
-                                            fontSize: [4, 3, 4, 5],
-                                            fontWeight: 'thin',
-                                            lineHeight: 1,
-                                            mb: 4,
-                                            letterSpacing: 'tighter',
-                                        }}
-                                    >
-                                        {page.pagesubheading}
-                                    </Heading>
-                                )}
+                            {page.pagesubheading && (
+                                <Heading
+                                    as='h3'
+                                    sx={{
+                                        fontSize: [4, 3, 4, 5],
+                                        fontWeight: 'thin',
+                                        lineHeight: 1,
+                                        mb: 4,
+                                        letterSpacing: 'tighter',
+                                    }}
+                                >
+                                    {page.pagesubheading}
+                                </Heading>
+                            )}
 
-                                {page.pagesubtitle && (
-                                    <Heading
-                                        as='h4'
+                            {page.pagesubtitle && (
+                                <Heading
+                                    as='h4'
+                                    sx={{
+                                        textTransform: 'uppercase',
+                                        fontSize: 0,
+                                        mt: [4, 4, 0],
+                                        ml: ['auto', 'auto', null],
+                                    }}
+                                >
+                                    {page.pagesubtitle}
+                                </Heading>
+                            )}
+                        </Box>
+                        <Box
+                            py={[4, 4, 5]}
+                            pr={[5, 5, 6]}
+                            sx={{
+                                flex: [null, null, 3],
+                                width: ['100%', null],
+                                variant: 'layout',
+                            }}
+                        >
+                            <div sx={{ pl: [5, 5, 6], pb: 5 }}>{parse(page.content)}</div>
+                            {portfolio.map((portfolio) => {
+                                const title = portfolio.title
+                                return (
+                                    <AniLink
+                                        cover
+                                        duration={0.5}
+                                        direction='left'
+                                        bg='#f5df4d'
+                                        key={portfolio.uri}
+                                        to={portfolio.uri}
+                                        title={parse(title)}
                                         sx={{
-                                            textTransform: 'uppercase',
-                                            fontSize: 0,
-                                            mt: [4, 4, 0],
-                                            ml: ['auto', 'auto', null],
+                                            color: 'white',
+                                            textDecoration: 'none',
+                                            display: 'block',
+                                            width: '100%',
+                                            '&:hover': {
+                                                color: 'yellow',
+                                            },
                                         }}
                                     >
-                                        {page.pagesubtitle}
-                                    </Heading>
-                                )}
-                            </Box>
-                            <Box
-                                py={[4, 4, 5]}
-                                pr={[5, 5, 6]}
-                                sx={{
-                                    flex: [null, null, 3],
-                                    width: ['100%', null],
-                                    variant: 'layout',
-                                }}
-                            >
-                                <div sx={{ pl: [5, 5, 6], pb: 5 }}>{parse(page.content)}</div>
-                                {portfolio.map((portfolio) => {
-                                    const title = portfolio.title
-                                    return (
-                                        <AniLink
-                                            cover
-                                            duration={0.5}
-                                            direction='left'
-                                            bg='#f5df4d'
-                                            key={portfolio.uri}
-                                            to={portfolio.uri}
-                                            title={parse(title)}
+                                        <div
                                             sx={{
-                                                color: 'white',
-                                                textDecoration: 'none',
-                                                display: 'block',
-                                                width: '100%',
-                                                '&:hover': {
-                                                    color: 'yellow',
-                                                },
+                                                maxWidth: '100%',
+                                                display: 'flex',
+                                                alignItems: 'center',
+                                                justifyContent: 'space-between',
+                                                pl: [5, 5, 6],
+                                                minHeight: ['3rem', '3rem', '5rem'],
+                                                borderBottom: '0.01rem solid white',
+                                                transition: 'background 500ms ease-in',
                                             }}
                                         >
-                                            <div
+                                            <p sx={{ flex: 1 }}>{portfolio.projectYear}</p>
+                                            <Heading
+                                                as='h3'
                                                 sx={{
-                                                    maxWidth: '100%',
-                                                    display: 'flex',
-                                                    alignItems: 'center',
-                                                    justifyContent: 'space-between',
-                                                    pl: [5, 5, 6],
-                                                    minHeight: ['3rem', '3rem', '5rem'],
-                                                    borderBottom: '0.01rem solid white',
-                                                    transition: 'background 500ms ease-in',
+                                                    flex: 4,
+                                                    fontSize: 2,
+                                                    fontWeight: 'medium',
                                                 }}
                                             >
-                                                <p sx={{ flex: 1 }}>{portfolio.projectYear}</p>
-                                                <Heading
-                                                    as='h3'
-                                                    sx={{
-                                                        flex: 4,
-                                                        fontSize: 2,
-                                                        fontWeight: 'medium',
-                                                    }}
-                                                >
-                                                    {parse(title)}
-                                                </Heading>
-                                                <div
-                                                    sx={{
-                                                        flex: 2,
-                                                        fontSize: 0,
-                                                    }}
-                                                >
-                                                    {portfolio.tags.nodes &&
-                                                        portfolio.tags.nodes.map(({ name, id }) => (
-                                                            <span
-                                                                sx={{
-                                                                    m: 0,
-                                                                }}
-                                                                key={id}
-                                                            >
-                                                                {' '}
-                                                                + {name}
-                                                            </span>
-                                                        ))}
-                                                </div>
+                                                {parse(title)}
+                                            </Heading>
+                                            <div
+                                                sx={{
+                                                    flex: 2,
+                                                    fontSize: 0,
+                                                }}
+                                            >
+                                                {portfolio.tags.nodes &&
+                                                    portfolio.tags.nodes.map(({ name, id }) => (
+                                                        <span
+                                                            sx={{
+                                                                m: 0,
+                                                            }}
+                                                            key={id}
+                                                        >
+                                                            {' '}
+                                                            + {name}
+                                                        </span>
+                                                    ))}
                                             </div>
-                                        </AniLink>
-                                    )
-                                })}
-                            </Box>
-                        </Flex>
-                    </Container>
-                </section>
-            </div>
+                                        </div>
+                                    </AniLink>
+                                )
+                            })}
+                        </Box>
+                    </Flex>
+                </Container>
+            </section>
         </>
     )
 }

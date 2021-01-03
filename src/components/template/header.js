@@ -1,20 +1,29 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
 import { useState } from 'react'
-import AniLink from 'gatsby-plugin-transition-link/AniLink'
+import { useStaticQuery, graphql, Link } from 'gatsby'
+import { handleColor } from '../../components/helpers'
 import MenuIcon from '../menuIcon'
 import OffCanvas from './offCanvasNav'
 import Logo from '../logo'
 import Nav from '../nav'
-// import { useSpring } from 'react-spring'
 
-const Header = ({ color }) => {
+const Header = ({ path }) => {
+    const data = useStaticQuery(graphql`
+        {
+            wpMenu(slug: { eq: "primary-menu" }) {
+                ...WpMenuItems
+            }
+        }
+    `)
+    const navLinks = data.wpMenu.menuItems.nodes
+
     const [isOpen, setIsOpen] = useState(false)
 
     const handleBurgerMenuClick = () => {
         setIsOpen(!isOpen)
     }
-
+    const color = handleColor(path)
     return (
         <header
             sx={{
@@ -29,11 +38,11 @@ const Header = ({ color }) => {
                 variant: 'layout.header.closedMenu',
             }}
         >
-            <AniLink fade duration={1} to='/'>
+            <Link to='/' title='Black Alsatian Web Development Company'>
                 <Logo color={color} />
-            </AniLink>
-            <Nav color={color} />
-            <OffCanvas isOpen={isOpen} handleMenuClick={handleBurgerMenuClick} />
+            </Link>
+            <Nav color={color} navLinks={navLinks} />
+            <OffCanvas isOpen={isOpen} handleMenuClick={handleBurgerMenuClick} navLinks={navLinks} />
             <div
                 sx={{
                     position: 'fixed',

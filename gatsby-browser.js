@@ -1,24 +1,49 @@
+import 'typeface-montserrat'
 // import React from 'react'
 // import Layout from './src/components/layout'
 
 // // custom typefaces
-import 'typeface-montserrat'
-
-const transitionDelay = 500
 
 // export const wrapPageElement = ({ element, props }) => {
 //     return <Layout {...props}>{element}</Layout>
 // }
+// const transitionDelay = 250
+//
+// export const shouldUpdateScroll = ({ routerProps: { location }, getSavedScrollPosition }) => {
+//     if (location.action === 'PUSH') {
+//         window.setTimeout(() => window.scrollTo(0, 0), transitionDelay)
+//     } else {
+//         const savedPosition = getSavedScrollPosition(location)
+//         window.setTimeout(() => window.scrollTo(...(savedPosition || [0, 0])), transitionDelay)
+//     }
+//     return false
+// }
 
-export const shouldUpdateScroll = ({ routerProps: { location }, getSavedScrollPosition }) => {
-    if (location.action === 'PUSH') {
-        window.setTimeout(() => window.scrollTo(0, 0), transitionDelay)
-    } else {
-        const savedPosition = getSavedScrollPosition(location)
-        window.setTimeout(() => window.scrollTo(...(savedPosition || [0, 0])), transitionDelay)
-    }
-    return false
-}
+// Adjust if you need to add a delay before scrolling
+// const transitionDelay = 0
+//
+// export const shouldUpdateScroll = ({ routerProps: { location }, getSavedScrollPosition }) => {
+//     if (location.action === 'PUSH') {
+//         window.setTimeout(() => {
+//             // console.log('scroll to top')
+//             window.scrollTo({
+//                 top: 0,
+//                 behavior: 'smooth', // feel free to use or not
+//             })
+//         }, transitionDelay)
+//     } else {
+//         const savedPosition = getSavedScrollPosition(location) || [0, 0]
+//         const top = savedPosition[1]
+//         window.setTimeout(() => {
+//             // console.log('scroll to saved position')
+//             window.scrollTo({
+//                 top,
+//                 behavior: 'smooth',
+//             })
+//         }, transitionDelay)
+//     }
+//     return false
+// }
 
 // export const onPreRouteUpdate = ({ location, prevLocation }) => {
 //     console.log('Gatsby started to change location to', location.pathname)

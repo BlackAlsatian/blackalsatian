@@ -26,23 +26,6 @@ module.exports = {
                 url: `https://www.linkedin.com/company/blackalsatian`,
             },
         ],
-        page: [
-            {
-                url: '/about/',
-                header: {
-                    text: 'black',
-                    background: 'yellow',
-                },
-                body: {
-                    text: 'black',
-                    background: 'yellow',
-                },
-                footer: {
-                    text: 'black',
-                    background: 'yellow',
-                },
-            },
-        ],
     },
     plugins: [
         // See https://www.gatsbyjs.com/plugins/gatsby-plugin-react-helmet/?=gatsby-plugin-react-helmet
@@ -84,15 +67,15 @@ module.exports = {
                 path: `${__dirname}/src/assets/images`,
             },
         },
+        // `gatsby-theme-wordpress-gutenberg`,
+        `gatsby-plugin-theme-ui`,
+        `gatsby-theme-style-guide`,
         {
             resolve: `gatsby-plugin-transition-link`,
             options: {
                 layout: require.resolve(`./src/components/layout.js`),
             },
         },
-        // `gatsby-theme-wordpress-gutenberg`,
-        `gatsby-plugin-theme-ui`,
-        `gatsby-theme-style-guide`,
         /**
          * The following two plugins are required if you want to use Gatsby image
          * See https://www.gatsbyjs.com/docs/gatsby-image/#setting-up-gatsby-image

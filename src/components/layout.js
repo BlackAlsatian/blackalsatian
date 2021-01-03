@@ -1,8 +1,7 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
 import { useStaticQuery, graphql } from 'gatsby'
-import { handleColor } from './helpers'
-
+import { handleBgColor } from '../components/helpers'
 import Header from './template/header'
 import Footer from './template/footer'
 
@@ -21,18 +20,20 @@ const Layout = ({ children, location }) => {
             }
         }
     `)
+    const path = location.pathname
     return (
         <div
             sx={{
                 display: 'flex',
                 flexDirection: 'column',
                 minHeight: '100vh',
-                // maxWidth: '100vw',
+                backgroundColor: handleBgColor(path),
+                overflow: 'hidden',
             }}
         >
-            <Header color={handleColor(location.pathname)} uri={location.pathname} />
+            <Header path={path} />
             <main>{children}</main>
-            <Footer siteTitle={title} path={location.pathname} />
+            <Footer siteTitle={title} path={path} />
         </div>
     )
 }
