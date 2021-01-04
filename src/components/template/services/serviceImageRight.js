@@ -29,7 +29,7 @@ function ServiceImageRight({ image, name, description }) {
                     <Image
                         fluid={image.fluid}
                         alt={image.alt}
-                        style={{ marginBottom: 50 }}
+                        // style={{ marginBottom: 50 }}
                         sx={{
                             height: '100%',
                             width: '100%',

@@ -104,7 +104,7 @@ export default {
             lineHeight: 'tight',
             backgroundColor: 'transparent',
             border: 'none',
-            borderBottomWidth: '2px',
+            borderBottomWidth: '1px',
             borderBottomStyle: 'solid',
             borderBottomColor: 'primary',
             color: 'black',
