@@ -33,6 +33,7 @@ const PortfolioIndex = ({ data }) => {
                     <Flex
                         sx={{
                             flexDirection: ['column', 'column', 'row'],
+                            color: 'white',
                         }}
                     >
                         <Box

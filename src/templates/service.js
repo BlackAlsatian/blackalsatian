@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx, Container } from 'theme-ui'
+import { jsx, Flex, Box } from 'theme-ui'
 import React from 'react'
 import { graphql } from 'gatsby'
 import Image from 'gatsby-image'
@@ -23,39 +23,31 @@ const PageTemplate = ({ data: { previous, next, service } }) => {
                 color='black'
             />
             <section>
-                <Container p={4} sx={{ display: 'flex', alignItems: 'center' }}>
-                    <div sx={{ flex: 2 }}>
-                        <header>
-                            <h1 itemProp='headline'>{parse(service.title)}</h1>
+                <Flex
+                    sx={{
+                        alignItems: [null, null, 'center'],
+                        flexDirection: ['column', 'column', 'row'],
+                        pt: 6,
+                        px: 4,
+                        pb: 4,
+                    }}
+                >
+                    <Box p={4} sx={{ flex: 2, borderRight: [null, null, '0.01rem solid black'] }}>
+                        {featuredImage?.fluid && <Image fluid={featuredImage.fluid} alt={featuredImage.alt} />}
+                    </Box>
 
-                            {/* if we have a featured image for this page let's display it */}
-                            {featuredImage?.fluid && (
-                                <Image
-                                    fluid={featuredImage.fluid}
-                                    alt={featuredImage.alt}
-                                    style={{ marginBottom: 50 }}
-                                />
-                            )}
-                        </header>
-                    </div>
-
-                    <div sx={{ flex: 2 }}>
+                    <Box p={4} sx={{ flex: 3 }}>
                         {!!service.content && (
-                            <section itemProp='articleBody'>
-                                <div
-                                    sx={{
-                                        display: 'flex',
-                                        flexDirection: 'column',
-                                        minHeight: '100vh',
-                                        variant: 'blog.service',
-                                    }}
-                                >
-                                    {parse(service.content)}
-                                </div>
-                            </section>
+                            <Flex
+                                sx={{
+                                    flexDirection: 'column',
+                                }}
+                            >
+                                {parse(service.content)}
+                            </Flex>
                         )}
-                    </div>
-                </Container>
+                    </Box>
+                </Flex>
             </section>
             <section>
                 <PagesNav

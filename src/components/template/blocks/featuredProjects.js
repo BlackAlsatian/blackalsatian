@@ -48,10 +48,7 @@ const FeaturedProjectsBlock = () => {
                     pb: 6,
                 }}
             >
-                <Heading
-                    as='h3'
-                    sx={{ ml: 5, fontSize: 5, fontWeight: 'light' }}
-                >
+                <Heading as='h3' sx={{ ml: 5, fontSize: 5, fontWeight: 'light' }}>
                     Featured Projects
                 </Heading>
             </div>
@@ -84,10 +81,7 @@ const FeaturedProjectsBlock = () => {
                             }}
                         >
                             <Img
-                                fluid={
-                                    node.featuredImage.node.localFile
-                                        .childImageSharp.fluid
-                                }
+                                fluid={node.featuredImage.node.localFile.childImageSharp.fluid}
                                 alt={node.featuredImage.node.altText}
                                 // id={node.featuredImage.node.altText}
                                 style={{
@@ -126,8 +120,7 @@ const FeaturedProjectsBlock = () => {
             <div
                 sx={{
                     width: '100%',
-                    pt: 4,
-                    pb: 6,
+                    pt: 5,
                     backgroundColor: 'transparent',
                     textAlign: 'center',
                 }}

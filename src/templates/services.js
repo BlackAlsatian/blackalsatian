@@ -3,10 +3,12 @@ import { jsx, Container, Heading } from 'theme-ui'
 import React from 'react'
 import { graphql } from 'gatsby'
 import AniLink from 'gatsby-plugin-transition-link/AniLink'
-import Image from 'gatsby-image'
 import parse from 'html-react-parser'
 import SEO from '../components/seo'
 import PageHeader from '../components/template/pageHeader'
+import ServiceImageLeft from '../components/template/services/serviceImageLeft'
+import ServiceImageRight from '../components/template/services/serviceImageRight'
+import { isOdd } from '../components/helpers'
 
 const ServicesIndex = ({ data }) => {
     const services = data.allWpService.nodes
@@ -26,12 +28,13 @@ const ServicesIndex = ({ data }) => {
             <PageHeader title={parse(page.title)} intro={page.pageintro} backgroundColor='yellow' color='black' />
             <section>
                 <Container sx={{ overflow: 'hidden' }}>
-                    {services.map((service) => {
+                    {services.map((service, i) => {
                         const title = service.title
                         const featuredImage = {
                             fluid: service.featuredImage?.node?.localFile?.childImageSharp?.fluid,
                             alt: service.featuredImage?.node?.alt || ``,
                         }
+                        console.log(i)
                         return (
                             <AniLink
                                 cover
@@ -46,7 +49,21 @@ const ServicesIndex = ({ data }) => {
                                     textDecoration: 'none',
                                 }}
                             >
-                                <div
+                                {isOdd(i) ? (
+                                    <ServiceImageRight
+                                        image={featuredImage}
+                                        name={parse(title)}
+                                        description={parse(service.excerpt)}
+                                    />
+                                ) : (
+                                    <ServiceImageLeft
+                                        image={featuredImage}
+                                        name={parse(title)}
+                                        description={parse(service.excerpt)}
+                                    />
+                                )}
+
+                                {/* <div
                                     sx={{
                                         display: 'grid',
                                         gridGap: 4, // theme.space[4]
@@ -96,7 +113,7 @@ const ServicesIndex = ({ data }) => {
                                         </Heading>
                                         {parse(service.excerpt)}
                                     </div>
-                                </div>
+                                </div> */}
                             </AniLink>
                         )
                     })}
