@@ -93,8 +93,8 @@ module.exports = {
             // See https://www.gatsbyjs.com/plugins/gatsby-plugin-manifest/?=gatsby-plugin-manifest
             resolve: `gatsby-plugin-manifest`,
             options: {
-                name: `Black Alsatian Web Artisans`,
-                short_name: `Black Alsatian`,
+                name: `Black Alsatian`,
+                short_name: `blackalsatian`,
                 start_url: `/`,
                 background_color: `#111827`,
                 theme_color: `#ffffff`,
