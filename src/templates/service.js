@@ -15,7 +15,12 @@ const PageTemplate = ({ data: { previous, next, service } }) => {
     }
     return (
         <>
-            <SEO title={service.title} description={service.excerpt} />
+            <SEO
+                title={service.title}
+                description={service.seo.metaDesc}
+                url={service.uri}
+                // featuredImage={page.featuredImage.node.localFile.childImageSharp.fluid.src}
+            />
             <PageHeader
                 title={parse(service.title)}
                 intro={parse(service.excerpt)}
@@ -36,7 +41,7 @@ const PageTemplate = ({ data: { previous, next, service } }) => {
                         {featuredImage?.fluid && <Image fluid={featuredImage.fluid} alt={featuredImage.alt} />}
                     </Box>
 
-                    <Box p={4} sx={{ flex: 3 }}>
+                    <Box py={4} px={6} sx={{ flex: 3, variant: 'layout' }}>
                         {!!service.content && (
                             <Flex
                                 sx={{
@@ -79,6 +84,9 @@ export const serviceQuery = graphql`
             excerpt
             content
             title
+            seo {
+                metaDesc
+            }
             ...ServiceMediaFragment
         }
 

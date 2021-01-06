@@ -28,11 +28,12 @@ const HeroBlock = (props) => {
                     sx={{
                         fontSize: [7, 10],
                         letterSpacing: 'tighter',
+                        textShadow: '0 0 4rem rgba(0, 0, 0, 0.5)',
                     }}
                 >
                     {title}
                 </Heading>
-                <p sx={{ fontSize: [3, 4], my: 0 }}>{parse(intro)}</p>
+                <p sx={{ fontSize: [3, 4], my: 0, textShadow: '0 0 3rem rgba(0, 0, 0, 0.5)' }}>{parse(intro)}</p>
             </Container>
         </section>
     )

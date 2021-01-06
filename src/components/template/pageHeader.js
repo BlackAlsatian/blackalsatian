@@ -19,11 +19,14 @@ function PageHeader({ title, intro, backgroundColor, color }) {
                     sx={{
                         fontSize: [7, 10],
                         letterSpacing: 'tighter',
+                        textShadow: '0 0 4rem rgba(0, 0, 0, 0.1)',
                     }}
                 >
                     {title}
                 </Heading>
-                {intro && <div sx={{ fontSize: [3, 4], my: 1 }}>{intro}</div>}
+                {intro && (
+                    <div sx={{ fontSize: [3, 4], my: 1, textShadow: '0 0 3rem rgba(0, 0, 0, 0.3)' }}>{intro}</div>
+                )}
             </Container>
         </section>
     )

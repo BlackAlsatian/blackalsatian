@@ -4,28 +4,33 @@ require('dotenv').config({
 
 module.exports = {
     siteMetadata: {
-        title: `Black Alsatian Web Artisans`,
-        description: `Hand crafted web applications and bespoke digital marketing solutions`,
-        author: `Björn Potgieter`,
+        title: `Black Alsatian`,
+        shortTitle: `blackalsatian`,
+        description: `Handcrafted web applications and bespoke digital marketing solutions`,
         siteUrl: `https://www.blackalsatian.co.za`,
-        social: [
-            {
-                name: `Twitter`,
-                url: `https://twitter.com/blackalsatian`,
-            },
-            {
-                name: `Facebook`,
-                url: `https://www.facebook.com/blackalsatian`,
-            },
-            {
-                name: `Instagram`,
-                url: `https://instagram.com/theblackalsatian`,
-            },
-            {
-                name: `LinkedIn`,
-                url: `https://www.linkedin.com/company/blackalsatian`,
-            },
-        ],
+        author: {
+            name: `Björn Potgieter`,
+            url: `https://bjorn.africa`,
+            twitter: `@lifeofbjorn`,
+        },
+        organization: {
+            name: `Black Alsatian`,
+            url: `https://www.blackalsatian.co.za`,
+            logo: `/images/blackals-icon-logo.png`,
+        },
+        lang: `en`,
+        email: `info@blackalsatian.com`,
+        twitter: '@blackalsatian',
+        fbAppId: process.env.GATSBY_FBAPP_ID,
+        socialUrls: {
+            twitter: `https://twitter.com/blackalsatian`,
+            facebook: `https://www.facebook.com/blackalsatian`,
+            instagram: `https://instagram.com/theblackalsatian`,
+            linkedin: `https://www.linkedin.com/company/blackalsatian`,
+        },
+        image: `/images/blackalsatian.png`,
+        pubLogo: `/images/blackalsatian-pub-logo.png`,
+        pubIconLogo: `/images/blackals-icon-logo.png`,
     },
     plugins: [
         // See https://www.gatsbyjs.com/plugins/gatsby-plugin-react-helmet/?=gatsby-plugin-react-helmet
@@ -92,7 +97,7 @@ module.exports = {
                 short_name: `Black Alsatian`,
                 start_url: `/`,
                 background_color: `#111827`,
-                theme_color: `#f5df4d`,
+                theme_color: `#ffffff`,
                 display: `minimal-ui`,
                 icon: `src/assets/images/blackalsatian-icon.png`,
             },

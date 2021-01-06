@@ -102,9 +102,9 @@ const FeaturedProjectsBlock = () => {
                                     flexDirection: 'column',
                                     justifyContent: 'flex-end',
                                     color: 'white',
-                                    backgroundColor: 'rgba(0, 0, 0, 0.6)',
+                                    backgroundColor: 'rgba(0, 0, 0, 0.4)',
                                     '&:hover': {
-                                        backgroundColor: 'rgba(0, 0, 0, 0.3)',
+                                        backgroundColor: 'rgba(0, 0, 0, 0.2)',
                                     },
                                 }}
                             >

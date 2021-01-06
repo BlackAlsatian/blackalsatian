@@ -10,8 +10,17 @@ import PageHeader from '../components/template/pageHeader'
 const PageTemplate = ({ data: { page } }) => {
     return (
         <>
-            <SEO title={page.title} description={page.excerpt} />
-            {!page.isFrontPage && !page.title.includes('Services') && !page.title.includes('Portfolio') ? (
+            <SEO
+                title={page.title}
+                description={page.seo.metaDesc}
+                url={page.uri}
+                // featuredImage={page.featuredImage.node.localFile.childImageSharp.fluid.src}
+            />
+            {!page.isFrontPage &&
+            !page.title.includes('Services') &&
+            !page.title.includes('Portfolio') &&
+            !page.title.includes('Specials') &&
+            !page.title.includes('Packages') ? (
                 <>
                     <PageHeader
                         title={parse(page.title)}
@@ -113,6 +122,10 @@ export const pageQuery = graphql`
             pageintro
             pagesubheading
             pagesubtitle
+            uri
+            seo {
+                metaDesc
+            }
             blocks {
                 ...CoreCoverblock
                 ...BlackalsatianContentBlock

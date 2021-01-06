@@ -13,7 +13,12 @@ const PortfolioIndex = ({ data }) => {
     if (!portfolio.length) {
         return (
             <>
-                <SEO title='All portfolio' />
+                <SEO
+                    title={page.title}
+                    description={page.seo.metaDesc}
+                    url={page.uri}
+                    // featuredImage={page.featuredImage.node.localFile.childImageSharp.fluid.src}
+                />
                 <p>No blog projects found.</p>
             </>
         )
@@ -21,7 +26,12 @@ const PortfolioIndex = ({ data }) => {
 
     return (
         <>
-            <SEO title='All portfolio' />
+            <SEO
+                title={page.title}
+                description={page.seo.metaDesc}
+                url={page.uri}
+                // featuredImage={page.featuredImage.node.localFile.childImageSharp.fluid.src}
+            />
             <PageHeader title={parse(page.title)} intro={page.pageintro} backgroundColor='black' color='white' />
 
             <section
@@ -188,6 +198,9 @@ export const pageQuery = graphql`
             uri
             slug
             content
+            seo {
+                metaDesc
+            }
             pageintro
             pagesubheading
             pagesubtitle

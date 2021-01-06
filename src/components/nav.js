@@ -1,6 +1,7 @@
 /** @jsx jsx */
 import { jsx, Flex } from 'theme-ui'
 import { Link } from 'gatsby'
+import parse from 'html-react-parser'
 
 export default function Nav({ color, navLinks }) {
     return (
@@ -32,9 +33,9 @@ export default function Nav({ color, navLinks }) {
                                     pr: 0,
                                 },
                             }}
-                            title={item.label}
+                            title={parse(item.label)}
                         >
-                            {item.label}
+                            {parse(item.label)}
                         </Link>
                     ),
             )}

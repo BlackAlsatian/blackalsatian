@@ -16,7 +16,12 @@ const ServicesIndex = ({ data }) => {
     if (!services.length) {
         return (
             <>
-                <SEO title='All services' />
+                <SEO
+                    title={page.title}
+                    description={page.seo.metaDesc}
+                    url={page.uri}
+                    // featuredImage={page.featuredImage.node.localFile.childImageSharp.fluid.src}
+                />
                 <p>No blog services found.</p>
             </>
         )
@@ -24,7 +29,12 @@ const ServicesIndex = ({ data }) => {
 
     return (
         <>
-            <SEO title='All services' />
+            <SEO
+                title={page.title}
+                description={page.seo.metaDesc}
+                url={page.uri}
+                // featuredImage={page.featuredImage.node.localFile.childImageSharp.fluid.src}
+            />
             <PageHeader title={parse(page.title)} intro={page.pageintro} backgroundColor='yellow' color='black' />
             <section>
                 <Container sx={{ overflow: 'hidden' }}>
@@ -142,6 +152,9 @@ export const pageQuery = graphql`
             uri
             slug
             content
+            seo {
+                metaDesc
+            }
             pageintro
             pagesubheading
             pagesubtitle

@@ -16,7 +16,14 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
     }
     return (
         <>
-            <SEO title={post.title} description={post.excerpt} />
+            <SEO
+                title={post.title}
+                description={post.seo.metaDesc}
+                featuredImage={post.featuredImage.node.localFile.childImageSharp.fluid.src}
+                url={post.uri}
+                author={post.author.node.firstName + ` ` + post.author.node.lastName}
+                isBlogPost
+            />
 
             <article itemScope itemType='http://schema.org/Article'>
                 <header
@@ -59,9 +66,7 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
                             >
                                 {parse(post.title)}
                             </Heading>
-                            <div sx={{ fontSize: [2, 2, 3], my: 0 }}>
-                                {parse(post.excerpt)}
-                            </div>
+                            <div sx={{ fontSize: [2, 2, 3], my: 0 }}>{parse(post.excerpt)}</div>
                         </div>
                     </Container>
                 </header>
@@ -173,7 +178,11 @@ export const pageQuery = graphql`
             excerpt
             content
             title
+            uri
             date(formatString: "MMMM DD, YYYY")
+            seo {
+                metaDesc
+            }
             author {
                 node {
                     id

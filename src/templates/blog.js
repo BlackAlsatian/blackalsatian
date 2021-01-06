@@ -12,12 +12,18 @@ import PagesNav from '../components/pagesNav'
 
 const BlogIndex = ({ data, pageContext: { nextPagePath, previousPagePath }, location: { pathname } }) => {
     const posts = data.allWpPost.nodes
-    const title = 'Blog'
+    const pageTitle = 'Blog'
     const content = 'This is an intro to say something about this blog of crazy folk.'
+    const browserTitle = 'A Web Company Blog'
     if (!posts.length) {
         return (
             <>
-                <SEO title='All posts' />
+                <SEO
+                    title={browserTitle}
+                    description={content}
+                    url={pathname}
+                    // featuredImage={page.featuredImage.node.localFile.childImageSharp.fluid.src}
+                />
                 <p>No blog posts found.</p>
             </>
         )
@@ -25,9 +31,14 @@ const BlogIndex = ({ data, pageContext: { nextPagePath, previousPagePath }, loca
 
     return (
         <>
-            <SEO title='All posts' />
+            <SEO
+                title={browserTitle}
+                description={content}
+                url={pathname}
+                // featuredImage={page.featuredImage.node.localFile.childImageSharp.fluid.src}
+            />
             {pathname === '/blog/' && (
-                <PageHeader title={title} intro={content} backgroundColor='white' color='black' />
+                <PageHeader title={pageTitle} intro={content} backgroundColor='white' color='black' />
             )}
             <section>
                 <Container

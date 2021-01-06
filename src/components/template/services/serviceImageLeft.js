@@ -43,7 +43,7 @@ function ServiceImageLeft({ image, name, description }) {
                     gridColumnEnd: 5,
                     gridRowStart: 2,
                     gridRowEnd: [4, 3],
-                    backgroundColor: 'rgba(255, 255, 255, 0.7)',
+                    backgroundColor: 'rgba(255, 255, 255, 0.8)',
                     zIndex: 30,
                     borderRadius: 10,
                     p: [2, 2, 5],

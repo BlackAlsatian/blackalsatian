@@ -11,7 +11,12 @@ import parse from 'html-react-parser'
 const ProjectTemplate = ({ data: { previous, portfolio, next } }) => {
     return (
         <>
-            <SEO title={portfolio.title} description={portfolio.excerpt} />
+            <SEO
+                title={portfolio.title}
+                description={portfolio.seo.metaDesc}
+                url={portfolio.uri}
+                // featuredImage={page.featuredImage.node.localFile.childImageSharp.fluid.src}
+            />
             <ProjectHeader project={portfolio} />
             <ProjectContent project={portfolio} />
             <PagesNav
@@ -42,6 +47,9 @@ export const portfolioQuery = graphql`
             title
             excerpt
             content
+            seo {
+                metaDesc
+            }
             projectUrl
             projectYear
             tags {
