@@ -11,7 +11,9 @@
     "@emotion/react": "^11.1.4",
     "@theme-ui/components": "^0.3.5",
     "@theme-ui/tailwind": "^0.3.5",
+    "axios": "^0.21.1",
     "dotenv": "^8.2.0",
+    "formik": "^2.2.6",
     "framer-motion": "^3.1.1",
     "gatsby": "^2.29.1",
     "gatsby-image": "^2.7.0",
@@ -35,7 +37,8 @@
     "react-helmet": "^5.2.1",
     "react-spring": "^8.0.27",
     "theme-ui": "^0.3.5",
-    "typeface-montserrat": "1.1.13"
+    "typeface-montserrat": "1.1.13",
+    "yup": "^0.32.8"
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",

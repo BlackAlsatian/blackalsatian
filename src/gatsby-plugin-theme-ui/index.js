@@ -113,6 +113,7 @@ export default {
                 borderColor: 'primary',
                 backgroundColor: 'white',
                 fontFamily: 'body',
+                fontSize: '100%',
             },
         },
         background: {
@@ -131,6 +132,7 @@ export default {
                 boxShadow: 'xl',
                 backgroundColor: 'white',
                 fontFamily: 'body',
+                fontSize: '100%',
             },
         },
     },

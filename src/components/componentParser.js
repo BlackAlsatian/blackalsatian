@@ -11,8 +11,7 @@ import LatestPostsBlock from '../components/template/blocks/latestPostsBlock'
 
 export default function ComponentParser(props) {
     const { blocks, featuredImage } = props
-    const featuredImageSrc =
-        featuredImage.node.localFile.childImageSharp.fluid.src
+    const featuredImageSrc = featuredImage.node.localFile.childImageSharp.fluid.src
     // console.log(blocks)
 
     //######## iterate through blocks
@@ -78,26 +77,16 @@ export default function ComponentParser(props) {
                             />
                         )}
                         {__typename === 'WpBlackalsatianContentBlock' && (
-                            <ContentBlock
-                                attributes={attributes}
-                                innerBlocks={innerBlocks}
-                            />
+                            <ContentBlock attributes={attributes} innerBlocks={innerBlocks} />
                         )}
                         {__typename === 'WpBlackalsatianServicesBlock' && (
                             // <Profiler id='servicesblock' onRender={callback}>
                             <ServicesBlock />
                             // </Profiler>
                         )}
-                        {__typename === 'WpBlackalsatianLatestPostsBlock' && (
-                            <LatestPostsBlock />
-                        )}
-                        {__typename ===
-                            'WpBlackalsatianFeaturedProjectsBlock' && (
-                            <FeaturedProjectsBlock />
-                        )}
-                        {__typename === 'WpBlackalsatianTestimonialsBlock' && (
-                            <TestimonialsBlock />
-                        )}
+                        {__typename === 'WpBlackalsatianLatestPostsBlock' && <LatestPostsBlock />}
+                        {__typename === 'WpBlackalsatianFeaturedProjectsBlock' && <FeaturedProjectsBlock />}
+                        {__typename === 'WpBlackalsatianTestimonialsBlock' && <TestimonialsBlock />}
                     </Fragment>
                 ))}
         </>
