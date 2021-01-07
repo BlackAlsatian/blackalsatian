@@ -7,13 +7,7 @@ import EnquiryForm from '../components/forms/enquiryForm'
 import LeadForm from '../components/forms/leadForm'
 import QuoteForm from '../components/forms/quoteForm'
 
-export function getForm(
-    option,
-    buttonName,
-    buttonUrl,
-    backgroundColor,
-    buttonBackground,
-) {
+export function getForm(option, buttonName, buttonUrl, backgroundColor, buttonBackground) {
     // console.log('Button URL is: ' + buttonUrl)
     // switch (option) {
     //     case 'btnonly':
