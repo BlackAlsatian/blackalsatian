@@ -31,10 +31,18 @@ const QuoteForm = ({ buttonBackground, btnColor, formStyle, buttonName }) => {
                 comment: '',
             }}
             validationSchema={QuoteFormSchema}
-            onSubmit={(values, { setSubmitting }) => {
+            onSubmit={(values, actions) => {
                 setTimeout(() => {
                     alert(JSON.stringify(values, null, 2))
-                    setSubmitting(false)
+                    actions.setSubmitting(false)
+                    actions.resetForm({
+                        values: {
+                            leadname: '',
+                            number: '',
+                            email: '',
+                            comment: '',
+                        },
+                    })
                 }, 400)
             }}
         >
@@ -49,7 +57,6 @@ const QuoteForm = ({ buttonBackground, btnColor, formStyle, buttonName }) => {
                         variant={formStyle}
                         sx={{
                             borderBottomColor: formik.errors.leadname ? 'yellow' : 'white',
-                            // color: `${buttonBackground}`,
                             '&:focus': { color: 'black' },
                         }}
                         {...formik.getFieldProps('leadname')}
@@ -58,8 +65,8 @@ const QuoteForm = ({ buttonBackground, btnColor, formStyle, buttonName }) => {
                         <div
                             sx={{
                                 color: 'yellow',
-                                fontSize: '0.75rem',
-                                fontWeight: 200,
+                                fontSize: '0.8rem',
+                                fontWeight: 'bold',
                                 pb: 3,
                             }}
                         >
@@ -75,7 +82,6 @@ const QuoteForm = ({ buttonBackground, btnColor, formStyle, buttonName }) => {
                         variant={formStyle}
                         sx={{
                             borderBottomColor: formik.errors.number ? 'yellow' : 'white',
-                            // color: `${buttonBackground}`,
                             '&:focus': { color: 'black' },
                         }}
                         {...formik.getFieldProps('number')}
@@ -84,8 +90,8 @@ const QuoteForm = ({ buttonBackground, btnColor, formStyle, buttonName }) => {
                         <div
                             sx={{
                                 color: 'yellow',
-                                fontSize: '0.75rem',
-                                fontWeight: 200,
+                                fontSize: '0.8rem',
+                                fontWeight: 'bold',
                                 pb: 3,
                             }}
                         >
@@ -101,7 +107,6 @@ const QuoteForm = ({ buttonBackground, btnColor, formStyle, buttonName }) => {
                         variant={formStyle}
                         sx={{
                             borderBottomColor: formik.errors.email ? 'yellow' : 'white',
-                            // color: `${buttonBackground}`,
                             '&:focus': { color: 'black' },
                         }}
                         {...formik.getFieldProps('email')}
@@ -110,8 +115,8 @@ const QuoteForm = ({ buttonBackground, btnColor, formStyle, buttonName }) => {
                         <div
                             sx={{
                                 color: 'yellow',
-                                fontSize: '0.75rem',
-                                fontWeight: 200,
+                                fontSize: '0.8rem',
+                                fontWeight: 'bold',
                                 pb: 3,
                             }}
                         >
@@ -127,7 +132,6 @@ const QuoteForm = ({ buttonBackground, btnColor, formStyle, buttonName }) => {
                         variant={formStyle}
                         sx={{
                             borderBottomColor: formik.errors.comment ? 'yellow' : 'white',
-                            // color: `${buttonBackground}`,
                             '&:focus': { color: 'black' },
                         }}
                         {...formik.getFieldProps('comment')}
@@ -136,8 +140,8 @@ const QuoteForm = ({ buttonBackground, btnColor, formStyle, buttonName }) => {
                         <div
                             sx={{
                                 color: 'yellow',
-                                fontSize: '0.75rem',
-                                fontWeight: 200,
+                                fontSize: '0.8rem',
+                                fontWeight: 'bold',
                                 pb: 3,
                             }}
                         >
@@ -148,6 +152,7 @@ const QuoteForm = ({ buttonBackground, btnColor, formStyle, buttonName }) => {
                         type='submit'
                         variant='simple'
                         ml='auto'
+                        disabled={formik.isSubmitting}
                         sx={{
                             backgroundColor: `${buttonBackground}`,
                             color: `${btnColor}`,

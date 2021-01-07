@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
-import { Label, Input, Box, Button } from 'theme-ui'
+import { Label, Input, Box, Button, Heading } from 'theme-ui'
 import { Formik } from 'formik'
 import * as Yup from 'yup'
 
@@ -21,12 +21,14 @@ const LeadForm = ({ buttonBackground, btnColor, formStyle, buttonName }) => {
             initialValues={{
                 leadname: '',
                 email: '',
+                subscribe: true,
             }}
             validationSchema={LeadFormSchema}
-            onSubmit={(values, { setSubmitting }) => {
+            onSubmit={(values, actions) => {
                 setTimeout(() => {
                     alert(JSON.stringify(values, null, 2))
-                    setSubmitting(false)
+                    actions.setSubmitting(false)
+                    actions.resetForm()
                 }, 400)
             }}
         >
@@ -41,7 +43,6 @@ const LeadForm = ({ buttonBackground, btnColor, formStyle, buttonName }) => {
                         variant={formStyle}
                         sx={{
                             borderBottomColor: formik.errors.leadname ? 'yellow' : 'white',
-                            // color: `${buttonBackground}`,
                             '&:focus': { color: 'black' },
                         }}
                         {...formik.getFieldProps('leadname')}
@@ -50,8 +51,8 @@ const LeadForm = ({ buttonBackground, btnColor, formStyle, buttonName }) => {
                         <div
                             sx={{
                                 color: 'yellow',
-                                fontSize: '0.75rem',
-                                fontWeight: 200,
+                                fontSize: '0.8rem',
+                                fontWeight: 'bold',
                                 pb: 3,
                             }}
                         >
@@ -67,7 +68,6 @@ const LeadForm = ({ buttonBackground, btnColor, formStyle, buttonName }) => {
                         variant={formStyle}
                         sx={{
                             borderBottomColor: formik.errors.email ? 'yellow' : 'white',
-                            // color: `${buttonBackground}`,
                             '&:focus': { color: 'black' },
                         }}
                         {...formik.getFieldProps('email')}
@@ -76,14 +76,70 @@ const LeadForm = ({ buttonBackground, btnColor, formStyle, buttonName }) => {
                         <div
                             sx={{
                                 color: 'yellow',
-                                fontSize: '0.75rem',
-                                fontWeight: 200,
+                                fontSize: '0.8rem',
+                                fontWeight: 'bold',
                                 pb: 3,
                             }}
                         >
                             {formik.errors.email}
                         </div>
                     ) : null}
+                    <Box {...formik.getFieldProps('subscribe')}>
+                        <Heading
+                            as='h4'
+                            sx={{
+                                fontWeight: 'medium',
+                                pb: 2,
+                            }}
+                        >
+                            Are you OK with us emailing you?
+                        </Heading>
+                        <Label htmlFor='subscribe'>
+                            <Box
+                                as='input'
+                                type='checkbox'
+                                id='subscribe'
+                                name='subscribe'
+                                defaultChecked={true}
+                                sx={{
+                                    mr: 3,
+                                    mb: 3,
+                                    cursor: 'pointer',
+                                    WebkitAppearance: 'none',
+                                    MozAppearance: 'none',
+                                    appearance: 'none',
+                                    outline: 0,
+                                    height: 6,
+                                    width: 6,
+                                    border: '2px solid',
+                                    borderColor: 'white',
+                                    display: 'inline-block',
+                                    ':checked': {
+                                        bg: 'transparent',
+                                        border: 'none',
+                                        position: 'relative',
+                                    },
+                                    ':after': {
+                                        content: "'✓'",
+                                        transform: 'scale(2)',
+                                        color: 'white',
+                                        fontWeight: 'black',
+                                        display: 'none',
+                                        position: 'absolute',
+                                        top: 0,
+                                        left: '9px',
+                                    },
+                                    ':checked:after': {
+                                        display: 'block',
+                                    },
+                                    ':focus': {
+                                        boxShadow: 'xs',
+                                    },
+                                }}
+                            />
+                            Yes! I'd love to keep in touch with Black Alsatian.
+                        </Label>
+                    </Box>
                     <Button
                         type='submit'
                         variant='simple'

@@ -22,22 +22,6 @@ const EnquiryFormSchema = Yup.object({
 })
 
 const EnquiryForm = ({ buttonBackground, btnColor, formStyle, buttonName }) => {
-    // const formik = useFormik({
-    //     initialValues: {
-    //         leadname: '',
-    //         number: '',
-    //         email: '',
-    //         comment: '',
-    //     },
-    //     validationSchema: EnquiryFormSchema,
-    //     onSubmit: (values, { setSubmitting }) => {
-    //         setTimeout(() => {
-    //             alert(JSON.stringify(values, null, 2))
-    //             setSubmitting(false)
-    //         }, 400)
-    //     },
-    // })
-
     return (
         <Formik
             initialValues={{
@@ -47,16 +31,16 @@ const EnquiryForm = ({ buttonBackground, btnColor, formStyle, buttonName }) => {
                 comment: '',
             }}
             validationSchema={EnquiryFormSchema}
-            onSubmit={(values, { setSubmitting }) => {
+            onSubmit={(values, actions) => {
                 setTimeout(() => {
                     alert(JSON.stringify(values, null, 2))
-                    setSubmitting(false)
+                    actions.setSubmitting(false)
+                    actions.resetForm()
                 }, 400)
             }}
         >
             {(formik) => (
                 <Box as='form' onSubmit={formik.handleSubmit}>
-                    {/* <form onSubmit={formik.handleSubmit}> */}
                     <Label htmlFor='leadname'>Name</Label>
                     <Input
                         id='leadname'
@@ -70,16 +54,13 @@ const EnquiryForm = ({ buttonBackground, btnColor, formStyle, buttonName }) => {
                             '&:focus': { color: 'black' },
                         }}
                         {...formik.getFieldProps('leadname')}
-                        // onChange={formik.handleChange}
-                        // onBlur={formik.handleBlur}
-                        // value={formik.values.leadname}
                     />
                     {formik.touched.leadname && formik.errors.leadname ? (
                         <div
                             sx={{
                                 color: 'yellow',
-                                fontSize: '0.75rem',
-                                fontWeight: 200,
+                                fontSize: '0.8rem',
+                                fontWeight: 'bold',
                                 pb: 3,
                             }}
                         >
@@ -99,16 +80,13 @@ const EnquiryForm = ({ buttonBackground, btnColor, formStyle, buttonName }) => {
                             '&:focus': { color: 'black' },
                         }}
                         {...formik.getFieldProps('number')}
-                        // onChange={formik.handleChange}
-                        // onBlur={formik.handleBlur}
-                        // value={formik.values.number}
                     />
                     {formik.touched.number && formik.errors.number ? (
                         <div
                             sx={{
                                 color: 'yellow',
-                                fontSize: '0.75rem',
-                                fontWeight: 200,
+                                fontSize: '0.8rem',
+                                fontWeight: 'bold',
                                 pb: 3,
                             }}
                         >
@@ -128,16 +106,13 @@ const EnquiryForm = ({ buttonBackground, btnColor, formStyle, buttonName }) => {
                             '&:focus': { color: 'black' },
                         }}
                         {...formik.getFieldProps('email')}
-                        // onChange={formik.handleChange}
-                        // onBlur={formik.handleBlur}
-                        // value={formik.values.email}
                     />
                     {formik.touched.email && formik.errors.email ? (
                         <div
                             sx={{
                                 color: 'yellow',
-                                fontSize: '0.75rem',
-                                fontWeight: 200,
+                                fontSize: '0.8rem',
+                                fontWeight: 'bold',
                                 pb: 3,
                             }}
                         >
@@ -157,16 +132,13 @@ const EnquiryForm = ({ buttonBackground, btnColor, formStyle, buttonName }) => {
                             '&:focus': { color: 'black' },
                         }}
                         {...formik.getFieldProps('comment')}
-                        // onChange={formik.handleChange}
-                        // onBlur={formik.handleBlur}
-                        // value={formik.values.comment}
                     />
                     {formik.touched.comment && formik.errors.comment ? (
                         <div
                             sx={{
                                 color: 'yellow',
-                                fontSize: '0.75rem',
-                                fontWeight: 200,
+                                fontSize: '0.8rem',
+                                fontWeight: 'bold',
                                 pb: 3,
                             }}
                         >
