@@ -5,7 +5,7 @@ import { Formik } from 'formik'
 import * as Yup from 'yup'
 
 const LeadFormSchema = Yup.object({
-    leadname: Yup.string()
+    name: Yup.string()
         .min(3, "That's quite a short name. At least 3 characters are required")
         .max(50, 'Wow, now that is quite a long name! This field only takes 50 characters')
         .required('Oops! You missed this field.'),
@@ -19,9 +19,16 @@ const LeadForm = ({ buttonBackground, btnColor, formStyle, buttonName }) => {
     return (
         <Formik
             initialValues={{
-                leadname: '',
+                name: '',
+                number: '',
                 email: '',
+                message: '',
+                status: 'Lead',
                 subscribe: true,
+                site: 'blackalsatian.co.za',
+                page: '',
+                source: '',
+                notes: '',
             }}
             validationSchema={LeadFormSchema}
             onSubmit={(values, actions) => {
@@ -34,20 +41,20 @@ const LeadForm = ({ buttonBackground, btnColor, formStyle, buttonName }) => {
         >
             {(formik) => (
                 <Box as='form' onSubmit={formik.handleSubmit}>
-                    <Label htmlFor='leadname'>Name</Label>
+                    <Label htmlFor='name'>Name</Label>
                     <Input
-                        id='leadname'
-                        name='leadname'
+                        id='name'
+                        name='name'
                         type='text'
                         mb={3}
                         variant={formStyle}
                         sx={{
-                            borderBottomColor: formik.errors.leadname ? 'yellow' : 'white',
+                            borderBottomColor: formik.errors.name ? 'yellow' : 'white',
                             '&:focus': { color: 'black' },
                         }}
-                        {...formik.getFieldProps('leadname')}
+                        {...formik.getFieldProps('name')}
                     />
-                    {formik.touched.leadname && formik.errors.leadname ? (
+                    {formik.touched.name && formik.errors.name ? (
                         <div
                             sx={{
                                 color: 'yellow',
@@ -56,7 +63,7 @@ const LeadForm = ({ buttonBackground, btnColor, formStyle, buttonName }) => {
                                 pb: 3,
                             }}
                         >
-                            {formik.errors.leadname}
+                            {formik.errors.name}
                         </div>
                     ) : null}
                     <Label htmlFor='email'>Email</Label>

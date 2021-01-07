@@ -6,7 +6,7 @@ import * as Yup from 'yup'
 import { phoneRegExp } from '../helpers'
 
 const QuoteFormSchema = Yup.object({
-    leadname: Yup.string()
+    name: Yup.string()
         .min(3, "That's quite a short name. At least 3 characters are required")
         .max(50, 'Wow, now that is quite a long name! This field only takes 50 characters')
         .required('Oops! You missed this field.'),
@@ -18,50 +18,49 @@ const QuoteFormSchema = Yup.object({
         .email("Hmm, there's something strange about this email address.")
         .max(80, "Wow, now that's a long email address! This field only accepts 80 characters.")
         .required('Oops! You missed this field.'),
-    comment: Yup.string().min(40, 'Was that all? At least 40 characters are required.').required('How may we assist?'),
+    message: Yup.string().min(40, 'Was that all? At least 40 characters are required.').required('How may we assist?'),
 })
 
 const QuoteForm = ({ buttonBackground, btnColor, formStyle, buttonName }) => {
     return (
         <Formik
             initialValues={{
-                leadname: '',
+                name: '',
                 number: '',
                 email: '',
-                comment: '',
+                message: '',
+                status: 'Quote Request',
+                subscribe: false,
+                site: 'blackalsatian.co.za',
+                page: '',
+                source: '',
+                notes: '',
             }}
             validationSchema={QuoteFormSchema}
             onSubmit={(values, actions) => {
                 setTimeout(() => {
                     alert(JSON.stringify(values, null, 2))
                     actions.setSubmitting(false)
-                    actions.resetForm({
-                        values: {
-                            leadname: '',
-                            number: '',
-                            email: '',
-                            comment: '',
-                        },
-                    })
+                    actions.resetForm()
                 }, 400)
             }}
         >
             {(formik) => (
                 <Box as='form' onSubmit={formik.handleSubmit}>
-                    <Label htmlFor='leadname'>Name</Label>
+                    <Label htmlFor='name'>Name</Label>
                     <Input
-                        id='leadname'
-                        name='leadname'
+                        id='name'
+                        name='name'
                         type='text'
                         mb={3}
                         variant={formStyle}
                         sx={{
-                            borderBottomColor: formik.errors.leadname ? 'yellow' : 'white',
+                            borderBottomColor: formik.errors.name ? 'yellow' : 'white',
                             '&:focus': { color: 'black' },
                         }}
-                        {...formik.getFieldProps('leadname')}
+                        {...formik.getFieldProps('name')}
                     />
-                    {formik.touched.leadname && formik.errors.leadname ? (
+                    {formik.touched.name && formik.errors.name ? (
                         <div
                             sx={{
                                 color: 'yellow',
@@ -70,7 +69,7 @@ const QuoteForm = ({ buttonBackground, btnColor, formStyle, buttonName }) => {
                                 pb: 3,
                             }}
                         >
-                            {formik.errors.leadname}
+                            {formik.errors.name}
                         </div>
                     ) : null}
                     <Label htmlFor='number'>Number</Label>
@@ -123,20 +122,20 @@ const QuoteForm = ({ buttonBackground, btnColor, formStyle, buttonName }) => {
                             {formik.errors.email}
                         </div>
                     ) : null}
-                    <Label htmlFor='comment'>Comment</Label>
+                    <Label htmlFor='message'>Message</Label>
                     <Textarea
-                        id='comment'
-                        name='comment'
+                        id='message'
+                        name='message'
                         rows='4'
                         mb={3}
                         variant={formStyle}
                         sx={{
-                            borderBottomColor: formik.errors.comment ? 'yellow' : 'white',
+                            borderBottomColor: formik.errors.message ? 'yellow' : 'white',
                             '&:focus': { color: 'black' },
                         }}
-                        {...formik.getFieldProps('comment')}
+                        {...formik.getFieldProps('message')}
                     />
-                    {formik.touched.comment && formik.errors.comment ? (
+                    {formik.touched.message && formik.errors.message ? (
                         <div
                             sx={{
                                 color: 'yellow',
@@ -145,7 +144,7 @@ const QuoteForm = ({ buttonBackground, btnColor, formStyle, buttonName }) => {
                                 pb: 3,
                             }}
                         >
-                            {formik.errors.comment}
+                            {formik.errors.message}
                         </div>
                     ) : null}
                     <Button
