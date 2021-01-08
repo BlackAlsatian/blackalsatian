@@ -21,7 +21,7 @@ export default function MenuIcon({ handleBurgerMenuClick, isOpen, color }) {
                     transformOrigin: '1px',
                     transform: isOpen ? 'rotate(45deg)' : 'rotate(0)',
                     transition: 'opacity 300ms, transform 300ms',
-                    boxShadow: '0 0 4px 4px  rgba(0, 0, 0, 0.05)',
+                    boxShadow: '0 0 5px 5px  rgba(0, 0, 0, 0.05)',
                 }}
             ></Box>
             <Box
@@ -35,7 +35,7 @@ export default function MenuIcon({ handleBurgerMenuClick, isOpen, color }) {
                     transformOrigin: '1px',
                     opacity: isOpen ? '0' : '1',
                     transition: 'opacity 300ms, transform 300ms',
-                    boxShadow: '0 0 4px 4px rgba(0, 0, 0, 0.05)',
+                    boxShadow: '0 0 5px 5px rgba(0, 0, 0, 0.05)',
                 }}
             ></Box>
             <Box
@@ -49,7 +49,7 @@ export default function MenuIcon({ handleBurgerMenuClick, isOpen, color }) {
                     transformOrigin: '1px',
                     transform: isOpen ? 'rotate(-45deg)' : 'rotate(0)',
                     transition: 'opacity 300ms, transform 300ms',
-                    boxShadow: '0 0 4px 4px  rgba(0, 0, 0, 0.05)',
+                    boxShadow: '0 0 5px 5px  rgba(0, 0, 0, 0.05)',
                 }}
             ></Box>
         </button>
