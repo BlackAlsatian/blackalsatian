@@ -86,6 +86,12 @@ module.exports = {
                 layout: require.resolve(`./src/components/layout.js`),
             },
         },
+        {
+            resolve: `gatsby-plugin-sitemap`,
+            options: {
+                exclude: [`/portfolio/*`],
+            },
+        },
         /**
          * The following two plugins are required if you want to use Gatsby image
          * See https://www.gatsbyjs.com/docs/gatsby-image/#setting-up-gatsby-image
@@ -105,6 +111,64 @@ module.exports = {
                 theme_color: `#ffffff`,
                 display: `minimal-ui`,
                 icon: `src/assets/images/blackalsatian-icon.png`,
+                icons: [
+                    {
+                        src: `/favicon/icon-16x16.png`,
+                        sizes: `16x16`,
+                        type: `image/png`,
+                    },
+                    {
+                        src: `/favicon/icon-32x32.png`,
+                        sizes: `32x32`,
+                        type: `image/png`,
+                    },
+                    {
+                        src: `/favicon/icon-48x48.png`,
+                        sizes: `48x48`,
+                        type: `image/png`,
+                    },
+                    {
+                        src: `/favicon/icon-64x64.png`,
+                        sizes: `64x64`,
+                        type: `image/png`,
+                    },
+                    {
+                        src: `/favicon/icon-72x72.png`,
+                        sizes: `72x72`,
+                        type: `image/png`,
+                    },
+                    {
+                        src: `/favicon/icon-96x96.png`,
+                        sizes: `96x96`,
+                        type: `image/png`,
+                    },
+                    {
+                        src: `/favicon/icon-144x144.png`,
+                        sizes: `144x144`,
+                        type: `image/png`,
+                    },
+                    {
+                        src: `/favicon/icon-192x192.png`,
+                        sizes: `192x192`,
+                        type: `image/png`,
+                    },
+                    {
+                        src: `/favicon/icon-256x256.png`,
+                        sizes: `256x256`,
+                        type: `image/png`,
+                    },
+                    {
+                        src: `/favicon/icon-384x384.png`,
+                        sizes: `384x384`,
+                        type: `image/png`,
+                    },
+                    {
+                        src: `/favicon/icon-512x512.png`,
+                        sizes: `512x512`,
+                        type: `image/png`,
+                    },
+                ], // Add or remove icon sizes as desired
+                cache_busting_mode: `none`,
             },
         },
 
