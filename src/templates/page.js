@@ -91,7 +91,7 @@ const PageTemplate = ({ data: { page } }) => {
                                         variant: 'layout',
                                     }}
                                 >
-                                    {parse(page.content)}
+                                    {page.content && parse(page.content)}
                                 </Box>
                             </Flex>
                         </Container>
