@@ -13,7 +13,7 @@ function ProjectContent({ project }) {
                     }}
                 >
                     <Box
-                        p={[5, 5, 3, 6]}
+                        p={[5, 5, 3, 5]}
                         sx={{
                             textAlign: ['left', 'left', 'right'],
                             flex: [null, null, 1],
@@ -78,11 +78,11 @@ function ProjectContent({ project }) {
                     </Box>
                     <Box
                         py={[4, 4, 5]}
-                        px={[5, 5, 6]}
+                        px={[4, 4, 5]}
                         sx={{
                             flex: [null, null, 3],
                             width: ['100%', null],
-                            variant: 'layout',
+                            variant: 'layout.project',
                         }}
                     >
                         {parse(project.content)}

@@ -1,6 +1,7 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
-import { Label, Input, Textarea, Box, Button } from 'theme-ui'
+import { Label, Input, Textarea, Box, Button, Spinner, Alert } from 'theme-ui'
+import { useState } from 'react'
 import { Formik } from 'formik'
 import * as Yup from 'yup'
 import axios from 'axios'
@@ -21,7 +22,8 @@ const EnquiryFormSchema = Yup.object({
         .required('Oops! You missed this field.'),
     message: Yup.string().min(40, 'Was that all? At least 40 characters are required.').required('How may we assist?'),
 })
-const EnquiryForm = ({ buttonBackground, btnColor, formStyle, buttonName, path }) => {
+const EnquiryForm = ({ buttonBackground, btnColor, formStyle, buttonName }) => {
+    const [messageAlert, setMessageAlert] = useState(false)
     return (
         <Formik
             initialValues={{
@@ -38,34 +40,29 @@ const EnquiryForm = ({ buttonBackground, btnColor, formStyle, buttonName, path }
             }}
             validationSchema={EnquiryFormSchema}
             onSubmit={(values, actions) => {
-                console.log(values)
-                setTimeout(() => {
-                    alert(JSON.stringify(values, null, 2))
-                    axios({
-                        method: 'post',
-                        url: `${process.env.GATSBY_API_URL}`,
-                        headers: {
-                            Accept: 'Application/json',
-                            'Content-type': 'Application/json',
-                        },
-                        data: JSON.stringify(values),
-                    }).then(
-                        console.log(values),
-                        (response) => {
-                            console.log(values)
-                            console.log(response)
-                            // this.setState({
-                            //   sentSuccessful: 'Thanks for the enquiry. Chat soon!',
-                            // })
-                        },
-                        (error) => {
-                            console.log(values)
-                            console.log(error)
-                        },
-                    )
-                    actions.setSubmitting(false)
-                    actions.resetForm()
-                }, 400)
+                axios({
+                    method: 'post',
+                    url: `${process.env.GATSBY_API_URL}`,
+                    headers: {
+                        Accept: 'Application/json',
+                        'Content-type': 'Application/json',
+                    },
+                    data: JSON.stringify(values),
+                }).then(
+                    (response) => {
+                        if (response.status === 201) {
+                            setMessageAlert(true)
+                            actions.resetForm()
+                            actions.setSubmitting(false)
+                            setTimeout(() => {
+                                setMessageAlert(false)
+                            }, 4000)
+                        }
+                    },
+                    (error) => {
+                        console.log(error)
+                    },
+                )
             }}
         >
             {(formik) => (
@@ -87,7 +84,7 @@ const EnquiryForm = ({ buttonBackground, btnColor, formStyle, buttonName, path }
                     {formik.touched.name && formik.errors.name ? (
                         <div
                             sx={{
-                                color: 'yellow',
+                                color: 'red',
                                 fontSize: '0.8rem',
                                 fontWeight: 'bold',
                                 pb: 3,
@@ -113,7 +110,7 @@ const EnquiryForm = ({ buttonBackground, btnColor, formStyle, buttonName, path }
                     {formik.touched.number && formik.errors.number ? (
                         <div
                             sx={{
-                                color: 'yellow',
+                                color: 'red',
                                 fontSize: '0.8rem',
                                 fontWeight: 'bold',
                                 pb: 3,
@@ -139,7 +136,7 @@ const EnquiryForm = ({ buttonBackground, btnColor, formStyle, buttonName, path }
                     {formik.touched.email && formik.errors.email ? (
                         <div
                             sx={{
-                                color: 'yellow',
+                                color: 'red',
                                 fontSize: '0.8rem',
                                 fontWeight: 'bold',
                                 pb: 3,
@@ -165,7 +162,7 @@ const EnquiryForm = ({ buttonBackground, btnColor, formStyle, buttonName, path }
                     {formik.touched.message && formik.errors.message ? (
                         <div
                             sx={{
-                                color: 'yellow',
+                                color: 'red',
                                 fontSize: '0.8rem',
                                 fontWeight: 'bold',
                                 pb: 3,
@@ -174,23 +171,43 @@ const EnquiryForm = ({ buttonBackground, btnColor, formStyle, buttonName, path }
                             {formik.errors.message}
                         </div>
                     ) : null}
-                    <Button
-                        type='submit'
-                        variant='simple'
-                        ml='auto'
-                        disabled={formik.isSubmitting}
-                        sx={{
-                            backgroundColor: `${buttonBackground}`,
-                            color: `${btnColor}`,
-                            boxShadow: 'xl',
-                            '&:hover': {
+                    {messageAlert && (
+                        <Alert
+                            sx={{
+                                color: `${btnColor}`,
+                                bg: `${buttonBackground}`,
+                                my: 3,
+                            }}
+                        >
+                            Pleased to meet you! Chat soon.
+                        </Alert>
+                    )}
+                    {formik.isSubmitting ? (
+                        <Spinner
+                            sx={{
+                                color: `${buttonBackground}`,
+                                boxShadow: 'xl',
+                            }}
+                        />
+                    ) : (
+                        <Button
+                            type='submit'
+                            variant='simple'
+                            ml='auto'
+                            disabled={formik.isSubmitting}
+                            sx={{
                                 backgroundColor: `${buttonBackground}`,
-                                boxShadow: 'none',
-                            },
-                        }}
-                    >
-                        {buttonName || 'Fetch!'}
-                    </Button>
+                                color: `${btnColor}`,
+                                boxShadow: 'xl',
+                                '&:hover': {
+                                    backgroundColor: `${buttonBackground}`,
+                                    boxShadow: 'none',
+                                },
+                            }}
+                        >
+                            {buttonName || 'Fetch!'}
+                        </Button>
+                    )}
                 </Box>
             )}
         </Formik>

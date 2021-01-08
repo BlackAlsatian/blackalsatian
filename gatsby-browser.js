@@ -7,17 +7,17 @@ import 'typeface-montserrat'
 // export const wrapPageElement = ({ element, props }) => {
 //     return <Layout {...props}>{element}</Layout>
 // }
-// const transitionDelay = 250
-//
-// export const shouldUpdateScroll = ({ routerProps: { location }, getSavedScrollPosition }) => {
-//     if (location.action === 'PUSH') {
-//         window.setTimeout(() => window.scrollTo(0, 0), transitionDelay)
-//     } else {
-//         const savedPosition = getSavedScrollPosition(location)
-//         window.setTimeout(() => window.scrollTo(...(savedPosition || [0, 0])), transitionDelay)
-//     }
-//     return false
-// }
+const transitionDelay = 0
+
+export const shouldUpdateScroll = ({ routerProps: { location }, getSavedScrollPosition }) => {
+    if (location.action === 'PUSH') {
+        window.setTimeout(() => window.scrollTo(0, 0), transitionDelay)
+    } else {
+        const savedPosition = getSavedScrollPosition(location)
+        window.setTimeout(() => window.scrollTo(...(savedPosition || [0, 0])), transitionDelay)
+    }
+    return false
+}
 
 // Adjust if you need to add a delay before scrolling
 // const transitionDelay = 0

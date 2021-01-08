@@ -1,8 +1,10 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
-import { Label, Input, Box, Button, Heading } from 'theme-ui'
+import { Label, Input, Box, Button, Heading, Spinner, Alert } from 'theme-ui'
+import { useState } from 'react'
 import { Formik } from 'formik'
 import * as Yup from 'yup'
+import axios from 'axios'
 
 const LeadFormSchema = Yup.object({
     name: Yup.string()
@@ -16,6 +18,7 @@ const LeadFormSchema = Yup.object({
 })
 
 const LeadForm = ({ buttonBackground, btnColor, formStyle, buttonName }) => {
+    const [messageAlert, setMessageAlert] = useState(false)
     return (
         <Formik
             initialValues={{
@@ -32,11 +35,29 @@ const LeadForm = ({ buttonBackground, btnColor, formStyle, buttonName }) => {
             }}
             validationSchema={LeadFormSchema}
             onSubmit={(values, actions) => {
-                setTimeout(() => {
-                    alert(JSON.stringify(values, null, 2))
-                    actions.setSubmitting(false)
-                    actions.resetForm()
-                }, 400)
+                axios({
+                    method: 'post',
+                    url: `${process.env.GATSBY_API_URL}`,
+                    headers: {
+                        Accept: 'Application/json',
+                        'Content-type': 'Application/json',
+                    },
+                    data: JSON.stringify(values),
+                }).then(
+                    (response) => {
+                        if (response.status === 201) {
+                            setMessageAlert(true)
+                            actions.resetForm()
+                            actions.setSubmitting(false)
+                            setTimeout(() => {
+                                setMessageAlert(false)
+                            }, 4000)
+                        }
+                    },
+                    (error) => {
+                        console.log(error)
+                    },
+                )
             }}
         >
             {(formik) => (
@@ -147,23 +168,43 @@ const LeadForm = ({ buttonBackground, btnColor, formStyle, buttonName }) => {
                             Yes! I'd love to keep in touch with Black Alsatian.
                         </Label>
                     </Box>
-                    <Button
-                        type='submit'
-                        variant='simple'
-                        ml='auto'
-                        disabled={formik.isSubmitting}
-                        sx={{
-                            backgroundColor: `${buttonBackground}`,
-                            color: `${btnColor}`,
-                            boxShadow: 'xl',
-                            '&:hover': {
+                    {messageAlert && (
+                        <Alert
+                            sx={{
+                                color: `${btnColor}`,
+                                bg: `${buttonBackground}`,
+                                my: 3,
+                            }}
+                        >
+                            Pleased to meet you! Chat soon.
+                        </Alert>
+                    )}
+                    {formik.isSubmitting ? (
+                        <Spinner
+                            sx={{
+                                color: `${buttonBackground}`,
+                                boxShadow: 'xl',
+                            }}
+                        />
+                    ) : (
+                        <Button
+                            type='submit'
+                            variant='simple'
+                            ml='auto'
+                            disabled={formik.isSubmitting}
+                            sx={{
                                 backgroundColor: `${buttonBackground}`,
-                                boxShadow: 'none',
-                            },
-                        }}
-                    >
-                        {buttonName || 'Fetch!'}
-                    </Button>
+                                color: `${btnColor}`,
+                                boxShadow: 'xl',
+                                '&:hover': {
+                                    backgroundColor: `${buttonBackground}`,
+                                    boxShadow: 'none',
+                                },
+                            }}
+                        >
+                            {buttonName || 'Fetch!'}
+                        </Button>
+                    )}
                 </Box>
             )}
         </Formik>

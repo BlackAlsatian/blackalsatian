@@ -53,6 +53,7 @@ const SEO = ({ title, description, featuredImage, url, author, isBlogPost, dateP
                 <>
                     <Helmet titleTemplate={defaultTitle ? `%s | ${defaultTitle}` : null} defer={false}>
                         <html lang='en' />
+
                         {/* General tags */}
                         <title>{pageTitle}</title>
                         <meta name='description' content={metaDescription} />
@@ -62,6 +63,7 @@ const SEO = ({ title, description, featuredImage, url, author, isBlogPost, dateP
                         {/* OpenGraph tags */}
                         <meta property='og:url' content={pageUrl} />
                         {isBlogPost ? <meta property='og:type' content='article' /> : null}
+
                         {/* <meta property="og:type" content="article" /> */}
                         <meta property='og:title' content={pageTitle} />
                         <meta property='og:description' content={metaDescription} />

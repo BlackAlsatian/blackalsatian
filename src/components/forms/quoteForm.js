@@ -1,8 +1,10 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
-import { Label, Input, Textarea, Box, Button } from 'theme-ui'
+import { Label, Input, Textarea, Box, Button, Spinner, Alert } from 'theme-ui'
+import { useState } from 'react'
 import { Formik } from 'formik'
 import * as Yup from 'yup'
+import axios from 'axios'
 import { phoneRegExp } from '../helpers'
 
 const QuoteFormSchema = Yup.object({
@@ -22,6 +24,7 @@ const QuoteFormSchema = Yup.object({
 })
 
 const QuoteForm = ({ buttonBackground, btnColor, formStyle, buttonName }) => {
+    const [messageAlert, setMessageAlert] = useState(false)
     return (
         <Formik
             initialValues={{
@@ -38,11 +41,29 @@ const QuoteForm = ({ buttonBackground, btnColor, formStyle, buttonName }) => {
             }}
             validationSchema={QuoteFormSchema}
             onSubmit={(values, actions) => {
-                setTimeout(() => {
-                    alert(JSON.stringify(values, null, 2))
-                    actions.setSubmitting(false)
-                    actions.resetForm()
-                }, 400)
+                axios({
+                    method: 'post',
+                    url: `${process.env.GATSBY_API_URL}`,
+                    headers: {
+                        Accept: 'Application/json',
+                        'Content-type': 'Application/json',
+                    },
+                    data: JSON.stringify(values),
+                }).then(
+                    (response) => {
+                        if (response.status === 201) {
+                            setMessageAlert(true)
+                            actions.resetForm()
+                            actions.setSubmitting(false)
+                            setTimeout(() => {
+                                setMessageAlert(false)
+                            }, 4000)
+                        }
+                    },
+                    (error) => {
+                        console.log(error)
+                    },
+                )
             }}
         >
             {(formik) => (
@@ -147,23 +168,43 @@ const QuoteForm = ({ buttonBackground, btnColor, formStyle, buttonName }) => {
                             {formik.errors.message}
                         </div>
                     ) : null}
-                    <Button
-                        type='submit'
-                        variant='simple'
-                        ml='auto'
-                        disabled={formik.isSubmitting}
-                        sx={{
-                            backgroundColor: `${buttonBackground}`,
-                            color: `${btnColor}`,
-                            boxShadow: 'xl',
-                            '&:hover': {
+                    {messageAlert && (
+                        <Alert
+                            sx={{
+                                color: `${btnColor}`,
+                                bg: `${buttonBackground}`,
+                                my: 3,
+                            }}
+                        >
+                            Pleased to meet you! Chat soon.
+                        </Alert>
+                    )}
+                    {formik.isSubmitting ? (
+                        <Spinner
+                            sx={{
+                                color: `${buttonBackground}`,
+                                boxShadow: 'xl',
+                            }}
+                        />
+                    ) : (
+                        <Button
+                            type='submit'
+                            variant='simple'
+                            ml='auto'
+                            disabled={formik.isSubmitting}
+                            sx={{
                                 backgroundColor: `${buttonBackground}`,
-                                boxShadow: 'none',
-                            },
-                        }}
-                    >
-                        {buttonName || 'Fetch!'}
-                    </Button>
+                                color: `${btnColor}`,
+                                boxShadow: 'xl',
+                                '&:hover': {
+                                    backgroundColor: `${buttonBackground}`,
+                                    boxShadow: 'none',
+                                },
+                            }}
+                        >
+                            {buttonName || 'Fetch!'}
+                        </Button>
+                    )}
                 </Box>
             )}
         </Formik>

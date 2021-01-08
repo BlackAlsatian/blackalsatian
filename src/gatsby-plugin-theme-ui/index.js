@@ -79,6 +79,9 @@ export default {
             fontWeight: 'body',
         },
     },
+    figure: {
+        ...tailwind.figure,
+    },
     fonts: {
         ...tailwind.fonts,
         body: 'Montserrat, sans-serif',
@@ -145,6 +148,22 @@ export default {
                 '&:hover': {
                     textDecoration: 'none',
                 },
+                '&:visited': {
+                    color: 'rgba(0, 0, 0, 0.8)',
+                },
+            },
+        },
+        h4: {
+            a: {
+                color: 'black',
+                textDecoration: 'underline',
+                fontWeight: 'medium',
+                '&:hover': {
+                    textDecoration: 'none',
+                },
+                '&:visited': {
+                    color: 'rgba(0, 0, 0, 0.8)',
+                },
             },
         },
         blockquote: {
@@ -156,8 +175,16 @@ export default {
         },
         figure: {
             textAlign: 'center',
+            width: '100%',
             span: {
                 m: '0 auto',
+            },
+        },
+        project: {
+            p: {
+                a: {
+                    color: 'white',
+                },
             },
         },
     },
