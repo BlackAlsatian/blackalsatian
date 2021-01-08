@@ -47,14 +47,14 @@ const PortfolioIndex = ({ data }) => {
                         }}
                     >
                         <Box
-                            p={[5, 5, 3, 6]}
+                            p={[4, 4, 3, 6]}
                             sx={{
                                 textAlign: ['left', 'left', 'right'],
                                 flex: [null, null, 1],
                                 width: ['100%', null],
                                 display: 'flex',
                                 flexDirection: 'column',
-                                alignItems: 'flex-end',
+                                alignItems: ['flex-start', 'flex-start', 'flex-end'],
                                 // justifyContent: 'center',
                                 borderRight: [0, 0, '1px solid white'],
                             }}
@@ -89,15 +89,15 @@ const PortfolioIndex = ({ data }) => {
                             )}
                         </Box>
                         <Box
-                            py={[4, 4, 5]}
-                            pr={[5, 5, 6]}
+                            py={[0, 0, 4]}
+                            pr={[0, 0, 6]}
                             sx={{
                                 flex: [null, null, 3],
                                 width: ['100%', null],
                                 variant: 'layout',
                             }}
                         >
-                            <div sx={{ pl: [5, 5, 6], pb: 5 }}>{parse(page.content)}</div>
+                            <div sx={{ pl: [4, 4, 6], pr: [4, 4, null], pb: 5 }}>{parse(page.content)}</div>
                             {portfolio.map((portfolio) => {
                                 const title = portfolio.title
                                 return (
@@ -125,19 +125,21 @@ const PortfolioIndex = ({ data }) => {
                                                 display: 'flex',
                                                 alignItems: 'center',
                                                 justifyContent: 'space-between',
-                                                pl: [5, 5, 6],
+                                                pl: [1, 1, 6],
+                                                py: [3, 3, null],
                                                 minHeight: ['3rem', '3rem', '5rem'],
                                                 borderBottom: '0.01rem solid white',
                                                 transition: 'background 500ms ease-in',
                                             }}
                                         >
-                                            <p sx={{ flex: 1 }}>{portfolio.projectYear}</p>
+                                            <p sx={{ flex: 1, px: 2 }}>{portfolio.projectYear}</p>
                                             <Heading
                                                 as='h3'
                                                 sx={{
                                                     flex: 4,
                                                     fontSize: 2,
                                                     fontWeight: 'medium',
+                                                    px: 2,
                                                 }}
                                             >
                                                 {parse(title)}
@@ -146,6 +148,7 @@ const PortfolioIndex = ({ data }) => {
                                                 sx={{
                                                     flex: 2,
                                                     fontSize: 0,
+                                                    px: 2,
                                                 }}
                                             >
                                                 {portfolio.tags.nodes &&

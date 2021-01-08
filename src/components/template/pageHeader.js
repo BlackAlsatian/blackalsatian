@@ -17,7 +17,7 @@ function PageHeader({ title, intro, backgroundColor, color }) {
                 <Heading
                     as='h1'
                     sx={{
-                        fontSize: [7, 10],
+                        fontSize: [6, 7, 7, 10],
                         letterSpacing: 'tighter',
                         textShadow: '0 0 4rem rgba(0, 0, 0, 0.1)',
                     }}

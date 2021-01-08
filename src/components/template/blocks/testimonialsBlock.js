@@ -31,7 +31,7 @@ const TestimonialsBlock = () => {
     const [node, setNode] = useState(0)
 
     const testimonials = data.allWpTestimonial.edges.map(({ node }) => (
-        <div key={node.id} sx={{ px: 5, fontStyle: 'oblique' }}>
+        <div key={node.id} sx={{ px: [1, 1, 5], fontStyle: 'oblique' }}>
             {parse(node.content)}
             <p sx={{ textAlign: 'right' }}>
                 <i>- {node.testimonialAuthor}</i>
@@ -40,10 +40,6 @@ const TestimonialsBlock = () => {
             </p>
         </div>
     ))
-
-    // const testimonials = data.allWpTestimonial.edges.map(({ node }) => [
-    //     {id: node.id, content: node.content, author: node.testimonialAuthor, role: node.testimonialRole, company: node.testimonialCompany}
-    // ])
 
     const paginate = (newPage) => {
         if (newPage < 0) {
@@ -54,32 +50,6 @@ const TestimonialsBlock = () => {
             setNode(newPage)
         }
     }
-
-    // const [index, set] = useState(0)
-    // const transitions = useTransition(testimonials[index], (item) => item.id, {
-    //     from: { opacity: 0 },
-    //     enter: { opacity: 1 },
-    //     leave: { opacity: 0 },
-    //     config: config.molasses,
-    // })
-    // useEffect(
-    //     () => void setInterval(() => set((state) => (state + 1) % 4), 2000),
-    //     [],
-    // )
-    // return transitions.map(({ item, props, key }) => (
-    //     <animated.div
-    //         key={key}
-    //         class='bg'
-    //         sx={{ px: 5, fontStyle: 'oblique' }}
-    //     >
-    //         {parse(item.content)}
-    //         <p sx={{ textAlign: 'right' }}>
-    //             <i>- {item.author}</i>
-    //             {item.role && `, ${item.role}`}
-    //             {item.company && ` - ${item.company}`}
-    //         </p>
-    //     </animated.div>
-    // ))
     return (
         <section
             sx={{
@@ -111,7 +81,7 @@ const TestimonialsBlock = () => {
                             transition: { duration: 0.5 },
                         }}
                     >
-                        <LeftArrow color='black' width={36} height={36} />
+                        <LeftArrow color='black' width={[24, 24, 36]} height={[24, 24, 36]} />
                     </motion.button>
                     <AnimatePresence exitBeforeEnter>
                         <motion.div>{testimonials[node]}</motion.div>
@@ -132,7 +102,7 @@ const TestimonialsBlock = () => {
                             transition: { duration: 0.5 },
                         }}
                     >
-                        <RightArrow color='black' width={36} height={36} />
+                        <RightArrow color='black' width={[24, 24, 36]} height={[24, 24, 36]} />
                     </motion.button>
                 </Flex>
             </Container>

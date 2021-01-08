@@ -47,10 +47,7 @@ const LatestPostsBlock = () => {
                     pb: 6,
                 }}
             >
-                <Heading
-                    as='h3'
-                    sx={{ ml: 5, fontSize: 5, fontWeight: 'light' }}
-                >
+                <Heading as='h3' sx={{ ml: [4, 4, 5], fontSize: 5, fontWeight: 'light' }}>
                     Latest From The Blogosphere
                 </Heading>
             </div>
@@ -83,10 +80,7 @@ const LatestPostsBlock = () => {
                             }}
                         >
                             <Img
-                                fluid={
-                                    node.featuredImage.node.localFile
-                                        .childImageSharp.fluid
-                                }
+                                fluid={node.featuredImage.node.localFile.childImageSharp.fluid}
                                 alt={node.featuredImage.node.altText}
                                 // id={node.featuredImage.node.altText}
                                 style={{

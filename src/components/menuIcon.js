@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx } from 'theme-ui'
+import { jsx, Box } from 'theme-ui'
 
 export default function MenuIcon({ handleBurgerMenuClick, isOpen, color }) {
     return (
@@ -10,7 +10,7 @@ export default function MenuIcon({ handleBurgerMenuClick, isOpen, color }) {
                 // visibility: isOpen ? 'hidden' : null,
             }}
         >
-            <div
+            <Box
                 sx={{
                     width: 6,
                     height: 'px',
@@ -18,13 +18,13 @@ export default function MenuIcon({ handleBurgerMenuClick, isOpen, color }) {
                     borderRadius: '5px',
                     position: 'relative',
                     ml: 'auto',
-                    // transform: ${({isOpen}) => (isOpen ? 'rotate(45deg)' : 'rotate(0)')}
                     transformOrigin: '1px',
                     transform: isOpen ? 'rotate(45deg)' : 'rotate(0)',
                     transition: 'opacity 300ms, transform 300ms',
+                    boxShadow: '0 0 4px 4px  rgba(0, 0, 0, 0.05)',
                 }}
-            ></div>
-            <div
+            ></Box>
+            <Box
                 sx={{
                     width: 6,
                     height: 'px',
@@ -32,13 +32,13 @@ export default function MenuIcon({ handleBurgerMenuClick, isOpen, color }) {
                     borderRadius: '5px',
                     position: 'relative',
                     ml: 'auto',
-                    // opacity: ${({isOpen}) => (isOpen ? '0' : '1')}
                     transformOrigin: '1px',
                     opacity: isOpen ? '0' : '1',
                     transition: 'opacity 300ms, transform 300ms',
+                    boxShadow: '0 0 4px 4px rgba(0, 0, 0, 0.05)',
                 }}
-            ></div>
-            <div
+            ></Box>
+            <Box
                 sx={{
                     width: 6,
                     height: 'px',
@@ -46,12 +46,12 @@ export default function MenuIcon({ handleBurgerMenuClick, isOpen, color }) {
                     borderRadius: '5px',
                     position: 'relative',
                     ml: 'auto',
-                    // transform: ${({isOpen}) => (isOpen ? 'rotate(-45deg)' : 'rotate(0)')}
                     transformOrigin: '1px',
                     transform: isOpen ? 'rotate(-45deg)' : 'rotate(0)',
                     transition: 'opacity 300ms, transform 300ms',
+                    boxShadow: '0 0 4px 4px  rgba(0, 0, 0, 0.05)',
                 }}
-            ></div>
+            ></Box>
         </button>
     )
 }

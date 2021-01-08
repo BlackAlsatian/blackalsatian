@@ -48,7 +48,7 @@ const FeaturedProjectsBlock = () => {
                     pb: 6,
                 }}
             >
-                <Heading as='h3' sx={{ ml: 5, fontSize: 5, fontWeight: 'light' }}>
+                <Heading as='h3' sx={{ ml: [4, 4, 5], fontSize: 5, fontWeight: 'light' }}>
                     Featured Projects
                 </Heading>
             </div>

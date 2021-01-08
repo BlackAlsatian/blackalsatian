@@ -41,12 +41,11 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
                         />
                     )}
                     <Container>
-                        <div
+                        <Flex
                             sx={{
                                 position: 'absolute',
                                 top: 0,
                                 left: 0,
-                                display: 'flex',
                                 flexDirection: 'column',
                                 pt: '36vh',
                                 px: 4,
@@ -61,13 +60,16 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
                                 sx={{
                                     fontSize: [6, 7, 7, 9],
                                     letterSpacing: 'tighter',
+                                    textShadow: '0 0 4rem rgba(0, 0, 0, 0.1)',
                                 }}
                                 itemProp='headline'
                             >
                                 {parse(post.title)}
                             </Heading>
-                            <div sx={{ fontSize: [2, 2, 3], my: 0 }}>{parse(post.excerpt)}</div>
-                        </div>
+                            <div sx={{ fontSize: [2, 2, 3], my: 0, textShadow: '0 0 3rem rgba(0, 0, 0, 0.3)' }}>
+                                {parse(post.excerpt)}
+                            </div>
+                        </Flex>
                     </Container>
                 </header>
 
@@ -80,17 +82,16 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
                                 }}
                             >
                                 <Box
-                                    pr={5}
-                                    py={4}
+                                    p={[4, 4, 3, 6]}
                                     sx={{
                                         textAlign: ['left', 'left', 'right'],
                                         flex: [null, null, 1],
                                         width: ['100%', null],
                                         display: 'flex',
                                         flexDirection: 'column',
-                                        alignItems: 'flex-end',
-                                        // justifyContent: 'flex-end',
-                                        borderRight: [0, '1px solid black'],
+                                        alignItems: ['flex-start', 'flex-start', 'flex-end'],
+                                        // justifyContent: 'center',
+                                        borderRight: [0, 0, '1px solid black'],
                                     }}
                                 >
                                     <Heading
@@ -110,7 +111,7 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
                                         <span
                                             sx={{
                                                 color: 'muted',
-                                                textAlign: 'right',
+                                                textAlign: ['left', 'left', 'right'],
                                             }}
                                         >
                                             {post.date}
@@ -118,21 +119,21 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
                                     </p>
                                     <div
                                         sx={{
-                                            py: 5,
-                                            pl: 5,
+                                            py: [2, 2, 5],
+                                            pl: [null, null, 5],
                                             lineHeight: 'loose',
                                         }}
                                     >
                                         {post.tags.nodes.map(({ name, id }) => (
-                                            <Badge key={id} variant='primary'>
+                                            <Badge key={id} variant='primary' mx={1}>
                                                 {name}
                                             </Badge>
                                         ))}
                                     </div>
                                 </Box>
                                 <Box
-                                    py={4}
-                                    px={5}
+                                    py={[0, 0, 4]}
+                                    px={[4, 4, 5]}
                                     sx={{
                                         flex: [null, null, 3],
                                         width: ['100%', null],

@@ -72,7 +72,7 @@ const ServicesBlock = () => {
                         </Heading>
                     </Box>
                     <Box
-                        pr={4}
+                        pr={[null, null, 4]}
                         sx={{
                             flex: [null, null, 3],
                             width: ['100%', null],
@@ -91,6 +91,7 @@ const ServicesBlock = () => {
                                         display: 'flex',
                                         alignItems: 'center',
                                         px: 2,
+                                        py: [3, 3, null],
                                         minHeight: ['4rem', '4rem', '7rem'],
                                         borderBottom: '0.01rem solid black',
                                         background: 'offWhite',

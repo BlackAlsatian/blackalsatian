@@ -32,16 +32,16 @@ const PageTemplate = ({ data: { previous, next, service } }) => {
                     sx={{
                         alignItems: [null, null, 'center'],
                         flexDirection: ['column', 'column', 'row'],
-                        pt: 6,
+                        pt: [5, 5, 6],
                         px: 4,
                         pb: 4,
                     }}
                 >
-                    <Box p={4} sx={{ flex: 2, borderRight: [null, null, '0.01rem solid black'] }}>
+                    <Box sx={{ flex: 2, borderRight: [null, null, '0.01rem solid black'] }}>
                         {featuredImage?.fluid && <Image fluid={featuredImage.fluid} alt={featuredImage.alt} />}
                     </Box>
 
-                    <Box py={4} px={6} sx={{ flex: 3, variant: 'layout' }}>
+                    <Box py={4} px={[0, 0, 6]} sx={{ flex: 3, variant: 'layout' }}>
                         {!!service.content && (
                             <Flex
                                 sx={{

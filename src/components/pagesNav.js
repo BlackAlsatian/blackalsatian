@@ -3,15 +3,7 @@ import { jsx } from 'theme-ui'
 import React from 'react'
 import AniLink from 'gatsby-plugin-transition-link/AniLink'
 
-function PagesNav({
-    previousPagePath,
-    nextPagePath,
-    previousName,
-    nextName,
-    backgroundColor,
-    color,
-    swipeColor,
-}) {
+function PagesNav({ previousPagePath, nextPagePath, previousName, nextName, backgroundColor, color, swipeColor }) {
     return (
         <nav>
             <ul
@@ -20,7 +12,7 @@ function PagesNav({
                     flexWrap: `wrap`,
                     justifyContent: `space-between`,
                     listStyle: `none`,
-                    p: 4,
+                    p: [3, 3, 4],
                 }}
             >
                 <li sx={{ m: 3 }}>
@@ -45,6 +37,7 @@ function PagesNav({
                                     px: 4,
                                     fontSize: 3,
                                     fontWeight: 'black',
+                                    lineHeight: '2.5',
                                     '&:hover': {
                                         backgroundColor: `${backgroundColor}`,
                                         boxShadow: 'none',
@@ -78,6 +71,7 @@ function PagesNav({
                                 px: 4,
                                 fontSize: 3,
                                 fontWeight: 'black',
+                                lineHeight: '2.5',
                                 '&:hover': {
                                     backgroundColor: `${backgroundColor}`,
                                     boxShadow: 'none',

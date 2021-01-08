@@ -71,6 +71,13 @@ export default {
             py: 1,
             fontSize: 1,
         },
+        primarypill: {
+            variant: 'badges.primary',
+            borderRadius: 'circle',
+            px: 3,
+            py: 1,
+            fontSize: 1,
+        },
         outline: {
             variant: 'badges.pill',
             bg: 'transparent',
@@ -79,14 +86,11 @@ export default {
             fontWeight: 'body',
         },
     },
-    figure: {
-        ...tailwind.figure,
-    },
     fonts: {
         ...tailwind.fonts,
         body: 'Montserrat, sans-serif',
     },
-    fontSizes: [...tailwind.fontSizes, '6rem', '7rem'],
+    fontSizes: [...tailwind.fontSizes, '5rem', '6rem', '7rem'],
     fontWeights: {
         ...tailwind.fontWeights,
         heading: '900',
@@ -176,6 +180,7 @@ export default {
         figure: {
             textAlign: 'center',
             width: '100%',
+            p: '0 auto',
             span: {
                 m: '0 auto',
             },

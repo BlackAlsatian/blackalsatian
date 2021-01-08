@@ -14,18 +14,16 @@ function ProjectHeader({ previous, project, truncated }) {
             sx={{
                 display: 'flex',
                 flexDirection: 'column',
-                minHeight: truncated ? '20vh' : '100vh',
-                pt: truncated ? '5vh' : '10vh',
-                maxHeight: truncated ? '600px' : null,
-                overflow: truncated ? 'hidden' : null,
+                minHeight: '40vh',
+                pt: '10vh',
             }}
         >
             <Flex
                 sx={{
                     display: 'flex',
                     justifyContent: 'space-between',
-                    flexDirection: 'row',
-                    px: 5,
+                    flexDirection: ['column', 'column', 'row'],
+                    px: [4, 4, 5],
                     color: 'white',
                     textDecoration: 'none',
                 }}
@@ -50,7 +48,7 @@ function ProjectHeader({ previous, project, truncated }) {
                     {parse(project.excerpt)}
                 </div>
             </Flex>
-            <Box px={5}>
+            <Box px={[null, null, 5]} py={[3, 3, null]}>
                 <AniLink
                     as='button'
                     cover
@@ -79,7 +77,7 @@ function ProjectHeader({ previous, project, truncated }) {
                     ← Back
                 </AniLink>
             </Box>
-            <Container p={5}>
+            <Container p={[3, 3, 5]}>
                 {featuredImage?.fluid && <Image fluid={featuredImage.fluid} alt={featuredImage.alt} />}
             </Container>
         </section>

@@ -1,15 +1,19 @@
 /** @jsx jsx */
 import { jsx, Container, Heading } from 'theme-ui'
 import parse from 'html-react-parser'
+import BackgroundImage from 'gatsby-background-image'
 
 const HeroBlock = (props) => {
-    const { backgroundImage, color, anchor, title, intro } = props
+    const { featuredImage, color, anchor, title, intro } = props
+    // const featuredImage = {featuredImage.node.localFile.childImageSharp.fluid}
     return (
-        <section
+        <BackgroundImage
+            Tag='section'
+            fluid={featuredImage.node.localFile.childImageSharp.fluid}
             sx={{
                 display: 'flex',
-                // width: '100%',
-                backgroundImage: `url(${backgroundImage})`,
+                width: '100%',
+                // backgroundImage: `url(${backgroundImage})`,
                 backgroundAttachment: 'scroll',
                 backgroundSize: 'cover',
                 backgroundRepeat: 'no-repeat',
@@ -35,7 +39,7 @@ const HeroBlock = (props) => {
                 </Heading>
                 <p sx={{ fontSize: [3, 4], my: 0, textShadow: '0 0 3rem rgba(0, 0, 0, 0.5)' }}>{parse(intro)}</p>
             </Container>
-        </section>
+        </BackgroundImage>
     )
 }
 

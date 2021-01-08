@@ -36,7 +36,7 @@ export default function ContentBlock(props) {
                     }}
                 >
                     <Box
-                        p={[5, 5, 3, 6]}
+                        p={[4, 4, 3, 6]}
                         sx={{
                             textAlign: ['left', 'left', 'right'],
                             flex: [null, null, 1],
@@ -72,7 +72,7 @@ export default function ContentBlock(props) {
                     </Box>
                     <Box
                         py={[4, 4, 5]}
-                        px={[5, 5, 6]}
+                        px={[4, 4, 6]}
                         sx={{
                             flex: [null, null, 3],
                             width: ['100%', null],

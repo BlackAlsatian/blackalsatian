@@ -12,9 +12,9 @@ import PagesNav from '../components/pagesNav'
 
 const BlogIndex = ({ data, pageContext: { nextPagePath, previousPagePath }, location: { pathname } }) => {
     const posts = data.allWpPost.nodes
-    const pageTitle = 'Blog'
-    const content = 'This is an intro to say something about this blog of crazy folk.'
-    const browserTitle = 'A Web Company Blog'
+    const pageTitle = data.site.siteMetadata.blog.title
+    const content = data.site.siteMetadata.blog.intro
+    const browserTitle = data.site.siteMetadata.blog.browserTitle
     if (!posts.length) {
         return (
             <>
@@ -148,6 +148,15 @@ export const pageQuery = graphql`
                 title
                 excerpt
                 ...FeaturedMediaFragment
+            }
+        }
+        site {
+            siteMetadata {
+                blog {
+                    title
+                    browserTitle
+                    intro
+                }
             }
         }
     }

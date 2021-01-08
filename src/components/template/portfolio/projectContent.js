@@ -4,8 +4,8 @@ import parse from 'html-react-parser'
 
 function ProjectContent({ project }) {
     return (
-        <section sx={{ py: 5 }}>
-            <Container p={5}>
+        <section sx={{ py: [2, 2, 5] }}>
+            <Container px={1}>
                 <Flex
                     sx={{
                         flexDirection: ['column', 'column', 'row'],
@@ -13,14 +13,14 @@ function ProjectContent({ project }) {
                     }}
                 >
                     <Box
-                        p={[5, 5, 3, 5]}
+                        p={[4, 4, 3, 5]}
                         sx={{
                             textAlign: ['left', 'left', 'right'],
                             flex: [null, null, 1],
                             width: ['100%', null],
                             display: 'flex',
                             flexDirection: 'column',
-                            alignItems: 'flex-end',
+                            alignItems: ['flex-start', 'flex-start', 'flex-end'],
                             borderRight: [0, 0, '1px solid white'],
                         }}
                     >
@@ -63,8 +63,8 @@ function ProjectContent({ project }) {
 
                         <div
                             sx={{
-                                py: 5,
-                                pl: 5,
+                                py: [2, 2, 5],
+                                pl: [null, null, 5],
                                 lineHeight: 'loose',
                             }}
                         >
@@ -77,7 +77,7 @@ function ProjectContent({ project }) {
                         </div>
                     </Box>
                     <Box
-                        py={[4, 4, 5]}
+                        py={[0, 0, 5]}
                         px={[4, 4, 5]}
                         sx={{
                             flex: [null, null, 3],

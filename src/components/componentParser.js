@@ -11,7 +11,8 @@ import LatestPostsBlock from '../components/template/blocks/latestPostsBlock'
 
 export default function ComponentParser(props) {
     const { blocks, featuredImage } = props
-    const featuredImageSrc = featuredImage.node.localFile.childImageSharp.fluid.src
+    // const featuredImage = featuredImage.node.localFile.childImageSharp.fluid.src
+    // const featuredImage = featuredImage
     // console.log(blocks)
 
     //######## iterate through blocks
@@ -71,7 +72,7 @@ export default function ComponentParser(props) {
                     <Fragment key={randomID()}>
                         {__typename === 'WpCoreCoverBlock' && (
                             <CoverBlock
-                                featuredImage={featuredImageSrc}
+                                featuredImage={featuredImage}
                                 attributes={attributes}
                                 innerBlocks={innerBlocks}
                             />

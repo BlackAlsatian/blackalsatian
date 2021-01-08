@@ -8,7 +8,7 @@ const CoverBlock = (props) => {
     if (innerBlocks[0].name === 'blackalsatian/hero-block') {
         return (
             <HeroBlock
-                backgroundImage={featuredImage}
+                featuredImage={featuredImage}
                 color={innerBlocks[0].attributes.heroFontColor}
                 anchor={attributes.anchor}
                 title={innerBlocks[0].attributes.heroTitle}

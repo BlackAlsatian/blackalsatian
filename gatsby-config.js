@@ -31,6 +31,11 @@ module.exports = {
         image: `/images/blackalsatian.png`,
         pubLogo: `/images/blackalsatian-pub-logo.png`,
         pubIconLogo: `/images/blackals-icon-logo.png`,
+        blog: {
+            title: `Blog`,
+            browserTitle: `A Web Company Blog`,
+            intro: `We've got ALL the info.`,
+        },
     },
     plugins: [
         // See https://www.gatsbyjs.com/plugins/gatsby-plugin-react-helmet/?=gatsby-plugin-react-helmet
