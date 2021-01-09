@@ -1,2 +1,0 @@
-RewriteRule ^blog/5-questions-to-ask-before-choosing-a-good-web-design-company/?$ /blog/5-questions-to-ask-a-web-design-company/ [R=301,L]
-RewriteRule ^blog/5-pros-and-cons-of-building-your-website-with-wix/?$ /blog/5-pros-and-cons-of-wix-websites/ [R=301,L]

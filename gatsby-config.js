@@ -202,5 +202,6 @@ module.exports = {
          * To learn more, visit: https://gatsby.dev/offline
          */
         // `gatsby-plugin-offline`,
+        `gatsby-plugin-client-side-redirect`, // keep it in last in list
     ],
 }
