@@ -40,27 +40,11 @@ module.exports = {
     plugins: [
         // See https://www.gatsbyjs.com/plugins/gatsby-plugin-react-helmet/?=gatsby-plugin-react-helmet
         `gatsby-plugin-react-helmet`,
-        // {
-        //     resolve: `gatsby-source-graphql`,
-        //     options: {
-        //         // Arbitrary name for the remote schema Query type
-        //         typeName: `WORDPRESS`,
-        //         // Field under which the remote schema will be accessible. You'll use this in your Gatsby query
-        //         fieldName: `wordpress`,
-        //         // Url to query from
-        //         url: `${process.env.GATSBY_API_URL}`,
-        //         // refetch interval in seconds
-        //         // refetchInterval: 600,
-        //     },
-        // },
         {
             resolve: `gatsby-source-wordpress-experimental`,
             options: {
                 // the only required plugin option for WordPress is the GraphQL url.
                 url: process.env.GATSBY_WPGRAPHQL_URL,
-                // url: `${process.env.GATSBY_API_URL}`,
-                // process.env.WPGRAPHQL_URL ||
-                // `https://api.blackalsatian.co.za/graphql`,
                 debug: {
                     graphql: {
                         showQueryOnError: true,
@@ -78,13 +62,6 @@ module.exports = {
                 // excludeFieldNames: ['blocksJSON'],
             },
         },
-
-        /**
-         * We need this plugin so that it adds the "File.publicURL" to our site
-         * It will allow us to access static url's for assets like PDF's
-         *
-         * See https://www.gatsbyjs.org/packages/gatsby-source-filesystem/ for more info
-         */
         {
             resolve: `gatsby-source-filesystem`,
             options: {
@@ -92,7 +69,6 @@ module.exports = {
                 path: `${__dirname}/src/assets/images`,
             },
         },
-        // `gatsby-theme-wordpress-gutenberg`,
         `gatsby-plugin-theme-ui`,
         `gatsby-theme-style-guide`,
         {
@@ -107,11 +83,6 @@ module.exports = {
                 exclude: [`/portfolio/*`],
             },
         },
-        /**
-         * The following two plugins are required if you want to use Gatsby image
-         * See https://www.gatsbyjs.com/docs/gatsby-image/#setting-up-gatsby-image
-         * if you're curious about it.
-         */
         `gatsby-transformer-sharp`,
         `gatsby-plugin-sharp`,
         {
@@ -121,7 +92,6 @@ module.exports = {
                 trackingIds: [
                     process.env.GATSBY_GA_TRACKING_ID, // Google Analytics / GA
                     // "AW-CONVERSION_ID",  Google Ads / Adwords / AW
-                    // "DC-FLOODIGHT_ID",  Marketing Platform advertising products (Display & Video 360, Search Ads 360, and Campaign Manager)
                 ],
             },
         },
@@ -202,6 +172,5 @@ module.exports = {
          * To learn more, visit: https://gatsby.dev/offline
          */
         // `gatsby-plugin-offline`,
-        `gatsby-plugin-client-side-redirect`, // keep it in last in list
     ],
 }

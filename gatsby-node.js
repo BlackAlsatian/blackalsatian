@@ -1,6 +1,5 @@
 const path = require(`path`)
 const chunk = require(`lodash/chunk`)
-// const redirects = require(`./redirects.json`)
 
 // Simple debugging tool
 // dd() will prettily dump to the terminal and kill the process
@@ -17,7 +16,6 @@ exports.createPages = async (gatsbyUtilities) => {
     const pages = await getPages(gatsbyUtilities)
     const services = await getServices(gatsbyUtilities)
     const portfolio = await getPortfolio(gatsbyUtilities)
-    // const redirects = await getRedirects(gatsbyUtilities)
 
     // If there are no posts in WordPress, don't do anything
     if (!posts.length && !pages.length) {
@@ -44,20 +42,6 @@ exports.createPages = async (gatsbyUtilities) => {
 
     // Finally, the projects
     await createIndividualProjects({ portfolio, gatsbyUtilities })
-
-    // Aaand.. the redirects
-    await createRedirecters({ gatsbyUtilities })
-    // const { createRedirect } = gatsbyUtilities.actions //actions is collection of many actions - https://www.gatsbyjs.org/docs/actions
-    // createRedirect({
-    //     fromPath: '/blog/5-questions-to-ask-before-choosing-a-good-web-design-company/',
-    //     toPath: '/blog/5-questions-to-ask-a-web-design-company/',
-    //     isPermanent: true,
-    // })
-    // createRedirect({
-    //     fromPath: '/blog/5-pros-and-cons-of-building-your-website-with-wix/',
-    //     toPath: '/blog/5-pros-and-cons-of-wix-websites/',
-    //     isPermanent: true,
-    // })
 }
 
 // This function creates all the individual blog pages in this site
@@ -133,28 +117,6 @@ const createIndividualProjects = async ({ portfolio, gatsbyUtilities }) =>
         ),
     )
 
-const createRedirecters = async ({ gatsbyUtilities }) => {
-    const { createRedirect } = gatsbyUtilities.actions //actions is collection of many actions - https://www.gatsbyjs.org/docs/actions
-    createRedirect({
-        fromPath: '/blog/5-questions-to-ask-before-choosing-a-good-web-design-company/',
-        toPath: '/blog/5-questions-to-ask-a-web-design-company',
-        isPermanent: true,
-    })
-    createRedirect({
-        fromPath: '/blog/5-pros-and-cons-of-building-your-website-with-wix/',
-        toPath: '/blog/5-pros-and-cons-of-wix-websites',
-        isPermanent: true,
-    })
-}
-// Promise.all(
-//     redirects.map(({ redirect }) =>
-//         gatsbyUtilities.actions.createRedirect({
-//             fromPath: redirect.oldUrl,
-//             toPath: redirect.newUrl,
-//             isPermanent: true,
-//         }),
-//     ),
-// )
 // This function creates the blog page
 async function createBlogPostArchive({ posts, gatsbyUtilities }) {
     const graphqlResult = await gatsbyUtilities.graphql(/* GraphQL */ `
@@ -330,27 +292,3 @@ async function getPortfolio({ graphql, reporter }) {
     }
     return graphqlResult.data.allWpPortfolio.edges
 }
-
-// async function getRedirects({ graphql, reporter }) {
-//     const graphqlResult = await graphql(/* GraphQL */ `
-//         query RedirectQuery {
-//             allSite {
-//                 edges {
-//                     node {
-//                         siteMetadata {
-//                             redirects {
-//                                 oldUrl
-//                                 newUrl
-//                             }
-//                         }
-//                     }
-//                 }
-//             }
-//         }
-//     `)
-//     if (graphqlResult.errors) {
-//         reporter.panicOnBuild(`There was an error loading site redirects`, graphqlResult.errors)
-//         return
-//     }
-//     return graphqlResult.data.allSite.edges.node.siteMetadata.redirects
-// }
