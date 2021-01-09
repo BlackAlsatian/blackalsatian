@@ -137,12 +137,12 @@ const createRedirecters = async ({ gatsbyUtilities }) => {
     const { createRedirect } = gatsbyUtilities.actions //actions is collection of many actions - https://www.gatsbyjs.org/docs/actions
     createRedirect({
         fromPath: '/blog/5-questions-to-ask-before-choosing-a-good-web-design-company/',
-        toPath: '/blog/5-questions-to-ask-a-web-design-company/',
+        toPath: '/blog/5-questions-to-ask-a-web-design-company',
         isPermanent: true,
     })
     createRedirect({
         fromPath: '/blog/5-pros-and-cons-of-building-your-website-with-wix/',
-        toPath: '/blog/5-pros-and-cons-of-wix-websites/',
+        toPath: '/blog/5-pros-and-cons-of-wix-websites',
         isPermanent: true,
     })
 }
