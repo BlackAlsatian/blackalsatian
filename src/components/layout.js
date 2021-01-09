@@ -5,6 +5,12 @@ import { handleBgColor } from '../components/helpers'
 import Header from './template/header'
 import Footer from './template/footer'
 
+if (typeof window !== 'undefined') {
+    // Make scroll behavior of internal links smooth
+    // eslint-disable-next-line global-require
+    require('smooth-scroll')('a[href*="#"]')
+}
+
 const Layout = ({ children, location }) => {
     const {
         wp: {

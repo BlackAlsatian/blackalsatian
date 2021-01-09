@@ -1,6 +1,21 @@
 ::selection {
     background-color: #f5df4d;
 }
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background-color: #6b7280;
+}
+
+::-webkit-scrollbar {
+    width: 4px;
+    background-color: #867f7f;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #000000;
+    border: 6px solid #1c1c1c;
+}
 figure {
     margin: 0;
 }

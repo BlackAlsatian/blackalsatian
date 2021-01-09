@@ -75,6 +75,8 @@ const TestimonialsBlock = () => {
                             '&:focus': {
                                 outline: 'none',
                             },
+                            maxWidth: [24, 24, 36],
+                            maxHeight: [24, 24, 36],
                         }}
                         whileHover={{
                             scale: 1.5,
@@ -96,6 +98,8 @@ const TestimonialsBlock = () => {
                             '&:focus': {
                                 outline: 'none',
                             },
+                            maxWidth: [24, 24, 36],
+                            maxHeight: [24, 24, 36],
                         }}
                         whileHover={{
                             scale: 1.5,
