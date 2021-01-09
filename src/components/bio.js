@@ -10,12 +10,12 @@ const Bio = ({ author }) => {
             className='bio'
             sx={{
                 flexDirection: ['row', 'row', 'column'],
-                alignItems: 'center',
-                justifyContent: 'space-between',
+                alignItems: ['center', 'center', null],
+                justifyContent: ['space-between', 'space-between', null],
             }}
         >
             {avatarUrl && (
-                <div sx={{ flex: [1, 1, null] }}>
+                <div sx={{ flex: [1, 1, null], ml: 'auto' }}>
                     <Avatar
                         alt={author?.firstName || ``}
                         className='bio-avatar'
@@ -26,7 +26,7 @@ const Bio = ({ author }) => {
                 </div>
             )}
             {author?.firstName && (
-                <div sx={{ flex: [3, 3, null] }}>
+                <div sx={{ flex: [3, 3, null], pl: [2, 2, null] }}>
                     <p>
                         Written by{' '}
                         <strong>

@@ -44,7 +44,6 @@ const ServicesIndex = ({ data }) => {
                             fluid: service.featuredImage?.node?.localFile?.childImageSharp?.fluid,
                             alt: service.featuredImage?.node?.alt || ``,
                         }
-                        console.log(i)
                         return (
                             <AniLink
                                 cover

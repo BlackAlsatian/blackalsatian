@@ -40,6 +40,19 @@ module.exports = {
     plugins: [
         // See https://www.gatsbyjs.com/plugins/gatsby-plugin-react-helmet/?=gatsby-plugin-react-helmet
         `gatsby-plugin-react-helmet`,
+        // {
+        //     resolve: `gatsby-source-graphql`,
+        //     options: {
+        //         // Arbitrary name for the remote schema Query type
+        //         typeName: `WORDPRESS`,
+        //         // Field under which the remote schema will be accessible. You'll use this in your Gatsby query
+        //         fieldName: `wordpress`,
+        //         // Url to query from
+        //         url: `${process.env.GATSBY_API_URL}`,
+        //         // refetch interval in seconds
+        //         // refetchInterval: 600,
+        //     },
+        // },
         {
             resolve: `gatsby-source-wordpress-experimental`,
             options: {
@@ -56,9 +69,11 @@ module.exports = {
                         panicOnError: true,
                     },
                 },
-                // schema: {
-                //   perPage: 1,
-                // },
+                schema: {
+                    // perPage: 20,
+                    // requestConcurrency: 5,
+                    // previewRequestConcurrency: 2,
+                },
                 verbose: true,
                 // excludeFieldNames: ['blocksJSON'],
             },

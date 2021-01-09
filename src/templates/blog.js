@@ -71,7 +71,6 @@ const BlogIndex = ({ data, pageContext: { nextPagePath, previousPagePath }, loca
                                     sx={{
                                         height: getHeight(),
                                         position: 'relative',
-                                        transition: 'all .25s ease 0s',
                                         breakInside: 'avoid',
                                         counterIncrement: 'item-counter',
                                         mt: 4,

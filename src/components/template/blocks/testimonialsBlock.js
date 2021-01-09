@@ -83,7 +83,7 @@ const TestimonialsBlock = () => {
                             transition: { duration: 0.5 },
                         }}
                     >
-                        <LeftArrow color='black' width={[24, 24, 36]} height={[24, 24, 36]} />
+                        <LeftArrow color='black' width={24} height={24} />
                     </motion.button>
                     <AnimatePresence exitBeforeEnter>
                         <motion.div>{testimonials[node]}</motion.div>
@@ -106,7 +106,7 @@ const TestimonialsBlock = () => {
                             transition: { duration: 0.5 },
                         }}
                     >
-                        <RightArrow color='black' width={[24, 24, 36]} height={[24, 24, 36]} />
+                        <RightArrow color='black' width={24} height={24} />
                     </motion.button>
                 </Flex>
             </Container>
