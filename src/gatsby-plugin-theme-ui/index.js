@@ -170,6 +170,32 @@ export default {
                 },
             },
         },
+        h3: {
+            a: {
+                color: 'black',
+                textDecoration: 'underline',
+                fontWeight: 'medium',
+                '&:hover': {
+                    textDecoration: 'none',
+                },
+                '&:visited': {
+                    color: 'rgba(0, 0, 0, 0.8)',
+                },
+            },
+        },
+        li: {
+            a: {
+                color: 'black',
+                textDecoration: 'underline',
+                fontWeight: 'medium',
+                '&:hover': {
+                    textDecoration: 'none',
+                },
+                '&:visited': {
+                    color: 'rgba(0, 0, 0, 0.8)',
+                },
+            },
+        },
         blockquote: {
             borderLeft: '5px solid black',
             p: '0 1rem 0 2rem',
