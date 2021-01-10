@@ -47,7 +47,8 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
                                 top: 0,
                                 left: 0,
                                 flexDirection: 'column',
-                                pt: ['25vh', '25vh', '45vh'],
+                                alignItems: 'center',
+                                pt: ['40vh', '40vh', '50vh'],
                                 px: 4,
                                 color: 'white',
                                 backgroundColor: 'rgba(0, 0, 0, 0.6)',
@@ -55,20 +56,22 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
                                 width: '100%',
                             }}
                         >
-                            <Heading
-                                as='h1'
-                                sx={{
-                                    fontSize: [6, 7, 7, 9],
-                                    letterSpacing: 'tighter',
-                                    textShadow: '0 0 4rem rgba(0, 0, 0, 0.1)',
-                                }}
-                                itemProp='headline'
-                            >
-                                {parse(post.title)}
-                            </Heading>
-                            <div sx={{ fontSize: [2, 2, 3], my: 0, textShadow: '0 0 3rem rgba(0, 0, 0, 0.3)' }}>
-                                {parse(post.excerpt)}
-                            </div>
+                            <Box px={4}>
+                                <Heading
+                                    as='h1'
+                                    sx={{
+                                        fontSize: [6, 7, 7, 9],
+                                        letterSpacing: 'tighter',
+                                        textShadow: '0 0 4rem rgba(0, 0, 0, 0.1)',
+                                    }}
+                                    itemProp='headline'
+                                >
+                                    {parse(post.title)}
+                                </Heading>
+                                <div sx={{ fontSize: [2, 2, 3], my: 0, textShadow: '0 0 3rem rgba(0, 0, 0, 0.3)' }}>
+                                    {parse(post.excerpt)}
+                                </div>
+                            </Box>
                         </Flex>
                     </Container>
                 </header>

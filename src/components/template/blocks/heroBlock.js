@@ -22,7 +22,7 @@ const HeroBlock = (props) => {
                 flexDirection: 'column',
                 minHeight: '100vh',
                 color: `${color}`,
-                pt: '45vh',
+                pt: '55vh',
                 zIndex: 0,
             }}
             id={anchor}

@@ -10,7 +10,7 @@ function PageHeader({ title, intro, backgroundColor, color }) {
                 color: `${color}`,
                 backgroundColor: `${backgroundColor}`,
                 minHeight: '100vh',
-                pt: '25vh',
+                pt: ['35vh', '35vh', '40vh'],
             }}
         >
             <Container p={4}>
