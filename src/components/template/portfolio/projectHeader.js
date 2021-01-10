@@ -31,7 +31,7 @@ function ProjectHeader({ previous, project, truncated }) {
                 <Heading
                     as='h1'
                     sx={{
-                        fontSize: [7, 8],
+                        fontSize: [6, 8],
                         lineHeight: 'none',
                         letterSpacing: 'tighter',
                         pr: 5,

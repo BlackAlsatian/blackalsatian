@@ -12,6 +12,7 @@ const HeroBlock = (props) => {
             fluid={featuredImage.node.localFile.childImageSharp.fluid}
             sx={{
                 display: 'flex',
+                alignItems: 'center',
                 width: '100%',
                 // backgroundImage: `url(${backgroundImage})`,
                 backgroundAttachment: 'scroll',
@@ -21,7 +22,7 @@ const HeroBlock = (props) => {
                 flexDirection: 'column',
                 minHeight: '100vh',
                 color: `${color}`,
-                pt: '36vh',
+                pt: '45vh',
                 zIndex: 0,
             }}
             id={anchor}

@@ -54,12 +54,27 @@ module.exports = {
                     },
                 },
                 schema: {
+                    timeout: 60000,
                     // perPage: 20,
-                    requestConcurrency: 5,
+                    requestConcurrency: 3,
                     // previewRequestConcurrency: 2,
                 },
                 verbose: true,
-                // excludeFieldNames: ['blocksJSON'],
+                excludeFieldNames: ['blocksJSON'],
+                develop: {
+                    nodeUpdateInterval: 1000,
+                },
+                html: {
+                    imageMaxWidth: 1200,
+                    fallbackImageMaxWidth: 1000,
+                },
+                type: {
+                    MediaItem: {
+                        localFile: {
+                            requestConcurrency: 40,
+                        },
+                    },
+                },
             },
         },
         {

@@ -74,7 +74,7 @@ const PageTemplate = ({ data: { page } }) => {
                                             sx={{
                                                 textTransform: 'uppercase',
                                                 fontSize: 0,
-                                                mt: [4, 4, 0],
+                                                mt: [0, 0, 0],
                                                 ml: ['auto', 'auto', null],
                                             }}
                                         >
