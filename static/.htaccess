@@ -8,7 +8,15 @@ RewriteRule ^ %1/ [R=301,L]
 
 # Add a trailing slash at the end    
 RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_URI} !/$
-RewriteRule . %{REQUEST_URI}/ [L,R=301]
+RewriteCond %{REQUEST_URI} !(.*)/$
+RewriteRule ^(.*)$ https://www.blackalsatian.co.za/$1/ [L,R=301]
 
+# Custom 404 page
 ErrorDocument 404 /404/
+
+# 301 redirects
+Redirect 301 /one-page-website-deal https://www.blackalsatian.co.za/services/website-design/
+Redirect 301 /media-marketing-specials https://www.blackalsatian.co.za/website-media-marketing-specials/
+Redirect 301 /get-your-free-guide https://www.blackalsatian.co.za/
+Redirect 301 /blog-archive/web-designers-in-port-elizabeth https://www.blackalsatian.co.za/blog/
+Redirect 301 /component/content/featured.feed https://www.blackalsatian.co.za/blog/
