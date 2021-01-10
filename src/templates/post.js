@@ -44,7 +44,7 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
                                 alignItems: 'center',
                                 width: '100%',
                                 // backgroundImage: `url(${backgroundImage})`,
-                                backgroundAttachment: 'fixed',
+                                backgroundAttachment: 'scroll',
                                 backgroundSize: 'cover',
                                 backgroundRepeat: 'no-repeat',
                                 backgroundPosition: '50% 50%',

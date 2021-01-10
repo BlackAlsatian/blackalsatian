@@ -16,7 +16,7 @@ const HeroBlock = (props) => {
                 alignItems: 'center',
                 width: '100%',
                 // backgroundImage: `url(${backgroundImage})`,
-                backgroundAttachment: 'fixed',
+                backgroundAttachment: 'scroll',
                 backgroundSize: 'cover',
                 backgroundRepeat: 'no-repeat',
                 backgroundPosition: '60% 40%',
