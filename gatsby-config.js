@@ -113,8 +113,8 @@ module.exports = {
         {
             resolve: `gatsby-plugin-htaccess`,
             options: {
-                RewriteBase: true,
-                host: `www.blackalsatian.co.za`, // if 'www' is set to 'false', be sure to also remove it here!
+                // RewriteBase: true,
+                // host: `www.blackalsatian.co.za`, // if 'www' is set to 'false', be sure to also remove it here!
                 ErrorDocument: `
                 ErrorDocument 404 /404/
                 `,
