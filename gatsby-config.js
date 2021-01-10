@@ -34,17 +34,17 @@ module.exports = {
         blog: {
             title: `Blog`,
             browserTitle: `A Web Company Blog`,
-            intro: `We've got ALL the info.`,
+            intro: `Latest trends in the world of web development & digital marketing`,
         },
     },
     plugins: [
         // See https://www.gatsbyjs.com/plugins/gatsby-plugin-react-helmet/?=gatsby-plugin-react-helmet
         `gatsby-plugin-react-helmet`,
         {
-            resolve: `gatsby-source-wordpress-experimental`,
+            resolve: `gatsby-source-wordpress-experimentaldPress is the GraphQL url.
+                url: process.env.GATSBY_WPGRAPHQL_URL,`,
             options: {
-                // the only required plugin option for WordPress is the GraphQL url.
-                url: process.env.GATSBY_WPGRAPHQL_URL,
+                // the only required plugin option for Wor
                 debug: {
                     graphql: {
                         showQueryOnError: true,
