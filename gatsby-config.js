@@ -41,10 +41,10 @@ module.exports = {
         // See https://www.gatsbyjs.com/plugins/gatsby-plugin-react-helmet/?=gatsby-plugin-react-helmet
         `gatsby-plugin-react-helmet`,
         {
-            resolve: `gatsby-source-wordpress-experimentaldPress is the GraphQL url.
-                url: process.env.GATSBY_WPGRAPHQL_URL,`,
+            resolve: `gatsby-source-wordpress-experimental`,
             options: {
-                // the only required plugin option for Wor
+                // the only required plugin option for Wordpress
+                url: process.env.GATSBY_WPGRAPHQL_URL,
                 debug: {
                     graphql: {
                         showQueryOnError: true,
