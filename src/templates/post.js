@@ -47,7 +47,7 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
                                 top: 0,
                                 left: 0,
                                 flexDirection: 'column',
-                                pt: '45vh',
+                                pt: ['25vh', '25vh', '45vh'],
                                 px: 4,
                                 color: 'white',
                                 backgroundColor: 'rgba(0, 0, 0, 0.6)',
