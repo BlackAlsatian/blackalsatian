@@ -65,8 +65,8 @@ module.exports = {
                     nodeUpdateInterval: 1000,
                 },
                 html: {
-                    // imageMaxWidth: 1200,
-                    fallbackImageMaxWidth: 1200,
+                    imageMaxWidth: 1200,
+                    fallbackImageMaxWidth: 1000,
                 },
                 type: {
                     MediaItem: {
@@ -116,10 +116,12 @@ module.exports = {
             options: {
                 name: `Black Alsatian`,
                 short_name: `blackalsatian`,
+                description: `Handcrafted web applications and bespoke digital marketing solutions`,
+                lang: `en`,
                 start_url: `/`,
                 background_color: `#111827`,
                 theme_color: `#ffffff`,
-                display: `minimal-ui`,
+                display: `standalone`,
                 icon: `src/assets/images/blackalsatian-icon.png`,
                 icons: [
                     {
@@ -186,6 +188,6 @@ module.exports = {
          * this (optional) plugin enables Progressive Web App + Offline functionality
          * To learn more, visit: https://gatsby.dev/offline
          */
-        // `gatsby-plugin-offline`,
+        `gatsby-plugin-offline`,
     ],
 }

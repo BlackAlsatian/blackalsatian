@@ -7,7 +7,7 @@ export const fragments = graphql`
                 altText
                 localFile {
                     childImageSharp {
-                        fluid(maxWidth: 1600, quality: 90) {
+                        fluid(maxWidth: 1400, quality: 90) {
                             ...GatsbyImageSharpFluid_tracedSVG
                         }
                     }
@@ -35,7 +35,7 @@ export const fragments = graphql`
                 altText
                 localFile {
                     childImageSharp {
-                        fluid(maxWidth: 1600, quality: 90) {
+                        fluid(maxWidth: 1400, quality: 90) {
                             ...GatsbyImageSharpFluid_tracedSVG
                         }
                     }

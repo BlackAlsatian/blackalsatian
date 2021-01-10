@@ -61,7 +61,7 @@ const BlogIndex = ({ data, pageContext: { nextPagePath, previousPagePath }, loca
                         return (
                             <AniLink
                                 paintDrip
-                                // duration={0.5}
+                                duration={0.3}
                                 color='white'
                                 to={post.uri}
                                 key={post.uri}

@@ -51,10 +51,10 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
                                 flexDirection: 'column',
                                 minHeight: '100vh',
                                 color: 'white',
-                                pt: '45vh',
+                                pt: ['35vh', '35vh', '45vh'],
                                 zIndex: 0,
                                 '&:before, &:after': {
-                                    filter: 'brightness(40%)',
+                                    filter: 'brightness(50%)',
                                 },
                             }}
                         >
