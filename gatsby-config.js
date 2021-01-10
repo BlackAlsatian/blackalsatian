@@ -110,24 +110,27 @@ module.exports = {
                 ],
             },
         },
-        // {
-        //     resolve: `gatsby-plugin-htaccess`,
-        //     options: {
-        //         RewriteBase: true,
-        //         host: `www.blackalsatian.co.za`, // if 'www' is set to 'false', be sure to also remove it here!
-        //         ErrorDocument: `
-        //         ErrorDocument 404 /404/
-        //         `,
-        //         custom: `
-        //             # This is a custom rule!
-        //             RewriteCond %{REQUEST_FILENAME} !-f
-        //             RewriteCond %{REQUEST_FILENAME} !-d
-        //             RewriteRule ^(.*)\.html$ /$1/ [L,R=301]
-        //             RewriteCond %{REQUEST_URI} !(.*)/$
-        //             RewriteRule ^(.*)$ https://www.blackalsatian.co.za/$1/ [L,R=301]
-        //         `,
-        //     },
-        // },
+        {
+            resolve: `gatsby-plugin-htaccess`,
+            options: {
+                RewriteBase: true,
+                host: `www.blackalsatian.co.za`, // if 'www' is set to 'false', be sure to also remove it here!
+                ErrorDocument: `
+                ErrorDocument 404 /404/
+                `,
+                custom: `
+                    # This is a custom rule!
+                    # To externally redirect /dir/foo.html to /dir/foo
+                    RewriteCond %{THE_REQUEST} ^[A-Z]{3,}\s([^.]+)\.html [NC]
+                    RewriteRule ^ %1/ [R=301,L]
+
+                    # Add a trailing slash at the end    
+                    RewriteCond %{REQUEST_FILENAME} !-f
+                    RewriteCond %{REQUEST_URI} !/$
+                    RewriteRule . %{REQUEST_URI}/ [L,R=301]
+                `,
+            },
+        },
         {
             // See https://www.gatsbyjs.com/plugins/gatsby-plugin-manifest/?=gatsby-plugin-manifest
             resolve: `gatsby-plugin-manifest`,
