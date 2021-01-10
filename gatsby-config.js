@@ -65,8 +65,8 @@ module.exports = {
                     nodeUpdateInterval: 1000,
                 },
                 html: {
-                    imageMaxWidth: 1200,
-                    fallbackImageMaxWidth: 1000,
+                    // imageMaxWidth: 1200,
+                    fallbackImageMaxWidth: 1200,
                 },
                 type: {
                     MediaItem: {

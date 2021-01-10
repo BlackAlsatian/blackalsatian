@@ -2,11 +2,13 @@
 import { jsx, Container, Heading, Flex, Box, Badge } from 'theme-ui'
 import React from 'react'
 import { graphql } from 'gatsby'
-import Image from 'gatsby-image'
+// import Image from 'gatsby-image'
+import BackgroundImage from 'gatsby-background-image'
 import parse from 'html-react-parser'
 
-import Bio from '../components/bio'
 import SEO from '../components/seo'
+import PageHeader from '../components/template/pageHeader'
+import Bio from '../components/bio'
 import PagesNav from '../components/pagesNav'
 
 const BlogPostTemplate = ({ data: { previous, next, post } }) => {
@@ -27,20 +29,69 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
 
             <article itemScope itemType='http://schema.org/Article'>
                 <header
-                    sx={{
-                        position: 'relative',
-                        minHeight: '100vh',
-                    }}
+                // sx={{
+                //     position: 'relative',
+                //     minHeight: '100vh',
+                // }}
                 >
-                    {/* if we have a featured image for this post let's display it */}
+                    {featuredImage?.fluid ? (
+                        <BackgroundImage
+                            Tag='section'
+                            fluid={featuredImage.fluid}
+                            backgroundColor='white'
+                            sx={{
+                                display: 'flex',
+                                alignItems: 'center',
+                                width: '100%',
+                                // backgroundImage: `url(${backgroundImage})`,
+                                backgroundAttachment: 'fixed',
+                                backgroundSize: 'cover',
+                                backgroundRepeat: 'no-repeat',
+                                backgroundPosition: '50% 50%',
+                                flexDirection: 'column',
+                                minHeight: '100vh',
+                                color: 'white',
+                                pt: '45vh',
+                                zIndex: 0,
+                                '&:before, &:after': {
+                                    filter: 'brightness(40%)',
+                                },
+                            }}
+                        >
+                            <Container p={4}>
+                                <Heading
+                                    as='h1'
+                                    sx={{
+                                        fontSize: [6, 7, 7, 9],
+                                        letterSpacing: 'tighter',
+                                        textShadow: '0 0 4rem rgba(0, 0, 0, 0.5)',
+                                    }}
+                                    itemProp='headline'
+                                >
+                                    {parse(post.title)}
+                                </Heading>
+                                <Box sx={{ fontSize: [2, 2, 3], my: 0, textShadow: '0 0 3rem rgba(0, 0, 0, 0.5)' }}>
+                                    {parse(post.excerpt)}
+                                </Box>
+                            </Container>
+                        </BackgroundImage>
+                    ) : (
+                        <PageHeader
+                            title={parse(post.title)}
+                            intro={parse(post.excerpt)}
+                            backgroundColor='white'
+                            color='black'
+                        />
+                    )}
+                    {/* if we have a featured image for this post let's display it
                     {featuredImage?.fluid && (
                         <Image
                             fluid={featuredImage.fluid}
                             alt={featuredImage.alt}
                             style={{ width: '100%', height: '100vh' }}
                         />
-                    )}
-                    <Container>
+                    )} */}
+                    {/* <Container>
                         <Flex
                             sx={{
                                 position: 'absolute',
@@ -48,7 +99,7 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
                                 left: 0,
                                 flexDirection: 'column',
                                 alignItems: 'center',
-                                pt: ['40vh', '40vh', '50vh'],
+                                pt: '50vh',
                                 px: 4,
                                 color: 'white',
                                 backgroundColor: 'rgba(0, 0, 0, 0.6)',
@@ -73,7 +124,7 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
                                 </div>
                             </Box>
                         </Flex>
-                    </Container>
+                    </Container> */}
                 </header>
 
                 {!!post.content && (

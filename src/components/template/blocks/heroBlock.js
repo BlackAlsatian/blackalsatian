@@ -10,15 +10,16 @@ const HeroBlock = (props) => {
         <BackgroundImage
             Tag='section'
             fluid={featuredImage.node.localFile.childImageSharp.fluid}
+            backgroundColor='white'
             sx={{
                 display: 'flex',
                 alignItems: 'center',
                 width: '100%',
                 // backgroundImage: `url(${backgroundImage})`,
-                backgroundAttachment: 'scroll',
+                backgroundAttachment: 'fixed',
                 backgroundSize: 'cover',
                 backgroundRepeat: 'no-repeat',
-                backgroundPosition: '50% 50%',
+                backgroundPosition: '60% 40%',
                 flexDirection: 'column',
                 minHeight: '100vh',
                 color: `${color}`,
