@@ -8,7 +8,7 @@ export const fragments = graphql`
                 localFile {
                     childImageSharp {
                         fluid(maxWidth: 1400, quality: 90) {
-                            ...GatsbyImageSharpFluid_tracedSVG
+                            ...GatsbyImageSharpFluid_withWebp_tracedSVG
                         }
                     }
                 }
@@ -22,7 +22,7 @@ export const fragments = graphql`
                 localFile {
                     childImageSharp {
                         fluid(maxWidth: 1200, quality: 90) {
-                            ...GatsbyImageSharpFluid_tracedSVG
+                            ...GatsbyImageSharpFluid_withWebp_tracedSVG
                         }
                     }
                 }
@@ -36,7 +36,7 @@ export const fragments = graphql`
                 localFile {
                     childImageSharp {
                         fluid(maxWidth: 1400, quality: 90) {
-                            ...GatsbyImageSharpFluid_tracedSVG
+                            ...GatsbyImageSharpFluid_withWebp_tracedSVG
                         }
                     }
                 }
@@ -50,7 +50,7 @@ export const fragments = graphql`
                 localFile {
                     childImageSharp {
                         fluid(maxWidth: 1200, quality: 90) {
-                            ...GatsbyImageSharpFluid_tracedSVG
+                            ...GatsbyImageSharpFluid_withWebp_tracedSVG
                         }
                     }
                 }
