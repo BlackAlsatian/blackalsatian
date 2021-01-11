@@ -117,11 +117,11 @@ module.exports = {
                 name: `Black Alsatian`,
                 short_name: `blackalsatian`,
                 description: `Handcrafted web applications and bespoke digital marketing solutions`,
-                lang: `en`,
                 start_url: `/`,
                 background_color: `#111827`,
                 theme_color: `#ffffff`,
                 display: `standalone`,
+                lang: `en`,
                 icon: `src/assets/images/blackalsatian-icon.png`,
                 icons: [
                     {
