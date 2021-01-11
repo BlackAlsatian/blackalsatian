@@ -82,6 +82,7 @@ const TestimonialsBlock = () => {
                             scale: 1.5,
                             transition: { duration: 0.5 },
                         }}
+                        aria-label='Previous Testimonial'
                     >
                         <LeftArrow color='black' width={24} height={24} />
                     </motion.button>
@@ -105,6 +106,7 @@ const TestimonialsBlock = () => {
                             scale: 1.5,
                             transition: { duration: 0.5 },
                         }}
+                        aria-label='Next Testimonial'
                     >
                         <RightArrow color='black' width={24} height={24} />
                     </motion.button>

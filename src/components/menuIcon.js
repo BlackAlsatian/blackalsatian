@@ -9,6 +9,7 @@ export default function MenuIcon({ handleBurgerMenuClick, isOpen, color }) {
                 variant: 'buttons.menuIcon',
                 // visibility: isOpen ? 'hidden' : null,
             }}
+            aria-label='Open Offcanvas Menu'
         >
             <Box
                 sx={{
