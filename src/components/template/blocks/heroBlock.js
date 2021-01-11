@@ -11,6 +11,8 @@ const HeroBlock = (props) => {
             Tag='section'
             fluid={featuredImage.node.localFile.childImageSharp.fluid}
             backgroundColor='white'
+            durationFadeIn='200ms'
+            loading='eager'
             sx={{
                 display: 'flex',
                 alignItems: 'center',
