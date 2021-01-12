@@ -4,14 +4,15 @@ import parse from 'html-react-parser'
 import BackgroundImage from 'gatsby-background-image'
 
 const HeroBlock = (props) => {
-    const { featuredImage, color, anchor, title, intro } = props
+    const { featuredImage } = props
+    const { heroFontColor, heroTitle, heroIntro } = props.innerBlocks[0].attributes
     // const featuredImage = {featuredImage.node.localFile.childImageSharp.fluid}
     return (
         <BackgroundImage
             Tag='section'
             fluid={featuredImage.node.localFile.childImageSharp.fluid}
             backgroundColor='white'
-            durationFadeIn='200ms'
+            durationFadeIn={200}
             loading='eager'
             sx={{
                 display: 'flex',
@@ -24,11 +25,10 @@ const HeroBlock = (props) => {
                 backgroundPosition: '60% 40%',
                 flexDirection: 'column',
                 minHeight: '100vh',
-                color: `${color}`,
+                color: `${heroFontColor}`,
                 pt: ['45vh', '45vh', '55vh'],
                 zIndex: 0,
             }}
-            id={anchor}
         >
             <Container p={4}>
                 <Heading
@@ -39,9 +39,9 @@ const HeroBlock = (props) => {
                         textShadow: '0 0 4rem rgba(0, 0, 0, 0.5)',
                     }}
                 >
-                    {title}
+                    {parse(heroTitle)}
                 </Heading>
-                <p sx={{ fontSize: [3, 4], my: 0, textShadow: '0 0 3rem rgba(0, 0, 0, 0.5)' }}>{parse(intro)}</p>
+                <p sx={{ fontSize: [3, 4], my: 0, textShadow: '0 0 3rem rgba(0, 0, 0, 0.5)' }}>{parse(heroIntro)}</p>
             </Container>
         </BackgroundImage>
     )

@@ -95,11 +95,12 @@ const ServicesBlock = () => {
                                         minHeight: ['4rem', '4rem', '7rem'],
                                         borderBottom: '0.01rem solid black',
                                         background: 'offWhite',
-                                        transition: 'background 1000ms ease-in-out, padding 600ms ease-out',
-
+                                        // transition: 'background 1000ms ease-in-out, padding 600ms ease-out',
+                                        // transition: 'padding 600ms ease-out',
+                                        transition: 'background-color 500ms ease-in',
                                         '&:hover': {
                                             backgroundColor: 'yellow',
-                                            padding: '0 20px',
+                                            // padding: '0 20px',
                                         },
                                     }}
                                 >
