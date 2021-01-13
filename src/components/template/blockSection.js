@@ -1,7 +1,8 @@
 /** @jsx jsx */
-import { jsx, Container, Flex, Box, Heading } from 'theme-ui'
+import { jsx, Container, Flex, Box } from 'theme-ui'
 import BlockText from '../blockText'
 import { getForm } from '../getForm'
+import LeftColumn from '../template/elements/leftColumn'
 
 export default function ContentBlock(props) {
     const backgroundColor = props.backgroundColor
@@ -14,6 +15,7 @@ export default function ContentBlock(props) {
     const buttonBackground = props.buttonBackground
     const buttonName = props.buttonName
     const buttonUrl = props.buttonUrl
+    const headerSize = props.headerSize
 
     return (
         <section
@@ -35,41 +37,7 @@ export default function ContentBlock(props) {
                         flexDirection: ['column', 'column', 'row'],
                     }}
                 >
-                    <Box
-                        p={[4, 4, 3, 6]}
-                        sx={{
-                            textAlign: ['left', 'left', 'right'],
-                            flex: [null, null, 1],
-                            width: ['100%', null],
-                            display: 'flex',
-                            flexDirection: 'column',
-                            justifyContent: 'center',
-                            borderRight: [0, 0, `1px solid ${color || 'black'}`],
-                        }}
-                    >
-                        <Heading
-                            sx={{
-                                fontSize: [4, 3, 4, 5],
-                                fontWeight: 'thin',
-                                lineHeight: 'none',
-                                mb: 4,
-                                letterSpacing: 'tighter',
-                            }}
-                        >
-                            {heading}
-                        </Heading>
-                        <Heading
-                            as='h4'
-                            sx={{
-                                textTransform: 'uppercase',
-                                fontSize: 0,
-                                mt: [0, 0, 0],
-                                ml: ['auto', 'auto', null],
-                            }}
-                        >
-                            {title}
-                        </Heading>
-                    </Box>
+                    <LeftColumn heading={heading} title={title} color={color} headerSize={headerSize} />
                     <Box
                         py={[4, 4, 5]}
                         px={[4, 4, 6]}

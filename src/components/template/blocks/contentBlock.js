@@ -20,6 +20,7 @@ export default function ContentBlock(props) {
             heading={heading}
             title={title}
             text={text}
+            headerSize='h2'
             // buttonBackground={buttonBackground}
             // buttonName={buttonName}
             // buttonUrl={buttonUrl}

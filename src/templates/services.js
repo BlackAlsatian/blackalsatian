@@ -86,6 +86,7 @@ export const pageQuery = graphql`
     query WordPressServicesIndex {
         allWpService(sort: { order: DESC, fields: date }) {
             nodes {
+                id
                 uri
                 title
                 excerpt

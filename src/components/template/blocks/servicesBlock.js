@@ -1,21 +1,27 @@
 /** @jsx jsx */
-import { jsx, Container, Flex, Box, Heading } from 'theme-ui'
-import { useStaticQuery, graphql, Link } from 'gatsby'
+import { jsx, Container, Flex, Box } from 'theme-ui'
+import { useStaticQuery, graphql } from 'gatsby'
+import ServiceLink from '../elements/serviceLink'
+import LeftColumn from '../elements/leftColumn'
 
 const ServicesBlock = () => {
     const data = useStaticQuery(graphql`
         {
-            allWpService {
-                edges {
-                    node {
-                        id
-                        uri
-                        title
-                    }
-                }
+            # allWpService {
+            #     edges {
+            #         node {
+            #             id
+            #             uri
+            #             title
+            #         }
+            #     }
+            # }
+            wpMenu(slug: { eq: "services-menu" }) {
+                ...WpMenuItems
             }
         }
     `)
+    const serviceLinks = data.wpMenu.menuItems.nodes
     return (
         <section
             sx={{
@@ -36,41 +42,10 @@ const ServicesBlock = () => {
                         flexDirection: ['column', 'column', 'row'],
                     }}
                 >
-                    <Box
-                        p={[5, 5, 3, 6]}
-                        sx={{
-                            textAlign: ['left', 'left', 'right'],
-                            flex: [null, null, 1],
-                            width: ['100%', null],
-                            display: 'flex',
-                            flexDirection: 'column',
-                            justifyContent: 'center',
-                            borderRight: [0, 0, '1px solid black'],
-                        }}
-                    >
-                        <Heading
-                            sx={{
-                                fontSize: [4, 3, 4, 5],
-                                fontWeight: 'thin',
-                                lineHeight: 1,
-                                mb: 4,
-                                letterSpacing: 'tighter',
-                            }}
-                        >
-                            Everything you need to get your brand out on the world-wide web.
-                        </Heading>
-                        <Heading
-                            as='h4'
-                            sx={{
-                                textTransform: 'uppercase',
-                                fontSize: 0,
-                                mt: [4, 4, 0],
-                                ml: ['auto', 'auto', null],
-                            }}
-                        >
-                            Web Services
-                        </Heading>
-                    </Box>
+                    <LeftColumn
+                        heading='Everything you need to get your brand out on the world-wide web.'
+                        title='Web Services'
+                    />
                     <Box
                         pr={[null, null, 4]}
                         sx={{
@@ -78,43 +53,8 @@ const ServicesBlock = () => {
                             width: ['100%', null],
                         }}
                     >
-                        {data.allWpService.edges.map(({ node }) => (
-                            <Link
-                                key={node.id}
-                                to={node.uri}
-                                title={node.title}
-                                sx={{ color: 'black', textDecoration: 'none' }}
-                            >
-                                <div
-                                    sx={{
-                                        maxWidth: '100%',
-                                        display: 'flex',
-                                        alignItems: 'center',
-                                        px: 2,
-                                        py: [3, 3, null],
-                                        minHeight: ['4rem', '4rem', '7rem'],
-                                        borderBottom: '0.01rem solid black',
-                                        background: 'offWhite',
-                                        // transition: 'background 1000ms ease-in-out, padding 600ms ease-out',
-                                        // transition: 'padding 600ms ease-out',
-                                        transition: 'background-color 500ms ease-in',
-                                        '&:hover': {
-                                            backgroundColor: 'yellow',
-                                            // padding: '0 20px',
-                                        },
-                                    }}
-                                >
-                                    <Heading
-                                        as='h3'
-                                        sx={{
-                                            fontSize: 5,
-                                            fontWeight: 'medium',
-                                        }}
-                                    >
-                                        {node.title}
-                                    </Heading>
-                                </div>
-                            </Link>
+                        {serviceLinks.map((item) => (
+                            <ServiceLink key={item.id} item={item} />
                         ))}
                     </Box>
                 </Flex>

@@ -13,24 +13,22 @@ const TestimonialsBlock = () => {
     const data = useStaticQuery(graphql`
         query TestimonialQuery {
             allWpTestimonial {
-                edges {
-                    node {
-                        id
-                        title
-                        content
-                        uri
-                        slug
-                        testimonialRole
-                        testimonialCompany
-                        testimonialAuthor
-                    }
+                nodes {
+                    id
+                    title
+                    content
+                    uri
+                    slug
+                    testimonialRole
+                    testimonialCompany
+                    testimonialAuthor
                 }
             }
         }
     `)
     const [node, setNode] = useState(0)
 
-    const testimonials = data.allWpTestimonial.edges.map(({ node }) => (
+    const testimonials = data.allWpTestimonial.nodes.map((node) => (
         <div key={node.id} sx={{ px: [1, 1, 5], fontStyle: 'oblique' }}>
             {parse(node.content)}
             <p sx={{ textAlign: 'right' }}>

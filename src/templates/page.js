@@ -6,6 +6,7 @@ import parse from 'html-react-parser'
 import ComponentParser from '../components/componentParser'
 import SEO from '../components/seo'
 import PageHeader from '../components/template/pageHeader'
+import LeftColumn from '../components/template/elements/leftColumn'
 
 const PageTemplate = ({ data: { page } }) => {
     return (
@@ -16,23 +17,13 @@ const PageTemplate = ({ data: { page } }) => {
                 url={page.uri}
                 // featuredImage={page.featuredImage.node.localFile.childImageSharp.fluid.src}
             />
-            {!page.isFrontPage &&
-            !page.title.includes('Services') &&
-            !page.title.includes('Portfolio') &&
-            !page.title.includes('Specials') &&
-            !page.title.includes('Packages') ? (
+            {!page.isFrontPage && !page.title.includes(['Services', 'Portfolio', 'Specials', 'Packages']) ? (
                 <>
                     <PageHeader
                         title={parse(page.title)}
                         intro={page.pageintro}
                         backgroundColor={page.title.includes('About') ? 'black' : 'yellow'}
-                        color={
-                            page.title.includes('Contact') ||
-                            page.title.includes('Terms of Use') ||
-                            page.title.includes('Privacy Policy')
-                                ? 'black'
-                                : 'white'
-                        }
+                        color={page.title.includes(['Contact', 'Terms of Use', 'Privacy Policy']) ? 'black' : 'white'}
                     />
                     <section sx={{ py: 5 }}>
                         <Container p={1}>
@@ -41,47 +32,12 @@ const PageTemplate = ({ data: { page } }) => {
                                     flexDirection: ['column', 'column', 'row'],
                                 }}
                             >
-                                <Box
-                                    p={[4, 4, 3, 6]}
-                                    sx={{
-                                        textAlign: ['left', 'left', 'right'],
-                                        flex: [null, null, 1],
-                                        width: ['100%', null],
-                                        display: 'flex',
-                                        flexDirection: 'column',
-                                        alignItems: ['flex-start', 'flex-start', 'flex-end'],
-                                        borderRight: [0, 0, '1px solid black'],
-                                    }}
-                                >
-                                    {page.pagesubheading && (
-                                        <Heading
-                                            as='h3'
-                                            sx={{
-                                                fontSize: [4, 3, 4, 5],
-                                                fontWeight: 'thin',
-                                                lineHeight: 1,
-                                                mb: 4,
-                                                letterSpacing: 'tighter',
-                                            }}
-                                        >
-                                            {page.pagesubheading}
-                                        </Heading>
-                                    )}
-
-                                    {page.pagesubtitle && (
-                                        <Heading
-                                            as='h4'
-                                            sx={{
-                                                textTransform: 'uppercase',
-                                                fontSize: 0,
-                                                mt: [0, 0, 0],
-                                                ml: ['auto', 'auto', null],
-                                            }}
-                                        >
-                                            {page.pagesubtitle}
-                                        </Heading>
-                                    )}
-                                </Box>
+                                <LeftColumn
+                                    heading={page.pagesubheading}
+                                    title={page.pagesubtitle}
+                                    headerSize='h2'
+                                    page
+                                />
                                 <Box
                                     py={[0, 0, 4]}
                                     px={[4, 4, 6]}

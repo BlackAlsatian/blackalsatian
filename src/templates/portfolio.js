@@ -6,6 +6,7 @@ import AniLink from 'gatsby-plugin-transition-link/AniLink'
 import parse from 'html-react-parser'
 import SEO from '../components/seo'
 import PageHeader from '../components/template/pageHeader'
+import LeftColumn from '../components/template/elements/leftColumn'
 
 const PortfolioIndex = ({ data }) => {
     const portfolio = data.allWpPortfolio.nodes
@@ -46,48 +47,13 @@ const PortfolioIndex = ({ data }) => {
                             color: 'white',
                         }}
                     >
-                        <Box
-                            p={[4, 4, 3, 6]}
-                            sx={{
-                                textAlign: ['left', 'left', 'right'],
-                                flex: [null, null, 1],
-                                width: ['100%', null],
-                                display: 'flex',
-                                flexDirection: 'column',
-                                alignItems: ['flex-start', 'flex-start', 'flex-end'],
-                                // justifyContent: 'center',
-                                borderRight: [0, 0, '1px solid white'],
-                            }}
-                        >
-                            {page.pagesubheading && (
-                                <Heading
-                                    as='h3'
-                                    sx={{
-                                        fontSize: [4, 3, 4, 5],
-                                        fontWeight: 'thin',
-                                        lineHeight: 1,
-                                        mb: 4,
-                                        letterSpacing: 'tighter',
-                                    }}
-                                >
-                                    {page.pagesubheading}
-                                </Heading>
-                            )}
-
-                            {page.pagesubtitle && (
-                                <Heading
-                                    as='h4'
-                                    sx={{
-                                        textTransform: 'uppercase',
-                                        fontSize: 0,
-                                        mt: [0, 0, 0],
-                                        ml: ['auto', 'auto', null],
-                                    }}
-                                >
-                                    {page.pagesubtitle}
-                                </Heading>
-                            )}
-                        </Box>
+                        <LeftColumn
+                            heading={page.pagesubheading}
+                            title={page.pagesubtitle}
+                            color='white'
+                            headerSize='h2'
+                            page
+                        />
                         <Box
                             py={[0, 0, 4]}
                             pr={[0, 0, 6]}
