@@ -3,13 +3,13 @@
 RewriteEngine On
 
 # To externally redirect /dir/foo.html to /dir/foo
-RewriteCond %{THE_REQUEST} ^[A-Z]{3,}\s([^.]+)\.html [NC]
-RewriteRule ^ %1/ [R=301,L]
+#RewriteCond %{THE_REQUEST} ^[A-Z]{3,}\s([^.]+)\.html [NC]
+#RewriteRule ^ %1/ [R=301,L]
 
 # Add a trailing slash at the end    
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_URI} !(.*)/$
-RewriteRule ^(.*)$ https://www.blackalsatian.co.za/$1/ [L,R=301]
+#RewriteCond %{REQUEST_FILENAME} !-f
+#RewriteCond %{REQUEST_URI} !(.*)/$
+#RewriteRule ^(.*)$ https://www.blackalsatian.co.za/$1/ [L,R=301]
 
 # Custom 404 page
 ErrorDocument 404 /404/
@@ -20,3 +20,14 @@ Redirect 301 /media-marketing-specials https://www.blackalsatian.co.za/website-m
 Redirect 301 /get-your-free-guide https://www.blackalsatian.co.za/
 Redirect 301 /blog-archive/web-designers-in-port-elizabeth https://www.blackalsatian.co.za/blog/
 Redirect 301 /component/content/featured.feed https://www.blackalsatian.co.za/blog/
+Redirect 301 /portfolio.html https://www.blackalsatian.co.za/portfolio/
+Redirect 301 /portfolio https://www.blackalsatian.co.za/portfolio/
+Redirect 301 /contact.html https://www.blackalsatian.co.za/contact/
+Redirect 301 /contact https://www.blackalsatian.co.za/contact/
+Redirect 301 /about.html https://www.blackalsatian.co.za/about/
+Redirect 301 /terms-of-use.html https://www.blackalsatian.co.za/terms-of-use/
+Redirect 301 /terms-of-use https://www.blackalsatian.co.za/terms-of-use/
+Redirect 301 /privacy-policy.html https://www.blackalsatian.co.za/privacy-policy/
+Redirect 301 /privacy-policy https://www.blackalsatian.co.za/privacy-policy/
+Redirect 301 /about https://www.blackalsatian.co.za/about/
+Redirect 301 /blog https://www.blackalsatian.co.za/blog/

@@ -2,7 +2,7 @@
   "name": "gatsby-starter-blackalstian",
   "private": true,
   "description": "Black Alsatian website",
-  "version": "1.1.45",
+  "version": "1.1.51",
   "author": "Björn Potgieter <bjorn@blackalsatian.co.za>",
   "bugs": {
     "url": "https://bjorn.africa/"
@@ -64,7 +64,7 @@
   "main": "n/a",
   "repository": {
     "type": "git",
-    "url": "git+https://dev.blackalsatian.co.za/plesk-git/dev.git"
+    "url": "git+https://blackalsatian.co.za/plesk-git/blackalsatian.git"
   },
   "scripts": {
     "build": "gatsby build",
