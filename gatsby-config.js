@@ -71,7 +71,7 @@ module.exports = {
                 type: {
                     MediaItem: {
                         localFile: {
-                            requestConcurrency: 10,
+                            requestConcurrency: process.env.GATSBY_REQUEST_CONCURRENCY_IMAGES,
                         },
                     },
                 },
