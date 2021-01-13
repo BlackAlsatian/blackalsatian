@@ -13,7 +13,7 @@ import PagesNav from '../components/pagesNav'
 
 const BlogPostTemplate = ({ data: { previous, next, post } }) => {
     const featuredImage = {
-        fluid: post.featuredImage?.node?.localFile?.childImageSharp?.fluid,
+        fluid: post.featuredImage?.node?.main?.childImageSharp?.fluid,
         alt: post.featuredImage?.node?.alt || ``,
     }
     return (
@@ -21,7 +21,7 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
             <SEO
                 title={post.title}
                 description={post.seo.metaDesc}
-                featuredImage={post.featuredImage.node.localFile.childImageSharp.fluid.src}
+                featuredImage={post.featuredImage.node.og.childImageSharp.fluid.src}
                 url={post.uri}
                 author={post.author.node.firstName + ` ` + post.author.node.lastName}
                 isBlogPost
@@ -54,7 +54,7 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
                                 pt: ['35vh', '35vh', '45vh'],
                                 zIndex: 0,
                                 '&:before, &:after': {
-                                    filter: 'brightness(50%)',
+                                    filter: 'brightness(40%)',
                                 },
                             }}
                         >

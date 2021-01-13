@@ -22,7 +22,7 @@ const BlogIndex = ({ data, pageContext: { nextPagePath, previousPagePath }, loca
                     title={browserTitle}
                     description={content}
                     url={pathname}
-                    // featuredImage={page.featuredImage.node.localFile.childImageSharp.fluid.src}
+                    featuredImage={page.featuredImage.node.og.childImageSharp.fluid.src}
                 />
                 <p>No blog posts found.</p>
             </>
@@ -55,14 +55,18 @@ const BlogIndex = ({ data, pageContext: { nextPagePath, previousPagePath }, loca
                     {posts.map((post) => {
                         const title = post.title
                         const featuredImage = {
-                            fluid: post.featuredImage?.node?.localFile?.childImageSharp?.fluid,
+                            fluid: post.featuredImage?.node?.tile?.childImageSharp?.fluid,
                             alt: post.featuredImage?.node?.alt || ``,
                         }
                         return (
                             <AniLink
-                                paintDrip
-                                duration={0.3}
-                                color='white'
+                                // paintDrip
+                                // duration={0.5}
+                                // bg='white'
+                                // color='white'
+                                fade
+                                duration={0.5}
+                                bg='white'
                                 to={post.uri}
                                 key={post.uri}
                                 title={post.title}

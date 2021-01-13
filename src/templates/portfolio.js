@@ -18,7 +18,7 @@ const PortfolioIndex = ({ data }) => {
                     title={page.title}
                     description={page.seo.metaDesc}
                     url={page.uri}
-                    // featuredImage={page.featuredImage.node.localFile.childImageSharp.fluid.src}
+                    featuredImage={page.featuredImage && page.featuredImage.node.og.childImageSharp.fluid.src}
                 />
                 <p>No blog projects found.</p>
             </>
@@ -31,7 +31,7 @@ const PortfolioIndex = ({ data }) => {
                 title={page.title}
                 description={page.seo.metaDesc}
                 url={page.uri}
-                // featuredImage={page.featuredImage.node.localFile.childImageSharp.fluid.src}
+                featuredImage={page.featuredImage && page.featuredImage.node.og.childImageSharp.fluid.src}
             />
             <PageHeader title={parse(page.title)} intro={page.pageintro} backgroundColor='black' color='white' />
 
@@ -71,7 +71,7 @@ const PortfolioIndex = ({ data }) => {
                                         cover
                                         duration={0.5}
                                         direction='left'
-                                        bg='#f5df4d'
+                                        bg='#111827'
                                         key={portfolio.uri}
                                         to={portfolio.uri}
                                         title={parse(title)}
@@ -170,6 +170,7 @@ export const pageQuery = graphql`
             seo {
                 metaDesc
             }
+            ...PageFeaturedMediaFragment
             pageintro
             pagesubheading
             pagesubtitle

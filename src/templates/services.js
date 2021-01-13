@@ -20,7 +20,7 @@ const ServicesIndex = ({ data }) => {
                     title={page.title}
                     description={page.seo.metaDesc}
                     url={page.uri}
-                    // featuredImage={page.featuredImage.node.localFile.childImageSharp.fluid.src}
+                    featuredImage={page.featuredImage && page.featuredImage.node.og.childImageSharp.fluid.src}
                 />
                 <p>No blog services found.</p>
             </>
@@ -33,7 +33,7 @@ const ServicesIndex = ({ data }) => {
                 title={page.title}
                 description={page.seo.metaDesc}
                 url={page.uri}
-                // featuredImage={page.featuredImage.node.localFile.childImageSharp.fluid.src}
+                featuredImage={page.featuredImage && page.featuredImage.node.og.childImageSharp.fluid.src}
             />
             <PageHeader title={parse(page.title)} intro={page.pageintro} backgroundColor='yellow' color='black' />
             <section>
@@ -103,6 +103,7 @@ export const pageQuery = graphql`
             seo {
                 metaDesc
             }
+            ...PageFeaturedMediaFragment
             pageintro
             pagesubheading
             pagesubtitle

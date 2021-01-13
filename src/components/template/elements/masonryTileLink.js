@@ -22,7 +22,7 @@ const MasonryTileLink = ({ node }) => (
             }}
         >
             <Img
-                fluid={node.featuredImage.node.localFile.childImageSharp.fluid}
+                fluid={node.featuredImage.node.tile.childImageSharp.fluid}
                 alt={node.featuredImage.node.altText}
                 style={{
                     display: 'block',

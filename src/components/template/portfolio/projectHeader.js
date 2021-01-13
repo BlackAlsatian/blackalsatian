@@ -4,9 +4,9 @@ import AniLink from 'gatsby-plugin-transition-link/AniLink'
 import Image from 'gatsby-image'
 import parse from 'html-react-parser'
 
-function ProjectHeader({ previous, project, truncated }) {
+function ProjectHeader({ previous, project }) {
     const featuredImage = {
-        fluid: project.featuredImage?.node?.localFile?.childImageSharp?.fluid,
+        fluid: project.featuredImage?.node?.main?.childImageSharp?.fluid,
         alt: project.featuredImage?.node?.alt || ``,
     }
     return (

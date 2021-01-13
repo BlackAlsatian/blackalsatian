@@ -10,7 +10,7 @@ const HeroBlock = (props) => {
     return (
         <BackgroundImage
             Tag='section'
-            fluid={featuredImage.node.localFile.childImageSharp.fluid}
+            fluid={featuredImage.node.main.childImageSharp.fluid}
             backgroundColor='white'
             // durationFadeIn={200}
             fadeIn={false}
@@ -29,6 +29,9 @@ const HeroBlock = (props) => {
                 color: `${heroFontColor}`,
                 pt: ['45vh', '45vh', '55vh'],
                 zIndex: 0,
+                '&:before, &:after': {
+                    filter: 'brightness(80%)',
+                },
             }}
         >
             <Container p={4}>

@@ -15,7 +15,7 @@ const ProjectTemplate = ({ data: { previous, portfolio, next } }) => {
                 title={portfolio.title}
                 description={portfolio.seo.metaDesc}
                 url={portfolio.uri}
-                // featuredImage={page.featuredImage.node.localFile.childImageSharp.fluid.src}
+                featuredImage={portfolio.featuredImage.node.og.childImageSharp.fluid.src}
             />
             <ProjectHeader project={portfolio} />
             <ProjectContent project={portfolio} />
@@ -26,7 +26,7 @@ const ProjectTemplate = ({ data: { previous, portfolio, next } }) => {
                 nextName={next && parse(next.title)}
                 backgroundColor='black'
                 color='white'
-                swipeColor='white'
+                swipeColor='#111827'
             />
         </>
     )

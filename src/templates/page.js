@@ -15,15 +15,25 @@ const PageTemplate = ({ data: { page } }) => {
                 title={page.title}
                 description={page.seo.metaDesc}
                 url={page.uri}
-                // featuredImage={page.featuredImage.node.localFile.childImageSharp.fluid.src}
+                featuredImage={page.featuredImage && page.featuredImage.node.og.childImageSharp.fluid.src}
             />
-            {!page.isFrontPage && !page.title.includes(['Services', 'Portfolio', 'Specials', 'Packages']) ? (
+            {!page.isFrontPage &&
+            !page.title.includes('Services') &&
+            !page.title.includes('Portfolio') &&
+            !page.title.includes('Specials') &&
+            !page.title.includes('Packages') ? (
                 <>
                     <PageHeader
                         title={parse(page.title)}
                         intro={page.pageintro}
                         backgroundColor={page.title.includes('About') ? 'black' : 'yellow'}
-                        color={page.title.includes(['Contact', 'Terms of Use', 'Privacy Policy']) ? 'black' : 'white'}
+                        color={
+                            page.title.includes('Contact') ||
+                            page.title.includes('Terms of Use') ||
+                            page.title.includes('Privacy Policy')
+                                ? 'black'
+                                : 'white'
+                        }
                     />
                     <section sx={{ py: 5 }}>
                         <Container p={1}>

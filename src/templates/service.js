@@ -19,7 +19,7 @@ const PageTemplate = ({ data: { previous, next, service } }) => {
                 title={service.title}
                 description={service.seo.metaDesc}
                 url={service.uri}
-                // featuredImage={page.featuredImage.node.localFile.childImageSharp.fluid.src}
+                featuredImage={featuredImage.fluid.src}
             />
             <PageHeader
                 title={parse(service.title)}
