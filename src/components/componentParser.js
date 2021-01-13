@@ -1,4 +1,6 @@
 import React, { Fragment } from 'react'
+// import ReactDOM from 'react-dom'
+import LazyLoad from 'react-lazyload'
 import { randomID } from '../components/helpers'
 // import { motion } from 'framer-motion'
 
@@ -12,7 +14,7 @@ import TestimonialsBlock from '../components/template/blocks/testimonialsBlock'
 import FeaturedProjectsBlock from '../components/template/blocks/featuredProjects'
 import ServicesBlock from '../components/template/blocks/servicesBlock'
 import LatestPostsBlock from '../components/template/blocks/latestPostsBlock'
-
+import PlaceholderLoader from '../components/placeholderLoader'
 // const CUSTOM_BLOCKS = {
 //     HeroBlock: HeroBlock,
 //     CTABlock: CTABlock,
@@ -65,16 +67,30 @@ const ComponentParser = (props) => {
                             // />
                         }
                         {__typename === 'WpBlackalsatianContentBlock' && (
-                            <ContentBlock attributes={attributes} innerBlocks={innerBlocks} />
+                            <LazyLoad height='100%' offSet={100} once placeholder={<PlaceholderLoader />}>
+                                <ContentBlock attributes={attributes} innerBlocks={innerBlocks} />
+                            </LazyLoad>
                         )}
                         {__typename === 'WpBlackalsatianServicesBlock' && (
-                            // <Profiler id='servicesblock' onRender={callback}>
-                            <ServicesBlock />
-                            // </Profiler>
+                            <LazyLoad height='100%' offSet={100} once placeholder={<PlaceholderLoader />}>
+                                <ServicesBlock />
+                            </LazyLoad>
                         )}
-                        {__typename === 'WpBlackalsatianLatestPostsBlock' && <LatestPostsBlock />}
-                        {__typename === 'WpBlackalsatianFeaturedProjectsBlock' && <FeaturedProjectsBlock />}
-                        {__typename === 'WpBlackalsatianTestimonialsBlock' && <TestimonialsBlock />}
+                        {__typename === 'WpBlackalsatianLatestPostsBlock' && (
+                            <LazyLoad height='100%' offSet={100} once placeholder={<PlaceholderLoader />}>
+                                <LatestPostsBlock />
+                            </LazyLoad>
+                        )}
+                        {__typename === 'WpBlackalsatianFeaturedProjectsBlock' && (
+                            <LazyLoad height='100%' offSet={100} once placeholder={<PlaceholderLoader />}>
+                                <FeaturedProjectsBlock />
+                            </LazyLoad>
+                        )}
+                        {__typename === 'WpBlackalsatianTestimonialsBlock' && (
+                            <LazyLoad height='100%' offSet={100} once placeholder={<PlaceholderLoader />}>
+                                <TestimonialsBlock />
+                            </LazyLoad>
+                        )}
                     </Fragment>
                 ))}
         </>
