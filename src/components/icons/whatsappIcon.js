@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx, Box } from 'theme-ui'
 
-export default function WhatsApp({ color, width, height }) {
+const WhatsApp = ({ color, width, height }) => {
     return (
         <Box
             as='svg'
@@ -17,3 +17,4 @@ export default function WhatsApp({ color, width, height }) {
         </Box>
     )
 }
+export default WhatsApp

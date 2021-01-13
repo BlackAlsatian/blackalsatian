@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx, Box } from 'theme-ui'
 
-export default function Instagram({ color, width, height }) {
+const Instagram = ({ color, width, height }) => {
     return (
         <Box
             as='svg'
@@ -17,3 +17,4 @@ export default function Instagram({ color, width, height }) {
         </Box>
     )
 }
+export default Instagram

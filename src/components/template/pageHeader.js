@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx, Container, Heading } from 'theme-ui'
 
-function PageHeader({ title, intro, backgroundColor, color }) {
+const PageHeader = ({ title, intro, backgroundColor, color }) => {
     return (
         <section
             sx={{

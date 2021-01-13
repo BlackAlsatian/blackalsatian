@@ -4,7 +4,7 @@ import BlockText from '../blockText'
 import { getForm } from '../getForm'
 import LeftColumn from '../template/elements/leftColumn'
 
-export default function ContentBlock(props) {
+const ContentBlock = (props) => {
     const backgroundColor = props.backgroundColor
     const color = props.color
     const anchor = props.anchor
@@ -59,3 +59,4 @@ export default function ContentBlock(props) {
         </section>
     )
 }
+export default ContentBlock

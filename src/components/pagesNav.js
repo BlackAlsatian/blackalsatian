@@ -3,7 +3,7 @@ import { jsx } from 'theme-ui'
 import React from 'react'
 import AniLink from 'gatsby-plugin-transition-link/AniLink'
 
-function PagesNav({ previousPagePath, nextPagePath, previousName, nextName, backgroundColor, color, swipeColor }) {
+const PagesNav = ({ previousPagePath, nextPagePath, previousName, nextName, backgroundColor, color, swipeColor }) => {
     return (
         <nav>
             <ul

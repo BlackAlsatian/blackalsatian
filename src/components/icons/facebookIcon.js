@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx, Box } from 'theme-ui'
 
-export default function Facebook({ color, width, height }) {
+const Facebook = ({ color, width, height }) => {
     return (
         <Box
             as='svg'
@@ -17,3 +17,4 @@ export default function Facebook({ color, width, height }) {
         </Box>
     )
 }
+export default Facebook

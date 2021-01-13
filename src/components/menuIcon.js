@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx, Box } from 'theme-ui'
 
-export default function MenuIcon({ handleBurgerMenuClick, isOpen, color }) {
+const MenuIcon = ({ handleBurgerMenuClick, isOpen, color }) => {
     return (
         <button
             onClick={handleBurgerMenuClick}
@@ -56,3 +56,5 @@ export default function MenuIcon({ handleBurgerMenuClick, isOpen, color }) {
         </button>
     )
 }
+
+export default MenuIcon

@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx, Box } from 'theme-ui'
 
-export default function Twitter({ color, width, height }) {
+const Twitter = ({ color, width, height }) => {
     return (
         <Box
             as='svg'
@@ -17,3 +17,4 @@ export default function Twitter({ color, width, height }) {
         </Box>
     )
 }
+export default Twitter

@@ -3,7 +3,7 @@ import { jsx, Flex } from 'theme-ui'
 import { Link } from 'gatsby'
 import parse from 'html-react-parser'
 
-export default function Nav({ color, navLinks }) {
+const Nav = ({ color, navLinks }) => {
     return (
         <Flex
             as='nav'
@@ -42,3 +42,5 @@ export default function Nav({ color, navLinks }) {
         </Flex>
     )
 }
+
+export default Nav

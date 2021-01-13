@@ -20,18 +20,18 @@ export default {
         header: '#ffffff',
         primaryHover: `${tailwind.colors.gray[8]}`,
         black: '#111827',
-        // blue: '#2ec4b6',
-        // blue: '#31cdff',
         blue: '#0060b4',
         //##pantone of the year
         yellow: '#f5df4d',
         gray: '#939597',
         // ##
-        // red: '#e71d36',
-        // red: '#de4a50',
         red: '#d93d33',
         offWhite: `${tailwind.colors.gray[2]}`,
         mainOpenMenu: '#939597',
+        // blue: '#2ec4b6',
+        // blue: '#31cdff',
+        // red: '#e71d36',
+        // red: '#de4a50',
     },
     buttons: {
         ...tailwind.buttons,

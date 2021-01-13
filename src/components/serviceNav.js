@@ -3,7 +3,7 @@ import { jsx, Flex } from 'theme-ui'
 import { useStaticQuery, graphql, Link } from 'gatsby'
 import parse from 'html-react-parser'
 
-export default function ServiceNav({ color, handleMenuClick }) {
+const ServiceNav = ({ color, handleMenuClick }) => {
     const data = useStaticQuery(graphql`
         {
             wpMenu(slug: { eq: "services-menu" }) {
@@ -28,3 +28,5 @@ export default function ServiceNav({ color, handleMenuClick }) {
         </Flex>
     )
 }
+
+export default ServiceNav

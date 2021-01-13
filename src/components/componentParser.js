@@ -40,7 +40,7 @@ import LatestPostsBlock from '../components/template/blocks/latestPostsBlock'
 //
 // export default CustomBlock
 
-export default function ComponentParser(props) {
+const ComponentParser = (props) => {
     const { blocks, featuredImage } = props
     return (
         <>
@@ -80,3 +80,4 @@ export default function ComponentParser(props) {
         </>
     )
 }
+export default ComponentParser

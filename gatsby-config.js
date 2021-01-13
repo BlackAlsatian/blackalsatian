@@ -121,7 +121,6 @@ module.exports = {
                 background_color: `#111827`,
                 theme_color: `#ffffff`,
                 display: `standalone`,
-                lang: `en`,
                 icon: `src/assets/images/blackalsatian-icon.png`,
                 icons: [
                     {

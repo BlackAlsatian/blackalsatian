@@ -2,7 +2,7 @@
 import { jsx, Container, Heading, Flex, Box, Badge } from 'theme-ui'
 import parse from 'html-react-parser'
 
-function ProjectContent({ project }) {
+const ProjectContent = ({ project }) => {
     return (
         <section sx={{ py: [2, 2, 5] }}>
             <Container px={1}>

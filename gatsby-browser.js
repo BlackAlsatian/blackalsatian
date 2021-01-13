@@ -20,6 +20,13 @@ export const shouldUpdateScroll = ({ routerProps: { location }, getSavedScrollPo
     return false
 }
 
+export const onServiceWorkerUpdateReady = () => {
+    const answer = window.confirm(`There's been an update. ` + `Reload to display the latest version?`)
+    if (answer === true) {
+        window.location.reload()
+    }
+}
+
 // Adjust if you need to add a delay before scrolling
 // const transitionDelay = 0
 //

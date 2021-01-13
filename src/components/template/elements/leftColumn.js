@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx, Box, Heading } from 'theme-ui'
 
-export default function LeftColumn({ heading, title, color, headerSize, page }) {
+const LeftColumn = ({ heading, title, color, headerSize, page }) => {
     return (
         <Box
             p={[4, 4, 3, 6]}
@@ -46,3 +46,4 @@ export default function LeftColumn({ heading, title, color, headerSize, page }) 
         </Box>
     )
 }
+export default LeftColumn

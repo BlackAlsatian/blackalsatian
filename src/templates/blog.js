@@ -1,10 +1,10 @@
 /** @jsx jsx */
 import { jsx, Container, Heading } from 'theme-ui'
 import React from 'react'
-import { graphql } from 'gatsby'
+import { Link, graphql } from 'gatsby'
 import Image from 'gatsby-image'
 import parse from 'html-react-parser'
-import AniLink from 'gatsby-plugin-transition-link/AniLink'
+// import AniLink from 'gatsby-plugin-transition-link/AniLink'
 import { getHeight } from '../components/helpers'
 import SEO from '../components/seo'
 import PageHeader from '../components/template/pageHeader'
@@ -59,14 +59,14 @@ const BlogIndex = ({ data, pageContext: { nextPagePath, previousPagePath }, loca
                             alt: post.featuredImage?.node?.alt || ``,
                         }
                         return (
-                            <AniLink
+                            <Link
                                 // paintDrip
                                 // duration={0.5}
                                 // bg='white'
                                 // color='white'
-                                fade
-                                duration={0.5}
-                                bg='white'
+                                // fade
+                                // duration={0.5}
+                                // bg='white'
                                 to={post.uri}
                                 key={post.uri}
                                 title={post.title}
@@ -120,7 +120,7 @@ const BlogIndex = ({ data, pageContext: { nextPagePath, previousPagePath }, loca
                                         <small>{post.date}</small>
                                     </div>
                                 </article>
-                            </AniLink>
+                            </Link>
                         )
                     })}
                 </Container>

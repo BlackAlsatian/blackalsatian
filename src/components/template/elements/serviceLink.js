@@ -19,7 +19,7 @@ const LinkDivStyle = {
         // padding: '0 20px',
     },
 }
-export default function ServiceLink({ item }) {
+const ServiceLink = ({ item }) => {
     return (
         <Link key={item.id} to={item.url} title={item.label} sx={{ color: 'black', textDecoration: 'none' }}>
             <div sx={LinkDivStyle}>
@@ -36,3 +36,4 @@ export default function ServiceLink({ item }) {
         </Link>
     )
 }
+export default ServiceLink

@@ -1,9 +1,8 @@
 /** @jsx jsx */
 import { jsx, Heading } from 'theme-ui'
-// import React from 'react'
 import Image from 'gatsby-image'
 
-function ServiceImageRight({ image, name, description }) {
+const ServiceImageRight = ({ image, name, description }) => {
     return (
         <div
             sx={{

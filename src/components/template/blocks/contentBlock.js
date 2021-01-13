@@ -1,7 +1,7 @@
 import React from 'react'
 import BlockSection from '../blockSection'
 
-export default function ContentBlock(props) {
+const ContentBlock = (props) => {
     const { attributes, innerBlocks } = props
     // const backgroundColor = null
     // const color = null
@@ -27,3 +27,4 @@ export default function ContentBlock(props) {
         />
     )
 }
+export default ContentBlock

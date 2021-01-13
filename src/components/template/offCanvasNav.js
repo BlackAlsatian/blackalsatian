@@ -3,7 +3,7 @@ import { jsx, Flex } from 'theme-ui'
 import { Link } from 'gatsby'
 import { animated, config, useSpring } from 'react-spring'
 
-function OffCanvas({ isOpen, handleMenuClick, navLinks }) {
+const OffCanvas = ({ isOpen, handleMenuClick, navLinks }) => {
     const OffCanvasAnimation = useSpring({
         opacity: isOpen ? 0.9 : 0,
         transform: isOpen ? `translateX(0)` : `translateX(100%)`,

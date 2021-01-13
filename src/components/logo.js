@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx, Box } from 'theme-ui'
 
-export default function Logo({ color }) {
+const Logo = ({ color }) => {
     return (
         <Box
             as='svg'
@@ -111,3 +111,5 @@ export default function Logo({ color }) {
         </Box>
     )
 }
+
+export default Logo
