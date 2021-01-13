@@ -115,11 +115,11 @@ module.exports = {
             resolve: `gatsby-plugin-manifest`,
             options: {
                 name: `Black Alsatian`,
-                short_name: `blackalsatian`,
+                short_name: `Black Alsatian`,
                 description: `Handcrafted web applications and bespoke digital marketing solutions`,
                 start_url: `/`,
                 background_color: `#111827`,
-                theme_color: `#ffffff`,
+                theme_color: `#111827`,
                 display: `standalone`,
                 icon: `src/assets/images/blackalsatian-icon.png`,
                 icons: [
