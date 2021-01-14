@@ -42,11 +42,11 @@ Redirect 301 /terms-of-use https://www.blackalsatian.co.za/terms-of-use/
 Redirect 301 /privacy-policy.html https://www.blackalsatian.co.za/privacy-policy/
 Redirect 301 /privacy-policy https://www.blackalsatian.co.za/privacy-policy/
 Redirect 301 /blog.html https://www.blackalsatian.co.za/blog/
-Redirect 301 /blog https://www.blackalsatian.co.za/blog/
+#Redirect 301 /blog https://www.blackalsatian.co.za/blog/
 Redirect 301 /portfolio.html https://www.blackalsatian.co.za/portfolio/
 Redirect 301 /portfolio https://www.blackalsatian.co.za/portfolio/
 Redirect 301 /services.html https://www.blackalsatian.co.za/services/
-Redirect 301 /services https://www.blackalsatian.co.za/services/
+#Redirect 301 /services https://www.blackalsatian.co.za/services/
 Redirect 301 /services/website-design.html https://www.blackalsatian.co.za/services/website-design/
 Redirect 301 /services/website-design https://www.blackalsatian.co.za/services/website-design/
 Redirect 301 /services/online-marketing.html https://www.blackalsatian.co.za/services/online-marketing/

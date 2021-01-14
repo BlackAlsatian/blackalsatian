@@ -52,7 +52,7 @@ module.exports = {
     // DEV_SSR: true,
     // (Umbrella Issue (​https://github.com/gatsbyjs/gatsby/discussions/27620​)) · Only run queries when needed instead of running all queries upfront. Speeds starting the develop server.
     // QUERY_ON_DEMAND: true,
-    // LAZY_IMAGES: ture,
+    // LAZY_IMAGES: true,
     //EXPERIMENTAL
     // (Umbrella Issue (​https://github.com/gatsbyjs/gatsby/discussions/27603​)) · Don't process images during development until they're requested from the browser. Speeds starting the develop server.
     // },
