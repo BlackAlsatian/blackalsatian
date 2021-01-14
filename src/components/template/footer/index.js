@@ -12,7 +12,7 @@ const Footer = ({ siteTitle, path }) => {
     // console.log(path)
     let bgcolor = 'black'
     let textcolor = 'white'
-    if (path.includes('blog') || path.includes('404')) {
+    if (path.includes('blog') || path.includes('/404/')) {
         bgcolor = 'white'
         textcolor = 'black'
     }

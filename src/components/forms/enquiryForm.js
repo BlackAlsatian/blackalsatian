@@ -190,7 +190,6 @@ const EnquiryForm = ({ buttonBackground, btnColor, formStyle, buttonName, errorC
                         <Spinner
                             sx={{
                                 color: `${buttonBackground}`,
-                                boxShadow: 'xl',
                             }}
                         />
                     ) : (

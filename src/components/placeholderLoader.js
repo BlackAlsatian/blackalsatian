@@ -9,14 +9,14 @@ const PlaceholderLoader = () => {
                 minHeight: '100vh',
                 width: '100%',
                 alignItems: 'center',
-                justifycontent: 'center',
+                justifyContent: 'center',
                 backgroundColor: 'offwhite',
             }}
         >
             <Spinner
                 sx={{
                     color: 'black',
-                    boxShadow: 'xl',
+                    backgroundColor: 'transparent',
                 }}
             />
         </Flex>

@@ -183,7 +183,6 @@ const QuoteForm = ({ buttonBackground, btnColor, formStyle, buttonName }) => {
                         <Spinner
                             sx={{
                                 color: `${buttonBackground}`,
-                                boxShadow: 'xl',
                             }}
                         />
                     ) : (
