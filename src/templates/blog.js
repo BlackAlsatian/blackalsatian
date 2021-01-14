@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx, Container, Heading } from 'theme-ui'
 import React from 'react'
-import { Link, graphql } from 'gatsby'
+import { graphql } from 'gatsby'
 import Image from 'gatsby-image'
 import parse from 'html-react-parser'
 import AniLink from 'gatsby-plugin-transition-link/AniLink'
