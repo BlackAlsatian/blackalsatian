@@ -22,9 +22,13 @@ const Footer = ({ siteTitle, path }) => {
         bgcolor = 'white'
         textcolor = 'black'
     }
-    if (path.includes('contact') || path.includes('terms-of-use') || path.includes('privacy-policy')) {
+    if (path.includes('contact')) {
         bgcolor = 'yellow'
         textcolor = 'black'
+    }
+    if (path.includes('terms-of-use') || path.includes('privacy-policy')) {
+        bgcolor = 'red'
+        textcolor = 'white'
     }
     return (
         <footer

@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx, Container, Heading, Flex, Box } from 'theme-ui'
+import { jsx, Container, Flex, Box } from 'theme-ui'
 import React from 'react'
 import { graphql } from 'gatsby'
 import parse from 'html-react-parser'
@@ -7,6 +7,7 @@ import ComponentParser from '../components/componentParser'
 import SEO from '../components/seo'
 import PageHeader from '../components/template/pageHeader'
 import LeftColumn from '../components/template/elements/leftColumn'
+import { handleBodyTextColor } from '../components/helpers'
 
 const PageTemplate = ({ data: { page } }) => {
     return (
@@ -26,14 +27,14 @@ const PageTemplate = ({ data: { page } }) => {
                     <PageHeader
                         title={parse(page.title)}
                         intro={page.pageintro}
-                        backgroundColor={page.title.includes('About') ? 'black' : 'yellow'}
-                        color={
-                            page.title.includes('Contact') ||
-                            page.title.includes('Terms of Use') ||
-                            page.title.includes('Privacy Policy')
+                        backgroundColor={
+                            page.title.includes('About')
                                 ? 'black'
-                                : 'white'
+                                : page.title.includes('Terms of Use') || page.title.includes('Privacy Policy')
+                                ? 'red'
+                                : 'yellow'
                         }
+                        color={page.title.includes('Contact') ? 'black' : 'white'}
                     />
                     <section sx={{ py: 5 }}>
                         <Container p={1}>
@@ -47,6 +48,7 @@ const PageTemplate = ({ data: { page } }) => {
                                     title={page.pagesubtitle}
                                     headerSize='h2'
                                     page
+                                    color={handleBodyTextColor(page.uri)}
                                 />
                                 <Box
                                     py={[0, 0, 4]}
@@ -55,6 +57,7 @@ const PageTemplate = ({ data: { page } }) => {
                                         flex: [null, null, 3],
                                         width: ['100%', null],
                                         variant: 'layout',
+                                        color: `${handleBodyTextColor(page.uri)}`,
                                     }}
                                 >
                                     {page.content && parse(page.content)}

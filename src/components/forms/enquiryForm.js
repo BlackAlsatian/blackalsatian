@@ -22,7 +22,7 @@ const EnquiryFormSchema = Yup.object({
         .required('Oops! You missed this field.'),
     message: Yup.string().min(40, 'Was that all? At least 40 characters are required.').required('How may we assist?'),
 })
-const EnquiryForm = ({ buttonBackground, btnColor, formStyle, buttonName }) => {
+const EnquiryForm = ({ buttonBackground, btnColor, formStyle, buttonName, errorColor }) => {
     const [messageAlert, setMessageAlert] = useState(false)
     return (
         <Formik
@@ -75,7 +75,7 @@ const EnquiryForm = ({ buttonBackground, btnColor, formStyle, buttonName }) => {
                         mb={3}
                         variant={formStyle}
                         sx={{
-                            borderBottomColor: formik.errors.name ? 'yellow' : `${buttonBackground}` || 'white',
+                            borderBottomColor: formik.errors.name ? `${errorColor}` : `${buttonBackground}` || 'white',
                             color: `${buttonBackground}`,
                             '&:focus': { color: 'black' },
                         }}
@@ -84,7 +84,7 @@ const EnquiryForm = ({ buttonBackground, btnColor, formStyle, buttonName }) => {
                     {formik.touched.name && formik.errors.name ? (
                         <div
                             sx={{
-                                color: 'red',
+                                color: `${errorColor}`,
                                 fontSize: '0.8rem',
                                 fontWeight: 'bold',
                                 pb: 3,
@@ -101,7 +101,9 @@ const EnquiryForm = ({ buttonBackground, btnColor, formStyle, buttonName }) => {
                         mb={3}
                         variant={formStyle}
                         sx={{
-                            borderBottomColor: formik.errors.number ? 'yellow' : `${buttonBackground}` || 'white',
+                            borderBottomColor: formik.errors.number
+                                ? `${errorColor}`
+                                : `${buttonBackground}` || 'white',
                             color: `${buttonBackground}`,
                             '&:focus': { color: 'black' },
                         }}
@@ -110,7 +112,7 @@ const EnquiryForm = ({ buttonBackground, btnColor, formStyle, buttonName }) => {
                     {formik.touched.number && formik.errors.number ? (
                         <div
                             sx={{
-                                color: 'red',
+                                color: `${errorColor}`,
                                 fontSize: '0.8rem',
                                 fontWeight: 'bold',
                                 pb: 3,
@@ -127,7 +129,7 @@ const EnquiryForm = ({ buttonBackground, btnColor, formStyle, buttonName }) => {
                         mb={3}
                         variant={formStyle}
                         sx={{
-                            borderBottomColor: formik.errors.email ? 'yellow' : `${buttonBackground}` || 'white',
+                            borderBottomColor: formik.errors.email ? `${errorColor}` : `${buttonBackground}` || 'white',
                             color: `${buttonBackground}`,
                             '&:focus': { color: 'black' },
                         }}
@@ -136,7 +138,7 @@ const EnquiryForm = ({ buttonBackground, btnColor, formStyle, buttonName }) => {
                     {formik.touched.email && formik.errors.email ? (
                         <div
                             sx={{
-                                color: 'red',
+                                color: `${errorColor}`,
                                 fontSize: '0.8rem',
                                 fontWeight: 'bold',
                                 pb: 3,
@@ -153,7 +155,9 @@ const EnquiryForm = ({ buttonBackground, btnColor, formStyle, buttonName }) => {
                         mb={3}
                         variant={formStyle}
                         sx={{
-                            borderBottomColor: formik.errors.message ? 'yellow' : `${buttonBackground}` || 'white',
+                            borderBottomColor: formik.errors.message
+                                ? `${errorColor}`
+                                : `${buttonBackground}` || 'white',
                             color: `${buttonBackground}`,
                             '&:focus': { color: 'black' },
                         }}
@@ -162,7 +166,7 @@ const EnquiryForm = ({ buttonBackground, btnColor, formStyle, buttonName }) => {
                     {formik.touched.message && formik.errors.message ? (
                         <div
                             sx={{
-                                color: 'red',
+                                color: `${errorColor}`,
                                 fontSize: '0.8rem',
                                 fontWeight: 'bold',
                                 pb: 3,

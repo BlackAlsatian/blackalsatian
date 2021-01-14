@@ -1,9 +1,11 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
 import { useStaticQuery, graphql } from 'gatsby'
+import LazyLoad from 'react-lazyload'
 import { handleBgColor } from '../components/helpers'
 import Header from './template/header'
 import Footer from './template/footer'
+import PlaceholderLoader from '../components/placeholderLoader'
 
 if (typeof window !== 'undefined') {
     // Make scroll behavior of internal links smooth
@@ -39,7 +41,9 @@ const Layout = ({ children, location }) => {
         >
             <Header path={path} />
             <main>{children}</main>
-            <Footer siteTitle={title} path={path} />
+            <LazyLoad height='100%' offSet={150} once placeholder={<PlaceholderLoader />}>
+                <Footer siteTitle={title} path={path} />
+            </LazyLoad>
         </div>
     )
 }

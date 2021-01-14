@@ -5,8 +5,10 @@ import { Link } from 'gatsby'
 import EnquiryForm from '../components/forms/enquiryForm'
 import LeadForm from '../components/forms/leadForm'
 import QuoteForm from '../components/forms/quoteForm'
+import { handleErrorColor } from '../components/helpers'
 
 export const getForm = (option, buttonName, buttonUrl, backgroundColor, buttonBackground) => {
+    const errorColor = handleErrorColor(backgroundColor)
     if (option === 'btnonly') {
         return (
             <p>
@@ -37,6 +39,7 @@ export const getForm = (option, buttonName, buttonUrl, backgroundColor, buttonBa
                 formStyle='inputs.background'
                 btnColor={`${backgroundColor || 'white'}`}
                 buttonName={buttonName}
+                errorColor={errorColor}
             />
         )
     }
@@ -48,6 +51,7 @@ export const getForm = (option, buttonName, buttonUrl, backgroundColor, buttonBa
                 formStyle='inputs.background'
                 btnColor={`${backgroundColor || 'white'}`}
                 buttonName={buttonName}
+                errorColor={errorColor}
             />
         )
     }
@@ -59,6 +63,7 @@ export const getForm = (option, buttonName, buttonUrl, backgroundColor, buttonBa
                 formStyle='inputs.background'
                 btnColor={`${backgroundColor || 'white'}`}
                 buttonName={buttonName}
+                errorColor={errorColor}
             />
         )
     }

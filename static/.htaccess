@@ -15,19 +15,51 @@ RewriteEngine On
 ErrorDocument 404 /404/
 
 # 301 redirects
-Redirect 301 /one-page-website-deal https://www.blackalsatian.co.za/services/website-design/
+# Marketing links
+Redirect 301 /business-success-on-the-world-wide-web https://www.blackalsatian.co.za/free-stuff/
+Redirect 301 /free-tips-to-giving-your-business-online-exposure https://www.blackalsatian.co.za/free-stuff/
+Redirect 301 /get-online-grow-your-business https://www.blackalsatian.co.za/free-stuff/
+Redirect 301 /get-your-free-guide https://www.blackalsatian.co.za/free-stuff/
+Redirect 301 /laser-targeted-marketing https://www.blackalsatian.co.za/free-stuff/
 Redirect 301 /media-marketing-specials https://www.blackalsatian.co.za/website-media-marketing-specials/
-Redirect 301 /get-your-free-guide https://www.blackalsatian.co.za/
+Redirect 301 /once-off-deal https://www.blackalsatian.co.za/free-stuff/
+Redirect 301 /one-page-website-deal https://www.blackalsatian.co.za/services/website-design/
+Redirect 301 /the-ultimate-online-marketing-guide-for-noobs https://www.blackalsatian.co.za/free-stuff/
+
+# Blog links
 Redirect 301 /blog-archive/web-designers-in-port-elizabeth https://www.blackalsatian.co.za/blog/
 Redirect 301 /component/content/featured.feed https://www.blackalsatian.co.za/blog/
+
+# Services links
 Redirect 301 /portfolio.html https://www.blackalsatian.co.za/portfolio/
 Redirect 301 /portfolio https://www.blackalsatian.co.za/portfolio/
 Redirect 301 /contact.html https://www.blackalsatian.co.za/contact/
 Redirect 301 /contact https://www.blackalsatian.co.za/contact/
 Redirect 301 /about.html https://www.blackalsatian.co.za/about/
+Redirect 301 /about https://www.blackalsatian.co.za/about/
 Redirect 301 /terms-of-use.html https://www.blackalsatian.co.za/terms-of-use/
 Redirect 301 /terms-of-use https://www.blackalsatian.co.za/terms-of-use/
 Redirect 301 /privacy-policy.html https://www.blackalsatian.co.za/privacy-policy/
 Redirect 301 /privacy-policy https://www.blackalsatian.co.za/privacy-policy/
-Redirect 301 /about https://www.blackalsatian.co.za/about/
+Redirect 301 /blog.html https://www.blackalsatian.co.za/blog/
 Redirect 301 /blog https://www.blackalsatian.co.za/blog/
+Redirect 301 /portfolio.html https://www.blackalsatian.co.za/portfolio/
+Redirect 301 /portfolio https://www.blackalsatian.co.za/portfolio/
+Redirect 301 /services.html https://www.blackalsatian.co.za/services/
+Redirect 301 /services https://www.blackalsatian.co.za/services/
+Redirect 301 /services/website-design.html https://www.blackalsatian.co.za/services/website-design/
+Redirect 301 /services/website-design https://www.blackalsatian.co.za/services/website-design/
+Redirect 301 /services/online-marketing.html https://www.blackalsatian.co.za/services/online-marketing/
+Redirect 301 /services/online-marketing https://www.blackalsatian.co.za/services/online-marketing/
+Redirect 301 /services/seo.html https://www.blackalsatian.co.za/services/seo/
+Redirect 301 /services/seo https://www.blackalsatian.co.za/services/seo/
+Redirect 301 /services/lead-generation.html https://www.blackalsatian.co.za/services/lead-generation/
+Redirect 301 /services/lead-generation https://www.blackalsatian.co.za/services/lead-generation/
+Redirect 301 /services/copywriting.html https://www.blackalsatian.co.za/services/copywriting/
+Redirect 301 /services/copywriting https://www.blackalsatian.co.za/services/copywriting/
+Redirect 301 /services/web-hosting.html https://www.blackalsatian.co.za/services/web-hosting/
+Redirect 301 /services/web-hosting https://www.blackalsatian.co.za/services/web-hosting/
+Redirect 301 /services/graphic-design.html https://www.blackalsatian.co.za/services/graphic-design/
+Redirect 301 /services/graphic-design https://www.blackalsatian.co.za/services/graphic-design/
+Redirect 301 /services/personalised-email.html https://www.blackalsatian.co.za/services/personalised-email/
+Redirect 301 /services/personalised-email https://www.blackalsatian.co.za/services/personalised-email/

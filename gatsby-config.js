@@ -37,6 +37,25 @@ module.exports = {
             intro: `Latest trends in the world of web development & digital marketing`,
         },
     },
+    // flags: {
+    // PRESERVE_FILE_DOWNLOAD_CACHE prevents file downloads from being deleted during cache clearing events (other than gatsby clean which still deletes the entire cache)
+    // PRESERVE_FILE_DOWNLOAD_CACHE: true,
+
+    // PRESERVE_WEBPACK_CACHE prevents the webpack cache from deleted with the same caveat for gatsby clean
+    // PRESERVE_WEBPACK_CACHE: true,
+
+    // Enable all experiments aimed at improving develop server start time
+    // FAST_DEV: true,
+    // (Umbrella Issue (​https://github.com/gatsbyjs/gatsby/discussions/28390​)) · Use React Fast Refresh instead of the legacy react-hot-loader for instantaneous feedback in your development server. Recommended for versions of React >= 17.0.
+    // FAST_REFRESH: true,
+    // (Umbrella Issue (​https://github.com/gatsbyjs/gatsby/discussions/28138​)) · SSR pages on full reloads during develop. Helps you detect SSR bugs and fix them without needing to do full builds.
+    // DEV_SSR: true,
+    // (Umbrella Issue (​https://github.com/gatsbyjs/gatsby/discussions/27620​)) · Only run queries when needed instead of running all queries upfront. Speeds starting the develop server.
+    // QUERY_ON_DEMAND: true,
+    // LAZY_IMAGES: ture,
+    //EXPERIMENTAL
+    // (Umbrella Issue (​https://github.com/gatsbyjs/gatsby/discussions/27603​)) · Don't process images during development until they're requested from the browser. Speeds starting the develop server.
+    // },
     plugins: [
         // See https://www.gatsbyjs.com/plugins/gatsby-plugin-react-helmet/?=gatsby-plugin-react-helmet
         `gatsby-plugin-react-helmet`,
