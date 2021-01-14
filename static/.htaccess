@@ -32,7 +32,7 @@ Redirect 301 /component/content/featured.feed https://www.blackalsatian.co.za/bl
 
 # Services links
 Redirect 301 /portfolio.html https://www.blackalsatian.co.za/portfolio/
-Redirect 301 /portfolio https://www.blackalsatian.co.za/portfolio/
+#Redirect 301 /portfolio https://www.blackalsatian.co.za/portfolio/
 Redirect 301 /contact.html https://www.blackalsatian.co.za/contact/
 Redirect 301 /contact https://www.blackalsatian.co.za/contact/
 Redirect 301 /about.html https://www.blackalsatian.co.za/about/
