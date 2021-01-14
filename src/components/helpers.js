@@ -21,7 +21,8 @@ export function handleColor(path) {
         path === '/blog/8/' ||
         path === '/blog/9/' ||
         path.includes('contact') ||
-        path.includes('services')
+        path.includes('services') ||
+        path.includes('404')
     ) {
         return 'black'
     } else {
