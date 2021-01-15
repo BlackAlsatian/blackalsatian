@@ -28,7 +28,7 @@ const Layout = ({ children, location }) => {
             }
         }
     `)
-    const path = location.pathname
+    const path = window.location.pathname ? window.location.pathname : location.pathname
     return (
         <div
             sx={{

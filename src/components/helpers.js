@@ -10,6 +10,7 @@ export function getHeight() {
 
 // temporary hacky way of changing font colours for specific pages
 export function handleColor(path) {
+    // console.log(path)
     if (
         path === '/blog/' ||
         path === '/blog/2/' ||
@@ -22,7 +23,7 @@ export function handleColor(path) {
         path === '/blog/9/' ||
         path.includes('contact') ||
         path.includes('services') ||
-        path.includes('404')
+        path.includes('/404/')
     ) {
         return 'black'
     } else {

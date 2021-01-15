@@ -8,7 +8,8 @@ import OffCanvas from './offCanvasNav'
 import Logo from '../logo'
 import Nav from '../nav'
 
-const Header = ({ path }) => {
+const Header = () => {
+    const path = window.location.pathname
     const data = useStaticQuery(graphql`
         {
             wpMenu(slug: { eq: "primary-menu" }) {

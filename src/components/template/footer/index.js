@@ -12,6 +12,7 @@ const Footer = ({ siteTitle, path }) => {
     // console.log(path)
     let bgcolor = 'black'
     let textcolor = 'white'
+    // const path = window.location.href
     if (path.includes('blog') || path.includes('/404/')) {
         bgcolor = 'white'
         textcolor = 'black'
@@ -82,7 +83,20 @@ const Footer = ({ siteTitle, path }) => {
                 }}
             >
                 <div sx={{ flex: 1, mx: 1, my: [3, 3, null] }}>
-                    <Logo color={textcolor} />
+                    <Link
+                        sx={{
+                            textDecoration: 'none',
+                            outline: 0,
+                            '&:hover, &:focus, &:active': {
+                                textDecoration: 'none',
+                                outline: 0,
+                            },
+                        }}
+                        to='/'
+                        title='Web development & online marketing by Black Alsatian'
+                    >
+                        <Logo color={textcolor} />
+                    </Link>
                     <br />
                     Port Elizabeth, South Africa
                 </div>
