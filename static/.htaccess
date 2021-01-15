@@ -1,6 +1,6 @@
 ## Remove html extension
 
-RewriteEngine On
+#RewriteEngine On
 
 # To externally redirect /dir/foo.html to /dir/foo
 #RewriteCond %{THE_REQUEST} ^[A-Z]{3,}\s([^.]+)\.html [NC]

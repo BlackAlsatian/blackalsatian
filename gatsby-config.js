@@ -115,7 +115,7 @@ module.exports = {
         {
             resolve: `gatsby-plugin-sitemap`,
             options: {
-                exclude: [`/portfolio/*`, `/style-guide/`],
+                exclude: [`/portfolio/*`, `/style-guide`],
             },
         },
         `gatsby-transformer-sharp`,
