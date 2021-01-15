@@ -96,6 +96,7 @@ module.exports = {
                 },
             },
         },
+        `gatsby-plugin-force-trailing-slashes`,
         {
             resolve: `gatsby-source-filesystem`,
             options: {
@@ -114,7 +115,7 @@ module.exports = {
         {
             resolve: `gatsby-plugin-sitemap`,
             options: {
-                exclude: [`/portfolio/*`],
+                exclude: [`/portfolio/*`, `/style-guide/`],
             },
         },
         `gatsby-transformer-sharp`,
