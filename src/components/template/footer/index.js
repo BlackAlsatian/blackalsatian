@@ -12,7 +12,6 @@ const Footer = ({ siteTitle, path }) => {
     // console.log(path)
     let bgcolor = 'black'
     let textcolor = 'white'
-    // const path = window.location.href
     if (path.includes('blog') || path.includes('/404/')) {
         bgcolor = 'white'
         textcolor = 'black'
