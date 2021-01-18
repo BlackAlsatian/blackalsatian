@@ -2,13 +2,13 @@
 import { jsx } from 'theme-ui'
 import { useState } from 'react'
 import { useStaticQuery, graphql, Link } from 'gatsby'
-import { handleColor } from '../../components/helpers'
+// import { handleColor } from '../../components/helpers'
 import MenuIcon from '../menuIcon'
 import OffCanvas from './offCanvasNav'
 import Logo from '../logo'
 import Nav from '../nav'
 
-const Header = ({ path }) => {
+const Header = ({ navcolor }) => {
     const data = useStaticQuery(graphql`
         {
             wpMenu(slug: { eq: "primary-menu" }) {
@@ -23,7 +23,7 @@ const Header = ({ path }) => {
     const handleBurgerMenuClick = () => {
         setIsOpen(!isOpen)
     }
-    const color = handleColor(path)
+    const color = navcolor
     return (
         <header
             sx={{

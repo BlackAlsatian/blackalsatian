@@ -61,13 +61,6 @@ export const fragments = graphql`
                         }
                     }
                 }
-                tile: localFile {
-                    childImageSharp {
-                        fluid(maxWidth: 620, quality: 70) {
-                            ...GatsbyImageSharpFluid_withWebp_tracedSVG
-                        }
-                    }
-                }
             }
         }
     }
@@ -92,6 +85,27 @@ export const fragments = graphql`
                 tile: localFile {
                     childImageSharp {
                         fluid(maxWidth: 620, quality: 70) {
+                            ...GatsbyImageSharpFluid_withWebp_tracedSVG
+                        }
+                    }
+                }
+            }
+        }
+    }
+    fragment LanderFeaturedMediaFragment on WpLander {
+        featuredImage {
+            node {
+                altText
+                main: localFile {
+                    childImageSharp {
+                        fluid(maxWidth: 1400, quality: 80) {
+                            ...GatsbyImageSharpFluid_withWebp_tracedSVG
+                        }
+                    }
+                }
+                og: localFile {
+                    childImageSharp {
+                        fluid(maxWidth: 1200, quality: 70) {
                             ...GatsbyImageSharpFluid_withWebp_tracedSVG
                         }
                     }

@@ -9,7 +9,26 @@ import PageHeader from '../components/template/pageHeader'
 import LeftColumn from '../components/template/elements/leftColumn'
 import { handleBodyTextColor } from '../components/helpers'
 
-const PageTemplate = ({ data: { page } }) => {
+const PageTemplate = ({ data: { page }, pageContext }) => {
+    // console.log(pageContext)
+    const { bodyVariant, headerVariant } = pageContext.colorScheme
+    const handleBackgroundColor = (pageTitle, variant) => {
+        if (pageTitle.includes('Terms of Use') || pageTitle.includes('Privacy Policy')) {
+            return 'red'
+        } else if (pageTitle.includes('Contact')) {
+            return 'yellow'
+        } else {
+            return variant
+        }
+    }
+    const handleHeaderColor = (pagetitle) => {
+        if (pagetitle.includes('Contact')) {
+            return 'black'
+        } else {
+            return 'white'
+        }
+    }
+
     return (
         <>
             <SEO
@@ -18,25 +37,20 @@ const PageTemplate = ({ data: { page } }) => {
                 url={page.uri}
                 featuredImage={page.featuredImage && page.featuredImage.node.og.childImageSharp.fluid.src}
             />
-            {!page.isFrontPage &&
-            !page.title.includes('Services') &&
-            !page.title.includes('Portfolio') &&
-            !page.title.includes('Specials') &&
-            !page.title.includes('Packages') ? (
+            {!page.isFrontPage && !page.title.includes('Services') && !page.title.includes('Portfolio') ? (
                 <>
                     <PageHeader
                         title={parse(page.title)}
                         intro={page.pageintro}
-                        backgroundColor={
-                            page.title.includes('About')
-                                ? 'black'
-                                : page.title.includes('Terms of Use') || page.title.includes('Privacy Policy')
-                                ? 'red'
-                                : 'yellow'
-                        }
-                        color={page.title.includes('Contact') ? 'black' : 'white'}
+                        backgroundColor={handleBackgroundColor(page.title, headerVariant)}
+                        color={handleHeaderColor(page.title)}
                     />
-                    <section sx={{ py: 5 }}>
+                    <section
+                        sx={{
+                            py: 5,
+                            backgroundColor: handleBackgroundColor(page.title, bodyVariant),
+                        }}
+                    >
                         <Container p={1}>
                             <Flex
                                 sx={{

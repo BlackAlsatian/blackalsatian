@@ -12,6 +12,7 @@ import Bio from '../components/bio'
 import PagesNav from '../components/pagesNav'
 
 const BlogPostTemplate = ({ data: { previous, next, post } }) => {
+    // console.log({ pageContext })
     const featuredImage = {
         fluid: post.featuredImage?.node?.main?.childImageSharp?.fluid,
         alt: post.featuredImage?.node?.alt || ``,
@@ -28,12 +29,7 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
             />
 
             <article itemScope itemType='http://schema.org/Article'>
-                <header
-                // sx={{
-                //     position: 'relative',
-                //     minHeight: '100vh',
-                // }}
-                >
+                <header>
                     {featuredImage?.fluid ? (
                         <BackgroundImage
                             Tag='section'
@@ -43,7 +39,6 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
                                 display: 'flex',
                                 alignItems: 'center',
                                 width: '100%',
-                                // backgroundImage: `url(${backgroundImage})`,
                                 backgroundAttachment: 'scroll',
                                 backgroundSize: 'cover',
                                 backgroundRepeat: 'no-repeat',
@@ -158,8 +153,6 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
                         </Container>
                     </section>
                 )}
-
-                <footer>{/* <Bio /> */}</footer>
             </article>
             <section>
                 <PagesNav

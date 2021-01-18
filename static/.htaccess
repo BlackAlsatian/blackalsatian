@@ -12,7 +12,7 @@
 #RewriteRule ^(.*)$ https://www.blackalsatian.co.za/$1/ [L,R=301]
 
 # Custom 404 page
-ErrorDocument 404 /404/
+ErrorDocument 404 /404.html
 
 # 301 redirects
 # Marketing links
@@ -21,7 +21,7 @@ Redirect 301 /free-tips-to-giving-your-business-online-exposure https://www.blac
 Redirect 301 /get-online-grow-your-business https://www.blackalsatian.co.za/free-stuff/
 Redirect 301 /get-your-free-guide https://www.blackalsatian.co.za/free-stuff/
 Redirect 301 /laser-targeted-marketing https://www.blackalsatian.co.za/free-stuff/
-Redirect 301 /media-marketing-specials https://www.blackalsatian.co.za/website-media-marketing-specials/
+Redirect 301 /media-marketing-specials https://www.blackalsatian.co.za/x/website-media-marketing-specials/
 Redirect 301 /once-off-deal https://www.blackalsatian.co.za/free-stuff/
 Redirect 301 /one-page-website-deal https://www.blackalsatian.co.za/services/website-design/
 Redirect 301 /the-ultimate-online-marketing-guide-for-noobs https://www.blackalsatian.co.za/free-stuff/

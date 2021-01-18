@@ -22,7 +22,7 @@ const Nav = ({ color, navLinks }) => {
                                 color: `${color}`,
                                 '&:hover, &:focus, &.active': {
                                     color: `${color}`,
-                                    opacity: 0.7,
+                                    opacity: 0.9,
                                 },
                                 cursor: 'pointer',
                                 fontSize: 1,

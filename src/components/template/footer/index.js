@@ -8,19 +8,19 @@ import EnquiryForm from '../../forms/enquiryForm'
 import SocialIcons from './socialIcons'
 import { handleErrorColor } from '../../helpers'
 
-const Footer = ({ siteTitle, path }) => {
-    // console.log(path)
+const Footer = ({ siteTitle, pageTitle, footerColor }) => {
     let bgcolor = 'black'
     let textcolor = 'white'
-    if (path.includes('blog') || path.includes('/404/')) {
+    if (pageTitle.includes('Blog') || pageTitle.includes('404:') || footerColor === 'white') {
+        // if (pathname.includes('blog') || pathname.includes('/404/') || footerColor === 'white') {
         bgcolor = 'white'
         textcolor = 'black'
     }
-    if (path.includes('contact')) {
+    if (pageTitle.includes('Contact')) {
         bgcolor = 'yellow'
         textcolor = 'black'
     }
-    if (path.includes('terms-of-use') || path.includes('privacy-policy')) {
+    if (pageTitle.includes('Terms of Use') || pageTitle.includes('Privacy Policy')) {
         bgcolor = 'red'
         textcolor = 'white'
     }

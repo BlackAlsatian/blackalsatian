@@ -96,7 +96,12 @@ module.exports = {
                 },
             },
         },
-        `gatsby-plugin-force-trailing-slashes`,
+        {
+            resolve: `gatsby-plugin-force-trailing-slashes`,
+            options: {
+                excludedPaths: [`/404.html`],
+            },
+        },
         {
             resolve: `gatsby-source-filesystem`,
             options: {
@@ -105,7 +110,7 @@ module.exports = {
             },
         },
         `gatsby-plugin-theme-ui`,
-        `gatsby-theme-style-guide`,
+        // `gatsby-theme-style-guide`,
         {
             resolve: `gatsby-plugin-transition-link`,
             options: {

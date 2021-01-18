@@ -1,9 +1,10 @@
 /** @jsx jsx */
-import { jsx, Container, Heading } from 'theme-ui'
+import { jsx, Container, Heading, Box } from 'theme-ui'
 import React from 'react'
 import SEO from '../components/seo'
 
-const NotFoundPage = () => {
+const NotFoundPage = ({ location }) => {
+    const brokenPathName = location.href
     return (
         <>
             <SEO title='404: Not Found' />
@@ -28,15 +29,15 @@ const NotFoundPage = () => {
                     >
                         404
                     </Heading>
-                    <div sx={{ fontSize: [3, 4], my: 1, textShadow: '0 0 3rem rgba(0, 0, 0, 0.3)' }}>
-                        Not Found:
+                    <Box sx={{ fontSize: [3, 4], my: 1, textShadow: '0 0 3rem rgba(0, 0, 0, 0.3)' }}>
+                        Not Found: {brokenPathName}
                         <br />
                         This is not the route you were looking for.
                         <br />
                         <span sx={{ fontSize: '1rem', lineHeight: '0.75rem' }}>
-                            Maybe try out one of the links below, or send us a message and tell us what's amiss.
+                            Maybe try out one of the links on this page, or send us a message and tell us what's amiss.
                         </span>
-                    </div>
+                    </Box>
                 </Container>
             </section>
         </>

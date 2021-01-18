@@ -11,11 +11,15 @@ const chunk = require(`lodash/chunk`)
  * See https://www.gatsbyjs.com/docs/node-apis/#createPages for more info.
  */
 exports.createPages = async (gatsbyUtilities) => {
+    // if (page.path.match(/404/)) {
+    //     return
+    // }
     // Query our posts from the GraphQL server
     const posts = await getPosts(gatsbyUtilities)
     const pages = await getPages(gatsbyUtilities)
     const services = await getServices(gatsbyUtilities)
     const portfolio = await getPortfolio(gatsbyUtilities)
+    const landers = await getLanders(gatsbyUtilities)
 
     // If there are no posts in WordPress, don't do anything
     if (!posts.length && !pages.length) {
@@ -42,6 +46,9 @@ exports.createPages = async (gatsbyUtilities) => {
 
     // Finally, the projects
     await createIndividualProjects({ portfolio, gatsbyUtilities })
+
+    // ..oh yes, and landers
+    await createIndividualLanders({ landers, gatsbyUtilities })
 }
 
 // This function creates all the individual blog pages in this site
@@ -63,6 +70,12 @@ const createIndividualBlogPostPages = async ({ posts, gatsbyUtilities }) =>
                     // We also use the next and previous id's to query them and add links!
                     previousPostId: previous ? previous.id : null,
                     nextPostId: next ? next.id : null,
+                    colorScheme: {
+                        navVariant: 'white',
+                        headerVariant: 'white',
+                        bodyVariant: 'white',
+                        footerVariant: 'white',
+                    },
                 },
             }),
         ),
@@ -80,6 +93,13 @@ const createIndividualPages = async ({ pages, gatsbyUtilities }) =>
                     subheading: page.subheading,
                     subtitle: page.subtitle,
                     intro: page.intro,
+                    title: page.title,
+                    colorScheme: {
+                        navVariant: 'white',
+                        headerVariant: 'black',
+                        bodyVariant: 'white',
+                        footerVariant: 'black',
+                    },
                 },
             }),
         ),
@@ -96,6 +116,12 @@ const createIndividualServices = async ({ services, gatsbyUtilities }) =>
                     id: service.id,
                     previousPostId: previous ? previous.id : null,
                     nextPostId: next ? next.id : null,
+                    colorScheme: {
+                        navVariant: 'black',
+                        headerVariant: 'yellow',
+                        bodyVariant: 'white',
+                        footerVariant: 'black',
+                    },
                 },
             }),
         ),
@@ -112,6 +138,33 @@ const createIndividualProjects = async ({ portfolio, gatsbyUtilities }) =>
                     id: portfolio.id,
                     previousPostId: previous ? previous.id : null,
                     nextPostId: next ? next.id : null,
+                    colorScheme: {
+                        navVariant: 'white',
+                        headerVariant: 'black',
+                        bodyVariant: 'black',
+                        footerVariant: 'black',
+                    },
+                },
+            }),
+        ),
+    )
+
+// This function creates all the individual landers in this site
+const createIndividualLanders = async ({ landers, gatsbyUtilities }) =>
+    Promise.all(
+        landers.map(({ lander }) =>
+            gatsbyUtilities.actions.createPage({
+                path: lander.uri,
+                component: path.resolve(`./src/templates/lander.js`),
+                context: {
+                    id: lander.id,
+                    title: lander.title,
+                    colorScheme: {
+                        navVariant: 'white',
+                        headerVariant: 'black',
+                        bodyVariant: 'white',
+                        footerVariant: 'black',
+                    },
                 },
             }),
         ),
@@ -160,6 +213,12 @@ async function createBlogPostArchive({ posts, gatsbyUtilities }) {
                     postsPerPage,
                     nextPagePath: getPagePath(pageNumber + 1),
                     previousPagePath: getPagePath(pageNumber - 1),
+                    colorScheme: {
+                        navVariant: 'black',
+                        headerVariant: 'white',
+                        bodyVariant: 'white',
+                        footerVariant: 'white',
+                    },
                 },
             })
         }),
@@ -173,6 +232,12 @@ async function createServicesPage({ services, gatsbyUtilities }) {
         component: path.resolve(`./src/templates/services.js`),
         context: {
             ...services,
+            colorScheme: {
+                navVariant: 'black',
+                headerVariant: 'yellow',
+                bodyVariant: 'white',
+                footerVariant: 'black',
+            },
         },
     })
 }
@@ -184,6 +249,12 @@ async function createPortfolioPage({ portfolio, gatsbyUtilities }) {
         component: path.resolve(`./src/templates/portfolio.js`),
         context: {
             ...portfolio,
+            colorScheme: {
+                navVariant: 'white',
+                headerVariant: 'black',
+                bodyVariant: 'black',
+                footerVariant: 'black',
+            },
         },
     })
 }
@@ -223,10 +294,11 @@ async function getPosts({ graphql, reporter }) {
 async function getPages({ graphql, reporter }) {
     const graphqlResult = await graphql(/* GraphQL */ `
         query WpPages {
-            allWpPage(filter: { status: { eq: "publish" }, uri: { ne: "/blog/" } }) {
+            allWpPage(filter: { status: { eq: "publish" }, uri: { nin: ["/blog/", "/services/"] } }) {
                 edges {
                     page: node {
                         id
+                        title
                         uri
                         isFrontPage
                     }
@@ -261,7 +333,7 @@ async function getServices({ graphql, reporter }) {
         }
     `)
     if (graphqlResult.errors) {
-        reporter.panicOnBuild(`There was an error loading your pages`, graphqlResult.errors)
+        reporter.panicOnBuild(`There was an error loading your services`, graphqlResult.errors)
         return
     }
     return graphqlResult.data.allWpService.edges
@@ -291,4 +363,23 @@ async function getPortfolio({ graphql, reporter }) {
         return
     }
     return graphqlResult.data.allWpPortfolio.edges
+}
+async function getLanders({ graphql, reporter }) {
+    const graphqlResult = await graphql(/* GraphQL */ `
+        query WpLanders {
+            allWpLander(filter: { status: { eq: "publish" } }) {
+                edges {
+                    lander: node {
+                        id
+                        uri
+                    }
+                }
+            }
+        }
+    `)
+    if (graphqlResult.errors) {
+        reporter.panicOnBuild(`There was an error loading your landers`, graphqlResult.errors)
+        return
+    }
+    return graphqlResult.data.allWpLander.edges
 }
