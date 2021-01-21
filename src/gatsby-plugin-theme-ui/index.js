@@ -154,12 +154,12 @@ export default {
                 fontFamily: 'body',
                 fontSize: '100%',
             },
-            altblack: {
-                borderBottomColor: 'black',
-                '&:focus': {
-                    borderColor: 'black',
-                },
-            },
+            // altblack: {
+            //     borderBottomColor: 'black',
+            //     '&:focus': {
+            //         borderColor: 'black',
+            //     },
+            // },
         },
         background: {
             py: 2,
@@ -184,126 +184,34 @@ export default {
     layout: {
         default: {
             backgroundColor: 'white',
-            header: {
-                svg: {
-                    fill: 'white',
-                },
-                nav: {
-                    a: {
-                        color: 'white',
-                        '&:hover, &:focus, &.active': {
-                            opacity: 0.9,
-                        },
-                    },
-                },
-            },
-            main: {
-                backgroundColor: 'white',
-            },
-            footer: {
-                backgroundColor: 'black',
-                color: 'white',
-                a: {
-                    color: 'white',
-                },
-                svg: {
-                    fill: 'white',
-                },
-            },
         },
         white: {
             backgroundColor: 'white',
-            color: 'black',
-            header: {
-                svg: {
-                    fill: 'black',
-                },
-                nav: {
-                    a: {
-                        color: 'black',
-                        '&:hover, &:focus, &.active': {
-                            opacity: 0.9,
-                        },
-                    },
-                },
-            },
-            main: {
-                backgroundColor: 'white',
-            },
-            footer: {
-                backgroundColor: 'white',
-                color: 'black',
-                a: {
-                    color: 'black',
-                },
-                svg: {
-                    fill: 'black',
-                },
-            },
         },
         postwhite: {
             backgroundColor: 'white',
-            color: 'black',
-            header: {
-                svg: {
-                    fill: 'white',
-                },
-                nav: {
-                    a: {
-                        color: 'white',
-                        '&:hover, &:focus, &.active': {
-                            opacity: 0.9,
-                        },
-                    },
-                },
-            },
-            main: {
-                backgroundColor: 'white',
-            },
-            footer: {
-                backgroundColor: 'white',
-                color: 'black',
-                a: {
-                    color: 'black',
-                },
-                svg: {
-                    fill: 'black',
-                },
-            },
         },
         black: {
             backgroundColor: 'black',
-            header: {
-                svg: {
-                    fill: 'white',
-                },
-                nav: {
-                    a: {
-                        color: 'white',
-                        '&:hover, &:focus, &.active': {
-                            opacity: 0.9,
-                        },
-                    },
-                },
-            },
-            main: {
-                backgroundColor: 'black',
-            },
-            footer: {
-                backgroundColor: 'black',
-                color: 'white',
-                a: {
-                    color: 'white',
-                },
-                svg: {
-                    fill: 'white',
-                },
-            },
         },
         altblack: {
             backgroundColor: 'white',
             color: 'black',
-            header: {
+        },
+        yellow: {
+            backgroundColor: 'yellow',
+            color: 'black',
+        },
+        altyellow: {
+            backgroundColor: 'white',
+            color: 'black',
+        },
+        red: {
+            backgroundColor: 'red',
+            color: 'white',
+        },
+        header: {
+            default: {
                 svg: {
                     fill: 'white',
                 },
@@ -316,25 +224,59 @@ export default {
                     },
                 },
             },
-            main: {
-                backgroundColor: 'white',
-                color: 'black',
-            },
-            footer: {
-                backgroundColor: 'black',
-                color: 'white',
-                a: {
-                    color: 'white',
+            white: {
+                svg: {
+                    fill: 'black',
                 },
+                nav: {
+                    a: {
+                        color: 'black',
+                        '&:hover, &:focus, &.active': {
+                            opacity: 0.9,
+                        },
+                    },
+                },
+            },
+            postWhite: {
                 svg: {
                     fill: 'white',
                 },
+                nav: {
+                    a: {
+                        color: 'white',
+                        '&:hover, &:focus, &.active': {
+                            opacity: 0.9,
+                        },
+                    },
+                },
             },
-        },
-        yellow: {
-            backgroundColor: 'yellow',
-            color: 'black',
-            header: {
+            black: {
+                svg: {
+                    fill: 'white',
+                },
+                nav: {
+                    a: {
+                        color: 'white',
+                        '&:hover, &:focus, &.active': {
+                            opacity: 0.9,
+                        },
+                    },
+                },
+            },
+            altblack: {
+                svg: {
+                    fill: 'white',
+                },
+                nav: {
+                    a: {
+                        color: 'white',
+                        '&:hover, &:focus, &.active': {
+                            opacity: 0.9,
+                        },
+                    },
+                },
+            },
+            yellow: {
                 svg: {
                     fill: 'black',
                 },
@@ -348,24 +290,7 @@ export default {
                     },
                 },
             },
-            main: {
-                backgroundColor: 'yellow',
-            },
-            footer: {
-                backgroundColor: 'yellow',
-                color: 'black',
-                a: {
-                    color: 'black',
-                },
-                svg: {
-                    fill: 'black',
-                },
-            },
-        },
-        altyellow: {
-            backgroundColor: 'white',
-            color: 'black',
-            header: {
+            altyellow: {
                 svg: {
                     fill: 'black',
                 },
@@ -379,24 +304,7 @@ export default {
                     },
                 },
             },
-            main: {
-                backgroundColor: 'white',
-            },
-            footer: {
-                backgroundColor: 'black',
-                color: 'white',
-                a: {
-                    color: 'white',
-                },
-                svg: {
-                    fill: 'white',
-                },
-            },
-        },
-        red: {
-            backgroundColor: 'red',
-            color: 'white',
-            header: {
+            red: {
                 svg: {
                     fill: 'white',
                 },
@@ -410,7 +318,31 @@ export default {
                     },
                 },
             },
-            main: {
+        },
+        main: {
+            default: {
+                backgroundColor: 'white',
+            },
+            white: {
+                backgroundColor: 'white',
+            },
+            postwhite: {
+                backgroundColor: 'white',
+            },
+            black: {
+                backgroundColor: 'black',
+            },
+            altblack: {
+                backgroundColor: 'white',
+                color: 'black',
+            },
+            yellow: {
+                backgroundColor: 'yellow',
+            },
+            altyellow: {
+                backgroundColor: 'white',
+            },
+            red: {
                 backgroundColor: 'red',
                 color: 'white',
                 p: {
@@ -427,7 +359,79 @@ export default {
                     },
                 },
             },
-            footer: {
+        },
+        footer: {
+            default: {
+                backgroundColor: 'black',
+                color: 'white',
+                a: {
+                    color: 'white',
+                },
+                svg: {
+                    fill: 'white',
+                },
+            },
+            white: {
+                backgroundColor: 'white',
+                color: 'black',
+                a: {
+                    color: 'black',
+                },
+                svg: {
+                    fill: 'black',
+                },
+            },
+            postwhite: {
+                backgroundColor: 'white',
+                color: 'black',
+                a: {
+                    color: 'black',
+                },
+                svg: {
+                    fill: 'black',
+                },
+            },
+            black: {
+                backgroundColor: 'black',
+                color: 'white',
+                a: {
+                    color: 'white',
+                },
+                svg: {
+                    fill: 'white',
+                },
+            },
+            altblack: {
+                backgroundColor: 'black',
+                color: 'white',
+                a: {
+                    color: 'white',
+                },
+                svg: {
+                    fill: 'white',
+                },
+            },
+            yellow: {
+                backgroundColor: 'yellow',
+                color: 'black',
+                a: {
+                    color: 'black',
+                },
+                svg: {
+                    fill: 'black',
+                },
+            },
+            altyellow: {
+                backgroundColor: 'black',
+                color: 'white',
+                a: {
+                    color: 'white',
+                },
+                svg: {
+                    fill: 'white',
+                },
+            },
+            red: {
                 backgroundColor: 'red',
                 color: 'white',
                 a: {

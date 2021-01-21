@@ -33,14 +33,16 @@ const Layout = ({ children, pageContext, location, custom404 }) => {
     const pathName = location.pathname
     let pageStyle = pageContext.style
     if (typeof pageStyle === 'undefined') {
-        pathName.includes('/portfolio/')
+        pathName.includes('/portfolio')
             ? (pageStyle = 'black')
-            : pathName.includes('/blog/') && pathName.length() > 6
+            : pathName.includes('/blog') && pathName.length >= 10
             ? (pageStyle = 'postwhite')
-            : pathName.includes('/blog/') || custom404
+            : (pathName.includes('/blog') && pathName.length <= 10) || custom404
             ? (pageStyle = 'white')
-            : pathName.includes('/contact/')
+            : pathName.includes('/contact')
             ? (pageStyle = 'yellow')
+            : pathName.includes('/terms-of-use') || pathName.includes('/privacy-policy')
+            ? (pageStyle = 'red')
             : (pageStyle = 'default')
     }
     // if (typeof pageStyle === 'undefined') {
@@ -59,7 +61,7 @@ const Layout = ({ children, pageContext, location, custom404 }) => {
     //     }
 
     // const pageTitle = pageContext.title || ''
-    const darkNavPages = ['yellow', 'altyellow', 'white']
+
     // const pagePath = location.pathname
     // const { navVariant, footerVariant } = siteColorScheme
     const {
@@ -87,19 +89,26 @@ const Layout = ({ children, pageContext, location, custom404 }) => {
             }}
         >
             <Header
-                //  navcolor={darkNavPages.includes(pageStyle) ? 'black' : 'white'}
-                variant={'layout.' + pageStyle + '.header'}
+                pageStyle={pageStyle}
+                // sx={{
+                //     variant: 'layout.' + pageStyle + '.header',
+                // }}
             />
-            <main variant={'layout.' + pageStyle + '.main'}>{children}</main>
+            <main
+                sx={{
+                    variant: 'layout.main.' + pageStyle,
+                }}
+            >
+                {children}
+            </main>
             {!custom404 && (
                 <LazyLoad height='100%' offSet={150} once placeholder={<PlaceholderLoader />}>
                     <Footer
                         siteTitle={title}
-                        // pageTitle={pageTitle}
                         pageStyle={pageStyle}
-                        variant={'layout.' + pageStyle + '.footer'}
-                        // footercolor={custom404 || pageTitle.includes('404:') ? 'white' : footerVariant}
-                        // variant={pageStyle}
+                        // sx={{
+                        //     variant: 'layout.' + pageStyle + '.footer',
+                        // }}
                     />
                 </LazyLoad>
             )}

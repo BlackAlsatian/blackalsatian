@@ -39,7 +39,7 @@ const Footer = ({ siteTitle, pageStyle }) => {
                 fontSize: 0,
                 fontWeight: 'medium',
                 // color: `${textcolor}`,
-                // variant: 'footer',
+                variant: 'layout.footer.' + pageStyle,
             }}
         >
             <section>

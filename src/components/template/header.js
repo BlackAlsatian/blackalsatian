@@ -8,7 +8,7 @@ import OffCanvas from './offCanvasNav'
 import Logo from '../logo'
 import Nav from '../nav'
 
-const Header = ({ navcolor }) => {
+const Header = ({ pageStyle }) => {
     const data = useStaticQuery(graphql`
         {
             wpMenu(slug: { eq: "primary-menu" }) {
@@ -17,13 +17,14 @@ const Header = ({ navcolor }) => {
         }
     `)
     const navLinks = data.wpMenu.menuItems.nodes
-
+    const darkNavPages = ['yellow', 'altyellow', 'white']
+    const navcolor = darkNavPages.includes(pageStyle) ? 'black' : 'white'
     const [isOpen, setIsOpen] = useState(false)
 
     const handleBurgerMenuClick = () => {
         setIsOpen(!isOpen)
     }
-    const color = navcolor
+    console.log(navcolor)
     return (
         <header
             sx={{
@@ -35,12 +36,13 @@ const Header = ({ navcolor }) => {
                 p: [3, 3],
                 position: 'absolute',
                 zIndex: 10,
+                variant: 'layout.header.' + pageStyle,
             }}
         >
             <Link to='/' title='Black Alsatian Web Development Company'>
-                <Logo />
+                <Logo color={navcolor} />
             </Link>
-            <Nav navLinks={navLinks} />
+            <Nav navLinks={navLinks} color={navcolor} />
             <OffCanvas isOpen={isOpen} handleMenuClick={handleBurgerMenuClick} navLinks={navLinks} />
             <div
                 sx={{
@@ -53,7 +55,7 @@ const Header = ({ navcolor }) => {
                     zIndex: 30,
                 }}
             >
-                <MenuIcon handleBurgerMenuClick={handleBurgerMenuClick} isOpen={isOpen} color={color} />
+                <MenuIcon handleBurgerMenuClick={handleBurgerMenuClick} isOpen={isOpen} color={navcolor} />
                 <span
                     sx={{
                         position: 'fixed',

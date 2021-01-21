@@ -1,6 +1,7 @@
 /** @jsx jsx */
 import { jsx, Container, Heading, Box } from 'theme-ui'
 import React from 'react'
+import { Link } from 'gatsby'
 import SEO from '../components/seo'
 
 const NotFoundPage = ({ location, pageContext }) => {
@@ -35,9 +36,12 @@ const NotFoundPage = ({ location, pageContext }) => {
                         <br />
                         This is not the route you were looking for.
                         <br />
-                        <span sx={{ fontSize: '1rem', lineHeight: '0.75rem' }}>
+                        <Link to='/' sx={{ color: 'black' }}>
+                            Let's go home
+                        </Link>
+                        {/* <span sx={{ fontSize: '1rem', lineHeight: '0.75rem' }}>
                             Maybe try out one of the links on this page, or send us a message and tell us what's amiss.
-                        </span>
+                        </span> */}
                     </Box>
                 </Container>
             </section>

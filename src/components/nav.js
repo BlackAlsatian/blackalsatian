@@ -19,11 +19,11 @@ const Nav = ({ color, navLinks }) => {
                             to={item.url}
                             key={item.id}
                             sx={{
-                                // color: `${color}`,
-                                // '&:hover, &:focus, &.active': {
-                                //     color: `${color}`,
-                                //     opacity: 0.9,
-                                // },
+                                color: `${color}`,
+                                '&:hover, &:focus, &.active': {
+                                    color: `${color}`,
+                                    opacity: 0.9,
+                                },
                                 cursor: 'pointer',
                                 fontSize: 1,
                                 fontWeight: 'extrabold',

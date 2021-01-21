@@ -18,17 +18,25 @@ const ProjectTemplate = ({ data: { previous, portfolio, next }, pageContext }) =
                 url={portfolio.uri}
                 featuredImage={portfolio.featuredImage.node.og.childImageSharp.fluid.src}
             />
-            <ProjectHeader project={portfolio} />
-            <ProjectContent project={portfolio} pageStyle={pageStyle} />
-            <PagesNav
-                previousPagePath={previous && previous.uri}
-                nextPagePath={next && next.uri}
-                previousName={previous && parse(previous.title)}
-                nextName={next && parse(next.title)}
-                backgroundColor='black'
-                color='white'
-                swipeColor='#111827'
-            />
+            <div
+                sx={{
+                    backgroundColor: 'black',
+                }}
+            >
+                <ProjectHeader project={portfolio} />
+                <ProjectContent project={portfolio} pageStyle={pageStyle} />
+                <section sx={{ backgroundColor: 'black' }}>
+                    <PagesNav
+                        previousPagePath={previous && previous.uri}
+                        nextPagePath={next && next.uri}
+                        previousName={previous && parse(previous.title)}
+                        nextName={next && parse(next.title)}
+                        backgroundColor='black'
+                        color='white'
+                        swipeColor='#111827'
+                    />
+                </section>
+            </div>
         </>
     )
 }
