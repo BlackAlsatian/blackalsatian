@@ -8,7 +8,8 @@ import ProjectContent from '../components/template/portfolio/projectContent'
 import PagesNav from '../components/pagesNav'
 import parse from 'html-react-parser'
 
-const ProjectTemplate = ({ data: { previous, portfolio, next } }) => {
+const ProjectTemplate = ({ data: { previous, portfolio, next }, pageContext }) => {
+    const pageStyle = pageContext.style
     return (
         <>
             <SEO
@@ -18,7 +19,7 @@ const ProjectTemplate = ({ data: { previous, portfolio, next } }) => {
                 featuredImage={portfolio.featuredImage.node.og.childImageSharp.fluid.src}
             />
             <ProjectHeader project={portfolio} />
-            <ProjectContent project={portfolio} />
+            <ProjectContent project={portfolio} pageStyle={pageStyle} />
             <PagesNav
                 previousPagePath={previous && previous.uri}
                 nextPagePath={next && next.uri}

@@ -12,7 +12,7 @@
 #RewriteRule ^(.*)$ https://www.blackalsatian.co.za/$1/ [L,R=301]
 
 # Custom 404 page
-ErrorDocument 404 /404.html
+#ErrorDocument 404 /404.html
 
 # 301 redirects
 # Marketing links

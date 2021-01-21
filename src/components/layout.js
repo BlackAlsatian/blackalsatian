@@ -5,6 +5,7 @@ import LazyLoad from 'react-lazyload'
 import Header from './template/header'
 import Footer from './template/footer'
 import PlaceholderLoader from '../components/placeholderLoader'
+// import { useThemeUI } from 'theme-ui'
 
 if (typeof window !== 'undefined') {
     // Make scroll behavior of internal links smooth
@@ -12,21 +13,55 @@ if (typeof window !== 'undefined') {
     require('smooth-scroll')('a[href*="#"]')
 }
 
-const Layout = ({ children, pageContext, custom404 }) => {
-    const defaultColorScheme = {
-        navVariant: 'white',
-        bodyVariant: 'white',
-        footerVariant: 'white',
+const Layout = ({ children, pageContext, location, custom404 }) => {
+    console.log(pageContext)
+    // const context = useThemeUI()
+    // console.log(context)
+    //     const defaultColorScheme = {
+    //         navVariant: 'black',
+    //         bodyVariant: 'white',
+    //         footerVariant: 'black',
+    //     }
+    //
+    //     const notFoundColorScheme = {
+    //         navVariant: 'black',
+    //         bodyVariant: 'white',
+    //         footerVariant: 'white',
+    //     }
+
+    // let siteColorScheme = pageContext.colorScheme
+    const pathName = location.pathname
+    let pageStyle = pageContext.style
+    if (typeof pageStyle === 'undefined') {
+        pathName.includes('/portfolio/')
+            ? (pageStyle = 'black')
+            : pathName.includes('/blog/') && pathName.length() > 6
+            ? (pageStyle = 'postwhite')
+            : pathName.includes('/blog/') || custom404
+            ? (pageStyle = 'white')
+            : pathName.includes('/contact/')
+            ? (pageStyle = 'yellow')
+            : (pageStyle = 'default')
     }
+    // if (typeof pageStyle === 'undefined') {
+    //     pageStyle = 'black'
+    // }
+    // if (custom404) {
+    //     pageStyle = 'white'
+    // }
 
-    let siteColorScheme = pageContext.colorScheme
+    //     if (typeof siteColorScheme === 'undefined') {
+    //         siteColorScheme = defaultColorScheme
+    //     }
+    //
+    //     if (custom404) {
+    //         siteColorScheme = notFoundColorScheme
+    //     }
 
-    if (typeof siteColorScheme === 'undefined') {
-        siteColorScheme = defaultColorScheme
-    }
-
-    const pageTitle = pageContext.title || ''
-    const { navVariant, bodyVariant, footerVariant } = siteColorScheme
+    // const pageTitle = pageContext.title || ''
+    const darkNavPages = ['yellow', 'altyellow', 'white']
+    // const pagePath = location.pathname
+    // const { navVariant, footerVariant } = siteColorScheme
     const {
         wp: {
             generalSettings: { title },
@@ -47,25 +82,24 @@ const Layout = ({ children, pageContext, custom404 }) => {
                 display: 'flex',
                 flexDirection: 'column',
                 minHeight: '100vh',
-                backgroundColor:
-                    pageTitle === 'Portfolio'
-                        ? 'black'
-                        : pageTitle === 'Contact'
-                        ? 'yellow'
-                        : pageTitle === 'Terms of Use' || pageTitle === 'Privacy Policy'
-                        ? 'red'
-                        : bodyVariant,
                 overflow: 'hidden',
+                variant: 'layout.' + pageStyle,
             }}
         >
-            <Header navcolor={custom404 || pageTitle.includes('Contact') ? 'black' : navVariant} />
-            <main pagecontext={pageContext}>{children}</main>
+            <Header
+                //  navcolor={darkNavPages.includes(pageStyle) ? 'black' : 'white'}
+                variant={'layout.' + pageStyle + '.header'}
+            />
+            <main variant={'layout.' + pageStyle + '.main'}>{children}</main>
             {!custom404 && (
                 <LazyLoad height='100%' offSet={150} once placeholder={<PlaceholderLoader />}>
                     <Footer
                         siteTitle={title}
-                        pageTitle={pageTitle}
-                        footercolor={custom404 || pageTitle.includes('404:') ? 'white' : footerVariant}
+                        // pageTitle={pageTitle}
+                        pageStyle={pageStyle}
+                        variant={'layout.' + pageStyle + '.footer'}
+                        // footercolor={custom404 || pageTitle.includes('404:') ? 'white' : footerVariant}
+                        // variant={pageStyle}
                     />
                 </LazyLoad>
             )}

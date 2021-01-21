@@ -16,6 +16,7 @@ const ProjectHeader = ({ previous, project }) => {
                 flexDirection: 'column',
                 minHeight: '40vh',
                 pt: '10vh',
+                backgroundColor: 'black',
             }}
         >
             <Flex

@@ -35,13 +35,12 @@ const Header = ({ navcolor }) => {
                 p: [3, 3],
                 position: 'absolute',
                 zIndex: 10,
-                variant: 'layout.header.closedMenu',
             }}
         >
             <Link to='/' title='Black Alsatian Web Development Company'>
-                <Logo color={color} />
+                <Logo />
             </Link>
-            <Nav color={color} navLinks={navLinks} />
+            <Nav navLinks={navLinks} />
             <OffCanvas isOpen={isOpen} handleMenuClick={handleBurgerMenuClick} navLinks={navLinks} />
             <div
                 sx={{

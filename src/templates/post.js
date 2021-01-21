@@ -11,8 +11,9 @@ import PageHeader from '../components/template/pageHeader'
 import Bio from '../components/bio'
 import PagesNav from '../components/pagesNav'
 
-const BlogPostTemplate = ({ data: { previous, next, post } }) => {
+const BlogPostTemplate = ({ data: { previous, next, post }, pageContext }) => {
     // console.log({ pageContext })
+    const pageStyle = pageContext.style
     const featuredImage = {
         fluid: post.featuredImage?.node?.main?.childImageSharp?.fluid,
         alt: post.featuredImage?.node?.alt || ``,
@@ -71,12 +72,7 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
                             </Container>
                         </BackgroundImage>
                     ) : (
-                        <PageHeader
-                            title={parse(post.title)}
-                            intro={parse(post.excerpt)}
-                            backgroundColor='white'
-                            color='black'
-                        />
+                        <PageHeader title={parse(post.title)} intro={parse(post.excerpt)} headerStyle={pageStyle} />
                     )}
                 </header>
 

@@ -32,7 +32,6 @@ const OffCanvas = ({ isOpen, handleMenuClick, navLinks }) => {
             style={OffCanvasAnimation}
         >
             <Flex
-                as='nav'
                 sx={{
                     m: 0,
                     display: 'flex',

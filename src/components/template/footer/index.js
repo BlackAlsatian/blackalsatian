@@ -8,32 +8,38 @@ import EnquiryForm from '../../forms/enquiryForm'
 import SocialIcons from './socialIcons'
 import { handleErrorColor } from '../../helpers'
 
-const Footer = ({ siteTitle, pageTitle, footerColor }) => {
+// const Footer = ({ siteTitle, pageTitle, footerColor, pageStyle }) => {
+const Footer = ({ siteTitle, pageStyle }) => {
     let bgcolor = 'black'
     let textcolor = 'white'
-    if (pageTitle.includes('Blog') || pageTitle.includes('404:') || footerColor === 'white') {
-        // if (pathname.includes('blog') || pathname.includes('/404/') || footerColor === 'white') {
-        bgcolor = 'white'
-        textcolor = 'black'
-    }
-    if (pageTitle.includes('Contact')) {
+    // if (pageTitle.includes('Blog') || pageTitle.includes('404:') || footerColor === 'white') {
+    // if (pathname.includes('blog') || pathname.includes('/404/') || footerColor === 'white') {
+    if (pageStyle === 'yellow') {
         bgcolor = 'yellow'
         textcolor = 'black'
     }
-    if (pageTitle.includes('Terms of Use') || pageTitle.includes('Privacy Policy')) {
+    if (pageStyle === 'red') {
         bgcolor = 'red'
         textcolor = 'white'
     }
+    if (pageStyle === 'white' || pageStyle === 'postwhite') {
+        bgcolor = 'white'
+        textcolor = 'black'
+    }
+    // if (pageTitle.includes('Terms of Use') || pageTitle.includes('Privacy Policy')) {
+    //     bgcolor = 'red'
+    //     textcolor = 'white'
+    // }
     const errorColor = handleErrorColor(bgcolor)
     return (
         <footer
             sx={{
-                bg: `${bgcolor}`,
+                // bg: `${bgcolor}`,
                 width: '100%',
                 fontSize: 0,
                 fontWeight: 'medium',
-                color: `${textcolor}`,
-                variant: 'footer',
+                // color: `${textcolor}`,
+                // variant: 'footer',
             }}
         >
             <section>
@@ -48,12 +54,12 @@ const Footer = ({ siteTitle, pageTitle, footerColor }) => {
                         pb: [0, 0, 4, 4],
                     }}
                 >
-                    <ContactDetails textcolor={textcolor} />
+                    <ContactDetails />
                     <div sx={{ flex: [null, null, 1], p: 4 }}>
                         <Heading as='h4' sx={{ pb: 3, fontSize: 2 }}>
                             Get
                         </Heading>
-                        <ServiceNav color={textcolor} />
+                        <ServiceNav />
                     </div>
                     <div
                         sx={{
@@ -94,7 +100,7 @@ const Footer = ({ siteTitle, pageTitle, footerColor }) => {
                         to='/'
                         title='Web development & online marketing by Black Alsatian'
                     >
-                        <Logo color={textcolor} />
+                        <Logo />
                     </Link>
                     <br />
                     Port Elizabeth, South Africa
@@ -129,7 +135,7 @@ const Footer = ({ siteTitle, pageTitle, footerColor }) => {
                         textAlign: [null, null, 'right'],
                     }}
                 >
-                    <SocialIcons textcolor={textcolor} />
+                    <SocialIcons />
 
                     <div>
                         <Link to='/terms-of-use/' sx={{ color: 'inherit' }}>

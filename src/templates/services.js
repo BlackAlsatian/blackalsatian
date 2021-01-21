@@ -10,7 +10,8 @@ import ServiceImageLeft from '../components/template/services/serviceImageLeft'
 import ServiceImageRight from '../components/template/services/serviceImageRight'
 import { isOdd } from '../components/helpers'
 
-const ServicesIndex = ({ data }) => {
+const ServicesIndex = ({ data, pageContext }) => {
+    const pageStyle = pageContext.style
     const services = data.allWpService.nodes
     const page = data.wpPage
     if (!services.length) {
@@ -35,7 +36,7 @@ const ServicesIndex = ({ data }) => {
                 url={page.uri}
                 featuredImage={page.featuredImage && page.featuredImage.node.og.childImageSharp.fluid.src}
             />
-            <PageHeader title={parse(page.title)} intro={page.pageintro} backgroundColor='yellow' color='black' />
+            <PageHeader title={parse(page.title)} intro={page.pageintro} headerStyle={pageStyle} />
             <section>
                 <Container sx={{ overflow: 'hidden' }}>
                     {services.map((service, i) => {

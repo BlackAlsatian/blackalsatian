@@ -5,6 +5,38 @@ export default {
     styles: {
         ...tailwind.styles,
     },
+    sections: {
+        black: {
+            pageheader: {
+                backgroundColor: 'black',
+                color: 'white',
+            },
+            body: {
+                backgroundColor: 'white',
+                color: 'black',
+            },
+        },
+        altblack: {
+            pageheader: {
+                backgroundColor: 'black',
+                color: 'white',
+            },
+            body: {
+                backgroundColor: 'white',
+                color: 'black',
+            },
+        },
+        altyellow: {
+            pageheader: {
+                backgroundColor: 'yellow',
+                color: 'black',
+            },
+            body: {
+                backgroundColor: 'white',
+                color: 'black',
+            },
+        },
+    },
     colors: {
         ...tailwind.colors,
         text: '#111827',
@@ -122,6 +154,12 @@ export default {
                 fontFamily: 'body',
                 fontSize: '100%',
             },
+            altblack: {
+                borderBottomColor: 'black',
+                '&:focus': {
+                    borderColor: 'black',
+                },
+            },
         },
         background: {
             py: 2,
@@ -144,6 +182,262 @@ export default {
         },
     },
     layout: {
+        default: {
+            backgroundColor: 'white',
+            header: {
+                svg: {
+                    fill: 'white',
+                },
+                nav: {
+                    a: {
+                        color: 'white',
+                        '&:hover, &:focus, &.active': {
+                            opacity: 0.9,
+                        },
+                    },
+                },
+            },
+            main: {
+                backgroundColor: 'white',
+            },
+            footer: {
+                backgroundColor: 'black',
+                color: 'white',
+                a: {
+                    color: 'white',
+                },
+                svg: {
+                    fill: 'white',
+                },
+            },
+        },
+        white: {
+            backgroundColor: 'white',
+            color: 'black',
+            header: {
+                svg: {
+                    fill: 'black',
+                },
+                nav: {
+                    a: {
+                        color: 'black',
+                        '&:hover, &:focus, &.active': {
+                            opacity: 0.9,
+                        },
+                    },
+                },
+            },
+            main: {
+                backgroundColor: 'white',
+            },
+            footer: {
+                backgroundColor: 'white',
+                color: 'black',
+                a: {
+                    color: 'black',
+                },
+                svg: {
+                    fill: 'black',
+                },
+            },
+        },
+        postwhite: {
+            backgroundColor: 'white',
+            color: 'black',
+            header: {
+                svg: {
+                    fill: 'white',
+                },
+                nav: {
+                    a: {
+                        color: 'white',
+                        '&:hover, &:focus, &.active': {
+                            opacity: 0.9,
+                        },
+                    },
+                },
+            },
+            main: {
+                backgroundColor: 'white',
+            },
+            footer: {
+                backgroundColor: 'white',
+                color: 'black',
+                a: {
+                    color: 'black',
+                },
+                svg: {
+                    fill: 'black',
+                },
+            },
+        },
+        black: {
+            backgroundColor: 'black',
+            header: {
+                svg: {
+                    fill: 'white',
+                },
+                nav: {
+                    a: {
+                        color: 'white',
+                        '&:hover, &:focus, &.active': {
+                            opacity: 0.9,
+                        },
+                    },
+                },
+            },
+            main: {
+                backgroundColor: 'black',
+            },
+            footer: {
+                backgroundColor: 'black',
+                color: 'white',
+                a: {
+                    color: 'white',
+                },
+                svg: {
+                    fill: 'white',
+                },
+            },
+        },
+        altblack: {
+            backgroundColor: 'white',
+            color: 'black',
+            header: {
+                svg: {
+                    fill: 'white',
+                },
+                nav: {
+                    a: {
+                        color: 'white',
+                        '&:hover, &:focus, &.active': {
+                            opacity: 0.9,
+                        },
+                    },
+                },
+            },
+            main: {
+                backgroundColor: 'white',
+                color: 'black',
+            },
+            footer: {
+                backgroundColor: 'black',
+                color: 'white',
+                a: {
+                    color: 'white',
+                },
+                svg: {
+                    fill: 'white',
+                },
+            },
+        },
+        yellow: {
+            backgroundColor: 'yellow',
+            color: 'black',
+            header: {
+                svg: {
+                    fill: 'black',
+                },
+                nav: {
+                    a: {
+                        color: 'black',
+                        '&:hover, &:focus, &.active': {
+                            color: 'black',
+                            opacity: 0.9,
+                        },
+                    },
+                },
+            },
+            main: {
+                backgroundColor: 'yellow',
+            },
+            footer: {
+                backgroundColor: 'yellow',
+                color: 'black',
+                a: {
+                    color: 'black',
+                },
+                svg: {
+                    fill: 'black',
+                },
+            },
+        },
+        altyellow: {
+            backgroundColor: 'white',
+            color: 'black',
+            header: {
+                svg: {
+                    fill: 'black',
+                },
+                nav: {
+                    a: {
+                        color: 'black',
+                        '&:hover, &:focus, &.active': {
+                            color: 'black',
+                            opacity: 0.9,
+                        },
+                    },
+                },
+            },
+            main: {
+                backgroundColor: 'white',
+            },
+            footer: {
+                backgroundColor: 'black',
+                color: 'white',
+                a: {
+                    color: 'white',
+                },
+                svg: {
+                    fill: 'white',
+                },
+            },
+        },
+        red: {
+            backgroundColor: 'red',
+            color: 'white',
+            header: {
+                svg: {
+                    fill: 'white',
+                },
+                nav: {
+                    a: {
+                        color: 'white',
+                        '&:hover, &:focus, &.active': {
+                            color: 'white',
+                            opacity: 0.9,
+                        },
+                    },
+                },
+            },
+            main: {
+                backgroundColor: 'red',
+                color: 'white',
+                p: {
+                    a: {
+                        color: 'white',
+                        textDecoration: 'underline',
+                        fontWeight: 'medium',
+                        '&:hover': {
+                            textDecoration: 'none',
+                        },
+                        '&:visited': {
+                            color: 'rgba(255, 255, 255, 0.8)',
+                        },
+                    },
+                },
+            },
+            footer: {
+                backgroundColor: 'red',
+                color: 'white',
+                a: {
+                    color: 'white',
+                },
+                svg: {
+                    fill: 'white',
+                },
+            },
+        },
         p: {
             a: {
                 color: 'black',

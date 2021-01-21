@@ -8,7 +8,8 @@ import SEO from '../components/seo'
 import PageHeader from '../components/template/pageHeader'
 import PagesNav from '../components/pagesNav'
 
-const PageTemplate = ({ data: { previous, next, service } }) => {
+const PageTemplate = ({ data: { previous, next, service }, pageContext }) => {
+    const pageStyle = pageContext.style
     const featuredImage = {
         fluid: service.featuredImage?.node?.localFile?.childImageSharp?.fluid,
         alt: service.featuredImage?.node?.alt || ``,
@@ -21,13 +22,8 @@ const PageTemplate = ({ data: { previous, next, service } }) => {
                 url={service.uri}
                 featuredImage={featuredImage.fluid.src}
             />
-            <PageHeader
-                title={parse(service.title)}
-                intro={parse(service.excerpt)}
-                backgroundColor='yellow'
-                color='black'
-            />
-            <section>
+            <PageHeader title={parse(service.title)} intro={parse(service.excerpt)} headerStyle={pageStyle} />
+            <section sx={{ backgroundColor: 'white' }}>
                 <Flex
                     sx={{
                         alignItems: [null, null, 'center'],

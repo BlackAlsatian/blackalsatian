@@ -3,8 +3,9 @@ import { jsx, Container, Heading, Box } from 'theme-ui'
 import React from 'react'
 import SEO from '../components/seo'
 
-const NotFoundPage = ({ location }) => {
+const NotFoundPage = ({ location, pageContext }) => {
     const brokenPathName = location.href
+    console.log(pageContext)
     return (
         <>
             <SEO title='404: Not Found' />

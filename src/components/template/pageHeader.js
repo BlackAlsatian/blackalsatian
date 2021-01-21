@@ -1,16 +1,15 @@
 /** @jsx jsx */
 import { jsx, Container, Heading } from 'theme-ui'
 
-const PageHeader = ({ title, intro, backgroundColor, color }) => {
+const PageHeader = ({ title, intro, headerStyle }) => {
     return (
         <section
             sx={{
                 display: 'flex',
                 alignItems: 'center',
-                color: `${color}`,
-                backgroundColor: `${backgroundColor}`,
                 minHeight: '100vh',
                 pt: ['35vh', '35vh', '40vh'],
+                variant: 'sections.' + headerStyle + '.pageheader',
             }}
         >
             <Container p={4}>

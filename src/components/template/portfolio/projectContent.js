@@ -2,9 +2,9 @@
 import { jsx, Container, Heading, Flex, Box, Badge } from 'theme-ui'
 import parse from 'html-react-parser'
 
-const ProjectContent = ({ project }) => {
+const ProjectContent = ({ project, pageStyle }) => {
     return (
-        <section sx={{ py: [2, 2, 5] }}>
+        <section sx={{ py: [2, 2, 5], backgroundColor: 'black', variant: 'layout.' + pageStyle + '.main' }}>
             <Container px={1}>
                 <Flex
                     sx={{

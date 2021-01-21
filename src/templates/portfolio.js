@@ -8,7 +8,8 @@ import SEO from '../components/seo'
 import PageHeader from '../components/template/pageHeader'
 import LeftColumn from '../components/template/elements/leftColumn'
 
-const PortfolioIndex = ({ data }) => {
+const PortfolioIndex = ({ data, pageContext }) => {
+    const pageStyle = pageContext.style
     const portfolio = data.allWpPortfolio.nodes
     const page = data.wpPage
     if (!portfolio.length) {
@@ -33,11 +34,12 @@ const PortfolioIndex = ({ data }) => {
                 url={page.uri}
                 featuredImage={page.featuredImage && page.featuredImage.node.og.childImageSharp.fluid.src}
             />
-            <PageHeader title={parse(page.title)} intro={page.pageintro} backgroundColor='black' color='white' />
+            <PageHeader title={parse(page.title)} intro={page.pageintro} headerStyle={pageStyle} />
 
             <section
                 sx={{
                     py: 5,
+                    backgroundColor: 'black',
                 }}
             >
                 <Container p={1}>

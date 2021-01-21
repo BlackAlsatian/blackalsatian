@@ -70,12 +70,7 @@ const createIndividualBlogPostPages = async ({ posts, gatsbyUtilities }) =>
                     // We also use the next and previous id's to query them and add links!
                     previousPostId: previous ? previous.id : null,
                     nextPostId: next ? next.id : null,
-                    colorScheme: {
-                        navVariant: 'white',
-                        headerVariant: 'white',
-                        bodyVariant: 'white',
-                        footerVariant: 'white',
-                    },
+                    style: 'postwhite',
                 },
             }),
         ),
@@ -93,13 +88,13 @@ const createIndividualPages = async ({ pages, gatsbyUtilities }) =>
                     subheading: page.subheading,
                     subtitle: page.subtitle,
                     intro: page.intro,
-                    title: page.title,
-                    colorScheme: {
-                        navVariant: 'white',
-                        headerVariant: 'black',
-                        bodyVariant: 'white',
-                        footerVariant: 'black',
-                    },
+                    style: page.uri.includes('/contact/')
+                        ? 'yellow'
+                        : page.uri.includes('/terms-of-use/') || page.uri.includes('/privacy-policy/')
+                        ? 'red'
+                        : page.uri.includes('/about/')
+                        ? 'altblack'
+                        : 'default',
                 },
             }),
         ),
@@ -116,12 +111,7 @@ const createIndividualServices = async ({ services, gatsbyUtilities }) =>
                     id: service.id,
                     previousPostId: previous ? previous.id : null,
                     nextPostId: next ? next.id : null,
-                    colorScheme: {
-                        navVariant: 'black',
-                        headerVariant: 'yellow',
-                        bodyVariant: 'white',
-                        footerVariant: 'black',
-                    },
+                    style: 'altyellow',
                 },
             }),
         ),
@@ -138,12 +128,7 @@ const createIndividualProjects = async ({ portfolio, gatsbyUtilities }) =>
                     id: portfolio.id,
                     previousPostId: previous ? previous.id : null,
                     nextPostId: next ? next.id : null,
-                    colorScheme: {
-                        navVariant: 'white',
-                        headerVariant: 'black',
-                        bodyVariant: 'black',
-                        footerVariant: 'black',
-                    },
+                    style: 'black',
                 },
             }),
         ),
@@ -159,12 +144,7 @@ const createIndividualLanders = async ({ landers, gatsbyUtilities }) =>
                 context: {
                     id: lander.id,
                     title: lander.title,
-                    colorScheme: {
-                        navVariant: 'white',
-                        headerVariant: 'black',
-                        bodyVariant: 'white',
-                        footerVariant: 'black',
-                    },
+                    style: 'default',
                 },
             }),
         ),
@@ -213,12 +193,7 @@ async function createBlogPostArchive({ posts, gatsbyUtilities }) {
                     postsPerPage,
                     nextPagePath: getPagePath(pageNumber + 1),
                     previousPagePath: getPagePath(pageNumber - 1),
-                    colorScheme: {
-                        navVariant: 'black',
-                        headerVariant: 'white',
-                        bodyVariant: 'white',
-                        footerVariant: 'white',
-                    },
+                    style: 'white',
                 },
             })
         }),
@@ -232,12 +207,7 @@ async function createServicesPage({ services, gatsbyUtilities }) {
         component: path.resolve(`./src/templates/services.js`),
         context: {
             ...services,
-            colorScheme: {
-                navVariant: 'black',
-                headerVariant: 'yellow',
-                bodyVariant: 'white',
-                footerVariant: 'black',
-            },
+            style: 'altyellow',
         },
     })
 }
@@ -249,12 +219,7 @@ async function createPortfolioPage({ portfolio, gatsbyUtilities }) {
         component: path.resolve(`./src/templates/portfolio.js`),
         context: {
             ...portfolio,
-            colorScheme: {
-                navVariant: 'white',
-                headerVariant: 'black',
-                bodyVariant: 'black',
-                footerVariant: 'black',
-            },
+            style: 'black',
         },
     })
 }

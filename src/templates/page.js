@@ -7,28 +7,14 @@ import ComponentParser from '../components/componentParser'
 import SEO from '../components/seo'
 import PageHeader from '../components/template/pageHeader'
 import LeftColumn from '../components/template/elements/leftColumn'
-import { handleBodyTextColor } from '../components/helpers'
+// import { handleBodyTextColor } from '../components/helpers'
 
 const PageTemplate = ({ data: { page }, pageContext }) => {
-    // console.log(pageContext)
-    const { bodyVariant, headerVariant } = pageContext.colorScheme
-    const handleBackgroundColor = (pageTitle, variant) => {
-        if (pageTitle.includes('Terms of Use') || pageTitle.includes('Privacy Policy')) {
-            return 'red'
-        } else if (pageTitle.includes('Contact')) {
-            return 'yellow'
-        } else {
-            return variant
-        }
+    const pageStyle = pageContext.style
+    let bodyFontColor = 'black'
+    if (pageStyle === 'red') {
+        bodyFontColor = 'white'
     }
-    const handleHeaderColor = (pagetitle) => {
-        if (pagetitle.includes('Contact')) {
-            return 'black'
-        } else {
-            return 'white'
-        }
-    }
-
     return (
         <>
             <SEO
@@ -39,16 +25,10 @@ const PageTemplate = ({ data: { page }, pageContext }) => {
             />
             {!page.isFrontPage && !page.title.includes('Services') && !page.title.includes('Portfolio') ? (
                 <>
-                    <PageHeader
-                        title={parse(page.title)}
-                        intro={page.pageintro}
-                        backgroundColor={handleBackgroundColor(page.title, headerVariant)}
-                        color={handleHeaderColor(page.title)}
-                    />
+                    <PageHeader title={parse(page.title)} intro={page.pageintro} headerStyle={pageStyle} />
                     <section
                         sx={{
                             py: 5,
-                            backgroundColor: handleBackgroundColor(page.title, bodyVariant),
                         }}
                     >
                         <Container p={1}>
@@ -62,7 +42,7 @@ const PageTemplate = ({ data: { page }, pageContext }) => {
                                     title={page.pagesubtitle}
                                     headerSize='h2'
                                     page
-                                    color={handleBodyTextColor(page.uri)}
+                                    color={bodyFontColor}
                                 />
                                 <Box
                                     py={[0, 0, 4]}
@@ -71,7 +51,7 @@ const PageTemplate = ({ data: { page }, pageContext }) => {
                                         flex: [null, null, 3],
                                         width: ['100%', null],
                                         variant: 'layout',
-                                        color: `${handleBodyTextColor(page.uri)}`,
+                                        color: bodyFontColor,
                                     }}
                                 >
                                     {page.content && parse(page.content)}

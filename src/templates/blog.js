@@ -10,7 +10,8 @@ import SEO from '../components/seo'
 import PageHeader from '../components/template/pageHeader'
 import PagesNav from '../components/pagesNav'
 
-const BlogIndex = ({ data, pageContext: { nextPagePath, previousPagePath }, location: { pathname } }) => {
+const BlogIndex = ({ data, pageContext: { nextPagePath, previousPagePath, style }, location: { pathname } }) => {
+    const pageStyle = style
     const posts = data.allWpPost.nodes
     const pageTitle = data.site.siteMetadata.blog.title
     const content = data.site.siteMetadata.blog.intro
@@ -37,9 +38,7 @@ const BlogIndex = ({ data, pageContext: { nextPagePath, previousPagePath }, loca
                 url={pathname}
                 // featuredImage={page.featuredImage.node.localFile.childImageSharp.fluid.src}
             />
-            {pathname === '/blog/' && (
-                <PageHeader title={pageTitle} intro={content} backgroundColor='white' color='black' />
-            )}
+            {pathname === '/blog/' && <PageHeader title={pageTitle} intro={content} headerStyle={pageStyle} />}
             <section>
                 <Container
                     sx={{
