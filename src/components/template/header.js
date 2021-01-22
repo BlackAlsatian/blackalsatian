@@ -8,7 +8,7 @@ import OffCanvas from './offCanvasNav'
 import Logo from '../logo'
 import Nav from '../nav'
 
-const Header = ({ pageStyle }) => {
+const Header = ({ pathName }) => {
     const data = useStaticQuery(graphql`
         {
             wpMenu(slug: { eq: "primary-menu" }) {
@@ -17,14 +17,23 @@ const Header = ({ pageStyle }) => {
         }
     `)
     const navLinks = data.wpMenu.menuItems.nodes
-    const darkNavPages = ['yellow', 'altyellow', 'white']
-    const navcolor = darkNavPages.includes(pageStyle) ? 'black' : 'white'
+    // const darkNavPages = ['yellow', 'altyellow', 'white']
+    // const navcolor = darkNavPages.includes(pageStyle) ? 'black' : 'white'
     const [isOpen, setIsOpen] = useState(false)
-
     const handleBurgerMenuClick = () => {
         setIsOpen(!isOpen)
     }
-    console.log(navcolor)
+    let headerStyle = 'white'
+    if (
+        (pathName.includes('/blog') && pathName.length >= 10) ||
+        (pathName.includes('/blog') && pathName.length <= 10) ||
+        pathName.includes('/terms-of-use') ||
+        pathName.includes('/privacy-policy') ||
+        typeof pathName === 'undefined'
+    ) {
+        headerStyle = 'black'
+    }
+    console.log(headerStyle)
     return (
         <header
             sx={{
@@ -36,13 +45,13 @@ const Header = ({ pageStyle }) => {
                 p: [3, 3],
                 position: 'absolute',
                 zIndex: 10,
-                variant: 'layout.header.' + pageStyle,
+                variant: 'layout.header.' + headerStyle,
             }}
         >
             <Link to='/' title='Black Alsatian Web Development Company'>
-                <Logo color={navcolor} />
+                <Logo color={headerStyle} />
             </Link>
-            <Nav navLinks={navLinks} color={navcolor} />
+            <Nav navLinks={navLinks} color={headerStyle} />
             <OffCanvas isOpen={isOpen} handleMenuClick={handleBurgerMenuClick} navLinks={navLinks} />
             <div
                 sx={{
@@ -55,7 +64,7 @@ const Header = ({ pageStyle }) => {
                     zIndex: 30,
                 }}
             >
-                <MenuIcon handleBurgerMenuClick={handleBurgerMenuClick} isOpen={isOpen} color={navcolor} />
+                <MenuIcon handleBurgerMenuClick={handleBurgerMenuClick} isOpen={isOpen} color={headerStyle} />
                 <span
                     sx={{
                         position: 'fixed',

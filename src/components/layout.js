@@ -13,7 +13,7 @@ if (typeof window !== 'undefined') {
     require('smooth-scroll')('a[href*="#"]')
 }
 
-const Layout = ({ children, pageContext, location, custom404 }) => {
+const Layout = ({ children, pageContext, location }) => {
     console.log(pageContext)
     // const context = useThemeUI()
     // console.log(context)
@@ -37,7 +37,7 @@ const Layout = ({ children, pageContext, location, custom404 }) => {
             ? (pageStyle = 'black')
             : pathName.includes('/blog') && pathName.length >= 10
             ? (pageStyle = 'postwhite')
-            : (pathName.includes('/blog') && pathName.length <= 10) || custom404
+            : (pathName.includes('/blog') && pathName.length <= 10) || typeof pageStyle === 'undefined'
             ? (pageStyle = 'white')
             : pathName.includes('/contact')
             ? (pageStyle = 'yellow')
@@ -89,7 +89,8 @@ const Layout = ({ children, pageContext, location, custom404 }) => {
             }}
         >
             <Header
-                pageStyle={pageStyle}
+                // pageStyle={pageStyle}
+                pathName={pathName}
                 // sx={{
                 //     variant: 'layout.' + pageStyle + '.header',
                 // }}
@@ -101,7 +102,7 @@ const Layout = ({ children, pageContext, location, custom404 }) => {
             >
                 {children}
             </main>
-            {!custom404 && (
+            {typeof pageStyle !== 'undefined' && (
                 <LazyLoad height='100%' offSet={150} once placeholder={<PlaceholderLoader />}>
                     <Footer
                         siteTitle={title}

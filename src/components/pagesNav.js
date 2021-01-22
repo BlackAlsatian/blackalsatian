@@ -5,7 +5,7 @@ import AniLink from 'gatsby-plugin-transition-link/AniLink'
 
 const PagesNav = ({ previousPagePath, nextPagePath, previousName, nextName, backgroundColor, color, swipeColor }) => {
     return (
-        <nav>
+        <div>
             <ul
                 sx={{
                     display: `flex`,
@@ -83,7 +83,7 @@ const PagesNav = ({ previousPagePath, nextPagePath, previousName, nextName, back
                     )}
                 </li>
             </ul>
-        </nav>
+        </div>
     )
 }
 
