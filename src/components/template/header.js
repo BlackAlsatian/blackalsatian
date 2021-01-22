@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useStaticQuery, graphql, Link } from 'gatsby'
 // import { handleColor } from '../../components/helpers'
 import MenuIcon from '../menuIcon'
@@ -23,16 +23,29 @@ const Header = ({ pathName }) => {
     const handleBurgerMenuClick = () => {
         setIsOpen(!isOpen)
     }
-    let headerStyle = 'white'
-    if (
-        (pathName.includes('/blog') && pathName.length >= 10) ||
-        (pathName.includes('/blog') && pathName.length <= 10) ||
-        pathName.includes('/terms-of-use') ||
-        pathName.includes('/privacy-policy') ||
-        typeof pathName === 'undefined'
-    ) {
-        headerStyle = 'black'
-    }
+    // let headerStyle = 'white'
+    const [headerStyle, setHeaderStyle] = useState('white')
+    useEffect(() => {
+        if (
+            (pathName.includes('/blog') && pathName.length <= 10) ||
+            pathName.includes('/contact') ||
+            pathName.includes('/services') ||
+            typeof pathName === 'undefined'
+        ) {
+            setHeaderStyle('black')
+        } else {
+            setHeaderStyle('white')
+        }
+    }, [pathName])
+    // if (
+    //     (pathName.includes('/blog') && pathName.length <= 10) ||
+    //     pathName.includes('/contact') ||
+    //     pathName.includes('/services') ||
+    //     typeof pathName === 'undefined'
+    // ) {
+    //     headerStyle = 'black'
+    // }
+    console.log(pathName)
     console.log(headerStyle)
     return (
         <header
