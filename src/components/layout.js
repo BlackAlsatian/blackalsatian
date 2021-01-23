@@ -51,13 +51,6 @@ const Layout = ({ children, pageContext, location }) => {
                 flexDirection: 'column',
                 minHeight: '100vh',
                 overflow: 'hidden',
-                backgroundColor: pathName.includes('/portfolio')
-                    ? 'black'
-                    : pathName.includes('/contact')
-                    ? 'yellow'
-                    : pathName.includes('/terms-of-use') || pathName.includes('privacy-policy')
-                    ? 'red'
-                    : 'white',
                 variant: 'layout.' + pageStyle,
             }}
         >
