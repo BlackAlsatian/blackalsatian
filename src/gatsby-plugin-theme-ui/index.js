@@ -182,6 +182,73 @@ export default {
         },
     },
     layout: {
+        p: {
+            a: {
+                color: 'black',
+                textDecoration: 'underline',
+                fontWeight: 'medium',
+                '&:hover': {
+                    textDecoration: 'none',
+                },
+                '&:visited': {
+                    color: 'rgba(0, 0, 0, 0.8)',
+                },
+            },
+        },
+        h4: {
+            a: {
+                color: 'black',
+                textDecoration: 'underline',
+                fontWeight: 'medium',
+                '&:hover': {
+                    textDecoration: 'none',
+                },
+                '&:visited': {
+                    color: 'rgba(0, 0, 0, 0.8)',
+                },
+            },
+        },
+        h3: {
+            a: {
+                color: 'black',
+                textDecoration: 'underline',
+                fontWeight: 'medium',
+                '&:hover': {
+                    textDecoration: 'none',
+                },
+                '&:visited': {
+                    color: 'rgba(0, 0, 0, 0.8)',
+                },
+            },
+        },
+        li: {
+            a: {
+                color: 'black',
+                textDecoration: 'underline',
+                fontWeight: 'medium',
+                '&:hover': {
+                    textDecoration: 'none',
+                },
+                '&:visited': {
+                    color: 'rgba(0, 0, 0, 0.8)',
+                },
+            },
+        },
+        blockquote: {
+            borderLeft: '5px solid black',
+            p: '0 1rem 0 2rem',
+            m: '3rem',
+            textAlign: 'left',
+            fontStyle: 'oblique',
+        },
+        figure: {
+            textAlign: 'center',
+            width: '100%',
+            p: '0 auto',
+            span: {
+                m: '0 auto',
+            },
+        },
         default: {
             backgroundColor: 'white',
         },
@@ -358,6 +425,60 @@ export default {
                         },
                     },
                 },
+                h4: {
+                    a: {
+                        color: 'white',
+                        textDecoration: 'underline',
+                        fontWeight: 'medium',
+                        '&:hover': {
+                            textDecoration: 'none',
+                        },
+                        '&:visited': {
+                            color: 'rgba(255, 255, 255, 0.8)',
+                        },
+                    },
+                },
+                h3: {
+                    a: {
+                        color: 'white',
+                        textDecoration: 'underline',
+                        fontWeight: 'medium',
+                        '&:hover': {
+                            textDecoration: 'none',
+                        },
+                        '&:visited': {
+                            color: 'rgba(255, 255, 255, 0.8)',
+                        },
+                    },
+                },
+                li: {
+                    a: {
+                        color: 'white',
+                        textDecoration: 'underline',
+                        fontWeight: 'medium',
+                        '&:hover': {
+                            textDecoration: 'none',
+                        },
+                        '&:visited': {
+                            color: 'rgba(255, 255, 255, 0.8)',
+                        },
+                    },
+                },
+                blockquote: {
+                    borderLeft: '5px solid white',
+                    p: '0 1rem 0 2rem',
+                    m: '3rem',
+                    textAlign: 'left',
+                    fontStyle: 'oblique',
+                },
+                figure: {
+                    textAlign: 'center',
+                    width: '100%',
+                    p: '0 auto',
+                    span: {
+                        m: '0 auto',
+                    },
+                },
             },
         },
         footer: {
@@ -442,75 +563,9 @@ export default {
                 },
             },
         },
-        p: {
-            a: {
-                color: 'black',
-                textDecoration: 'underline',
-                fontWeight: 'medium',
-                '&:hover': {
-                    textDecoration: 'none',
-                },
-                '&:visited': {
-                    color: 'rgba(0, 0, 0, 0.8)',
-                },
-            },
-        },
-        h4: {
-            a: {
-                color: 'black',
-                textDecoration: 'underline',
-                fontWeight: 'medium',
-                '&:hover': {
-                    textDecoration: 'none',
-                },
-                '&:visited': {
-                    color: 'rgba(0, 0, 0, 0.8)',
-                },
-            },
-        },
-        h3: {
-            a: {
-                color: 'black',
-                textDecoration: 'underline',
-                fontWeight: 'medium',
-                '&:hover': {
-                    textDecoration: 'none',
-                },
-                '&:visited': {
-                    color: 'rgba(0, 0, 0, 0.8)',
-                },
-            },
-        },
-        li: {
-            a: {
-                color: 'black',
-                textDecoration: 'underline',
-                fontWeight: 'medium',
-                '&:hover': {
-                    textDecoration: 'none',
-                },
-                '&:visited': {
-                    color: 'rgba(0, 0, 0, 0.8)',
-                },
-            },
-        },
-        blockquote: {
-            borderLeft: '5px solid black',
-            p: '0 1rem 0 2rem',
-            m: '3rem',
-            textAlign: 'left',
-            fontStyle: 'oblique',
-        },
-        figure: {
-            textAlign: 'center',
-            width: '100%',
-            p: '0 auto',
-            span: {
-                m: '0 auto',
-            },
-        },
         project: {
             p: {
+                color: 'white',
                 a: {
                     color: 'white',
                 },

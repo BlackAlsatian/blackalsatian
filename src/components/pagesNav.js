@@ -13,6 +13,7 @@ const PagesNav = ({ previousPagePath, nextPagePath, previousName, nextName, back
                     justifyContent: `space-between`,
                     listStyle: `none`,
                     p: [3, 3, 4],
+                    m: 0,
                 }}
             >
                 <li sx={{ m: 3 }}>

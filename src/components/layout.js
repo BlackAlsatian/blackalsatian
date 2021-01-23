@@ -14,22 +14,6 @@ if (typeof window !== 'undefined') {
 }
 
 const Layout = ({ children, pageContext, location }) => {
-    console.log(pageContext)
-    // const context = useThemeUI()
-    // console.log(context)
-    //     const defaultColorScheme = {
-    //         navVariant: 'black',
-    //         bodyVariant: 'white',
-    //         footerVariant: 'black',
-    //     }
-    //
-    //     const notFoundColorScheme = {
-    //         navVariant: 'black',
-    //         bodyVariant: 'white',
-    //         footerVariant: 'white',
-    //     }
-
-    // let siteColorScheme = pageContext.colorScheme
     const pathName = location.pathname
     let pageStyle = pageContext.style
     if (typeof pageStyle === 'undefined') {
@@ -45,25 +29,7 @@ const Layout = ({ children, pageContext, location }) => {
             ? (pageStyle = 'red')
             : (pageStyle = 'default')
     }
-    // if (typeof pageStyle === 'undefined') {
-    //     pageStyle = 'black'
-    // }
-    // if (custom404) {
-    //     pageStyle = 'white'
-    // }
 
-    //     if (typeof siteColorScheme === 'undefined') {
-    //         siteColorScheme = defaultColorScheme
-    //     }
-    //
-    //     if (custom404) {
-    //         siteColorScheme = notFoundColorScheme
-    //     }
-
-    // const pageTitle = pageContext.title || ''
-
-    // const pagePath = location.pathname
-    // const { navVariant, footerVariant } = siteColorScheme
     const {
         wp: {
             generalSettings: { title },
@@ -85,16 +51,17 @@ const Layout = ({ children, pageContext, location }) => {
                 flexDirection: 'column',
                 minHeight: '100vh',
                 overflow: 'hidden',
+                backgroundColor: pathName.includes('/portfolio')
+                    ? 'black'
+                    : pathName.includes('/contact')
+                    ? 'yellow'
+                    : pathName.includes('/terms-of-use') || pathName.includes('privacy-policy')
+                    ? 'red'
+                    : 'white',
                 variant: 'layout.' + pageStyle,
             }}
         >
-            <Header
-                // pageStyle={pageStyle}
-                pathName={pathName}
-                // sx={{
-                //     variant: 'layout.' + pageStyle + '.header',
-                // }}
-            />
+            <Header pathName={pathName} />
             <main
                 sx={{
                     variant: 'layout.main.' + pageStyle,
@@ -104,13 +71,7 @@ const Layout = ({ children, pageContext, location }) => {
             </main>
             {typeof pageStyle !== 'undefined' && (
                 <LazyLoad height='100%' offSet={150} once placeholder={<PlaceholderLoader />}>
-                    <Footer
-                        siteTitle={title}
-                        pageStyle={pageStyle}
-                        // sx={{
-                        //     variant: 'layout.' + pageStyle + '.footer',
-                        // }}
-                    />
+                    <Footer siteTitle={title} pageStyle={pageStyle} />
                 </LazyLoad>
             )}
         </div>

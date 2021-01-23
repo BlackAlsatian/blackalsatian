@@ -17,13 +17,10 @@ const Header = ({ pathName }) => {
         }
     `)
     const navLinks = data.wpMenu.menuItems.nodes
-    // const darkNavPages = ['yellow', 'altyellow', 'white']
-    // const navcolor = darkNavPages.includes(pageStyle) ? 'black' : 'white'
     const [isOpen, setIsOpen] = useState(false)
     const handleBurgerMenuClick = () => {
         setIsOpen(!isOpen)
     }
-    // let headerStyle = 'white'
     const [headerStyle, setHeaderStyle] = useState('white')
     useEffect(() => {
         if (
@@ -37,16 +34,6 @@ const Header = ({ pathName }) => {
             setHeaderStyle('white')
         }
     }, [pathName])
-    // if (
-    //     (pathName.includes('/blog') && pathName.length <= 10) ||
-    //     pathName.includes('/contact') ||
-    //     pathName.includes('/services') ||
-    //     typeof pathName === 'undefined'
-    // ) {
-    //     headerStyle = 'black'
-    // }
-    console.log(pathName)
-    console.log(headerStyle)
     return (
         <header
             sx={{

@@ -8,12 +8,9 @@ import EnquiryForm from '../../forms/enquiryForm'
 import SocialIcons from './socialIcons'
 import { handleErrorColor } from '../../helpers'
 
-// const Footer = ({ siteTitle, pageTitle, footerColor, pageStyle }) => {
 const Footer = ({ siteTitle, pageStyle }) => {
     let bgcolor = 'black'
     let textcolor = 'white'
-    // if (pageTitle.includes('Blog') || pageTitle.includes('404:') || footerColor === 'white') {
-    // if (pathname.includes('blog') || pathname.includes('/404/') || footerColor === 'white') {
     if (pageStyle === 'yellow') {
         bgcolor = 'yellow'
         textcolor = 'black'
@@ -26,19 +23,13 @@ const Footer = ({ siteTitle, pageStyle }) => {
         bgcolor = 'white'
         textcolor = 'black'
     }
-    // if (pageTitle.includes('Terms of Use') || pageTitle.includes('Privacy Policy')) {
-    //     bgcolor = 'red'
-    //     textcolor = 'white'
-    // }
     const errorColor = handleErrorColor(bgcolor)
     return (
         <footer
             sx={{
-                // bg: `${bgcolor}`,
                 width: '100%',
                 fontSize: 0,
                 fontWeight: 'medium',
-                // color: `${textcolor}`,
                 variant: 'layout.footer.' + pageStyle,
             }}
         >
