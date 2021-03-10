@@ -220,7 +220,7 @@ module.exports = {
                 removeVersionOnly: true,
                 // Customise the generator string altogether.
                 // Note: This has the highest precedence of the available options.
-                content: `Lots and lots and lots of late nights, crying, blood, sweat and tears. Fingers coded to the bone.`,
+                // content: `Lots and lots and lots of late nights, crying, blood, sweat and tears. Fingers coded to the bone.`,
             },
         },
     ],
