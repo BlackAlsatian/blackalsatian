@@ -22,14 +22,10 @@ const ComponentParser = (props) => {
                             (innerBlocks[0].name === 'blackalsatian/hero-block' ? (
                                 <HeroBlock featuredImage={featuredImage} innerBlocks={innerBlocks} />
                             ) : (
-                                <LazyLoad height='100%' offSet={100} once placeholder={<PlaceholderLoader />}>
-                                    <CTABlock attributes={attributes} innerBlocks={innerBlocks} />
-                                </LazyLoad>
+                                <CTABlock attributes={attributes} innerBlocks={innerBlocks} />
                             ))}
                         {__typename === 'WpBlackalsatianContentBlock' && (
-                            <LazyLoad height='100%' offSet={100} once placeholder={<PlaceholderLoader />}>
-                                <ContentBlock attributes={attributes} innerBlocks={innerBlocks} />
-                            </LazyLoad>
+                            <ContentBlock attributes={attributes} innerBlocks={innerBlocks} />
                         )}
                         {__typename === 'WpBlackalsatianServicesBlock' && (
                             <LazyLoad height='100%' offSet={100} once placeholder={<PlaceholderLoader />}>
