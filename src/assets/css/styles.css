@@ -19,3 +19,10 @@
 figure {
     margin: 0;
 }
+span.has-black-color {
+    color: #000;
+}
+
+span.has-white-color {
+    color: #fff;
+}
