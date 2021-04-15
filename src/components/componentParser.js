@@ -28,22 +28,22 @@ const ComponentParser = (props) => {
                             <ContentBlock attributes={attributes} innerBlocks={innerBlocks} />
                         )}
                         {__typename === 'WpBlackalsatianServicesBlock' && (
-                            <LazyLoad height='100%' offSet={100} once placeholder={<PlaceholderLoader />}>
+                            <LazyLoad height='100%' offSet={150} once placeholder={<PlaceholderLoader />}>
                                 <ServicesBlock />
                             </LazyLoad>
                         )}
                         {__typename === 'WpBlackalsatianLatestPostsBlock' && (
-                            <LazyLoad height='100%' offSet={100} once placeholder={<PlaceholderLoader />}>
+                            <LazyLoad height='100%' offSet={150} once placeholder={<PlaceholderLoader />}>
                                 <LatestPostsBlock />
                             </LazyLoad>
                         )}
                         {__typename === 'WpBlackalsatianFeaturedProjectsBlock' && (
-                            <LazyLoad height='100%' offSet={100} once placeholder={<PlaceholderLoader />}>
+                            <LazyLoad height='100%' offSet={150} once placeholder={<PlaceholderLoader />}>
                                 <FeaturedProjectsBlock />
                             </LazyLoad>
                         )}
                         {__typename === 'WpBlackalsatianTestimonialsBlock' && (
-                            <LazyLoad height='100%' offSet={100} once placeholder={<PlaceholderLoader />}>
+                            <LazyLoad height='100%' offSet={150} once placeholder={<PlaceholderLoader />}>
                                 <TestimonialsBlock />
                             </LazyLoad>
                         )}
