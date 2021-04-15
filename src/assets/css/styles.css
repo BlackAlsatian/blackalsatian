@@ -19,10 +19,12 @@
 figure {
     margin: 0;
 }
-span.has-black-color {
+a span.has-black-color {
     color: #000;
+    text-decoration: underline;
 }
 
-span.has-white-color {
+a span.has-white-color {
     color: #fff;
+    text-decoration: underline;
 }
