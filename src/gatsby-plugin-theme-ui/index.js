@@ -53,17 +53,11 @@ export default {
         primaryHover: `${tailwind.colors.gray[8]}`,
         black: '#111827',
         blue: '#0060b4',
-        //##pantone of the year
         yellow: '#f5df4d',
         gray: '#939597',
-        // ##
         red: '#d93d33',
         offWhite: `${tailwind.colors.gray[2]}`,
         mainOpenMenu: '#939597',
-        // blue: '#2ec4b6',
-        // blue: '#31cdff',
-        // red: '#e71d36',
-        // red: '#de4a50',
     },
     buttons: {
         ...tailwind.buttons,
@@ -154,12 +148,6 @@ export default {
                 fontFamily: 'body',
                 fontSize: '100%',
             },
-            // altblack: {
-            //     borderBottomColor: 'black',
-            //     '&:focus': {
-            //         borderColor: 'black',
-            //     },
-            // },
         },
         background: {
             py: 2,
@@ -278,19 +266,6 @@ export default {
             color: 'white',
         },
         header: {
-            // default: {
-            //     svg: {
-            //         fill: 'white',
-            //     },
-            //     nav: {
-            //         a: {
-            //             color: 'white',
-            //             '&:hover, &:focus, &.active': {
-            //                 opacity: 0.9,
-            //             },
-            //         },
-            //     },
-            // },
             white: {
                 svg: {
                     fill: 'white',
@@ -304,19 +279,6 @@ export default {
                     },
                 },
             },
-            // postWhite: {
-            //     svg: {
-            //         fill: 'white',
-            //     },
-            //     nav: {
-            //         a: {
-            //             color: 'white',
-            //             '&:hover, &:focus, &.active': {
-            //                 opacity: 0.9,
-            //             },
-            //         },
-            //     },
-            // },
             black: {
                 svg: {
                     fill: 'black',
@@ -330,61 +292,6 @@ export default {
                     },
                 },
             },
-            // altblack: {
-            //     svg: {
-            //         fill: 'white',
-            //     },
-            //     nav: {
-            //         a: {
-            //             color: 'white',
-            //             '&:hover, &:focus, &.active': {
-            //                 opacity: 0.9,
-            //             },
-            //         },
-            //     },
-            // },
-            // yellow: {
-            //     svg: {
-            //         fill: 'black',
-            //     },
-            //     nav: {
-            //         a: {
-            //             color: 'black',
-            //             '&:hover, &:focus, &.active': {
-            //                 color: 'black',
-            //                 opacity: 0.9,
-            //             },
-            //         },
-            //     },
-            // },
-            // altyellow: {
-            //     svg: {
-            //         fill: 'black',
-            //     },
-            //     nav: {
-            //         a: {
-            //             color: 'black',
-            //             '&:hover, &:focus, &.active': {
-            //                 color: 'black',
-            //                 opacity: 0.9,
-            //             },
-            //         },
-            //     },
-            // },
-            // red: {
-            //     svg: {
-            //         fill: 'white',
-            //     },
-            //     nav: {
-            //         a: {
-            //             color: 'white',
-            //             '&:hover, &:focus, &.active': {
-            //                 color: 'white',
-            //                 opacity: 0.9,
-            //             },
-            //         },
-            //     },
-            // },
         },
         main: {
             default: {
