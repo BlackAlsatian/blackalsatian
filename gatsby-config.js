@@ -109,6 +109,18 @@ module.exports = {
                 path: `${__dirname}/src/assets/images`,
             },
         },
+        {
+            resolve: '@slixites/gatsby-plugin-google-fonts',
+            options: {
+                fonts: ['Montserrat:200,400,400i,700,800,900'],
+                display: 'swap',
+                preconnect: true,
+                attributes: {
+                    rel: 'stylesheet preload prefetch',
+                    as: 'style',
+                },
+            },
+        },
         `gatsby-plugin-theme-ui`,
         // `gatsby-theme-style-guide`,
         {
