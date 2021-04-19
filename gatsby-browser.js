@@ -1,4 +1,13 @@
 import './src/assets/css/styles.css'
+import loadable from '@loadable/component'
+
+export const replaceHydrateFunction = () => {
+    return (element, container, callback) => {
+        loadable.loadableReady(() => {
+            ReactDOM.render(element, container, callback)
+        })
+    }
+}
 
 // import React from 'react'
 // import Layout from './src/components/layout'
@@ -28,7 +37,7 @@ import './src/assets/css/styles.css'
 // }
 
 // Adjust if you need to add a delay before scrolling
-const transitionDelay = 300
+const transitionDelay = 50
 
 export const shouldUpdateScroll = ({ routerProps: { location }, getSavedScrollPosition }) => {
     if (location.action === 'PUSH') {
