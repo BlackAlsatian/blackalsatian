@@ -133,6 +133,10 @@ module.exports = {
                     process.env.GATSBY_GA_TRACKING_ID, // Google Analytics / GA
                     // "AW-CONVERSION_ID",  Google Ads / Adwords / AW
                 ],
+                pluginConfig: {
+                    // Puts tracking script in the head instead of the body
+                    head: true,
+                },
             },
         },
         {
