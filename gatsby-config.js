@@ -217,7 +217,7 @@ module.exports = {
             resolve: 'gatsby-plugin-remove-generator',
             options: {
                 // Only remove the Gatsby version number instead of the whole node
-                removeVersionOnly: true,
+                // removeVersionOnly: true,
                 // Customise the generator string altogether.
                 // Note: This has the highest precedence of the available options.
                 // content: `Lots and lots and lots of late nights, crying, blood, sweat and tears. Fingers coded to the bone.`,
