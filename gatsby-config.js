@@ -1,4 +1,4 @@
-require('dotenv').config({
+require(`dotenv`).config({
     path: `.env.${process.env.NODE_ENV}`,
 })
 
@@ -20,7 +20,7 @@ module.exports = {
         },
         lang: `en`,
         email: `info@blackalsatian.com`,
-        twitter: '@blackalsatian',
+        twitter: `@blackalsatian`,
         fbAppId: process.env.GATSBY_FBAPP_ID,
         socialUrls: {
             twitter: `https://twitter.com/blackalsatian`,
@@ -54,7 +54,7 @@ module.exports = {
     // QUERY_ON_DEMAND: true,
     // LAZY_IMAGES: true,
     //EXPERIMENTAL
-    // (Umbrella Issue (​https://github.com/gatsbyjs/gatsby/discussions/27603​)) · Don't process images during development until they're requested from the browser. Speeds starting the develop server.
+    // (Umbrella Issue (​https://github.com/gatsbyjs/gatsby/discussions/27603​)) · Don`t process images during development until they`re requested from the browser. Speeds starting the develop server.
     // },
     plugins: [
         // See https://www.gatsbyjs.com/plugins/gatsby-plugin-react-helmet/?=gatsby-plugin-react-helmet
@@ -79,7 +79,7 @@ module.exports = {
                     // previewRequestConcurrency: 2,
                 },
                 verbose: true,
-                excludeFieldNames: ['blocksJSON'],
+                excludeFieldNames: [`blocksJSON`],
                 develop: {
                     nodeUpdateInterval: 1000,
                 },
@@ -110,14 +110,14 @@ module.exports = {
             },
         },
         {
-            resolve: '@slixites/gatsby-plugin-google-fonts',
+            resolve: `@slixites/gatsby-plugin-google-fonts`,
             options: {
-                fonts: ['Montserrat:200,400,400i,700,800,900'],
-                display: 'swap',
+                fonts: [`Montserrat:200,400,400i,700,800,900`],
+                display: `swap`,
                 preconnect: true,
                 attributes: {
-                    rel: 'stylesheet preload prefetch',
-                    as: 'style',
+                    rel: `stylesheet preload prefetch`,
+                    as: `style`,
                 },
             },
         },
@@ -223,14 +223,14 @@ module.exports = {
                 cache_busting_mode: `none`,
             },
         },
-
+        `gatsby-plugin-loadable-components-ssr`,
         /**
          * this (optional) plugin enables Progressive Web App + Offline functionality
          * To learn more, visit: https://gatsby.dev/offline
          */
         `gatsby-plugin-offline`,
         {
-            resolve: 'gatsby-plugin-remove-generator',
+            resolve: `gatsby-plugin-remove-generator`,
             options: {
                 // Only remove the Gatsby version number instead of the whole node
                 // removeVersionOnly: true,
