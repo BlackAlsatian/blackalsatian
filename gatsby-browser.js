@@ -1,4 +1,4 @@
-import 'typeface-montserrat'
+import '@fontsource/montserrat'
 import './src/assets/css/styles.css'
 // import React from 'react'
 // import Layout from './src/components/layout'
