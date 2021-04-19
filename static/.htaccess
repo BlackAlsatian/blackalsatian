@@ -65,7 +65,7 @@ Redirect 301 /services/personalised-email.html https://www.blackalsatian.co.za/s
 #Redirect 301 /services/personalised-email https://www.blackalsatian.co.za/services/personalised-email/
 
 # Sitemap
-Redirect 301 /sitemap-xml.html /https://www.blackalsatian.co.za/sitemap.xml
-Redirect 301 /sitemap-xml /https://www.blackalsatian.co.za/sitemap.xml
-Redirect 301 /sitemap.html /https://www.blackalsatian.co.za/
-#Redirect 301 /sitemap /https://www.blackalsatian.co.za/
+Redirect 301 /sitemap-xml.html https://www.blackalsatian.co.za/sitemap.xml
+Redirect 301 /sitemap-xml https://www.blackalsatian.co.za/sitemap.xml
+Redirect 301 /sitemap.html https://www.blackalsatian.co.za/
+#Redirect 301 /sitemap https://www.blackalsatian.co.za/
