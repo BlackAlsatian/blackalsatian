@@ -55,6 +55,7 @@ const QuoteForm = ({ buttonBackground, btnColor, formStyle, buttonName }) => {
                             setMessageAlert(true)
                             actions.resetForm()
                             actions.setSubmitting(false)
+                            typeof window !== 'undefined' && window.gtag('event', 'quote')
                             setTimeout(() => {
                                 setMessageAlert(false)
                             }, 4000)

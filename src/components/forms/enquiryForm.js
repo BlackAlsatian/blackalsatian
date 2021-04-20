@@ -54,6 +54,7 @@ const EnquiryForm = ({ buttonBackground, btnColor, formStyle, buttonName, errorC
                             setMessageAlert(true)
                             actions.resetForm()
                             actions.setSubmitting(false)
+                            typeof window !== 'undefined' && window.gtag('event', 'enquiry')
                             setTimeout(() => {
                                 setMessageAlert(false)
                             }, 4000)

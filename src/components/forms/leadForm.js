@@ -49,6 +49,7 @@ const LeadForm = ({ buttonBackground, btnColor, formStyle, buttonName }) => {
                             setMessageAlert(true)
                             actions.resetForm()
                             actions.setSubmitting(false)
+                            typeof window !== 'undefined' && window.gtag('event', 'lead')
                             setTimeout(() => {
                                 setMessageAlert(false)
                             }, 4000)
