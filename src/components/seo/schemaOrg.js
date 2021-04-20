@@ -17,10 +17,11 @@ export default React.memo(
         const baseSchema = [
             {
                 '@context': 'http://schema.org',
-                '@type': 'WebSite',
+                '@type': 'Organization',
+                name: organization.name,
                 url,
-                name: title,
-                alternateName: defaultTitle,
+                alternateName: title,
+                logo: organization.logo,
             },
         ]
 
@@ -65,10 +66,10 @@ export default React.memo(
                           name: organization.name,
                       },
                       mainEntityOfPage: {
-                          '@type': 'WebSite',
+                          '@type': 'Article',
                           '@id': canonicalUrl,
                       },
-                      datePublished,
+                      datePublished: datePublished,
                   },
               ]
             : baseSchema
