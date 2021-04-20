@@ -26,6 +26,7 @@ const BlogPostTemplate = ({ data: { previous, next, post }, pageContext }) => {
                 featuredImage={post.featuredImage.node.og.childImageSharp.fluid.src}
                 url={post.uri}
                 author={post.author.node.firstName + ` ` + post.author.node.lastName}
+                datePublished={post.date}
                 isBlogPost
             />
 
