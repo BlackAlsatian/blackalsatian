@@ -21,7 +21,7 @@ export default React.memo(
                 name: organization.name,
                 url,
                 alternateName: title,
-                logo: organization.logo,
+                logo: organization.url + organization.logo,
             },
         ]
 
@@ -62,7 +62,7 @@ export default React.memo(
                       publisher: {
                           '@type': 'Organization',
                           url: organization.url,
-                          logo: organization.logo,
+                          logo: organization.url + organization.logo,
                           name: organization.name,
                       },
                       mainEntityOfPage: {
