@@ -41,7 +41,7 @@ const EnquiryForm = ({ buttonBackground, btnColor, formStyle, buttonName, errorC
             }}
             validationSchema={EnquiryFormSchema}
             onSubmit={(values, actions) => {
-                console.log(values)
+                // console.log(values)
                 axios({
                     method: 'post',
                     url: `${process.env.GATSBY_API_URL}`,
