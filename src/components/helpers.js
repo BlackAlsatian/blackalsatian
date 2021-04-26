@@ -73,3 +73,26 @@ export function isOdd(number) {
 
 // RegEx for phone number validation
 export const phoneRegExp = /^(\+?\d{0,4})?\s?-?\s?(\(?\d{3}\)?)\s?-?\s?(\(?\d{3}\)?)\s?-?\s?(\(?\d{4}\)?)?$/
+
+// Fire Google Analtycis tag
+export const sendGA = (context) => {
+    if (process.env.NODE_ENV !== 'production') {
+        console.log('Development')
+        console.log('GTag fired!')
+    } else {
+        // console.log('Production')
+        if (typeof window !== 'undefined') {
+            window.gtag('event', context)
+        }
+    }
+}
+
+// Get lead info
+export const leadInfo = () => {
+    let referrerUrl = typeof window !== 'undefined' && window.location.origin
+    let pathUrl = typeof window !== 'undefined' && window.location.pathname
+
+    const leadInfo = { referrerUrl, pathUrl }
+
+    return leadInfo
+}

@@ -1,10 +1,12 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
+import { Link } from 'gatsby'
 import { Label, Input, Box, Button, Heading, Spinner, Alert } from 'theme-ui'
 import { useState } from 'react'
 import { Formik } from 'formik'
 import * as Yup from 'yup'
 import axios from 'axios'
+import { sendGA, leadInfo } from '../helpers'
 
 const LeadFormSchema = Yup.object({
     name: Yup.string()
@@ -15,6 +17,9 @@ const LeadFormSchema = Yup.object({
         .email("Hmm, there's something strange about this email address.")
         .max(80, "Wow, now that's a long email address! This field only accepts 80 characters.")
         .required('Oops! You missed this field.'),
+    subscribe: Yup.boolean()
+        .required()
+        .oneOf([true], "Without your permission, we won't be able to contact you. *sad face*"),
 })
 
 const LeadForm = ({ buttonBackground, btnColor, formStyle, buttonName }) => {
@@ -23,15 +28,15 @@ const LeadForm = ({ buttonBackground, btnColor, formStyle, buttonName }) => {
         <Formik
             initialValues={{
                 name: '',
-                number: '',
+                lastname: '',
                 email: '',
-                message: '',
-                status: 'Lead',
-                subscribe: true,
+                status: 'lead',
+                subscribe: false,
+                mailer_sync: true,
                 site: 'blackalsatian.co.za',
-                page: '',
-                source: '',
-                notes: '',
+                page: leadInfo().pathUrl,
+                traffic_source: leadInfo().referrerUrl,
+                tags: 'lead',
             }}
             validationSchema={LeadFormSchema}
             onSubmit={(values, actions) => {
@@ -49,7 +54,7 @@ const LeadForm = ({ buttonBackground, btnColor, formStyle, buttonName }) => {
                             setMessageAlert(true)
                             actions.resetForm()
                             actions.setSubmitting(false)
-                            typeof window !== 'undefined' && window.gtag('event', 'lead')
+                            sendGA('lead')
                             setTimeout(() => {
                                 setMessageAlert(false)
                             }, 4000)
@@ -71,7 +76,7 @@ const LeadForm = ({ buttonBackground, btnColor, formStyle, buttonName }) => {
                         mb={3}
                         variant={formStyle}
                         sx={{
-                            borderBottomColor: formik.errors.name ? 'yellow' : 'white',
+                            borderBottomColor: formik.errors.name ? 'red' : 'white',
                             '&:focus': { color: 'black' },
                         }}
                         {...formik.getFieldProps('name')}
@@ -79,7 +84,7 @@ const LeadForm = ({ buttonBackground, btnColor, formStyle, buttonName }) => {
                     {formik.touched.name && formik.errors.name ? (
                         <div
                             sx={{
-                                color: 'yellow',
+                                color: 'red',
                                 fontSize: '0.8rem',
                                 fontWeight: 'bold',
                                 pb: 3,
@@ -88,6 +93,37 @@ const LeadForm = ({ buttonBackground, btnColor, formStyle, buttonName }) => {
                             {formik.errors.name}
                         </div>
                     ) : null}
+
+                    <Label
+                        htmlFor='lastname'
+                        sx={{
+                            opacity: 0,
+                            position: 'absolute',
+                            top: 0,
+                            left: 0,
+                            height: 0,
+                            width: 0,
+                            zIndex: -1,
+                        }}
+                    >
+                        Lastname
+                    </Label>
+                    <Input
+                        id='lastname'
+                        name='lastname'
+                        type='text'
+                        sx={{
+                            opacity: 0,
+                            position: 'absolute',
+                            top: 0,
+                            left: 0,
+                            height: 0,
+                            width: 0,
+                            zIndex: -1,
+                        }}
+                        autocomplete='off'
+                    />
+
                     <Label htmlFor='email'>Email</Label>
                     <Input
                         id='email'
@@ -96,7 +132,7 @@ const LeadForm = ({ buttonBackground, btnColor, formStyle, buttonName }) => {
                         mb={3}
                         variant={formStyle}
                         sx={{
-                            borderBottomColor: formik.errors.email ? 'yellow' : 'white',
+                            borderBottomColor: formik.errors.email ? 'red' : 'white',
                             '&:focus': { color: 'black' },
                         }}
                         {...formik.getFieldProps('email')}
@@ -104,7 +140,7 @@ const LeadForm = ({ buttonBackground, btnColor, formStyle, buttonName }) => {
                     {formik.touched.email && formik.errors.email ? (
                         <div
                             sx={{
-                                color: 'yellow',
+                                color: 'red',
                                 fontSize: '0.8rem',
                                 fontWeight: 'bold',
                                 pb: 3,
@@ -113,7 +149,7 @@ const LeadForm = ({ buttonBackground, btnColor, formStyle, buttonName }) => {
                             {formik.errors.email}
                         </div>
                     ) : null}
-                    <Box {...formik.getFieldProps('subscribe')}>
+                    <Box {...formik.getFieldProps('subscribe')} mb={3}>
                         <Heading
                             as='h4'
                             sx={{
@@ -121,7 +157,7 @@ const LeadForm = ({ buttonBackground, btnColor, formStyle, buttonName }) => {
                                 pb: 2,
                             }}
                         >
-                            Are you OK with us emailing you?
+                            Yes, I'd like to receive emails from Black Alsatian
                         </Heading>
                         <Label htmlFor='subscribe'>
                             <Box
@@ -129,9 +165,10 @@ const LeadForm = ({ buttonBackground, btnColor, formStyle, buttonName }) => {
                                 type='checkbox'
                                 id='subscribe'
                                 name='subscribe'
-                                defaultChecked={true}
+                                defaultChecked={false}
+                                value={formik.values.subscribe}
                                 sx={{
-                                    mr: 3,
+                                    // mr: 3,
                                     mb: 3,
                                     cursor: 'pointer',
                                     WebkitAppearance: 'none',
@@ -140,8 +177,9 @@ const LeadForm = ({ buttonBackground, btnColor, formStyle, buttonName }) => {
                                     outline: 0,
                                     height: 6,
                                     width: 6,
+                                    minWidth: 6,
                                     border: '2px solid',
-                                    borderColor: 'white',
+                                    borderColor: 'black',
                                     display: 'inline-block',
                                     ':checked': {
                                         bg: 'transparent',
@@ -151,7 +189,7 @@ const LeadForm = ({ buttonBackground, btnColor, formStyle, buttonName }) => {
                                     ':after': {
                                         content: "'✓'",
                                         transform: 'scale(2)',
-                                        color: 'white',
+                                        color: 'black',
                                         fontWeight: 'black',
                                         display: 'none',
                                         position: 'absolute',
@@ -166,9 +204,41 @@ const LeadForm = ({ buttonBackground, btnColor, formStyle, buttonName }) => {
                                     },
                                 }}
                             />
-                            Yes! I'd love to keep in touch with Black Alsatian.
+                            <span sx={{ fontSize: '0.75rem', paddingLeft: '0.3rem' }}>
+                                We save the information you submit through this form for the sole purpose of contacting
+                                you. You can read our{' '}
+                                <Link
+                                    to='/privacy-policy/'
+                                    title='Black Alsatian Privacy Policy'
+                                    sx={{ color: 'black', '&:hover': { textDecoration: 'none' } }}
+                                >
+                                    Privacy Policy
+                                </Link>{' '}
+                                and{' '}
+                                <Link
+                                    to='/terms-of-use/'
+                                    title='Black Alsatian Terms of Use'
+                                    sx={{ color: 'black', '&:hover': { textDecoration: 'none' } }}
+                                >
+                                    Terms of Use
+                                </Link>{' '}
+                                for more info.
+                            </span>
                         </Label>
                     </Box>
+                    {formik.touched.subscribe && formik.errors.subscribe ? (
+                        <div
+                            sx={{
+                                color: 'red',
+                                fontSize: '0.8rem',
+                                fontWeight: 'bold',
+                                pb: 3,
+                            }}
+                        >
+                            {formik.errors.subscribe}
+                        </div>
+                    ) : null}
+
                     {messageAlert && (
                         <Alert
                             sx={{

@@ -1,11 +1,12 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
+import { Link } from 'gatsby'
 import { Label, Input, Textarea, Box, Button, Spinner, Alert } from 'theme-ui'
 import { useState } from 'react'
 import { Formik } from 'formik'
 import * as Yup from 'yup'
 import axios from 'axios'
-import { phoneRegExp } from '../helpers'
+import { phoneRegExp, sendGA, leadInfo } from '../helpers'
 
 const EnquiryFormSchema = Yup.object({
     name: Yup.string()
@@ -28,18 +29,19 @@ const EnquiryForm = ({ buttonBackground, btnColor, formStyle, buttonName, errorC
         <Formik
             initialValues={{
                 name: '',
+                lastname: '',
                 number: '',
                 email: '',
                 message: '',
-                status: 'Enquiry',
-                subscribe: false,
+                status: 'lead',
                 site: 'blackalsatian.co.za',
-                page: '',
-                source: '',
-                notes: '',
+                page: leadInfo().pathUrl,
+                traffic_source: leadInfo().referrerUrl,
+                tags: 'enquiry',
             }}
             validationSchema={EnquiryFormSchema}
             onSubmit={(values, actions) => {
+                console.log(values)
                 axios({
                     method: 'post',
                     url: `${process.env.GATSBY_API_URL}`,
@@ -54,7 +56,7 @@ const EnquiryForm = ({ buttonBackground, btnColor, formStyle, buttonName, errorC
                             setMessageAlert(true)
                             actions.resetForm()
                             actions.setSubmitting(false)
-                            typeof window !== 'undefined' && window.gtag('event', 'enquiry')
+                            sendGA('enquiry')
                             setTimeout(() => {
                                 setMessageAlert(false)
                             }, 4000)
@@ -94,6 +96,37 @@ const EnquiryForm = ({ buttonBackground, btnColor, formStyle, buttonName, errorC
                             {formik.errors.name}
                         </div>
                     ) : null}
+
+                    <Label
+                        htmlFor='lastname'
+                        sx={{
+                            opacity: 0,
+                            position: 'absolute',
+                            top: 0,
+                            left: 0,
+                            height: 0,
+                            width: 0,
+                            zIndex: -1,
+                        }}
+                    >
+                        Lastname
+                    </Label>
+                    <Input
+                        id='lastname'
+                        name='lastname'
+                        type='text'
+                        sx={{
+                            opacity: 0,
+                            position: 'absolute',
+                            top: 0,
+                            left: 0,
+                            height: 0,
+                            width: 0,
+                            zIndex: -1,
+                        }}
+                        autocomplete='off'
+                    />
+
                     <Label htmlFor='number'>Number</Label>
                     <Input
                         id='number'
@@ -176,6 +209,26 @@ const EnquiryForm = ({ buttonBackground, btnColor, formStyle, buttonName, errorC
                             {formik.errors.message}
                         </div>
                     ) : null}
+                    <div sx={{ fontSize: '0.75rem', paddingBottom: 3 }}>
+                        We save the information you submit through this form for the sole purpose of contacting you
+                        regarding your query. You can read our{' '}
+                        <Link
+                            to='/privacy-policy/'
+                            title='Black Alsatian Privacy Policy'
+                            sx={{ '&:hover': { textDecoration: 'none' } }}
+                        >
+                            Privacy Policy
+                        </Link>{' '}
+                        and{' '}
+                        <Link
+                            to='/terms-of-use/'
+                            title='Black Alsatian Terms of Use'
+                            sx={{ '&:hover': { textDecoration: 'none' } }}
+                        >
+                            Terms of Use
+                        </Link>{' '}
+                        for more info.
+                    </div>
                     {messageAlert && (
                         <Alert
                             sx={{

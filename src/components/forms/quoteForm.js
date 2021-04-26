@@ -6,7 +6,7 @@ import { useState } from 'react'
 import { Formik } from 'formik'
 import * as Yup from 'yup'
 import axios from 'axios'
-import { phoneRegExp } from '../helpers'
+import { phoneRegExp, sendGA, leadInfo } from '../helpers'
 
 const QuoteFormSchema = Yup.object({
     name: Yup.string()
@@ -22,27 +22,10 @@ const QuoteFormSchema = Yup.object({
         .max(80, "Wow, now that's a long email address! This field only accepts 80 characters.")
         .required('Oops! You missed this field.'),
     message: Yup.string().min(40, 'Was that all? At least 40 characters are required.').required('How may we assist?'),
-    privacy_policy: Yup.boolean()
-        .required()
-        .oneOf([true], "Without your permission, we won't be able to contact you. *sad face*"),
 })
-
-const sendGA = () => {
-    if (process.env.NODE_ENV !== 'production') {
-        console.log('Development')
-        console.log('GTag fired!')
-    } else {
-        // console.log('Production')
-        if (typeof window !== 'undefined') {
-            window.gtag('event', 'quote')
-        }
-    }
-}
 
 const QuoteForm = ({ buttonBackground, btnColor, formStyle, buttonName }) => {
     const [messageAlert, setMessageAlert] = useState(false)
-    let referrerUrl = typeof window !== 'undefined' && window.location.origin
-    let pathUrl = typeof window !== 'undefined' && window.location.pathname
     return (
         <Formik
             initialValues={{
@@ -52,10 +35,9 @@ const QuoteForm = ({ buttonBackground, btnColor, formStyle, buttonName }) => {
                 number: '',
                 message: '',
                 status: 'lead',
-                privacy_policy: false,
                 site: 'blackalsatian.co.za',
-                page: pathUrl,
-                traffic_source: referrerUrl,
+                page: leadInfo().pathUrl,
+                traffic_source: leadInfo().referrerUrl,
                 tags: 'quote',
             }}
             validationSchema={QuoteFormSchema}
@@ -75,7 +57,7 @@ const QuoteForm = ({ buttonBackground, btnColor, formStyle, buttonName }) => {
                             setMessageAlert(true)
                             actions.resetForm()
                             actions.setSubmitting(false)
-                            sendGA()
+                            sendGA('quote')
                             setTimeout(() => {
                                 setMessageAlert(false)
                             }, 4000)
@@ -222,95 +204,26 @@ const QuoteForm = ({ buttonBackground, btnColor, formStyle, buttonName }) => {
                             {formik.errors.message}
                         </div>
                     ) : null}
-
-                    <Label
-                        htmlFor='privacy_policy'
-                        mb={3}
-                        sx={{
-                            display: 'inline-flex',
-                            cursor: 'pointer',
-                            position: 'relative',
-                        }}
-                    >
-                        <span>
-                            <Input
-                                id='privacy_policy'
-                                type='checkbox'
-                                name='privacy_policy'
-                                sx={{
-                                    height: '25px',
-                                    width: '25px',
-                                    display: 'block',
-                                    appearance: 'none',
-                                    border: '1px solid white',
-                                    borderRadius: '4px',
-                                    outline: 'none',
-                                    transitionDuration: '0.3s',
-                                    backgroundColor: 'blue',
-                                    color: 'blue',
-                                    cursor: 'pointer',
-                                    '&:checked': {
-                                        border: '2px solid white',
-                                        backgroundColor: 'white',
-                                    },
-                                    '&:active': {
-                                        border: '2px solid white',
-                                    },
-                                }}
-                                {...formik.getFieldProps('privacy_policy')}
-                            />
-                        </span>
-                        <span
-                            sx={{
-                                color: 'white',
-                                padding: '0.25rem',
-                                fontSize: '0.75rem',
-                                '&::before': {
-                                    content: '"✓"',
-                                    color: 'blue',
-                                    display: 'block',
-                                    position: 'absolute',
-                                    left: '0.5rem',
-                                    top: '0.2rem',
-                                    fontWeight: 'bold',
-                                },
-                            }}
-                        ></span>
-                        <span sx={{ fontSize: '0.75rem', paddingLeft: '0.3rem' }}>
-                            We save the information you submit through this form for the sole purpose of contacting you
-                            regarding your query. You can also read our{' '}
-                            <Link
-                                to='/privacy-policy/'
-                                title='Black Alsatian Privacy Policy'
-                                sx={{ color: 'white', '&:hover': { color: 'offWhite', textDecoration: 'none' } }}
-                            >
-                                Privacy Policy
-                            </Link>{' '}
-                            and{' '}
-                            <Link
-                                to='/terms-of-use/'
-                                title='Black Alsatian Terms of Use'
-                                sx={{ color: 'white', '&:hover': { color: 'offWhite', textDecoration: 'none' } }}
-                            >
-                                Terms of Use
-                            </Link>{' '}
-                            for more info.
-                        </span>
-                    </Label>
-
-                    {formik.touched.privacy_policy && formik.errors.privacy_policy ? (
-                        <div
-                            sx={{
-                                color: 'yellow',
-                                fontSize: '0.8rem',
-                                fontWeight: 'bold',
-                                pb: 3,
-                            }}
+                    <div sx={{ fontSize: '0.75rem', paddingBottom: 3 }}>
+                        We save the information you submit through this form for the sole purpose of contacting you
+                        regarding your query. You can read our{' '}
+                        <Link
+                            to='/privacy-policy/'
+                            title='Black Alsatian Privacy Policy'
+                            sx={{ color: 'white', '&:hover': { textDecoration: 'none' } }}
                         >
-                            {formik.errors.privacy_policy}
-                        </div>
-                    ) : null}
-
+                            Privacy Policy
+                        </Link>{' '}
+                        and{' '}
+                        <Link
+                            to='/terms-of-use/'
+                            title='Black Alsatian Terms of Use'
+                            sx={{ color: 'white', '&:hover': { textDecoration: 'none' } }}
+                        >
+                            Terms of Use
+                        </Link>{' '}
+                        for more info.
+                    </div>
                     {messageAlert && (
                         <Alert
                             sx={{
