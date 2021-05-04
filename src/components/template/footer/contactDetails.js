@@ -39,7 +39,7 @@ const ContactDetails = ({ textcolor }) => {
                 </div>
                 <div sx={{ p: 2 }}>
                     <a
-                        href='tel:+27 83 276 8640'
+                        href='tel:+27 87 821 7172'
                         title='Click to call'
                         sx={{
                             color: 'inherit',
@@ -47,7 +47,7 @@ const ContactDetails = ({ textcolor }) => {
                             mt: 0,
                         }}
                     >
-                        +27 83 276 8640
+                        087 821 7172
                     </a>
                 </div>
             </div>
