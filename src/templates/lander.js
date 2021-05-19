@@ -4,8 +4,10 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import ComponentParser from '../components/componentParser'
 import SEO from '../components/seo'
+import HeroBlock from '../components/template/blocks/heroBlock'
 
 const LanderTemplate = ({ data: { lander } }) => {
+    const heroAttributes = lander.blocks[0].innerBlocks[0].attributes
     return (
         <>
             <SEO
@@ -13,6 +15,12 @@ const LanderTemplate = ({ data: { lander } }) => {
                 description={lander.seo.metaDesc}
                 url={lander.uri}
                 featuredImage={lander.featuredImage && lander.featuredImage.node.og.childImageSharp.fluid.src}
+            />
+            <HeroBlock
+                featuredImage={lander.featuredImage}
+                color={heroAttributes.heroFontColor}
+                title={heroAttributes.heroTitle}
+                intro={heroAttributes.heroIntro}
             />
             <ComponentParser blocks={lander.blocks} featuredImage={lander.featuredImage} />
         </>

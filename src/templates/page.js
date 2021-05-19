@@ -7,6 +7,7 @@ import ComponentParser from '../components/componentParser'
 import SEO from '../components/seo'
 import PageHeader from '../components/template/pageHeader'
 import LeftColumn from '../components/template/elements/leftColumn'
+import HeroBlock from '../components/template/blocks/heroBlock'
 
 const PageTemplate = ({ data: { page }, pageContext }) => {
     const pageStyle = pageContext.style
@@ -14,6 +15,11 @@ const PageTemplate = ({ data: { page }, pageContext }) => {
     if (pageStyle === 'red') {
         bodyFontColor = 'white'
     }
+    // const heroAttributes = page.blocks[0]?.innerBlocks[0]?.attributes
+    // console.log('Page - heroattributes:', heroAttributes)
+    // console.log('Page - [0]:', page.blocks[0])
+    const pageBlocks = page.blocks
+    // console.log('Page - pageblocks:', pageBlocks)
     return (
         <>
             <SEO
@@ -60,7 +66,17 @@ const PageTemplate = ({ data: { page }, pageContext }) => {
                     </section>
                 </>
             ) : (
-                <ComponentParser blocks={page.blocks} featuredImage={page.featuredImage} />
+                <>
+                    {page.blocks[0]?.innerBlocks[0]?.attributes && (
+                        <HeroBlock
+                            featuredImage={page.featuredImage}
+                            color={page.blocks[0]?.innerBlocks[0]?.attributes?.heroFontColor}
+                            title={page.blocks[0]?.innerBlocks[0]?.attributes?.heroTitle}
+                            intro={page.blocks[0]?.innerBlocks[0]?.attributes?.heroIntro}
+                        />
+                    )}
+                    <ComponentParser blocks={pageBlocks} />
+                </>
             )}
         </>
     )

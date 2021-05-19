@@ -4,7 +4,7 @@ import CustomBlock from '../components/customBlock'
 
 const ComponentParser = (props) => {
     const { blocks, featuredImage } = props
-
+    // console.log('componentparsers', blocks)
     return (
         <>
             {blocks &&

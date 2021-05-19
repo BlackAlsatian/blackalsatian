@@ -5,6 +5,7 @@ import { getForm } from '../getForm'
 import LeftColumn from '../template/elements/leftColumn'
 
 const ContentBlock = (props) => {
+    // console.log('blocksection:', props)
     const backgroundColor = props.backgroundColor
     const color = props.color
     const anchor = props.anchor

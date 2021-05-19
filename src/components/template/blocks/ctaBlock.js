@@ -2,6 +2,7 @@ import React from 'react'
 import BlockSection from '../blockSection'
 
 const CTABlock = (props) => {
+    // console.log('ctablock:', props)
     const {
         anchor,
         backgroundColor,
@@ -14,6 +15,8 @@ const CTABlock = (props) => {
         buttonUrl,
         text,
     } = props
+    const copy = text[0].innerBlocks
+    // console.log('text from ctablock', copy)
     return (
         <BlockSection
             backgroundColor={backgroundColor}
@@ -21,7 +24,7 @@ const CTABlock = (props) => {
             anchor={anchor}
             heading={heading}
             title={title}
-            text={text}
+            text={copy}
             option={option}
             buttonBackground={buttonBackground}
             buttonName={buttonName}
