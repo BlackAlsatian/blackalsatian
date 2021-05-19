@@ -74,7 +74,7 @@ export function isOdd(number) {
 // RegEx for phone number validation
 export const phoneRegExp = /^(\+?\d{0,4})?\s?-?\s?(\(?\d{3}\)?)\s?-?\s?(\(?\d{3}\)?)\s?-?\s?(\(?\d{4}\)?)?$/
 
-// Fire Google Analtycis tag
+// Fire Google Analytics tag
 export const sendGA = (context) => {
     if (process.env.NODE_ENV !== 'production') {
         console.log('Development')
