@@ -5,30 +5,29 @@ import CTABlock from './ctaBlock'
 
 const CoverBlock = (props) => {
     const { attributes, featuredImage, innerBlocks } = props
-    if (innerBlocks[0].name === 'blackalsatian/hero-block') {
+    const block = innerBlocks[0]
+    if (block.name === 'blackalsatian/hero-block') {
         return (
             <HeroBlock
                 featuredImage={featuredImage}
-                color={innerBlocks[0].attributes.heroFontColor}
-                anchor={attributes.anchor}
-                title={innerBlocks[0].attributes.heroTitle}
-                intro={innerBlocks[0].attributes.heroIntro}
-                heading={innerBlocks[0].attributes.heading}
+                color={block.attributes.heroFontColor}
+                title={block.attributes.heroTitle}
+                intro={block.attributes.heroIntro}
             />
         )
     }
     return (
         <CTABlock
             backgroundColor={attributes.overlayColor}
-            color={innerBlocks[0].attributes.color}
+            color={block.attributes.color}
             anchor={attributes.anchor}
-            title={innerBlocks[0].attributes.title}
-            heading={innerBlocks[0].attributes.heading}
-            text={innerBlocks[0].innerBlocks}
-            option={innerBlocks[0].attributes.option}
-            buttonBackground={innerBlocks[0].attributes.buttonBackgroundColor}
-            buttonName={innerBlocks[0].attributes.buttonName}
-            buttonUrl={innerBlocks[0].attributes.buttonUrl}
+            title={block.attributes.title}
+            heading={block.attributes.heading}
+            text={block.innerBlocks}
+            option={block.attributes.option}
+            buttonBackground={block.attributes.buttonBackgroundColor}
+            buttonName={block.attributes.buttonName}
+            buttonUrl={block.attributes.buttonUrl}
         />
     )
 }

@@ -7,7 +7,6 @@ import ComponentParser from '../components/componentParser'
 import SEO from '../components/seo'
 import PageHeader from '../components/template/pageHeader'
 import LeftColumn from '../components/template/elements/leftColumn'
-// import { handleBodyTextColor } from '../components/helpers'
 
 const PageTemplate = ({ data: { page }, pageContext }) => {
     const pageStyle = pageContext.style
