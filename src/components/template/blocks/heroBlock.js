@@ -13,7 +13,7 @@ const HeroBlock = (props) => {
             fluid={featuredImage.node.main.childImageSharp.fluid}
             backgroundColor='white'
             // durationFadeIn={200}
-            fadeIn={false}
+            fadeIn='false'
             loading='eager'
             sx={{
                 display: 'flex',

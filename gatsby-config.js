@@ -57,8 +57,37 @@ module.exports = {
     // (Umbrella Issue (​https://github.com/gatsbyjs/gatsby/discussions/27603​)) · Don`t process images during development until they`re requested from the browser. Speeds starting the develop server.
     // },
     plugins: [
+        `gatsby-plugin-preact`,
         // See https://www.gatsbyjs.com/plugins/gatsby-plugin-react-helmet/?=gatsby-plugin-react-helmet
+        {
+            resolve: `gatsby-plugin-preconnect`,
+            options: {
+                domains: [`https://www.googletagmanager.com`],
+            },
+        },
+        {
+            resolve: `gatsby-plugin-google-gtag`,
+            options: {
+                // You can add multiple tracking ids and a pageview event will be fired for all of them.
+                trackingIds: [
+                    process.env.GATSBY_GA_TRACKING_ID, // Google Analytics / GA
+                    // "AW-CONVERSION_ID",  Google Ads / Adwords / AW
+                ],
+                pluginConfig: {
+                    // Puts tracking script in the head instead of the body
+                    head: true,
+                },
+            },
+        },
         `gatsby-plugin-react-helmet`,
+        `gatsby-plugin-theme-ui`,
+        // `gatsby-theme-style-guide`,
+        {
+            resolve: `gatsby-plugin-transition-link`,
+            options: {
+                layout: require.resolve(`./src/components/layout.js`),
+            },
+        },
         {
             resolve: `gatsby-source-wordpress-experimental`,
             options: {
@@ -109,48 +138,8 @@ module.exports = {
                 path: `${__dirname}/src/assets/images`,
             },
         },
-        {
-            resolve: `@slixites/gatsby-plugin-google-fonts`,
-            options: {
-                fonts: [`Montserrat:200,400,400i,700,800,900`],
-                display: `swap`,
-                preconnect: true,
-                attributes: {
-                    rel: `stylesheet preload prefetch`,
-                    as: `style`,
-                },
-            },
-        },
-        `gatsby-plugin-theme-ui`,
-        // `gatsby-theme-style-guide`,
-        {
-            resolve: `gatsby-plugin-transition-link`,
-            options: {
-                layout: require.resolve(`./src/components/layout.js`),
-            },
-        },
-        {
-            resolve: `gatsby-plugin-sitemap`,
-            options: {
-                exclude: [`/portfolio/*`, `/style-guide`],
-            },
-        },
         `gatsby-transformer-sharp`,
         `gatsby-plugin-sharp`,
-        {
-            resolve: `gatsby-plugin-google-gtag`,
-            options: {
-                // You can add multiple tracking ids and a pageview event will be fired for all of them.
-                trackingIds: [
-                    process.env.GATSBY_GA_TRACKING_ID, // Google Analytics / GA
-                    // "AW-CONVERSION_ID",  Google Ads / Adwords / AW
-                ],
-                pluginConfig: {
-                    // Puts tracking script in the head instead of the body
-                    head: true,
-                },
-            },
-        },
         {
             // See https://www.gatsbyjs.com/plugins/gatsby-plugin-manifest/?=gatsby-plugin-manifest
             resolve: `gatsby-plugin-manifest`,
@@ -224,6 +213,13 @@ module.exports = {
             },
         },
         `gatsby-plugin-loadable-components-ssr`,
+        {
+            resolve: `gatsby-plugin-sitemap`,
+            options: {
+                exclude: [`/portfolio/*`, `/style-guide`],
+            },
+        },
+        `gatsby-plugin-gatsby-cloud`,
         /**
          * this (optional) plugin enables Progressive Web App + Offline functionality
          * To learn more, visit: https://gatsby.dev/offline

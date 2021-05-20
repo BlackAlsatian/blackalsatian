@@ -7,6 +7,13 @@ import Footer from './template/footer'
 import PlaceholderLoader from '../components/placeholderLoader'
 // import { useThemeUI } from 'theme-ui'
 
+import '@fontsource/montserrat/200.css'
+import '@fontsource/montserrat/400.css'
+import '@fontsource/montserrat/400-italic.css'
+import '@fontsource/montserrat/700.css'
+import '@fontsource/montserrat/800.css'
+import '@fontsource/montserrat/900.css'
+
 if (typeof window !== 'undefined') {
     // Make scroll behavior of internal links smooth
     // eslint-disable-next-line global-require
