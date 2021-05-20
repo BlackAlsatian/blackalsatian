@@ -40,12 +40,13 @@ const LeadForm = ({ buttonBackground, btnColor, formStyle, buttonName }) => {
             }}
             validationSchema={LeadFormSchema}
             onSubmit={(values, actions) => {
+                // console.log(values)
                 axios({
                     method: 'post',
                     url: `${process.env.GATSBY_API_URL}`,
                     headers: {
-                        Accept: 'Application/json',
-                        'Content-type': 'Application/json',
+                        Accept: 'application/json',
+                        'Content-Type': 'application/json',
                     },
                     data: JSON.stringify(values),
                 }).then(
@@ -59,6 +60,7 @@ const LeadForm = ({ buttonBackground, btnColor, formStyle, buttonName }) => {
                                 setMessageAlert(false)
                             }, 4000)
                         }
+                        // console.log(response)
                     },
                     (error) => {
                         console.log(error)

@@ -46,8 +46,8 @@ const QuoteForm = ({ buttonBackground, btnColor, formStyle, buttonName }) => {
                     method: 'post',
                     url: `${process.env.GATSBY_API_URL}`,
                     headers: {
-                        Accept: 'Application/json',
-                        'Content-type': 'Application/json',
+                        Accept: 'application/json',
+                        'Content-Type': 'application/json',
                     },
                     data: JSON.stringify(values),
                 }).then(
