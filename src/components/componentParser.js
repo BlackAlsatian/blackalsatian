@@ -28,13 +28,13 @@ const ComponentParser = (props) => {
                             <ContentBlock attributes={attributes} innerBlocks={innerBlocks} />
                         )}
 
-                        {/* {__typename === 'WpBlackalsatianServicesBlock' && (
+                        {__typename === 'WpBlackalsatianServicesBlock' && (
                             <LazyLoad height='100%' offSet={150} once placeholder={<PlaceholderLoader />}>
                                 <ServicesBlock />
                             </LazyLoad>
-                        )} */}
+                        )}
 
-                        {__typename === 'WpBlackalsatianServicesBlock' && <ServicesBlock />}
+                        {/* {__typename === 'WpBlackalsatianServicesBlock' && <ServicesBlock />} */}
 
                         {__typename === 'WpBlackalsatianLatestPostsBlock' && (
                             <LazyLoad height='100%' offSet={150} once placeholder={<PlaceholderLoader />}>

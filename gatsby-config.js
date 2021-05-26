@@ -79,6 +79,14 @@ module.exports = {
                 // },
             },
         },
+        {
+            resolve: `gatsby-plugin-loadable-components-ssr`,
+            options: {
+                // Whether replaceHydrateFunction should call ReactDOM.hydrate or ReactDOM.render
+                // Defaults to ReactDOM.render on develop and ReactDOM.hydrate on build
+                useHydrate: true,
+            },
+        },
         `gatsby-plugin-react-helmet`,
         `gatsby-plugin-theme-ui`,
         // `gatsby-theme-style-guide`,
@@ -225,14 +233,6 @@ module.exports = {
                     },
                 ], // Add or remove icon sizes as desired
                 cache_busting_mode: `none`,
-            },
-        },
-        {
-            resolve: `gatsby-plugin-loadable-components-ssr`,
-            options: {
-                // Whether replaceHydrateFunction should call ReactDOM.hydrate or ReactDOM.render
-                // Defaults to ReactDOM.render on develop and ReactDOM.hydrate on build
-                useHydrate: true,
             },
         },
         {
