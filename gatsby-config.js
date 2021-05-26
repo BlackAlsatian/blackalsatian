@@ -227,7 +227,14 @@ module.exports = {
                 cache_busting_mode: `none`,
             },
         },
-        `gatsby-plugin-loadable-components-ssr`,
+        {
+            resolve: `gatsby-plugin-loadable-components-ssr`,
+            options: {
+                // Whether replaceHydrateFunction should call ReactDOM.hydrate or ReactDOM.render
+                // Defaults to ReactDOM.render on develop and ReactDOM.hydrate on build
+                useHydrate: true,
+            },
+        },
         {
             resolve: `gatsby-plugin-sitemap`,
             options: {
