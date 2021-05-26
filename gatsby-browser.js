@@ -1,4 +1,4 @@
-import loadable from '@loadable/component'
+// import loadable from '@loadable/component'
 
 import './src/assets/css/styles.css'
 import '@fontsource/montserrat/200.css'
@@ -8,13 +8,19 @@ import '@fontsource/montserrat/700.css'
 import '@fontsource/montserrat/800.css'
 import '@fontsource/montserrat/900.css'
 
-export const replaceHydrateFunction = () => {
-    return (element, container, callback) => {
-        loadable.loadableReady(() => {
-            ReactDOM.render(element, container, callback)
-        })
-    }
-}
+// export const replaceHydrateFunction = () => {
+//     return (element, container, callback) => {
+//         loadable.loadableReady(() => {
+//             ReactDOM.render(element, container, callback)
+//         })
+//     }
+// }
+
+// export const replaceHydrateFunction = () => (element, container, callback) => {
+//     loadableReady(() => {
+//         hydrate(element, container, callback)
+//     })
+// }
 
 // import React from 'react'
 // import Layout from './src/components/layout'
