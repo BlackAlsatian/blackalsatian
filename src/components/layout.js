@@ -1,10 +1,8 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
 import { useStaticQuery, graphql } from 'gatsby'
-import LazyLoad from 'react-lazyload'
 import Header from './template/header'
 import Footer from './template/footer'
-import PlaceholderLoader from '../components/placeholderLoader'
 // import { useThemeUI } from 'theme-ui'
 
 import '@fontsource/montserrat/200.css'
@@ -69,11 +67,7 @@ const Layout = ({ children, pageContext, location }) => {
             >
                 {children}
             </main>
-            {typeof pageStyle !== 'undefined' && (
-                <LazyLoad height='100%' offSet={150} once placeholder={<PlaceholderLoader />}>
-                    <Footer siteTitle={title} pageStyle={pageStyle} />
-                </LazyLoad>
-            )}
+            {typeof pageStyle !== 'undefined' && <Footer siteTitle={title} pageStyle={pageStyle} />}
         </div>
     )
 }

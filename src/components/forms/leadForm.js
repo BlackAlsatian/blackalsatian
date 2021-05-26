@@ -4,10 +4,11 @@ import { Link } from 'gatsby'
 import { Label, Input, Box, Button, Heading, Spinner, Alert } from 'theme-ui'
 import { useState } from 'react'
 import { Formik } from 'formik'
-import * as Yup from 'yup'
+import { object, string, boolean } from 'yup'
 import axios from 'axios'
 import { sendGA, leadInfo } from '../helpers'
 
+const Yup = { object, string, boolean }
 const LeadFormSchema = Yup.object({
     name: Yup.string()
         .min(3, "That's quite a short name. At least 3 characters are required")

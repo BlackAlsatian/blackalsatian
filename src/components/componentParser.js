@@ -27,26 +27,38 @@ const ComponentParser = (props) => {
                         {__typename === 'WpBlackalsatianContentBlock' && (
                             <ContentBlock attributes={attributes} innerBlocks={innerBlocks} />
                         )}
-                        {__typename === 'WpBlackalsatianServicesBlock' && (
+
+                        {/* {__typename === 'WpBlackalsatianServicesBlock' && (
                             <LazyLoad height='100%' offSet={150} once placeholder={<PlaceholderLoader />}>
                                 <ServicesBlock />
                             </LazyLoad>
-                        )}
+                        )} */}
+
+                        {__typename === 'WpBlackalsatianServicesBlock' && <ServicesBlock />}
+
                         {__typename === 'WpBlackalsatianLatestPostsBlock' && (
                             <LazyLoad height='100%' offSet={150} once placeholder={<PlaceholderLoader />}>
                                 <LatestPostsBlock />
                             </LazyLoad>
                         )}
+
+                        {/* {__typename === 'WpBlackalsatianLatestPostsBlock' && <LatestPostsBlock />} */}
+
                         {__typename === 'WpBlackalsatianFeaturedProjectsBlock' && (
                             <LazyLoad height='100%' offSet={150} once placeholder={<PlaceholderLoader />}>
                                 <FeaturedProjectsBlock />
                             </LazyLoad>
                         )}
+
+                        {/* {__typename === 'WpBlackalsatianFeaturedProjectsBlock' && <FeaturedProjectsBlock />} */}
+
                         {__typename === 'WpBlackalsatianTestimonialsBlock' && (
                             <LazyLoad height='100%' offSet={150} once placeholder={<PlaceholderLoader />}>
                                 <TestimonialsBlock />
                             </LazyLoad>
                         )}
+
+                        {/* {__typename === 'WpBlackalsatianTestimonialsBlock' && <TestimonialsBlock />} */}
                     </Fragment>
                 ))}
         </>

@@ -59,10 +59,9 @@
     "eslint-config-prettier": "^7.2.0",
     "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-react": "^7.23.2",
-    "gatsby-plugin-force-trailing-slashes": "^1.0.5",
     "prettier": "2.2.1"
   },
-  "homepage": "https://www.blackalsatian.co.za/",
+  "homepage": "https://www.blackalsatian.co.za",
   "keywords": [
     "black alsatian",
     "blog",
@@ -74,7 +73,7 @@
   "main": "n/a",
   "repository": {
     "type": "git",
-    "url": "git+https://blackalsatian.co.za/plesk-git/blackalsatian.git"
+    "url": "https://github.com/BlackAlsatian/blackalsatian"
   },
   "scripts": {
     "build": "gatsby build",

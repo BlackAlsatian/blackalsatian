@@ -37,7 +37,7 @@ export const replaceHydrateFunction = () => {
 // }
 
 // Adjust if you need to add a delay before scrolling
-const transitionDelay = 50
+const transitionDelay = 0
 
 export const shouldUpdateScroll = ({ routerProps: { location }, getSavedScrollPosition }) => {
     if (location.action === 'PUSH') {

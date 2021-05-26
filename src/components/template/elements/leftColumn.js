@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx, Box, Heading } from 'theme-ui'
 
-const LeftColumn = ({ heading, title, color, headerSize, page }) => {
+const LeftColumn = ({ heading, title, color, page }) => {
     return (
         <Box
             p={[4, 4, 3, 6]}
@@ -19,7 +19,8 @@ const LeftColumn = ({ heading, title, color, headerSize, page }) => {
         >
             {heading && (
                 <Heading
-                    as={headerSize || 'h3'}
+                    // as={headerSize || 'h2'}
+                    as={'h2'}
                     sx={{
                         fontSize: [4, 3, 4, 5],
                         fontWeight: 'thin',
@@ -33,7 +34,7 @@ const LeftColumn = ({ heading, title, color, headerSize, page }) => {
             )}
             {title && (
                 <Heading
-                    as='h4'
+                    as='h3'
                     sx={{
                         textTransform: 'uppercase',
                         fontSize: 0,

@@ -62,7 +62,7 @@ module.exports = {
         {
             resolve: `gatsby-plugin-preconnect`,
             options: {
-                domains: [`https://www.googletagmanager.com`],
+                domains: [`https://www.googletagmanager.com`, `www.google-analytics.com`],
             },
         },
         {
@@ -73,10 +73,10 @@ module.exports = {
                     process.env.GATSBY_GA_TRACKING_ID, // Google Analytics / GA
                     // "AW-CONVERSION_ID",  Google Ads / Adwords / AW
                 ],
-                pluginConfig: {
-                    // Puts tracking script in the head instead of the body
-                    head: true,
-                },
+                // pluginConfig: {
+                //     // Puts tracking script in the head instead of the body
+                //     head: false,
+                // },
             },
         },
         `gatsby-plugin-react-helmet`,
@@ -122,13 +122,25 @@ module.exports = {
                             requestConcurrency: process.env.GATSBY_REQUEST_CONCURRENCY_IMAGES,
                         },
                     },
+                    Category: {
+                        exclude: true,
+                    },
+                    BlockEditorPreview: {
+                        exclude: true,
+                    },
+                    Comment: {
+                        exclude: true,
+                    },
+                    ReusableBlock: {
+                        exclude: true,
+                    },
+                    UserRole: {
+                        exclude: true,
+                    },
+                    PostFormat: {
+                        exclude: true,
+                    },
                 },
-            },
-        },
-        {
-            resolve: `gatsby-plugin-force-trailing-slashes`,
-            options: {
-                excludedPaths: [`/404.html`],
             },
         },
         {
@@ -182,6 +194,7 @@ module.exports = {
                         src: `/favicon/icon-96x96.png`,
                         sizes: `96x96`,
                         type: `image/png`,
+                        purpose: `any maskable`,
                     },
                     {
                         src: `/favicon/icon-144x144.png`,
@@ -192,6 +205,7 @@ module.exports = {
                         src: `/favicon/icon-192x192.png`,
                         sizes: `192x192`,
                         type: `image/png`,
+                        purpose: `any maskable`,
                     },
                     {
                         src: `/favicon/icon-256x256.png`,
@@ -207,6 +221,7 @@ module.exports = {
                         src: `/favicon/icon-512x512.png`,
                         sizes: `512x512`,
                         type: `image/png`,
+                        purpose: `any maskable`,
                     },
                 ], // Add or remove icon sizes as desired
                 cache_busting_mode: `none`,
@@ -220,20 +235,7 @@ module.exports = {
             },
         },
         // `gatsby-plugin-gatsby-cloud`,
-        /**
-         * this (optional) plugin enables Progressive Web App + Offline functionality
-         * To learn more, visit: https://gatsby.dev/offline
-         */
         `gatsby-plugin-offline`,
-        {
-            resolve: `gatsby-plugin-remove-generator`,
-            options: {
-                // Only remove the Gatsby version number instead of the whole node
-                // removeVersionOnly: true,
-                // Customise the generator string altogether.
-                // Note: This has the highest precedence of the available options.
-                // content: `Lots and lots and lots of late nights, crying, blood, sweat and tears. Fingers coded to the bone.`,
-            },
-        },
+        `gatsby-plugin-remove-generator`,
     ],
 }
