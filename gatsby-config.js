@@ -62,7 +62,7 @@ module.exports = {
         {
             resolve: `gatsby-plugin-preconnect`,
             options: {
-                domains: [`https://www.googletagmanager.com`, `www.google-analytics.com`],
+                domains: [`https://www.googletagmanager.com`, `https://www.google-analytics.com`],
             },
         },
         {
