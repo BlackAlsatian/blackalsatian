@@ -9,12 +9,16 @@ import PageHeader from '../components/template/pageHeader'
 import LeftColumn from '../components/template/elements/leftColumn'
 // import { handleBodyTextColor } from '../components/helpers'
 
-const PageTemplate = ({ data: { page }, pageContext }) => {
+const PageTemplate = ({
+    data: { page, latestPostsBlock, portfolioBlock, servicesBlock, testimonialsBlock },
+    pageContext,
+}) => {
     const pageStyle = pageContext.style
     let bodyFontColor = 'black'
     if (pageStyle === 'red') {
         bodyFontColor = 'white'
     }
+    // console.log(portfolioBlock.nodes)
     return (
         <>
             <SEO
@@ -61,7 +65,14 @@ const PageTemplate = ({ data: { page }, pageContext }) => {
                     </section>
                 </>
             ) : (
-                <ComponentParser blocks={page.blocks} featuredImage={page.featuredImage} />
+                <ComponentParser
+                    blocks={page.blocks}
+                    featuredImage={page.featuredImage}
+                    latestPosts={latestPostsBlock}
+                    portfolio={portfolioBlock}
+                    services={servicesBlock}
+                    testimonials={testimonialsBlock}
+                />
             )}
         </>
     )
@@ -90,9 +101,44 @@ export const pageQuery = graphql`
                 metaDesc
             }
             blocks {
+                name
                 ...CoreCoverblock
                 ...BlackalsatianContentBlock
                 ...BlackalsatianPageMetaBlock
+            }
+        }
+        portfolioBlock: allWpPortfolio(filter: { projectFeatured: { in: "1" } }) {
+            nodes {
+                id
+                uri
+                title
+                excerpt
+                projectFeatured
+                ...PortfolioFeaturedMediaFragment
+            }
+        }
+        servicesBlock: wpMenu(slug: { eq: "services-menu" }) {
+            ...WpMenuItems
+        }
+        latestPostsBlock: allWpPost(limit: 6, filter: { status: { eq: "publish" } }) {
+            nodes {
+                id
+                uri
+                title
+                excerpt
+                ...FeaturedMediaFragment
+            }
+        }
+        testimonialsBlock: allWpTestimonial {
+            nodes {
+                id
+                title
+                content
+                uri
+                slug
+                testimonialRole
+                testimonialCompany
+                testimonialAuthor
             }
         }
     }

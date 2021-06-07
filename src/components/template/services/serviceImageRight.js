@@ -46,7 +46,7 @@ const ServiceImageRight = ({ image, name, description }) => {
                     backgroundColor: 'rgba(255, 255, 255, 0.8)',
                     zIndex: 30,
                     borderRadius: 10,
-                    p: [2, 2, 5],
+                    p: [3, 3, 5],
                     textAlign: 'right',
                 }}
             >

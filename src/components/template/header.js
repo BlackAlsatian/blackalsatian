@@ -1,26 +1,17 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
-import { useState, useEffect } from 'react'
-import { useStaticQuery, graphql, Link } from 'gatsby'
+import { useState, useEffect, useContext } from 'react'
+import { OffCanvasMenuContext } from '../offCanvasMenuProvider'
+import { Link } from 'gatsby'
 // import { handleColor } from '../../components/helpers'
 import MenuIcon from '../menuIcon'
 import OffCanvas from './offCanvasNav'
 import Logo from '../logo'
 import Nav from '../nav'
 
-const Header = ({ pathName }) => {
-    const data = useStaticQuery(graphql`
-        {
-            wpMenu(slug: { eq: "primary-menu" }) {
-                ...WpMenuItems
-            }
-        }
-    `)
-    const navLinks = data.wpMenu.menuItems.nodes
-    const [isOpen, setIsOpen] = useState(false)
-    const handleBurgerMenuClick = () => {
-        setIsOpen(!isOpen)
-    }
+const Header = ({ pathName, menuItems }) => {
+    const navLinks = menuItems
+    const { handleBurgerMenuClick } = useContext(OffCanvasMenuContext)
     const [headerStyle, setHeaderStyle] = useState('white')
     useEffect(() => {
         if (
@@ -52,7 +43,7 @@ const Header = ({ pathName }) => {
                 <Logo color={headerStyle} />
             </Link>
             <Nav navLinks={navLinks} color={headerStyle} />
-            <OffCanvas isOpen={isOpen} handleMenuClick={handleBurgerMenuClick} navLinks={navLinks} />
+            <OffCanvas navLinks={navLinks} />
             <div
                 sx={{
                     position: 'fixed',
@@ -64,7 +55,12 @@ const Header = ({ pathName }) => {
                     zIndex: 30,
                 }}
             >
-                <MenuIcon handleBurgerMenuClick={handleBurgerMenuClick} isOpen={isOpen} color={headerStyle} />
+                <MenuIcon
+                    color={headerStyle}
+                    handleBurgerMenuClick={() => {
+                        handleBurgerMenuClick()
+                    }}
+                />
                 <span
                     sx={{
                         position: 'fixed',

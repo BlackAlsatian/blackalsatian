@@ -1,9 +1,13 @@
 /** @jsx jsx */
 import { jsx, Flex } from 'theme-ui'
 import { Link } from 'gatsby'
+import { useContext } from 'react'
+import { OffCanvasMenuContext } from '../offCanvasMenuProvider'
 import { animated, config, useSpring } from 'react-spring'
 
-const OffCanvas = ({ isOpen, handleMenuClick, navLinks }) => {
+const OffCanvas = ({ navLinks }) => {
+    const { isOpen, handleMenuItemClick } = useContext(OffCanvasMenuContext)
+
     const OffCanvasAnimation = useSpring({
         opacity: isOpen ? 0.9 : 0,
         transform: isOpen ? `translateX(0)` : `translateX(100%)`,
@@ -15,7 +19,9 @@ const OffCanvas = ({ isOpen, handleMenuClick, navLinks }) => {
     })
     return (
         <animated.div
-            onClick={handleMenuClick}
+            onClick={() => {
+                handleMenuItemClick()
+            }}
             sx={{
                 display: 'flex',
                 alignItems: 'center',
@@ -60,7 +66,6 @@ const OffCanvas = ({ isOpen, handleMenuClick, navLinks }) => {
                                     pr: 0,
                                 },
                             }}
-                            onClick={handleMenuClick}
                         >
                             {item.label}
                         </Link>

@@ -154,6 +154,7 @@ export const fragments = graphql`
         }
     }
     fragment BlackalsatianContentBlock on WpBlackalsatianContentBlock {
+        __typename
         name
         attributes {
             className
@@ -165,6 +166,7 @@ export const fragments = graphql`
         }
     }
     fragment BlackalsatianPageMetaBlock on WpBlackalsatianPageMetaBlock {
+        __typename
         name
         attributes {
             subheading
@@ -172,6 +174,7 @@ export const fragments = graphql`
             intro
         }
     }
+    # fragment BlackalsatianFeaturedProjectsBlock on All
     fragment WpMenuItems on WpMenu {
         menuItems {
             nodes {

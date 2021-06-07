@@ -31,13 +31,16 @@ const Layout = ({ children, pageContext, location }) => {
         wp: {
             generalSettings: { title },
         },
+        wpMenu: { menuItems },
     } = useStaticQuery(graphql`
         query LayoutQuery {
             wp {
                 generalSettings {
                     title
-                    description
                 }
+            }
+            wpMenu(slug: { eq: "primary-menu" }) {
+                ...WpMenuItems
             }
         }
     `)
@@ -51,7 +54,7 @@ const Layout = ({ children, pageContext, location }) => {
                 variant: 'layout.' + pageStyle,
             }}
         >
-            <Header pathName={pathName} />
+            <Header pathName={pathName} menuItems={menuItems.nodes} />
             <main
                 sx={{
                     variant: 'layout.main.' + pageStyle,

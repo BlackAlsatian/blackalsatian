@@ -53,6 +53,7 @@ const BlogIndex = ({ data, pageContext: { nextPagePath, previousPagePath, style 
                 >
                     {posts.map((post) => {
                         const title = post.title
+                        const excerpt = post.excerpt
                         const featuredImage = {
                             fluid: post.featuredImage?.node?.tile?.childImageSharp?.fluid,
                             alt: post.featuredImage?.node?.alt || ``,
@@ -102,12 +103,13 @@ const BlogIndex = ({ data, pageContext: { nextPagePath, previousPagePath, style 
                                             width: '100%',
                                             height: '100%',
                                             px: 4,
-                                            py: 5,
+                                            // py: 5,
                                             display: 'flex',
                                             flexDirection: 'column',
                                             justifyContent: 'flex-end',
                                             color: 'white',
                                             backgroundColor: 'rgba(0, 0, 0, 0.6)',
+                                            transition: 'background-color 200ms ease-in',
                                             '&:hover': {
                                                 backgroundColor: 'rgba(0, 0, 0, 0.3)',
                                             },
@@ -117,6 +119,7 @@ const BlogIndex = ({ data, pageContext: { nextPagePath, previousPagePath, style 
                                             {parse(title)}
                                         </Heading>
                                         <small>{post.date}</small>
+                                        {parse(excerpt)}
                                     </div>
                                 </article>
                             </AniLink>

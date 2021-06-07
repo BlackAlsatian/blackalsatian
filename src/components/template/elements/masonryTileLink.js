@@ -22,8 +22,8 @@ const MasonryTileLink = ({ node }) => (
             }}
         >
             <Img
-                fluid={node.featuredImage.node.tile.childImageSharp.fluid}
-                alt={node.featuredImage.node.altText}
+                fluid={node.featuredImage?.node.tile.childImageSharp.fluid}
+                alt={node.featuredImage?.node.altText}
                 style={{
                     display: 'block',
                     position: 'relative',
@@ -43,6 +43,7 @@ const MasonryTileLink = ({ node }) => (
                     justifyContent: 'flex-end',
                     color: 'white',
                     backgroundColor: 'rgba(0, 0, 0, 0.6)',
+                    transition: 'background-color 200ms ease-in',
                     '&:hover': {
                         backgroundColor: 'rgba(0, 0, 0, 0.3)',
                     },

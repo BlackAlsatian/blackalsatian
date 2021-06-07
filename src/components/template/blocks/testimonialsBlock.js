@@ -1,115 +1,93 @@
 /** @jsx jsx */
-import { jsx, Flex, Container } from 'theme-ui'
-import { useState } from 'react'
-import { AnimatePresence, motion } from 'framer-motion'
-// import { useTransition, animated, config } from 'react-spring'
-import { useStaticQuery, graphql } from 'gatsby'
+import { jsx, Heading } from 'theme-ui'
 import parse from 'html-react-parser'
+import LeftApostrophe from '../../icons/leftApostrophe'
+import RightApostrophe from '../../icons/rightApostrophe'
 
-import LeftArrow from '../../arrows/leftArrow'
-import RightArrow from '../../arrows/rightArrow'
-
-const TestimonialsBlock = () => {
-    const data = useStaticQuery(graphql`
-        query TestimonialQuery {
-            allWpTestimonial {
-                nodes {
-                    id
-                    title
-                    content
-                    uri
-                    slug
-                    testimonialRole
-                    testimonialCompany
-                    testimonialAuthor
-                }
-            }
-        }
-    `)
-    const [node, setNode] = useState(0)
-
-    const testimonials = data.allWpTestimonial.nodes.map((node) => (
-        <div key={node.id} sx={{ px: [1, 1, 5], fontStyle: 'oblique' }}>
-            {parse(node.content)}
-            <p sx={{ textAlign: 'right' }}>
-                <i>- {node.testimonialAuthor}</i>
-                {node.testimonialRole && `, ${node.testimonialRole}`}
-                {node.testimonialCompany && ` - ${node.testimonialCompany}`}
-            </p>
-        </div>
-    ))
-
-    const paginate = (newPage) => {
-        if (newPage < 0) {
-            setNode(testimonials.length - 1)
-        } else if (newPage > testimonials.length - 1) {
-            setNode(0)
-        } else {
-            setNode(newPage)
-        }
-    }
+const TestimonialsBlock = ({ testimonials }) => {
+    const heading = 'See What Our Clients Say...'
     return (
         <section
             sx={{
                 width: '100%',
+                minHeight: '100vh',
+                py: 6,
+                zIndex: 20,
+                backgroundColor: 'yellow',
             }}
         >
-            <Container sx={{ maxWidth: ['90%', '90%', '70%'] }}>
-                <Flex
-                    sx={{
-                        alignItems: 'center',
-                        height: '100vh',
-                        width: '100%',
-                        justifyContent: 'space-between',
-                    }}
-                >
-                    <motion.button
-                        key='previous'
-                        onClick={() => paginate(node - 1)}
-                        // className='carousel-btn'
-                        sx={{
-                            border: 0,
-                            bg: 'transparent',
-                            '&:focus': {
-                                outline: 'none',
-                            },
-                            maxWidth: [24, 24, 36],
-                            maxHeight: [24, 24, 36],
-                        }}
-                        whileHover={{
-                            scale: 1.5,
-                            transition: { duration: 0.5 },
-                        }}
-                        aria-label='Previous Testimonial'
-                    >
-                        <LeftArrow color='black' width={24} height={24} />
-                    </motion.button>
-                    <AnimatePresence exitBeforeEnter>
-                        <motion.div>{testimonials[node]}</motion.div>
-                    </AnimatePresence>
-                    <motion.button
-                        key='next'
-                        onClick={() => paginate(node + 1)}
-                        // className='carousel-btn'
-                        sx={{
-                            border: 0,
-                            bg: 'transparent',
-                            '&:focus': {
-                                outline: 'none',
-                            },
-                            maxWidth: [24, 24, 36],
-                            maxHeight: [24, 24, 36],
-                        }}
-                        whileHover={{
-                            scale: 1.5,
-                            transition: { duration: 0.5 },
-                        }}
-                        aria-label='Next Testimonial'
-                    >
-                        <RightArrow color='black' width={24} height={24} />
-                    </motion.button>
-                </Flex>
-            </Container>
+            <div
+                sx={{
+                    width: '100%',
+                    pb: 6,
+                }}
+            >
+                <Heading as='h3' sx={{ ml: [4, 4, 5], fontSize: 5, fontWeight: 'light' }}>
+                    {heading}
+                </Heading>
+            </div>
+            <div
+                sx={{
+                    width: '100%',
+                    columnCount: [1, 2, 3],
+                    columnGap: 4,
+                    counterReset: 'item-counter',
+                    px: 3,
+                }}
+            >
+                {testimonials.nodes.map((testimonial) => {
+                    const content = testimonial.content
+                    return (
+                        <div
+                            key={testimonial.id}
+                            sx={{
+                                height: '100%',
+                                position: 'relative',
+                                transition: 'all .25s ease 0s',
+                                breakInside: 'avoid',
+                                counterIncrement: 'item-counter',
+                                mt: 4,
+                                mb: 4,
+                                '&:first-of-type': {
+                                    mt: 0,
+                                },
+                                boxShadow: 'xl',
+                                display: 'block',
+                            }}
+                        >
+                            <div
+                                sx={{
+                                    width: '100%',
+                                    height: '100%',
+                                    px: 4,
+                                    py: 5,
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    justifyContent: 'flex-end',
+                                    color: 'white',
+                                    backgroundColor: 'black',
+                                    transition: 'background-color 200ms ease-in',
+                                    '&:hover': {
+                                        backgroundColor: 'rgba(0, 0, 0, 0.5)',
+                                    },
+                                }}
+                            >
+                                <LeftApostrophe color='white' width={28} height={28} />
+                                {parse(content)}
+                                <span sx={{ textAlign: 'right' }}>
+                                    <RightApostrophe color='white' width={28} height={28} />
+                                </span>
+
+                                <small sx={{ textAlign: 'right', marginTop: 3 }}>
+                                    <i>- {testimonial.testimonialAuthor}</i>
+                                    {testimonial.testimonialRole && `, ${testimonial.testimonialRole}`}
+                                    {testimonial.testimonialCompany && ` - ${testimonial.testimonialCompany}`}
+                                </small>
+                            </div>
+                        </div>
+                    )
+                })}
+            </div>
         </section>
     )
 }

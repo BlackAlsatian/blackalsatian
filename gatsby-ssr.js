@@ -1,3 +1,4 @@
+import OffCanvasMenuProvider from './src/components/offCanvasMenuProvider'
 // import React from 'react'
 // import Layout from './src/components/layout'
 //
@@ -11,3 +12,5 @@ import '@fontsource/montserrat/400-italic.css'
 import '@fontsource/montserrat/700.css'
 import '@fontsource/montserrat/800.css'
 import '@fontsource/montserrat/900.css'
+
+export const wrapRootElement = OffCanvasMenuProvider
