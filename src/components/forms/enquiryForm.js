@@ -65,7 +65,7 @@ const EnquiryForm = ({ buttonBackground, btnColor, formStyle, buttonName, errorC
                         // console.log(response)
                     },
                     (error) => {
-                        console.log(error)
+                        console.log(error.response)
                     },
                 )
             }}

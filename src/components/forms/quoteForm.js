@@ -65,7 +65,7 @@ const QuoteForm = ({ buttonBackground, btnColor, formStyle, buttonName }) => {
                         }
                     },
                     (error) => {
-                        console.log(error)
+                        console.log(error.response)
                     },
                 )
             }}

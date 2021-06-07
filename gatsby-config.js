@@ -242,7 +242,7 @@ module.exports = {
         //         exclude: [`/portfolio/*`],
         //     },
         // },
-        // `gatsby-plugin-gatsby-cloud`,
+        `gatsby-plugin-gatsby-cloud`,
         `gatsby-plugin-offline`,
         `gatsby-plugin-remove-generator`,
     ],
