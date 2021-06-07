@@ -38,17 +38,19 @@ const MasonryGrid = ({ dataNodes, heading, viewAllLink }) => {
                     <MasonryTileLink key={randomID()} node={node} />
                 ))}
             </div>
-            <div
-                sx={{
-                    width: '100%',
-                    pt: 4,
-                    // pb: 6,
-                    backgroundColor: 'transparent',
-                    textAlign: 'center',
-                }}
-            >
-                <MasonryGridViewAllLink url={viewAllLink} />
-            </div>
+            {viewAllLink && (
+                <div
+                    sx={{
+                        width: '100%',
+                        pt: 4,
+                        // pb: 6,
+                        backgroundColor: 'transparent',
+                        textAlign: 'center',
+                    }}
+                >
+                    <MasonryGridViewAllLink url={viewAllLink} />
+                </div>
+            )}
         </section>
     )
 }

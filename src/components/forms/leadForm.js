@@ -64,7 +64,7 @@ const LeadForm = ({ buttonBackground, btnColor, formStyle, buttonName }) => {
                         // console.log(response)
                     },
                     (error) => {
-                        console.log(error)
+                        console.log(error.response)
                     },
                 )
             }}

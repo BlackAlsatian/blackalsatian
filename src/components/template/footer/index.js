@@ -103,7 +103,7 @@ const Footer = ({ siteTitle, pageStyle }) => {
 
                 <div
                     sx={{
-                        flex: 1,
+                        flex: 2,
                         mx: 1,
                         my: [3, 3, null],
                         textAlign: [null, null, 'center'],

@@ -1,27 +1,10 @@
 /** @jsx jsx */
 import { jsx, Container, Flex, Box } from 'theme-ui'
-import { useStaticQuery, graphql } from 'gatsby'
 import ServiceLink from '../elements/serviceLink'
 import LeftColumn from '../elements/leftColumn'
 
-const ServicesBlock = () => {
-    const data = useStaticQuery(graphql`
-        {
-            # allWpService {
-            #     edges {
-            #         node {
-            #             id
-            #             uri
-            #             title
-            #         }
-            #     }
-            # }
-            wpMenu(slug: { eq: "services-menu" }) {
-                ...WpMenuItems
-            }
-        }
-    `)
-    const serviceLinks = data.wpMenu.menuItems.nodes
+const ServicesBlock = ({ services }) => {
+    const serviceLinks = services.menuItems.nodes
     return (
         <section
             sx={{

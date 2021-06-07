@@ -79,14 +79,14 @@ module.exports = {
                 // },
             },
         },
-        {
-            resolve: `gatsby-plugin-loadable-components-ssr`,
-            options: {
-                // Whether replaceHydrateFunction should call ReactDOM.hydrate or ReactDOM.render
-                // Defaults to ReactDOM.render on develop and ReactDOM.hydrate on build
-                useHydrate: true,
-            },
-        },
+        // {
+        //     resolve: `gatsby-plugin-loadable-components-ssr`,
+        //     options: {
+        //         // Whether replaceHydrateFunction should call ReactDOM.hydrate or ReactDOM.render
+        //         // Defaults to ReactDOM.render on develop and ReactDOM.hydrate on build
+        //         useHydrate: true,
+        //     },
+        // },
         `gatsby-plugin-react-helmet`,
         `gatsby-plugin-theme-ui`,
         // `gatsby-theme-style-guide`,
@@ -97,7 +97,7 @@ module.exports = {
             },
         },
         {
-            resolve: `gatsby-source-wordpress-experimental`,
+            resolve: `gatsby-source-wordpress`,
             options: {
                 // the only required plugin option for Wordpress
                 url: process.env.GATSBY_WPGRAPHQL_URL,
@@ -235,13 +235,14 @@ module.exports = {
                 cache_busting_mode: `none`,
             },
         },
-        {
-            resolve: `gatsby-plugin-sitemap`,
-            options: {
-                exclude: [`/portfolio/*`, `/style-guide`],
-            },
-        },
-        // `gatsby-plugin-gatsby-cloud`,
+        `gatsby-plugin-sitemap`,
+        // {
+        //     resolve: `gatsby-plugin-sitemap`,
+        //     options: {
+        //         exclude: [`/portfolio/*`],
+        //     },
+        // },
+        `gatsby-plugin-gatsby-cloud`,
         `gatsby-plugin-offline`,
         `gatsby-plugin-remove-generator`,
     ],

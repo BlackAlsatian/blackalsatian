@@ -314,6 +314,7 @@ async function getPortfolio({ graphql, reporter }) {
                     }
                     portfolio: node {
                         id
+                        projectFeatured
                         uri
                     }
                     next {
