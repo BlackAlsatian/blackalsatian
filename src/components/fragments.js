@@ -21,7 +21,7 @@ export const fragments = graphql`
                 }
                 tile: localFile {
                     childImageSharp {
-                        fluid(maxWidth: 620, quality: 70) {
+                        fluid(maxWidth: 500, quality: 70) {
                             ...GatsbyImageSharpFluid_withWebp_tracedSVG
                         }
                     }
@@ -84,7 +84,7 @@ export const fragments = graphql`
                 }
                 tile: localFile {
                     childImageSharp {
-                        fluid(maxWidth: 620, quality: 70) {
+                        fluid(maxWidth: 500, quality: 70) {
                             ...GatsbyImageSharpFluid_withWebp_tracedSVG
                         }
                     }
