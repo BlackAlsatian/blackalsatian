@@ -11,6 +11,7 @@ const MasonryGrid = ({ dataNodes, heading, viewAllLink }) => {
                 width: '100%',
                 minHeight: '100vh',
                 my: 6,
+                px: [3, 3, 6],
                 zIndex: 20,
                 backgroundColor: 'white',
             }}

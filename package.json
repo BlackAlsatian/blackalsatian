@@ -15,20 +15,6 @@
     "@theme-ui/preset-tailwind": "^0.9.1",
     "@theme-ui/tailwind": "^0.9.1",
     "axios": "^0.21.1",
-<<<<<<< HEAD
-    "dotenv": "^8.6.0",
-    "formik": "^2.2.8",
-    "framer-motion": "^3.10.6",
-    "gatsby": "^2.32.13",
-    "gatsby-background-image": "^1.5.3",
-    "gatsby-image": "^2.11.0",
-    "gatsby-plugin-gatsby-cloud": "^2.6.0",
-    "gatsby-plugin-google-gtag": "^2.8.0",
-    "gatsby-plugin-loadable-components-ssr": "^2.1.0",
-    "gatsby-plugin-manifest": "^2.12.1",
-    "gatsby-plugin-offline": "^3.10.2",
-    "gatsby-plugin-preact": "^4.7.0",
-=======
     "dotenv": "^10.0.0",
     "formik": "^2.2.8",
     "gatsby": "^3.6.2",
@@ -39,7 +25,6 @@
     "gatsby-plugin-manifest": "^3.6.0",
     "gatsby-plugin-offline": "^4.6.0",
     "gatsby-plugin-preact": "^5.6.0",
->>>>>>> gatsby-upgrade
     "gatsby-plugin-preconnect": "^1.2.0",
     "gatsby-plugin-react-helmet": "^4.6.0",
     "gatsby-plugin-remove-generator": "^1.1.0",
