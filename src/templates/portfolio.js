@@ -13,7 +13,7 @@ const PortfolioIndex = ({ data, pageContext }) => {
     const pageStyle = pageContext.style
     const portfolio = data.allWpPortfolio.nodes
     const page = data.wpPage
-    const seoImgSrc = getSrc(page.featuredImage.node.og)
+    const seoImgSrc = getSrc(page.featuredImage?.node?.og)
     if (!portfolio.length) {
         return (
             <>

@@ -7,7 +7,7 @@ import ComponentParser from '../components/componentParser'
 import SEO from '../components/seo'
 
 const LanderTemplate = ({ data: { lander } }) => {
-    const seoImgSrc = getSrc(lander.featuredImage.node.og)
+    const seoImgSrc = getSrc(lander.featuredImage?.node?.og)
     return (
         <>
             <SEO

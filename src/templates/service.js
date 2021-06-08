@@ -14,7 +14,7 @@ const PageTemplate = ({ data: { previous, next, service }, pageContext }) => {
         fluid: service.featuredImage?.node?.main?.childImageSharp?.gatsbyImageData,
         alt: service.featuredImage?.node?.altText || ``,
     }
-    const seoImgSrc = getSrc(service.featuredImage.node.og)
+    const seoImgSrc = getSrc(service.featuredImage?.node?.og)
     return (
         <>
             <SEO

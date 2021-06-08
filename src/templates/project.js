@@ -11,7 +11,7 @@ import parse from 'html-react-parser'
 
 const ProjectTemplate = ({ data: { previous, portfolio, next }, pageContext }) => {
     const pageStyle = pageContext.style
-    const seoImgSrc = getSrc(portfolio.featuredImage.node.og)
+    const seoImgSrc = getSrc(portfolio.featuredImage?.node?.og)
     return (
         <>
             <SEO
