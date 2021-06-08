@@ -2,6 +2,7 @@
 import { jsx, Container, Flex, Heading, Box } from 'theme-ui'
 import React from 'react'
 import { graphql } from 'gatsby'
+import { getSrc } from 'gatsby-plugin-image'
 import AniLink from 'gatsby-plugin-transition-link/AniLink'
 import parse from 'html-react-parser'
 import SEO from '../components/seo'
@@ -12,6 +13,7 @@ const PortfolioIndex = ({ data, pageContext }) => {
     const pageStyle = pageContext.style
     const portfolio = data.allWpPortfolio.nodes
     const page = data.wpPage
+    const seoImgSrc = getSrc(page.featuredImage.node.og)
     if (!portfolio.length) {
         return (
             <>
@@ -19,7 +21,7 @@ const PortfolioIndex = ({ data, pageContext }) => {
                     title={page.title}
                     description={page.seo.metaDesc}
                     url={page.uri}
-                    featuredImage={page.featuredImage && page.featuredImage.node.og.childImageSharp.fluid.src}
+                    featuredImage={seoImgSrc && seoImgSrc}
                 />
                 <p>No blog projects found.</p>
             </>
@@ -32,7 +34,7 @@ const PortfolioIndex = ({ data, pageContext }) => {
                 title={page.title}
                 description={page.seo.metaDesc}
                 url={page.uri}
-                featuredImage={page.featuredImage && page.featuredImage.node.og.childImageSharp.fluid.src}
+                featuredImage={seoImgSrc && seoImgSrc}
             />
             <PageHeader title={parse(page.title)} intro={page.pageintro} headerStyle={pageStyle} />
 

@@ -7,112 +7,115 @@ export const fragments = graphql`
                 altText
                 main: localFile {
                     childImageSharp {
-                        fluid(maxWidth: 1400, quality: 90) {
-                            ...GatsbyImageSharpFluid_withWebp_tracedSVG
-                        }
+                        gatsbyImageData(
+                            quality: 90
+                            placeholder: TRACED_SVG
+                            layout: FULL_WIDTH
+                            formats: [AUTO, WEBP]
+                            # transformOptions: {
+                            #     # cropFocus: CENTER
+                            #     # grayscale: false
+                            #     # trim: 1.5
+                            #     duotone: {
+                            #         highlight: "#ffffff",
+                            #         shadow: "#000000",
+                            #         opacity: 90
+                            #         }
+                            # }
+                        )
                     }
                 }
                 og: localFile {
                     childImageSharp {
-                        fluid(maxWidth: 1200, quality: 70) {
-                            ...GatsbyImageSharpFluid_withWebp_tracedSVG
-                        }
+                        gatsbyImageData(width: 1200, quality: 70)
                     }
                 }
                 tile: localFile {
                     childImageSharp {
-                        fluid(maxWidth: 500, quality: 70) {
-                            ...GatsbyImageSharpFluid_withWebp_tracedSVG
-                        }
+                        gatsbyImageData(width: 500, quality: 70, placeholder: TRACED_SVG, layout: CONSTRAINED)
                     }
                 }
             }
         }
     }
+
     fragment ServiceMediaFragment on WpService {
         featuredImage {
             node {
                 altText
-                localFile {
+                main: localFile {
                     childImageSharp {
-                        fluid(maxWidth: 1200, quality: 80) {
-                            ...GatsbyImageSharpFluid_withWebp_tracedSVG
-                        }
+                        gatsbyImageData(quality: 80, placeholder: TRACED_SVG, layout: FULL_WIDTH)
+                    }
+                }
+                og: localFile {
+                    childImageSharp {
+                        gatsbyImageData(width: 1200, quality: 70)
                     }
                 }
             }
         }
     }
+
     fragment PageFeaturedMediaFragment on WpPage {
         featuredImage {
             node {
                 altText
                 main: localFile {
                     childImageSharp {
-                        fluid(maxWidth: 1400, quality: 80) {
-                            ...GatsbyImageSharpFluid_withWebp_tracedSVG
-                        }
+                        gatsbyImageData(quality: 80, placeholder: TRACED_SVG, layout: FULL_WIDTH)
                     }
                 }
                 og: localFile {
                     childImageSharp {
-                        fluid(maxWidth: 1200, quality: 70) {
-                            ...GatsbyImageSharpFluid_withWebp_tracedSVG
-                        }
+                        gatsbyImageData(width: 1200, quality: 70)
                     }
                 }
             }
         }
     }
+
     fragment PortfolioFeaturedMediaFragment on WpPortfolio {
         featuredImage {
             node {
                 altText
                 main: localFile {
                     childImageSharp {
-                        fluid(maxWidth: 1400, quality: 80) {
-                            ...GatsbyImageSharpFluid_withWebp_tracedSVG
-                        }
+                        gatsbyImageData(quality: 80, placeholder: TRACED_SVG, layout: FULL_WIDTH)
                     }
                 }
                 og: localFile {
                     childImageSharp {
-                        fluid(maxWidth: 1200, quality: 70) {
-                            ...GatsbyImageSharpFluid_withWebp_tracedSVG
-                        }
+                        gatsbyImageData(width: 1200, quality: 70)
                     }
                 }
                 tile: localFile {
                     childImageSharp {
-                        fluid(maxWidth: 500, quality: 70) {
-                            ...GatsbyImageSharpFluid_withWebp_tracedSVG
-                        }
+                        gatsbyImageData(width: 500, quality: 70, placeholder: TRACED_SVG, layout: CONSTRAINED)
                     }
                 }
             }
         }
     }
+
     fragment LanderFeaturedMediaFragment on WpLander {
         featuredImage {
             node {
                 altText
                 main: localFile {
                     childImageSharp {
-                        fluid(maxWidth: 1400, quality: 80) {
-                            ...GatsbyImageSharpFluid_withWebp_tracedSVG
-                        }
+                        gatsbyImageData(quality: 80, placeholder: TRACED_SVG, layout: FULL_WIDTH)
                     }
                 }
                 og: localFile {
                     childImageSharp {
-                        fluid(maxWidth: 1200, quality: 70) {
-                            ...GatsbyImageSharpFluid_withWebp_tracedSVG
-                        }
+                        gatsbyImageData(width: 1200, quality: 70)
                     }
                 }
             }
         }
     }
+
     fragment CoreCoverblock on WpCoreCoverBlock {
         __typename
         name
@@ -153,6 +156,7 @@ export const fragments = graphql`
             }
         }
     }
+
     fragment BlackalsatianContentBlock on WpBlackalsatianContentBlock {
         __typename
         name
@@ -165,6 +169,7 @@ export const fragments = graphql`
             copy: originalContent
         }
     }
+
     fragment BlackalsatianPageMetaBlock on WpBlackalsatianPageMetaBlock {
         __typename
         name
@@ -174,7 +179,7 @@ export const fragments = graphql`
             intro
         }
     }
-    # fragment BlackalsatianFeaturedProjectsBlock on All
+
     fragment WpMenuItems on WpMenu {
         menuItems {
             nodes {

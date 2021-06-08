@@ -1,40 +1,50 @@
 /** @jsx jsx */
 import { jsx, Container, Heading } from 'theme-ui'
 import parse from 'html-react-parser'
-import BackgroundImage from 'gatsby-background-image'
+import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 
 const HeroBlock = (props) => {
     const { featuredImage } = props
+
+    const featuredImageData = getImage(featuredImage.node.main)
     const { heroFontColor, heroTitle, heroIntro } = props.innerBlocks[0].attributes
-    // const featuredImage = {featuredImage.node.localFile.childImageSharp.fluid}
     return (
-        <BackgroundImage
-            Tag='section'
-            fluid={featuredImage.node.main.childImageSharp.fluid}
+        <section
             backgroundColor='white'
-            // durationFadeIn={200}
-            fadeIn='false'
-            loading='eager'
             sx={{
                 display: 'flex',
+                position: 'relative',
                 alignItems: 'center',
                 width: '100%',
-                // backgroundImage: `url(${backgroundImage})`,
-                backgroundAttachment: 'scroll',
-                backgroundSize: 'cover',
-                backgroundRepeat: 'no-repeat',
-                backgroundPosition: '60% 40%',
                 flexDirection: 'column',
                 minHeight: '100vh',
                 color: `${heroFontColor}`,
-                pt: ['45vh', '45vh', '55vh'],
-                zIndex: 0,
-                '&:before, &:after': {
-                    filter: 'brightness(80%)',
-                },
             }}
         >
-            <Container p={4}>
+            <GatsbyImage
+                image={featuredImageData}
+                alt={featuredImage.node.altText}
+                // durationFadeIn={200}
+                fadeIn='false'
+                loading='eager'
+                objectPosition='60% 40%'
+                backgroundColor='white'
+                backgroundAttachment='scroll'
+                backgroundRepeat='no-repeat'
+                sx={{
+                    position: 'relative',
+                    width: '100%',
+                    minHeight: '100vh',
+                    // zIndex: 0,
+                    filter: 'brightness(80%)',
+                }}
+                // imgStyle={{
+                //     '&:before, &:after': {
+                //         filter: 'brightness(80%)',
+                //     },
+                // }}
+            />
+            <Container p={4} sx={{ position: 'absolute', pt: ['45vh', '45vh', '55vh'], minHeight: '100vh' }}>
                 <Heading
                     as='h1'
                     sx={{
@@ -47,7 +57,7 @@ const HeroBlock = (props) => {
                 </Heading>
                 <p sx={{ fontSize: [3, 4], my: 0, textShadow: '0 0 3rem rgba(0, 0, 0, 0.5)' }}>{parse(heroIntro)}</p>
             </Container>
-        </BackgroundImage>
+        </section>
     )
 }
 

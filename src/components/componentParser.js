@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react'
-import LazyLoad from 'react-lazyload'
+// import LazyLoad from 'react-lazyload'
 import { randomID } from '../components/helpers'
 
 import HeroBlock from './template/blocks/heroBlock'
@@ -9,7 +9,7 @@ import TestimonialsBlock from '../components/template/blocks/testimonialsBlock'
 import FeaturedProjectsBlock from '../components/template/blocks/featuredProjects'
 import ServicesBlock from '../components/template/blocks/servicesBlock'
 import LatestPostsBlock from '../components/template/blocks/latestPostsBlock'
-import PlaceholderLoader from '../components/placeholderLoader'
+// import PlaceholderLoader from '../components/placeholderLoader'
 
 const ComponentParser = (props) => {
     const { blocks, featuredImage, latestPosts, portfolio, services, testimonials } = props
@@ -19,53 +19,50 @@ const ComponentParser = (props) => {
             {blocks &&
                 blocks.map(({ name, attributes, innerBlocks }) => (
                     <Fragment key={randomID()}>
-                        {/* {name === 'WpCoreCoverBlock' && */}
                         {name === 'core/cover' &&
                             (innerBlocks[0].name === 'blackalsatian/hero-block' ? (
                                 <HeroBlock featuredImage={featuredImage} innerBlocks={innerBlocks} />
                             ) : (
                                 <CTABlock attributes={attributes} innerBlocks={innerBlocks} />
                             ))}
-                        {/* {__typename === 'WpBlackalsatianContentBlock' && ( */}
+
                         {name === 'blackalsatian/content-block' && (
                             <ContentBlock attributes={attributes} innerBlocks={innerBlocks} />
                         )}
 
-                        {/* {__typename === 'WpBlackalsatianServicesBlock' && ( */}
-                        {name === 'blackalsatian/services-block' && (
+                        {/* {name === 'blackalsatian/services-block' && (
                             <LazyLoad height='100%' offSet={150} once placeholder={<PlaceholderLoader />}>
                                 <ServicesBlock services={services} />
                             </LazyLoad>
-                        )}
+                        )} */}
 
-                        {/* {__typename === 'WpBlackalsatianServicesBlock' && <ServicesBlock />} */}
+                        {name === 'blackalsatian/services-block' && <ServicesBlock services={services} />}
 
-                        {/* {__typename === 'WpBlackalsatianLatestPostsBlock' && ( */}
-                        {name === 'blackalsatian/latest-posts' && (
+                        {/* {name === 'blackalsatian/latest-posts' && (
                             <LazyLoad height='100%' offSet={150} once placeholder={<PlaceholderLoader />}>
                                 <LatestPostsBlock latestPosts={latestPosts} />
                             </LazyLoad>
-                        )}
+                        )} */}
 
-                        {/* {__typename === 'WpBlackalsatianLatestPostsBlock' && <LatestPostsBlock />} */}
+                        {name === 'blackalsatian/latest-posts' && <LatestPostsBlock latestPosts={latestPosts} />}
 
-                        {/* {__typename === 'WpBlackalsatianFeaturedProjectsBlock' && ( */}
-                        {name === 'blackalsatian/featured-projects' && (
+                        {/* {name === 'blackalsatian/featured-projects' && (
                             <LazyLoad height='100%' offSet={150} once placeholder={<PlaceholderLoader />}>
                                 <FeaturedProjectsBlock portfolio={portfolio} />
                             </LazyLoad>
-                        )}
+                        )} */}
 
-                        {/* {__typename === 'WpBlackalsatianFeaturedProjectsBlock' && <FeaturedProjectsBlock />} */}
+                        {name === 'blackalsatian/featured-projects' && <FeaturedProjectsBlock portfolio={portfolio} />}
 
-                        {/* {__typename === 'WpBlackalsatianTestimonialsBlock' && ( */}
-                        {name === 'blackalsatian/testimonials-block' && (
+                        {/* {name === 'blackalsatian/testimonials-block' && (
                             <LazyLoad height='100%' offSet={150} once placeholder={<PlaceholderLoader />}>
                                 <TestimonialsBlock testimonials={testimonials} />
                             </LazyLoad>
-                        )}
+                        )} */}
 
-                        {/* {__typename === 'WpBlackalsatianTestimonialsBlock' && <TestimonialsBlock />} */}
+                        {name === 'blackalsatian/testimonials-block' && (
+                            <TestimonialsBlock testimonials={testimonials} />
+                        )}
                     </Fragment>
                 ))}
         </>

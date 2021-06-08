@@ -2,6 +2,7 @@
 import { jsx, Container } from 'theme-ui'
 import React from 'react'
 import { graphql } from 'gatsby'
+import { getSrc } from 'gatsby-plugin-image'
 import AniLink from 'gatsby-plugin-transition-link/AniLink'
 import parse from 'html-react-parser'
 import SEO from '../components/seo'
@@ -11,17 +12,20 @@ import ServiceImageRight from '../components/template/services/serviceImageRight
 import { isOdd } from '../components/helpers'
 
 const ServicesIndex = ({ data, pageContext }) => {
+    // console.log(data)
     const pageStyle = pageContext.style
     const services = data.allWpService.nodes
     const page = data.wpPage
+    const seoImgSrc = getSrc(page.featuredImage?.node?.og)
     if (!services.length) {
         return (
             <>
                 <SEO
                     title={page.title}
-                    description={page.seo.metaDesc}
+                    // description='From web development to digital marketing, Black Alsatian offers the full spectrum of web services to make your online brand be in demand.'
+                    description={page.seo?.metaDesc}
                     url={page.uri}
-                    featuredImage={page.featuredImage && page.featuredImage.node.og.childImageSharp.fluid.src}
+                    featuredImage={seoImgSrc && seoImgSrc}
                 />
                 <p>No blog services found.</p>
             </>
@@ -32,9 +36,10 @@ const ServicesIndex = ({ data, pageContext }) => {
         <>
             <SEO
                 title={page.title}
-                description={page.seo.metaDesc}
+                // description='From web development to digital marketing, Black Alsatian offers the full spectrum of web services to make your online brand be in demand.'
+                description={page.seo?.metaDesc}
                 url={page.uri}
-                featuredImage={page.featuredImage && page.featuredImage.node.og.childImageSharp.fluid.src}
+                featuredImage={seoImgSrc && seoImgSrc}
             />
             <PageHeader title={parse(page.title)} intro={page.pageintro} headerStyle={pageStyle} />
             <section>
@@ -42,8 +47,11 @@ const ServicesIndex = ({ data, pageContext }) => {
                     {services.map((service, i) => {
                         const title = service.title
                         const featuredImage = {
-                            fluid: service.featuredImage?.node?.localFile?.childImageSharp?.fluid,
-                            alt: service.featuredImage?.node?.alt || ``,
+                            fluid: service.featuredImage?.node?.main?.childImageSharp?.gatsbyImageData,
+                            alt: service.featuredImage?.node?.altText || ``,
+                        }
+                        {
+                            /* console.log(featuredImage) */
                         }
                         return (
                             <AniLink

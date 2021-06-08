@@ -2,7 +2,7 @@
 import { jsx, Container, Heading } from 'theme-ui'
 import React from 'react'
 import { graphql } from 'gatsby'
-import Image from 'gatsby-image'
+import { GatsbyImage } from 'gatsby-plugin-image'
 import parse from 'html-react-parser'
 import AniLink from 'gatsby-plugin-transition-link/AniLink'
 import { getHeight } from '../components/helpers'
@@ -23,7 +23,7 @@ const BlogIndex = ({ data, pageContext: { nextPagePath, previousPagePath, style 
                     title={browserTitle}
                     description={content}
                     url={pathname}
-                    featuredImage={page.featuredImage.node.og.childImageSharp.fluid.src}
+                    // featuredImage={page.featuredImage.node.og.childImageSharp.gatsbyImageData.src}
                 />
                 <p>No blog posts found.</p>
             </>
@@ -55,7 +55,7 @@ const BlogIndex = ({ data, pageContext: { nextPagePath, previousPagePath, style 
                         const title = post.title
                         const excerpt = post.excerpt
                         const featuredImage = {
-                            fluid: post.featuredImage?.node?.tile?.childImageSharp?.fluid,
+                            fluid: post.featuredImage?.node?.tile?.childImageSharp?.gatsbyImageData,
                             alt: post.featuredImage?.node?.alt || ``,
                         }
                         return (
@@ -86,8 +86,8 @@ const BlogIndex = ({ data, pageContext: { nextPagePath, previousPagePath, style 
                                     }}
                                 >
                                     {featuredImage?.fluid && (
-                                        <Image
-                                            fluid={featuredImage.fluid}
+                                        <GatsbyImage
+                                            image={featuredImage.fluid}
                                             alt={featuredImage.alt}
                                             style={{
                                                 display: 'block',

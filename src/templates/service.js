@@ -2,7 +2,7 @@
 import { jsx, Flex, Box } from 'theme-ui'
 import React from 'react'
 import { graphql } from 'gatsby'
-import Image from 'gatsby-image'
+import { GatsbyImage, getSrc } from 'gatsby-plugin-image'
 import parse from 'html-react-parser'
 import SEO from '../components/seo'
 import PageHeader from '../components/template/pageHeader'
@@ -11,16 +11,17 @@ import PagesNav from '../components/pagesNav'
 const PageTemplate = ({ data: { previous, next, service }, pageContext }) => {
     const pageStyle = pageContext.style
     const featuredImage = {
-        fluid: service.featuredImage?.node?.localFile?.childImageSharp?.fluid,
-        alt: service.featuredImage?.node?.alt || ``,
+        fluid: service.featuredImage?.node?.main?.childImageSharp?.gatsbyImageData,
+        alt: service.featuredImage?.node?.altText || ``,
     }
+    const seoImgSrc = getSrc(service.featuredImage.node.og)
     return (
         <>
             <SEO
                 title={service.title}
                 description={service.seo.metaDesc}
                 url={service.uri}
-                featuredImage={featuredImage.fluid.src}
+                featuredImage={seoImgSrc && seoImgSrc}
             />
             <PageHeader title={parse(service.title)} intro={parse(service.excerpt)} headerStyle={pageStyle} />
             <section sx={{ backgroundColor: 'white' }}>
@@ -34,7 +35,7 @@ const PageTemplate = ({ data: { previous, next, service }, pageContext }) => {
                     }}
                 >
                     <Box sx={{ flex: 2, borderRight: [null, null, '0.01rem solid black'] }}>
-                        {featuredImage?.fluid && <Image fluid={featuredImage.fluid} alt={featuredImage.alt} />}
+                        {featuredImage?.fluid && <GatsbyImage image={featuredImage.fluid} alt={featuredImage.alt} />}
                     </Box>
 
                     <Box py={4} px={[0, 0, 6]} sx={{ flex: 3, variant: 'layout' }}>

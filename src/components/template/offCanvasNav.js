@@ -3,7 +3,7 @@ import { jsx, Flex } from 'theme-ui'
 import { Link } from 'gatsby'
 import { useContext } from 'react'
 import { OffCanvasMenuContext } from '../offCanvasMenuProvider'
-import { animated, config, useSpring } from 'react-spring'
+import { animated, config, useSpring } from '@react-spring/web'
 
 const OffCanvas = ({ navLinks }) => {
     const { isOpen, handleMenuItemClick } = useContext(OffCanvasMenuContext)

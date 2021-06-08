@@ -2,9 +2,8 @@
 import { jsx, Container, Heading, Flex, Box, Badge } from 'theme-ui'
 import React from 'react'
 import { graphql } from 'gatsby'
-// import Image from 'gatsby-image'
-import BackgroundImage from 'gatsby-background-image'
 import parse from 'html-react-parser'
+import { GatsbyImage, getSrc } from 'gatsby-plugin-image'
 
 import SEO from '../components/seo'
 import PageHeader from '../components/template/pageHeader'
@@ -15,15 +14,16 @@ const BlogPostTemplate = ({ data: { previous, next, post }, pageContext }) => {
     // console.log({ pageContext })
     const pageStyle = pageContext.style
     const featuredImage = {
-        fluid: post.featuredImage?.node?.main?.childImageSharp?.fluid,
-        alt: post.featuredImage?.node?.alt || ``,
+        fluid: post.featuredImage?.node?.main?.childImageSharp?.gatsbyImageData,
+        alt: post.featuredImage?.node?.altText || ``,
     }
+    const seoImgSrc = getSrc(post.featuredImage.node.og)
     return (
         <>
             <SEO
                 title={post.title}
                 description={post.seo.metaDesc}
-                featuredImage={post.featuredImage.node.og.childImageSharp.fluid.src}
+                featuredImage={seoImgSrc && seoImgSrc}
                 url={post.uri}
                 author={post.author.node.firstName + ` ` + post.author.node.lastName}
                 datePublished={post.date}
@@ -33,29 +33,42 @@ const BlogPostTemplate = ({ data: { previous, next, post }, pageContext }) => {
             <article itemScope itemType='http://schema.org/Article'>
                 <header>
                     {featuredImage?.fluid ? (
-                        <BackgroundImage
-                            Tag='section'
-                            fluid={featuredImage.fluid}
+                        <section
                             backgroundColor='white'
                             sx={{
                                 display: 'flex',
+                                position: 'relative',
                                 alignItems: 'center',
                                 width: '100%',
-                                backgroundAttachment: 'scroll',
-                                backgroundSize: 'cover',
-                                backgroundRepeat: 'no-repeat',
-                                backgroundPosition: '50% 50%',
                                 flexDirection: 'column',
                                 minHeight: '100vh',
                                 color: 'white',
-                                pt: ['35vh', '35vh', '45vh'],
-                                zIndex: 0,
-                                '&:before, &:after': {
-                                    filter: 'brightness(40%)',
-                                },
                             }}
                         >
-                            <Container p={4}>
+                            <GatsbyImage
+                                image={featuredImage.fluid}
+                                alt={featuredImage.alt}
+                                fadeIn='false'
+                                loading='eager'
+                                objectPosition='50% 50%'
+                                backgroundColor='white'
+                                backgroundAttachment='scroll'
+                                backgroundRepeat='no-repeat'
+                                sx={{
+                                    position: 'relative',
+                                    width: '100%',
+                                    minHeight: '100vh',
+                                    filter: 'brightness(40%)',
+                                    // zIndex: 0,
+                                    // '&:before, &:after': {
+                                    //     filter: 'brightness(40%)',
+                                    // },
+                                }}
+                            />
+                            <Container
+                                p={4}
+                                sx={{ position: 'absolute', pt: ['35vh', '35vh', '45vh'], minHeight: '100vh' }}
+                            >
                                 <Heading
                                     as='h1'
                                     sx={{
@@ -71,7 +84,7 @@ const BlogPostTemplate = ({ data: { previous, next, post }, pageContext }) => {
                                     {parse(post.excerpt)}
                                 </Box>
                             </Container>
-                        </BackgroundImage>
+                        </section>
                     ) : (
                         <PageHeader title={parse(post.title)} intro={parse(post.excerpt)} headerStyle={pageStyle} />
                     )}

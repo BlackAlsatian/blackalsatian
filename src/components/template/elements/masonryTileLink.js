@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { jsx, Heading } from 'theme-ui'
-import Img from 'gatsby-image'
+import { GatsbyImage } from "gatsby-plugin-image";
 import { Link } from 'gatsby'
 import { getHeight } from '../../helpers'
 
@@ -21,15 +21,14 @@ const MasonryTileLink = ({ node }) => (
                 boxShadow: 'xl',
             }}
         >
-            <Img
-                fluid={node.featuredImage?.node.tile.childImageSharp.fluid}
+            <GatsbyImage
+                image={node.featuredImage?.node.tile?.childImageSharp?.gatsbyImageData}
                 alt={node.featuredImage?.node.altText}
                 style={{
                     display: 'block',
                     position: 'relative',
                     height: '100%',
-                }}
-            />
+                }} />
             <div
                 sx={{
                     position: 'absolute',

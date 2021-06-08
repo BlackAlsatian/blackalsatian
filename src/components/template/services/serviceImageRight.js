@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { jsx, Heading } from 'theme-ui'
-import Image from 'gatsby-image'
+import { GatsbyImage } from 'gatsby-plugin-image'
 
 const ServiceImageRight = ({ image, name, description }) => {
     return (
@@ -25,8 +25,8 @@ const ServiceImageRight = ({ image, name, description }) => {
                 }}
             >
                 {image?.fluid && (
-                    <Image
-                        fluid={image.fluid}
+                    <GatsbyImage
+                        image={image.fluid}
                         alt={image.alt}
                         // style={{ marginBottom: 50 }}
                         sx={{

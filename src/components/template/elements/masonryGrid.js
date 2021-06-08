@@ -22,7 +22,7 @@ const MasonryGrid = ({ dataNodes, heading, viewAllLink }) => {
                     pb: 6,
                 }}
             >
-                <Heading as='h3' sx={{ ml: [4, 4, 5], fontSize: 5, fontWeight: 'light' }}>
+                <Heading as='h3' sx={{ ml: [4, 4, 0], fontSize: 5, fontWeight: 'light' }}>
                     {heading}
                 </Heading>
             </div>

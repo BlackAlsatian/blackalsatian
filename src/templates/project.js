@@ -2,6 +2,7 @@
 import { jsx } from 'theme-ui'
 import React from 'react'
 import { graphql } from 'gatsby'
+import { getSrc } from 'gatsby-plugin-image'
 import SEO from '../components/seo'
 import ProjectHeader from '../components/template/portfolio/projectHeader'
 import ProjectContent from '../components/template/portfolio/projectContent'
@@ -10,13 +11,14 @@ import parse from 'html-react-parser'
 
 const ProjectTemplate = ({ data: { previous, portfolio, next }, pageContext }) => {
     const pageStyle = pageContext.style
+    const seoImgSrc = getSrc(portfolio.featuredImage.node.og)
     return (
         <>
             <SEO
                 title={portfolio.title}
                 description={portfolio.seo.metaDesc}
                 url={portfolio.uri}
-                featuredImage={portfolio.featuredImage.node.og.childImageSharp.fluid.src}
+                featuredImage={seoImgSrc && seoImgSrc}
             />
             <div
                 sx={{

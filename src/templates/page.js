@@ -2,6 +2,7 @@
 import { jsx, Container, Flex, Box } from 'theme-ui'
 import React from 'react'
 import { graphql } from 'gatsby'
+import { getSrc } from 'gatsby-plugin-image'
 import parse from 'html-react-parser'
 import ComponentParser from '../components/componentParser'
 import SEO from '../components/seo'
@@ -18,14 +19,14 @@ const PageTemplate = ({
     if (pageStyle === 'red') {
         bodyFontColor = 'white'
     }
-    // console.log(portfolioBlock.nodes)
+    const seoImgSrc = getSrc(page.featuredImage?.node?.og)
     return (
         <>
             <SEO
                 title={page.title}
-                description={page.seo.metaDesc}
+                description={page.seo?.metaDesc}
                 url={page.uri}
-                featuredImage={page.featuredImage && page.featuredImage.node.og.childImageSharp.fluid.src}
+                featuredImage={seoImgSrc && seoImgSrc}
             />
             {!page.isFrontPage && !page.title.includes('Services') && !page.title.includes('Portfolio') ? (
                 <>
