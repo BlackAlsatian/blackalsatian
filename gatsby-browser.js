@@ -9,20 +9,27 @@ import '@fontsource/montserrat/700.css'
 import '@fontsource/montserrat/800.css'
 import '@fontsource/montserrat/900.css'
 
-export const wrapRootElement = OffCanvasMenuProvider
-
-// export const replaceHydrateFunction = () => {
-//     return (element, container, callback) => {
-//         loadable.loadableReady(() => {
-//             ReactDOM.render(element, container, callback)
-//         })
-//     }
+// export const replaceHydrateFunction = () => (element, container, callback) => {
+//     loadable.loadableReady(() => {
+//         ReactDOM.render(element, container, callback)
+//     })
 // }
 
+export const wrapRootElement = OffCanvasMenuProvider
 // export const replaceHydrateFunction = () => (element, container, callback) => {
 //     loadableReady(() => {
 //         hydrate(element, container, callback)
 //     })
+// }
+
+// const loadableReady = require('@loadable/component').loadableReady
+
+// exports.replaceHydrateFunction = () => {
+//     return (element, container, callback) => {
+//         loadableReady(() => {
+//             ReactDOM.render(element, container, callback)
+//         })
+//     }
 // }
 
 // import React from 'react'

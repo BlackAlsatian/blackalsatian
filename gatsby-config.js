@@ -38,10 +38,10 @@ module.exports = {
         },
     },
     // flags: {
-    // PRESERVE_FILE_DOWNLOAD_CACHE prevents file downloads from being deleted during cache clearing events (other than gatsby clean which still deletes the entire cache)
+    // prevents file downloads from being deleted during cache clearing events (other than gatsby clean which still deletes the entire cache)
     // PRESERVE_FILE_DOWNLOAD_CACHE: true,
 
-    // PRESERVE_WEBPACK_CACHE prevents the webpack cache from deleted with the same caveat for gatsby clean
+    // prevents the webpack cache from deleted with the same caveat for gatsby clean
     // PRESERVE_WEBPACK_CACHE: true,
 
     // Enable all experiments aimed at improving develop server start time
@@ -79,12 +79,13 @@ module.exports = {
                 // },
             },
         },
+        // `gatsby-plugin-loadable-components-ssr`,
         // {
         //     resolve: `gatsby-plugin-loadable-components-ssr`,
         //     options: {
         //         // Whether replaceHydrateFunction should call ReactDOM.hydrate or ReactDOM.render
         //         // Defaults to ReactDOM.render on develop and ReactDOM.hydrate on build
-        //         useHydrate: true,
+        //         useHydrate: false,
         //     },
         // },
         `gatsby-plugin-react-helmet`,
