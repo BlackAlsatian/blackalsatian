@@ -1,6 +1,6 @@
 /** @jsxImportSource theme-ui */
 import { Container, Heading } from 'theme-ui'
-import React from 'react'
+// import React from 'react'
 import { graphql } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import parse from 'html-react-parser'
