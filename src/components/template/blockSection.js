@@ -1,10 +1,10 @@
 /** @jsxImportSource theme-ui */
-import { Container, Flex, Box } from 'theme-ui'
-// import LazyLoad from 'react-lazyload'
+import { jsx, Container, Flex, Box } from 'theme-ui'
+import LazyLoad from 'react-lazyload'
 import BlockText from '../blockText'
 import { getForm } from '../getForm'
 import LeftColumn from '../template/elements/leftColumn'
-// import PlaceholderLoader from '../../components/placeholderLoader'
+import PlaceholderLoader from '../../components/placeholderLoader'
 
 const ContentBlock = (props) => {
     const backgroundColor = props.backgroundColor
@@ -52,11 +52,11 @@ const ContentBlock = (props) => {
                         }}
                     >
                         <BlockText text={text} />
-                        {/* <LazyLoad height='100%' offSet={200} once placeholder={<PlaceholderLoader />}> */}
-                        {buttonName &&
-                            option !== 'none' &&
-                            getForm(option, buttonName, buttonUrl, backgroundColor, buttonBackground)}
-                        {/* </LazyLoad> */}
+                        <LazyLoad height='100%' offSet={200} once placeholder={<PlaceholderLoader />}>
+                            {buttonName &&
+                                option !== 'none' &&
+                                getForm(option, buttonName, buttonUrl, backgroundColor, buttonBackground)}
+                        </LazyLoad>
                     </Box>
                 </Flex>
             </Container>
