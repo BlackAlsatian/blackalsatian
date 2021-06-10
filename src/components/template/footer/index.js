@@ -1,6 +1,6 @@
 /** @jsxImportSource theme-ui */
 import { Flex, Heading } from 'theme-ui'
-import LazyLoad from 'react-lazyload'
+// import LazyLoad from 'react-lazyload'
 import { Link } from 'gatsby'
 import ContactDetails from './contactDetails'
 import Logo from '../../logo'
@@ -8,7 +8,7 @@ import ServiceNav from '../../serviceNav'
 import EnquiryForm from '../../forms/enquiryForm'
 import SocialIcons from './socialIcons'
 import { handleErrorColor } from '../../helpers'
-import PlaceholderLoader from '../../../components/placeholderLoader'
+// import PlaceholderLoader from '../../../components/placeholderLoader'
 
 const Footer = ({ siteTitle, pageStyle }) => {
     let bgcolor = 'black'
@@ -61,14 +61,14 @@ const Footer = ({ siteTitle, pageStyle }) => {
                             width: [null, null, '100%'],
                         }}
                     >
-                        <LazyLoad height='100%' offSet={200} once placeholder={<PlaceholderLoader />}>
-                            <EnquiryForm
-                                formStyle='inputs.underline'
-                                buttonBackground={textcolor}
-                                btnColor={bgcolor}
-                                errorColor={errorColor}
-                            />
-                        </LazyLoad>
+                        {/* <LazyLoad height='100%' offSet={200} once placeholder={<PlaceholderLoader />}> */}
+                        <EnquiryForm
+                            formStyle='inputs.underline'
+                            buttonBackground={textcolor}
+                            btnColor={bgcolor}
+                            errorColor={errorColor}
+                        />
+                        {/* </LazyLoad> */}
                     </div>
                 </Flex>
             </section>
