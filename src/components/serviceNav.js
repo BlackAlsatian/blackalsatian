@@ -1,5 +1,5 @@
-/** @jsx jsx */
-import { jsx, Flex } from 'theme-ui'
+/** @jsxImportSource theme-ui */
+import { Flex } from 'theme-ui'
 import { useStaticQuery, graphql, Link } from 'gatsby'
 import parse from 'html-react-parser'
 

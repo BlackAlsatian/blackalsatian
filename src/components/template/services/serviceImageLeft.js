@@ -1,5 +1,5 @@
-/** @jsx jsx */
-import { jsx, Heading } from 'theme-ui'
+/** @jsxImportSource theme-ui */
+import { Heading } from 'theme-ui'
 import { GatsbyImage } from 'gatsby-plugin-image'
 
 const ServiceImageLeft = ({ image, name, description }) => {
@@ -7,7 +7,7 @@ const ServiceImageLeft = ({ image, name, description }) => {
         <div
             sx={{
                 display: 'grid',
-                gridGap: 4, // theme.space[4]
+                gridGap: 4,
                 // use arrays for mobile-first responsive styles
                 gridTemplateColumns: [
                     'auto', // default to a stacked layout on small screens
@@ -28,7 +28,6 @@ const ServiceImageLeft = ({ image, name, description }) => {
                     <GatsbyImage
                         image={image.fluid}
                         alt={image.alt}
-                        // style={{ marginBottom: 50 }}
                         sx={{
                             height: '100%',
                             width: '100%',

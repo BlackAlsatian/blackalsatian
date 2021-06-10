@@ -1,5 +1,5 @@
-/** @jsx jsx */
-import { jsx, Heading } from 'theme-ui'
+/** @jsxImportSource theme-ui */
+import { Heading } from 'theme-ui'
 import MasonryTileLink from './masonryTileLink'
 import MasonryGridViewAllLink from './masonryGridViewAllLink'
 import { randomID } from '../../helpers'

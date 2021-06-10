@@ -1,5 +1,5 @@
-/** @jsx jsx */
-import { jsx, Container, Heading } from 'theme-ui'
+/** @jsxImportSource theme-ui */
+import { Container, Heading } from 'theme-ui'
 import parse from 'html-react-parser'
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 
@@ -24,7 +24,6 @@ const HeroBlock = (props) => {
             <GatsbyImage
                 image={featuredImageData}
                 alt={featuredImage.node.altText}
-                // durationFadeIn={200}
                 fadeIn='false'
                 loading='eager'
                 objectPosition='60% 40%'
@@ -35,14 +34,8 @@ const HeroBlock = (props) => {
                     position: 'relative',
                     width: '100%',
                     minHeight: '100vh',
-                    // zIndex: 0,
                     filter: 'brightness(80%)',
                 }}
-                // imgStyle={{
-                //     '&:before, &:after': {
-                //         filter: 'brightness(80%)',
-                //     },
-                // }}
             />
             <Container p={4} sx={{ position: 'absolute', pt: ['45vh', '45vh', '55vh'], minHeight: '100vh' }}>
                 <Heading

@@ -1,5 +1,5 @@
-/** @jsx jsx */
-import { jsx, Container, Flex, Box } from 'theme-ui'
+/** @jsxImportSource theme-ui */
+import { Container, Flex, Box } from 'theme-ui'
 import LazyLoad from 'react-lazyload'
 import BlockText from '../blockText'
 import { getForm } from '../getForm'

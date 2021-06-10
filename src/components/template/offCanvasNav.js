@@ -1,5 +1,5 @@
-/** @jsx jsx */
-import { jsx, Flex } from 'theme-ui'
+/** @jsxImportSource theme-ui */
+import { Flex } from 'theme-ui'
 import { Link } from 'gatsby'
 import { useContext } from 'react'
 import { OffCanvasMenuContext } from '../offCanvasMenuProvider'

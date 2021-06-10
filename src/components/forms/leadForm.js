@@ -1,5 +1,5 @@
-/** @jsx jsx */
-import { jsx } from 'theme-ui'
+/** @jsxImportSource theme-ui */
+
 import { Link } from 'gatsby'
 import { Label, Input, Box, Button, Heading, Spinner, Alert } from 'theme-ui'
 import { useState } from 'react'

@@ -7,22 +7,7 @@ export const fragments = graphql`
                 altText
                 main: localFile {
                     childImageSharp {
-                        gatsbyImageData(
-                            quality: 90
-                            placeholder: TRACED_SVG
-                            layout: FULL_WIDTH
-                            formats: [AUTO, WEBP]
-                            # transformOptions: {
-                            #     # cropFocus: CENTER
-                            #     # grayscale: false
-                            #     # trim: 1.5
-                            #     duotone: {
-                            #         highlight: "#ffffff",
-                            #         shadow: "#000000",
-                            #         opacity: 90
-                            #         }
-                            # }
-                        )
+                        gatsbyImageData(quality: 90, placeholder: TRACED_SVG, layout: FULL_WIDTH, formats: [AUTO, WEBP])
                     }
                 }
                 og: localFile {

@@ -1,5 +1,5 @@
-/** @jsx jsx */
-import { jsx, Container, Flex, Heading, Box } from 'theme-ui'
+/** @jsxImportSource theme-ui */
+import { Container, Flex, Heading, Box } from 'theme-ui'
 import React from 'react'
 import { graphql } from 'gatsby'
 import { getSrc } from 'gatsby-plugin-image'

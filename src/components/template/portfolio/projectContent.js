@@ -1,5 +1,5 @@
-/** @jsx jsx */
-import { jsx, Container, Heading, Flex, Box, Badge } from 'theme-ui'
+/** @jsxImportSource theme-ui */
+import { Container, Heading, Flex, Box, Badge } from 'theme-ui'
 import parse from 'html-react-parser'
 
 const ProjectContent = ({ project, pageStyle }) => {

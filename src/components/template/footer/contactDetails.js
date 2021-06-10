@@ -1,9 +1,8 @@
-/** @jsx jsx */
-import { jsx } from 'theme-ui'
+/** @jsxImportSource theme-ui */
+
 import WhatsApp from '../../icons/whatsappIcon'
 import Phone from '../../icons/phoneIcon'
 import Home from '../../icons/homeIcon'
-// import Fax from '../icons/faxIcon'
 
 const ContactDetails = ({ textcolor }) => {
     return (
@@ -65,14 +64,6 @@ const ContactDetails = ({ textcolor }) => {
                     </p>
                 </div>
             </div>
-            {/* <div sx={{ display: 'flex', alignItems: 'flex-start' }}>
-                            <div sx={{ p: 2 }}>
-                                <Fax color='white' width={28} height={28} />
-                            </div>
-                            <div sx={{ p: 2 }}>
-                                <p sx={{ pt: 0, mt: 0 }}>+27 86 688 3504</p>
-                            </div>
-                        </div> */}
         </div>
     )
 }

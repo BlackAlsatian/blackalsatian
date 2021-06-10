@@ -1,5 +1,5 @@
-/** @jsx jsx */
-import { jsx, Heading } from 'theme-ui'
+/** @jsxImportSource theme-ui */
+import { Heading } from 'theme-ui'
 import { Link } from 'gatsby'
 
 const LinkDivStyle = {
@@ -11,12 +11,9 @@ const LinkDivStyle = {
     minHeight: ['4rem', '4rem', '7rem'],
     borderBottom: '0.01rem solid black',
     background: 'offWhite',
-    // transition: 'background 1000ms ease-in-out, padding 600ms ease-out',
-    // transition: 'padding 600ms ease-out',
     transition: 'background-color 500ms ease-in',
     '&:hover': {
         backgroundColor: 'yellow',
-        // padding: '0 20px',
     },
 }
 const ServiceLink = ({ item }) => {

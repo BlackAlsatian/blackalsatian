@@ -1,5 +1,5 @@
-/** @jsx jsx */
-import { jsx, Container, Heading, Flex, Box } from 'theme-ui'
+/** @jsxImportSource theme-ui */
+import { Container, Heading, Flex, Box } from 'theme-ui'
 import AniLink from 'gatsby-plugin-transition-link/AniLink'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import parse from 'html-react-parser'

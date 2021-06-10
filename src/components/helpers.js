@@ -8,51 +8,6 @@ export function getHeight() {
     return Math.floor(Math.random() * 400 + 250)
 }
 
-// temporary hacky way of changing font colours for specific pages
-export function handleColor(path) {
-    // console.log(path)
-    if (
-        path === '/blog/' ||
-        path === '/blog/2/' ||
-        path === '/blog/3/' ||
-        path === '/blog/4/' ||
-        path === '/blog/5/' ||
-        path === '/blog/6/' ||
-        path === '/blog/7/' ||
-        path === '/blog/8/' ||
-        path === '/blog/9/' ||
-        path.includes('contact') ||
-        path.includes('services') ||
-        path.includes('/404/')
-    ) {
-        return 'black'
-    } else {
-        return 'white'
-    }
-}
-
-// temporary hacky way of changing background colours for specific pages
-export function handleBgColor(path) {
-    if (path.includes('portfolio')) {
-        return 'black'
-    } else if (path.includes('contact')) {
-        return 'yellow'
-    } else if (path.includes('terms-of-use') || path.includes('privacy-policy')) {
-        return 'red'
-    } else {
-        return 'white'
-    }
-}
-
-// temporary hacky way of changing body text colours for specific pages
-export function handleBodyTextColor(path) {
-    if (path.includes('terms-of-use') || path.includes('privacy-policy')) {
-        return 'white'
-    } else {
-        return 'black'
-    }
-}
-
 // temporary hacky way of changing error text colours for specific pages
 export function handleErrorColor(backgroundColor) {
     if (backgroundColor === 'white' || backgroundColor === 'yellow') {

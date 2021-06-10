@@ -1,5 +1,5 @@
-/** @jsx jsx */
-import { jsx, Container, Flex, Box } from 'theme-ui'
+/** @jsxImportSource theme-ui */
+import { Container, Flex, Box } from 'theme-ui'
 import ServiceLink from '../elements/serviceLink'
 import LeftColumn from '../elements/leftColumn'
 

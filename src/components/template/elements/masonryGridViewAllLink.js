@@ -1,5 +1,4 @@
-/** @jsx jsx */
-import { jsx, Heading } from 'theme-ui'
+/** @jsxImportSource theme-ui */
 import { Link } from 'gatsby'
 
 const MasonryGridViewAllLink = ({ url }) => {

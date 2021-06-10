@@ -1,5 +1,5 @@
-/** @jsx jsx */
-import { jsx } from 'theme-ui'
+/** @jsxImportSource theme-ui */
+
 import MasonryGrid from '../elements/masonryGrid'
 
 const FeaturedProjectsBlock = ({ portfolio }) => {

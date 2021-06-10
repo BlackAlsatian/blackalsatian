@@ -1,5 +1,5 @@
-/** @jsx jsx */
-import { jsx, Box } from 'theme-ui'
+/** @jsxImportSource theme-ui */
+import { Box } from 'theme-ui'
 
 const Home = ({ color, width, height }) => {
     return (

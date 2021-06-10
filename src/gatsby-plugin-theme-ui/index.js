@@ -1,10 +1,10 @@
 import { tailwind } from '@theme-ui/preset-tailwind'
 
-export default {
+const theme = {
     ...tailwind,
-    styles: {
-        ...tailwind.styles,
-    },
+    // styles: {
+    //     ...tailwind.styles,
+    // },
     sections: {
         black: {
             pageheader: {
@@ -450,33 +450,35 @@ export default {
                 },
             },
         },
-        default: {
-            backgroundColor: 'white',
-        },
-        white: {
-            backgroundColor: 'white',
-        },
-        postwhite: {
-            backgroundColor: 'white',
-        },
-        black: {
-            backgroundColor: 'black',
-        },
-        altblack: {
-            backgroundColor: 'white',
-            color: 'black',
-        },
-        yellow: {
-            backgroundColor: 'yellow',
-            color: 'black',
-        },
-        altyellow: {
-            backgroundColor: 'white',
-            color: 'black',
-        },
-        red: {
-            backgroundColor: 'red',
-            color: 'white',
-        },
+        // default: {
+        //     backgroundColor: 'white',
+        // },
+        // white: {
+        //     backgroundColor: 'white',
+        // },
+        // postwhite: {
+        //     backgroundColor: 'white',
+        // },
+        // black: {
+        //     backgroundColor: 'black',
+        // },
+        // altblack: {
+        //     backgroundColor: 'white',
+        //     color: 'black',
+        // },
+        // yellow: {
+        //     backgroundColor: 'yellow',
+        //     color: 'black',
+        // },
+        // altyellow: {
+        //     backgroundColor: 'white',
+        //     color: 'black',
+        // },
+        // red: {
+        //     backgroundColor: 'red',
+        //     color: 'white',
+        // },
     },
 }
+
+export default theme

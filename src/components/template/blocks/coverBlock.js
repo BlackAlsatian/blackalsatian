@@ -1,5 +1,5 @@
-/** @jsx jsx */
-import { jsx } from 'theme-ui'
+/** @jsxImportSource theme-ui */
+
 import HeroBlock from './heroBlock'
 import CTABlock from './ctaBlock'
 

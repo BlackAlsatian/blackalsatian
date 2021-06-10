@@ -1,5 +1,4 @@
-/** @jsx jsx */
-import { jsx } from 'theme-ui'
+/** @jsxImportSource theme-ui */
 import { useStaticQuery, graphql } from 'gatsby'
 import Header from './template/header'
 import Footer from './template/footer'
@@ -10,27 +9,12 @@ if (typeof window !== 'undefined') {
     require('smooth-scroll')('a[href*="#"]')
 }
 
-const Layout = ({ children, pageContext, location }) => {
-    console.log(pageContext.pageStyle)
-    const pathName = location.pathname
+const Layout = ({ children, pageContext }) => {
+    // console.log(pageContext.pageStyle)
     let pageStyle = pageContext.pageStyle
     if (typeof pageStyle === 'undefined') {
-        // pathName.includes('/404') ? (pageStyle = 'white') : (pageStyle = 'default')
         pageStyle = 'white'
-
-        // pathName.includes('/portfolio')
-        //     ? (pageStyle = 'black')
-        //     : pathName.includes('/blog') && pathName.length >= 10
-        //     ? (pageStyle = 'postwhite')
-        //     : (pathName.includes('/blog') && pathName.length <= 10) || typeof pageStyle === 'undefined'
-        //     ? (pageStyle = 'white')
-        //     : pathName.includes('/contact')
-        //     ? (pageStyle = 'yellow')
-        //     : pathName.includes('/terms-of-use') || pathName.includes('/privacy-policy')
-        //     ? (pageStyle = 'red')
-        // : (pageStyle = 'default')
     }
-    console.log('after conditional on layout: ', pageStyle)
 
     const {
         wp: {
@@ -60,13 +44,7 @@ const Layout = ({ children, pageContext, location }) => {
             }}
         >
             <Header pageStyle={pageStyle} menuItems={menuItems.nodes} />
-            <main
-                sx={{
-                    variant: 'layout.main.' + pageStyle,
-                }}
-            >
-                {children}
-            </main>
+            <main>{children}</main>
             {typeof pageStyle !== 'undefined' && <Footer siteTitle={title} pageStyle={pageStyle} />}
         </div>
     )

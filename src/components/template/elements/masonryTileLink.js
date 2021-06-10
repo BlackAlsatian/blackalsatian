@@ -1,6 +1,6 @@
-/** @jsx jsx */
-import { jsx, Heading } from 'theme-ui'
-import { GatsbyImage } from "gatsby-plugin-image";
+/** @jsxImportSource theme-ui */
+import { Heading } from 'theme-ui'
+import { GatsbyImage } from 'gatsby-plugin-image'
 import { Link } from 'gatsby'
 import { getHeight } from '../../helpers'
 
@@ -28,7 +28,8 @@ const MasonryTileLink = ({ node }) => (
                     display: 'block',
                     position: 'relative',
                     height: '100%',
-                }} />
+                }}
+            />
             <div
                 sx={{
                     position: 'absolute',

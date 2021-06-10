@@ -1,11 +1,10 @@
-/** @jsx jsx */
-import { jsx } from 'theme-ui'
+/** @jsxImportSource theme-ui */
+
 import Facebook from '../../icons/facebookIcon'
 import Twitter from '../../icons/twitterIcon'
 import Instagram from '../../icons/instagramIcon'
 import LinkedIn from '../../icons/linkedinIcon'
 import WhatsApp from '../../icons/whatsappIcon'
-// import Email from '../icons/emailIcon'
 
 const SocialIcons = ({ textcolor }) => {
     return (
@@ -70,10 +69,6 @@ const SocialIcons = ({ textcolor }) => {
                     </a>
                 </li>
             </ul>
-
-            {/* <a href='' title='Email Us' target='_blank'>
-                <Email color='white' width={36} height={36} />
-            </a> */}
         </div>
     )
 }

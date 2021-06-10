@@ -1,6 +1,6 @@
-/** @jsx jsx */
-import { jsx, Container, Flex, Box } from 'theme-ui'
-import React from 'react'
+/** @jsxImportSource theme-ui */
+import { Container, Flex, Box } from 'theme-ui'
+// import React from 'react'
 import { graphql } from 'gatsby'
 import { getSrc } from 'gatsby-plugin-image'
 import parse from 'html-react-parser'
@@ -8,11 +8,10 @@ import ComponentParser from '../components/componentParser'
 import SEO from '../components/seo'
 import PageHeader from '../components/template/pageHeader'
 import LeftColumn from '../components/template/elements/leftColumn'
-// import { handleBodyTextColor } from '../components/helpers'
 
 const PageTemplate = ({ data: { page, latestPostsBlock, portfolioBlock, servicesBlock, testimonialsBlock } }) => {
     const pageStyle = page.pageStyle
-    console.log(pageStyle)
+    // console.log(pageStyle)
     let bodyFontColor = 'black'
     if (pageStyle === 'red') {
         bodyFontColor = 'white'
@@ -54,7 +53,7 @@ const PageTemplate = ({ data: { page, latestPostsBlock, portfolioBlock, services
                                         flex: [null, null, 3],
                                         width: ['100%', null],
                                         variant: 'layout',
-                                        color: bodyFontColor,
+                                        // color: bodyFontColor,
                                     }}
                                 >
                                     {page.content && parse(page.content)}

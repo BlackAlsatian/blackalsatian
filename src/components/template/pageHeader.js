@@ -1,5 +1,5 @@
-/** @jsx jsx */
-import { jsx, Container, Heading } from 'theme-ui'
+/** @jsxImportSource theme-ui */
+import { Container, Heading } from 'theme-ui'
 
 const PageHeader = ({ title, intro, headerStyle }) => {
     return (

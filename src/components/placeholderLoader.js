@@ -1,5 +1,5 @@
-/** @jsx jsx */
-import { jsx, Flex, Spinner } from 'theme-ui'
+/** @jsxImportSource theme-ui */
+import { Flex, Spinner } from 'theme-ui'
 
 const PlaceholderLoader = () => {
     return (

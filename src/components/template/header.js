@@ -1,9 +1,8 @@
-/** @jsx jsx */
-import { jsx } from 'theme-ui'
+/** @jsxImportSource theme-ui */
+
 import { useState, useEffect, useContext } from 'react'
 import { OffCanvasMenuContext } from '../offCanvasMenuProvider'
 import { Link } from 'gatsby'
-// import { handleColor } from '../../components/helpers'
 import MenuIcon from '../menuIcon'
 import OffCanvas from './offCanvasNav'
 import Logo from '../logo'
@@ -14,16 +13,6 @@ const Header = ({ pageStyle, menuItems }) => {
     const { handleBurgerMenuClick } = useContext(OffCanvasMenuContext)
     const [headerStyle, setHeaderStyle] = useState('white')
     useEffect(() => {
-        // if (
-        //     (pathName.includes('/blog') && pathName.length <= 10) ||
-        //     pathName.includes('/contact') ||
-        //     pathName.includes('/services') ||
-        //     typeof pathName === 'undefined'
-        // ) {
-        //     setHeaderStyle('black')
-        // } else {
-        //     setHeaderStyle('white')
-        // }
         switch (pageStyle) {
             case 'white':
                 setHeaderStyle('black')

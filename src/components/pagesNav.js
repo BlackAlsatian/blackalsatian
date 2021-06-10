@@ -1,5 +1,5 @@
-/** @jsx jsx */
-import { jsx } from 'theme-ui'
+/** @jsxImportSource theme-ui */
+
 import React from 'react'
 import AniLink from 'gatsby-plugin-transition-link/AniLink'
 

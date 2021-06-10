@@ -3,28 +3,9 @@ import BlockSection from '../blockSection'
 
 const CTABlock = (props) => {
     const { anchor, overlayColor } = props.attributes
-    const {
-        color,
-        title,
-        heading,
-        option,
-        buttonBackgroundColor,
-        buttonName,
-        buttonUrl,
-    } = props.innerBlocks[0].attributes
+    const { color, title, heading, option, buttonBackgroundColor, buttonName, buttonUrl } =
+        props.innerBlocks[0].attributes
     const { innerBlocks } = props.innerBlocks[0]
-    // const {
-    //     backgroundColor,
-    //     color,
-    //     anchor,
-    //     title,
-    //     heading,
-    //     text,
-    //     option,
-    //     buttonBackground,
-    //     buttonName,
-    //     buttonUrl,
-    // } = props
     return (
         <BlockSection
             backgroundColor={overlayColor}
