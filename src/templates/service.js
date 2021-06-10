@@ -8,8 +8,8 @@ import SEO from '../components/seo'
 import PageHeader from '../components/template/pageHeader'
 import PagesNav from '../components/pagesNav'
 
-const PageTemplate = ({ data: { previous, next, service }, pageContext }) => {
-    const pageStyle = pageContext.style
+const PageTemplate = ({ data: { previous, next, service } }) => {
+    const pageStyle = 'altyellow'
     const featuredImage = {
         fluid: service.featuredImage?.node?.main?.childImageSharp?.gatsbyImageData,
         alt: service.featuredImage?.node?.altText || ``,

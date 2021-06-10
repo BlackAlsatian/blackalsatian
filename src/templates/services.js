@@ -11,9 +11,9 @@ import ServiceImageLeft from '../components/template/services/serviceImageLeft'
 import ServiceImageRight from '../components/template/services/serviceImageRight'
 import { isOdd } from '../components/helpers'
 
-const ServicesIndex = ({ data, pageContext }) => {
+const ServicesIndex = ({ data }) => {
     // console.log(data)
-    const pageStyle = pageContext.style
+    const pageStyle = data.wpPage.pageStyle
     const services = data.allWpService.nodes
     const page = data.wpPage
     const seoImgSrc = getSrc(page.featuredImage?.node?.og)
@@ -113,6 +113,7 @@ export const pageQuery = graphql`
                 metaDesc
             }
             ...PageFeaturedMediaFragment
+            pageStyle
             pageintro
             pagesubheading
             pagesubtitle

@@ -70,7 +70,7 @@ const createIndividualBlogPostPages = async ({ posts, gatsbyUtilities }) =>
                     // We also use the next and previous id's to query them and add links!
                     previousPostId: previous ? previous.id : null,
                     nextPostId: next ? next.id : null,
-                    style: 'postwhite',
+                    pageStyle: 'postwhite',
                 },
             }),
         ),
@@ -85,16 +85,17 @@ const createIndividualPages = async ({ pages, gatsbyUtilities }) =>
                 component: path.resolve(`./src/templates/page.js`),
                 context: {
                     id: page.id,
-                    subheading: page.subheading,
-                    subtitle: page.subtitle,
-                    intro: page.intro,
-                    style: page.uri.includes('/contact/')
-                        ? 'yellow'
-                        : page.uri.includes('/terms-of-use/') || page.uri.includes('/privacy-policy/')
-                        ? 'red'
-                        : page.uri.includes('/about/')
-                        ? 'altblack'
-                        : 'default',
+                    // subheading: page.subheading,
+                    // subtitle: page.subtitle,
+                    // intro: page.intro,
+                    // style: page.uri.includes('/contact/')
+                    //     ? 'yellow'
+                    //     : page.uri.includes('/terms-of-use/') || page.uri.includes('/privacy-policy/')
+                    //     ? 'red'
+                    //     : page.uri.includes('/about/')
+                    //     ? 'altblack'
+                    //     : 'default',
+                    pageStyle: page.pageStyle,
                 },
             }),
         ),
@@ -111,7 +112,7 @@ const createIndividualServices = async ({ services, gatsbyUtilities }) =>
                     id: service.id,
                     previousPostId: previous ? previous.id : null,
                     nextPostId: next ? next.id : null,
-                    style: 'altyellow',
+                    pageStyle: 'altyellow',
                 },
             }),
         ),
@@ -128,7 +129,7 @@ const createIndividualProjects = async ({ portfolio, gatsbyUtilities }) =>
                     id: portfolio.id,
                     previousPostId: previous ? previous.id : null,
                     nextPostId: next ? next.id : null,
-                    style: 'black',
+                    pageStyle: 'black',
                 },
             }),
         ),
@@ -144,7 +145,7 @@ const createIndividualLanders = async ({ landers, gatsbyUtilities }) =>
                 context: {
                     id: lander.id,
                     title: lander.title,
-                    style: 'default',
+                    pageStyle: 'default',
                 },
             }),
         ),
@@ -193,7 +194,7 @@ async function createBlogPostArchive({ posts, gatsbyUtilities }) {
                     postsPerPage,
                     nextPagePath: getPagePath(pageNumber + 1),
                     previousPagePath: getPagePath(pageNumber - 1),
-                    style: 'white',
+                    pageStyle: 'white',
                 },
             })
         }),
@@ -207,7 +208,7 @@ async function createServicesPage({ services, gatsbyUtilities }) {
         component: path.resolve(`./src/templates/services.js`),
         context: {
             ...services,
-            style: 'altyellow',
+            pageStyle: 'altyellow',
         },
     })
 }
@@ -219,7 +220,7 @@ async function createPortfolioPage({ portfolio, gatsbyUtilities }) {
         component: path.resolve(`./src/templates/portfolio.js`),
         context: {
             ...portfolio,
-            style: 'black',
+            pageStyle: 'black',
         },
     })
 }
@@ -266,6 +267,7 @@ async function getPages({ graphql, reporter }) {
                         title
                         uri
                         isFrontPage
+                        pageStyle
                     }
                 }
             }

@@ -9,8 +9,8 @@ import ProjectContent from '../components/template/portfolio/projectContent'
 import PagesNav from '../components/pagesNav'
 import parse from 'html-react-parser'
 
-const ProjectTemplate = ({ data: { previous, portfolio, next }, pageContext }) => {
-    const pageStyle = pageContext.style
+const ProjectTemplate = ({ data: { previous, portfolio, next } }) => {
+    const pageStyle = 'black'
     const seoImgSrc = getSrc(portfolio.featuredImage?.node?.og)
     return (
         <>

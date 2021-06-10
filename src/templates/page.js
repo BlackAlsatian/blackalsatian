@@ -10,11 +10,9 @@ import PageHeader from '../components/template/pageHeader'
 import LeftColumn from '../components/template/elements/leftColumn'
 // import { handleBodyTextColor } from '../components/helpers'
 
-const PageTemplate = ({
-    data: { page, latestPostsBlock, portfolioBlock, servicesBlock, testimonialsBlock },
-    pageContext,
-}) => {
-    const pageStyle = pageContext.style
+const PageTemplate = ({ data: { page, latestPostsBlock, portfolioBlock, servicesBlock, testimonialsBlock } }) => {
+    const pageStyle = page.pageStyle
+    console.log(pageStyle)
     let bodyFontColor = 'black'
     if (pageStyle === 'red') {
         bodyFontColor = 'white'
@@ -94,6 +92,7 @@ export const pageQuery = graphql`
             slug
             isFrontPage
             ...PageFeaturedMediaFragment
+            pageStyle
             pageintro
             pagesubheading
             pagesubtitle

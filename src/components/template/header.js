@@ -9,22 +9,35 @@ import OffCanvas from './offCanvasNav'
 import Logo from '../logo'
 import Nav from '../nav'
 
-const Header = ({ pathName, menuItems }) => {
+const Header = ({ pageStyle, menuItems }) => {
     const navLinks = menuItems
     const { handleBurgerMenuClick } = useContext(OffCanvasMenuContext)
     const [headerStyle, setHeaderStyle] = useState('white')
     useEffect(() => {
-        if (
-            (pathName.includes('/blog') && pathName.length <= 10) ||
-            pathName.includes('/contact') ||
-            pathName.includes('/services') ||
-            typeof pathName === 'undefined'
-        ) {
-            setHeaderStyle('black')
-        } else {
-            setHeaderStyle('white')
+        // if (
+        //     (pathName.includes('/blog') && pathName.length <= 10) ||
+        //     pathName.includes('/contact') ||
+        //     pathName.includes('/services') ||
+        //     typeof pathName === 'undefined'
+        // ) {
+        //     setHeaderStyle('black')
+        // } else {
+        //     setHeaderStyle('white')
+        // }
+        switch (pageStyle) {
+            case 'white':
+                setHeaderStyle('black')
+                break
+            case 'yellow':
+                setHeaderStyle('black')
+                break
+            case 'altyellow':
+                setHeaderStyle('black')
+                break
+            default:
+                setHeaderStyle('white')
         }
-    }, [pathName])
+    }, [pageStyle])
     return (
         <header
             sx={{

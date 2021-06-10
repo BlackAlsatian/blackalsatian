@@ -9,8 +9,8 @@ import SEO from '../components/seo'
 import PageHeader from '../components/template/pageHeader'
 import LeftColumn from '../components/template/elements/leftColumn'
 
-const PortfolioIndex = ({ data, pageContext }) => {
-    const pageStyle = pageContext.style
+const PortfolioIndex = ({ data }) => {
+    const pageStyle = data.wpPage.pageStyle
     const portfolio = data.allWpPortfolio.nodes
     const page = data.wpPage
     const seoImgSrc = getSrc(page.featuredImage?.node?.og)
@@ -175,6 +175,7 @@ export const pageQuery = graphql`
                 metaDesc
             }
             ...PageFeaturedMediaFragment
+            pageStyle
             pageintro
             pagesubheading
             pagesubtitle

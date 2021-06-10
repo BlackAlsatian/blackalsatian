@@ -237,34 +237,6 @@ export default {
                 m: '0 auto',
             },
         },
-        default: {
-            backgroundColor: 'white',
-        },
-        white: {
-            backgroundColor: 'white',
-        },
-        postwhite: {
-            backgroundColor: 'white',
-        },
-        black: {
-            backgroundColor: 'black',
-        },
-        altblack: {
-            backgroundColor: 'white',
-            color: 'black',
-        },
-        yellow: {
-            backgroundColor: 'yellow',
-            color: 'black',
-        },
-        altyellow: {
-            backgroundColor: 'white',
-            color: 'black',
-        },
-        red: {
-            backgroundColor: 'red',
-            color: 'white',
-        },
         header: {
             white: {
                 svg: {
@@ -477,6 +449,34 @@ export default {
                     color: 'white',
                 },
             },
+        },
+        default: {
+            backgroundColor: 'white',
+        },
+        white: {
+            backgroundColor: 'white',
+        },
+        postwhite: {
+            backgroundColor: 'white',
+        },
+        black: {
+            backgroundColor: 'black',
+        },
+        altblack: {
+            backgroundColor: 'white',
+            color: 'black',
+        },
+        yellow: {
+            backgroundColor: 'yellow',
+            color: 'black',
+        },
+        altyellow: {
+            backgroundColor: 'white',
+            color: 'black',
+        },
+        red: {
+            backgroundColor: 'red',
+            color: 'white',
         },
     },
 }

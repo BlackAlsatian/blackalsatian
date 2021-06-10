@@ -11,21 +11,26 @@ if (typeof window !== 'undefined') {
 }
 
 const Layout = ({ children, pageContext, location }) => {
+    console.log(pageContext.pageStyle)
     const pathName = location.pathname
-    let pageStyle = pageContext.style
+    let pageStyle = pageContext.pageStyle
     if (typeof pageStyle === 'undefined') {
-        pathName.includes('/portfolio')
-            ? (pageStyle = 'black')
-            : pathName.includes('/blog') && pathName.length >= 10
-            ? (pageStyle = 'postwhite')
-            : (pathName.includes('/blog') && pathName.length <= 10) || typeof pageStyle === 'undefined'
-            ? (pageStyle = 'white')
-            : pathName.includes('/contact')
-            ? (pageStyle = 'yellow')
-            : pathName.includes('/terms-of-use') || pathName.includes('/privacy-policy')
-            ? (pageStyle = 'red')
-            : (pageStyle = 'default')
+        // pathName.includes('/404') ? (pageStyle = 'white') : (pageStyle = 'default')
+        pageStyle = 'white'
+
+        // pathName.includes('/portfolio')
+        //     ? (pageStyle = 'black')
+        //     : pathName.includes('/blog') && pathName.length >= 10
+        //     ? (pageStyle = 'postwhite')
+        //     : (pathName.includes('/blog') && pathName.length <= 10) || typeof pageStyle === 'undefined'
+        //     ? (pageStyle = 'white')
+        //     : pathName.includes('/contact')
+        //     ? (pageStyle = 'yellow')
+        //     : pathName.includes('/terms-of-use') || pathName.includes('/privacy-policy')
+        //     ? (pageStyle = 'red')
+        // : (pageStyle = 'default')
     }
+    console.log('after conditional on layout: ', pageStyle)
 
     const {
         wp: {
@@ -51,10 +56,10 @@ const Layout = ({ children, pageContext, location }) => {
                 flexDirection: 'column',
                 minHeight: '100vh',
                 overflow: 'hidden',
-                variant: 'layout.' + pageStyle,
+                variant: 'layout.main.' + pageStyle,
             }}
         >
-            <Header pathName={pathName} menuItems={menuItems.nodes} />
+            <Header pageStyle={pageStyle} menuItems={menuItems.nodes} />
             <main
                 sx={{
                     variant: 'layout.main.' + pageStyle,
