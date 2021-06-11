@@ -1,10 +1,4 @@
-// import { tailwind } from '@theme-ui/preset-tailwind'
-
 const theme = {
-    // ...tailwind,
-    // styles: {
-    //     ...tailwind.styles,
-    // },
     fonts: {
         sans: 'system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"',
         serif: 'Georgia,Cambria,"Times New Roman",Times,serif',
@@ -90,27 +84,23 @@ const theme = {
         auto: 'auto',
     },
     colors: {
-        // ...tailwind.colors,
         text: '#111827',
         background: '#ffffff',
         primary: '#111827',
         secondary: '#fef08a',
         accent: '#f5df4d',
-        // highlight: `${tailwind.colors.gray[2]}`,
         highlight: '#edf2f7',
         info: '#2563eb',
         warning: '#fef08a',
         danger: '#ef4444',
         muted: '#6B7280',
         header: '#ffffff',
-        // primaryHover: `${tailwind.colors.gray[8]}`,
         primaryHover: '#2d3748',
         black: '#111827',
         blue: '#0060b4',
         yellow: '#f5df4d',
         gray: '#939597',
         red: '#d93d33',
-        // offWhite: `${tailwind.colors.gray[2]}`,
         offWhite: '#edf2f7',
         mainOpenMenu: '#939597',
     },
@@ -399,7 +389,6 @@ const theme = {
         },
     },
     badges: {
-        // ...tailwind.badges,
         primary: {
             color: 'background',
             bg: 'primary',
@@ -508,28 +497,16 @@ const theme = {
                 backgroundColor: 'black',
                 color: 'white',
             },
-            body: {
-                backgroundColor: 'white',
-                color: 'black',
-            },
         },
         altblack: {
             pageheader: {
                 backgroundColor: 'black',
                 color: 'white',
             },
-            body: {
-                backgroundColor: 'white',
-                color: 'black',
-            },
         },
         altyellow: {
             pageheader: {
                 backgroundColor: 'yellow',
-                color: 'black',
-            },
-            body: {
-                backgroundColor: 'white',
                 color: 'black',
             },
         },
@@ -816,34 +793,6 @@ const theme = {
                 },
             },
         },
-        // default: {
-        //     backgroundColor: 'white',
-        // },
-        // white: {
-        //     backgroundColor: 'white',
-        // },
-        // postwhite: {
-        //     backgroundColor: 'white',
-        // },
-        // black: {
-        //     backgroundColor: 'black',
-        // },
-        // altblack: {
-        //     backgroundColor: 'white',
-        //     color: 'black',
-        // },
-        // yellow: {
-        //     backgroundColor: 'yellow',
-        //     color: 'black',
-        // },
-        // altyellow: {
-        //     backgroundColor: 'white',
-        //     color: 'black',
-        // },
-        // red: {
-        //     backgroundColor: 'red',
-        //     color: 'white',
-        // },
     },
 }
 export default theme
