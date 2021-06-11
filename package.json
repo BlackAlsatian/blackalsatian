@@ -13,7 +13,6 @@
     "@loadable/component": "^5.15.0",
     "@react-spring/web": "^9.2.3",
     "@theme-ui/components": "^0.9.1",
-    "@theme-ui/preset-tailwind": "^0.9.1",
     "axios": "^0.21.1",
     "dotenv": "^10.0.0",
     "gatsby": "^3.7.1",
