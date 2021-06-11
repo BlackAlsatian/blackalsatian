@@ -1,5 +1,6 @@
 /** @jsxImportSource theme-ui */
 
+import { useStaticQuery, graphql } from 'gatsby'
 import { useState, useEffect, useContext } from 'react'
 import { OffCanvasMenuContext } from '../offCanvasMenuProvider'
 import { Link } from 'gatsby'
@@ -8,8 +9,15 @@ import OffCanvas from './offCanvasNav'
 import Logo from '../logo'
 import Nav from '../nav'
 
-const Header = ({ pageStyle, menuItems }) => {
-    const navLinks = menuItems
+const Header = ({ pageStyle }) => {
+    const data = useStaticQuery(graphql`
+        {
+            wpMenu(slug: { eq: "primary-menu" }) {
+                ...WpMenuItems
+            }
+        }
+    `)
+    const navLinks = data.wpMenu.menuItems.nodes
     const { handleBurgerMenuClick } = useContext(OffCanvasMenuContext)
     const [headerStyle, setHeaderStyle] = useState('white')
     useEffect(() => {

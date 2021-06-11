@@ -1,4 +1,5 @@
 /** @jsxImportSource theme-ui */
+
 import { useStaticQuery, graphql } from 'gatsby'
 import Header from './template/header'
 import Footer from './template/footer'
@@ -10,7 +11,6 @@ if (typeof window !== 'undefined') {
 }
 
 const Layout = ({ children, pageContext }) => {
-    // console.log(pageContext.pageStyle)
     let pageStyle = pageContext.pageStyle
     if (typeof pageStyle === 'undefined') {
         pageStyle = 'white'
@@ -20,16 +20,12 @@ const Layout = ({ children, pageContext }) => {
         wp: {
             generalSettings: { title },
         },
-        wpMenu: { menuItems },
     } = useStaticQuery(graphql`
         query LayoutQuery {
             wp {
                 generalSettings {
                     title
                 }
-            }
-            wpMenu(slug: { eq: "primary-menu" }) {
-                ...WpMenuItems
             }
         }
     `)
@@ -43,7 +39,7 @@ const Layout = ({ children, pageContext }) => {
                 variant: 'layout.main.' + pageStyle,
             }}
         >
-            <Header pageStyle={pageStyle} menuItems={menuItems.nodes} />
+            <Header pageStyle={pageStyle} />
             <main>{children}</main>
             {typeof pageStyle !== 'undefined' && <Footer siteTitle={title} pageStyle={pageStyle} />}
         </div>
