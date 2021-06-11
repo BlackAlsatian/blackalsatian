@@ -10,6 +10,28 @@ import { handleErrorColor } from '../components/helpers'
 export const getForm = (option, buttonName, buttonUrl, backgroundColor, buttonBackground) => {
     const errorColor = handleErrorColor(backgroundColor)
     if (option === 'btnonly') {
+        if (buttonUrl.includes('#')) {
+            return (
+                <p>
+                    <a
+                        href={buttonUrl}
+                        sx={{
+                            variant: 'buttons.simple',
+                            display: 'inline-block',
+                            backgroundColor: `${buttonBackground}`,
+                            color: `${backgroundColor || 'white'}`,
+                            textDecoration: 'none',
+                            boxShadow: 'xl',
+                            '&:hover': {
+                                boxShadow: 'none',
+                            },
+                        }}
+                    >
+                        {buttonName}
+                    </a>
+                </p>
+            )
+        }
         return (
             <p>
                 <Link

@@ -34,6 +34,7 @@ const Footer = ({ siteTitle, pageStyle }) => {
                 fontWeight: 'medium',
                 variant: 'layout.footer.' + pageStyle,
             }}
+            id='contact'
         >
             <section>
                 <Flex

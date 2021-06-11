@@ -24,9 +24,15 @@ a span.has-black-color {
     text-decoration: underline;
     font-weight: bold;
 }
+a:hover span.has-black-color {
+    border-bottom: 3px solid black;
+}
 
 a span.has-white-color {
     color: #fff;
     text-decoration: underline;
     font-weight: bold;
+}
+a:hover span.has-white-color {
+    border-bottom: 3px solid white;
 }
