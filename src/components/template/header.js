@@ -18,7 +18,7 @@ const Header = ({ pageStyle }) => {
         }
     `)
     const navLinks = data.wpMenu.menuItems.nodes
-    const { handleBurgerMenuClick } = useContext(OffCanvasMenuContext)
+    const { handleBurgerMenuClick, isOpen } = useContext(OffCanvasMenuContext)
     const [headerStyle, setHeaderStyle] = useState('white')
     useEffect(() => {
         switch (pageStyle) {
@@ -70,6 +70,7 @@ const Header = ({ pageStyle }) => {
                     handleBurgerMenuClick={() => {
                         handleBurgerMenuClick()
                     }}
+                    isOpen={isOpen}
                 />
                 <span
                     sx={{

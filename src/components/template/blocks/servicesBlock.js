@@ -27,7 +27,7 @@ const ServicesBlock = ({ services }) => {
                 >
                     <LeftColumn
                         heading='Everything you need to get your brand out on the world-wide web.'
-                        title='Web Services'
+                        title='"Web Design & Digital Marketing Services"'
                     />
                     <Box
                         pr={[null, null, 4]}

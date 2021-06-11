@@ -6,8 +6,8 @@ const LinkDivStyle = {
     maxWidth: '100%',
     display: 'flex',
     alignItems: 'center',
-    px: 2,
-    py: [3, 3, null],
+    px: 3,
+    py: [2, 2, null],
     minHeight: ['4rem', '4rem', '7rem'],
     borderBottom: '0.01rem solid black',
     background: 'offWhite',
@@ -21,10 +21,10 @@ const ServiceLink = ({ item }) => {
         <Link key={item.id} to={item.url} title={item.label} sx={{ color: 'black', textDecoration: 'none' }}>
             <div sx={LinkDivStyle}>
                 <Heading
-                    as='h3'
+                    as='h4'
                     sx={{
-                        fontSize: 5,
-                        fontWeight: 'medium',
+                        fontSize: 4,
+                        fontWeight: 'normal',
                     }}
                 >
                     {item.label}
