@@ -1,9 +1,10 @@
 /** @jsxImportSource theme-ui */
 import { Container, Flex, Box } from 'theme-ui'
-// import React from 'react'
+import { Fragment } from 'react'
 import { graphql } from 'gatsby'
 import { getSrc } from 'gatsby-plugin-image'
 import parse from 'html-react-parser'
+import HeroBlock from '../components/template/blocks/heroBlock'
 import ComponentParser from '../components/componentParser'
 import SEO from '../components/seo'
 import PageHeader from '../components/template/pageHeader'
@@ -63,14 +64,17 @@ const PageTemplate = ({ data: { page, latestPostsBlock, portfolioBlock, services
                     </section>
                 </>
             ) : (
-                <ComponentParser
-                    blocks={page.blocks}
-                    featuredImage={page.featuredImage}
-                    latestPosts={latestPostsBlock}
-                    portfolio={portfolioBlock}
-                    services={servicesBlock}
-                    testimonials={testimonialsBlock}
-                />
+                <Fragment>
+                    <HeroBlock featuredImage={page.featuredImage} blocks={page.blocks} />
+                    <ComponentParser
+                        blocks={page.blocks}
+                        featuredImage={page.featuredImage}
+                        latestPosts={latestPostsBlock}
+                        portfolio={portfolioBlock}
+                        services={servicesBlock}
+                        testimonials={testimonialsBlock}
+                    />
+                </Fragment>
             )}
         </>
     )
