@@ -2,7 +2,6 @@ import React, { Fragment } from 'react'
 import LazyLoad from 'react-lazyload'
 import { randomID } from '../components/helpers'
 
-import HeroBlock from './template/blocks/heroBlock'
 import CTABlock from './template/blocks/ctaBlock'
 import ContentBlock from '../components/template/blocks/contentBlock'
 import TestimonialsBlock from '../components/template/blocks/testimonialsBlock'
@@ -12,19 +11,23 @@ import LatestPostsBlock from '../components/template/blocks/latestPostsBlock'
 import PlaceholderLoader from '../components/placeholderLoader'
 
 const ComponentParser = (props) => {
-    const { blocks, featuredImage, latestPosts, portfolio, services, testimonials } = props
+    const { blocks, latestPosts, portfolio, services, testimonials } = props
 
     return (
         <>
             {blocks &&
                 blocks.map(({ name, attributes, innerBlocks }) => (
                     <Fragment key={randomID()}>
-                        {name === 'core/cover' &&
+                        {/* {name === 'core/cover' &&
                             (innerBlocks[0].name === 'blackalsatian/hero-block' ? (
                                 <HeroBlock featuredImage={featuredImage} innerBlocks={innerBlocks} />
                             ) : (
                                 <CTABlock attributes={attributes} innerBlocks={innerBlocks} />
-                            ))}
+                            ))} */}
+
+                        {name === 'core/cover' && innerBlocks[0].name !== 'blackalsatian/hero-block' && (
+                            <CTABlock attributes={attributes} innerBlocks={innerBlocks} />
+                        )}
 
                         {name === 'blackalsatian/content-block' && (
                             <ContentBlock attributes={attributes} innerBlocks={innerBlocks} />

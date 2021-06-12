@@ -1,13 +1,14 @@
 /** @jsxImportSource theme-ui */
+
 import { Container, Heading } from 'theme-ui'
 import parse from 'html-react-parser'
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 
 const HeroBlock = (props) => {
-    const { featuredImage } = props
+    const { featuredImage, heroBlockAttributes } = props
 
     const featuredImageData = getImage(featuredImage.node.main)
-    const { heroFontColor, heroTitle, heroIntro } = props.innerBlocks[0].attributes
+    const { heroFontColor, heroTitle, heroIntro } = heroBlockAttributes
     return (
         <section
             backgroundColor='white'

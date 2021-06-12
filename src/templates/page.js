@@ -1,9 +1,10 @@
 /** @jsxImportSource theme-ui */
+
 import { Container, Flex, Box } from 'theme-ui'
-// import React from 'react'
 import { graphql } from 'gatsby'
 import { getSrc } from 'gatsby-plugin-image'
 import parse from 'html-react-parser'
+import HeroBlock from '../components/template/blocks/heroBlock'
 import ComponentParser from '../components/componentParser'
 import SEO from '../components/seo'
 import PageHeader from '../components/template/pageHeader'
@@ -16,6 +17,9 @@ const PageTemplate = ({ data: { page, latestPostsBlock, portfolioBlock, services
     if (pageStyle === 'red') {
         bodyFontColor = 'white'
     }
+    console.log(page.blocks[0].innerBlocks[0].attributes, page.featuredImage.node.main)
+    const featuredImage = page.featuredImage
+    const heroBlockAttributes = page.blocks[0]?.innerBlocks[0]?.attributes
     const seoImgSrc = getSrc(page.featuredImage?.node?.og)
     return (
         <>
@@ -63,14 +67,17 @@ const PageTemplate = ({ data: { page, latestPostsBlock, portfolioBlock, services
                     </section>
                 </>
             ) : (
-                <ComponentParser
-                    blocks={page.blocks}
-                    featuredImage={page.featuredImage}
-                    latestPosts={latestPostsBlock}
-                    portfolio={portfolioBlock}
-                    services={servicesBlock}
-                    testimonials={testimonialsBlock}
-                />
+                <>
+                    <HeroBlock featuredImage={featuredImage} heroBlockAttributes={heroBlockAttributes} />
+                    <ComponentParser
+                        blocks={page.blocks}
+                        // featuredImage={page.featuredImage}
+                        latestPosts={latestPostsBlock}
+                        portfolio={portfolioBlock}
+                        services={servicesBlock}
+                        testimonials={testimonialsBlock}
+                    />
+                </>
             )}
         </>
     )
