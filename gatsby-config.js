@@ -11,7 +11,7 @@ module.exports = {
         author: {
             name: `Björn Potgieter`,
             url: `https://bjorn.africa`,
-            twitter: `@lifeofbjorn`,
+            twitter: `@bjornalism`,
         },
         organization: {
             name: `Black Alsatian`,
@@ -75,7 +75,7 @@ module.exports = {
                 ],
                 pluginConfig: {
                     // Puts tracking script in the head instead of the body
-                    head: true,
+                    head: false,
                 },
             },
         },
@@ -90,7 +90,6 @@ module.exports = {
         // },
         `gatsby-plugin-react-helmet`,
         `gatsby-plugin-theme-ui`,
-        // `gatsby-theme-style-guide`,
         {
             resolve: `gatsby-plugin-transition-link`,
             options: {
@@ -238,12 +237,6 @@ module.exports = {
             },
         },
         `gatsby-plugin-sitemap`,
-        // {
-        //     resolve: `gatsby-plugin-sitemap`,
-        //     options: {
-        //         exclude: [`/portfolio/*`],
-        //     },
-        // },
         `gatsby-plugin-gatsby-cloud`,
         `gatsby-plugin-offline`,
         `gatsby-plugin-remove-generator`,

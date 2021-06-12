@@ -1,35 +1,32 @@
 /** @jsxImportSource theme-ui */
 
-// import HeroBlock from './heroBlock'
+import HeroBlock from './heroBlock'
 import CTABlock from './ctaBlock'
 
 const CoverBlock = (props) => {
-    const { attributes, innerBlocks } = props
-
-    // if (innerBlocks[0].name === 'blackalsatian/hero-block') {
-    //     return (
-    //         <HeroBlock
-    //             featuredImage={featuredImage}
-    //             color={innerBlocks[0].attributes.heroFontColor}
-    //             anchor={attributes.anchor}
-    //             title={innerBlocks[0].attributes.heroTitle}
-    //             intro={innerBlocks[0].attributes.heroIntro}
-    //             heading={innerBlocks[0].attributes.heading}
-    //         />
-    //     )
-    // }
+    const { attributes, innerBlocks, featuredImage } = props
+    if (innerBlocks[0].name === 'blackalsatian/hero-block') {
+        return (
+            <HeroBlock
+                featuredImage={featuredImage}
+                color={innerBlocks[0].attributes.heroFontColor}
+                title={innerBlocks[0].attributes.heroTitle}
+                intro={innerBlocks[0].attributes.heroIntro}
+            />
+        )
+    }
     return (
         <CTABlock
-            backgroundColor={attributes.overlayColor}
-            color={innerBlocks[0].attributes.color}
             anchor={attributes.anchor}
-            title={innerBlocks[0].attributes.title}
-            heading={innerBlocks[0].attributes.heading}
-            text={innerBlocks[0].innerBlocks}
-            option={innerBlocks[0].attributes.option}
+            backgroundColor={attributes.overlayColor}
             buttonBackground={innerBlocks[0].attributes.buttonBackgroundColor}
             buttonName={innerBlocks[0].attributes.buttonName}
             buttonUrl={innerBlocks[0].attributes.buttonUrl}
+            color={innerBlocks[0].attributes.color}
+            heading={innerBlocks[0].attributes.heading}
+            option={innerBlocks[0].attributes.option}
+            text={innerBlocks[0].innerBlocks}
+            title={innerBlocks[0].attributes.title}
         />
     )
 }

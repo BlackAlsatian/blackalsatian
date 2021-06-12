@@ -4,7 +4,6 @@ import { Container, Flex, Box } from 'theme-ui'
 import { graphql } from 'gatsby'
 import { getSrc } from 'gatsby-plugin-image'
 import parse from 'html-react-parser'
-import HeroBlock from '../components/template/blocks/heroBlock'
 import ComponentParser from '../components/componentParser'
 import SEO from '../components/seo'
 import PageHeader from '../components/template/pageHeader'
@@ -12,14 +11,10 @@ import LeftColumn from '../components/template/elements/leftColumn'
 
 const PageTemplate = ({ data: { page, latestPostsBlock, portfolioBlock, servicesBlock, testimonialsBlock } }) => {
     const pageStyle = page.pageStyle
-    // console.log(pageStyle)
     let bodyFontColor = 'black'
     if (pageStyle === 'red') {
         bodyFontColor = 'white'
     }
-
-    const featuredImage = page.featuredImage
-    const heroBlockAttributes = page.blocks[0]
     const seoImgSrc = getSrc(page.featuredImage?.node?.og)
     return (
         <>
@@ -67,17 +62,14 @@ const PageTemplate = ({ data: { page, latestPostsBlock, portfolioBlock, services
                     </section>
                 </>
             ) : (
-                <>
-                    <HeroBlock featuredImage={featuredImage} heroBlockAttributes={heroBlockAttributes} />
-                    <ComponentParser
-                        blocks={page.blocks}
-                        // featuredImage={page.featuredImage}
-                        latestPosts={latestPostsBlock}
-                        portfolio={portfolioBlock}
-                        services={servicesBlock}
-                        testimonials={testimonialsBlock}
-                    />
-                </>
+                <ComponentParser
+                    blocks={page.blocks}
+                    featuredImage={page.featuredImage}
+                    latestPosts={latestPostsBlock}
+                    portfolio={portfolioBlock}
+                    services={servicesBlock}
+                    testimonials={testimonialsBlock}
+                />
             )}
         </>
     )

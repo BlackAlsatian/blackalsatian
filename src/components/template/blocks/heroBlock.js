@@ -1,24 +1,23 @@
 /** @jsxImportSource theme-ui */
 
-import { Container, Heading } from 'theme-ui'
+import { Container, Flex, Heading } from 'theme-ui'
 import parse from 'html-react-parser'
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 
 const HeroBlock = (props) => {
-    const { featuredImage, heroBlockAttributes } = props
+    const { featuredImage, color, title, intro } = props
     const featuredImageData = getImage(featuredImage.node.main)
-    const { heroFontColor, heroTitle, heroIntro } = heroBlockAttributes.innerBlocks[0].attributes
     return (
-        <section
+        <Flex
+            as='section'
             backgroundColor='white'
             sx={{
-                display: 'flex',
                 position: 'relative',
                 alignItems: 'center',
                 width: '100%',
                 flexDirection: 'column',
                 minHeight: '100vh',
-                color: `${heroFontColor}`,
+                color: `${color}`,
             }}
         >
             <GatsbyImage
@@ -46,11 +45,11 @@ const HeroBlock = (props) => {
                         textShadow: '0 0 4rem rgba(0, 0, 0, 0.5)',
                     }}
                 >
-                    {parse(heroTitle)}
+                    {parse(title)}
                 </Heading>
-                <p sx={{ fontSize: [3, 4], my: 0, textShadow: '0 0 3rem rgba(0, 0, 0, 0.5)' }}>{parse(heroIntro)}</p>
+                <p sx={{ fontSize: [3, 4], my: 0, textShadow: '0 0 3rem rgba(0, 0, 0, 0.5)' }}>{parse(intro)}</p>
             </Container>
-        </section>
+        </Flex>
     )
 }
 
