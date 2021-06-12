@@ -13,7 +13,7 @@ import PlaceholderLoader from '../components/placeholderLoader'
 
 const ComponentParser = (props) => {
     const { blocks, featuredImage, latestPosts, portfolio, services, testimonials } = props
-    // console.log(services)
+
     return (
         <>
             {blocks &&

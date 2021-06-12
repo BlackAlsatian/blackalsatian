@@ -1,13 +1,13 @@
 /** @jsxImportSource theme-ui */
+
 import { Flex, Heading } from 'theme-ui'
 import LazyLoad from 'react-lazyload'
 import { Link } from 'gatsby'
 import ContactDetails from './contactDetails'
 import Logo from '../../logo'
 import ServiceNav from '../../serviceNav'
-import EnquiryForm from '../../forms/enquiryForm'
 import SocialIcons from './socialIcons'
-import { handleErrorColor } from '../../helpers'
+import GetForm from '../../getForm'
 import PlaceholderLoader from '../../../components/placeholderLoader'
 
 const Footer = ({ siteTitle, pageStyle }) => {
@@ -25,7 +25,6 @@ const Footer = ({ siteTitle, pageStyle }) => {
         bgcolor = 'white'
         textcolor = 'black'
     }
-    const errorColor = handleErrorColor(bgcolor)
     return (
         <footer
             sx={{
@@ -63,11 +62,12 @@ const Footer = ({ siteTitle, pageStyle }) => {
                         }}
                     >
                         <LazyLoad height='100%' offSet={200} once placeholder={<PlaceholderLoader />}>
-                            <EnquiryForm
-                                formStyle='inputs.underline'
+                            <GetForm
+                                option='contact'
+                                buttonName='Fetch!'
+                                backgroundColor={bgcolor}
                                 buttonBackground={textcolor}
-                                btnColor={bgcolor}
-                                errorColor={errorColor}
+                                formStyle='inputs.underline'
                             />
                         </LazyLoad>
                     </div>

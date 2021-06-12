@@ -6,6 +6,7 @@ const CTABlock = (props) => {
     const { color, title, heading, option, buttonBackgroundColor, buttonName, buttonUrl } =
         props.innerBlocks[0].attributes
     const { innerBlocks } = props.innerBlocks[0]
+
     return (
         <BlockSection
             backgroundColor={overlayColor}

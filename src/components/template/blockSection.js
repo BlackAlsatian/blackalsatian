@@ -1,8 +1,8 @@
 /** @jsxImportSource theme-ui */
-import { jsx, Container, Flex, Box } from 'theme-ui'
+import { Container, Flex, Box } from 'theme-ui'
 import LazyLoad from 'react-lazyload'
 import BlockText from '../blockText'
-import { getForm } from '../getForm'
+import GetForm from '../getForm'
 import LeftColumn from '../template/elements/leftColumn'
 import PlaceholderLoader from '../../components/placeholderLoader'
 
@@ -53,9 +53,16 @@ const ContentBlock = (props) => {
                     >
                         <BlockText text={text} />
                         <LazyLoad height='100%' offSet={200} once placeholder={<PlaceholderLoader />}>
-                            {buttonName &&
-                                option !== 'none' &&
-                                getForm(option, buttonName, buttonUrl, backgroundColor, buttonBackground)}
+                            {buttonName && option !== 'none' && (
+                                <GetForm
+                                    option={option}
+                                    buttonName={buttonName}
+                                    buttonUrl={buttonUrl}
+                                    backgroundColor={backgroundColor}
+                                    buttonBackground={buttonBackground}
+                                    formStyle='inputs.background'
+                                />
+                            )}
                         </LazyLoad>
                     </Box>
                 </Flex>
@@ -64,3 +71,4 @@ const ContentBlock = (props) => {
     )
 }
 export default ContentBlock
+// getForm(option, buttonName, buttonUrl, backgroundColor, buttonBackground)
