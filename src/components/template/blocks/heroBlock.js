@@ -6,9 +6,8 @@ import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 
 const HeroBlock = (props) => {
     const { featuredImage, heroBlockAttributes } = props
-
     const featuredImageData = getImage(featuredImage.node.main)
-    const { heroFontColor, heroTitle, heroIntro } = heroBlockAttributes
+    const { heroFontColor, heroTitle, heroIntro } = heroBlockAttributes.innerBlocks[0].attributes
     return (
         <section
             backgroundColor='white'

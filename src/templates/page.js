@@ -19,7 +19,7 @@ const PageTemplate = ({ data: { page, latestPostsBlock, portfolioBlock, services
     }
 
     const featuredImage = page.featuredImage
-    const heroBlockAttributes = page.blocks[0]?.innerBlocks[0]?.attributes
+    const heroBlockAttributes = page.blocks[0]
     const seoImgSrc = getSrc(page.featuredImage?.node?.og)
     return (
         <>
