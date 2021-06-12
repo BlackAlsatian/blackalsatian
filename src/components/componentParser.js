@@ -3,6 +3,7 @@ import LazyLoad from 'react-lazyload'
 import { randomID } from '../components/helpers'
 
 import CTABlock from './template/blocks/ctaBlock'
+import CoverBlock from './template/blocks/coverBlock'
 import ContentBlock from '../components/template/blocks/contentBlock'
 import TestimonialsBlock from '../components/template/blocks/testimonialsBlock'
 import FeaturedProjectsBlock from '../components/template/blocks/featuredProjects'
@@ -26,7 +27,7 @@ const ComponentParser = (props) => {
                             ))} */}
 
                         {name === 'core/cover' && innerBlocks[0].name !== 'blackalsatian/hero-block' && (
-                            <CTABlock attributes={attributes} innerBlocks={innerBlocks} />
+                            <CoverBlock attributes={attributes} innerBlocks={innerBlocks} />
                         )}
 
                         {name === 'blackalsatian/content-block' && (

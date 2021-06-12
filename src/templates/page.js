@@ -17,7 +17,7 @@ const PageTemplate = ({ data: { page, latestPostsBlock, portfolioBlock, services
     if (pageStyle === 'red') {
         bodyFontColor = 'white'
     }
-    console.log(page.blocks[0].innerBlocks[0].attributes, page.featuredImage.node.main)
+
     const featuredImage = page.featuredImage
     const heroBlockAttributes = page.blocks[0]?.innerBlocks[0]?.attributes
     const seoImgSrc = getSrc(page.featuredImage?.node?.og)
