@@ -1,6 +1,5 @@
 /** @jsxImportSource theme-ui */
 
-import React from 'react'
 import { graphql } from 'gatsby'
 import { getSrc } from 'gatsby-plugin-image'
 import ComponentParser from '../components/componentParser'
@@ -12,7 +11,7 @@ const LanderTemplate = ({ data: { lander } }) => {
         <>
             <SEO
                 title={lander.title}
-                description={lander.seo.metaDesc}
+                description={lander.seo?.metaDesc}
                 url={lander.uri}
                 featuredImage={seoImgSrc && seoImgSrc}
             />

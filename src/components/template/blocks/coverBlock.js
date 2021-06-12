@@ -5,13 +5,14 @@ import CTABlock from './ctaBlock'
 
 const CoverBlock = (props) => {
     const { attributes, innerBlocks, featuredImage } = props
-    if (innerBlocks[0].name === 'blackalsatian/hero-block') {
+    const block = innerBlocks[0]
+    if (block.name === 'blackalsatian/hero-block') {
         return (
             <HeroBlock
                 featuredImage={featuredImage}
-                color={innerBlocks[0].attributes.heroFontColor}
-                title={innerBlocks[0].attributes.heroTitle}
-                intro={innerBlocks[0].attributes.heroIntro}
+                color={block.attributes.heroFontColor}
+                title={block.attributes.heroTitle}
+                intro={block.attributes.heroIntro}
             />
         )
     }
@@ -19,14 +20,14 @@ const CoverBlock = (props) => {
         <CTABlock
             anchor={attributes.anchor}
             backgroundColor={attributes.overlayColor}
-            buttonBackground={innerBlocks[0].attributes.buttonBackgroundColor}
-            buttonName={innerBlocks[0].attributes.buttonName}
-            buttonUrl={innerBlocks[0].attributes.buttonUrl}
-            color={innerBlocks[0].attributes.color}
-            heading={innerBlocks[0].attributes.heading}
-            option={innerBlocks[0].attributes.option}
-            text={innerBlocks[0].innerBlocks}
-            title={innerBlocks[0].attributes.title}
+            buttonBackground={block.attributes.buttonBackgroundColor}
+            buttonName={block.attributes.buttonName}
+            buttonUrl={block.attributes.buttonUrl}
+            color={block.attributes.color}
+            heading={block.attributes.heading}
+            option={block.attributes.option}
+            text={block.innerBlocks}
+            title={block.attributes.title}
         />
     )
 }
