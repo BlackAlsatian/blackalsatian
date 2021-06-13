@@ -9,6 +9,9 @@ import axios from 'axios'
 import { handleErrorColor, phoneRegExp, emailRegExp, sendGA, leadInfo } from '../components/helpers'
 
 const GetForm = ({ option, buttonName, buttonUrl, backgroundColor, buttonBackground, formStyle }) => {
+    if (option === 'contact') {
+        option = 'enquiry'
+    }
     const errorColor = handleErrorColor(backgroundColor)
     const [messageAlert, setMessageAlert] = useState(false)
     const [formSubmitting, setFormSubmitting] = useState(false)
@@ -23,6 +26,7 @@ const GetForm = ({ option, buttonName, buttonUrl, backgroundColor, buttonBackgro
     } = useForm({
         mode: 'all',
         defaultValues: {
+            website_id: `${process.env.GATSBY_BA_SITEID}`,
             name: '',
             lastname: '',
             number: '',
@@ -31,7 +35,6 @@ const GetForm = ({ option, buttonName, buttonUrl, backgroundColor, buttonBackgro
             status: 'lead',
             subscribe: false,
             mailer_sync: option === 'lead' ? true : false,
-            site: 'blackalsatian.co.za',
             page: leadInfo().pathUrl,
             traffic_source: leadInfo().referrerUrl,
             tags: option,
@@ -184,7 +187,7 @@ const GetForm = ({ option, buttonName, buttonUrl, backgroundColor, buttonBackgro
                 autocomplete='off'
             />
 
-            {(option === 'quote' || option === 'contact') && (
+            {(option === 'quote' || option === 'enquiry') && (
                 <Fragment>
                     {/* number */}
                     <Label htmlFor='number'>Number</Label>
@@ -266,7 +269,7 @@ const GetForm = ({ option, buttonName, buttonUrl, backgroundColor, buttonBackgro
             )}
 
             {/* message */}
-            {(option === 'quote' || option === 'contact') && (
+            {(option === 'quote' || option === 'enquiry') && (
                 <Fragment>
                     <Label htmlFor='message'>Message</Label>
                     <Textarea
