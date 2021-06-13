@@ -26,7 +26,6 @@ const GetForm = ({ option, buttonName, buttonUrl, backgroundColor, buttonBackgro
     } = useForm({
         mode: 'all',
         defaultValues: {
-            website_id: `${process.env.GATSBY_BA_SITEID}`,
             name: '',
             lastname: '',
             number: '',
@@ -38,11 +37,12 @@ const GetForm = ({ option, buttonName, buttonUrl, backgroundColor, buttonBackgro
             page: leadInfo().pathUrl,
             traffic_source: leadInfo().referrerUrl,
             tags: option,
+            website_id: `${process.env.GATSBY_BA_SITEID}`,
         },
     })
 
     const onSubmit = (data) => {
-        // console.log(data)
+        console.log(data)
         setFormSubmitting(true)
         axios({
             method: 'post',
@@ -66,8 +66,8 @@ const GetForm = ({ option, buttonName, buttonUrl, backgroundColor, buttonBackgro
                 // console.log(response)
             },
             (error) => {
-                // console.log(error.response)
-                console.log("There were errors. That's all I know.")
+                console.log(error.response)
+                // console.log("There were errors. That's all I know.")
             },
         )
     }
