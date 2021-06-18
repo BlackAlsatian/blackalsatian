@@ -329,12 +329,17 @@ module.exports = {
                         // Custom Serializer
                         serializer: (edges) => {
                             return edges.map(({ node }) => {
+                                const PageFeaturedImagePath =
+                                    node.featuredImage !== null
+                                        ? node.featuredImage.node.localFile.publicURL
+                                        : `/images/black-alsatian-dark-dog.png`
                                 return {
                                     node: {
                                         id: node.id,
                                         slug: node.slug,
                                         updated_at: node.modifiedGmt,
-                                        feature_image: node?.featuredImage?.node?.localFile?.publicURL,
+                                        // feature_image: node.featuredImage.node.localFile.publicURL,
+                                        feature_image: PageFeaturedImagePath,
                                     },
                                 }
                             })
@@ -345,12 +350,16 @@ module.exports = {
                         prefix: `blog/`,
                         serializer: (edges) => {
                             return edges.map(({ node }) => {
+                                const PostFeaturedImagePath =
+                                    node.featuredImage !== null
+                                        ? node.featuredImage.node.localFile.publicURL
+                                        : `/images/black-alsatian-dark-dog.png`
                                 return {
                                     node: {
                                         id: node.id,
                                         slug: node.slug,
                                         updated_at: node.modifiedGmt,
-                                        feature_image: node?.featuredImage?.node?.localFile?.publicURL,
+                                        feature_image: PostFeaturedImagePath,
                                     },
                                 }
                             })
@@ -361,12 +370,16 @@ module.exports = {
                         prefix: `services/`,
                         serializer: (edges) => {
                             return edges.map(({ node }) => {
+                                const ServiceFeaturedImagePath =
+                                    node.featuredImage !== null
+                                        ? node.featuredImage.node.localFile.publicURL
+                                        : `/images/black-alsatian-dark-dog.png`
                                 return {
                                     node: {
                                         id: node.id,
                                         slug: node.slug,
                                         updated_at: node.modifiedGmt,
-                                        feature_image: node?.featuredImage?.node?.localFile?.publicURL,
+                                        feature_image: ServiceFeaturedImagePath,
                                     },
                                 }
                             })
@@ -377,12 +390,16 @@ module.exports = {
                         prefix: `x/`,
                         serializer: (edges) => {
                             return edges.map(({ node }) => {
+                                const LanderFeaturedImagePath =
+                                    node.featuredImage !== null
+                                        ? node.featuredImage.node.localFile.publicURL
+                                        : `/images/black-alsatian-dark-dog.png`
                                 return {
                                     node: {
                                         id: node.id,
                                         slug: node.slug,
                                         updated_at: node.modifiedGmt,
-                                        feature_image: node?.featuredImage?.node?.localFile?.publicURL,
+                                        feature_image: LanderFeaturedImagePath,
                                     },
                                 }
                             })
@@ -393,19 +410,29 @@ module.exports = {
                         prefix: `portfolio/`,
                         serializer: (edges) => {
                             return edges.map(({ node }) => {
+                                const ProjectFeaturedImagePath =
+                                    node.featuredImage !== null
+                                        ? node.featuredImage.node.localFile.publicURL
+                                        : `/images/black-alsatian-dark-dog.png`
                                 return {
                                     node: {
                                         id: node.id,
                                         slug: node.slug,
                                         updated_at: node.modifiedGmt,
-                                        feature_image: node?.featuredImage?.node?.localFile?.publicURL,
+                                        feature_image: ProjectFeaturedImagePath,
                                     },
                                 }
                             })
                         },
                     },
                 },
-                exclude: [`/dev-404-page`, `/404`, `/404.html`, `/offline-plugin-app-shell-fallback`],
+                exclude: [
+                    `/dev-404-page`,
+                    `/404`,
+                    `/404.html`,
+                    `/offline-plugin-app-shell-fallback`,
+                    `/the-web-design-company-with-a-difference`,
+                ],
                 createLinkInHead: true,
                 addUncaughtPages: true,
             },
