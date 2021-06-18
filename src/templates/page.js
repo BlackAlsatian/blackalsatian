@@ -1,10 +1,12 @@
 /** @jsxImportSource theme-ui */
 
+import { Fragment } from 'react'
 import { Container, Flex, Box } from 'theme-ui'
 import { graphql } from 'gatsby'
 import { getSrc } from 'gatsby-plugin-image'
 import parse from 'html-react-parser'
-import ComponentParser from '../components/componentParser'
+import { randomID } from '../components/helpers'
+import CustomBlock from '../components/customBlock'
 import SEO from '../components/seo'
 import PageHeader from '../components/template/pageHeader'
 import LeftColumn from '../components/template/elements/leftColumn'
@@ -23,6 +25,8 @@ const PageTemplate = ({ data: { page, latestPostsBlock, portfolioBlock, services
                 description={page.seo?.metaDesc}
                 url={page.uri}
                 featuredImage={seoImgSrc && seoImgSrc}
+                datePublished={page.dateGmt}
+                dateModified={page.modifiedGmt}
             />
             {!page.isFrontPage && !page.title.includes('Services') && !page.title.includes('Portfolio') ? (
                 <>
@@ -62,14 +66,23 @@ const PageTemplate = ({ data: { page, latestPostsBlock, portfolioBlock, services
                     </section>
                 </>
             ) : (
-                <ComponentParser
-                    blocks={page.blocks}
-                    featuredImage={page.featuredImage}
-                    latestPosts={latestPostsBlock}
-                    portfolio={portfolioBlock}
-                    services={servicesBlock}
-                    testimonials={testimonialsBlock}
-                />
+                <Fragment>
+                    {page.blocks &&
+                        page.blocks.map(({ name, attributes, innerBlocks }) => (
+                            <Fragment key={randomID()}>
+                                <CustomBlock
+                                    customBlock={name}
+                                    featuredImage={page.featuredImage}
+                                    innerBlocks={innerBlocks}
+                                    attributes={attributes}
+                                    latestPosts={latestPostsBlock}
+                                    portfolio={portfolioBlock}
+                                    services={servicesBlock}
+                                    testimonials={testimonialsBlock}
+                                />
+                            </Fragment>
+                        ))}
+                </Fragment>
             )}
         </>
     )
@@ -87,6 +100,8 @@ export const pageQuery = graphql`
             id
             title
             content
+            dateGmt
+            modifiedGmt
             slug
             isFrontPage
             ...PageFeaturedMediaFragment

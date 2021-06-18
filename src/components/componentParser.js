@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
 // import LazyLoad from 'react-lazyload'
-import { randomID } from '../components/helpers'
+import { randomID } from './helpers'
 
 // import CoverBlock from './template/blocks/coverBlock'
 // import ContentBlock from '../components/template/blocks/contentBlock'
@@ -9,10 +9,11 @@ import { randomID } from '../components/helpers'
 // import ServicesBlock from '../components/template/blocks/servicesBlock'
 // import LatestPostsBlock from '../components/template/blocks/latestPostsBlock'
 // import PlaceholderLoader from '../components/placeholderLoader'
-import CustomBlock from '../components/customBlock'
+import CustomBlock from './customBlock'
 
 const ComponentParser = (props) => {
-    const { blocks, latestPosts, portfolio, services, testimonials, featuredImage } = props
+    // const { blocks, latestPosts, portfolio, services, testimonials, featuredImage } = props
+    const { blocks, featuredImage } = props
 
     return (
         <>
@@ -24,10 +25,10 @@ const ComponentParser = (props) => {
                             featuredImage={featuredImage}
                             innerBlocks={innerBlocks}
                             attributes={attributes}
-                            latestPosts={latestPosts}
-                            portfolio={portfolio}
-                            services={services}
-                            testimonials={testimonials}
+                            // latestPosts={latestPosts}
+                            // portfolio={portfolio}
+                            // services={services}
+                            // testimonials={testimonials}
                         />
                     </Fragment>
                 ))}

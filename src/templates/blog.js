@@ -1,6 +1,6 @@
 /** @jsxImportSource theme-ui */
+
 import { Container, Heading } from 'theme-ui'
-// import React from 'react'
 import { graphql } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import parse from 'html-react-parser'
@@ -23,7 +23,7 @@ const BlogIndex = ({ data, pageContext: { nextPagePath, previousPagePath, style 
                     title={browserTitle}
                     description={content}
                     url={pathname}
-                    // featuredImage={page.featuredImage.node.og.childImageSharp.gatsbyImageData.src}
+                    // featuredImage={page.featuredImage?.node?.og?.childImageSharp?.gatsbyImageData?.src}
                 />
                 <p>No blog posts found.</p>
             </>
@@ -36,7 +36,7 @@ const BlogIndex = ({ data, pageContext: { nextPagePath, previousPagePath, style 
                 title={browserTitle}
                 description={content}
                 url={pathname}
-                // featuredImage={page.featuredImage.node.localFile.childImageSharp.fluid.src}
+                // featuredImage={page.featuredImage?.node?.og?.childImageSharp?.gatsbyImageData?.src}
             />
             {pathname === '/blog/' && <PageHeader title={pageTitle} intro={content} headerStyle={pageStyle} />}
             <section>

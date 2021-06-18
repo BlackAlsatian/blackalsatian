@@ -1,6 +1,5 @@
 /** @jsxImportSource theme-ui */
 
-import React from 'react'
 import { graphql } from 'gatsby'
 import { getSrc } from 'gatsby-plugin-image'
 import SEO from '../components/seo'
@@ -19,6 +18,8 @@ const ProjectTemplate = ({ data: { previous, portfolio, next } }) => {
                 description={portfolio.seo.metaDesc}
                 url={portfolio.uri}
                 featuredImage={seoImgSrc && seoImgSrc}
+                datePublished={portfolio.dateGmt}
+                dateModified={portfolio.modifiedGmt}
             />
             <div
                 sx={{
@@ -56,6 +57,8 @@ export const portfolioQuery = graphql`
         portfolio: wpPortfolio(id: { eq: $id }) {
             id
             title
+            dateGmt
+            modifiedGmt
             excerpt
             content
             seo {

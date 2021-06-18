@@ -1,6 +1,6 @@
 /** @jsxImportSource theme-ui */
+
 import { Container, Heading, Box } from 'theme-ui'
-import React from 'react'
 import { Link } from 'gatsby'
 import SEO from '../components/seo'
 

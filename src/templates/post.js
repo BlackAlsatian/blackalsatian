@@ -1,6 +1,6 @@
 /** @jsxImportSource theme-ui */
+
 import { Container, Heading, Flex, Box, Badge } from 'theme-ui'
-import React from 'react'
 import { graphql } from 'gatsby'
 import parse from 'html-react-parser'
 import { GatsbyImage, getSrc } from 'gatsby-plugin-image'
@@ -26,7 +26,8 @@ const BlogPostTemplate = ({ data: { previous, next, post }, pageContext }) => {
                 featuredImage={seoImgSrc && seoImgSrc}
                 url={post.uri}
                 author={post.author.node.firstName + ` ` + post.author.node.lastName}
-                datePublished={post.date}
+                datePublished={post.dateGmt}
+                dateModified={post.modifiedGmt}
                 isBlogPost
             />
 
@@ -196,6 +197,8 @@ export const pageQuery = graphql`
             title
             uri
             date(formatString: "MMMM DD, YYYY")
+            dateGmt
+            modifiedGmt
             seo {
                 metaDesc
             }

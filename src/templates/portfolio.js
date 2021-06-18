@@ -1,6 +1,6 @@
 /** @jsxImportSource theme-ui */
+
 import { Container, Flex, Heading, Box } from 'theme-ui'
-import React from 'react'
 import { graphql } from 'gatsby'
 import { getSrc } from 'gatsby-plugin-image'
 import AniLink from 'gatsby-plugin-transition-link/AniLink'
@@ -22,6 +22,8 @@ const PortfolioIndex = ({ data }) => {
                     description={page.seo.metaDesc}
                     url={page.uri}
                     featuredImage={seoImgSrc && seoImgSrc}
+                    datePublished={page.dateGmt}
+                    dateModified={page.modifiedGmt}
                 />
                 <p>No blog projects found.</p>
             </>
@@ -35,6 +37,8 @@ const PortfolioIndex = ({ data }) => {
                 description={page.seo.metaDesc}
                 url={page.uri}
                 featuredImage={seoImgSrc && seoImgSrc}
+                datePublished={page.dateGmt}
+                dateModified={page.modifiedGmt}
             />
             <PageHeader title={parse(page.title)} intro={page.pageintro} headerStyle={pageStyle} />
 
@@ -170,6 +174,8 @@ export const pageQuery = graphql`
             title
             uri
             slug
+            dateGmt
+            modifiedGmt
             content
             seo {
                 metaDesc

@@ -1,6 +1,5 @@
 /** @jsxImportSource theme-ui */
 
-import React from 'react'
 import AniLink from 'gatsby-plugin-transition-link/AniLink'
 
 const PagesNav = ({ previousPagePath, nextPagePath, previousName, nextName, backgroundColor, color, swipeColor }) => {

@@ -1,6 +1,6 @@
 /** @jsxImportSource theme-ui */
+
 import { Flex, Box } from 'theme-ui'
-import React from 'react'
 import { graphql } from 'gatsby'
 import { GatsbyImage, getSrc } from 'gatsby-plugin-image'
 import parse from 'html-react-parser'
@@ -22,6 +22,8 @@ const PageTemplate = ({ data: { previous, next, service } }) => {
                 description={service.seo.metaDesc}
                 url={service.uri}
                 featuredImage={seoImgSrc && seoImgSrc}
+                datePublished={service.dateGmt}
+                dateModified={service.modifiedGmt}
             />
             <PageHeader title={parse(service.title)} intro={parse(service.excerpt)} headerStyle={pageStyle} />
             <section sx={{ backgroundColor: 'white' }}>
@@ -81,6 +83,8 @@ export const serviceQuery = graphql`
             excerpt
             content
             title
+            dateGmt
+            modifiedGmt
             seo {
                 metaDesc
             }

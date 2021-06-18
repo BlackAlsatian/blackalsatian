@@ -14,6 +14,8 @@ const LanderTemplate = ({ data: { lander } }) => {
                 description={lander.seo?.metaDesc}
                 url={lander.uri}
                 featuredImage={seoImgSrc && seoImgSrc}
+                datePublished={lander.dateGmt}
+                dateModified={lander.modifiedGmt}
             />
             <ComponentParser blocks={lander.blocks} featuredImage={lander.featuredImage} />
         </>
@@ -34,6 +36,8 @@ export const landerQuery = graphql`
             slug
             ...LanderFeaturedMediaFragment
             uri
+            dateGmt
+            modifiedGmt
             seo {
                 metaDesc
             }

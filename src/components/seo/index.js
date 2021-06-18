@@ -4,7 +4,7 @@ import { Helmet } from 'react-helmet'
 import { StaticQuery, graphql } from 'gatsby'
 import SchemaOrg from './schemaOrg'
 
-const SEO = ({ title, description, featuredImage, url, author, isBlogPost, datePublished }) => (
+const SEO = ({ title, description, featuredImage, url, author, isBlogPost, datePublished, dateModified }) => (
     <StaticQuery
         query={graphql`
             query {
@@ -47,7 +47,9 @@ const SEO = ({ title, description, featuredImage, url, author, isBlogPost, dateP
             const defaultTitle = seo.title
             const image = `${seo.siteUrl}${featuredImage || seo.image}`
             const pageUrl = url && url !== `/` ? `${seo.siteUrl}${url}` : seo.siteUrl
-            const publishedDate = isBlogPost ? datePublished : false
+            // const publishedDate = isBlogPost ? datePublished : false
+            const publishedDate = datePublished
+            const modifiedDate = dateModified
 
             return (
                 <>
@@ -59,6 +61,8 @@ const SEO = ({ title, description, featuredImage, url, author, isBlogPost, dateP
                         <meta name='description' content={metaDescription} />
                         <meta name='image' content={image} />
                         <link rel='canonical' href={pageUrl} />
+                        <meta property='article:published_time' content={publishedDate} />
+                        <meta property='article:modified_time' content={modifiedDate} />
 
                         {/* OpenGraph tags */}
                         <meta property='og:url' content={pageUrl} />
@@ -84,6 +88,7 @@ const SEO = ({ title, description, featuredImage, url, author, isBlogPost, dateP
                         image={image}
                         description={metaDescription}
                         datePublished={publishedDate}
+                        dateModified={modifiedDate}
                         canonicalUrl={seo.siteUrl}
                         author={author}
                         organization={seo.organization}

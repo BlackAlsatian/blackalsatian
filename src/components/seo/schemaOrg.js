@@ -6,6 +6,7 @@ export default React.memo(
         author,
         canonicalUrl,
         datePublished,
+        dateModified,
         defaultTitle,
         description,
         image,
@@ -70,6 +71,7 @@ export default React.memo(
                           '@id': canonicalUrl,
                       },
                       datePublished: datePublished,
+                      dateModified: dateModified,
                   },
               ]
             : baseSchema

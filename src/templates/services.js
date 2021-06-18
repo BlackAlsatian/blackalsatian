@@ -1,6 +1,6 @@
 /** @jsxImportSource theme-ui */
+
 import { Container } from 'theme-ui'
-import React from 'react'
 import { graphql } from 'gatsby'
 import { getSrc } from 'gatsby-plugin-image'
 import AniLink from 'gatsby-plugin-transition-link/AniLink'
@@ -22,10 +22,11 @@ const ServicesIndex = ({ data }) => {
             <>
                 <SEO
                     title={page.title}
-                    // description='From web development to digital marketing, Black Alsatian offers the full spectrum of web services to make your online brand be in demand.'
                     description={page.seo?.metaDesc}
                     url={page.uri}
                     featuredImage={seoImgSrc && seoImgSrc}
+                    datePublished={page.dateGmt}
+                    dateModified={page.modifiedGmt}
                 />
                 <p>No blog services found.</p>
             </>
@@ -36,10 +37,11 @@ const ServicesIndex = ({ data }) => {
         <>
             <SEO
                 title={page.title}
-                // description='From web development to digital marketing, Black Alsatian offers the full spectrum of web services to make your online brand be in demand.'
                 description={page.seo?.metaDesc}
                 url={page.uri}
                 featuredImage={seoImgSrc && seoImgSrc}
+                datePublished={page.dateGmt}
+                dateModified={page.modifiedGmt}
             />
             <PageHeader title={parse(page.title)} intro={page.pageintro} headerStyle={pageStyle} />
             <section>
@@ -106,6 +108,8 @@ export const pageQuery = graphql`
         wpPage(slug: { eq: "services" }) {
             id
             title
+            dateGmt
+            modifiedGmt
             uri
             slug
             content

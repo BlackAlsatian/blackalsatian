@@ -1,3 +1,4 @@
+Sitemap: https://www.blackalsatian.co.za/sitemap.xml
 User-agent: *
 Allow: /
 Allow: /portfolio/$

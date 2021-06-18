@@ -28,7 +28,7 @@ module.exports = {
             instagram: `https://instagram.com/theblackalsatian`,
             linkedin: `https://www.linkedin.com/company/blackalsatian`,
         },
-        image: `/images/blackalsatian.png`,
+        image: `/images/black-alsatian-dark-dog.png`,
         pubLogo: `/images/blackalsatian-pub-logo.png`,
         pubIconLogo: `/images/blackals-icon-logo.png`,
         blog: {
@@ -37,28 +37,30 @@ module.exports = {
             intro: `Latest trends in the world of web development & digital marketing`,
         },
     },
-    // flags: {
-    // prevents file downloads from being deleted during cache clearing events (other than gatsby clean which still deletes the entire cache)
-    // PRESERVE_FILE_DOWNLOAD_CACHE: true,
+    flags: {
+        // prevents file downloads from being deleted during cache clearing events (other than gatsby clean which still deletes the entire cache)
+        PRESERVE_FILE_DOWNLOAD_CACHE: true,
 
-    // prevents the webpack cache from deleted with the same caveat for gatsby clean
-    // PRESERVE_WEBPACK_CACHE: true,
+        // prevents the webpack cache from deleted with the same caveat for gatsby clean
+        PRESERVE_WEBPACK_CACHE: true,
 
-    // Enable all experiments aimed at improving develop server start time
-    // FAST_DEV: true,
-    // (Umbrella Issue (​https://github.com/gatsbyjs/gatsby/discussions/28390​)) · Use React Fast Refresh instead of the legacy react-hot-loader for instantaneous feedback in your development server. Recommended for versions of React >= 17.0.
-    // FAST_REFRESH: true,
-    // (Umbrella Issue (​https://github.com/gatsbyjs/gatsby/discussions/28138​)) · SSR pages on full reloads during develop. Helps you detect SSR bugs and fix them without needing to do full builds.
-    // DEV_SSR: true,
-    // (Umbrella Issue (​https://github.com/gatsbyjs/gatsby/discussions/27620​)) · Only run queries when needed instead of running all queries upfront. Speeds starting the develop server.
-    // QUERY_ON_DEMAND: true,
-    // LAZY_IMAGES: true,
-    //EXPERIMENTAL
-    // (Umbrella Issue (​https://github.com/gatsbyjs/gatsby/discussions/27603​)) · Don`t process images during development until they`re requested from the browser. Speeds starting the develop server.
-    // },
+        // Enable all experiments aimed at improving develop server start time
+        // FAST_DEV: true,
+        // (Umbrella Issue (​https://github.com/gatsbyjs/gatsby/discussions/28390​)) · Use React Fast Refresh instead of the legacy react-hot-loader for instantaneous feedback in your development server. Recommended for versions of React >= 17.0.
+        // FAST_REFRESH: true,
+        // (Umbrella Issue (​https://github.com/gatsbyjs/gatsby/discussions/28138​)) · SSR pages on full reloads during develop. Helps you detect SSR bugs and fix them without needing to do full builds.
+        // DEV_SSR: true,
+        // (Umbrella Issue (​https://github.com/gatsbyjs/gatsby/discussions/27620​)) · Only run queries when needed instead of running all queries upfront. Speeds starting the develop server.
+        // QUERY_ON_DEMAND: true,
+        // LAZY_IMAGES: true,
+
+        //EXPERIMENTAL
+        // (Umbrella Issue (​https://github.com/gatsbyjs/gatsby/discussions/27603​)) · Don`t process images during development until they`re requested from the browser. Speeds starting the develop server.
+        // PARALLEL_SOURCING
+        //  (Umbrella Issue (https://gatsby.dev/parallel-sourcing-feedback)) · Run all source plugins at the same time instead of serially. For sites with multiple source plugins, this can speedup sourcing and transforming considerably.
+    },
     plugins: [
         `gatsby-plugin-preact`,
-        // See https://www.gatsbyjs.com/plugins/gatsby-plugin-react-helmet/?=gatsby-plugin-react-helmet
         {
             resolve: `gatsby-plugin-preconnect`,
             options: {
@@ -68,7 +70,6 @@ module.exports = {
         {
             resolve: `gatsby-plugin-google-gtag`,
             options: {
-                // You can add multiple tracking ids and a pageview event will be fired for all of them.
                 trackingIds: [
                     process.env.GATSBY_GA_TRACKING_ID, // Google Analytics / GA
                     // "AW-CONVERSION_ID",  Google Ads / Adwords / AW
@@ -99,7 +100,6 @@ module.exports = {
         {
             resolve: `gatsby-source-wordpress`,
             options: {
-                // the only required plugin option for Wordpress
                 url: process.env.GATSBY_WPGRAPHQL_URL,
                 debug: {
                     graphql: {
@@ -162,7 +162,6 @@ module.exports = {
         `gatsby-transformer-sharp`,
         `gatsby-plugin-sharp`,
         {
-            // See https://www.gatsbyjs.com/plugins/gatsby-plugin-manifest/?=gatsby-plugin-manifest
             resolve: `gatsby-plugin-manifest`,
             options: {
                 name: `Black Alsatian`,
@@ -232,11 +231,185 @@ module.exports = {
                         type: `image/png`,
                         purpose: `any maskable`,
                     },
-                ], // Add or remove icon sizes as desired
+                ],
                 cache_busting_mode: `none`,
             },
         },
-        `gatsby-plugin-sitemap`,
+        {
+            resolve: `gatsby-plugin-advanced-sitemap`,
+            options: {
+                query: `
+                {
+                    allWpPage (filter: {status: {eq: "publish"}}) {
+                        edges {
+                            node {
+                                id
+                                slug
+                                modifiedGmt
+                                featuredImage {
+                                    node {
+                                      localFile {
+                                        publicURL
+                                      }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    allWpPost (filter: {status: {eq: "publish"}}) {
+                        edges {
+                            node {
+                                id
+                                slug
+                                modifiedGmt
+                                featuredImage {
+                                    node {
+                                      localFile {
+                                        publicURL
+                                      }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    allWpService (filter: {status: {eq: "publish"}}) {
+                        edges {
+                            node {
+                                id
+                                slug
+                                modifiedGmt
+                                featuredImage {
+                                    node {
+                                      localFile {
+                                        publicURL
+                                      }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    allWpLander (filter: {status: {eq: "publish"}}) {
+                        edges {
+                            node {
+                                id
+                                slug
+                                modifiedGmt
+                                featuredImage {
+                                    node {
+                                      localFile {
+                                        publicURL
+                                      }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    allWpPortfolio (filter: {status: {eq: "publish"}}) {
+                        edges {
+                            node {
+                                id
+                                slug
+                                modifiedGmt
+                                featuredImage {
+                                    node {
+                                      localFile {
+                                        publicURL
+                                      }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }`,
+                output: '/sitemap.xml',
+                mapping: {
+                    allWpPage: {
+                        sitemap: `pages`,
+                        prefix: `/`,
+                        // Custom Serializer
+                        serializer: (edges) => {
+                            return edges.map(({ node }) => {
+                                return {
+                                    node: {
+                                        id: node.id,
+                                        slug: node.slug,
+                                        updated_at: node.modifiedGmt,
+                                        feature_image: node.featuredImage.node.localFile.publicURL,
+                                    },
+                                }
+                            })
+                        },
+                    },
+                    allWpPost: {
+                        sitemap: `blog`,
+                        prefix: `blog/`,
+                        serializer: (edges) => {
+                            return edges.map(({ node }) => {
+                                return {
+                                    node: {
+                                        id: node.id,
+                                        slug: node.slug,
+                                        updated_at: node.modifiedGmt,
+                                        feature_image: node.featuredImage.node.localFile.publicURL,
+                                    },
+                                }
+                            })
+                        },
+                    },
+                    allWpService: {
+                        sitemap: `services`,
+                        prefix: `services/`,
+                        serializer: (edges) => {
+                            return edges.map(({ node }) => {
+                                return {
+                                    node: {
+                                        id: node.id,
+                                        slug: node.slug,
+                                        updated_at: node.modifiedGmt,
+                                        feature_image: node.featuredImage.node.localFile.publicURL,
+                                    },
+                                }
+                            })
+                        },
+                    },
+                    allWpLander: {
+                        sitemap: `landers`,
+                        prefix: `x/`,
+                        serializer: (edges) => {
+                            return edges.map(({ node }) => {
+                                return {
+                                    node: {
+                                        id: node.id,
+                                        slug: node.slug,
+                                        updated_at: node.modifiedGmt,
+                                        feature_image: node.featuredImage.node.localFile.publicURL,
+                                    },
+                                }
+                            })
+                        },
+                    },
+                    allWpPortfolio: {
+                        sitemap: `portfolio`,
+                        prefix: `portfolio/`,
+                        serializer: (edges) => {
+                            return edges.map(({ node }) => {
+                                return {
+                                    node: {
+                                        id: node.id,
+                                        slug: node.slug,
+                                        updated_at: node.modifiedGmt,
+                                        feature_image: node.featuredImage.node.localFile.publicURL,
+                                    },
+                                }
+                            })
+                        },
+                    },
+                },
+                exclude: [`/dev-404-page`, `/404`, `/404.html`, `/offline-plugin-app-shell-fallback`],
+                createLinkInHead: true,
+                addUncaughtPages: true,
+            },
+        },
         `gatsby-plugin-gatsby-cloud`,
         `gatsby-plugin-offline`,
         `gatsby-plugin-remove-generator`,
