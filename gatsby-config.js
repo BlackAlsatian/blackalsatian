@@ -334,7 +334,7 @@ module.exports = {
                                         id: node.id,
                                         slug: node.slug,
                                         updated_at: node.modifiedGmt,
-                                        feature_image: node.featuredImage.node.localFile.publicURL,
+                                        feature_image: node?.featuredImage?.node?.localFile?.publicURL,
                                     },
                                 }
                             })
@@ -350,7 +350,7 @@ module.exports = {
                                         id: node.id,
                                         slug: node.slug,
                                         updated_at: node.modifiedGmt,
-                                        feature_image: node.featuredImage.node.localFile.publicURL,
+                                        feature_image: node?.featuredImage?.node?.localFile?.publicURL,
                                     },
                                 }
                             })
@@ -366,7 +366,7 @@ module.exports = {
                                         id: node.id,
                                         slug: node.slug,
                                         updated_at: node.modifiedGmt,
-                                        feature_image: node.featuredImage.node.localFile.publicURL,
+                                        feature_image: node?.featuredImage?.node?.localFile?.publicURL,
                                     },
                                 }
                             })
@@ -382,7 +382,7 @@ module.exports = {
                                         id: node.id,
                                         slug: node.slug,
                                         updated_at: node.modifiedGmt,
-                                        feature_image: node.featuredImage.node.localFile.publicURL,
+                                        feature_image: node?.featuredImage?.node?.localFile?.publicURL,
                                     },
                                 }
                             })
@@ -398,7 +398,7 @@ module.exports = {
                                         id: node.id,
                                         slug: node.slug,
                                         updated_at: node.modifiedGmt,
-                                        feature_image: node.featuredImage.node.localFile.publicURL,
+                                        feature_image: node?.featuredImage?.node?.localFile?.publicURL,
                                     },
                                 }
                             })
