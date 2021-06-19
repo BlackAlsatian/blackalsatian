@@ -23,7 +23,7 @@ const HeroBlock = (props) => {
             <GatsbyImage
                 image={featuredImageData}
                 alt={featuredImage.node.altText}
-                fadeIn='false'
+                // fadeIn='false'
                 loading='eager'
                 objectPosition='60% 40%'
                 backgroundColor='white'
