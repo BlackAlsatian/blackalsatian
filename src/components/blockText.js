@@ -1,5 +1,4 @@
-import React from 'react'
-import { Fragment } from 'react'
+import React, { Fragment } from 'react'
 import parse from 'html-react-parser'
 import { randomID } from './helpers'
 

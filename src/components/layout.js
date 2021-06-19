@@ -19,13 +19,13 @@ const Layout = ({ children, pageContext }) => {
     }
 
     const {
-        wp: {
-            generalSettings: { title },
+        site: {
+            siteMetadata: { title },
         },
     } = useStaticQuery(graphql`
         query LayoutQuery {
-            wp {
-                generalSettings {
+            site {
+                siteMetadata {
                     title
                 }
             }
