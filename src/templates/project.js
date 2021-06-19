@@ -73,6 +73,7 @@ export const portfolioQuery = graphql`
                 }
             }
             ...PortfolioFeaturedMediaFragment
+            uri
         }
 
         # this gets us the previous post by id (if it exists)

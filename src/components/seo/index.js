@@ -4,7 +4,17 @@ import { Helmet } from 'react-helmet'
 import { StaticQuery, graphql } from 'gatsby'
 import SchemaOrg from './schemaOrg'
 
-const SEO = ({ title, description, featuredImage, url, author, isBlogPost, datePublished, dateModified }) => (
+const SEO = ({
+    title,
+    description,
+    featuredImage,
+    url,
+    author,
+    isBlogPost,
+    datePublished,
+    dateModified,
+    isFrontPage,
+}) => (
     <StaticQuery
         query={graphql`
             query {
@@ -23,6 +33,8 @@ const SEO = ({ title, description, featuredImage, url, author, isBlogPost, dateP
                             name
                             url
                             logo
+                            email
+                            telephone
                         }
                         twitter
                         socialUrls {
@@ -35,18 +47,17 @@ const SEO = ({ title, description, featuredImage, url, author, isBlogPost, dateP
                         pubLogo
                         pubIconLogo
                         lang
-                        email
                         fbAppId
                     }
                 }
             }
         `}
         render={({ site: { siteMetadata: seo } }) => {
-            const metaDescription = description || seo.description
+            const metaDescription = isFrontPage ? seo.description : description || seo.description
             const pageTitle = title || seo.title
             const defaultTitle = seo.title
-            const image = `${seo.siteUrl}${featuredImage || seo.image}`
-            const pageUrl = url && url !== `/` ? `${seo.siteUrl}${url}` : seo.siteUrl
+            const image = isFrontPage ? `${seo.siteUrl}${seo.image}` : `${seo.siteUrl}${featuredImage || seo.image}`
+            const canonicalUrl = url ? `${seo.siteUrl}${url}` : seo.siteUrl
             // const publishedDate = isBlogPost ? datePublished : false
             const publishedDate = datePublished
             const modifiedDate = dateModified
@@ -60,12 +71,12 @@ const SEO = ({ title, description, featuredImage, url, author, isBlogPost, dateP
                         <title>{pageTitle}</title>
                         <meta name='description' content={metaDescription} />
                         <meta name='image' content={image} />
-                        <link rel='canonical' href={pageUrl} />
+                        <link rel='canonical' href={canonicalUrl} />
                         <meta property='article:published_time' content={publishedDate} />
                         <meta property='article:modified_time' content={modifiedDate} />
 
                         {/* OpenGraph tags */}
-                        <meta property='og:url' content={pageUrl} />
+                        <meta property='og:url' content={canonicalUrl} />
                         {isBlogPost ? <meta property='og:type' content='article' /> : null}
 
                         {/* <meta property="og:type" content="article" /> */}
@@ -83,15 +94,15 @@ const SEO = ({ title, description, featuredImage, url, author, isBlogPost, dateP
                     </Helmet>
                     <SchemaOrg
                         isBlogPost={isBlogPost}
-                        url={pageUrl}
                         title={pageTitle}
                         image={image}
                         description={metaDescription}
                         datePublished={publishedDate}
                         dateModified={modifiedDate}
-                        canonicalUrl={seo.siteUrl}
+                        canonicalUrl={canonicalUrl}
                         author={author}
                         organization={seo.organization}
+                        socialUrls={seo.socialUrls}
                         defaultTitle={defaultTitle}
                     />
                 </>

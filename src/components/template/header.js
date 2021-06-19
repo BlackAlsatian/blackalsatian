@@ -48,7 +48,6 @@ const Header = ({ pageStyle }) => {
                 zIndex: 10,
                 variant: 'layout.header.' + headerStyle,
             }}
-            id='topOfPage'
         >
             <Link to='/' title='Black Alsatian Web Development Company'>
                 <Logo color={headerStyle} />

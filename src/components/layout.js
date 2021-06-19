@@ -3,12 +3,14 @@
 import { useStaticQuery, graphql } from 'gatsby'
 import Header from './template/header'
 import Footer from './template/footer'
+import GoToTopButton from './goToTopButton'
+import { useHasScrolled } from './hooks/useHasScrolled'
 
-if (typeof window !== 'undefined') {
-    // Make scroll behavior of internal links smooth
-    // eslint-disable-next-line global-require
-    require('smooth-scroll')('a[href*="#"]')
-}
+// if (typeof window !== 'undefined') {
+//     // Make scroll behavior of internal links smooth
+//     // eslint-disable-next-line global-require
+//     require('smooth-scroll')('a[href*="#"]')
+// }
 
 const Layout = ({ children, pageContext }) => {
     let pageStyle = pageContext.pageStyle
@@ -29,6 +31,7 @@ const Layout = ({ children, pageContext }) => {
             }
         }
     `)
+    const scroll = useHasScrolled(1500)
     return (
         <div
             sx={{
@@ -38,10 +41,12 @@ const Layout = ({ children, pageContext }) => {
                 overflow: 'hidden',
                 variant: 'layout.main.' + pageStyle,
             }}
+            id='topOfPage'
         >
             <Header pageStyle={pageStyle} />
             <main>{children}</main>
             {typeof pageStyle !== 'undefined' && <Footer siteTitle={title} pageStyle={pageStyle} />}
+            <GoToTopButton visible={scroll} />
         </div>
     )
 }

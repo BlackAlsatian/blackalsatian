@@ -27,6 +27,7 @@ const PageTemplate = ({ data: { page, latestPostsBlock, portfolioBlock, services
                 featuredImage={seoImgSrc && seoImgSrc}
                 datePublished={page.dateGmt}
                 dateModified={page.modifiedGmt}
+                isFrontPage={page.isFrontPage}
             />
             {!page.isFrontPage && !page.title.includes('Services') && !page.title.includes('Portfolio') ? (
                 <>

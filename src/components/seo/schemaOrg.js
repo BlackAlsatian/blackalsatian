@@ -12,17 +12,35 @@ export default React.memo(
         image,
         isBlogPost,
         organization,
+        socialUrls,
         title,
-        url,
     }) => {
         const baseSchema = [
             {
                 '@context': 'http://schema.org',
                 '@type': 'Organization',
                 name: organization.name,
-                url,
-                alternateName: title,
+                description: description,
+                image: image,
                 logo: organization.url + organization.logo,
+                url: organization.url,
+                telephone: organization.telephone,
+                alternateName: organization.alternateName,
+                sameAs: [
+                    socialUrls.twitter,
+                    socialUrls.linkedin,
+                    socialUrls.facebook,
+                    socialUrls.instagram,
+                    'https://wa.me/27605036601',
+                    'https://www.blackalsatian.com',
+                ],
+                address: {
+                    '@type': 'PostalAddress',
+                    streetAddress: '8 Gardner Circle, South End',
+                    addressLocality: 'Gqeberha',
+                    postalCode: '6001',
+                    addressCountry: 'South Africa',
+                },
             },
         ]
 
@@ -37,7 +55,7 @@ export default React.memo(
                               '@type': 'ListItem',
                               position: 1,
                               item: {
-                                  '@id': url,
+                                  '@id': canonicalUrl,
                                   name: title,
                                   image,
                               },
@@ -47,7 +65,7 @@ export default React.memo(
                   {
                       '@context': 'http://schema.org',
                       '@type': 'BlogPosting',
-                      url,
+                      url: canonicalUrl,
                       name: title,
                       alternateName: defaultTitle,
                       headline: title,

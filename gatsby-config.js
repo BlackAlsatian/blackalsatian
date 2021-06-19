@@ -6,7 +6,7 @@ module.exports = {
     siteMetadata: {
         title: `Black Alsatian`,
         shortTitle: `blackalsatian`,
-        description: `Handcrafted web applications and bespoke digital marketing solutions`,
+        description: `Innovative custom web development, up-to-the-minute web design and bespoke marketing solutions that look amazing and get amazing results.`,
         siteUrl: `https://www.blackalsatian.co.za`,
         author: {
             name: `Björn Potgieter`,
@@ -15,11 +15,13 @@ module.exports = {
         },
         organization: {
             name: `Black Alsatian`,
+            alternateName: `Artisan Web Design Company by Passionate Web Developers`,
             url: `https://www.blackalsatian.co.za`,
             logo: `/images/blackals-icon-logo.png`,
+            email: `info@blackalsatian.com`,
+            telephone: `+27 87 821 7172`,
         },
         lang: `en`,
-        email: `info@blackalsatian.com`,
         twitter: `@blackalsatian`,
         fbAppId: process.env.GATSBY_FBAPP_ID,
         socialUrls: {
@@ -33,7 +35,7 @@ module.exports = {
         pubIconLogo: `/images/blackals-icon-logo.png`,
         blog: {
             title: `Blog`,
-            browserTitle: `A Web Company Blog`,
+            browserTitle: `A Web Design Company's Blog`,
             intro: `Latest trends in the world of web development & digital marketing`,
         },
     },

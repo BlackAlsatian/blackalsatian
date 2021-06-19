@@ -15,6 +15,7 @@ const PageTemplate = ({ data: { previous, next, service } }) => {
         alt: service.featuredImage?.node?.altText || ``,
     }
     const seoImgSrc = getSrc(service.featuredImage?.node?.og)
+
     return (
         <>
             <SEO
@@ -89,6 +90,7 @@ export const serviceQuery = graphql`
                 metaDesc
             }
             ...ServiceMediaFragment
+            uri
         }
 
         # this gets us the previous post by id (if it exists)
