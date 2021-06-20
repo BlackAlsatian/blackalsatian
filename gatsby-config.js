@@ -145,6 +145,7 @@ module.exports = {
             },
         },
         `gatsby-plugin-sass`,
+        `gatsby-plugin-purgecss`,
         {
             resolve: `gatsby-source-filesystem`,
             options: {
