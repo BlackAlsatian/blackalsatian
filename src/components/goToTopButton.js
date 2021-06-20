@@ -5,7 +5,7 @@ import UpArrow from './arrows/upArrow'
 const GoToTopButton = ({ visible }) => {
     return (
         <a
-            href='#topOfPage'
+            href='#start'
             variant='buttons.simple'
             ml='auto'
             sx={{
@@ -41,5 +41,3 @@ const GoToTopButton = ({ visible }) => {
 }
 
 export default GoToTopButton
-
-// display: 'inline-block',

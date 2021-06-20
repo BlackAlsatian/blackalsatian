@@ -153,6 +153,7 @@ module.exports = {
                 },
             },
         },
+        `gatsby-plugin-sass`,
         {
             resolve: `gatsby-source-filesystem`,
             options: {

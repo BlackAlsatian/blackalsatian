@@ -1,10 +1,29 @@
 /** @jsxImportSource theme-ui */
+
+import { useStaticQuery, graphql } from 'gatsby'
 import { Heading } from 'theme-ui'
 import parse from 'html-react-parser'
 import LeftApostrophe from '../../icons/leftApostrophe'
 import RightApostrophe from '../../icons/rightApostrophe'
 
-const TestimonialsBlock = ({ testimonials }) => {
+const TestimonialsBlock = () => {
+    const testimonialsData = useStaticQuery(graphql`
+        query TestimonialQuery {
+            allWpTestimonial {
+                nodes {
+                    id
+                    title
+                    content
+                    uri
+                    slug
+                    testimonialRole
+                    testimonialCompany
+                    testimonialAuthor
+                }
+            }
+        }
+    `)
+    const testimonials = testimonialsData.allWpTestimonial.nodes
     const heading = 'See What Our Clients Say...'
     return (
         <section

@@ -35,7 +35,7 @@ const MasonryGrid = ({ dataNodes, heading, viewAllLink }) => {
                     px: 3,
                 }}
             >
-                {dataNodes.nodes.map((node) => (
+                {dataNodes.map((node) => (
                     <MasonryTileLink key={randomID()} node={node} />
                 ))}
             </div>

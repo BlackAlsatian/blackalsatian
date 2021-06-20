@@ -1,13 +1,33 @@
 // import loadable from '@loadable/component'
 import OffCanvasMenuProvider from './src/components/offCanvasMenuProvider'
+import './src/assets/scss/app.scss'
 
-import './src/assets/css/styles.css'
-import '@fontsource/montserrat/latin-200.css'
-import '@fontsource/montserrat/latin-400.css'
-import '@fontsource/montserrat/latin-400-italic.css'
-import '@fontsource/montserrat/latin-700.css'
-import '@fontsource/montserrat/latin-800.css'
-import '@fontsource/montserrat/latin-900.css'
+export const wrapRootElement = OffCanvasMenuProvider
+
+const transitionDelay = 0
+
+export const shouldUpdateScroll = ({ routerProps: { location }, getSavedScrollPosition }) => {
+    if (location.action === 'PUSH') {
+        window.setTimeout(() => {
+            // console.log('scroll to top')
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth', // feel free to use or not
+            })
+        }, transitionDelay)
+    } else {
+        const savedPosition = getSavedScrollPosition(location) || [0, 0]
+        const top = savedPosition[1]
+        window.setTimeout(() => {
+            // console.log('scroll to saved position')
+            window.scrollTo({
+                top,
+                behavior: 'smooth',
+            })
+        }, transitionDelay)
+    }
+    return false
+}
 
 // export const replaceHydrateFunction = () => (element, container, callback) => {
 //     loadable.loadableReady(() => {
@@ -15,7 +35,6 @@ import '@fontsource/montserrat/latin-900.css'
 //     })
 // }
 
-export const wrapRootElement = OffCanvasMenuProvider
 // export const replaceHydrateFunction = () => (element, container, callback) => {
 //     loadableReady(() => {
 //         hydrate(element, container, callback)
@@ -60,30 +79,6 @@ export const wrapRootElement = OffCanvasMenuProvider
 // }
 
 // Adjust if you need to add a delay before scrolling
-const transitionDelay = 0
-
-export const shouldUpdateScroll = ({ routerProps: { location }, getSavedScrollPosition }) => {
-    if (location.action === 'PUSH') {
-        window.setTimeout(() => {
-            // console.log('scroll to top')
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth', // feel free to use or not
-            })
-        }, transitionDelay)
-    } else {
-        const savedPosition = getSavedScrollPosition(location) || [0, 0]
-        const top = savedPosition[1]
-        window.setTimeout(() => {
-            // console.log('scroll to saved position')
-            window.scrollTo({
-                top,
-                behavior: 'smooth',
-            })
-        }, transitionDelay)
-    }
-    return false
-}
 
 // export const onPreRouteUpdate = ({ location, prevLocation }) => {
 //     console.log('Gatsby started to change location to', location.pathname)

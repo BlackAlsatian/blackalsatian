@@ -5,13 +5,14 @@ import { Container, Flex, Box } from 'theme-ui'
 import { graphql } from 'gatsby'
 import { getSrc } from 'gatsby-plugin-image'
 import parse from 'html-react-parser'
-import { randomID } from '../components/helpers'
-import CustomBlock from '../components/customBlock'
+// import { randomID } from '../components/helpers'
+// import CustomBlock from '../components/customBlock'
+import Modules from '../components/modules'
 import SEO from '../components/seo'
 import PageHeader from '../components/template/pageHeader'
 import LeftColumn from '../components/template/elements/leftColumn'
 
-const PageTemplate = ({ data: { page, latestPostsBlock, portfolioBlock, servicesBlock, testimonialsBlock } }) => {
+const PageTemplate = ({ data: { page } }) => {
     const pageStyle = page.pageStyle
     let bodyFontColor = 'black'
     if (pageStyle === 'red') {
@@ -68,10 +69,17 @@ const PageTemplate = ({ data: { page, latestPostsBlock, portfolioBlock, services
                 </>
             ) : (
                 <Fragment>
+                    {/* page.blocks.map(({ name, attributes, innerBlocks }) => ( */}
                     {page.blocks &&
-                        page.blocks.map(({ name, attributes, innerBlocks }) => (
-                            <Fragment key={randomID()}>
-                                <CustomBlock
+                        page.blocks.map(({ name, order, attributes, innerBlocks }) => (
+                            <Fragment key={order}>
+                                <Modules
+                                    featuredImage={page.featuredImage}
+                                    module={{ name: name, order: order }}
+                                    innerBlocks={innerBlocks}
+                                    attributes={attributes}
+                                />
+                                {/* <CustomBlock
                                     customBlock={name}
                                     featuredImage={page.featuredImage}
                                     innerBlocks={innerBlocks}
@@ -80,7 +88,7 @@ const PageTemplate = ({ data: { page, latestPostsBlock, portfolioBlock, services
                                     portfolio={portfolioBlock}
                                     services={servicesBlock}
                                     testimonials={testimonialsBlock}
-                                />
+                                /> */}
                             </Fragment>
                         ))}
                 </Fragment>
@@ -116,44 +124,45 @@ export const pageQuery = graphql`
             }
             blocks {
                 name
+                order
                 ...CoreCoverblock
                 ...BlackalsatianContentBlock
-                ...BlackalsatianPageMetaBlock
+                # ...BlackalsatianPageMetaBlock
             }
         }
-        portfolioBlock: allWpPortfolio(filter: { projectFeatured: { in: "1" } }) {
-            nodes {
-                id
-                uri
-                title
-                excerpt
-                projectFeatured
-                ...PortfolioFeaturedMediaFragment
-            }
-        }
-        servicesBlock: wpMenu(slug: { eq: "services-menu" }) {
-            ...WpMenuItems
-        }
-        latestPostsBlock: allWpPost(limit: 6, filter: { status: { eq: "publish" } }) {
-            nodes {
-                id
-                uri
-                title
-                excerpt
-                ...FeaturedMediaFragment
-            }
-        }
-        testimonialsBlock: allWpTestimonial {
-            nodes {
-                id
-                title
-                content
-                uri
-                slug
-                testimonialRole
-                testimonialCompany
-                testimonialAuthor
-            }
-        }
+        # portfolioBlock: allWpPortfolio(filter: { projectFeatured: { in: "1" } }) {
+        #     nodes {
+        #         id
+        #         uri
+        #         title
+        #         excerpt
+        #         projectFeatured
+        #         ...PortfolioFeaturedMediaFragment
+        #     }
+        # }
+        # servicesBlock: wpMenu(slug: { eq: "services-menu" }) {
+        #     ...WpMenuItems
+        # }
+        # latestPostsBlock: allWpPost(limit: 6, filter: { status: { eq: "publish" } }) {
+        #     nodes {
+        #         id
+        #         uri
+        #         title
+        #         excerpt
+        #         ...FeaturedMediaFragment
+        #     }
+        # }
+        # testimonialsBlock: allWpTestimonial {
+        #     nodes {
+        #         id
+        #         title
+        #         content
+        #         uri
+        #         slug
+        #         testimonialRole
+        #         testimonialCompany
+        #         testimonialAuthor
+        #     }
+        # }
     }
 `

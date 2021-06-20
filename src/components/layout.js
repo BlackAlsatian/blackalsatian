@@ -41,7 +41,7 @@ const Layout = ({ children, pageContext }) => {
                 overflow: 'hidden',
                 variant: 'layout.main.' + pageStyle,
             }}
-            id='topOfPage'
+            id='start'
         >
             <Header pageStyle={pageStyle} />
             <main>{children}</main>
