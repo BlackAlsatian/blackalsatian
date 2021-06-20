@@ -8,6 +8,7 @@
     "url": "https://bjorn.africa/"
   },
   "dependencies": {
+    "@babel/runtime": "^7.14.6",
     "@fontsource/montserrat": "^4.4.5",
     "@react-spring/web": "^9.2.3",
     "axios": "^0.21.1",
