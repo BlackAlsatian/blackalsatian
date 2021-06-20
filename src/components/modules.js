@@ -15,7 +15,7 @@ function Modules(props) {
         'blackalsatian/services-block': ServicesBlock,
         'blackalsatian/latest-posts': LatestPostsBlock,
         'blackalsatian/featured-projects': FeaturedProjectsBlock,
-        // 'blackalsatian/testimonials-block': TestimonialsBlock,
+        'blackalsatian/testimonials-block': TestimonialsBlock,
     }
 
     const Module = components[module.name]
