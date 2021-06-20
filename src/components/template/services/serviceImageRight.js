@@ -7,7 +7,7 @@ const ServiceImageRight = ({ image, name, description }) => {
         <div
             sx={{
                 display: 'grid',
-                gridGap: 4, // theme.space[4]
+                gridGap: 4,
                 // use arrays for mobile-first responsive styles
                 gridTemplateColumns: [
                     'auto', // default to a stacked layout on small screens

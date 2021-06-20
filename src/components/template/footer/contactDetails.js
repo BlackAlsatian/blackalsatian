@@ -1,5 +1,4 @@
 /** @jsxImportSource theme-ui */
-
 import WhatsApp from '../../icons/whatsappIcon'
 import Phone from '../../icons/phoneIcon'
 import Home from '../../icons/homeIcon'

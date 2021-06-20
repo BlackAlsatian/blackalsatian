@@ -53,3 +53,6 @@ export const leadInfo = () => {
 
     return leadInfo
 }
+
+// check if clientside
+export const isSSR = typeof window === 'undefined'

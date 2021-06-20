@@ -1,5 +1,4 @@
 /** @jsxImportSource theme-ui */
-
 import { Container } from 'theme-ui'
 import { graphql } from 'gatsby'
 import { getSrc } from 'gatsby-plugin-image'
@@ -8,6 +7,7 @@ import parse from 'html-react-parser'
 import SEO from '../components/seo'
 import PageHeader from '../components/template/pageHeader'
 import ServiceImageLeft from '../components/template/services/serviceImageLeft'
+
 import ServiceImageRight from '../components/template/services/serviceImageRight'
 import { isOdd } from '../components/helpers'
 

@@ -1,5 +1,4 @@
 /** @jsxImportSource theme-ui */
-
 import UpArrow from './arrows/upArrow'
 
 const GoToTopButton = ({ visible }) => {

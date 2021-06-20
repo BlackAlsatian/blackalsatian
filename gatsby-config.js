@@ -44,14 +44,14 @@ module.exports = {
         PRESERVE_FILE_DOWNLOAD_CACHE: true,
 
         // prevents the webpack cache from deleted with the same caveat for gatsby clean
-        PRESERVE_WEBPACK_CACHE: true,
+        // PRESERVE_WEBPACK_CACHE: true,
 
         // Enable all experiments aimed at improving develop server start time
         // FAST_DEV: true,
         // (Umbrella Issue (​https://github.com/gatsbyjs/gatsby/discussions/28390​)) · Use React Fast Refresh instead of the legacy react-hot-loader for instantaneous feedback in your development server. Recommended for versions of React >= 17.0.
         // FAST_REFRESH: true,
         // (Umbrella Issue (​https://github.com/gatsbyjs/gatsby/discussions/28138​)) · SSR pages on full reloads during develop. Helps you detect SSR bugs and fix them without needing to do full builds.
-        // DEV_SSR: true,
+        DEV_SSR: true,
         // (Umbrella Issue (​https://github.com/gatsbyjs/gatsby/discussions/27620​)) · Only run queries when needed instead of running all queries upfront. Speeds starting the develop server.
         // QUERY_ON_DEMAND: true,
         // LAZY_IMAGES: true,
@@ -82,15 +82,6 @@ module.exports = {
                 },
             },
         },
-        // `gatsby-plugin-loadable-components-ssr`,
-        // {
-        //     resolve: `gatsby-plugin-loadable-components-ssr`,
-        //     options: {
-        //         // Whether replaceHydrateFunction should call ReactDOM.hydrate or ReactDOM.render
-        //         // Defaults to ReactDOM.render on develop and ReactDOM.hydrate on build
-        //         useHydrate: false,
-        //     },
-        // },
         `gatsby-plugin-react-helmet`,
         `gatsby-plugin-theme-ui`,
         {
@@ -341,7 +332,6 @@ module.exports = {
                                         id: node.id,
                                         slug: node.slug,
                                         updated_at: node.modifiedGmt,
-                                        // feature_image: node.featuredImage.node.localFile.publicURL,
                                         feature_image: PageFeaturedImagePath,
                                     },
                                 }

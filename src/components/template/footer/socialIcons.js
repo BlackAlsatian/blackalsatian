@@ -1,5 +1,4 @@
 /** @jsxImportSource theme-ui */
-
 import Facebook from '../../icons/facebookIcon'
 import Twitter from '../../icons/twitterIcon'
 import Instagram from '../../icons/instagramIcon'

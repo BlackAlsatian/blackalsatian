@@ -1,5 +1,4 @@
 /** @jsxImportSource theme-ui */
-
 import { useStaticQuery, graphql } from 'gatsby'
 import Header from './template/header'
 import Footer from './template/footer'

@@ -1,5 +1,4 @@
 /** @jsxImportSource theme-ui */
-
 import { Flex, Heading } from 'theme-ui'
 import LazyLoad from 'react-lazyload'
 import { Link } from 'gatsby'
@@ -7,8 +6,8 @@ import ContactDetails from './contactDetails'
 import Logo from '../../logo'
 import ServiceNav from '../../serviceNav'
 import SocialIcons from './socialIcons'
-import GetForm from '../../getForm'
 import PlaceholderLoader from '../../../components/placeholderLoader'
+import GetForm from '../../getForm'
 
 const Footer = ({ siteTitle, pageStyle }) => {
     let bgcolor = 'black'
@@ -61,7 +60,7 @@ const Footer = ({ siteTitle, pageStyle }) => {
                             width: [null, null, '100%'],
                         }}
                     >
-                        <LazyLoad height='100%' offSet={200} once placeholder={<PlaceholderLoader />}>
+                        <LazyLoad height='100' offset={100} deboucne={1000} once fallback={<PlaceholderLoader />}>
                             <GetForm
                                 option='contact'
                                 buttonName='Fetch!'

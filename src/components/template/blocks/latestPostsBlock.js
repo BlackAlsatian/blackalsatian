@@ -1,5 +1,4 @@
 /** @jsxImportSource theme-ui */
-
 import { useStaticQuery, graphql } from 'gatsby'
 import MasonryGrid from '../elements/masonryGrid'
 

@@ -1,5 +1,4 @@
 /** @jsxImportSource theme-ui */
-
 import { Container, Heading } from 'theme-ui'
 import { graphql } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
@@ -64,9 +63,6 @@ const BlogIndex = ({ data, pageContext: { nextPagePath, previousPagePath, style 
                                 duration={0.5}
                                 bg='white'
                                 color='white'
-                                // fade
-                                // duration={0.5}
-                                // bg='white'
                                 to={post.uri}
                                 key={post.uri}
                                 title={post.title}

@@ -1,8 +1,7 @@
 /** @jsxImportSource theme-ui */
-
 import { graphql } from 'gatsby'
 import { getSrc } from 'gatsby-plugin-image'
-import ComponentParser from '../components/componentParser'
+import Modules from '../components/modules'
 import SEO from '../components/seo'
 
 const LanderTemplate = ({ data: { lander } }) => {
@@ -17,7 +16,16 @@ const LanderTemplate = ({ data: { lander } }) => {
                 datePublished={lander.dateGmt}
                 dateModified={lander.modifiedGmt}
             />
-            <ComponentParser blocks={lander.blocks} featuredImage={lander.featuredImage} />
+            {lander.blocks &&
+                lander.blocks.map(({ name, order, attributes, innerBlocks }) => (
+                    <Modules
+                        key={order}
+                        featuredImage={lander.featuredImage}
+                        module={{ name: name, order: order }}
+                        innerBlocks={innerBlocks}
+                        attributes={attributes}
+                    />
+                ))}
         </>
     )
 }
@@ -44,7 +52,6 @@ export const landerQuery = graphql`
             blocks {
                 ...CoreCoverblock
                 ...BlackalsatianContentBlock
-                ...BlackalsatianPageMetaBlock
             }
         }
     }

@@ -22,7 +22,6 @@ const theme = {
         '7rem',
     ],
     fontWeights: {
-        // ...tailwind.fontWeights,
         // hairline: "100",
         thin: '200',
         // light: "300",

@@ -1,12 +1,8 @@
 /** @jsxImportSource theme-ui */
-
-import { Fragment } from 'react'
 import { Container, Flex, Box } from 'theme-ui'
 import { graphql } from 'gatsby'
 import { getSrc } from 'gatsby-plugin-image'
 import parse from 'html-react-parser'
-// import { randomID } from '../components/helpers'
-// import CustomBlock from '../components/customBlock'
 import Modules from '../components/modules'
 import SEO from '../components/seo'
 import PageHeader from '../components/template/pageHeader'
@@ -68,30 +64,18 @@ const PageTemplate = ({ data: { page } }) => {
                     </section>
                 </>
             ) : (
-                <Fragment>
-                    {/* page.blocks.map(({ name, attributes, innerBlocks }) => ( */}
+                <>
                     {page.blocks &&
                         page.blocks.map(({ name, order, attributes, innerBlocks }) => (
-                            <Fragment key={order}>
-                                <Modules
-                                    featuredImage={page.featuredImage}
-                                    module={{ name: name, order: order }}
-                                    innerBlocks={innerBlocks}
-                                    attributes={attributes}
-                                />
-                                {/* <CustomBlock
-                                    customBlock={name}
-                                    featuredImage={page.featuredImage}
-                                    innerBlocks={innerBlocks}
-                                    attributes={attributes}
-                                    latestPosts={latestPostsBlock}
-                                    portfolio={portfolioBlock}
-                                    services={servicesBlock}
-                                    testimonials={testimonialsBlock}
-                                /> */}
-                            </Fragment>
+                            <Modules
+                                key={order}
+                                featuredImage={page.featuredImage}
+                                module={{ name: name, order: order }}
+                                innerBlocks={innerBlocks}
+                                attributes={attributes}
+                            />
                         ))}
-                </Fragment>
+                </>
             )}
         </>
     )
@@ -127,42 +111,7 @@ export const pageQuery = graphql`
                 order
                 ...CoreCoverblock
                 ...BlackalsatianContentBlock
-                # ...BlackalsatianPageMetaBlock
             }
         }
-        # portfolioBlock: allWpPortfolio(filter: { projectFeatured: { in: "1" } }) {
-        #     nodes {
-        #         id
-        #         uri
-        #         title
-        #         excerpt
-        #         projectFeatured
-        #         ...PortfolioFeaturedMediaFragment
-        #     }
-        # }
-        # servicesBlock: wpMenu(slug: { eq: "services-menu" }) {
-        #     ...WpMenuItems
-        # }
-        # latestPostsBlock: allWpPost(limit: 6, filter: { status: { eq: "publish" } }) {
-        #     nodes {
-        #         id
-        #         uri
-        #         title
-        #         excerpt
-        #         ...FeaturedMediaFragment
-        #     }
-        # }
-        # testimonialsBlock: allWpTestimonial {
-        #     nodes {
-        #         id
-        #         title
-        #         content
-        #         uri
-        #         slug
-        #         testimonialRole
-        #         testimonialCompany
-        #         testimonialAuthor
-        #     }
-        # }
     }
 `

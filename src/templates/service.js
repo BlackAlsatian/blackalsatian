@@ -1,5 +1,4 @@
 /** @jsxImportSource theme-ui */
-
 import { Flex, Box } from 'theme-ui'
 import { graphql } from 'gatsby'
 import { GatsbyImage, getSrc } from 'gatsby-plugin-image'

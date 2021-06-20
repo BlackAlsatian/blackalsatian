@@ -1,5 +1,4 @@
 /** @jsxImportSource theme-ui */
-
 import { Container, Flex, Heading } from 'theme-ui'
 import parse from 'html-react-parser'
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
@@ -23,12 +22,9 @@ const HeroBlock = (props) => {
             <GatsbyImage
                 image={featuredImageData}
                 alt={featuredImage.node.altText}
-                // fadeIn='false'
                 loading='eager'
                 objectPosition='60% 40%'
                 backgroundColor='white'
-                backgroundAttachment='scroll'
-                backgroundRepeat='no-repeat'
                 sx={{
                     position: 'relative',
                     width: '100%',

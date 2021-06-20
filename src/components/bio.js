@@ -1,6 +1,5 @@
 /** @jsxImportSource theme-ui */
-import { Flex } from 'theme-ui'
-import { Avatar } from 'theme-ui'
+import { Flex, Avatar } from 'theme-ui'
 
 const Bio = ({ author }) => {
     const avatarUrl = author?.avatar?.url

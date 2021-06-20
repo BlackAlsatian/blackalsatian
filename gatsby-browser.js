@@ -1,4 +1,3 @@
-// import loadable from '@loadable/component'
 import OffCanvasMenuProvider from './src/components/offCanvasMenuProvider'
 import './src/assets/scss/app.scss'
 

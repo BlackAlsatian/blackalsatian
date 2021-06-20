@@ -1,12 +1,10 @@
 /** @jsxImportSource theme-ui */
-
 import { Container, Heading, Box } from 'theme-ui'
 import { Link } from 'gatsby'
 import SEO from '../components/seo'
 
-const NotFoundPage = ({ location, pageContext }) => {
+const NotFoundPage = ({ location }) => {
     const brokenPathName = location.href
-    console.log(pageContext)
     return (
         <>
             <SEO title='404: Not Found' />
@@ -39,9 +37,6 @@ const NotFoundPage = ({ location, pageContext }) => {
                         <Link to='/' sx={{ color: 'black' }}>
                             Let's go home
                         </Link>
-                        {/* <span sx={{ fontSize: '1rem', lineHeight: '0.75rem' }}>
-                            Maybe try out one of the links on this page, or send us a message and tell us what's amiss.
-                        </span> */}
                     </Box>
                 </Container>
             </section>

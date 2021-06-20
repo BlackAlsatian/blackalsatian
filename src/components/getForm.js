@@ -1,8 +1,7 @@
 /** @jsxImportSource theme-ui */
-
 import { Link } from 'gatsby'
 import { Label, Input, Box, Button, Heading, Spinner, Alert, Textarea } from 'theme-ui'
-import { Fragment, useState } from 'react'
+import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import axios from 'axios'
 
@@ -66,8 +65,8 @@ const GetForm = ({ option, buttonName, buttonUrl, backgroundColor, buttonBackgro
                 // console.log(response)
             },
             (error) => {
-                console.log(error.response)
-                // console.log("There were errors. That's all I know.")
+                // console.log(error.response)
+                console.log("There were errors. That's all I know.")
             },
         )
     }
@@ -188,7 +187,7 @@ const GetForm = ({ option, buttonName, buttonUrl, backgroundColor, buttonBackgro
             />
 
             {(option === 'quote' || option === 'enquiry') && (
-                <Fragment>
+                <>
                     {/* number */}
                     <Label htmlFor='number'>Number</Label>
                     <Input
@@ -227,7 +226,7 @@ const GetForm = ({ option, buttonName, buttonUrl, backgroundColor, buttonBackgro
                             {errors.number.message}
                         </div>
                     )}
-                </Fragment>
+                </>
             )}
 
             {/* email */}
@@ -270,7 +269,7 @@ const GetForm = ({ option, buttonName, buttonUrl, backgroundColor, buttonBackgro
 
             {/* message */}
             {(option === 'quote' || option === 'enquiry') && (
-                <Fragment>
+                <>
                     <Label htmlFor='message'>Message</Label>
                     <Textarea
                         id='message'
@@ -304,12 +303,12 @@ const GetForm = ({ option, buttonName, buttonUrl, backgroundColor, buttonBackgro
                             {errors.message.message}
                         </div>
                     )}
-                </Fragment>
+                </>
             )}
 
             {/* checkbox or plain privacy policy */}
             {option === 'lead' ? (
-                <Fragment>
+                <>
                     <Box mb={3}>
                         <Heading
                             as='h4'
@@ -402,7 +401,7 @@ const GetForm = ({ option, buttonName, buttonUrl, backgroundColor, buttonBackgro
                             {errors.subscribe.message}
                         </div>
                     )}
-                </Fragment>
+                </>
             ) : (
                 <div sx={{ fontSize: '0.75rem', paddingBottom: 3 }}>
                     We save the information you submit through this form for the sole purpose of contacting you
@@ -447,7 +446,7 @@ const GetForm = ({ option, buttonName, buttonUrl, backgroundColor, buttonBackgro
                     }}
                 />
             ) : (
-                <Fragment>
+                <>
                     <Button
                         type='submit'
                         variant='simple'
@@ -465,7 +464,7 @@ const GetForm = ({ option, buttonName, buttonUrl, backgroundColor, buttonBackgro
                     >
                         {buttonName || 'Fetch!'}
                     </Button>
-                </Fragment>
+                </>
             )}
         </Box>
     )

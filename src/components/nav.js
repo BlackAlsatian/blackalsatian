@@ -1,5 +1,4 @@
 /** @jsxImportSource theme-ui */
-
 import { Flex } from 'theme-ui'
 import { Link } from 'gatsby'
 import parse from 'html-react-parser'

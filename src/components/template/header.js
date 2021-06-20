@@ -1,5 +1,4 @@
 /** @jsxImportSource theme-ui */
-
 import { useStaticQuery, graphql } from 'gatsby'
 import { useState, useEffect, useContext } from 'react'
 import { OffCanvasMenuContext } from '../offCanvasMenuProvider'

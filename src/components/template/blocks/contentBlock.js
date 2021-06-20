@@ -1,4 +1,4 @@
-import React from 'react'
+/** @jsxImportSource theme-ui */
 import BlockSection from '../blockSection'
 
 const ContentBlock = (props) => {

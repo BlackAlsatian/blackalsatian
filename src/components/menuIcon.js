@@ -7,7 +7,6 @@ const MenuIcon = ({ handleBurgerMenuClick, isOpen, color }) => {
             onClick={handleBurgerMenuClick}
             sx={{
                 variant: 'buttons.menuIcon',
-                // visibility: isOpen ? 'hidden' : null,
             }}
             aria-label='Open Offcanvas Menu'
         >

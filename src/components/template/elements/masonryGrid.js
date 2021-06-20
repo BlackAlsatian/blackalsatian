@@ -2,7 +2,6 @@
 import { Heading } from 'theme-ui'
 import MasonryTileLink from './masonryTileLink'
 import MasonryGridViewAllLink from './masonryGridViewAllLink'
-import { randomID } from '../../helpers'
 
 const MasonryGrid = ({ dataNodes, heading, viewAllLink }) => {
     return (
@@ -36,7 +35,7 @@ const MasonryGrid = ({ dataNodes, heading, viewAllLink }) => {
                 }}
             >
                 {dataNodes.map((node) => (
-                    <MasonryTileLink key={randomID()} node={node} />
+                    <MasonryTileLink key={node.id} node={node} />
                 ))}
             </div>
             {viewAllLink && (

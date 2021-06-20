@@ -1,19 +1,12 @@
 const path = require(`path`)
 const chunk = require(`lodash/chunk`)
 
-// Simple debugging tool
-// dd() will prettily dump to the terminal and kill the process
-// const { dd } = require(`dumper.js`)
-
 /**
  * exports.createPages, built-in Gatsby Node API to create pages 💡
  *
  * See https://www.gatsbyjs.com/docs/node-apis/#createPages for more info.
  */
 exports.createPages = async (gatsbyUtilities) => {
-    // if (page.path.match(/404/)) {
-    //     return
-    // }
     // Query our posts from the GraphQL server
     const posts = await getPosts(gatsbyUtilities)
     const pages = await getPages(gatsbyUtilities)
@@ -85,16 +78,6 @@ const createIndividualPages = async ({ pages, gatsbyUtilities }) =>
                 component: path.resolve(`./src/templates/page.js`),
                 context: {
                     id: page.id,
-                    // subheading: page.subheading,
-                    // subtitle: page.subtitle,
-                    // intro: page.intro,
-                    // style: page.uri.includes('/contact/')
-                    //     ? 'yellow'
-                    //     : page.uri.includes('/terms-of-use/') || page.uri.includes('/privacy-policy/')
-                    //     ? 'red'
-                    //     : page.uri.includes('/about/')
-                    //     ? 'altblack'
-                    //     : 'default',
                     pageStyle: page.pageStyle,
                 },
             }),

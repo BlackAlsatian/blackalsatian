@@ -1,8 +1,8 @@
-import React, { Fragment } from 'react'
+/** @jsxImportSource theme-ui */
+import { Fragment } from 'react'
 import parse from 'html-react-parser'
-import { randomID } from './helpers'
 
 const BlockText = ({ text }) => {
-    return text.map(({ copy }) => <Fragment key={randomID()}>{parse(copy)}</Fragment>)
+    return text.map(({ i, copy }) => <Fragment key={i}>{parse(copy)}</Fragment>)
 }
 export default BlockText

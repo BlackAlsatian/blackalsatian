@@ -1,5 +1,4 @@
 /** @jsxImportSource theme-ui */
-
 import { Container, Heading, Flex, Box, Badge } from 'theme-ui'
 import { graphql } from 'gatsby'
 import parse from 'html-react-parser'
@@ -53,17 +52,11 @@ const BlogPostTemplate = ({ data: { previous, next, post }, pageContext }) => {
                                 loading='eager'
                                 objectPosition='50% 50%'
                                 backgroundColor='white'
-                                backgroundAttachment='scroll'
-                                backgroundRepeat='no-repeat'
                                 sx={{
                                     position: 'relative',
                                     width: '100%',
                                     minHeight: '100vh',
                                     filter: 'brightness(40%)',
-                                    // zIndex: 0,
-                                    // '&:before, &:after': {
-                                    //     filter: 'brightness(40%)',
-                                    // },
                                 }}
                             />
                             <Container

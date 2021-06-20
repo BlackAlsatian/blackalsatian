@@ -1,5 +1,4 @@
 /** @jsxImportSource theme-ui */
-
 import { graphql } from 'gatsby'
 import { getSrc } from 'gatsby-plugin-image'
 import SEO from '../components/seo'

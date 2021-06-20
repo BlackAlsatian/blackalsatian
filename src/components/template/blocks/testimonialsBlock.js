@@ -1,5 +1,4 @@
 /** @jsxImportSource theme-ui */
-
 import { useStaticQuery, graphql } from 'gatsby'
 import { Heading } from 'theme-ui'
 import parse from 'html-react-parser'

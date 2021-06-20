@@ -1,5 +1,4 @@
 /** @jsxImportSource theme-ui */
-
 import { useStaticQuery, graphql } from 'gatsby'
 import { Container, Flex, Box } from 'theme-ui'
 import ServiceLink from '../elements/serviceLink'
