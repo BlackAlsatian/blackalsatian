@@ -23,7 +23,7 @@ const TestimonialsBlock = () => {
             }
         }
     `)
-    const testimonials = testimonialsData.allWpTestimonial.nodes
+    const testimonials = testimonialsData.allWpTestimonial
     const heading = 'See What Our Clients Say...'
     return (
         <section
