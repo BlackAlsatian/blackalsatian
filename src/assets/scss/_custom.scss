@@ -36,14 +36,13 @@ figure {
 a {
     text-decoration: none;
     font-weight: bold;
-    color: inherit !important;
     span {
         &.has-black-color {
             color: inherit !important;
             border-bottom: 0;
             transition: border-bottom 0.2s ease-in-out;
             &:hover {
-                border-bottom: 2px solid inherit;
+                border-bottom: 2px solid #111827;
             }
         }
     }
@@ -53,7 +52,7 @@ a {
             border-bottom: 0;
             transition: border-bottom 0.2s ease-in-out;
             &:hover {
-                border-bottom: 2px solid inherit;
+                border-bottom: 2px solid #ffffff;
             }
         }
     }
