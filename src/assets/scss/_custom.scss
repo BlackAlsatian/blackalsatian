@@ -36,23 +36,24 @@ figure {
 a {
     text-decoration: none;
     font-weight: bold;
+    color: inherit !important;
     span {
         &.has-black-color {
-            color: #000 !important;
+            color: inherit !important;
             border-bottom: 0;
             transition: border-bottom 0.2s ease-in-out;
             &:hover {
-                border-bottom: 2px solid #000;
+                border-bottom: 2px solid inherit;
             }
         }
     }
     span {
         &.has-white-color {
-            color: #fff !important;
+            color: inherit !important;
             border-bottom: 0;
             transition: border-bottom 0.2s ease-in-out;
             &:hover {
-                border-bottom: 2px solid #fff;
+                border-bottom: 2px solid inherit;
             }
         }
     }
