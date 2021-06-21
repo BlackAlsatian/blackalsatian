@@ -38,21 +38,21 @@ a {
     font-weight: bold;
     span {
         &.has-black-color {
-            color: #000;
+            color: #000 !important;
             border-bottom: 0;
             transition: border-bottom 0.2s ease-in-out;
             &:hover {
-                border-bottom: 2px solid black;
+                border-bottom: 2px solid #000;
             }
         }
     }
     span {
         &.has-white-color {
-            color: #fff;
+            color: #fff !important;
             border-bottom: 0;
             transition: border-bottom 0.2s ease-in-out;
             &:hover {
-                border-bottom: 2px solid white;
+                border-bottom: 2px solid #fff;
             }
         }
     }
