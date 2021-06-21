@@ -33,10 +33,11 @@ html {
 figure {
     margin: 0;
 }
-a {
-    text-decoration: none;
-    font-weight: bold;
-    span {
+
+span {
+    a {
+        text-decoration: none;
+        font-weight: bold;
         &.has-black-color {
             color: inherit !important;
             border-bottom: 0;
@@ -45,8 +46,6 @@ a {
                 border-bottom: 2px solid #111827;
             }
         }
-    }
-    span {
         &.has-white-color {
             color: inherit !important;
             border-bottom: 0;
