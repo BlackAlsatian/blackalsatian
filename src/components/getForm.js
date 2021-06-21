@@ -41,7 +41,7 @@ const GetForm = ({ option, buttonName, buttonUrl, backgroundColor, buttonBackgro
     })
 
     const onSubmit = (data) => {
-        console.log(data)
+        // console.log(data)
         setFormSubmitting(true)
         axios({
             method: 'post',
