@@ -1,9 +1,20 @@
 /** @jsxImportSource theme-ui */
 import BlockSection from '../blockSection'
 
-const CTABlock = (props) => {
-    const { anchor, backgroundColor, buttonBackground, buttonName, buttonUrl, color, heading, option, text, title } =
-        props
+const CTABlock = ({
+    anchor,
+    backgroundColor,
+    buttonBackground,
+    buttonName,
+    buttonUrl,
+    color,
+    heading,
+    option,
+    text,
+    title,
+}) => {
+    // const { anchor, backgroundColor, buttonBackground, buttonName, buttonUrl, color, heading, option, text, title } =
+    //     props
 
     return (
         <BlockSection

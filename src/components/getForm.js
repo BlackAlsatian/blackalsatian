@@ -74,13 +74,37 @@ const GetForm = ({ option, buttonName, buttonUrl, backgroundColor, buttonBackgro
         if (buttonUrl.includes('#')) {
             return (
                 <p>
-                    <a
-                        href={buttonUrl}
+                    <span>
+                        <a
+                            href={buttonUrl}
+                            sx={{
+                                variant: 'buttons.simple',
+                                display: 'inline-block',
+                                backgroundColor: `${buttonBackground}`,
+                                // color: `${backgroundColor}` || 'white',
+                                textDecoration: 'none',
+                                boxShadow: 'xl',
+                                '&:hover': {
+                                    boxShadow: 'none',
+                                },
+                            }}
+                        >
+                            {buttonName}
+                        </a>
+                    </span>
+                </p>
+            )
+        }
+        return (
+            <p>
+                <span>
+                    <Link
+                        to={buttonUrl}
                         sx={{
                             variant: 'buttons.simple',
                             display: 'inline-block',
                             backgroundColor: `${buttonBackground}`,
-                            color: `${backgroundColor || 'white'}`,
+                            // color: `${backgroundColor || 'white'}`,
                             textDecoration: 'none',
                             boxShadow: 'xl',
                             '&:hover': {
@@ -89,28 +113,8 @@ const GetForm = ({ option, buttonName, buttonUrl, backgroundColor, buttonBackgro
                         }}
                     >
                         {buttonName}
-                    </a>
-                </p>
-            )
-        }
-        return (
-            <p>
-                <Link
-                    to={buttonUrl}
-                    sx={{
-                        variant: 'buttons.simple',
-                        display: 'inline-block',
-                        backgroundColor: `${buttonBackground}`,
-                        color: `${backgroundColor || 'white'}`,
-                        textDecoration: 'none',
-                        boxShadow: 'xl',
-                        '&:hover': {
-                            boxShadow: 'none',
-                        },
-                    }}
-                >
-                    {buttonName}
-                </Link>
+                    </Link>
+                </span>
             </p>
         )
     }

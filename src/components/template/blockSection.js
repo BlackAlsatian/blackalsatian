@@ -6,30 +6,40 @@ import LeftColumn from '../template/elements/leftColumn'
 import PlaceholderLoader from '../../components/placeholderLoader'
 import GetForm from '../getForm'
 
-const ContentBlock = (props) => {
-    const backgroundColor = props.backgroundColor
-    const color = props.color
-    const anchor = props.anchor
-    const heading = props.heading
-    const title = props.title
-    const text = props.text
-    const option = props.option
-    const buttonBackground = props.buttonBackground
-    const buttonName = props.buttonName
-    const buttonUrl = props.buttonUrl
-    const headerSize = props.headerSize
-
+const ContentBlock = ({
+    backgroundColor,
+    color,
+    anchor,
+    heading,
+    title,
+    text,
+    option,
+    buttonBackground,
+    buttonName,
+    buttonUrl,
+    headerSize,
+}) => {
+    // const backgroundColor = props.backgroundColor
+    // const color = props.color
+    // const anchor = props.anchor
+    // const heading = props.heading
+    // const title = props.title
+    // const text = props.text
+    // const option = props.option
+    // const buttonBackground = props.buttonBackground
+    // const buttonName = props.buttonName
+    // const buttonUrl = props.buttonUrl
+    // const headerSize = props.headerSize
     return (
         <section
             sx={{
-                backgroundColor: `${backgroundColor || 'white'}`,
-                color: `${color || 'black'}`,
                 width: '100%',
                 py: 6,
                 minHeight: '100vh',
                 zIndex: 20,
                 display: 'flex',
                 alignItems: 'center',
+                variant: 'layout.block.' + backgroundColor,
             }}
             id={anchor}
         >

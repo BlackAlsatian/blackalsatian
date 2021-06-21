@@ -14,7 +14,6 @@ const LeftColumn = ({ heading, title, color, page }) => {
                 justifyContent: page ? null : 'center',
                 alignItems: !page ? ['flex-start', 'flex-start', 'flex-end'] : null,
                 borderRight: [0, 0, `1px solid ${color || 'black'}`],
-                // color: `${color || 'black'}`,
             }}
         >
             {heading && (

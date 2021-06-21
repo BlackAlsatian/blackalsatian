@@ -1,9 +1,9 @@
 import React, { useCallback } from 'react'
 import blocks from './blocks'
 
-function Modules(props) {
+function Modules({ attributes, featuredImage, innerBlocks, module }) {
     // console.log(props)
-    const { attributes, featuredImage, innerBlocks, module } = props
+    // const { attributes, featuredImage, innerBlocks, module } = props
 
     const Module = blocks[module.name]
     if (!Module) {

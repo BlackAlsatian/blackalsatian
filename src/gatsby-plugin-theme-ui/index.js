@@ -261,6 +261,18 @@ const theme = {
             '&:hover': {
                 backgroundColor: 'primaryHover',
             },
+            white: {
+                color: 'white',
+            },
+            yellow: {
+                color: 'yellow',
+            },
+            blue: {
+                color: 'blue',
+            },
+            red: {
+                color: 'red',
+            },
         },
         pill: {
             py: 2,
@@ -698,6 +710,96 @@ const theme = {
                     p: '0 auto',
                     span: {
                         m: '0 auto',
+                    },
+                },
+            },
+        },
+        block: {
+            white: {
+                backgroundColor: 'white',
+                color: 'black',
+                borderColor: 'black',
+                a: {
+                    color: 'black',
+                    fontWeight: 'bold',
+                    textDecoration: 'none',
+                    boderBottom: 0,
+                    transition: 'border-bottom 0.2s ease-in-out',
+                    '&:hover': {
+                        borderBottom: '2px solid black',
+                    },
+                },
+                p: {
+                    span: {
+                        a: {
+                            color: 'white',
+                        },
+                    },
+                },
+            },
+            yellow: {
+                backgroundColor: 'yellow',
+                color: 'black',
+                borderColor: 'black',
+                a: {
+                    color: 'black',
+                    fontWeight: 'bold',
+                    textDecoration: 'none',
+                    boderBottom: 0,
+                    transition: 'border-bottom 0.2s ease-in-out',
+                    '&:hover': {
+                        borderBottom: '2px solid black',
+                    },
+                },
+                p: {
+                    span: {
+                        a: {
+                            color: 'yellow',
+                        },
+                    },
+                },
+            },
+            blue: {
+                backgroundColor: 'blue',
+                color: 'white',
+                borderColor: 'white',
+                a: {
+                    color: 'white',
+                    fontWeight: 'bold',
+                    textDecoration: 'none',
+                    boderBottom: 0,
+                    transition: 'border-bottom 0.2s ease-in-out',
+                    '&:hover': {
+                        borderBottom: '2px solid white',
+                    },
+                },
+                p: {
+                    span: {
+                        a: {
+                            color: 'blue',
+                        },
+                    },
+                },
+            },
+            red: {
+                backgroundColor: 'red',
+                color: 'white',
+                borderColor: 'white',
+                a: {
+                    color: 'white',
+                    fontWeight: 'bold',
+                    textDecoration: 'none',
+                    boderBottom: 0,
+                    transition: 'border-bottom 0.2s ease-in-out',
+                    '&:hover': {
+                        borderBottom: '2px solid white',
+                    },
+                },
+                p: {
+                    span: {
+                        a: {
+                            color: 'red',
+                        },
                     },
                 },
             },

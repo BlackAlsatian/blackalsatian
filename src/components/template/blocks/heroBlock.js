@@ -3,8 +3,8 @@ import { Container, Flex, Heading } from 'theme-ui'
 import parse from 'html-react-parser'
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 
-const HeroBlock = (props) => {
-    const { featuredImage, color, title, intro } = props
+const HeroBlock = ({ featuredImage, color, title, intro }) => {
+    // const { featuredImage, color, title, intro } = props
     const featuredImageData = getImage(featuredImage.node.main)
     return (
         <Flex

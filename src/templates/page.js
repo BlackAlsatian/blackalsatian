@@ -9,7 +9,7 @@ import PageHeader from '../components/template/pageHeader'
 import LeftColumn from '../components/template/elements/leftColumn'
 
 const PageTemplate = ({ data: { page, pageblocks } }) => {
-    console.log(pageblocks)
+    // console.log(pageblocks)
     const pageStyle = page.pageStyle
     let bodyFontColor = 'black'
     if (pageStyle === 'red') {

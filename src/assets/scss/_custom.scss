@@ -33,26 +33,3 @@ html {
 figure {
     margin: 0;
 }
-
-span {
-    a {
-        text-decoration: none;
-        font-weight: bold;
-        &.has-black-color {
-            color: inherit !important;
-            border-bottom: 0;
-            transition: border-bottom 0.2s ease-in-out;
-            &:hover {
-                border-bottom: 2px solid #111827;
-            }
-        }
-        &.has-white-color {
-            color: inherit !important;
-            border-bottom: 0;
-            transition: border-bottom 0.2s ease-in-out;
-            &:hover {
-                border-bottom: 2px solid #ffffff;
-            }
-        }
-    }
-}
