@@ -69,19 +69,6 @@ module.exports = {
                 domains: [`https://www.googletagmanager.com`, `https://www.google-analytics.com`],
             },
         },
-        {
-            resolve: `gatsby-plugin-google-gtag`,
-            options: {
-                trackingIds: [
-                    process.env.GATSBY_GA_TRACKING_ID, // Google Analytics / GA
-                    // "AW-CONVERSION_ID",  Google Ads / Adwords / AW
-                ],
-                pluginConfig: {
-                    // Puts tracking script in the head instead of the body
-                    head: false,
-                },
-            },
-        },
         `gatsby-plugin-react-helmet`,
         `gatsby-plugin-theme-ui`,
         {
@@ -434,5 +421,18 @@ module.exports = {
         `gatsby-plugin-gatsby-cloud`,
         `gatsby-plugin-offline`,
         `gatsby-plugin-remove-generator`,
+        {
+            resolve: `gatsby-plugin-google-gtag`,
+            options: {
+                trackingIds: [
+                    process.env.GATSBY_GA_TRACKING_ID, // Google Analytics / GA
+                    // "AW-CONVERSION_ID",  Google Ads / Adwords / AW
+                ],
+                pluginConfig: {
+                    // Puts tracking script in the head instead of the body
+                    head: false,
+                },
+            },
+        },
     ],
 }

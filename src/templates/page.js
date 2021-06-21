@@ -8,7 +8,8 @@ import SEO from '../components/seo'
 import PageHeader from '../components/template/pageHeader'
 import LeftColumn from '../components/template/elements/leftColumn'
 
-const PageTemplate = ({ data: { page } }) => {
+const PageTemplate = ({ data: { page, pageblocks } }) => {
+    console.log(pageblocks)
     const pageStyle = page.pageStyle
     let bodyFontColor = 'black'
     if (pageStyle === 'red') {
@@ -65,8 +66,8 @@ const PageTemplate = ({ data: { page } }) => {
                 </>
             ) : (
                 <>
-                    {page.blocks &&
-                        page.blocks.map(({ name, order, attributes, innerBlocks }) => (
+                    {pageblocks.blocks &&
+                        pageblocks.blocks.map(({ name, order, attributes, innerBlocks }) => (
                             <Modules
                                 key={order}
                                 featuredImage={page.featuredImage}
@@ -113,5 +114,59 @@ export const pageQuery = graphql`
                 ...BlackalsatianContentBlock
             }
         }
+        pageblocks: wpBlockEditorContentNode(id: { eq: $id }) {
+            blocks {
+                name
+                order
+                ...CoreCoverblock
+                ...BlackalsatianContentBlock
+            }
+        }
     }
 `
+// # ... on WpBlackalsatianContentBlock {
+//                 # name
+//                 # attributes {
+//                 #     contentHeading
+//                 #     contentTitle
+//                 # }
+//                 # innerBlocks {
+//                 #     copy: originalContent
+//                 # }
+//                 # }
+//                 # ... on WpCoreCoverBlock {
+//                 #     name
+//                 # attributes {
+//                 #     ... on WpCoreCoverBlockAttributes {
+//                 #     overlayColor
+//                 #     anchor
+//                 #     }
+//                 # }
+//                 # innerBlocks {
+//                 #     name
+//                 #     ... on WpBlackalsatianHeroBlock {
+//                 #     name
+//                 #     attributes {
+//                 #         heroFontColor
+//                 #         heroIntro
+//                 #         heroTitle
+//                 #     }
+//                 #     }
+//                 #     ... on WpBlackalsatianCtaWithButtonBlock {
+//                 #     name
+//                 #     attributes {
+//                 #         anchor
+//                 #         buttonBackgroundColor
+//                 #         buttonName
+//                 #         buttonUrl
+//                 #         color
+//                 #         heading
+//                 #         option
+//                 #         title
+//                 #     }
+//                 #     innerBlocks {
+//                 #         copy: originalContent
+//                 #     }
+//                 #     }
+//                 # }
+//                 # }

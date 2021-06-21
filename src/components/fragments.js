@@ -102,14 +102,11 @@ export const fragments = graphql`
     }
 
     fragment CoreCoverblock on WpCoreCoverBlock {
-        __typename
         name
         attributes {
             ... on WpCoreCoverBlockAttributes {
                 anchor
-                className
                 overlayColor
-                backgroundType
             }
         }
         innerBlocks {
@@ -129,7 +126,6 @@ export const fragments = graphql`
                     buttonBackgroundColor
                     buttonName
                     buttonUrl
-                    className
                     color
                     heading
                     title
@@ -143,10 +139,8 @@ export const fragments = graphql`
     }
 
     fragment BlackalsatianContentBlock on WpBlackalsatianContentBlock {
-        __typename
         name
         attributes {
-            className
             contentHeading
             contentTitle
         }

@@ -34,20 +34,26 @@ figure {
     margin: 0;
 }
 a {
-    span.has-black-color {
-        color: #000;
-        text-decoration: underline;
-        font-weight: bold;
-        &:hover {
-            border-bottom: 3px solid black;
+    text-decoration: none;
+    font-weight: bold;
+    span {
+        &.has-black-color {
+            color: #000;
+            border-bottom: 0;
+            transition: border-bottom 0.2s ease-in-out;
+            &:hover {
+                border-bottom: 2px solid black;
+            }
         }
     }
-    span.has-white-color {
-        color: #fff;
-        text-decoration: underline;
-        font-weight: bold;
-        &:hover {
-            border-bottom: 3px solid white;
+    span {
+        &.has-white-color {
+            color: #fff;
+            border-bottom: 0;
+            transition: border-bottom 0.2s ease-in-out;
+            &:hover {
+                border-bottom: 2px solid white;
+            }
         }
     }
 }
