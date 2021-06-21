@@ -27,8 +27,9 @@ const ContactDetails = ({ textcolor }) => {
                             color: `${textcolor}`,
                         }}
                     >
-                        WhatsApp (click, click / office hours)
-                    </a>
+                        WhatsApp
+                    </a>{' '}
+                    (office hours)
                 </div>
             </div>
             <div sx={{ display: 'flex', alignItems: 'flex-start' }}>

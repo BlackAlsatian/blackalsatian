@@ -29,7 +29,7 @@ const Footer = ({ siteTitle, pageStyle }) => {
             sx={{
                 width: '100%',
                 fontSize: 0,
-                fontWeight: 'medium',
+                fontWeight: 'normal',
                 variant: 'layout.footer.' + pageStyle,
             }}
             id='contact'

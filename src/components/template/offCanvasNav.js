@@ -59,7 +59,7 @@ const OffCanvas = ({ navLinks }) => {
                                 cursor: 'pointer',
                                 fontSize: [6, 7, 9],
                                 lineHeight: 'tight',
-                                fontWeight: 'extrabold',
+                                fontWeight: 'black',
                                 textDecoration: 'none',
                                 px: 3,
                                 '&:last-child': {

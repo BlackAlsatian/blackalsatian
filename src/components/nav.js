@@ -26,7 +26,7 @@ const Nav = ({ color, navLinks }) => {
                                 },
                                 cursor: 'pointer',
                                 fontSize: 1,
-                                fontWeight: 'extrabold',
+                                fontWeight: 'black',
                                 textDecoration: 'none',
                                 px: 3,
                                 '&:last-child': {

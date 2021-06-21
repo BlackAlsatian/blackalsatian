@@ -29,7 +29,7 @@ const theme = {
         // medium: "500",
         // semibold: "600",
         bold: '700',
-        extrabold: '800',
+        // extrabold: '800',
         black: '900',
         body: '400',
 
@@ -300,7 +300,7 @@ const theme = {
             borderStyle: 'solid',
             borderColor: 'primary',
             color: 'primary',
-            fontWeight: 'semibold',
+            fontWeight: 'bold',
             borderRadius: 'default',
             '&:hover': {
                 backgroundColor: 'primary',

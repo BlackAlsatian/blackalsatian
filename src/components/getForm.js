@@ -317,11 +317,11 @@ const GetForm = ({ option, buttonName, buttonUrl, backgroundColor, buttonBackgro
                         <Heading
                             as='h4'
                             sx={{
-                                fontWeight: 'medium',
+                                fontWeight: 'normal',
                                 pb: 2,
                             }}
                         >
-                            Yes, I'd like to receive emails from Black Alsatian
+                            Yes, Black Alsatian may email me.
                         </Heading>
                         <Label htmlFor='subscribe'>
                             <Box
