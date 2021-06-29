@@ -70,7 +70,6 @@ module.exports = {
             },
         },
         `gatsby-plugin-react-helmet`,
-        `gatsby-plugin-loadable-components-ssr`,
         `gatsby-plugin-theme-ui`,
         {
             resolve: `gatsby-plugin-transition-link`,

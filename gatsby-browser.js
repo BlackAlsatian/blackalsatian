@@ -1,4 +1,3 @@
-import loadable from '@loadable/component'
 import OffCanvasMenuProvider from './src/components/offCanvasMenuProvider'
 import './src/assets/scss/app.scss'
 
@@ -29,69 +28,9 @@ export const shouldUpdateScroll = ({ routerProps: { location }, getSavedScrollPo
     return false
 }
 
-export const replaceHydrateFunction = () => (element, container, callback) => {
-    loadable.loadableReady(() => {
-        ReactDOM.render(element, container, callback)
-    })
-}
-
+// import loadable from '@loadable/component'
 // export const replaceHydrateFunction = () => (element, container, callback) => {
-//     loadableReady(() => {
-//         hydrate(element, container, callback)
+//     loadable.loadableReady(() => {
+//         ReactDOM.render(element, container, callback)
 //     })
-// }
-
-// const loadableReady = require('@loadable/component').loadableReady
-
-// exports.replaceHydrateFunction = () => {
-//     return (element, container, callback) => {
-//         loadableReady(() => {
-//             ReactDOM.render(element, container, callback)
-//         })
-//     }
-// }
-
-// import React from 'react'
-// import Layout from './src/components/layout'
-
-// // custom typefaces
-
-// export const wrapPageElement = ({ element, props }) => {
-//     return <Layout {...props}>{element}</Layout>
-// }
-// const transitionDelay = 0
-//
-// export const shouldUpdateScroll = ({ routerProps: { location }, getSavedScrollPosition }) => {
-//     if (location.action === 'PUSH') {
-//         window.setTimeout(() => window.scrollTo(0, 0), transitionDelay)
-//     } else {
-//         const savedPosition = getSavedScrollPosition(location)
-//         window.setTimeout(() => window.scrollTo(...(savedPosition || [0, 0])), transitionDelay)
-//     }
-//     return false
-// }
-//
-// export const onServiceWorkerUpdateReady = () => {
-//     const answer = window.confirm(`There's been an update. ` + `Reload to display the latest version?`)
-//     if (answer === true) {
-//         window.location.reload()
-//     }
-// }
-
-// Adjust if you need to add a delay before scrolling
-
-// export const onPreRouteUpdate = ({ location, prevLocation }) => {
-//     console.log('Gatsby started to change location to', location.pathname)
-//     console.log('Gatsby started to change location from', prevLocation ? prevLocation.pathname : null)
-// }
-// const React = require('react')
-// const Layout = require('./src/components/template/layout')
-// // Logs when the client route changes
-// exports.onRouteUpdate = ({ location, prevLocation }) => {
-//     console.log('new pathname', location.pathname)
-//     console.log('old pathname', prevLocation ? prevLocation.pathname : null)
-// }
-// // Wraps every page in a component
-// exports.wrapPageElement = ({ element, props }) => {
-//     return <Layout {...props}>{element}</Layout>
 // }
