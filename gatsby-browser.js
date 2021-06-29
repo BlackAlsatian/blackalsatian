@@ -1,3 +1,4 @@
+import loadable from '@loadable/component'
 import OffCanvasMenuProvider from './src/components/offCanvasMenuProvider'
 import './src/assets/scss/app.scss'
 
@@ -28,11 +29,11 @@ export const shouldUpdateScroll = ({ routerProps: { location }, getSavedScrollPo
     return false
 }
 
-// export const replaceHydrateFunction = () => (element, container, callback) => {
-//     loadable.loadableReady(() => {
-//         ReactDOM.render(element, container, callback)
-//     })
-// }
+export const replaceHydrateFunction = () => (element, container, callback) => {
+    loadable.loadableReady(() => {
+        ReactDOM.render(element, container, callback)
+    })
+}
 
 // export const replaceHydrateFunction = () => (element, container, callback) => {
 //     loadableReady(() => {
