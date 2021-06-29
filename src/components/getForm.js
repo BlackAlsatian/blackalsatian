@@ -1,6 +1,6 @@
 /** @jsxImportSource theme-ui */
 import { Link } from 'gatsby'
-import { Label, Input, Box, Button, Heading, Spinner, Alert, Textarea } from 'theme-ui'
+import { Label, Input, Box, Button, Spinner, Alert, Textarea } from 'theme-ui'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import axios from 'axios'
@@ -33,9 +33,10 @@ const GetForm = ({ option, buttonName, buttonUrl, backgroundColor, buttonBackgro
             status: 'lead',
             subscribe: false,
             mailer_sync: option === 'lead' ? true : false,
+            privacy_policy: option === 'lead' ? true : false,
             page: leadInfo().pathUrl,
             traffic_source: leadInfo().referrerUrl,
-            tags: option,
+            tags: option === 'lead' ? buttonUrl : option,
             website_id: `${process.env.GATSBY_BA_SITEID}`,
         },
     })
@@ -314,15 +315,6 @@ const GetForm = ({ option, buttonName, buttonUrl, backgroundColor, buttonBackgro
             {option === 'lead' ? (
                 <>
                     <Box mb={3}>
-                        <Heading
-                            as='h4'
-                            sx={{
-                                fontWeight: 'normal',
-                                pb: 2,
-                            }}
-                        >
-                            Yes, Black Alsatian may email me.
-                        </Heading>
                         <Label htmlFor='subscribe'>
                             <Box
                                 as='input'
@@ -368,20 +360,12 @@ const GetForm = ({ option, buttonName, buttonUrl, backgroundColor, buttonBackgro
                                 }}
                                 aria-invalid={errors.subscribe ? 'true' : 'false'}
                                 {...register('subscribe', {
-                                    required: "Without your permission, we won't be able to contact you. *sad face*",
+                                    required: "Without your consent, we won't be able to contact you. *sad face*",
                                 })}
                             />
                             <span sx={{ fontSize: '0.75rem', paddingLeft: '0.3rem' }}>
-                                We save the information you submit through this form for the sole purpose of contacting
-                                you. You can read our{' '}
-                                <Link
-                                    to='/privacy-policy/'
-                                    title='Black Alsatian Privacy Policy'
-                                    sx={{ color: `${buttonBackground}`, '&:hover': { textDecoration: 'none' } }}
-                                >
-                                    Privacy Policy
-                                </Link>{' '}
-                                and{' '}
+                                Yes, I understand that by signing up for this guide, Black Alsatian saves this
+                                information for the sole purpose of contacting me. I have read and understood the{' '}
                                 <Link
                                     to='/terms-of-use/'
                                     title='Black Alsatian Terms of Use'
@@ -389,7 +373,15 @@ const GetForm = ({ option, buttonName, buttonUrl, backgroundColor, buttonBackgro
                                 >
                                     Terms of Use
                                 </Link>{' '}
-                                for more info.
+                                and{' '}
+                                <Link
+                                    to='/privacy-policy/'
+                                    title='Black Alsatian Privacy Policy'
+                                    sx={{ color: `${buttonBackground}`, '&:hover': { textDecoration: 'none' } }}
+                                >
+                                    Privacy Policy
+                                </Link>
+                                .
                             </span>
                         </Label>
                     </Box>
@@ -407,26 +399,91 @@ const GetForm = ({ option, buttonName, buttonUrl, backgroundColor, buttonBackgro
                     )}
                 </>
             ) : (
-                <div sx={{ fontSize: '0.75rem', paddingBottom: 3 }}>
-                    We save the information you submit through this form for the sole purpose of contacting you
-                    regarding your query. You can read our{' '}
-                    <Link
-                        to='/privacy-policy/'
-                        title='Black Alsatian Privacy Policy'
-                        sx={{ color: `${buttonBackground}`, '&:hover': { textDecoration: 'none' } }}
-                    >
-                        Privacy Policy
-                    </Link>{' '}
-                    and{' '}
-                    <Link
-                        to='/terms-of-use/'
-                        title='Black Alsatian Terms of Use'
-                        sx={{ color: `${buttonBackground}`, '&:hover': { textDecoration: 'none' } }}
-                    >
-                        Terms of Use
-                    </Link>{' '}
-                    for more info.
-                </div>
+                <>
+                    <Box mb={3}>
+                        <Label htmlFor='privacy_policy'>
+                            <Box
+                                as='input'
+                                type='checkbox'
+                                id='privacy_policy'
+                                name='privacy_policy'
+                                defaultChecked={false}
+                                sx={{
+                                    // mr: 3,
+                                    mb: 3,
+                                    cursor: 'pointer',
+                                    WebkitAppearance: 'none',
+                                    MozAppearance: 'none',
+                                    appearance: 'none',
+                                    outline: 0,
+                                    height: 6,
+                                    width: 6,
+                                    minWidth: 6,
+                                    border: '2px solid',
+                                    borderColor: buttonBackground,
+                                    display: 'inline-block',
+                                    ':checked': {
+                                        bg: 'transparent',
+                                        border: 'none',
+                                        position: 'relative',
+                                    },
+                                    ':after': {
+                                        content: "'✓'",
+                                        transform: 'scale(2)',
+                                        color: buttonBackground,
+                                        fontWeight: 'black',
+                                        display: 'none',
+                                        position: 'absolute',
+                                        top: 0,
+                                        left: '9px',
+                                    },
+                                    ':checked:after': {
+                                        display: 'block',
+                                    },
+                                    ':focus': {
+                                        boxShadow: 'xs',
+                                    },
+                                }}
+                                aria-invalid={errors.privacy_policy ? 'true' : 'false'}
+                                {...register('privacy_policy', {
+                                    required: "Without your consent, we won't be able to contact you. *sad face*",
+                                })}
+                            />
+                            <span sx={{ fontSize: '0.75rem', paddingLeft: '0.3rem' }}>
+                                Yes, I understand that Black Alsatian saves this information for the sole purpose of
+                                contacting me regarding my query. I have read and understood the{' '}
+                                <Link
+                                    to='/terms-of-use/'
+                                    title='Black Alsatian Terms of Use'
+                                    sx={{ color: `${buttonBackground}`, '&:hover': { textDecoration: 'none' } }}
+                                >
+                                    Terms of Use
+                                </Link>{' '}
+                                and{' '}
+                                <Link
+                                    to='/privacy-policy/'
+                                    title='Black Alsatian Privacy Policy'
+                                    sx={{ color: `${buttonBackground}`, '&:hover': { textDecoration: 'none' } }}
+                                >
+                                    Privacy Policy
+                                </Link>
+                                .
+                            </span>
+                        </Label>
+                    </Box>
+                    {errors.privacy_policy && (
+                        <div
+                            sx={{
+                                color: `${errorColor}`,
+                                fontSize: '0.8rem',
+                                fontWeight: 'bold',
+                                pb: 3,
+                            }}
+                        >
+                            {errors.privacy_policy.message}
+                        </div>
+                    )}
+                </>
             )}
 
             {/* success alert */}

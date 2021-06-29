@@ -257,6 +257,7 @@ const theme = {
             border: 'none',
             color: 'white',
             fontWeight: 'bold',
+            fontFamily: 'body',
             borderRadius: 'default',
             '&:hover': {
                 backgroundColor: 'primaryHover',
@@ -284,6 +285,7 @@ const theme = {
             border: 'none',
             color: 'white',
             fontWeight: 'bold',
+            fontFamily: 'body',
             borderRadius: 'full',
             '&:hover': {
                 backgroundColor: 'primaryHover',
@@ -301,6 +303,7 @@ const theme = {
             borderColor: 'primary',
             color: 'primary',
             fontWeight: 'bold',
+            fontFamily: 'body',
             borderRadius: 'default',
             '&:hover': {
                 backgroundColor: 'primary',
@@ -320,6 +323,7 @@ const theme = {
             borderColor: 'primaryHover',
             color: 'white',
             fontWeight: 'bold',
+            fontFamily: 'body',
             borderRadius: 'default',
             '&:hover': {
                 backgroundColor: 'primaryHover',
@@ -336,6 +340,7 @@ const theme = {
             opacity: '0.5',
             color: 'white',
             fontWeight: 'bold',
+            fontFamily: 'body',
             borderRadius: 'default',
         },
         '3D': {
@@ -351,6 +356,7 @@ const theme = {
             borderBottomColor: 'primaryHover',
             color: 'white',
             fontWeight: 'bold',
+            fontFamily: 'body',
             borderRadius: 'default',
             transition: 'transform 0.3s ease-in-out',
             '&:hover': {
@@ -369,6 +375,7 @@ const theme = {
             borderColor: '#cbd5e0',
             color: 'text',
             fontWeight: 'bold',
+            fontFamily: 'body',
             borderRadius: 'default',
             boxShadow: 'default',
             '&:hover': {
