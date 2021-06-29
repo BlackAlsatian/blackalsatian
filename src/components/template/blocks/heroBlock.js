@@ -24,7 +24,7 @@ const HeroBlock = ({ featuredImage, color, title, intro }) => {
                 alt={featuredImage.node.altText}
                 loading='eager'
                 objectPosition='60% 40%'
-                backgroundColor='white'
+                backgroundColor='#111827'
                 sx={{
                     position: 'relative',
                     width: '100%',

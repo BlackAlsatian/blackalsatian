@@ -95,7 +95,9 @@ const Footer = ({ siteTitle, pageStyle }) => {
                         to='/'
                         title='Web development & online marketing by Black Alsatian'
                     >
-                        <Logo />
+                        <LazyLoad height='100' offset={100} deboucne={1000} once fallback={<PlaceholderLoader />}>
+                            <Logo />
+                        </LazyLoad>
                     </Link>
                     <br />
                     Port Elizabeth, South Africa
@@ -130,8 +132,9 @@ const Footer = ({ siteTitle, pageStyle }) => {
                         textAlign: [null, null, 'right'],
                     }}
                 >
-                    <SocialIcons />
-
+                    <LazyLoad height='100' offset={100} deboucne={1000} once fallback={<PlaceholderLoader />}>
+                        <SocialIcons />
+                    </LazyLoad>
                     <div>
                         <Link to='/terms-of-use/' sx={{ color: 'inherit' }}>
                             Terms of Use

@@ -1,9 +1,11 @@
 /** @jsxImportSource theme-ui */
 import { useStaticQuery, graphql } from 'gatsby'
+import LazyLoad from 'react-lazyload'
 import { Heading } from 'theme-ui'
 import parse from 'html-react-parser'
 import LeftApostrophe from '../../icons/leftApostrophe'
 import RightApostrophe from '../../icons/rightApostrophe'
+import PlaceholderLoader from '../../placeholderLoader'
 
 const TestimonialsBlock = () => {
     const testimonialsData = useStaticQuery(graphql`
@@ -91,10 +93,26 @@ const TestimonialsBlock = () => {
                                     },
                                 }}
                             >
-                                <LeftApostrophe color='white' width={28} height={28} />
+                                <LazyLoad
+                                    height='100'
+                                    offset={100}
+                                    deboucne={1000}
+                                    once
+                                    fallback={<PlaceholderLoader />}
+                                >
+                                    <LeftApostrophe color='white' width={28} height={28} />
+                                </LazyLoad>
                                 {parse(content)}
                                 <span sx={{ textAlign: 'right' }}>
-                                    <RightApostrophe color='white' width={28} height={28} />
+                                    <LazyLoad
+                                        height='100'
+                                        offset={100}
+                                        deboucne={1000}
+                                        once
+                                        fallback={<PlaceholderLoader />}
+                                    >
+                                        <RightApostrophe color='white' width={28} height={28} />
+                                    </LazyLoad>
                                 </span>
 
                                 <small sx={{ textAlign: 'right', marginTop: 3 }}>

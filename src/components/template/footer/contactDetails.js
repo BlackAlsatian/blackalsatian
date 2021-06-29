@@ -1,7 +1,9 @@
 /** @jsxImportSource theme-ui */
 import WhatsApp from '../../icons/whatsappIcon'
+import LazyLoad from 'react-lazyload'
 import Phone from '../../icons/phoneIcon'
 import Home from '../../icons/homeIcon'
+import PlaceholderLoader from '../../placeholderLoader'
 
 const ContactDetails = ({ textcolor }) => {
     return (
@@ -14,7 +16,9 @@ const ContactDetails = ({ textcolor }) => {
                         target='_blank'
                         rel='noreferrer noopener nofollow'
                     >
-                        <WhatsApp color={textcolor} width={28} height={28} />
+                        <LazyLoad height='100' offset={100} deboucne={1000} once fallback={<PlaceholderLoader />}>
+                            <WhatsApp color={textcolor} width={28} height={28} />
+                        </LazyLoad>
                     </a>
                 </div>
                 <div sx={{ p: 2 }}>
@@ -34,7 +38,9 @@ const ContactDetails = ({ textcolor }) => {
             </div>
             <div sx={{ display: 'flex', alignItems: 'flex-start' }}>
                 <div sx={{ p: 2 }}>
-                    <Phone color={textcolor} width={28} height={28} />
+                    <LazyLoad height='100' offset={100} deboucne={1000} once fallback={<PlaceholderLoader />}>
+                        <Phone color={textcolor} width={28} height={28} />
+                    </LazyLoad>
                 </div>
                 <div sx={{ p: 2 }}>
                     <a
@@ -52,7 +58,9 @@ const ContactDetails = ({ textcolor }) => {
             </div>
             <div sx={{ display: 'flex', alignItems: 'flex-start' }}>
                 <div sx={{ p: 2 }}>
-                    <Home color={textcolor} width={28} height={28} />
+                    <LazyLoad height='100' offset={100} deboucne={1000} once fallback={<PlaceholderLoader />}>
+                        <Home color={textcolor} width={28} height={28} />
+                    </LazyLoad>
                 </div>
                 <div sx={{ p: 2 }}>
                     <p sx={{ pt: 0, mt: 0 }}>
