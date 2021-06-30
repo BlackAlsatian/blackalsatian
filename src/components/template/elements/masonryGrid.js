@@ -3,7 +3,7 @@ import { Heading } from 'theme-ui'
 import MasonryTileLink from './masonryTileLink'
 import MasonryGridViewAllLink from './masonryGridViewAllLink'
 
-const MasonryGrid = ({ dataNodes, heading, viewAllLink }) => {
+const MasonryGrid = ({ dataNodes, heading, viewAllLink, headerType }) => {
     return (
         <section
             sx={{
@@ -35,7 +35,7 @@ const MasonryGrid = ({ dataNodes, heading, viewAllLink }) => {
                 }}
             >
                 {dataNodes.map((node) => (
-                    <MasonryTileLink key={node.id} node={node} />
+                    <MasonryTileLink key={node.id} node={node} headerType={headerType} />
                 ))}
             </div>
             {viewAllLink && (

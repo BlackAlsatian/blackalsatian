@@ -107,7 +107,7 @@ const PortfolioIndex = ({ data }) => {
                                         >
                                             <p sx={{ flex: 1, px: 2 }}>{portfolio.projectYear}</p>
                                             <Heading
-                                                as='h3'
+                                                as='p'
                                                 sx={{
                                                     flex: 4,
                                                     fontSize: 2,

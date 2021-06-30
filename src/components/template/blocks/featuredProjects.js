@@ -20,7 +20,7 @@ const FeaturedProjectsBlock = () => {
     const dataNodes = portfolio.allWpPortfolio.nodes
     const heading = 'Featured Projects'
     const viewAllLink = '/portfolio/'
-    return <MasonryGrid dataNodes={dataNodes} heading={heading} viewAllLink={viewAllLink} />
+    return <MasonryGrid dataNodes={dataNodes} heading={heading} viewAllLink={viewAllLink} headerType='p' />
 }
 
 export default FeaturedProjectsBlock

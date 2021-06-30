@@ -4,7 +4,7 @@ import { GatsbyImage } from 'gatsby-plugin-image'
 import { Link } from 'gatsby'
 import { getHeight } from '../../helpers'
 
-const MasonryTileLink = ({ node }) => (
+const MasonryTileLink = ({ node, headerType }) => (
     <Link to={node.uri} key={node.id} title={node.title}>
         <div
             sx={{
@@ -49,7 +49,7 @@ const MasonryTileLink = ({ node }) => (
                     },
                 }}
             >
-                <Heading as='h4' sx={{ fontSize: 3 }}>
+                <Heading as={headerType} sx={{ fontSize: 3 }}>
                     {node.title}
                 </Heading>
             </div>

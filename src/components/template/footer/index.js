@@ -1,5 +1,5 @@
 /** @jsxImportSource theme-ui */
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { Flex, Heading } from 'theme-ui'
 import LazyLoad from 'react-lazyload'
 import { Link } from 'gatsby'
@@ -15,20 +15,18 @@ const Footer = ({ siteTitle, pageStyle }) => {
     const [textcolor, setTextcolor] = useState('white')
     // let bgcolor = 'black'
     // let textcolor = 'white'
-    useEffect(() => {
-        if (pageStyle === 'yellow') {
-            setBgcolor('yellow')
-            setTextcolor('black')
-        }
-        if (pageStyle === 'red') {
-            setBgcolor('red')
-            setTextcolor('white')
-        }
-        if (pageStyle === 'white' || pageStyle === 'postwhite') {
-            setBgcolor('white')
-            setTextcolor('black')
-        }
-    }, [pageStyle])
+    if (pageStyle === 'yellow') {
+        setBgcolor('yellow')
+        setTextcolor('black')
+    }
+    if (pageStyle === 'red') {
+        setBgcolor('red')
+        setTextcolor('white')
+    }
+    if (pageStyle === 'white' || pageStyle === 'postwhite') {
+        setBgcolor('white')
+        setTextcolor('black')
+    }
 
     return (
         <footer

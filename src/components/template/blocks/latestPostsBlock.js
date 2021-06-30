@@ -19,7 +19,7 @@ const LatestPostsBlock = () => {
     const dataNodes = latestPosts.allWpPost.nodes
     const heading = 'Latest From The Blogosphere'
     const viewAllLink = '/blog/'
-    return <MasonryGrid dataNodes={dataNodes} heading={heading} viewAllLink={viewAllLink} />
+    return <MasonryGrid dataNodes={dataNodes} heading={heading} viewAllLink={viewAllLink} headerType='h4' />
 }
 
 export default LatestPostsBlock
