@@ -4,6 +4,7 @@ import Header from './template/header'
 import Footer from './template/footer'
 import GoToTopButton from './goToTopButton'
 import { useHasScrolled } from './hooks/useHasScrolled'
+import CookieConsent from './cookie-notice/cookieConsent'
 
 // if (typeof window !== 'undefined') {
 //     // Make scroll behavior of internal links smooth
@@ -31,6 +32,7 @@ const Layout = ({ children, pageContext }) => {
         }
     `)
     const scroll = useHasScrolled(1500)
+    const consentScroll = useHasScrolled(50)
     return (
         <div
             sx={{
@@ -46,6 +48,7 @@ const Layout = ({ children, pageContext }) => {
             <main>{children}</main>
             {typeof pageStyle !== 'undefined' && <Footer siteTitle={title} pageStyle={pageStyle} />}
             <GoToTopButton visible={scroll} />
+            <CookieConsent visible={consentScroll} />
         </div>
     )
 }

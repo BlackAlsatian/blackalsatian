@@ -55,4 +55,6 @@ export const leadInfo = () => {
 }
 
 // check if clientside
-export const isSSR = typeof window === 'undefined'
+export const isBrowser = () => {
+    return typeof window !== 'undefined'
+}
