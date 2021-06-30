@@ -3,7 +3,7 @@ import './src/assets/scss/app.scss'
 
 export const wrapRootElement = OffCanvasMenuProvider
 
-const transitionDelay = 0
+const transitionDelay = 250
 
 export const shouldUpdateScroll = ({ routerProps: { location }, getSavedScrollPosition }) => {
     if (location.action === 'PUSH') {
