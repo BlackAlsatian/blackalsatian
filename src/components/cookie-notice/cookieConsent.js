@@ -59,7 +59,7 @@ const CookieConsent = ({ visible }) => {
                     visible={visible}
                 />
             )}
-            {bannerHidden && (
+            {/* {bannerHidden && (
                 <CookieCard
                     header='Reset Policy'
                     message="This is only for testing purposes and won't be in the final build."
@@ -67,7 +67,7 @@ const CookieConsent = ({ visible }) => {
                     button='Revoke'
                     visible={visible}
                 />
-            )}
+            )} */}
         </>
     )
 }
