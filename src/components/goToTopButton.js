@@ -12,7 +12,7 @@ const GoToTopButton = ({ visible }) => {
                 position: 'fixed',
                 bottom: 5,
                 right: 5,
-                zIndex: 10,
+                zIndex: 1,
                 py: 1,
                 px: 2,
                 cursor: 'pointer',
