@@ -118,7 +118,7 @@ module.exports = {
                 schema: {
                     timeout: 60000,
                     // perPage: 20,
-                    requestConcurrency: 3,
+                    // requestConcurrency: 3,
                     // previewRequestConcurrency: 2,
                 },
                 verbose: true,
@@ -131,11 +131,11 @@ module.exports = {
                     fallbackImageMaxWidth: 1000,
                 },
                 type: {
-                    MediaItem: {
-                        localFile: {
-                            requestConcurrency: process.env.GATSBY_REQUEST_CONCURRENCY_IMAGES,
-                        },
-                    },
+                    // MediaItem: {
+                    //     localFile: {
+                    //         requestConcurrency: process.env.GATSBY_REQUEST_CONCURRENCY_IMAGES,
+                    //     },
+                    // },
                     Category: {
                         exclude: true,
                     },
