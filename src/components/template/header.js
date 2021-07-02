@@ -17,15 +17,18 @@ const Header = ({ pageStyle }) => {
         }
     `)
     const navLinks = data.wpMenu.menuItems.nodes
+
     const { handleBurgerMenuClick, isOpen } = useContext(OffCanvasMenuContext)
+
     const menuStyles = ['white', 'yellow', 'altyellow']
 
     let headerStyle = 'white'
+
     if (menuStyles.includes(pageStyle)) {
         // setHeaderStyle('black')
         headerStyle = 'black'
     }
-    console.log('PageStyle: ' + pageStyle, 'Headerstyle: ' + headerStyle)
+    // console.log('PageStyle: ' + pageStyle, 'Headerstyle: ' + headerStyle)
     // useEffect(() => {
     //     if (menuStyles.includes(pageStyle)) {
     //         setHeaderStyle('black')

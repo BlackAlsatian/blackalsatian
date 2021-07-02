@@ -118,7 +118,7 @@ module.exports = {
                 schema: {
                     timeout: 60000,
                     // perPage: 20,
-                    requestConcurrency: 15,
+                    requestConcurrency: 3,
                     // previewRequestConcurrency: 2,
                 },
                 verbose: true,
