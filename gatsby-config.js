@@ -66,10 +66,36 @@ module.exports = {
         {
             resolve: `gatsby-plugin-preconnect`,
             options: {
-                domains: [`https://www.googletagmanager.com`, `https://www.google-analytics.com`],
+                domains: [`https://www.googletagmanager.com`],
             },
         },
         `gatsby-plugin-react-helmet`,
+        {
+            resolve: `gatsby-plugin-google-tagmanager`,
+            options: {
+                id: process.env.GATSBY_GTM_TRACKING_ID,
+                includeInDevelopment: true,
+
+                // datalayer to be set before GTM is loaded
+                // should be an object or a function that is executed in the browser
+                //
+                // Defaults to null
+                defaultDataLayer: { platform: 'gatsby' },
+
+                // Specify optional GTM environment details.
+                // gtmAuth: 'YOUR_GOOGLE_TAGMANAGER_ENVIRONMENT_AUTH_STRING',
+                // gtmPreview: 'YOUR_GOOGLE_TAGMANAGER_ENVIRONMENT_PREVIEW_NAME',
+                dataLayerName: 'dataLayer',
+
+                // Name of the event that is triggered
+                // on every Gatsby route change.
+                //
+                // Defaults to gatsby-route-change
+                routeChangeEventName: 'route-change',
+                // Defaults to false
+                enableWebVitalsTracking: true,
+            },
+        },
         `gatsby-plugin-theme-ui`,
         {
             resolve: `gatsby-plugin-transition-link`,
@@ -92,7 +118,7 @@ module.exports = {
                 schema: {
                     timeout: 60000,
                     // perPage: 20,
-                    requestConcurrency: 3,
+                    requestConcurrency: 15,
                     // previewRequestConcurrency: 2,
                 },
                 verbose: true,
@@ -421,18 +447,5 @@ module.exports = {
         `gatsby-plugin-gatsby-cloud`,
         `gatsby-plugin-offline`,
         `gatsby-plugin-remove-generator`,
-        {
-            resolve: `gatsby-plugin-google-gtag`,
-            options: {
-                trackingIds: [
-                    process.env.GATSBY_GA_TRACKING_ID, // Google Analytics / GA
-                    // "AW-CONVERSION_ID",  Google Ads / Adwords / AW
-                ],
-                pluginConfig: {
-                    // Puts tracking script in the head instead of the body
-                    head: false,
-                },
-            },
-        },
     ],
 }
