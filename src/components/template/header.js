@@ -1,6 +1,6 @@
 /** @jsxImportSource theme-ui */
 import { useStaticQuery, graphql } from 'gatsby'
-import { useState, useEffect, useContext } from 'react'
+import { useState, useContext } from 'react'
 import { OffCanvasMenuContext } from '../offCanvasMenuProvider'
 import { Link } from 'gatsby'
 import MenuIcon from '../menuIcon'
@@ -29,24 +29,24 @@ const Header = ({ pageStyle }) => {
     //     headerStyle = 'black'
     // }
     // console.log('PageStyle: ' + pageStyle, 'Headerstyle: ' + headerStyle)
-    useEffect(() => {
-        if (menuStyles.includes(pageStyle)) {
-            setHeaderStyle('black')
-        }
-        // switch (pageStyle) {
-        //     case 'white':
-        //         setHeaderStyle('black')
-        //         break
-        //     case 'yellow':
-        //         setHeaderStyle('black')
-        //         break
-        //     case 'altyellow':
-        //         setHeaderStyle('black')
-        //         break
-        //     default:
-        //         setHeaderStyle('white')
-        // }
-    }, [pageStyle])
+    // useEffect(() => {
+    if (menuStyles.includes(pageStyle)) {
+        setHeaderStyle('black')
+    }
+    // switch (pageStyle) {
+    //     case 'white':
+    //         setHeaderStyle('black')
+    //         break
+    //     case 'yellow':
+    //         setHeaderStyle('black')
+    //         break
+    //     case 'altyellow':
+    //         setHeaderStyle('black')
+    //         break
+    //     default:
+    //         setHeaderStyle('white')
+    // }
+    // }, [pageStyle])
     return (
         <header
             sx={{

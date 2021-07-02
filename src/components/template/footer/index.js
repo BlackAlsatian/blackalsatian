@@ -1,6 +1,6 @@
 /** @jsxImportSource theme-ui */
 import { Flex, Heading } from 'theme-ui'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import LazyLoad from 'react-lazyload'
 import { Link } from 'gatsby'
 import ContactDetails from './contactDetails'
@@ -37,14 +37,14 @@ const Footer = ({ siteTitle, pageStyle }) => {
     // let bgcolor = 'black'
     // let textcolor = 'white'
 
-    useEffect(() => {
-        if (footerStyles.includes(pageStyle)) {
-            // bgcolor = footerColors[pageStyle].bgcolor
-            // textcolor = footerColors[pageStyle].textcolor
-            setBgcolor(footerColors[pageStyle].bgcolor)
-            setTextcolor(footerColors[pageStyle].textcolor)
-        }
-    }, [pageStyle])
+    // useEffect(() => {
+    if (footerStyles.includes(pageStyle)) {
+        // bgcolor = footerColors[pageStyle].bgcolor
+        // textcolor = footerColors[pageStyle].textcolor
+        setBgcolor(footerColors[pageStyle].bgcolor)
+        setTextcolor(footerColors[pageStyle].textcolor)
+    }
+    // }, [pageStyle])
 
     return (
         <footer
