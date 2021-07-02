@@ -591,11 +591,13 @@ const theme = {
             fontStyle: 'oblique',
         },
         figure: {
-            textAlign: 'center',
-            width: '100%',
-            p: '0 auto',
+            // textAlign: 'center',
+            // width: '100%',
+            // p: '0 auto',
+            margin: '0 0 1em',
             span: {
-                m: '0 auto',
+                // m: '0 auto',
+                display: 'inline-block',
             },
         },
         header: {

@@ -1,5 +1,5 @@
-import OffCanvasMenuProvider from './src/components/offCanvasMenuProvider'
 import './src/assets/scss/app.scss'
+import OffCanvasMenuProvider from './src/components/offCanvasMenuProvider'
 
 export const wrapRootElement = OffCanvasMenuProvider
 

@@ -1,3 +1,9 @@
+*,
+:after,
+:before {
+    box-sizing: border-box;
+}
+
 ::selection {
     background-color: #f5df4d;
 }
@@ -22,14 +28,33 @@
  */
 html {
     scroll-behavior: smooth;
-}
-
-@media screen and (prefers-reduced-motion: reduce) {
-    html {
+    @media screen and (prefers-reduced-motion: reduce) {
         scroll-behavior: auto;
     }
 }
 
-figure {
-    margin: 0;
-}
+// @media screen and (prefers-reduced-motion: reduce) {
+//     html {
+//         scroll-behavior: auto;
+//     }
+// }
+// .wp-block-image {
+//     margin: 0 0 1em;
+//     .inline-gatsby-image-wrapper,
+//     .inline-gatsby-image-wrapper {
+//         span {
+//             display: inline-block;
+//         }
+//     }
+// }
+// figure {
+//     margin: 0 0 1em;
+// }
+// span {
+//     &.inline-gatsby-image-wrapper {
+//         display: inline-block;
+//         span {
+//             display: inline-block;
+//         }
+//     }
+// }

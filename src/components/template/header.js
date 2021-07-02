@@ -1,6 +1,6 @@
 /** @jsxImportSource theme-ui */
 import { useStaticQuery, graphql } from 'gatsby'
-import { useContext } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import { OffCanvasMenuContext } from '../offCanvasMenuProvider'
 import { Link } from 'gatsby'
 import MenuIcon from '../menuIcon'
@@ -21,32 +21,32 @@ const Header = ({ pageStyle }) => {
     const { handleBurgerMenuClick, isOpen } = useContext(OffCanvasMenuContext)
 
     const menuStyles = ['white', 'yellow', 'altyellow']
+    const [headerStyle, setHeaderStyle] = useState('white')
+    // let headerStyle = 'white'
 
-    let headerStyle = 'white'
-
-    if (menuStyles.includes(pageStyle)) {
-        // setHeaderStyle('black')
-        headerStyle = 'black'
-    }
+    // if (menuStyles.includes(pageStyle)) {
+    //     // setHeaderStyle('black')
+    //     headerStyle = 'black'
+    // }
     // console.log('PageStyle: ' + pageStyle, 'Headerstyle: ' + headerStyle)
-    // useEffect(() => {
-    //     if (menuStyles.includes(pageStyle)) {
-    //         setHeaderStyle('black')
-    //     }
-    //     // switch (pageStyle) {
-    //     //     case 'white':
-    //     //         setHeaderStyle('black')
-    //     //         break
-    //     //     case 'yellow':
-    //     //         setHeaderStyle('black')
-    //     //         break
-    //     //     case 'altyellow':
-    //     //         setHeaderStyle('black')
-    //     //         break
-    //     //     default:
-    //     //         setHeaderStyle('white')
-    //     // }
-    // }, [pageStyle])
+    useEffect(() => {
+        if (menuStyles.includes(pageStyle)) {
+            setHeaderStyle('black')
+        }
+        // switch (pageStyle) {
+        //     case 'white':
+        //         setHeaderStyle('black')
+        //         break
+        //     case 'yellow':
+        //         setHeaderStyle('black')
+        //         break
+        //     case 'altyellow':
+        //         setHeaderStyle('black')
+        //         break
+        //     default:
+        //         setHeaderStyle('white')
+        // }
+    }, [pageStyle])
     return (
         <header
             sx={{

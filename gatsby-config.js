@@ -41,7 +41,7 @@ module.exports = {
     },
     flags: {
         // prevents file downloads from being deleted during cache clearing events (other than gatsby clean which still deletes the entire cache)
-        // PRESERVE_FILE_DOWNLOAD_CACHE: true,
+        PRESERVE_FILE_DOWNLOAD_CACHE: true,
         // prevents the webpack cache from deleted with the same caveat for gatsby clean
         // PRESERVE_WEBPACK_CACHE: true,
         // Enable all experiments aimed at improving develop server start time
@@ -115,7 +115,7 @@ module.exports = {
                 schema: {
                     timeout: 60000,
                     // perPage: 20,
-                    requestConcurrency: 3,
+                    requestConcurrency: 5,
                     // previewRequestConcurrency: 2,
                 },
                 verbose: true,
