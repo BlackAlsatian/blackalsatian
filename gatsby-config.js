@@ -51,7 +51,7 @@ module.exports = {
         // (Umbrella Issue (​https://github.com/gatsbyjs/gatsby/discussions/28390​)) · Use React Fast Refresh instead of the legacy react-hot-loader for instantaneous feedback in your development server. Recommended for versions of React >= 17.0.
         // FAST_REFRESH: true,
         // (Umbrella Issue (​https://github.com/gatsbyjs/gatsby/discussions/28138​)) · SSR pages on full reloads during develop. Helps you detect SSR bugs and fix them without needing to do full builds.
-        DEV_SSR: true,
+        // DEV_SSR: true,
         // (Umbrella Issue (​https://github.com/gatsbyjs/gatsby/discussions/27620​)) · Only run queries when needed instead of running all queries upfront. Speeds starting the develop server.
         // QUERY_ON_DEMAND: true,
         // LAZY_IMAGES: true,
@@ -74,7 +74,7 @@ module.exports = {
             resolve: `gatsby-plugin-google-tagmanager`,
             options: {
                 id: process.env.GATSBY_GTM_TRACKING_ID,
-                includeInDevelopment: true,
+                includeInDevelopment: false,
 
                 // datalayer to be set before GTM is loaded
                 // should be an object or a function that is executed in the browser

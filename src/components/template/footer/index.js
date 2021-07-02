@@ -1,5 +1,4 @@
 /** @jsxImportSource theme-ui */
-import { useState } from 'react'
 import { Flex, Heading } from 'theme-ui'
 import LazyLoad from 'react-lazyload'
 import { Link } from 'gatsby'
@@ -10,22 +9,34 @@ import SocialIcons from './socialIcons'
 import PlaceholderLoader from '../../../components/placeholderLoader'
 import GetForm from '../../getForm'
 
+const footerColors = {
+    yellow: {
+        bgcolor: 'yellow',
+        textcolor: 'black',
+    },
+    red: {
+        bgcolor: 'red',
+        textcolor: 'white',
+    },
+    white: {
+        bgcolor: 'white',
+        textcolor: 'black',
+    },
+    postwhite: {
+        bgcolor: 'white',
+        textcolor: 'black',
+    },
+}
+
+const footerStyles = ['yellow', 'red', 'white', 'postwhite']
+
 const Footer = ({ siteTitle, pageStyle }) => {
-    const [bgcolor, setBgcolor] = useState('black')
-    const [textcolor, setTextcolor] = useState('white')
-    // let bgcolor = 'black'
-    // let textcolor = 'white'
-    if (pageStyle === 'yellow') {
-        setBgcolor('yellow')
-        setTextcolor('black')
-    }
-    if (pageStyle === 'red') {
-        setBgcolor('red')
-        setTextcolor('white')
-    }
-    if (pageStyle === 'white' || pageStyle === 'postwhite') {
-        setBgcolor('white')
-        setTextcolor('black')
+    let bgcolor = 'black'
+    let textcolor = 'white'
+
+    if (footerStyles.includes(pageStyle)) {
+        bgcolor = footerColors[pageStyle].bgcolor
+        textcolor = footerColors[pageStyle].textcolor
     }
 
     return (

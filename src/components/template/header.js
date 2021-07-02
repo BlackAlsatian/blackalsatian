@@ -1,6 +1,6 @@
 /** @jsxImportSource theme-ui */
 import { useStaticQuery, graphql } from 'gatsby'
-import { useState, useEffect, useContext } from 'react'
+import { useContext } from 'react'
 import { OffCanvasMenuContext } from '../offCanvasMenuProvider'
 import { Link } from 'gatsby'
 import MenuIcon from '../menuIcon'
@@ -18,22 +18,32 @@ const Header = ({ pageStyle }) => {
     `)
     const navLinks = data.wpMenu.menuItems.nodes
     const { handleBurgerMenuClick, isOpen } = useContext(OffCanvasMenuContext)
-    const [headerStyle, setHeaderStyle] = useState('white')
-    useEffect(() => {
-        switch (pageStyle) {
-            case 'white':
-                setHeaderStyle('black')
-                break
-            case 'yellow':
-                setHeaderStyle('black')
-                break
-            case 'altyellow':
-                setHeaderStyle('black')
-                break
-            default:
-                setHeaderStyle('white')
-        }
-    }, [pageStyle])
+    const menuStyles = ['white', 'yellow', 'altyellow']
+
+    let headerStyle = 'white'
+    if (menuStyles.includes(pageStyle)) {
+        // setHeaderStyle('black')
+        headerStyle = 'black'
+    }
+    console.log('PageStyle: ' + pageStyle, 'Headerstyle: ' + headerStyle)
+    // useEffect(() => {
+    //     if (menuStyles.includes(pageStyle)) {
+    //         setHeaderStyle('black')
+    //     }
+    //     // switch (pageStyle) {
+    //     //     case 'white':
+    //     //         setHeaderStyle('black')
+    //     //         break
+    //     //     case 'yellow':
+    //     //         setHeaderStyle('black')
+    //     //         break
+    //     //     case 'altyellow':
+    //     //         setHeaderStyle('black')
+    //     //         break
+    //     //     default:
+    //     //         setHeaderStyle('white')
+    //     // }
+    // }, [pageStyle])
     return (
         <header
             sx={{
