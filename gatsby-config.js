@@ -41,11 +41,9 @@ module.exports = {
     },
     flags: {
         // prevents file downloads from being deleted during cache clearing events (other than gatsby clean which still deletes the entire cache)
-        PRESERVE_FILE_DOWNLOAD_CACHE: true,
-
+        // PRESERVE_FILE_DOWNLOAD_CACHE: true,
         // prevents the webpack cache from deleted with the same caveat for gatsby clean
         // PRESERVE_WEBPACK_CACHE: true,
-
         // Enable all experiments aimed at improving develop server start time
         // FAST_DEV: true,
         // (Umbrella Issue (​https://github.com/gatsbyjs/gatsby/discussions/28390​)) · Use React Fast Refresh instead of the legacy react-hot-loader for instantaneous feedback in your development server. Recommended for versions of React >= 17.0.
@@ -55,7 +53,6 @@ module.exports = {
         // (Umbrella Issue (​https://github.com/gatsbyjs/gatsby/discussions/27620​)) · Only run queries when needed instead of running all queries upfront. Speeds starting the develop server.
         // QUERY_ON_DEMAND: true,
         // LAZY_IMAGES: true,
-
         //EXPERIMENTAL
         // (Umbrella Issue (​https://github.com/gatsbyjs/gatsby/discussions/27603​)) · Don`t process images during development until they`re requested from the browser. Speeds starting the develop server.
         // PARALLEL_SOURCING
@@ -118,7 +115,7 @@ module.exports = {
                 schema: {
                     timeout: 60000,
                     // perPage: 20,
-                    // requestConcurrency: 3,
+                    requestConcurrency: 3,
                     // previewRequestConcurrency: 2,
                 },
                 verbose: true,
@@ -131,11 +128,11 @@ module.exports = {
                     fallbackImageMaxWidth: 1000,
                 },
                 type: {
-                    // MediaItem: {
-                    //     localFile: {
-                    //         requestConcurrency: process.env.GATSBY_REQUEST_CONCURRENCY_IMAGES,
-                    //     },
-                    // },
+                    MediaItem: {
+                        localFile: {
+                            requestConcurrency: process.env.GATSBY_REQUEST_CONCURRENCY_IMAGES,
+                        },
+                    },
                     Category: {
                         exclude: true,
                     },
