@@ -107,12 +107,12 @@ export const pageQuery = graphql`
             seo {
                 metaDesc
             }
-            blocks {
-                name
-                order
-                ...CoreCoverblock
-                ...BlackalsatianContentBlock
-            }
+            # blocks {
+            #     name
+            #     order
+            #     ...CoreCoverblock
+            #     ...BlackalsatianContentBlock
+            # }
         }
         pageblocks: wpBlockEditorContentNode(id: { eq: $id }) {
             blocks {
