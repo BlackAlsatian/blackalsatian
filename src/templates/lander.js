@@ -1,11 +1,20 @@
 /** @jsxImportSource theme-ui */
 import { graphql } from 'gatsby'
+import { useEffect, useContext } from 'react'
+import { PageStyleContext } from '../components/pageStyleProvider'
 import { getSrc } from 'gatsby-plugin-image'
 import Modules from '../components/modules'
 import SEO from '../components/seo'
 
-const LanderTemplate = ({ data: { lander } }) => {
+const LanderTemplate = ({ data: { lander, pageblocks } }) => {
     const seoImgSrc = getSrc(lander.featuredImage?.node?.og)
+    const { setPageStyle } = useContext(PageStyleContext)
+
+    const pageStyle = 'default'
+
+    useEffect(() => {
+        setPageStyle(pageStyle)
+    }, [pageStyle])
     return (
         <>
             <SEO
@@ -16,8 +25,8 @@ const LanderTemplate = ({ data: { lander } }) => {
                 datePublished={lander.dateGmt}
                 dateModified={lander.modifiedGmt}
             />
-            {lander.blocks &&
-                lander.blocks.map(({ name, order, attributes, innerBlocks }) => (
+            {pageblocks.blocks &&
+                pageblocks.blocks.map(({ name, order, attributes, innerBlocks }) => (
                     <Modules
                         key={order}
                         featuredImage={lander.featuredImage}
@@ -49,6 +58,12 @@ export const landerQuery = graphql`
             seo {
                 metaDesc
             }
+            # blocks {
+            #     ...CoreCoverblock
+            #     ...BlackalsatianContentBlock
+            # }
+        }
+        pageblocks: wpBlockEditorContentNode(id: { eq: $id }) {
             blocks {
                 ...CoreCoverblock
                 ...BlackalsatianContentBlock

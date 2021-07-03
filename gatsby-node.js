@@ -63,7 +63,7 @@ const createIndividualBlogPostPages = async ({ posts, gatsbyUtilities }) =>
                     // We also use the next and previous id's to query them and add links!
                     previousPostId: previous ? previous.id : null,
                     nextPostId: next ? next.id : null,
-                    pageStyle: 'postwhite',
+                    // pageStyle: 'postwhite',
                 },
             }),
         ),
@@ -95,7 +95,7 @@ const createIndividualServices = async ({ services, gatsbyUtilities }) =>
                     id: service.id,
                     previousPostId: previous ? previous.id : null,
                     nextPostId: next ? next.id : null,
-                    pageStyle: 'altyellow',
+                    // pageStyle: 'altyellow',
                 },
             }),
         ),
@@ -112,7 +112,7 @@ const createIndividualProjects = async ({ portfolio, gatsbyUtilities }) =>
                     id: portfolio.id,
                     previousPostId: previous ? previous.id : null,
                     nextPostId: next ? next.id : null,
-                    pageStyle: 'black',
+                    // pageStyle: 'black',
                 },
             }),
         ),
@@ -128,7 +128,7 @@ const createIndividualLanders = async ({ landers, gatsbyUtilities }) =>
                 context: {
                     id: lander.id,
                     title: lander.title,
-                    pageStyle: 'default',
+                    // pageStyle: 'default',
                 },
             }),
         ),
@@ -177,7 +177,7 @@ async function createBlogPostArchive({ posts, gatsbyUtilities }) {
                     postsPerPage,
                     nextPagePath: getPagePath(pageNumber + 1),
                     previousPagePath: getPagePath(pageNumber - 1),
-                    pageStyle: 'white',
+                    // pageStyle: 'white',
                 },
             })
         }),
@@ -203,7 +203,7 @@ async function createPortfolioPage({ portfolio, gatsbyUtilities }) {
         component: path.resolve(`./src/templates/portfolio.js`),
         context: {
             ...portfolio,
-            pageStyle: 'black',
+            // pageStyle: 'black',
         },
     })
 }

@@ -1,7 +1,18 @@
 import './src/assets/scss/app.scss'
-import OffCanvasMenuProvider from './src/components/offCanvasMenuProvider'
+// import OffCanvasMenuProvider from './src/components/offCanvasMenuProvider'
+import PageStyleProvider from './src/components/pageStyleProvider'
 
-export const wrapRootElement = OffCanvasMenuProvider
+// export const wrapRootElement = OffCanvasMenuProvider
+export const wrapRootElement = PageStyleProvider
+
+// export const wrapRootElement = (props) => {
+//     return (
+//         <OffCanvasMenuProvider>
+//             {/* <OffCanvasMenuProvider>{element}</OffCanvasMenuProvider> */}
+//             <OffCanvasMenuProvider {...props} />
+//         </OffCanvasMenuProvider>
+//     )
+// }
 
 const transitionDelay = 250
 

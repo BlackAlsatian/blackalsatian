@@ -1,5 +1,7 @@
 /** @jsxImportSource theme-ui */
 import { Container } from 'theme-ui'
+import { useEffect, useContext } from 'react'
+import { PageStyleContext } from '../components/pageStyleProvider'
 import { graphql } from 'gatsby'
 import { getSrc } from 'gatsby-plugin-image'
 import AniLink from 'gatsby-plugin-transition-link/AniLink'
@@ -12,8 +14,13 @@ import ServiceImageRight from '../components/template/services/serviceImageRight
 import { isOdd } from '../components/helpers'
 
 const ServicesIndex = ({ data }) => {
-    // console.log(data)
-    const pageStyle = data.wpPage.pageStyle
+    const { setPageStyle } = useContext(PageStyleContext)
+
+    const pageStyle = 'altyellow'
+
+    useEffect(() => {
+        setPageStyle(pageStyle)
+    }, [pageStyle])
     const services = data.allWpService.nodes
     const page = data.wpPage
     const seoImgSrc = getSrc(page.featuredImage?.node?.og)
@@ -117,7 +124,7 @@ export const pageQuery = graphql`
                 metaDesc
             }
             ...PageFeaturedMediaFragment
-            pageStyle
+            # pageStyle
             pageintro
             pagesubheading
             pagesubtitle

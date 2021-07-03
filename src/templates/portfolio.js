@@ -1,5 +1,7 @@
 /** @jsxImportSource theme-ui */
 import { Container, Flex, Heading, Box } from 'theme-ui'
+import { useEffect, useContext } from 'react'
+import { PageStyleContext } from '../components/pageStyleProvider'
 import { graphql } from 'gatsby'
 import { getSrc } from 'gatsby-plugin-image'
 import AniLink from 'gatsby-plugin-transition-link/AniLink'
@@ -9,7 +11,12 @@ import PageHeader from '../components/template/pageHeader'
 import LeftColumn from '../components/template/elements/leftColumn'
 
 const PortfolioIndex = ({ data }) => {
-    const pageStyle = data.wpPage.pageStyle
+    // const pageStyle = data.wpPage.pageStyle
+    const { setPageStyle } = useContext(PageStyleContext)
+    const pageStyle = 'black'
+    useEffect(() => {
+        setPageStyle(pageStyle)
+    }, [pageStyle])
     const portfolio = data.allWpPortfolio.nodes
     const page = data.wpPage
     const seoImgSrc = getSrc(page.featuredImage?.node?.og)
@@ -180,7 +187,7 @@ export const pageQuery = graphql`
                 metaDesc
             }
             ...PageFeaturedMediaFragment
-            pageStyle
+            # pageStyle
             pageintro
             pagesubheading
             pagesubtitle

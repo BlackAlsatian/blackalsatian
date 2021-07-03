@@ -1,3 +1,4 @@
-import OffCanvasMenuProvider from './src/components/offCanvasMenuProvider'
+// import OffCanvasMenuProvider from './src/components/offCanvasMenuProvider'
+import PageStyleProvider from './src/components/pageStyleProvider'
 
-export const wrapRootElement = OffCanvasMenuProvider
+export const wrapRootElement = PageStyleProvider

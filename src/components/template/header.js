@@ -1,7 +1,7 @@
 /** @jsxImportSource theme-ui */
 import { useStaticQuery, graphql } from 'gatsby'
 import { useContext } from 'react'
-import { OffCanvasMenuContext } from '../offCanvasMenuProvider'
+import { PageStyleContext } from '../pageStyleProvider'
 import { Link } from 'gatsby'
 import MenuIcon from '../menuIcon'
 import OffCanvas from './offCanvasNav'
@@ -18,7 +18,7 @@ const Header = ({ pageStyle }) => {
     `)
     const navLinks = data.wpMenu.menuItems.nodes
 
-    const { handleBurgerMenuClick, isOpen } = useContext(OffCanvasMenuContext)
+    const { handleBurgerMenuClick, isOpen } = useContext(PageStyleContext)
 
     // const menuStyles = ['white', 'yellow', 'altyellow']
     // const [headerStyle, setHeaderStyle] = useState('white')

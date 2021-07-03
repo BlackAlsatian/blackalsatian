@@ -1,7 +1,7 @@
 /** @jsxImportSource theme-ui */
 import { Box, Heading } from 'theme-ui'
 
-const LeftColumn = ({ heading, title, color, page }) => {
+const LeftColumn = ({ heading, title, page }) => {
     return (
         <Box
             p={[4, 4, 3, 6]}
@@ -13,7 +13,7 @@ const LeftColumn = ({ heading, title, color, page }) => {
                 flexDirection: 'column',
                 justifyContent: page ? null : 'center',
                 alignItems: !page ? ['flex-start', 'flex-start', 'flex-end'] : null,
-                borderRight: [0, 0, `1px solid ${color || 'black'}`],
+                borderRight: [0, 0, `1px solid`],
             }}
         >
             {heading && (

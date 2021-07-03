@@ -2,11 +2,11 @@
 import { Flex } from 'theme-ui'
 import { Link } from 'gatsby'
 import { useContext } from 'react'
-import { OffCanvasMenuContext } from '../offCanvasMenuProvider'
+import { PageStyleContext } from '../pageStyleProvider'
 import { animated, config, useSpring } from '@react-spring/web'
 
 const OffCanvas = ({ navLinks }) => {
-    const { isOpen, handleMenuItemClick } = useContext(OffCanvasMenuContext)
+    const { isOpen, handleMenuItemClick } = useContext(PageStyleContext)
 
     const OffCanvasAnimation = useSpring({
         opacity: isOpen ? 0.9 : 0,

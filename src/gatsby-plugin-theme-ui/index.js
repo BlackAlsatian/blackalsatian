@@ -510,6 +510,7 @@ const theme = {
         },
     },
     sections: {
+        // used by pageheaders
         black: {
             pageheader: {
                 backgroundColor: 'black',
@@ -597,33 +598,6 @@ const theme = {
             },
         },
         header: {
-            // white: {
-            //     svg: {
-            //         fill: 'white',
-            //     },
-            //     nav: {
-            //         a: {
-            //             color: 'white',
-            //             '&:hover, &:focus, &.active': {
-            //                 opacity: 0.9,
-            //             },
-            //         },
-            //     },
-            // },
-            // black: {
-            //     svg: {
-            //         fill: 'black',
-            //     },
-            //     nav: {
-            //         a: {
-            //             color: 'black',
-            //             '&:hover, &:focus, &.active': {
-            //                 opacity: 0.9,
-            //             },
-            //         },
-            //     },
-            // },
-
             default: {
                 svg: {
                     fill: 'white',
@@ -631,6 +605,7 @@ const theme = {
                 nav: {
                     a: {
                         color: 'white',
+                        textDecoration: 'none',
                         '&:hover, &:focus, &.active': {
                             opacity: 0.9,
                         },
@@ -651,6 +626,7 @@ const theme = {
                 nav: {
                     a: {
                         color: 'black',
+                        textDecoration: 'none',
                         '&:hover, &:focus, &.active': {
                             opacity: 0.9,
                         },
@@ -666,11 +642,12 @@ const theme = {
             },
             postwhite: {
                 svg: {
-                    fill: 'black',
+                    fill: 'white',
                 },
                 nav: {
                     a: {
-                        color: 'black',
+                        color: 'white',
+                        textDecoration: 'none',
                         '&:hover, &:focus, &.active': {
                             opacity: 0.9,
                         },
@@ -679,7 +656,7 @@ const theme = {
                 div: {
                     button: {
                         svg: {
-                            background: 'black',
+                            background: 'white',
                         },
                     },
                 },
@@ -691,6 +668,7 @@ const theme = {
                 nav: {
                     a: {
                         color: 'white',
+                        textDecoration: 'none',
                         '&:hover, &:focus, &.active': {
                             opacity: 0.9,
                         },
@@ -711,6 +689,7 @@ const theme = {
                 nav: {
                     a: {
                         color: 'white',
+                        textDecoration: 'none',
                         '&:hover, &:focus, &.active': {
                             opacity: 0.9,
                         },
@@ -731,6 +710,7 @@ const theme = {
                 nav: {
                     a: {
                         color: 'black',
+                        textDecoration: 'none',
                         '&:hover, &:focus, &.active': {
                             opacity: 0.9,
                         },
@@ -751,6 +731,7 @@ const theme = {
                 nav: {
                     a: {
                         color: 'black',
+                        textDecoration: 'none',
                         '&:hover, &:focus, &.active': {
                             opacity: 0.9,
                         },
@@ -765,12 +746,14 @@ const theme = {
                 },
             },
             red: {
+                borderColor: 'white',
                 svg: {
                     fill: 'white',
                 },
                 nav: {
                     a: {
                         color: 'white',
+                        textDecoration: 'none',
                         '&:hover, &:focus, &.active': {
                             opacity: 0.9,
                         },
@@ -913,6 +896,12 @@ const theme = {
                         },
                     },
                 },
+                figure: {
+                    margin: '0 0 1em',
+                    span: {
+                        display: 'inline-block',
+                    },
+                },
             },
             yellow: {
                 backgroundColor: 'yellow',
@@ -933,6 +922,12 @@ const theme = {
                         a: {
                             color: 'yellow',
                         },
+                    },
+                },
+                figure: {
+                    margin: '0 0 1em',
+                    span: {
+                        display: 'inline-block',
                     },
                 },
             },
@@ -957,6 +952,12 @@ const theme = {
                         },
                     },
                 },
+                figure: {
+                    margin: '0 0 1em',
+                    span: {
+                        display: 'inline-block',
+                    },
+                },
             },
             red: {
                 backgroundColor: 'red',
@@ -977,6 +978,12 @@ const theme = {
                         a: {
                             color: 'red',
                         },
+                    },
+                },
+                figure: {
+                    margin: '0 0 1em',
+                    span: {
+                        display: 'inline-block',
                     },
                 },
             },
@@ -1209,7 +1216,7 @@ const theme = {
                     },
                     textarea: {
                         borderBottomColor: 'black',
-                        '&:not(:focus)': { color: 'black', backgroundColor: 'white' },
+                        '&:not(:focus)': { color: 'black', backgroundColor: 'yellow' },
                     },
                     button: {
                         backgroundColor: 'black',
@@ -1291,7 +1298,7 @@ const theme = {
                     },
                     textarea: {
                         borderBottomColor: 'white',
-                        '&:not(:focus)': { color: 'white', backgroundColor: 'black' },
+                        '&:not(:focus)': { color: 'white', backgroundColor: 'red' },
                     },
                     button: {
                         backgroundColor: 'white',

@@ -1,5 +1,7 @@
 /** @jsxImportSource theme-ui */
 import { Container, Flex, Box } from 'theme-ui'
+import { useEffect, useContext } from 'react'
+import { PageStyleContext } from '../components/pageStyleProvider'
 import { graphql } from 'gatsby'
 import { getSrc } from 'gatsby-plugin-image'
 import parse from 'html-react-parser'
@@ -9,12 +11,16 @@ import PageHeader from '../components/template/pageHeader'
 import LeftColumn from '../components/template/elements/leftColumn'
 
 const PageTemplate = ({ data: { page, pageblocks } }) => {
-    // console.log(pageblocks)
+    const { setPageStyle } = useContext(PageStyleContext)
+
     const pageStyle = page.pageStyle
-    let bodyFontColor = 'black'
-    if (pageStyle === 'red') {
-        bodyFontColor = 'white'
-    }
+
+    useEffect(() => {
+        setPageStyle(pageStyle)
+    }, [pageStyle])
+
+    // console.log(pageStyle)
+
     const seoImgSrc = getSrc(page.featuredImage?.node?.og)
     return (
         <>
@@ -46,7 +52,6 @@ const PageTemplate = ({ data: { page, pageblocks } }) => {
                                     title={page.pagesubtitle}
                                     headerSize='h2'
                                     page
-                                    color={bodyFontColor}
                                 />
                                 <Box
                                     py={[0, 0, 4]}
@@ -55,7 +60,6 @@ const PageTemplate = ({ data: { page, pageblocks } }) => {
                                         flex: [null, null, 3],
                                         width: ['100%', null],
                                         variant: 'layout',
-                                        // color: bodyFontColor,
                                     }}
                                 >
                                     {page.content && parse(page.content)}
@@ -107,12 +111,6 @@ export const pageQuery = graphql`
             seo {
                 metaDesc
             }
-            # blocks {
-            #     name
-            #     order
-            #     ...CoreCoverblock
-            #     ...BlackalsatianContentBlock
-            # }
         }
         pageblocks: wpBlockEditorContentNode(id: { eq: $id }) {
             blocks {
@@ -124,49 +122,3 @@ export const pageQuery = graphql`
         }
     }
 `
-// # ... on WpBlackalsatianContentBlock {
-//                 # name
-//                 # attributes {
-//                 #     contentHeading
-//                 #     contentTitle
-//                 # }
-//                 # innerBlocks {
-//                 #     copy: originalContent
-//                 # }
-//                 # }
-//                 # ... on WpCoreCoverBlock {
-//                 #     name
-//                 # attributes {
-//                 #     ... on WpCoreCoverBlockAttributes {
-//                 #     overlayColor
-//                 #     anchor
-//                 #     }
-//                 # }
-//                 # innerBlocks {
-//                 #     name
-//                 #     ... on WpBlackalsatianHeroBlock {
-//                 #     name
-//                 #     attributes {
-//                 #         heroFontColor
-//                 #         heroIntro
-//                 #         heroTitle
-//                 #     }
-//                 #     }
-//                 #     ... on WpBlackalsatianCtaWithButtonBlock {
-//                 #     name
-//                 #     attributes {
-//                 #         anchor
-//                 #         buttonBackgroundColor
-//                 #         buttonName
-//                 #         buttonUrl
-//                 #         color
-//                 #         heading
-//                 #         option
-//                 #         title
-//                 #     }
-//                 #     innerBlocks {
-//                 #         copy: originalContent
-//                 #     }
-//                 #     }
-//                 # }
-//                 # }

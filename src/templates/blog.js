@@ -1,5 +1,7 @@
 /** @jsxImportSource theme-ui */
 import { Container, Heading } from 'theme-ui'
+import { useEffect, useContext } from 'react'
+import { PageStyleContext } from '../components/pageStyleProvider'
 import { graphql } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import parse from 'html-react-parser'
@@ -9,12 +11,23 @@ import SEO from '../components/seo'
 import PageHeader from '../components/template/pageHeader'
 import PagesNav from '../components/pagesNav'
 
-const BlogIndex = ({ data, pageContext: { nextPagePath, previousPagePath, style }, location: { pathname } }) => {
-    const pageStyle = style
+const BlogIndex = ({ data, pageContext: { nextPagePath, previousPagePath, pageIndex }, location: { pathname } }) => {
+    const { setPageStyle } = useContext(PageStyleContext)
+
+    const pageStyle = 'white'
+
+    useEffect(() => {
+        setPageStyle(pageStyle)
+    }, [pageStyle])
+
     const posts = data.allWpPost.nodes
+
     const pageTitle = data.site.siteMetadata.blog.title
+
     const content = data.site.siteMetadata.blog.intro
+
     const browserTitle = data.site.siteMetadata.blog.browserTitle
+
     if (!posts.length) {
         return (
             <>
@@ -32,8 +45,8 @@ const BlogIndex = ({ data, pageContext: { nextPagePath, previousPagePath, style 
     return (
         <>
             <SEO
-                title={browserTitle}
-                description={content}
+                title={pageIndex > 1 ? browserTitle + ' - Page ' + pageIndex : browserTitle}
+                description={pageIndex > 1 ? content + ' - Page ' + pageIndex : content}
                 url={pathname}
                 // featuredImage={page.featuredImage?.node?.og?.childImageSharp?.gatsbyImageData?.src}
             />

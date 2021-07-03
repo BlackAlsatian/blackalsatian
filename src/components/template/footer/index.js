@@ -82,7 +82,7 @@ const Footer = ({ siteTitle, pageStyle }) => {
                             width: [null, null, '100%'],
                         }}
                     >
-                        <LazyLoad height='100' offset={100} debounce={250} once fallback={<PlaceholderLoader />}>
+                        <LazyLoad height='100' offset={100} debounce={150} once fallback={<PlaceholderLoader />}>
                             <GetForm
                                 option='enquiry'
                                 buttonName='Fetch!'
@@ -118,7 +118,7 @@ const Footer = ({ siteTitle, pageStyle }) => {
                         to='/'
                         title='Web development & online marketing by Black Alsatian'
                     >
-                        <LazyLoad height='100' offset={100} debounce={250} once fallback={<PlaceholderLoader />}>
+                        <LazyLoad height='100' offset={100} debounce={150} once fallback={<PlaceholderLoader />}>
                             <Logo />
                         </LazyLoad>
                     </Link>
@@ -155,7 +155,7 @@ const Footer = ({ siteTitle, pageStyle }) => {
                         textAlign: [null, null, 'right'],
                     }}
                 >
-                    <LazyLoad height='100' offset={100} debounce={250} once fallback={<PlaceholderLoader />}>
+                    <LazyLoad height='100' offset={100} debounce={150} once fallback={<PlaceholderLoader />}>
                         <SocialIcons />
                     </LazyLoad>
                     <div>

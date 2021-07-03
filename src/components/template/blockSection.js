@@ -8,7 +8,7 @@ import GetForm from '../getForm'
 
 const ContentBlock = ({
     backgroundColor,
-    color,
+    // color,
     anchor,
     heading,
     title,
@@ -49,7 +49,8 @@ const ContentBlock = ({
                         flexDirection: ['column', 'column', 'row'],
                     }}
                 >
-                    <LeftColumn heading={heading} title={title} color={color} headerSize={headerSize} />
+                    {/* <LeftColumn heading={heading} title={title} color={color} headerSize={headerSize} /> */}
+                    <LeftColumn heading={heading} title={title} headerSize={headerSize} />
                     <Box
                         py={[4, 4, 5]}
                         px={[4, 4, 6]}
@@ -63,7 +64,7 @@ const ContentBlock = ({
                     >
                         <BlockText text={text} />
                         {buttonName && option !== 'none' && (
-                            <LazyLoad height='100' offset={100} debounce={250} once fallback={<PlaceholderLoader />}>
+                            <LazyLoad height='100' offset={100} debounce={150} once fallback={<PlaceholderLoader />}>
                                 <GetForm
                                     option={option}
                                     buttonName={buttonName}

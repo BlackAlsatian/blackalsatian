@@ -1,4 +1,6 @@
 /** @jsxImportSource theme-ui */
+import { useContext } from 'react'
+import { PageStyleContext } from './pageStyleProvider'
 import { useStaticQuery, graphql } from 'gatsby'
 import Header from './template/header'
 import Footer from './template/footer'
@@ -12,12 +14,14 @@ import CookieConsent from './cookie-notice/cookieConsent'
 //     require('smooth-scroll')('a[href*="#"]')
 // }
 
-const Layout = ({ children, pageContext }) => {
-    let pageStyle = pageContext.pageStyle
-    if (typeof pageStyle === 'undefined') {
-        pageStyle = 'white'
-    }
-
+const Layout = ({ children }) => {
+    // let pageStyle = pageContext.pageStyle
+    const styleOfPage = useContext(PageStyleContext)
+    const pageStyle = styleOfPage.pageStyle
+    // if (typeof pageStyle === 'undefined') {
+    //     pageStyle = 'white'
+    // }
+    // console.log(pageStyle)
     const {
         site: {
             siteMetadata: { title },

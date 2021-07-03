@@ -1,5 +1,7 @@
 /** @jsxImportSource theme-ui */
 import { graphql } from 'gatsby'
+import { useEffect, useContext } from 'react'
+import { PageStyleContext } from '../components/pageStyleProvider'
 import { getSrc } from 'gatsby-plugin-image'
 import SEO from '../components/seo'
 import ProjectHeader from '../components/template/portfolio/projectHeader'
@@ -8,7 +10,12 @@ import PagesNav from '../components/pagesNav'
 import parse from 'html-react-parser'
 
 const ProjectTemplate = ({ data: { previous, portfolio, next } }) => {
+    const { setPageStyle } = useContext(PageStyleContext)
     const pageStyle = 'black'
+    useEffect(() => {
+        setPageStyle(pageStyle)
+    }, [pageStyle])
+
     const seoImgSrc = getSrc(portfolio.featuredImage?.node?.og)
     return (
         <>

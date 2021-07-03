@@ -1,5 +1,7 @@
 /** @jsxImportSource theme-ui */
 import { Flex, Box } from 'theme-ui'
+import { useEffect, useContext } from 'react'
+import { PageStyleContext } from '../components/pageStyleProvider'
 import { graphql } from 'gatsby'
 import { GatsbyImage, getSrc } from 'gatsby-plugin-image'
 import parse from 'html-react-parser'
@@ -8,7 +10,12 @@ import PageHeader from '../components/template/pageHeader'
 import PagesNav from '../components/pagesNav'
 
 const PageTemplate = ({ data: { previous, next, service } }) => {
+    const { setPageStyle } = useContext(PageStyleContext)
+
     const pageStyle = 'altyellow'
+    useEffect(() => {
+        setPageStyle(pageStyle)
+    }, [pageStyle])
     const featuredImage = {
         fluid: service.featuredImage?.node?.main?.childImageSharp?.gatsbyImageData,
         alt: service.featuredImage?.node?.altText || ``,

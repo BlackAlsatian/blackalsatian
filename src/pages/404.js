@@ -1,10 +1,20 @@
 /** @jsxImportSource theme-ui */
 import { Container, Heading, Box } from 'theme-ui'
+import { useEffect, useContext } from 'react'
+import { PageStyleContext } from '../components/pageStyleProvider'
 import { Link } from 'gatsby'
 import SEO from '../components/seo'
 
 const NotFoundPage = ({ location }) => {
     const brokenPathName = location.href
+
+    const { setPageStyle } = useContext(PageStyleContext)
+
+    const pageStyle = 'white'
+
+    useEffect(() => {
+        setPageStyle(pageStyle)
+    }, [pageStyle])
     return (
         <>
             <SEO title='404: Not Found' />

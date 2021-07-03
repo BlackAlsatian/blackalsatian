@@ -1,5 +1,7 @@
 /** @jsxImportSource theme-ui */
 import { Container, Heading, Flex, Box, Badge } from 'theme-ui'
+import { useEffect, useContext } from 'react'
+import { PageStyleContext } from '../components/pageStyleProvider'
 import { graphql } from 'gatsby'
 import parse from 'html-react-parser'
 import { GatsbyImage, getSrc } from 'gatsby-plugin-image'
@@ -9,9 +11,14 @@ import PageHeader from '../components/template/pageHeader'
 import Bio from '../components/bio'
 import PagesNav from '../components/pagesNav'
 
-const BlogPostTemplate = ({ data: { previous, next, post }, pageContext }) => {
+const BlogPostTemplate = ({ data: { previous, next, post } }) => {
     // console.log({ pageContext })
-    const pageStyle = pageContext.style
+    // const pageStyle = pageContext.style
+    const { setPageStyle } = useContext(PageStyleContext)
+    const pageStyle = 'postwhite'
+    useEffect(() => {
+        setPageStyle(pageStyle)
+    }, [pageStyle])
     const featuredImage = {
         fluid: post.featuredImage?.node?.main?.childImageSharp?.gatsbyImageData,
         alt: post.featuredImage?.node?.altText || ``,

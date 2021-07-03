@@ -96,7 +96,7 @@ const TestimonialsBlock = () => {
                                 <LazyLoad
                                     height='100'
                                     offset={100}
-                                    debounce={250}
+                                    debounce={150}
                                     once
                                     fallback={<PlaceholderLoader />}
                                 >
@@ -107,7 +107,7 @@ const TestimonialsBlock = () => {
                                     <LazyLoad
                                         height='100'
                                         offset={100}
-                                        debounce={250}
+                                        debounce={150}
                                         once
                                         fallback={<PlaceholderLoader />}
                                     >
