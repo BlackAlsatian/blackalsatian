@@ -16,7 +16,7 @@ const ContactDetails = ({ textcolor }) => {
                         target='_blank'
                         rel='noreferrer noopener nofollow'
                     >
-                        <LazyLoad height='100' offset={100} debounce={1000} once fallback={<PlaceholderLoader />}>
+                        <LazyLoad height='100' offset={100} debounce={250} once fallback={<PlaceholderLoader />}>
                             <WhatsApp color={textcolor} width={28} height={28} />
                         </LazyLoad>
                     </a>
@@ -38,7 +38,7 @@ const ContactDetails = ({ textcolor }) => {
             </div>
             <div sx={{ display: 'flex', alignItems: 'flex-start' }}>
                 <div sx={{ p: 2 }}>
-                    <LazyLoad height='100' offset={100} debounce={1000} once fallback={<PlaceholderLoader />}>
+                    <LazyLoad height='100' offset={100} debounce={250} once fallback={<PlaceholderLoader />}>
                         <Phone color={textcolor} width={28} height={28} />
                     </LazyLoad>
                 </div>
@@ -58,7 +58,7 @@ const ContactDetails = ({ textcolor }) => {
             </div>
             <div sx={{ display: 'flex', alignItems: 'flex-start' }}>
                 <div sx={{ p: 2 }}>
-                    <LazyLoad height='100' offset={100} debounce={1000} once fallback={<PlaceholderLoader />}>
+                    <LazyLoad height='100' offset={100} debounce={250} once fallback={<PlaceholderLoader />}>
                         <Home color={textcolor} width={28} height={28} />
                     </LazyLoad>
                 </div>

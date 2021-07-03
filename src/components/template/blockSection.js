@@ -63,7 +63,7 @@ const ContentBlock = ({
                     >
                         <BlockText text={text} />
                         {buttonName && option !== 'none' && (
-                            <LazyLoad height='100' offset={100} debounce={1000} once fallback={<PlaceholderLoader />}>
+                            <LazyLoad height='100' offset={100} debounce={250} once fallback={<PlaceholderLoader />}>
                                 <GetForm
                                     option={option}
                                     buttonName={buttonName}

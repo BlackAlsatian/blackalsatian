@@ -42,34 +42,43 @@ const GetForm = ({ option, buttonName, buttonUrl, backgroundColor, buttonBackgro
     })
 
     const onSubmit = (data) => {
-        console.log(data)
+        // console.log(data)
         setFormSubmitting(true)
-        axios({
-            method: 'post',
-            url: `${process.env.GATSBY_API_URL}`,
-            headers: {
-                Accept: 'application/json',
-                'Content-Type': 'application/json',
-            },
-            data: JSON.stringify(data),
-        }).then(
-            (response) => {
-                if (response.status === 201) {
-                    setFormSubmitting(false)
-                    setMessageAlert(true)
-                    reset(getValues)
-                    sendGA('generate_lead', option, data.tags)
-                    setTimeout(() => {
-                        setMessageAlert(false)
-                    }, 2500)
-                }
-                // console.log(response)
-            },
-            (error) => {
-                console.log(error.response)
-                // console.log("There were errors. That's all I know.")
-            },
-        )
+        if (data.lastname !== '') {
+            setFormSubmitting(false)
+            setMessageAlert(true)
+            reset(getValues)
+            setTimeout(() => {
+                setMessageAlert(false)
+            }, 2500)
+        } else {
+            axios({
+                method: 'post',
+                url: `${process.env.GATSBY_API_URL}`,
+                headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json',
+                },
+                data: JSON.stringify(data),
+            }).then(
+                (response) => {
+                    if (response.status === 201) {
+                        setFormSubmitting(false)
+                        setMessageAlert(true)
+                        reset(getValues)
+                        sendGA('generate_lead', option, data.tags)
+                        setTimeout(() => {
+                            setMessageAlert(false)
+                        }, 2500)
+                    }
+                    // console.log(response)
+                },
+                (error) => {
+                    // console.log(error.response)
+                    console.log("There were errors. That's all I know.")
+                },
+            )
+        }
     }
     if (option === 'btnonly') {
         if (buttonUrl.includes('#')) {
