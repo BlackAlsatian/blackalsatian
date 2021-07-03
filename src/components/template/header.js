@@ -1,6 +1,6 @@
 /** @jsxImportSource theme-ui */
 import { useStaticQuery, graphql } from 'gatsby'
-import { useState, useContext } from 'react'
+import { useContext } from 'react'
 import { OffCanvasMenuContext } from '../offCanvasMenuProvider'
 import { Link } from 'gatsby'
 import MenuIcon from '../menuIcon'
@@ -20,8 +20,8 @@ const Header = ({ pageStyle }) => {
 
     const { handleBurgerMenuClick, isOpen } = useContext(OffCanvasMenuContext)
 
-    const menuStyles = ['white', 'yellow', 'altyellow']
-    const [headerStyle, setHeaderStyle] = useState('white')
+    // const menuStyles = ['white', 'yellow', 'altyellow']
+    // const [headerStyle, setHeaderStyle] = useState('white')
     // let headerStyle = 'white'
 
     // if (menuStyles.includes(pageStyle)) {
@@ -30,9 +30,9 @@ const Header = ({ pageStyle }) => {
     // }
     // console.log('PageStyle: ' + pageStyle, 'Headerstyle: ' + headerStyle)
     // useEffect(() => {
-    if (menuStyles.includes(pageStyle)) {
-        setHeaderStyle('black')
-    }
+    // if (menuStyles.includes(pageStyle)) {
+    //     setHeaderStyle('black')
+    // }
     // switch (pageStyle) {
     //     case 'white':
     //         setHeaderStyle('black')
@@ -58,13 +58,16 @@ const Header = ({ pageStyle }) => {
                 p: [3, 3],
                 position: 'absolute',
                 zIndex: 10,
-                variant: 'layout.header.' + headerStyle,
+                // variant: 'layout.header.' + headerStyle,
+                variant: 'layout.header.' + pageStyle,
             }}
         >
             <Link to='/' title='Black Alsatian Web Development Company'>
-                <Logo color={headerStyle} />
+                {/* <Logo color={headerStyle} /> */}
+                <Logo />
             </Link>
-            <Nav navLinks={navLinks} color={headerStyle} />
+            {/* <Nav navLinks={navLinks} color={headerStyle} /> */}
+            <Nav navLinks={navLinks} />
             <OffCanvas navLinks={navLinks} />
             <div
                 sx={{
@@ -78,7 +81,7 @@ const Header = ({ pageStyle }) => {
                 }}
             >
                 <MenuIcon
-                    color={headerStyle}
+                    // color={headerStyle}
                     handleBurgerMenuClick={() => {
                         handleBurgerMenuClick()
                     }}

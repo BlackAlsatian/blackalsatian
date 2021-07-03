@@ -1,6 +1,6 @@
 /** @jsxImportSource theme-ui */
 import { Flex, Heading } from 'theme-ui'
-import { useState } from 'react'
+// import { useState } from 'react'
 import LazyLoad from 'react-lazyload'
 import { Link } from 'gatsby'
 import ContactDetails from './contactDetails'
@@ -10,40 +10,40 @@ import SocialIcons from './socialIcons'
 import PlaceholderLoader from '../../../components/placeholderLoader'
 import GetForm from '../../getForm'
 
-const footerColors = {
-    yellow: {
-        bgcolor: 'yellow',
-        textcolor: 'black',
-    },
-    red: {
-        bgcolor: 'red',
-        textcolor: 'white',
-    },
-    white: {
-        bgcolor: 'white',
-        textcolor: 'black',
-    },
-    postwhite: {
-        bgcolor: 'white',
-        textcolor: 'black',
-    },
-}
-
-const footerStyles = ['yellow', 'red', 'white', 'postwhite']
+// const footerColors = {
+//     yellow: {
+//         bgcolor: 'yellow',
+//         textcolor: 'black',
+//     },
+//     red: {
+//         bgcolor: 'red',
+//         textcolor: 'white',
+//     },
+//     white: {
+//         bgcolor: 'white',
+//         textcolor: 'black',
+//     },
+//     postwhite: {
+//         bgcolor: 'white',
+//         textcolor: 'black',
+//     },
+// }
+//
+// const footerStyles = ['yellow', 'red', 'white', 'postwhite']
 
 const Footer = ({ siteTitle, pageStyle }) => {
-    const [bgcolor, setBgcolor] = useState('black')
-    const [textcolor, setTextcolor] = useState('white')
+    // const [bgcolor, setBgcolor] = useState('black')
+    // const [textcolor, setTextcolor] = useState('white')
     // let bgcolor = 'black'
     // let textcolor = 'white'
 
     // useEffect(() => {
-    if (footerStyles.includes(pageStyle)) {
-        // bgcolor = footerColors[pageStyle].bgcolor
-        // textcolor = footerColors[pageStyle].textcolor
-        setBgcolor(footerColors[pageStyle].bgcolor)
-        setTextcolor(footerColors[pageStyle].textcolor)
-    }
+    // if (footerStyles.includes(pageStyle)) {
+    //     // bgcolor = footerColors[pageStyle].bgcolor
+    //     // textcolor = footerColors[pageStyle].textcolor
+    //     setBgcolor(footerColors[pageStyle].bgcolor)
+    //     setTextcolor(footerColors[pageStyle].textcolor)
+    // }
     // }, [pageStyle])
 
     return (
@@ -82,13 +82,14 @@ const Footer = ({ siteTitle, pageStyle }) => {
                             width: [null, null, '100%'],
                         }}
                     >
-                        <LazyLoad height='100' offset={100} deboucne={1000} once fallback={<PlaceholderLoader />}>
+                        <LazyLoad height='100' offset={100} debounce={1000} once fallback={<PlaceholderLoader />}>
                             <GetForm
                                 option='contact'
                                 buttonName='Fetch!'
-                                backgroundColor={bgcolor}
-                                buttonBackground={textcolor}
+                                // backgroundColor={bgcolor}
+                                // buttonBackground={textcolor}
                                 formStyle='inputs.underline'
+                                footerError={'layout.footer.' + pageStyle}
                             />
                         </LazyLoad>
                     </div>
@@ -117,7 +118,7 @@ const Footer = ({ siteTitle, pageStyle }) => {
                         to='/'
                         title='Web development & online marketing by Black Alsatian'
                     >
-                        <LazyLoad height='100' offset={100} deboucne={1000} once fallback={<PlaceholderLoader />}>
+                        <LazyLoad height='100' offset={100} debounce={1000} once fallback={<PlaceholderLoader />}>
                             <Logo />
                         </LazyLoad>
                     </Link>
@@ -154,7 +155,7 @@ const Footer = ({ siteTitle, pageStyle }) => {
                         textAlign: [null, null, 'right'],
                     }}
                 >
-                    <LazyLoad height='100' offset={100} deboucne={1000} once fallback={<PlaceholderLoader />}>
+                    <LazyLoad height='100' offset={100} debounce={1000} once fallback={<PlaceholderLoader />}>
                         <SocialIcons />
                     </LazyLoad>
                     <div>

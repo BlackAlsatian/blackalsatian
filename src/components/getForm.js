@@ -7,7 +7,7 @@ import axios from 'axios'
 
 import { handleErrorColor, phoneRegExp, emailRegExp, sendGA, leadInfo } from '../components/helpers'
 
-const GetForm = ({ option, buttonName, buttonUrl, backgroundColor, buttonBackground, formStyle }) => {
+const GetForm = ({ option, buttonName, buttonUrl, backgroundColor, buttonBackground, formStyle, footerError }) => {
     if (option === 'contact') {
         option = 'enquiry'
     }
@@ -130,9 +130,10 @@ const GetForm = ({ option, buttonName, buttonUrl, backgroundColor, buttonBackgro
                 mb={3}
                 variant={formStyle}
                 sx={{
-                    borderBottomColor: errors.name ? `${errorColor}` : `${buttonBackground}` || 'white',
+                    borderBottomColor: errors.name ? `${errorColor}` + ' !important' : `${buttonBackground}` || 'white',
                     color: `${buttonBackground}`,
                     '&:focus': { color: 'black' },
+                    variant: footerError && footerError.errors,
                 }}
                 aria-invalid={errors.name ? 'true' : 'false'}
                 {...register('name', {
@@ -202,9 +203,12 @@ const GetForm = ({ option, buttonName, buttonUrl, backgroundColor, buttonBackgro
                         mb={3}
                         variant={formStyle}
                         sx={{
-                            borderBottomColor: errors.number ? `${errorColor}` : `${buttonBackground}` || 'white',
+                            borderBottomColor: errors.number
+                                ? `${errorColor}` + ' !important'
+                                : `${buttonBackground}` || 'white',
                             color: `${buttonBackground}`,
                             '&:focus': { color: 'black' },
+                            variant: footerError && footerError.errors,
                         }}
                         aria-invalid={errors.number ? 'true' : 'false'}
                         {...register('number', {
@@ -243,9 +247,12 @@ const GetForm = ({ option, buttonName, buttonUrl, backgroundColor, buttonBackgro
                 mb={3}
                 variant={formStyle}
                 sx={{
-                    borderBottomColor: errors.email ? `${errorColor}` : `${buttonBackground}` || 'white',
+                    borderBottomColor: errors.email
+                        ? `${errorColor}` + ' !important'
+                        : `${buttonBackground}` || 'white',
                     color: `${buttonBackground}`,
                     '&:focus': { color: 'black' },
+                    variant: footerError && footerError.errors,
                 }}
                 {...register('email', {
                     required: 'Oops! You missed this field.',
@@ -283,9 +290,12 @@ const GetForm = ({ option, buttonName, buttonUrl, backgroundColor, buttonBackgro
                         mb={3}
                         variant={formStyle}
                         sx={{
-                            borderBottomColor: errors.message ? `${errorColor}` : `${buttonBackground}` || 'white',
+                            borderBottomColor: errors.message
+                                ? `${errorColor}` + ' !important'
+                                : `${buttonBackground}` || 'white',
                             color: `${buttonBackground}`,
                             '&:focus': { color: 'black' },
+                            variant: footerError && footerError.errors,
                         }}
                         aria-invalid={errors.message ? 'true' : 'false'}
                         {...register('message', {

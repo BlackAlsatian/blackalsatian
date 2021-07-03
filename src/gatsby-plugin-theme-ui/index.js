@@ -591,17 +591,40 @@ const theme = {
             fontStyle: 'oblique',
         },
         figure: {
-            // textAlign: 'center',
-            // width: '100%',
-            // p: '0 auto',
             margin: '0 0 1em',
             span: {
-                // m: '0 auto',
                 display: 'inline-block',
             },
         },
         header: {
-            white: {
+            // white: {
+            //     svg: {
+            //         fill: 'white',
+            //     },
+            //     nav: {
+            //         a: {
+            //             color: 'white',
+            //             '&:hover, &:focus, &.active': {
+            //                 opacity: 0.9,
+            //             },
+            //         },
+            //     },
+            // },
+            // black: {
+            //     svg: {
+            //         fill: 'black',
+            //     },
+            //     nav: {
+            //         a: {
+            //             color: 'black',
+            //             '&:hover, &:focus, &.active': {
+            //                 opacity: 0.9,
+            //             },
+            //         },
+            //     },
+            // },
+
+            default: {
                 svg: {
                     fill: 'white',
                 },
@@ -613,8 +636,15 @@ const theme = {
                         },
                     },
                 },
+                div: {
+                    button: {
+                        svg: {
+                            background: 'white',
+                        },
+                    },
+                },
             },
-            black: {
+            white: {
                 svg: {
                     fill: 'black',
                 },
@@ -623,6 +653,133 @@ const theme = {
                         color: 'black',
                         '&:hover, &:focus, &.active': {
                             opacity: 0.9,
+                        },
+                    },
+                },
+                div: {
+                    button: {
+                        svg: {
+                            background: 'black',
+                        },
+                    },
+                },
+            },
+            postwhite: {
+                svg: {
+                    fill: 'black',
+                },
+                nav: {
+                    a: {
+                        color: 'black',
+                        '&:hover, &:focus, &.active': {
+                            opacity: 0.9,
+                        },
+                    },
+                },
+                div: {
+                    button: {
+                        svg: {
+                            background: 'black',
+                        },
+                    },
+                },
+            },
+            black: {
+                svg: {
+                    fill: 'white',
+                },
+                nav: {
+                    a: {
+                        color: 'white',
+                        '&:hover, &:focus, &.active': {
+                            opacity: 0.9,
+                        },
+                    },
+                },
+                div: {
+                    button: {
+                        svg: {
+                            background: 'white',
+                        },
+                    },
+                },
+            },
+            altblack: {
+                svg: {
+                    fill: 'white',
+                },
+                nav: {
+                    a: {
+                        color: 'white',
+                        '&:hover, &:focus, &.active': {
+                            opacity: 0.9,
+                        },
+                    },
+                },
+                div: {
+                    button: {
+                        svg: {
+                            background: 'white',
+                        },
+                    },
+                },
+            },
+            yellow: {
+                svg: {
+                    fill: 'black',
+                },
+                nav: {
+                    a: {
+                        color: 'black',
+                        '&:hover, &:focus, &.active': {
+                            opacity: 0.9,
+                        },
+                    },
+                },
+                div: {
+                    button: {
+                        svg: {
+                            background: 'black',
+                        },
+                    },
+                },
+            },
+            altyellow: {
+                svg: {
+                    fill: 'black',
+                },
+                nav: {
+                    a: {
+                        color: 'black',
+                        '&:hover, &:focus, &.active': {
+                            opacity: 0.9,
+                        },
+                    },
+                },
+                div: {
+                    button: {
+                        svg: {
+                            background: 'black',
+                        },
+                    },
+                },
+            },
+            red: {
+                svg: {
+                    fill: 'white',
+                },
+                nav: {
+                    a: {
+                        color: 'white',
+                        '&:hover, &:focus, &.active': {
+                            opacity: 0.9,
+                        },
+                    },
+                },
+                div: {
+                    button: {
+                        svg: {
+                            background: 'white',
                         },
                     },
                 },
@@ -654,6 +811,17 @@ const theme = {
             red: {
                 backgroundColor: 'red',
                 color: 'white',
+                a: {
+                    color: 'white',
+                    textDecoration: 'underline',
+                    fontWeight: 'medium',
+                    '&:hover': {
+                        textDecoration: 'none',
+                    },
+                    '&:visited': {
+                        color: 'rgba(255, 255, 255, 0.8)',
+                    },
+                },
                 p: {
                     a: {
                         color: 'white',
@@ -823,6 +991,35 @@ const theme = {
                 svg: {
                     fill: 'white',
                 },
+                form: {
+                    input: {
+                        borderBottomColor: 'white',
+                    },
+                    'input[type="checkbox"]': {
+                        borderColor: 'white',
+                        '&:after': {
+                            color: 'white',
+                        },
+                    },
+                    textarea: {
+                        borderBottomColor: 'white',
+                    },
+                    button: {
+                        backgroundColor: 'white',
+                        color: 'black',
+                    },
+                    errors: {
+                        input: {
+                            borderBottomColor: 'yellow',
+                        },
+                        'input[type="checkbox"]': {
+                            borderColor: 'yellow',
+                            '&:after': {
+                                color: 'yellow',
+                            },
+                        },
+                    },
+                },
             },
             white: {
                 backgroundColor: 'white',
@@ -832,6 +1029,35 @@ const theme = {
                 },
                 svg: {
                     fill: 'black',
+                },
+                form: {
+                    input: {
+                        borderBottomColor: 'black',
+                    },
+                    'input[type="checkbox"]': {
+                        borderColor: 'black',
+                        '&:after': {
+                            color: 'black',
+                        },
+                    },
+                    textarea: {
+                        borderBottomColor: 'black',
+                    },
+                    button: {
+                        backgroundColor: 'black',
+                        color: 'white',
+                    },
+                    errors: {
+                        input: {
+                            borderBottomColor: 'red',
+                        },
+                        'input[type="checkbox"]': {
+                            borderColor: 'red',
+                            '&:after': {
+                                color: 'red',
+                            },
+                        },
+                    },
                 },
             },
             postwhite: {
@@ -843,6 +1069,35 @@ const theme = {
                 svg: {
                     fill: 'black',
                 },
+                form: {
+                    input: {
+                        borderBottomColor: 'black',
+                    },
+                    'input[type="checkbox"]': {
+                        borderColor: 'black',
+                        '&:after': {
+                            color: 'black',
+                        },
+                    },
+                    textarea: {
+                        borderBottomColor: 'black',
+                    },
+                    button: {
+                        backgroundColor: 'black',
+                        color: 'white',
+                    },
+                    errors: {
+                        input: {
+                            borderBottomColor: 'red',
+                        },
+                        'input[type="checkbox"]': {
+                            borderColor: 'red',
+                            '&:after': {
+                                color: 'red',
+                            },
+                        },
+                    },
+                },
             },
             black: {
                 backgroundColor: 'black',
@@ -852,6 +1107,35 @@ const theme = {
                 },
                 svg: {
                     fill: 'white',
+                },
+                form: {
+                    input: {
+                        borderBottomColor: 'white',
+                    },
+                    'input[type="checkbox"]': {
+                        borderColor: 'white',
+                        '&:after': {
+                            color: 'white',
+                        },
+                    },
+                    textarea: {
+                        borderBottomColor: 'white',
+                    },
+                    button: {
+                        backgroundColor: 'black',
+                        color: 'white',
+                    },
+                    errors: {
+                        input: {
+                            borderBottomColor: 'yellow',
+                        },
+                        'input[type="checkbox"]': {
+                            borderColor: 'yellow',
+                            '&:after': {
+                                color: 'yellow',
+                            },
+                        },
+                    },
                 },
             },
             altblack: {
@@ -863,6 +1147,35 @@ const theme = {
                 svg: {
                     fill: 'white',
                 },
+                form: {
+                    input: {
+                        borderBottomColor: 'white',
+                    },
+                    'input[type="checkbox"]': {
+                        borderColor: 'white',
+                        '&:after': {
+                            color: 'white',
+                        },
+                    },
+                    textarea: {
+                        borderBottomColor: 'white',
+                    },
+                    button: {
+                        backgroundColor: 'white',
+                        color: 'black',
+                    },
+                    errors: {
+                        input: {
+                            borderBottomColor: 'yellow',
+                        },
+                        'input[type="checkbox"]': {
+                            borderColor: 'yellow',
+                            '&:after': {
+                                color: 'yellow',
+                            },
+                        },
+                    },
+                },
             },
             yellow: {
                 backgroundColor: 'yellow',
@@ -872,6 +1185,35 @@ const theme = {
                 },
                 svg: {
                     fill: 'black',
+                },
+                form: {
+                    input: {
+                        borderBottomColor: 'black',
+                    },
+                    'input[type="checkbox"]': {
+                        borderColor: 'black',
+                        '&:after': {
+                            color: 'black',
+                        },
+                    },
+                    textarea: {
+                        borderBottomColor: 'black',
+                    },
+                    button: {
+                        backgroundColor: 'black',
+                        color: 'yellow',
+                    },
+                    errors: {
+                        input: {
+                            borderBottomColor: 'red',
+                        },
+                        'input[type="checkbox"]': {
+                            borderColor: 'red',
+                            '&:after': {
+                                color: 'red',
+                            },
+                        },
+                    },
                 },
             },
             altyellow: {
@@ -883,6 +1225,35 @@ const theme = {
                 svg: {
                     fill: 'white',
                 },
+                form: {
+                    input: {
+                        borderBottomColor: 'white',
+                    },
+                    'input[type="checkbox"]': {
+                        borderColor: 'white',
+                        '&:after': {
+                            color: 'white',
+                        },
+                    },
+                    textarea: {
+                        borderBottomColor: 'white',
+                    },
+                    button: {
+                        backgroundColor: 'white',
+                        color: 'black',
+                    },
+                    errors: {
+                        input: {
+                            borderBottomColor: 'red',
+                        },
+                        'input[type="checkbox"]': {
+                            borderColor: 'red',
+                            '&:after': {
+                                color: 'red',
+                            },
+                        },
+                    },
+                },
             },
             red: {
                 backgroundColor: 'red',
@@ -893,6 +1264,35 @@ const theme = {
                 svg: {
                     fill: 'white',
                 },
+                form: {
+                    input: {
+                        borderBottomColor: 'white',
+                    },
+                    'input[type="checkbox"]': {
+                        borderColor: 'white',
+                        '&:after': {
+                            color: 'white',
+                        },
+                    },
+                    textarea: {
+                        borderBottomColor: 'white',
+                    },
+                    button: {
+                        backgroundColor: 'white',
+                        color: 'red',
+                    },
+                    errors: {
+                        input: {
+                            borderBottomColor: 'yellow',
+                        },
+                        'input[type="checkbox"]': {
+                            borderColor: 'yellow',
+                            '&:after': {
+                                color: 'yellow',
+                            },
+                        },
+                    },
+                },
             },
         },
         project: {
@@ -900,6 +1300,12 @@ const theme = {
                 color: 'white',
                 a: {
                     color: 'white',
+                },
+            },
+            figure: {
+                margin: '0 0 1em',
+                span: {
+                    display: 'inline-block',
                 },
             },
         },

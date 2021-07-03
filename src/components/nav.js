@@ -3,7 +3,7 @@ import { Flex } from 'theme-ui'
 import { Link } from 'gatsby'
 import parse from 'html-react-parser'
 
-const Nav = ({ color, navLinks }) => {
+const Nav = ({ navLinks }) => {
     return (
         <Flex
             as='nav'
@@ -19,11 +19,11 @@ const Nav = ({ color, navLinks }) => {
                             to={item.url}
                             key={item.id}
                             sx={{
-                                color: `${color}`,
-                                '&:hover, &:focus, &.active': {
-                                    color: `${color}`,
-                                    opacity: 0.9,
-                                },
+                                // color: `${color}`,
+                                // '&:hover, &:focus, &.active': {
+                                //     color: `${color}`,
+                                //     opacity: 0.9,
+                                // },
                                 cursor: 'pointer',
                                 fontSize: 1,
                                 fontWeight: 'black',

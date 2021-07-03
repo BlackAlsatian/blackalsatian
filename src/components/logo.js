@@ -1,7 +1,7 @@
 /** @jsxImportSource theme-ui */
 import { Box } from 'theme-ui'
 
-const Logo = ({ color }) => {
+const Logo = () => {
     return (
         <Box
             as='svg'
@@ -12,7 +12,7 @@ const Logo = ({ color }) => {
             sx={{
                 maxWidth: 200,
                 maxHeight: 36,
-                fill: `${color}`,
+                // fill: `${color}`,
             }}
         >
             <path
