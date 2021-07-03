@@ -4,7 +4,7 @@ export const PageStyleContext = createContext()
 
 const Provider = ({ children, element }) => {
     const [isOpen, setIsOpen] = useState(false)
-    const [pageStyle, setPageStyle] = useState('')
+    const [pageStyle, setPageStyle] = useState('default')
 
     return (
         <PageStyleContext.Provider
