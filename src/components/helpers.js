@@ -32,14 +32,20 @@ export const phoneRegExp = /^(\+?\d{0,4})?\s?-?\s?(\(?\d{3}\)?)\s?-?\s?(\(?\d{3}
 export const emailRegExp = /^[^@ ]+@[^@ ]+\.[^@ .]{2,}$/
 
 // Fire Google Analytics tag
-export const sendGA = (context) => {
+export const sendGA = (eventName, context, tags) => {
     if (process.env.NODE_ENV !== 'production') {
         console.log('Development')
         console.log('GTag fired!')
+        console.log('Event: ' + eventName, 'Type: ' + context, 'Info: ' + tags)
     } else {
         // console.log('Production')
         if (typeof window !== 'undefined') {
-            window.gtag('event', context)
+            // window.gtag('event', context)
+            window.dataLayer.push({
+                event: eventName,
+                leadType: context,
+                withTags: tags,
+            })
         }
     }
 }

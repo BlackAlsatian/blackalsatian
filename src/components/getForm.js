@@ -58,7 +58,7 @@ const GetForm = ({ option, buttonName, buttonUrl, backgroundColor, buttonBackgro
                     setFormSubmitting(false)
                     setMessageAlert(true)
                     reset(getValues)
-                    sendGA(option)
+                    sendGA('generate_lead', option, data.tags)
                     setTimeout(() => {
                         setMessageAlert(false)
                     }, 2500)
@@ -132,7 +132,7 @@ const GetForm = ({ option, buttonName, buttonUrl, backgroundColor, buttonBackgro
                 sx={{
                     borderBottomColor: errors.name ? `${errorColor}` + ' !important' : `${buttonBackground}` || 'white',
                     color: `${buttonBackground}`,
-                    '&:focus': { color: 'black' },
+                    '&:focus, &:not(:focus)': { color: 'black' },
                     variant: footerError && footerError.errors,
                 }}
                 aria-invalid={errors.name ? 'true' : 'false'}
@@ -207,7 +207,7 @@ const GetForm = ({ option, buttonName, buttonUrl, backgroundColor, buttonBackgro
                                 ? `${errorColor}` + ' !important'
                                 : `${buttonBackground}` || 'white',
                             color: `${buttonBackground}`,
-                            '&:focus': { color: 'black' },
+                            '&:focus, &:not(:focus)': { color: 'black' },
                             variant: footerError && footerError.errors,
                         }}
                         aria-invalid={errors.number ? 'true' : 'false'}
@@ -251,7 +251,7 @@ const GetForm = ({ option, buttonName, buttonUrl, backgroundColor, buttonBackgro
                         ? `${errorColor}` + ' !important'
                         : `${buttonBackground}` || 'white',
                     color: `${buttonBackground}`,
-                    '&:focus': { color: 'black' },
+                    '&:focus, &:not(:focus)': { color: 'black' },
                     variant: footerError && footerError.errors,
                 }}
                 {...register('email', {
@@ -294,7 +294,7 @@ const GetForm = ({ option, buttonName, buttonUrl, backgroundColor, buttonBackgro
                                 ? `${errorColor}` + ' !important'
                                 : `${buttonBackground}` || 'white',
                             color: `${buttonBackground}`,
-                            '&:focus': { color: 'black' },
+                            '&:focus, &:not(:focus)': { color: 'black', backgroundColor: 'white' },
                             variant: footerError && footerError.errors,
                         }}
                         aria-invalid={errors.message ? 'true' : 'false'}

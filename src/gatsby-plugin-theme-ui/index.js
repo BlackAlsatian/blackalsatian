@@ -994,6 +994,7 @@ const theme = {
                 form: {
                     input: {
                         borderBottomColor: 'white',
+                        '&:not(:focus)': { color: 'white' },
                     },
                     'input[type="checkbox"]': {
                         borderColor: 'white',
@@ -1003,6 +1004,7 @@ const theme = {
                     },
                     textarea: {
                         borderBottomColor: 'white',
+                        '&:not(:focus)': { color: 'white' },
                     },
                     button: {
                         backgroundColor: 'white',
@@ -1033,6 +1035,7 @@ const theme = {
                 form: {
                     input: {
                         borderBottomColor: 'black',
+                        '&:not(:focus)': { color: 'black' },
                     },
                     'input[type="checkbox"]': {
                         borderColor: 'black',
@@ -1042,6 +1045,7 @@ const theme = {
                     },
                     textarea: {
                         borderBottomColor: 'black',
+                        '&:not(:focus)': { color: 'black' },
                     },
                     button: {
                         backgroundColor: 'black',
@@ -1072,6 +1076,7 @@ const theme = {
                 form: {
                     input: {
                         borderBottomColor: 'black',
+                        '&:not(:focus)': { color: 'black' },
                     },
                     'input[type="checkbox"]': {
                         borderColor: 'black',
@@ -1081,6 +1086,7 @@ const theme = {
                     },
                     textarea: {
                         borderBottomColor: 'black',
+                        '&:not(:focus)': { color: 'black' },
                     },
                     button: {
                         backgroundColor: 'black',
@@ -1111,6 +1117,7 @@ const theme = {
                 form: {
                     input: {
                         borderBottomColor: 'white',
+                        '&:not(:focus)': { color: 'white' },
                     },
                     'input[type="checkbox"]': {
                         borderColor: 'white',
@@ -1120,6 +1127,7 @@ const theme = {
                     },
                     textarea: {
                         borderBottomColor: 'white',
+                        '&:not(:focus)': { color: 'white' },
                     },
                     button: {
                         backgroundColor: 'black',
@@ -1150,6 +1158,7 @@ const theme = {
                 form: {
                     input: {
                         borderBottomColor: 'white',
+                        '&:not(:focus)': { color: 'white' },
                     },
                     'input[type="checkbox"]': {
                         borderColor: 'white',
@@ -1159,6 +1168,7 @@ const theme = {
                     },
                     textarea: {
                         borderBottomColor: 'white',
+                        '&:not(:focus)': { color: 'white' },
                     },
                     button: {
                         backgroundColor: 'white',
@@ -1189,6 +1199,7 @@ const theme = {
                 form: {
                     input: {
                         borderBottomColor: 'black',
+                        '&:not(:focus)': { color: 'black' },
                     },
                     'input[type="checkbox"]': {
                         borderColor: 'black',
@@ -1198,6 +1209,7 @@ const theme = {
                     },
                     textarea: {
                         borderBottomColor: 'black',
+                        '&:not(:focus)': { color: 'black' },
                     },
                     button: {
                         backgroundColor: 'black',
@@ -1228,6 +1240,7 @@ const theme = {
                 form: {
                     input: {
                         borderBottomColor: 'white',
+                        '&:not(:focus)': { color: 'white' },
                     },
                     'input[type="checkbox"]': {
                         borderColor: 'white',
@@ -1237,6 +1250,7 @@ const theme = {
                     },
                     textarea: {
                         borderBottomColor: 'white',
+                        '&:not(:focus)': { color: 'white' },
                     },
                     button: {
                         backgroundColor: 'white',
@@ -1267,6 +1281,7 @@ const theme = {
                 form: {
                     input: {
                         borderBottomColor: 'white',
+                        '&:not(:focus)': { color: 'white' },
                     },
                     'input[type="checkbox"]': {
                         borderColor: 'white',
@@ -1276,6 +1291,7 @@ const theme = {
                     },
                     textarea: {
                         borderBottomColor: 'white',
+                        '&:not(:focus)': { color: 'white' },
                     },
                     button: {
                         backgroundColor: 'white',
