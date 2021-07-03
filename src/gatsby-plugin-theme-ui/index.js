@@ -1004,7 +1004,7 @@ const theme = {
                     },
                     textarea: {
                         borderBottomColor: 'white',
-                        '&:not(:focus)': { color: 'white' },
+                        '&:not(:focus)': { color: 'white', backgroundColor: 'black' },
                     },
                     button: {
                         backgroundColor: 'white',
@@ -1045,7 +1045,7 @@ const theme = {
                     },
                     textarea: {
                         borderBottomColor: 'black',
-                        '&:not(:focus)': { color: 'black' },
+                        '&:not(:focus)': { color: 'black', backgroundColor: 'white' },
                     },
                     button: {
                         backgroundColor: 'black',
@@ -1086,7 +1086,7 @@ const theme = {
                     },
                     textarea: {
                         borderBottomColor: 'black',
-                        '&:not(:focus)': { color: 'black' },
+                        '&:not(:focus)': { color: 'black', backgroundColor: 'white' },
                     },
                     button: {
                         backgroundColor: 'black',
@@ -1127,7 +1127,7 @@ const theme = {
                     },
                     textarea: {
                         borderBottomColor: 'white',
-                        '&:not(:focus)': { color: 'white' },
+                        '&:not(:focus)': { color: 'white', backgroundColor: 'black' },
                     },
                     button: {
                         backgroundColor: 'black',
@@ -1168,7 +1168,7 @@ const theme = {
                     },
                     textarea: {
                         borderBottomColor: 'white',
-                        '&:not(:focus)': { color: 'white' },
+                        '&:not(:focus)': { color: 'white', backgroundColor: 'black' },
                     },
                     button: {
                         backgroundColor: 'white',
@@ -1209,7 +1209,7 @@ const theme = {
                     },
                     textarea: {
                         borderBottomColor: 'black',
-                        '&:not(:focus)': { color: 'black' },
+                        '&:not(:focus)': { color: 'black', backgroundColor: 'white' },
                     },
                     button: {
                         backgroundColor: 'black',
@@ -1250,7 +1250,7 @@ const theme = {
                     },
                     textarea: {
                         borderBottomColor: 'white',
-                        '&:not(:focus)': { color: 'white' },
+                        '&:not(:focus)': { color: 'white', backgroundColor: 'black' },
                     },
                     button: {
                         backgroundColor: 'white',
@@ -1291,7 +1291,7 @@ const theme = {
                     },
                     textarea: {
                         borderBottomColor: 'white',
-                        '&:not(:focus)': { color: 'white' },
+                        '&:not(:focus)': { color: 'white', backgroundColor: 'black' },
                     },
                     button: {
                         backgroundColor: 'white',

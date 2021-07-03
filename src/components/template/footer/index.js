@@ -84,7 +84,7 @@ const Footer = ({ siteTitle, pageStyle }) => {
                     >
                         <LazyLoad height='100' offset={100} debounce={1000} once fallback={<PlaceholderLoader />}>
                             <GetForm
-                                option='contact'
+                                option='enquiry'
                                 buttonName='Fetch!'
                                 // backgroundColor={bgcolor}
                                 // buttonBackground={textcolor}

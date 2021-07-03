@@ -42,7 +42,7 @@ const GetForm = ({ option, buttonName, buttonUrl, backgroundColor, buttonBackgro
     })
 
     const onSubmit = (data) => {
-        // console.log(data)
+        console.log(data)
         setFormSubmitting(true)
         axios({
             method: 'post',
@@ -66,8 +66,8 @@ const GetForm = ({ option, buttonName, buttonUrl, backgroundColor, buttonBackgro
                 // console.log(response)
             },
             (error) => {
-                // console.log(error.response)
-                console.log("There were errors. That's all I know.")
+                console.log(error.response)
+                // console.log("There were errors. That's all I know.")
             },
         )
     }
