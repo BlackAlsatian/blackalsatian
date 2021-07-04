@@ -1,13 +1,14 @@
 /** @jsxImportSource theme-ui */
 import { Flex, Heading } from 'theme-ui'
-import LazyLoad from 'react-lazyload'
+// import { useInView } from 'react-intersection-observer'
+// import PlaceholderLoader from '../../placeholderLoader'
 import { Link } from 'gatsby'
 import ContactDetails from './contactDetails'
 import Logo from '../../logo'
 import ServiceNav from '../../serviceNav'
 import SocialIcons from './socialIcons'
-import PlaceholderLoader from '../../../components/placeholderLoader'
 import GetForm from '../../getForm'
+import LazyLoader from '../../lazyLoader'
 
 // const footerColors = {
 //     yellow: {
@@ -67,7 +68,9 @@ const Footer = ({ siteTitle, pageStyle }) => {
                         pb: [0, 0, 4, 4],
                     }}
                 >
-                    <ContactDetails />
+                    <LazyLoader>
+                        <ContactDetails />
+                    </LazyLoader>
                     <div sx={{ flex: [null, null, 1], p: 4 }}>
                         <Heading as='h4' sx={{ pb: 3, fontSize: 2 }}>
                             Get
@@ -81,7 +84,7 @@ const Footer = ({ siteTitle, pageStyle }) => {
                             width: [null, null, '100%'],
                         }}
                     >
-                        <LazyLoad height='100' offset={100} debounce={150} once fallback={<PlaceholderLoader />}>
+                        <LazyLoader>
                             <GetForm
                                 option='enquiry'
                                 buttonName='Fetch!'
@@ -90,7 +93,7 @@ const Footer = ({ siteTitle, pageStyle }) => {
                                 formStyle='inputs.underline'
                                 footerError={'layout.footer.' + pageStyle}
                             />
-                        </LazyLoad>
+                        </LazyLoader>
                     </div>
                 </Flex>
             </section>
@@ -117,9 +120,9 @@ const Footer = ({ siteTitle, pageStyle }) => {
                         to='/'
                         title='Web development & online marketing by Black Alsatian'
                     >
-                        <LazyLoad height='100' offset={100} debounce={150} once fallback={<PlaceholderLoader />}>
+                        <LazyLoader>
                             <Logo />
-                        </LazyLoad>
+                        </LazyLoader>
                     </Link>
                     <br />
                     Port Elizabeth, South Africa
@@ -154,9 +157,7 @@ const Footer = ({ siteTitle, pageStyle }) => {
                         textAlign: [null, null, 'right'],
                     }}
                 >
-                    <LazyLoad height='100' offset={100} debounce={150} once fallback={<PlaceholderLoader />}>
-                        <SocialIcons />
-                    </LazyLoad>
+                    <SocialIcons />
                     <div>
                         <Link to='/terms-of-use/' sx={{ color: 'inherit' }}>
                             Terms of Use

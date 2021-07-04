@@ -4,6 +4,11 @@ import PageStyleProvider from './src/components/pageStyleProvider'
 // export const wrapRootElement = OffCanvasMenuProvider
 export const wrapRootElement = PageStyleProvider
 
+export const onClientEntry = async () => {
+    if (typeof IntersectionObserver === 'undefined') {
+        await import('intersection-observer')
+    }
+}
 // export const wrapRootElement = (props) => {
 //     return (
 //         <OffCanvasMenuProvider>

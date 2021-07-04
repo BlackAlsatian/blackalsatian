@@ -1,9 +1,8 @@
 /** @jsxImportSource theme-ui */
 import { Container, Flex, Box } from 'theme-ui'
-import LazyLoad from 'react-lazyload'
 import BlockText from '../blockText'
 import LeftColumn from '../template/elements/leftColumn'
-import PlaceholderLoader from '../../components/placeholderLoader'
+import LazyLoader from '../lazyLoader'
 import GetForm from '../getForm'
 
 const ContentBlock = ({
@@ -52,7 +51,7 @@ const ContentBlock = ({
                     >
                         <BlockText text={text} />
                         {buttonName && option !== 'none' && (
-                            <LazyLoad height='100' offset={100} debounce={150} once fallback={<PlaceholderLoader />}>
+                            <LazyLoader>
                                 <GetForm
                                     option={option}
                                     buttonName={buttonName}
@@ -61,7 +60,7 @@ const ContentBlock = ({
                                     buttonBackground={buttonBackground}
                                     formStyle='inputs.background'
                                 />
-                            </LazyLoad>
+                            </LazyLoader>
                         )}
                     </Box>
                 </Flex>

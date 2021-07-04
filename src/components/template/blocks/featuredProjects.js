@@ -1,5 +1,6 @@
 /** @jsxImportSource theme-ui */
 import { useStaticQuery, graphql } from 'gatsby'
+import LazyLoader from '../../lazyLoader'
 import MasonryGrid from '../elements/masonryGrid'
 
 const FeaturedProjectsBlock = () => {
@@ -20,7 +21,11 @@ const FeaturedProjectsBlock = () => {
     const dataNodes = portfolio.allWpPortfolio.nodes
     const heading = 'Featured Projects'
     const viewAllLink = '/portfolio/'
-    return <MasonryGrid dataNodes={dataNodes} heading={heading} viewAllLink={viewAllLink} headerType='p' />
+    return (
+        <LazyLoader>
+            <MasonryGrid dataNodes={dataNodes} heading={heading} viewAllLink={viewAllLink} headerType='p' />
+        </LazyLoader>
+    )
 }
 
 export default FeaturedProjectsBlock
