@@ -118,9 +118,7 @@ const Footer = ({ siteTitle, pageStyle }) => {
                         to='/'
                         title='Web development & online marketing by Black Alsatian'
                     >
-                        <LazyLoader>
-                            <Logo />
-                        </LazyLoader>
+                        <Logo />
                     </Link>
                     <br />
                     Port Elizabeth, South Africa
