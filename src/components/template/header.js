@@ -1,7 +1,5 @@
 /** @jsxImportSource theme-ui */
 import { useStaticQuery, graphql } from 'gatsby'
-import { useContext } from 'react'
-import { PageStyleContext } from '../pageStyleProvider'
 import { Link } from 'gatsby'
 import MenuIcon from '../menuIcon'
 import OffCanvas from './offCanvasNav'
@@ -17,8 +15,6 @@ const Header = ({ pageStyle }) => {
         }
     `)
     const navLinks = data.wpMenu.menuItems.nodes
-
-    const { handleBurgerMenuClick, isOpen } = useContext(PageStyleContext)
 
     // const menuStyles = ['white', 'yellow', 'altyellow']
     // const [headerStyle, setHeaderStyle] = useState('white')
@@ -80,13 +76,7 @@ const Header = ({ pageStyle }) => {
                     zIndex: 30,
                 }}
             >
-                <MenuIcon
-                    // color={headerStyle}
-                    handleBurgerMenuClick={() => {
-                        handleBurgerMenuClick()
-                    }}
-                    isOpen={isOpen}
-                />
+                <MenuIcon />
                 <span
                     sx={{
                         position: 'fixed',

@@ -1,6 +1,6 @@
 /** @jsxImportSource theme-ui */
 import { graphql } from 'gatsby'
-import { useEffect, useContext } from 'react'
+import { useLayoutEffect, useContext } from 'react'
 import { PageStyleContext } from '../components/pageStyleProvider'
 import { getSrc } from 'gatsby-plugin-image'
 import Modules from '../components/modules'
@@ -12,7 +12,7 @@ const LanderTemplate = ({ data: { lander, pageblocks } }) => {
 
     const pageStyle = 'default'
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         setPageStyle(pageStyle)
     }, [pageStyle])
     return (

@@ -1,6 +1,6 @@
 /** @jsxImportSource theme-ui */
 import { Flex, Box } from 'theme-ui'
-import { useEffect, useContext } from 'react'
+import { useLayoutEffect, useContext } from 'react'
 import { PageStyleContext } from '../components/pageStyleProvider'
 import { graphql } from 'gatsby'
 import { GatsbyImage, getSrc } from 'gatsby-plugin-image'
@@ -13,7 +13,7 @@ const PageTemplate = ({ data: { previous, next, service } }) => {
     const { setPageStyle } = useContext(PageStyleContext)
 
     const pageStyle = 'altyellow'
-    useEffect(() => {
+    useLayoutEffect(() => {
         setPageStyle(pageStyle)
     }, [pageStyle])
     const featuredImage = {

@@ -1,6 +1,6 @@
 /** @jsxImportSource theme-ui */
 import { Container, Heading, Flex, Box, Badge } from 'theme-ui'
-import { useEffect, useContext } from 'react'
+import { useLayoutEffect, useContext } from 'react'
 import { PageStyleContext } from '../components/pageStyleProvider'
 import { graphql } from 'gatsby'
 import parse from 'html-react-parser'
@@ -16,7 +16,7 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
     // const pageStyle = pageContext.style
     const { setPageStyle } = useContext(PageStyleContext)
     const pageStyle = 'postwhite'
-    useEffect(() => {
+    useLayoutEffect(() => {
         setPageStyle(pageStyle)
     }, [pageStyle])
     const featuredImage = {

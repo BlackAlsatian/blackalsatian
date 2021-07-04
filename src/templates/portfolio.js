@@ -1,6 +1,6 @@
 /** @jsxImportSource theme-ui */
 import { Container, Flex, Heading, Box } from 'theme-ui'
-import { useEffect, useContext } from 'react'
+import { useLayoutEffect, useContext } from 'react'
 import { PageStyleContext } from '../components/pageStyleProvider'
 import { graphql } from 'gatsby'
 import { getSrc } from 'gatsby-plugin-image'
@@ -14,7 +14,7 @@ const PortfolioIndex = ({ data }) => {
     // const pageStyle = data.wpPage.pageStyle
     const { setPageStyle } = useContext(PageStyleContext)
     const pageStyle = 'black'
-    useEffect(() => {
+    useLayoutEffect(() => {
         setPageStyle(pageStyle)
     }, [pageStyle])
     const portfolio = data.allWpPortfolio.nodes

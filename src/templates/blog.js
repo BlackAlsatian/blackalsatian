@@ -1,6 +1,6 @@
 /** @jsxImportSource theme-ui */
 import { Container, Heading } from 'theme-ui'
-import { useEffect, useContext } from 'react'
+import { useLayoutEffect, useContext } from 'react'
 import { PageStyleContext } from '../components/pageStyleProvider'
 import { graphql } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
@@ -16,7 +16,7 @@ const BlogIndex = ({ data, pageContext: { nextPagePath, previousPagePath, pageIn
 
     const pageStyle = 'white'
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         setPageStyle(pageStyle)
     }, [pageStyle])
 

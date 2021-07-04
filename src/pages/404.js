@@ -1,6 +1,6 @@
 /** @jsxImportSource theme-ui */
 import { Container, Heading, Box } from 'theme-ui'
-import { useEffect, useContext } from 'react'
+import { useLayoutEffect, useContext } from 'react'
 import { PageStyleContext } from '../components/pageStyleProvider'
 import { Link } from 'gatsby'
 import SEO from '../components/seo'
@@ -12,7 +12,7 @@ const NotFoundPage = ({ location }) => {
 
     const pageStyle = 'white'
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         setPageStyle(pageStyle)
     }, [pageStyle])
     return (

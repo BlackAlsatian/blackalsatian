@@ -1,6 +1,6 @@
 /** @jsxImportSource theme-ui */
 import { Container, Flex, Box } from 'theme-ui'
-import { useEffect, useContext } from 'react'
+import { useLayoutEffect, useContext } from 'react'
 import { PageStyleContext } from '../components/pageStyleProvider'
 import { graphql } from 'gatsby'
 import { getSrc } from 'gatsby-plugin-image'
@@ -15,7 +15,7 @@ const PageTemplate = ({ data: { page, pageblocks } }) => {
 
     const pageStyle = page.pageStyle
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         setPageStyle(pageStyle)
     }, [pageStyle])
 

@@ -1,6 +1,6 @@
 /** @jsxImportSource theme-ui */
 import { Container } from 'theme-ui'
-import { useEffect, useContext } from 'react'
+import { useLayoutEffect, useContext } from 'react'
 import { PageStyleContext } from '../components/pageStyleProvider'
 import { graphql } from 'gatsby'
 import { getSrc } from 'gatsby-plugin-image'
@@ -18,7 +18,7 @@ const ServicesIndex = ({ data }) => {
 
     const pageStyle = 'altyellow'
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         setPageStyle(pageStyle)
     }, [pageStyle])
     const services = data.allWpService.nodes

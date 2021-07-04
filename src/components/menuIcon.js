@@ -1,10 +1,15 @@
 /** @jsxImportSource theme-ui */
 import { Box } from 'theme-ui'
+import { useContext } from 'react'
+import { PageStyleContext } from './pageStyleProvider'
 
-const MenuIcon = ({ handleBurgerMenuClick, isOpen }) => {
+const MenuIcon = () => {
+    const { handleBurgerMenuClick, isOpen } = useContext(PageStyleContext)
     return (
         <button
-            onClick={handleBurgerMenuClick}
+            onClick={() => {
+                handleBurgerMenuClick()
+            }}
             sx={{
                 variant: 'buttons.menuIcon',
             }}
