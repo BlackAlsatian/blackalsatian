@@ -1,6 +1,5 @@
 /** @jsxImportSource theme-ui */
 import { Flex, Heading } from 'theme-ui'
-// import { useState } from 'react'
 import LazyLoad from 'react-lazyload'
 import { Link } from 'gatsby'
 import ContactDetails from './contactDetails'

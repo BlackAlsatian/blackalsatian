@@ -19,17 +19,6 @@ const ContentBlock = ({
     buttonUrl,
     headerSize,
 }) => {
-    // const backgroundColor = props.backgroundColor
-    // const color = props.color
-    // const anchor = props.anchor
-    // const heading = props.heading
-    // const title = props.title
-    // const text = props.text
-    // const option = props.option
-    // const buttonBackground = props.buttonBackground
-    // const buttonName = props.buttonName
-    // const buttonUrl = props.buttonUrl
-    // const headerSize = props.headerSize
     return (
         <section
             sx={{
@@ -49,7 +38,6 @@ const ContentBlock = ({
                         flexDirection: ['column', 'column', 'row'],
                     }}
                 >
-                    {/* <LeftColumn heading={heading} title={title} color={color} headerSize={headerSize} /> */}
                     <LeftColumn heading={heading} title={title} headerSize={headerSize} />
                     <Box
                         py={[4, 4, 5]}
