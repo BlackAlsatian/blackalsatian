@@ -1,5 +1,4 @@
-import React from 'react'
-import { Link } from 'gatsby'
+import React, { useEffect } from 'react'
 // import { useLocation } from '@reach/router'
 // import { initializeAndTrack } from 'gatsby-plugin-gdpr-cookies'
 import { isBrowser } from '../helpers'
@@ -22,7 +21,7 @@ function useStickyState(defaultValue, key) {
         return getValue(key, defaultValue)
     })
 
-    React.useEffect(() => {
+    useEffect(() => {
         setValue(key, value)
     }, [key, value])
 
@@ -41,10 +40,10 @@ const CookieConsent = ({ visible }) => {
         document.cookie = 'blackals-cookie-notice=true; ' + expires + '; SameSite=Lax; Secure'
         setBannerHidden(true)
     }
-    const UnSetCookie = () => {
-        document.cookie = 'blackals-cookie-notice=false; ' + expires + '; SameSite=Lax; Secure'
-        setBannerHidden(false)
-    }
+    // const UnSetCookie = () => {
+    //     document.cookie = 'blackals-cookie-notice=false; ' + expires + '; SameSite=Lax; Secure'
+    //     setBannerHidden(false)
+    // }
 
     return (
         <>

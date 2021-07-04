@@ -68,9 +68,7 @@ const Footer = ({ siteTitle, pageStyle }) => {
                         pb: [0, 0, 4, 4],
                     }}
                 >
-                    <LazyLoader>
-                        <ContactDetails />
-                    </LazyLoader>
+                    <ContactDetails />
                     <div sx={{ flex: [null, null, 1], p: 4 }}>
                         <Heading as='h4' sx={{ pb: 3, fontSize: 2 }}>
                             Get

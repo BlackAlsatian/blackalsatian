@@ -1,6 +1,5 @@
 /** @jsxImportSource theme-ui */
 import { navigate } from 'gatsby'
-// const ConsentCardButton = tw.button`w-full lg:w-32 px-2 py-1 bg-green-400 mr-2 mb-5 text-white rounded-sm font-semibold uppercase tracking-widest text-sm hover:shadow-2xl hover:transform hover:-translate-y-1 transition ease-in-out duration-200 focus:ring-0 focus:outline-none`
 
 const CookieCard = ({ header, message, onClick, button, privacyUrl, privacyText, visible }) => {
     return (
