@@ -1,5 +1,5 @@
 /** @jsxImportSource theme-ui */
-import { Fragment } from 'react'
+import { Fragment } from 'preact'
 import parse from 'html-react-parser'
 
 const BlockText = ({ text }) => {
