@@ -1,12 +1,12 @@
 /** @jsxImportSource theme-ui */
 import { Flex, Heading } from 'theme-ui'
+import { useInView } from 'react-intersection-observer'
 import { Link } from 'gatsby'
 import ContactDetails from './contactDetails'
 import Logo from '../../logo'
 import ServiceNav from '../../serviceNav'
 import SocialIcons from './socialIcons'
 import GetForm from '../../getForm'
-import LazyLoader from '../../lazyLoader'
 
 // const footerColors = {
 //     yellow: {
@@ -43,7 +43,10 @@ const Footer = ({ siteTitle, pageStyle }) => {
     //     setTextcolor(footerColors[pageStyle].textcolor)
     // }
     // }, [pageStyle])
-
+    const { ref, inView } = useInView({
+        triggerOnce: true,
+        rootMargin: '200px 0px 0px 0px',
+    })
     return (
         <footer
             sx={{
@@ -69,20 +72,29 @@ const Footer = ({ siteTitle, pageStyle }) => {
                     <ContactDetails />
                     <div sx={{ flex: [null, null, 1], p: 4 }}>
                         <Heading as='h4' sx={{ pb: 3, fontSize: 2 }}>
-                            Get
+                            Web Development Services
                         </Heading>
                         <ServiceNav />
                     </div>
-                    <LazyLoader>
-                        <GetForm
-                            option='enquiry'
-                            buttonName='Fetch!'
-                            // backgroundColor={bgcolor}
-                            // buttonBackground={textcolor}
-                            formStyle='inputs.underline'
-                            footerError={'layout.footer.' + pageStyle}
-                        />
-                    </LazyLoader>
+                    <div
+                        sx={{
+                            flex: [null, null, 2],
+                            p: 4,
+                            width: [null, null, '100%'],
+                        }}
+                        ref={ref}
+                    >
+                        {inView && (
+                            <GetForm
+                                option='enquiry'
+                                buttonName='Fetch!'
+                                // backgroundColor={bgcolor}
+                                // buttonBackground={textcolor}
+                                formStyle='inputs.underline'
+                                footerError={'layout.footer.' + pageStyle}
+                            />
+                        )}
+                    </div>
                 </Flex>
             </section>
             <section
