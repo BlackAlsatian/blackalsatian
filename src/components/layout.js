@@ -26,7 +26,6 @@ const Layout = ({ children }) => {
                 overflow: 'hidden',
                 variant: 'layout.main.' + pageStyle,
                 height: '100%',
-                width: '100%',
             }}
             id='start'
         >

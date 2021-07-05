@@ -1,4 +1,5 @@
 /** @jsxImportSource theme-ui */
+import { useInView } from 'react-intersection-observer'
 import { useStaticQuery, graphql } from 'gatsby'
 import MasonryGrid from '../elements/masonryGrid'
 
@@ -17,10 +18,24 @@ const FeaturedProjectsBlock = () => {
             }
         }
     `)
+    const { ref, inView } = useInView({
+        triggerOnce: true,
+        rootMargin: '200px 0px 0px 0px',
+    })
     const dataNodes = portfolio.allWpPortfolio.nodes
     const heading = 'Featured Projects'
     const viewAllLink = '/portfolio/'
-    return <MasonryGrid dataNodes={dataNodes} heading={heading} viewAllLink={viewAllLink} headerType='p' />
+    return (
+        <div
+            sx={{
+                width: '100%',
+                height: '100%',
+            }}
+            ref={ref}
+        >
+            {inView && <MasonryGrid dataNodes={dataNodes} heading={heading} viewAllLink={viewAllLink} headerType='p' />}
+        </div>
+    )
 }
 
 export default FeaturedProjectsBlock

@@ -1,4 +1,5 @@
 /** @jsxImportSource theme-ui */
+import { useInView } from 'react-intersection-observer'
 import { useStaticQuery, graphql } from 'gatsby'
 import TestimonialTile from '../elements/testimonialTile'
 import TestimonialsGrid from '../elements/testimonialsGrid'
@@ -22,9 +23,20 @@ const TestimonialsBlock = () => {
     `)
     const testimonials = testimonialsData.allWpTestimonial
     const heading = 'See What Our Clients Say...'
+    const { ref, inView } = useInView({
+        triggerOnce: true,
+        rootMargin: '200px 0px 0px 0px',
+    })
     return (
         <TestimonialsGrid heading={heading}>
-            {testimonials.nodes.map((testimonial) => {
+        <div
+            sx={{
+                width: '100%',
+                height: '100%',
+            }}
+            ref={ref}
+        >
+            {inView && testimonials.nodes.map((testimonial) => {
                 return (
                     <TestimonialTile
                         key={testimonial.id}
@@ -35,6 +47,7 @@ const TestimonialsBlock = () => {
                     />
                 )
             })}
+            </div>
         </TestimonialsGrid>
     )
 }
