@@ -1,7 +1,6 @@
 /** @jsxImportSource theme-ui */
 import { useStaticQuery, graphql } from 'gatsby'
 import LazyLoad from 'react-lazyload'
-import PlaceholderLoader from '../../placeholderLoader'
 import TestimonialTile from '../elements/testimonialTile'
 import TestimonialsGrid from '../elements/testimonialsGrid'
 
@@ -26,7 +25,7 @@ const TestimonialsBlock = () => {
     const heading = 'See What Our Clients Say...'
     return (
         <TestimonialsGrid heading={heading}>
-            <LazyLoad height='100%' offset={100} once placeholder={<PlaceholderLoader />}>
+            <LazyLoad height='100%' offset={100} once>
                 {testimonials.nodes.map((testimonial) => {
                     return (
                         <TestimonialTile

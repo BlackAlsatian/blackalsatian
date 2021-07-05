@@ -1,6 +1,5 @@
 /** @jsxImportSource theme-ui */
 import LazyLoad from 'react-lazyload'
-import PlaceholderLoader from '../../placeholderLoader'
 import { useStaticQuery, graphql } from 'gatsby'
 import MasonryGrid from '../elements/masonryGrid'
 
@@ -23,7 +22,7 @@ const FeaturedProjectsBlock = () => {
     const heading = 'Featured Projects'
     const viewAllLink = '/portfolio/'
     return (
-        <LazyLoad height='100%' offset={100} once placeholder={<PlaceholderLoader />}>
+        <LazyLoad height='100%' offset={100} once>
             <MasonryGrid dataNodes={dataNodes} heading={heading} viewAllLink={viewAllLink} headerType='p' />
         </LazyLoad>
     )
