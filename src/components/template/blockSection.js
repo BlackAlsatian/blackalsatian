@@ -1,7 +1,6 @@
 /** @jsxImportSource theme-ui */
 import { Container, Flex, Box } from 'theme-ui'
 import { useInView } from 'react-intersection-observer'
-import PlaceholderLoader from '../../components/placeholderLoader'
 import BlockText from '../blockText'
 import LeftColumn from '../template/elements/leftColumn'
 import GetForm from '../getForm'
@@ -62,20 +61,15 @@ const ContentBlock = ({
                             }}
                             ref={ref}
                         >
-                            {inView ? (
-                                buttonName &&
-                                option !== 'none' && (
-                                    <GetForm
-                                        option={option}
-                                        buttonName={buttonName}
-                                        buttonUrl={buttonUrl}
-                                        backgroundColor={backgroundColor}
-                                        buttonBackground={buttonBackground}
-                                        formStyle='inputs.background'
-                                    />
-                                )
-                            ) : (
-                                <PlaceholderLoader />
+                            {inView && buttonName && option !== 'none' && (
+                                <GetForm
+                                    option={option}
+                                    buttonName={buttonName}
+                                    buttonUrl={buttonUrl}
+                                    backgroundColor={backgroundColor}
+                                    buttonBackground={buttonBackground}
+                                    formStyle='inputs.background'
+                                />
                             )}
                         </div>
                     </Box>

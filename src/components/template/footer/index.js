@@ -1,7 +1,6 @@
 /** @jsxImportSource theme-ui */
 import { Flex, Heading } from 'theme-ui'
 import { useInView } from 'react-intersection-observer'
-import PlaceholderLoader from '../../placeholderLoader'
 import { Link } from 'gatsby'
 import ContactDetails from './contactDetails'
 import Logo from '../../logo'
@@ -85,7 +84,7 @@ const Footer = ({ siteTitle, pageStyle }) => {
                         }}
                         ref={ref}
                     >
-                        {inView ? (
+                        {inView && (
                             <GetForm
                                 option='enquiry'
                                 buttonName='Fetch!'
@@ -94,8 +93,6 @@ const Footer = ({ siteTitle, pageStyle }) => {
                                 formStyle='inputs.underline'
                                 footerError={'layout.footer.' + pageStyle}
                             />
-                        ) : (
-                            <PlaceholderLoader />
                         )}
                     </div>
                 </Flex>
