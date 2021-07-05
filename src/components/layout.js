@@ -7,12 +7,6 @@ import GoToTopButton from './goToTopButton'
 import { useHasScrolled } from './hooks/useHasScrolled'
 import CookieConsent from './cookie-notice/cookieConsent'
 
-// if (typeof window !== 'undefined') {
-//     // Make scroll behavior of internal links smooth
-//     // eslint-disable-next-line global-require
-//     require('smooth-scroll')('a[href*="#"]')
-// }
-
 const Layout = ({ children }) => {
     const pageStyle = useContext(PageStyleContext).pageStyle
     const scroll = useHasScrolled(1500)
