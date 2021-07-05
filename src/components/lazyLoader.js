@@ -1,6 +1,5 @@
 import { useCallback, memo } from 'react'
 import { useInView } from 'react-intersection-observer'
-import PlaceholderLoader from './placeholderLoader'
 
 const LazyLoader = ({ children, top }) => {
     const { ref, inView } = useInView({
@@ -10,7 +9,7 @@ const LazyLoader = ({ children, top }) => {
     const LazyLoaderComponent = useCallback(() => {
         return (
             <div style={{ width: '100%', height: '100%' }} ref={ref}>
-                {inView ? <>{children}</> : <PlaceholderLoader />}
+                {inView && <>{children}</>}
             </div>
         )
     }, [inView])
