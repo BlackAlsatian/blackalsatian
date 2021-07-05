@@ -189,6 +189,20 @@ const theme = {
                     color: 'rgba(0, 0, 0, 0.8)',
                 },
             },
+            header: {
+                nav: {
+                    a: {
+                        cursor: 'pointer',
+                        fontSize: 1,
+                        fontWeight: 'black',
+                        textDecoration: 'none',
+                        px: 3,
+                        '&:last-child': {
+                            pr: 0,
+                        },
+                    },
+                },
+            },
             p: {
                 mb: '1.5rem',
             },

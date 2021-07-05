@@ -15,26 +15,7 @@ const Nav = ({ navLinks }) => {
             {navLinks.map(
                 (item) =>
                     item.label !== 'Home' && (
-                        <Link
-                            to={item.url}
-                            key={item.id}
-                            sx={{
-                                // color: `${color}`,
-                                // '&:hover, &:focus, &.active': {
-                                //     color: `${color}`,
-                                //     opacity: 0.9,
-                                // },
-                                cursor: 'pointer',
-                                fontSize: 1,
-                                fontWeight: 'black',
-                                textDecoration: 'none',
-                                px: 3,
-                                '&:last-child': {
-                                    pr: 0,
-                                },
-                            }}
-                            title={parse(item.label)}
-                        >
+                        <Link to={item.url} key={item.id} title={parse(item.label)}>
                             {parse(item.label)}
                         </Link>
                     ),
