@@ -203,6 +203,9 @@ const theme = {
                     },
                 },
             },
+            main: {
+                flex: 1,
+            },
             p: {
                 mb: '1.5rem',
             },

@@ -19,7 +19,6 @@ const Layout = ({ children }) => {
                 minHeight: '100vh',
                 overflow: 'hidden',
                 variant: 'layout.main.' + pageStyle,
-                height: '100%',
             }}
             id='start'
         >
