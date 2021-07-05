@@ -11,6 +11,7 @@ const PlaceholderLoader = () => {
                 alignItems: 'center',
                 justifyContent: 'center',
                 backgroundColor: 'offwhite',
+                opacity: '0.8',
             }}
         >
             <Spinner

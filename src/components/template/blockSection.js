@@ -1,8 +1,9 @@
 /** @jsxImportSource theme-ui */
 import { Container, Flex, Box } from 'theme-ui'
+import { useInView } from 'react-intersection-observer'
+import PlaceholderLoader from './placeholderLoader'
 import BlockText from '../blockText'
 import LeftColumn from '../template/elements/leftColumn'
-import LazyLoader from '../lazyLoader'
 import GetForm from '../getForm'
 
 const ContentBlock = ({
@@ -18,6 +19,10 @@ const ContentBlock = ({
     buttonUrl,
     headerSize,
 }) => {
+    const { ref, inView } = useInView({
+        triggerOnce: true,
+        rootMargin: '200px 0px 0px 0px',
+    })
     return (
         <section
             sx={{
@@ -50,18 +55,29 @@ const ContentBlock = ({
                         }}
                     >
                         <BlockText text={text} />
-                        {buttonName && option !== 'none' && (
-                            <LazyLoader>
-                                <GetForm
-                                    option={option}
-                                    buttonName={buttonName}
-                                    buttonUrl={buttonUrl}
-                                    backgroundColor={backgroundColor}
-                                    buttonBackground={buttonBackground}
-                                    formStyle='inputs.background'
-                                />
-                            </LazyLoader>
-                        )}
+                        <div
+                            sx={{
+                                width: '100%',
+                                height: '100%',
+                            }}
+                            ref={ref}
+                        >
+                            {inView ? (
+                                buttonName &&
+                                option !== 'none' && (
+                                    <GetForm
+                                        option={option}
+                                        buttonName={buttonName}
+                                        buttonUrl={buttonUrl}
+                                        backgroundColor={backgroundColor}
+                                        buttonBackground={buttonBackground}
+                                        formStyle='inputs.background'
+                                    />
+                                )
+                            ) : (
+                                <PlaceholderLoader />
+                            )}
+                        </div>
                     </Box>
                 </Flex>
             </Container>
