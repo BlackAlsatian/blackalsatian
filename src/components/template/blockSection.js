@@ -1,7 +1,7 @@
 /** @jsxImportSource theme-ui */
 import { Container, Flex, Box } from 'theme-ui'
 import { useInView } from 'react-intersection-observer'
-import PlaceholderLoader from './placeholderLoader'
+import PlaceholderLoader from '../../components/placeholderLoader'
 import BlockText from '../blockText'
 import LeftColumn from '../template/elements/leftColumn'
 import GetForm from '../getForm'

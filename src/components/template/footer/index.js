@@ -85,7 +85,7 @@ const Footer = ({ siteTitle, pageStyle }) => {
                         }}
                         ref={ref}
                     >
-                        {inView && (
+                        {inView ? (
                             <GetForm
                                 option='enquiry'
                                 buttonName='Fetch!'
@@ -94,6 +94,8 @@ const Footer = ({ siteTitle, pageStyle }) => {
                                 formStyle='inputs.underline'
                                 footerError={'layout.footer.' + pageStyle}
                             />
+                        ) : (
+                            <PlaceholderLoader />
                         )}
                     </div>
                 </Flex>
