@@ -1,6 +1,7 @@
 /** @jsxImportSource theme-ui */
 import { Flex, Heading } from 'theme-ui'
 import LazyLoad from 'react-lazyload'
+import PlaceholderLoader from '../../placeholderLoader'
 import { Link } from 'gatsby'
 import ContactDetails from './contactDetails'
 import Logo from '../../logo'
@@ -79,7 +80,7 @@ const Footer = ({ siteTitle, pageStyle }) => {
                             width: [null, null, '100%'],
                         }}
                     >
-                        <LazyLoad height='100%' offset={100} once>
+                        <LazyLoad height='100%' offset={100} once placeholder={<PlaceholderLoader />}>
                             <GetForm
                                 option='enquiry'
                                 buttonName='Fetch!'
