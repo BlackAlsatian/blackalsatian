@@ -890,6 +890,7 @@ const theme = {
                     },
                 },
                 p: {
+                    margin: '0 0 1.5em',
                     span: {
                         a: {
                             color: 'white',
@@ -918,6 +919,7 @@ const theme = {
                     },
                 },
                 p: {
+                    margin: '0 0 1.5em',
                     span: {
                         a: {
                             color: 'yellow',
@@ -946,6 +948,7 @@ const theme = {
                     },
                 },
                 p: {
+                    margin: '0 0 1.5em',
                     span: {
                         a: {
                             color: 'blue',
@@ -974,6 +977,7 @@ const theme = {
                     },
                 },
                 p: {
+                    margin: '0 0 1.5em',
                     span: {
                         a: {
                             color: 'red',

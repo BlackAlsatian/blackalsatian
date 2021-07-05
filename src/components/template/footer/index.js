@@ -1,6 +1,6 @@
 /** @jsxImportSource theme-ui */
 import { Flex, Heading } from 'theme-ui'
-import { useInView } from 'react-intersection-observer'
+import LazyLoad from 'react-lazyload'
 import { Link } from 'gatsby'
 import ContactDetails from './contactDetails'
 import Logo from '../../logo'
@@ -43,10 +43,6 @@ const Footer = ({ siteTitle, pageStyle }) => {
     //     setTextcolor(footerColors[pageStyle].textcolor)
     // }
     // }, [pageStyle])
-    const { ref, inView } = useInView({
-        triggerOnce: true,
-        rootMargin: '200px 0px 0px 0px',
-    })
     return (
         <footer
             sx={{
@@ -82,9 +78,8 @@ const Footer = ({ siteTitle, pageStyle }) => {
                             p: 4,
                             width: [null, null, '100%'],
                         }}
-                        ref={ref}
                     >
-                        {inView && (
+                        <LazyLoad height='100%' offset={100} once>
                             <GetForm
                                 option='enquiry'
                                 buttonName='Fetch!'
@@ -93,7 +88,7 @@ const Footer = ({ siteTitle, pageStyle }) => {
                                 formStyle='inputs.underline'
                                 footerError={'layout.footer.' + pageStyle}
                             />
-                        )}
+                        </LazyLoad>
                     </div>
                 </Flex>
             </section>
