@@ -69,9 +69,13 @@ const ProjectHeader = ({ previous, project }) => {
                         transition: '200ms',
                         fontSize: 3,
                         fontWeight: 'black',
-                        '&:hover': {
+                        '&:hover, &:active, &:focus': {
+                            color: '#f5df4d',
                             backgroundColor: 'transparent',
                             boxShadow: 'none',
+                        },
+                        '&:visited': {
+                            color: 'white',
                         },
                     }}
                 >

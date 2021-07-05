@@ -26,7 +26,7 @@ const theme = {
         thin: '200',
         // light: "300",
         normal: '400',
-        // medium: "500",
+        // bold: "500",
         // semibold: "600",
         bold: '700',
         // extrabold: '800',
@@ -178,72 +178,130 @@ const theme = {
             fontFamily: 'body',
             lineHeight: 'body',
             fontWeight: 'body',
-        },
-        a: {
-            color: 'primary',
-            textDecoration: 'none',
-            '&:hover': {
+            a: {
+                color: 'black',
                 textDecoration: 'underline',
+                fontWeight: 'bold',
+                '&:hover': {
+                    textDecoration: 'none',
+                },
+                '&:visited': {
+                    color: 'rgba(0, 0, 0, 0.8)',
+                },
             },
-        },
-        h1: {
-            fontFamily: 'heading',
-            fontWeight: 'heading',
-            lineHeight: 'heading',
-            m: 0,
-            mb: 1,
-            fontSize: 6,
-            mt: 2,
-        },
-        h2: {
-            fontFamily: 'heading',
-            fontWeight: 'heading',
-            lineHeight: 'heading',
-            m: 0,
-            mb: 1,
-            fontSize: 5,
-            mt: 2,
-        },
-        h3: {
-            fontFamily: 'heading',
-            fontWeight: 'heading',
-            lineHeight: 'heading',
-            m: 0,
-            mb: 1,
-            fontSize: 4,
-            mt: 3,
-        },
-        h4: {
-            fontFamily: 'heading',
-            fontWeight: 'heading',
-            lineHeight: 'heading',
-            m: 0,
-            mb: 1,
-            fontSize: 3,
-        },
-        h5: {
-            fontFamily: 'heading',
-            fontWeight: 'heading',
-            lineHeight: 'heading',
-            m: 0,
-            mb: 1,
-            fontSize: 2,
-        },
-        h6: {
-            fontFamily: 'heading',
-            fontWeight: 'heading',
-            lineHeight: 'heading',
-            m: 0,
-            mb: 2,
-            fontSize: 1,
-        },
-        code: {},
-        pre: {},
-        hr: {
-            bg: 'muted',
-            border: 0,
-            height: '1px',
-            m: 3,
+            p: {
+                mb: '1.5rem',
+            },
+            h1: {
+                fontFamily: 'heading',
+                fontWeight: 'heading',
+                lineHeight: 'heading',
+                m: 0,
+                mb: '1.5rem',
+                fontSize: 6,
+                mt: 2,
+            },
+            h2: {
+                fontFamily: 'heading',
+                fontWeight: 'heading',
+                lineHeight: 'heading',
+                m: 0,
+                mb: '1.5rem',
+                fontSize: 5,
+                mt: 2,
+            },
+            h3: {
+                fontFamily: 'heading',
+                fontWeight: 'heading',
+                lineHeight: 'heading',
+                m: 0,
+                mb: '1.5rem',
+                fontSize: 4,
+                mt: 3,
+                a: {
+                    color: 'black',
+                    textDecoration: 'underline',
+                    fontWeight: 'bold',
+                    '&:hover': {
+                        textDecoration: 'none',
+                    },
+                    '&:visited': {
+                        color: 'rgba(0, 0, 0, 0.8)',
+                    },
+                },
+            },
+            h4: {
+                fontFamily: 'heading',
+                fontWeight: 'heading',
+                lineHeight: 'heading',
+                m: 0,
+                mb: '1.5rem',
+                fontSize: 3,
+                a: {
+                    color: 'black',
+                    textDecoration: 'underline',
+                    fontWeight: 'bold',
+                    '&:hover': {
+                        textDecoration: 'none',
+                    },
+                    '&:visited': {
+                        color: 'rgba(0, 0, 0, 0.8)',
+                    },
+                },
+            },
+            h5: {
+                fontFamily: 'heading',
+                fontWeight: 'heading',
+                lineHeight: 'heading',
+                m: 0,
+                mb: '1.5rem',
+                fontSize: 2,
+            },
+            h6: {
+                fontFamily: 'heading',
+                fontWeight: 'heading',
+                lineHeight: 'heading',
+                m: 0,
+                mb: 2,
+                fontSize: 1,
+            },
+            code: {},
+            pre: {},
+            hr: {
+                bg: 'muted',
+                border: 0,
+                height: '1px',
+                m: 3,
+            },
+            ul: {
+                m: '1.5rem',
+            },
+            li: {
+                a: {
+                    color: 'black',
+                    textDecoration: 'underline',
+                    fontWeight: 'bold',
+                    '&:hover': {
+                        textDecoration: 'none',
+                    },
+                    '&:visited': {
+                        color: 'rgba(0, 0, 0, 0.8)',
+                    },
+                },
+            },
+            blockquote: {
+                borderLeft: '5px solid black',
+                p: '0 1rem 0 2rem',
+                m: '3rem',
+                textAlign: 'left',
+                fontStyle: 'oblique',
+            },
+            figure: {
+                margin: '0 0 1em',
+                span: {
+                    display: 'inline-block',
+                },
+            },
         },
     },
     buttons: {
@@ -255,13 +313,13 @@ const theme = {
             lineHeight: 'inherit',
             backgroundColor: 'primary',
             border: 'none',
-            color: 'white',
+            // color: 'white',
             fontWeight: 'bold',
             fontFamily: 'body',
             borderRadius: 'default',
-            '&:hover': {
-                backgroundColor: 'primaryHover',
-            },
+            // '&:hover': {
+            //     backgroundColor: 'primaryHover',
+            // },
             white: {
                 color: 'white',
             },
@@ -532,71 +590,6 @@ const theme = {
     },
 
     layout: {
-        p: {
-            a: {
-                color: 'black',
-                textDecoration: 'underline',
-                fontWeight: 'medium',
-                '&:hover': {
-                    textDecoration: 'none',
-                },
-                '&:visited': {
-                    color: 'rgba(0, 0, 0, 0.8)',
-                },
-            },
-        },
-        h4: {
-            a: {
-                color: 'black',
-                textDecoration: 'underline',
-                fontWeight: 'medium',
-                '&:hover': {
-                    textDecoration: 'none',
-                },
-                '&:visited': {
-                    color: 'rgba(0, 0, 0, 0.8)',
-                },
-            },
-        },
-        h3: {
-            a: {
-                color: 'black',
-                textDecoration: 'underline',
-                fontWeight: 'medium',
-                '&:hover': {
-                    textDecoration: 'none',
-                },
-                '&:visited': {
-                    color: 'rgba(0, 0, 0, 0.8)',
-                },
-            },
-        },
-        li: {
-            a: {
-                color: 'black',
-                textDecoration: 'underline',
-                fontWeight: 'medium',
-                '&:hover': {
-                    textDecoration: 'none',
-                },
-                '&:visited': {
-                    color: 'rgba(0, 0, 0, 0.8)',
-                },
-            },
-        },
-        blockquote: {
-            borderLeft: '5px solid black',
-            p: '0 1rem 0 2rem',
-            m: '3rem',
-            textAlign: 'left',
-            fontStyle: 'oblique',
-        },
-        figure: {
-            margin: '0 0 1em',
-            span: {
-                display: 'inline-block',
-            },
-        },
         header: {
             default: {
                 svg: {
@@ -780,6 +773,16 @@ const theme = {
             },
             black: {
                 backgroundColor: 'black',
+                color: 'white',
+                a: {
+                    color: 'white',
+                    '&:hover': {
+                        color: 'white',
+                    },
+                    '&:visited': {
+                        color: 'rgba(255, 255, 255, 0.8)',
+                    },
+                },
             },
             altblack: {
                 backgroundColor: 'white',
@@ -796,80 +799,12 @@ const theme = {
                 color: 'white',
                 a: {
                     color: 'white',
-                    textDecoration: 'underline',
-                    fontWeight: 'medium',
                     '&:hover': {
                         textDecoration: 'none',
+                        color: 'white',
                     },
                     '&:visited': {
                         color: 'rgba(255, 255, 255, 0.8)',
-                    },
-                },
-                p: {
-                    a: {
-                        color: 'white',
-                        textDecoration: 'underline',
-                        fontWeight: 'medium',
-                        '&:hover': {
-                            textDecoration: 'none',
-                        },
-                        '&:visited': {
-                            color: 'rgba(255, 255, 255, 0.8)',
-                        },
-                    },
-                },
-                h4: {
-                    a: {
-                        color: 'white',
-                        textDecoration: 'underline',
-                        fontWeight: 'medium',
-                        '&:hover': {
-                            textDecoration: 'none',
-                        },
-                        '&:visited': {
-                            color: 'rgba(255, 255, 255, 0.8)',
-                        },
-                    },
-                },
-                h3: {
-                    a: {
-                        color: 'white',
-                        textDecoration: 'underline',
-                        fontWeight: 'medium',
-                        '&:hover': {
-                            textDecoration: 'none',
-                        },
-                        '&:visited': {
-                            color: 'rgba(255, 255, 255, 0.8)',
-                        },
-                    },
-                },
-                li: {
-                    a: {
-                        color: 'white',
-                        textDecoration: 'underline',
-                        fontWeight: 'medium',
-                        '&:hover': {
-                            textDecoration: 'none',
-                        },
-                        '&:visited': {
-                            color: 'rgba(255, 255, 255, 0.8)',
-                        },
-                    },
-                },
-                blockquote: {
-                    borderLeft: '5px solid white',
-                    p: '0 1rem 0 2rem',
-                    m: '3rem',
-                    textAlign: 'left',
-                    fontStyle: 'oblique',
-                },
-                figure: {
-                    textAlign: 'center',
-                    width: '100%',
-                    p: '0 auto',
-                    span: {
-                        m: '0 auto',
                     },
                 },
             },
@@ -890,19 +825,21 @@ const theme = {
                     },
                 },
                 p: {
-                    margin: '0 0 1.5em',
                     span: {
                         a: {
-                            color: 'white',
+                            color: 'white !important',
+                            '&:hover': {
+                                borderBottom: 0,
+                            },
                         },
                     },
                 },
-                figure: {
-                    margin: '0 0 1em',
-                    span: {
-                        display: 'inline-block',
-                    },
-                },
+                // figure: {
+                //     margin: '0 0 1em',
+                //     span: {
+                //         display: 'inline-block',
+                //     },
+                // },
             },
             yellow: {
                 backgroundColor: 'yellow',
@@ -919,19 +856,21 @@ const theme = {
                     },
                 },
                 p: {
-                    margin: '0 0 1.5em',
                     span: {
                         a: {
-                            color: 'yellow',
+                            color: '#f5df4d !important',
+                            '&:hover': {
+                                borderBottom: 0,
+                            },
                         },
                     },
                 },
-                figure: {
-                    margin: '0 0 1em',
-                    span: {
-                        display: 'inline-block',
-                    },
-                },
+                // figure: {
+                //     margin: '0 0 1em',
+                //     span: {
+                //         display: 'inline-block',
+                //     },
+                // },
             },
             blue: {
                 backgroundColor: 'blue',
@@ -946,21 +885,26 @@ const theme = {
                     '&:hover': {
                         borderBottom: '2px solid white',
                     },
+                    '&:visited, &:active, &:focus': {
+                        color: 'white',
+                    },
                 },
                 p: {
-                    margin: '0 0 1.5em',
                     span: {
                         a: {
-                            color: 'blue',
+                            color: '#0060b4 !important',
+                            '&:hover': {
+                                borderBottom: 0,
+                            },
                         },
                     },
                 },
-                figure: {
-                    margin: '0 0 1em',
-                    span: {
-                        display: 'inline-block',
-                    },
-                },
+                // figure: {
+                //     margin: '0 0 1em',
+                //     span: {
+                //         display: 'inline-block',
+                //     },
+                // },
             },
             red: {
                 backgroundColor: 'red',
@@ -975,21 +919,26 @@ const theme = {
                     '&:hover': {
                         borderBottom: '2px solid white',
                     },
+                    '&:visited, &:active, &:focus': {
+                        color: 'white',
+                    },
                 },
                 p: {
-                    margin: '0 0 1.5em',
                     span: {
                         a: {
-                            color: 'red',
+                            color: '#d93d33 !important',
+                            '&:hover': {
+                                borderBottom: 0,
+                            },
                         },
                     },
                 },
-                figure: {
-                    margin: '0 0 1em',
-                    span: {
-                        display: 'inline-block',
-                    },
-                },
+                // figure: {
+                //     margin: '0 0 1em',
+                //     span: {
+                //         display: 'inline-block',
+                //     },
+                // },
             },
         },
         footer: {
@@ -998,6 +947,9 @@ const theme = {
                 color: 'white',
                 a: {
                     color: 'white',
+                    '&:hover, &:visited, &:active, &:focus': {
+                        color: 'white',
+                    },
                 },
                 svg: {
                     fill: 'white',
@@ -1039,6 +991,9 @@ const theme = {
                 color: 'black',
                 a: {
                     color: 'black',
+                    '&:hover, &:visited, &:active, &:focus': {
+                        color: 'black',
+                    },
                 },
                 svg: {
                     fill: 'black',
@@ -1080,6 +1035,9 @@ const theme = {
                 color: 'black',
                 a: {
                     color: 'black',
+                    '&:hover, &:visited, &:active, &:focus': {
+                        color: 'black',
+                    },
                 },
                 svg: {
                     fill: 'black',
@@ -1121,6 +1079,9 @@ const theme = {
                 color: 'white',
                 a: {
                     color: 'white',
+                    '&:hover, &:visited, &:active, &:focus': {
+                        color: 'white',
+                    },
                 },
                 svg: {
                     fill: 'white',
@@ -1162,6 +1123,9 @@ const theme = {
                 color: 'white',
                 a: {
                     color: 'white',
+                    '&:hover, &:visited, &:active, &:focus': {
+                        color: 'white',
+                    },
                 },
                 svg: {
                     fill: 'white',
@@ -1203,6 +1167,9 @@ const theme = {
                 color: 'black',
                 a: {
                     color: 'black',
+                    '&:hover, &:visited, &:active, &:focus': {
+                        color: 'black',
+                    },
                 },
                 svg: {
                     fill: 'black',
@@ -1244,6 +1211,9 @@ const theme = {
                 color: 'white',
                 a: {
                     color: 'white',
+                    '&:hover, &:visited, &:active, &:focus': {
+                        color: 'white',
+                    },
                 },
                 svg: {
                     fill: 'white',
@@ -1285,6 +1255,9 @@ const theme = {
                 color: 'white',
                 a: {
                     color: 'white',
+                    '&:hover, &:visited, &:active, &:focus': {
+                        color: 'white',
+                    },
                 },
                 svg: {
                     fill: 'white',
@@ -1322,20 +1295,23 @@ const theme = {
                 },
             },
         },
-        project: {
-            p: {
-                color: 'white',
-                a: {
-                    color: 'white',
-                },
-            },
-            figure: {
-                margin: '0 0 1em',
-                span: {
-                    display: 'inline-block',
-                },
-            },
-        },
+        // project: {
+        //     p: {
+        //         color: 'white',
+        //         a: {
+        //             color: 'white',
+        //             '&:hover, &:active, &:visited': {
+        //                 color: 'white',
+        //             },
+        //         },
+        //     },
+        //     figure: {
+        //         margin: '0 0 1em',
+        //         span: {
+        //             display: 'inline-block',
+        //         },
+        //     },
+        // },
     },
 }
 export default theme

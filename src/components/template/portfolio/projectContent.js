@@ -49,11 +49,14 @@ const ProjectContent = ({ project, pageStyle }) => {
                                     variant: 'buttons.simple',
                                     display: 'inline-block',
                                     backgroundColor: 'white',
-                                    color: 'black',
+                                    color: '#111827',
                                     textDecoration: 'none',
                                     boxShadow: 'xl',
                                     '&:hover': {
                                         boxShadow: 'none',
+                                    },
+                                    '&:visited, &:active, &:focus': {
+                                        color: '#111827',
                                     },
                                 }}
                             >
@@ -82,7 +85,7 @@ const ProjectContent = ({ project, pageStyle }) => {
                         sx={{
                             flex: [null, null, 3],
                             width: ['100%', null],
-                            variant: 'layout.project',
+                            // variant: 'layout.project',
                         }}
                     >
                         {parse(project.content)}

@@ -94,8 +94,11 @@ const PortfolioIndex = ({ data }) => {
                                             textDecoration: 'none',
                                             display: 'block',
                                             width: '100%',
-                                            '&:hover': {
-                                                color: 'yellow',
+                                            '&:hover, &:focus, &:active': {
+                                                color: '#f5df4d !important',
+                                            },
+                                            '&:visited': {
+                                                color: 'white',
                                             },
                                         }}
                                     >
@@ -112,13 +115,13 @@ const PortfolioIndex = ({ data }) => {
                                                 transition: 'background 500ms ease-in',
                                             }}
                                         >
-                                            <p sx={{ flex: 1, px: 2 }}>{portfolio.projectYear}</p>
+                                            <span sx={{ flex: 1, px: 2 }}>{portfolio.projectYear}</span>
                                             <Heading
-                                                as='p'
+                                                as='span'
                                                 sx={{
                                                     flex: 4,
                                                     fontSize: 2,
-                                                    fontWeight: 'medium',
+                                                    fontWeight: 'bold',
                                                     px: 2,
                                                 }}
                                             >
@@ -136,6 +139,7 @@ const PortfolioIndex = ({ data }) => {
                                                         <span
                                                             sx={{
                                                                 m: 0,
+                                                                fontWeight: 'normal',
                                                             }}
                                                             key={id}
                                                         >

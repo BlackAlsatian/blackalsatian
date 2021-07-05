@@ -33,6 +33,7 @@ const ProjectTemplate = ({ data: { previous, portfolio, next } }) => {
                 }}
             >
                 <ProjectHeader project={portfolio} />
+
                 <ProjectContent project={portfolio} pageStyle={pageStyle} />
                 <section sx={{ backgroundColor: 'black' }}>
                     <PagesNav
@@ -40,8 +41,8 @@ const ProjectTemplate = ({ data: { previous, portfolio, next } }) => {
                         nextPagePath={next && next.uri}
                         previousName={previous && parse(previous.title)}
                         nextName={next && parse(next.title)}
-                        backgroundColor='black'
-                        color='white'
+                        backgroundColor='white'
+                        color='#111827'
                         swipeColor='#111827'
                     />
                 </section>

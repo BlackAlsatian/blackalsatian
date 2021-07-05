@@ -112,7 +112,7 @@ const BlogIndex = ({ data, pageContext: { nextPagePath, previousPagePath, pageIn
                                             width: '100%',
                                             height: '100%',
                                             px: 4,
-                                            // py: 5,
+                                            pb: 4,
                                             display: 'flex',
                                             flexDirection: 'column',
                                             justifyContent: 'flex-end',

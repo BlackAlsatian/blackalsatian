@@ -9,7 +9,7 @@ const MasonryGridViewAllLink = ({ url }) => {
             sx={{
                 variant: 'buttons.simple',
                 backgroundColor: 'black',
-                color: 'white',
+                color: 'white !important',
                 textDecoration: 'none',
                 boxShadow: 'xl',
                 '&:hover': {

@@ -155,7 +155,6 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
                                     sx={{
                                         flex: [null, null, 3],
                                         width: ['100%', null],
-                                        variant: 'layout',
                                     }}
                                 >
                                     {parse(post.content)}

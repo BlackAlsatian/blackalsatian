@@ -28,7 +28,7 @@ const PagesNav = ({ previousPagePath, nextPagePath, previousName, nextName, back
                                 sx={{
                                     variant: 'buttons.simple',
                                     backgroundColor: `${backgroundColor}`,
-                                    color: `${color}`,
+                                    color: `${color} !important`,
                                     textDecoration: 'none',
                                     boxShadow: 'xl',
                                     transition: '200ms',
@@ -62,7 +62,7 @@ const PagesNav = ({ previousPagePath, nextPagePath, previousName, nextName, back
                             sx={{
                                 variant: 'buttons.simple',
                                 backgroundColor: `${backgroundColor}`,
-                                color: `${color}`,
+                                color: `${color} !important`,
                                 textDecoration: 'none',
                                 boxShadow: 'xl',
                                 transition: '200ms',

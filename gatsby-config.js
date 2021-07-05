@@ -444,11 +444,11 @@ module.exports = {
         `gatsby-plugin-gatsby-cloud`,
         `gatsby-plugin-offline`,
         `gatsby-plugin-remove-generator`,
-        {
-            resolve: `gatsby-plugin-webpack-bundle-analyser-v2`,
-            options: {
-                devMode: true,
-            },
-        },
+        // {
+        //     resolve: `gatsby-plugin-webpack-bundle-analyser-v2`,
+        //     options: {
+        //         devMode: true,
+        //     },
+        // },
     ],
 }
