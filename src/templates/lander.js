@@ -3,6 +3,7 @@ import { graphql } from 'gatsby'
 import { useLayoutEffect, useContext } from 'react'
 import { PageStyleContext } from '../components/pageStyleProvider'
 import { getSrc } from 'gatsby-plugin-image'
+import HeroBlock from '../components/template/blocks/heroBlock'
 import Modules from '../components/modules'
 import SEO from '../components/seo'
 
@@ -15,8 +16,16 @@ const LanderTemplate = ({ data: { lander, pageblocks } }) => {
     useLayoutEffect(() => {
         setPageStyle(pageStyle)
     }, [pageStyle])
+
+    const HeroAttributes = pageblocks.blocks[0].innerBlocks[0].attributes
     return (
         <>
+            <HeroBlock
+                featuredImage={lander.featuredImage}
+                color={HeroAttributes.heroFontColor}
+                title={HeroAttributes.heroTitle}
+                intro={HeroAttributes.heroIntro}
+            />
             <SEO
                 title={lander.title}
                 description={lander.seo?.metaDesc}
@@ -29,7 +38,6 @@ const LanderTemplate = ({ data: { lander, pageblocks } }) => {
                 pageblocks.blocks.map(({ name, order, attributes, innerBlocks }) => (
                     <Modules
                         key={order}
-                        featuredImage={lander.featuredImage}
                         module={{ name: name, order: order }}
                         innerBlocks={innerBlocks}
                         attributes={attributes}

@@ -4,6 +4,7 @@ import { useLayoutEffect, useContext } from 'react'
 import { PageStyleContext } from '../components/pageStyleProvider'
 import { graphql } from 'gatsby'
 import { getSrc } from 'gatsby-plugin-image'
+import HeroBlock from '../components/template/blocks/heroBlock'
 import parse from 'html-react-parser'
 import Modules from '../components/modules'
 import SEO from '../components/seo'
@@ -32,53 +33,63 @@ const PageTemplate = ({ data: { page, pageblocks } }) => {
                 dateModified={page.modifiedGmt}
                 isFrontPage={page.isFrontPage}
             />
-            {page.isFrontPage
-                ? pageblocks.blocks &&
-                  pageblocks.blocks.map(({ name, order, attributes, innerBlocks }) => (
-                      <Modules
-                          key={order}
-                          featuredImage={page.featuredImage}
-                          module={{ name: name, order: order }}
-                          innerBlocks={innerBlocks}
-                          attributes={attributes}
-                      />
-                  ))
-                : !pageTitles.includes(page.title) && (
-                      <>
-                          <PageHeader title={parse(page.title)} intro={page.pageintro} headerStyle={pageStyle} />
-                          <section
-                              sx={{
-                                  py: 5,
-                              }}
-                          >
-                              <Container p={1}>
-                                  <Flex
-                                      sx={{
-                                          flexDirection: ['column', 'column', 'row'],
-                                      }}
-                                  >
-                                      <LeftColumn
-                                          heading={page.pagesubheading}
-                                          title={page.pagesubtitle}
-                                          headerSize='h2'
-                                          page
-                                      />
-                                      <Box
-                                          py={[0, 0, 4]}
-                                          px={[4, 4, 6]}
-                                          sx={{
-                                              flex: [null, null, 3],
-                                              width: ['100%', null],
-                                              variant: 'layout',
-                                          }}
-                                      >
-                                          {page.content && parse(page.content)}
-                                      </Box>
-                                  </Flex>
-                              </Container>
-                          </section>
-                      </>
-                  )}
+            {page.isFrontPage ? (
+                <>
+                    <HeroBlock
+                        featuredImage={page.featuredImage}
+                        color={pageblocks.blocks[0].innerBlocks[0].attributes.heroFontColor}
+                        title={pageblocks.blocks[0].innerBlocks[0].attributes.heroTitle}
+                        intro={pageblocks.blocks[0].innerBlocks[0].attributes.heroIntro}
+                    />
+                    {pageblocks.blocks &&
+                        pageblocks.blocks.map(({ name, order, attributes, innerBlocks }) => (
+                            <Modules
+                                key={order}
+                                // featuredImage={page.featuredImage}
+                                module={{ name: name, order: order }}
+                                innerBlocks={innerBlocks}
+                                attributes={attributes}
+                            />
+                        ))}
+                </>
+            ) : (
+                !pageTitles.includes(page.title) && (
+                    <>
+                        <PageHeader title={parse(page.title)} intro={page.pageintro} headerStyle={pageStyle} />
+                        <section
+                            sx={{
+                                py: 5,
+                            }}
+                        >
+                            <Container p={1}>
+                                <Flex
+                                    sx={{
+                                        flexDirection: ['column', 'column', 'row'],
+                                    }}
+                                >
+                                    <LeftColumn
+                                        heading={page.pagesubheading}
+                                        title={page.pagesubtitle}
+                                        headerSize='h2'
+                                        page
+                                    />
+                                    <Box
+                                        py={[0, 0, 4]}
+                                        px={[4, 4, 6]}
+                                        sx={{
+                                            flex: [null, null, 3],
+                                            width: ['100%', null],
+                                            variant: 'layout',
+                                        }}
+                                    >
+                                        {page.content && parse(page.content)}
+                                    </Box>
+                                </Flex>
+                            </Container>
+                        </section>
+                    </>
+                )
+            )}
         </>
     )
 }
