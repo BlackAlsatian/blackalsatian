@@ -207,7 +207,7 @@ const theme = {
                 flex: 1,
             },
             p: {
-                mb: '1.5rem',
+                mb: 4,
             },
             h1: {
                 fontFamily: 'heading',
@@ -307,16 +307,28 @@ const theme = {
                 },
             },
             blockquote: {
-                borderLeft: '5px solid black',
-                p: '0 1rem 0 2rem',
-                m: '3rem',
+                fontFamily: 'serif',
+                fontSize: 2,
+                borderTop: '0.01rem solid black',
+                borderBottom: '0.025rem solid black',
+                p: '2.2rem 2rem 0.2rem 2rem',
+                m: '2.5rem 0',
                 textAlign: 'left',
                 fontStyle: 'oblique',
+                lineHeight: 'tight',
+                textAlign: 'center',
             },
             figure: {
-                margin: '0 0 1em',
+                my: 4,
+                textAlign: 'center',
                 span: {
                     display: 'inline-block',
+                },
+                figcaption: {
+                    color: '#999',
+                    fontStyle: 'oblique',
+                    fontSize: 0,
+                    fontWeight: 'thin',
                 },
             },
         },
