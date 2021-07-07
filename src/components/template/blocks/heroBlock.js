@@ -21,7 +21,7 @@ const HeroBlock = ({ featuredImage, color, title, intro }) => {
         >
             <GatsbyImage
                 image={featuredImageData}
-                alt={featuredImage.node.altText}
+                alt={featuredImage.node.altText || title}
                 loading='eager'
                 objectPosition='60% 40%'
                 backgroundColor='#111827'

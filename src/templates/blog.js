@@ -11,9 +11,9 @@ import SEO from '../components/seo'
 import PageHeader from '../components/template/pageHeader'
 import PagesNav from '../components/pagesNav'
 
-const BlogIndex = ({ data, pageContext: { nextPagePath, previousPagePath, pageIndex }, location: { pathname } }) => {
+const BlogIndex = ({ data, pageContext: { nextPagePath, previousPagePath, pageNumber }, location: { pathname } }) => {
     const { setPageStyle } = useContext(PageStyleContext)
-
+    console.log(pageNumber)
     const pageStyle = 'white'
 
     useLayoutEffect(() => {
@@ -45,13 +45,38 @@ const BlogIndex = ({ data, pageContext: { nextPagePath, previousPagePath, pageIn
     return (
         <>
             <SEO
-                title={pageIndex > 1 ? browserTitle + ' - Page ' + pageIndex : browserTitle}
-                description={pageIndex > 1 ? content + ' - Page ' + pageIndex : content}
+                title={pageNumber > 1 ? browserTitle + ' - Page ' + pageNumber : browserTitle}
+                description={pageNumber > 1 ? content + ' - Page ' + pageNumber : content}
                 url={pathname}
                 // featuredImage={page.featuredImage?.node?.og?.childImageSharp?.gatsbyImageData?.src}
             />
             {pathname === '/blog/' && <PageHeader title={pageTitle} intro={content} headerStyle={pageStyle} />}
             <section>
+                {pathname !== '/blog/' && (
+                    <Container
+                        sx={{
+                            width: '100%',
+                            px: 3,
+                            mt: pathname !== '/blog/' ? 6 : null,
+                        }}
+                    >
+                        <Heading
+                            as='h1'
+                            sx={{
+                                lineHeight: 'tight',
+                                letterSpacing: 'tighter',
+                                fontSize: 4,
+                                fontWeight: 'bold',
+                                my: 4,
+                                display: 'block',
+                                width: '50%',
+                            }}
+                        >
+                            {'Web Development & Digital Trends From Around The Web: Page ' + pageNumber}
+                        </Heading>
+                    </Container>
+                )}
+
                 <Container
                     sx={{
                         width: '100%',
@@ -59,8 +84,8 @@ const BlogIndex = ({ data, pageContext: { nextPagePath, previousPagePath, pageIn
                         columnGap: 4,
                         counterReset: 'item-counter',
                         px: 3,
-                        py: 5,
-                        mt: pathname !== '/blog/' ? 6 : null,
+                        pb: 5,
+                        mt: pathname !== '/blog/' ? 5 : null,
                     }}
                 >
                     {posts.map((post) => {
@@ -68,7 +93,7 @@ const BlogIndex = ({ data, pageContext: { nextPagePath, previousPagePath, pageIn
                         const excerpt = post.excerpt
                         const featuredImage = {
                             fluid: post.featuredImage?.node?.tile?.childImageSharp?.gatsbyImageData,
-                            alt: post.featuredImage?.node?.alt || ``,
+                            alt: post.featuredImage?.node?.altText || ``,
                         }
                         return (
                             <AniLink
@@ -97,7 +122,7 @@ const BlogIndex = ({ data, pageContext: { nextPagePath, previousPagePath, pageIn
                                     {featuredImage?.fluid && (
                                         <GatsbyImage
                                             image={featuredImage.fluid}
-                                            alt={featuredImage.alt}
+                                            alt={featuredImage.alt || post.title}
                                             style={{
                                                 display: 'block',
                                                 position: 'relative',
@@ -112,7 +137,7 @@ const BlogIndex = ({ data, pageContext: { nextPagePath, previousPagePath, pageIn
                                             width: '100%',
                                             height: '100%',
                                             px: 4,
-                                            pb: 4,
+                                            py: 4,
                                             display: 'flex',
                                             flexDirection: 'column',
                                             justifyContent: 'flex-end',

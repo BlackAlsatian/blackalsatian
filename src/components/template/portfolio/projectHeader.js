@@ -7,7 +7,7 @@ import parse from 'html-react-parser'
 const ProjectHeader = ({ previous, project }) => {
     const featuredImage = {
         fluid: project.featuredImage?.node?.main?.childImageSharp?.gatsbyImageData,
-        alt: project.featuredImage?.node?.alt || ``,
+        alt: project.featuredImage?.node?.altText || ``,
     }
     return (
         <section
@@ -83,7 +83,9 @@ const ProjectHeader = ({ previous, project }) => {
                 </AniLink>
             </Box>
             <Container p={[3, 3, 5]}>
-                {featuredImage?.fluid && <GatsbyImage image={featuredImage.fluid} alt={featuredImage.alt} />}
+                {featuredImage?.fluid && (
+                    <GatsbyImage image={featuredImage.fluid} alt={featuredImage.alt || parse(project.title)} />
+                )}
             </Container>
         </section>
     )

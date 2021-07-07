@@ -27,7 +27,7 @@ const ServiceImageLeft = ({ image, name, description }) => {
                 {image?.fluid && (
                     <GatsbyImage
                         image={image.fluid}
-                        alt={image.alt}
+                        alt={image.altText || name}
                         sx={{
                             height: '100%',
                             width: '100%',

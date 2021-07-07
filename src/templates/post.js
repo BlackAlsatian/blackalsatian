@@ -54,7 +54,7 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
                         >
                             <GatsbyImage
                                 image={featuredImage.fluid}
-                                alt={featuredImage.alt}
+                                alt={featuredImage.alt || post.title}
                                 fadeIn='false'
                                 loading='eager'
                                 objectPosition='50% 50%'

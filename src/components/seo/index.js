@@ -77,7 +77,7 @@ const SEO = ({
 
                         {/* OpenGraph tags */}
                         <meta property='og:url' content={canonicalUrl} />
-                        {isBlogPost ? <meta property='og:type' content='article' /> : null}
+                        <meta property='og:type' content={isBlogPost ? 'article' : 'website'} />
 
                         {/* <meta property="og:type" content="article" /> */}
                         <meta property='og:title' content={pageTitle} />

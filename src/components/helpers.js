@@ -5,7 +5,7 @@ export function randomID() {
 
 // calculates a random height for the masonry layout tiles
 export function getHeight() {
-    return Math.floor(Math.random() * 400 + 250)
+    return Math.floor(Math.random() * 400 + 300)
 }
 
 // temporary hacky way of changing error text colours for specific pages

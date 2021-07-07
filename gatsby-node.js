@@ -177,6 +177,7 @@ async function createBlogPostArchive({ posts, gatsbyUtilities }) {
                     postsPerPage,
                     nextPagePath: getPagePath(pageNumber + 1),
                     previousPagePath: getPagePath(pageNumber - 1),
+                    pageNumber,
                     // pageStyle: 'white',
                 },
             })

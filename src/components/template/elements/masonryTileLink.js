@@ -23,7 +23,7 @@ const MasonryTileLink = ({ node, headerType }) => (
         >
             <GatsbyImage
                 image={node.featuredImage?.node.tile?.childImageSharp?.gatsbyImageData}
-                alt={node.featuredImage?.node.altText}
+                alt={node.featuredImage?.node.altText || node.title}
                 style={{
                     display: 'block',
                     position: 'relative',
