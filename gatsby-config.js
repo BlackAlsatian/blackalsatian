@@ -17,7 +17,8 @@ module.exports = {
             name: `Black Alsatian`,
             alternateName: `Artisan Web Design Company by Passionate Web Developers`,
             url: `https://www.blackalsatian.co.za`,
-            logo: `/images/blackals-icon-logo112x112.png`,
+            logo: `/images/blackalsatian-icon-112x112.png`,
+            pubLogo: `/images/blackalsatian-pub-logo.png`,
             email: `info@blackalsatian.com`,
             telephone: `+27 87 821 7172`,
         },
@@ -32,7 +33,7 @@ module.exports = {
         },
         image: `/images/black-alsatian-dark-dog.png`,
         pubLogo: `/images/blackalsatian-pub-logo.png`,
-        pubIconLogo: `/images/blackals-icon-logo.png`,
+        pubIconLogo: `/images/blackalsatian-icon-logo.png`,
         blog: {
             title: `Blog`,
             browserTitle: `A Web Design Company's Blog`,

@@ -35,6 +35,7 @@ const SEO = ({
                             logo
                             email
                             telephone
+                            pubLogo
                         }
                         twitter
                         socialUrls {

@@ -81,9 +81,9 @@ export default memo(
                       },
                       publisher: {
                           '@type': 'Organization',
-                          url: organization.url,
-                          logo: organization.url + organization.logo,
                           name: organization.name,
+                          url: organization.url,
+                          logo: organization.url + organization.pubLogo,
                       },
                       mainEntityOfPage: {
                           '@type': 'Article',
