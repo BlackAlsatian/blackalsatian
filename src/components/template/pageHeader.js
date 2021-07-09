@@ -5,15 +5,17 @@ const PageHeader = ({ title, intro, headerStyle }) => {
     return (
         <section
             sx={{
-                py: 0,
-                // pt: ['35vh', '35vh', '40vh'],
                 position: 'relative',
                 variant: 'sections.pageHeaders.' + headerStyle,
             }}
         >
             <Container
                 p={4}
-                sx={{ position: 'absolute', pt: ['45vh', '45vh', '55vh'], minHeight: '100vh', mx: 'auto' }}
+                sx={{
+                    position: 'absolute',
+                    pt: ['45vh', '45vh', '50vh'],
+                    minHeight: '100vh',
+                }}
             >
                 <Heading
                     as='h1'

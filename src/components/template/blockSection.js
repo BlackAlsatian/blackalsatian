@@ -21,6 +21,7 @@ const ContentBlock = ({
     return (
         <section
             sx={{
+                py: [5, 5, 6],
                 variant: 'sections.blocks.' + backgroundColor,
             }}
             id={anchor}
@@ -33,7 +34,7 @@ const ContentBlock = ({
                 >
                     <LeftColumn heading={heading} title={title} headerSize={headerSize} />
                     <Box
-                        py={[4, 4, 5]}
+                        // py={[4, 4, 5]}
                         px={[4, 4, 6]}
                         sx={{
                             flex: [null, null, 3],

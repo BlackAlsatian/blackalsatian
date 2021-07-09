@@ -13,11 +13,6 @@ const HeroBlock = ({ featuredImage, color, title, intro }) => {
             sx={{
                 position: 'relative',
                 color: `${color}`,
-                py: 0,
-                flexDirection: 'column',
-                alignItems: 'normal',
-                // width: '100%',
-                // minHeight: '100vh',
             }}
         >
             <GatsbyImage

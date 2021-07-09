@@ -8,6 +8,7 @@ const MasonryGrid = ({ dataNodes, heading, viewAllLink, headerType }) => {
         <section
             sx={{
                 px: [1, 1, 6],
+                py: [5, 5, 6],
                 backgroundColor: 'white',
                 variant: 'sections.masonryWrapper',
             }}

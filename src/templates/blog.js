@@ -53,7 +53,6 @@ const BlogIndex = ({ data, pageContext: { nextPagePath, previousPagePath, pageNu
             {pathname === '/blog/' && <PageHeader title={pageTitle} intro={content} headerStyle={pageStyle} />}
             <section
                 sx={{
-                    py: 0,
                     display: 'block',
                     alignItems: 'normal',
                     minHeight: 'initial',

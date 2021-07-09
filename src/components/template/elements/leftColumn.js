@@ -4,7 +4,8 @@ import { Box, Heading } from 'theme-ui'
 const LeftColumn = ({ heading, title, page }) => {
     return (
         <Box
-            p={[3, 3, 2, 5]}
+            px={[4, 4, 6]}
+            py={[5, 5, null]}
             sx={{
                 textAlign: ['left', 'left', 'right'],
                 flex: [null, null, 1],

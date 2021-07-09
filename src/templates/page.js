@@ -58,7 +58,7 @@ const PageTemplate = ({ data: { page, pageblocks } }) => {
                         <PageHeader title={parse(page.title)} intro={page.pageintro} headerStyle={pageStyle} />
                         <section
                             sx={{
-                                py: 5,
+                                py: [5, 5, 6],
                                 minHeight: 'initial',
                                 variant: 'main.' + pageStyle,
                             }}
@@ -76,8 +76,8 @@ const PageTemplate = ({ data: { page, pageblocks } }) => {
                                         page
                                     />
                                     <Box
-                                        py={[3, 3, 5]}
-                                        px={[3, 3, 5]}
+                                        // py={[3, 3, 5]}
+                                        px={[4, 4, 6]}
                                         sx={{
                                             flex: [null, null, 3],
                                             width: ['100%', null],

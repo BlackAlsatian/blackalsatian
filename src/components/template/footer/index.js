@@ -96,7 +96,7 @@ const Footer = ({ siteTitle, pageStyle }) => {
                     variant: 'sections.footerRowTwo',
                 }}
             >
-                <div sx={{ flex: 1, mx: 1, my: [3, 3, null] }}>
+                <div sx={{ flex: 1, mx: 1, my: [2, 2, null] }}>
                     <Link
                         sx={{
                             textDecoration: 'none',
@@ -119,7 +119,7 @@ const Footer = ({ siteTitle, pageStyle }) => {
                     sx={{
                         flex: 2,
                         mx: 1,
-                        my: [3, 3, null],
+                        my: [2, 2, null],
                         textAlign: [null, null, 'center'],
                     }}
                 >
@@ -140,7 +140,7 @@ const Footer = ({ siteTitle, pageStyle }) => {
                     sx={{
                         flex: 1,
                         mx: [null, null, 1],
-                        my: [3, 3, null],
+                        my: [2, 2, null],
                         textAlign: ['left', 'left', 'right'],
                     }}
                 >

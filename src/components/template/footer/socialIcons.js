@@ -11,6 +11,7 @@ const SocialIcons = ({ textcolor }) => {
             sx={{
                 listStyleType: 'none',
                 display: 'flex',
+                justifyContent: 'flex-end',
                 m: 0,
                 p: 0,
             }}

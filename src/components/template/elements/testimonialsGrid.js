@@ -6,6 +6,7 @@ const TestimonialsGrid = ({ children, heading }) => {
         <section
             sx={{
                 px: [1, 1, 6],
+                py: [5, 5, 6],
                 backgroundColor: 'yellow',
                 variant: 'sections.masonryWrapper',
             }}

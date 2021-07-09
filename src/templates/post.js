@@ -44,14 +44,7 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
                     backgroundColor='#111827'
                     sx={{
                         position: 'relative',
-                        // width: '100%',
-                        py: 0,
-                        flexDirection: 'column',
-                        // alignItems: 'normal',
-                        // justifyContent: 'center',
                         variant: 'sections.pageHeaders.' + pageStyle,
-                        animation: 'fadeBlockIn 200ms ease-in both',
-                        animationDelay: '50ms',
                     }}
                 >
                     <GatsbyImage
@@ -60,7 +53,7 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
                         fadeIn='false'
                         loading='eager'
                         objectPosition='50% 50%'
-                        backgroundColor='white'
+                        backgroundColor='#111827'
                         sx={{
                             position: 'relative',
                             width: '100%',
@@ -70,7 +63,12 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
                     />
                     <Container
                         p={4}
-                        sx={{ position: 'absolute', pt: ['45vh', '45vh', '50vh'], minHeight: '100vh', mx: 'auto' }}
+                        sx={{
+                            position: 'absolute',
+                            pt: ['45vh', '45vh', '50vh'],
+                            minHeight: '100vh',
+                            mx: 'auto',
+                        }}
                     >
                         <Heading
                             as='h1'
@@ -137,6 +135,8 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
                                         lineHeight: 1,
                                         mb: 4,
                                         letterSpacing: 'tighter',
+                                        animation: 'fadeBlockIn 400ms ease-in both',
+                                        animationDelay: '300ms',
                                     }}
                                 >
                                     {parse(post.title)}
