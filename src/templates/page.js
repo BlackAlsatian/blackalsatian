@@ -58,10 +58,12 @@ const PageTemplate = ({ data: { page, pageblocks } }) => {
                         <PageHeader title={parse(page.title)} intro={page.pageintro} headerStyle={pageStyle} />
                         <section
                             sx={{
-                                variant: 'sections.noypadding',
+                                py: 5,
+                                minHeight: 'initial',
+                                variant: 'main.' + pageStyle,
                             }}
                         >
-                            <Container p={1}>
+                            <Container px={1}>
                                 <Flex
                                     sx={{
                                         flexDirection: ['column', 'column', 'row'],
@@ -74,12 +76,11 @@ const PageTemplate = ({ data: { page, pageblocks } }) => {
                                         page
                                     />
                                     <Box
-                                        py={[0, 0, 4]}
-                                        px={[4, 4, 6]}
+                                        py={[3, 3, 5]}
+                                        px={[3, 3, 5]}
                                         sx={{
                                             flex: [null, null, 3],
                                             width: ['100%', null],
-                                            variant: 'layout',
                                         }}
                                     >
                                         {page.content && parse(page.content)}

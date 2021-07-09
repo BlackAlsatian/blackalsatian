@@ -16,7 +16,7 @@ const ProjectHeader = ({ previous, project, pageStyle }) => {
                 minHeight: '40vh',
                 pt: '10vh',
                 pb: 0,
-                variant: 'layout.main.' + pageStyle,
+                variant: 'main.' + pageStyle,
             }}
         >
             <Flex

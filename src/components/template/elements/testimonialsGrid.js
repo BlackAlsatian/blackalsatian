@@ -5,31 +5,21 @@ const TestimonialsGrid = ({ children, heading }) => {
     return (
         <section
             sx={{
-                px: [3, 3, 6],
-                variant: 'sections.testimonials',
+                px: [1, 1, 6],
+                backgroundColor: 'yellow',
+                variant: 'sections.masonryWrapper',
             }}
         >
             <div
                 sx={{
-                    width: '100%',
-                    pb: 6,
+                    variant: 'sections.masonryWrapper.header',
                 }}
             >
-                <Heading as='h3' sx={{ ml: [4, 4, 0], fontSize: 5, fontWeight: 'normal' }}>
+                <Heading as='h3' sx={{ mx: [4, 4, 0] }}>
                     {heading}
                 </Heading>
             </div>
-            <div
-                sx={{
-                    width: '100%',
-                    columnCount: [1, 2, 3],
-                    columnGap: 4,
-                    counterReset: 'item-counter',
-                    px: 3,
-                }}
-            >
-                {children}
-            </div>
+            <div sx={{ columnCount: [1, 2, 3], variant: 'sections.masonryWrapper.grid' }}>{children}</div>
         </section>
     )
 }

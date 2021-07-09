@@ -175,9 +175,44 @@ const theme = {
     breakpoints: ['640px', '768px', '1024px', '1280px', '1520px'],
     styles: {
         root: {
+            scrollBehavior: 'smooth',
+            '@media screen and (prefersReducedMotion: reduce)': {
+                scrollBehavior: 'auto',
+            },
+            '& ::selection ': {
+                backgroundColor: '#f5df4d',
+            },
+            '& *::-webkit-scrollbar': {
+                width: '6px',
+                backgroundColor: '#867f7f',
+            },
+            '& *::-webkit-scrollbar-track': {
+                WebkitBoxShadow: 'inset 0 0 6px rgba(0, 0, 0, 0.3)',
+                boxShadow: 'inset 0 0 6px rgba(0, 0, 0, 0.3)',
+                backgroundColor: '#6b7280',
+            },
+            '& *::-webkit-scrollbar-thumb': {
+                backgroundColor: '#000000',
+                border: '6px solid #1c1c1c',
+            },
+            '@keyframes fadeBlockIn': {
+                from: {
+                    opacity: 0,
+                    // transform: 'translate3d(0, -20%, 0)',
+                },
+                to: {
+                    opacity: 1,
+                    // transform: 'translate3d(0, 0, 0)',
+                },
+            },
             fontFamily: 'body',
             lineHeight: 'body',
             fontWeight: 'body',
+            body: {
+                minHeight: '100vh',
+                WebkitFontSmoothing: 'antialiased',
+                MozOsxFontSmoothing: 'grayscale',
+            },
             a: {
                 color: 'black',
                 textDecoration: 'underline',
@@ -213,15 +248,20 @@ const theme = {
             },
             main: {
                 flex: 1,
-                div: {
-                    div: {
-                        '& > section': {
-                            display: 'flex',
-                            alignItems: 'center',
-                            minHeight: '100vh',
-                            width: '100%',
-                            py: 6,
-                        },
+                counterReset: 'css-counter -2',
+                section: {
+                    display: 'flex',
+                    alignItems: 'center',
+                    minHeight: '100vh',
+                    width: '100%',
+                    py: 6,
+                    p: 0,
+                    m: 0,
+                    // opacity: 0,
+                    counterIncrement: 'css-counter 1',
+                    animation: 'fadeBlockIn 200ms ease-in both',
+                    '& :nth-of-type(counter(css-counter))': {
+                        animationDelay: 'counter(css-counter)s',
                     },
                 },
             },
@@ -230,25 +270,15 @@ const theme = {
                 fontSize: 0,
                 fontWeight: 'normal',
             },
-            article: {
-                display: 'block',
-                // alignItems: 'center',
-                // flexDirection: 'column',
-                // minHeight: '100vh',
-                header: {
-                    display: 'block',
-                    p: 0,
-                    m: 0,
-                    minHeight: '100vh',
-                },
-                '& > section': {
-                    display: 'flex',
-                    alignItems: 'center',
-                    minHeight: '100vh',
-                    width: '100%',
-                    py: 6,
-                },
-            },
+            // article: {
+            //     display: 'block',
+            //     header: {
+            //         display: 'block',
+            //         p: 0,
+            //         m: 0,
+            //         minHeight: '100vh',
+            //     },
+            // },
             p: {
                 mb: 4,
             },
@@ -257,9 +287,6 @@ const theme = {
                 fontWeight: 'heading',
                 lineHeight: 'heading',
                 m: 0,
-                // mb: '1.5rem',
-                // fontSize: 6,
-                // mt: 2,
             },
             h2: {
                 fontFamily: 'heading',
@@ -354,8 +381,8 @@ const theme = {
                 fontSize: 2,
                 borderTop: '0.01rem solid black',
                 borderBottom: '0.025rem solid black',
-                p: '2.2rem 2rem 0.2rem 2rem',
-                m: '2.5rem 0',
+                p: '2.2rem 2rem 2.2rem 2rem',
+                m: '2.75rem 0',
                 textAlign: 'left',
                 fontStyle: 'oblique',
                 lineHeight: 'tight',
@@ -639,39 +666,296 @@ const theme = {
             },
         },
     },
-    sections: {
-        // other sections
-        testimonials: {
-            display: 'block',
-            alignItems: 'normal',
-            backgroundColor: 'yellow',
-        },
-        masonry: {
-            display: 'block',
-            width: '100%',
-            minHeight: '100vh',
-            backgroundColor: 'white',
-            div: {
-                width: '100%',
-                h3: {
-                    fontSize: 5,
-                    fontWeight: 'normal',
+
+    header: {
+        default: {
+            svg: {
+                fill: 'white',
+            },
+            nav: {
+                a: {
+                    color: 'white',
+                    textDecoration: 'none',
+                    '&:hover, &:focus, &.active': {
+                        opacity: 0.9,
+                    },
                 },
             },
-            '& > div:first-of-type': {
+            div: {
+                button: {
+                    svg: {
+                        background: 'white',
+                    },
+                },
+            },
+        },
+        white: {
+            svg: {
+                fill: 'black',
+            },
+            nav: {
+                a: {
+                    color: 'black',
+                    textDecoration: 'none',
+                    '&:hover, &:focus, &.active': {
+                        opacity: 0.9,
+                    },
+                },
+            },
+            div: {
+                button: {
+                    svg: {
+                        background: 'black',
+                    },
+                },
+            },
+        },
+        postwhite: {
+            svg: {
+                fill: 'white',
+            },
+            nav: {
+                a: {
+                    color: 'white',
+                    textDecoration: 'none',
+                    '&:hover, &:focus, &.active': {
+                        opacity: 0.9,
+                    },
+                },
+            },
+            div: {
+                button: {
+                    svg: {
+                        background: 'white',
+                    },
+                },
+            },
+        },
+        black: {
+            svg: {
+                fill: 'white',
+                '&:hover, &:focus, &.active': {
+                    fill: '#f5df4d !important',
+                },
+                '&:visited': {
+                    opacity: 1,
+                },
+            },
+            nav: {
+                a: {
+                    color: 'white',
+                    textDecoration: 'none',
+                    '&:hover, &:focus, &.active': {
+                        color: '#f5df4d !important',
+                    },
+                    '&:visited': {
+                        opacity: 0.9,
+                    },
+                },
+            },
+            div: {
+                button: {
+                    svg: {
+                        background: 'white',
+                    },
+                },
+            },
+        },
+        altblack: {
+            svg: {
+                fill: 'white',
+            },
+            nav: {
+                a: {
+                    color: 'white',
+                    textDecoration: 'none',
+                    '&:hover, &:focus, &.active': {
+                        opacity: 0.9,
+                    },
+                },
+            },
+            div: {
+                button: {
+                    svg: {
+                        background: 'white',
+                    },
+                },
+            },
+        },
+        yellow: {
+            svg: {
+                fill: 'black',
+            },
+            nav: {
+                a: {
+                    color: 'black',
+                    textDecoration: 'none',
+                    '&:hover, &:focus, &.active': {
+                        opacity: 0.9,
+                    },
+                },
+            },
+            div: {
+                button: {
+                    svg: {
+                        background: 'black',
+                    },
+                },
+            },
+        },
+        altyellow: {
+            svg: {
+                fill: 'black',
+            },
+            nav: {
+                a: {
+                    color: 'black',
+                    textDecoration: 'none',
+                    '&:hover, &:focus, &.active': {
+                        opacity: 0.9,
+                    },
+                },
+            },
+            div: {
+                button: {
+                    svg: {
+                        background: 'black',
+                    },
+                },
+            },
+        },
+        red: {
+            borderColor: 'white',
+            svg: {
+                fill: 'white',
+            },
+            nav: {
+                a: {
+                    color: 'white',
+                    textDecoration: 'none',
+                    '&:hover, &:focus, &.active': {
+                        opacity: 0.9,
+                    },
+                },
+            },
+            div: {
+                button: {
+                    svg: {
+                        background: 'white',
+                    },
+                },
+            },
+        },
+    },
+
+    main: {
+        default: {
+            backgroundColor: 'white',
+        },
+        white: {
+            backgroundColor: 'white',
+        },
+        postwhite: {
+            backgroundColor: 'white',
+        },
+        black: {
+            backgroundColor: 'black',
+            color: 'white',
+            a: {
+                color: 'white',
+                '&:hover': {
+                    color: 'white',
+                },
+                '&:visited': {
+                    color: 'rgba(255, 255, 255, 0.8)',
+                },
+            },
+        },
+        altblack: {
+            backgroundColor: 'white',
+            color: 'black',
+        },
+        yellow: {
+            backgroundColor: 'yellow',
+        },
+        altyellow: {
+            backgroundColor: 'white',
+        },
+        red: {
+            backgroundColor: 'red',
+            color: 'white',
+            a: {
+                color: 'white',
+                '&:hover': {
+                    textDecoration: 'none',
+                    color: 'white',
+                },
+                '&:visited': {
+                    color: 'rgba(255, 255, 255, 0.8)',
+                },
+            },
+        },
+    },
+
+    sections: {
+        pageHeaders: {
+            // used by pageheaders
+            default: {
+                backgroundColor: 'black',
+                color: 'white',
+            },
+            black: {
+                backgroundColor: 'black',
+                color: 'white',
+            },
+            altblack: {
+                backgroundColor: 'black',
+                color: 'white',
+            },
+            white: {
+                backgroundColor: 'white',
+                color: 'black',
+            },
+            postwhite: {
+                backgroundColor: 'black',
+                color: 'white',
+            },
+            yellow: {
+                backgroundColor: 'yellow',
+                color: 'black',
+            },
+            altyellow: {
+                backgroundColor: 'yellow',
+                color: 'black',
+            },
+            red: {
+                backgroundColor: 'red',
+                color: 'white',
+            },
+        },
+        masonryWrapper: {
+            display: 'block',
+            width: '100%',
+            alignItems: 'normal',
+            minHeight: '100vh',
+            div: {
+                width: '100%',
+            },
+            header: {
                 pb: 6,
                 h3: {
                     fontSize: 5,
                     fontWeight: 'normal',
                 },
             },
-            '& > div:nth-of-type(2)': {
+            grid: {
+                width: '100%',
                 columnGap: 4,
                 counterReset: 'item-counter',
                 px: 3,
                 pb: 5,
             },
-            '& > div:nth-of-type(3)': {
+            footer: {
                 backgroundColor: 'transparent',
                 textAlign: 'center',
             },
@@ -682,30 +966,132 @@ const theme = {
             minHeight: 'initial',
             py: 0,
         },
-        // postheader: {
-        //
-        // },
-
-        // used by pageheaders
-        black: {
-            pageheader: {
-                backgroundColor: 'black',
-                color: 'white',
+        blocks: {
+            white: {
+                backgroundColor: 'white',
+                color: 'black',
+                borderColor: 'black',
+                a: {
+                    color: 'black',
+                    fontWeight: 'bold',
+                    textDecoration: 'none',
+                    boderBottom: 0,
+                    transition: 'border-bottom 0.2s ease-in-out',
+                    '&:hover': {
+                        borderBottom: '2px solid black',
+                    },
+                },
+                p: {
+                    span: {
+                        a: {
+                            color: 'white !important',
+                            '&:hover': {
+                                borderBottom: 0,
+                            },
+                        },
+                    },
+                },
             },
-        },
-        altblack: {
-            pageheader: {
-                backgroundColor: 'black',
-                color: 'white',
-            },
-        },
-        altyellow: {
-            pageheader: {
+            yellow: {
                 backgroundColor: 'yellow',
                 color: 'black',
+                borderColor: 'black',
+                a: {
+                    color: 'black',
+                    fontWeight: 'bold',
+                    textDecoration: 'none',
+                    boderBottom: 0,
+                    transition: 'border-bottom 0.2s ease-in-out',
+                    '&:hover': {
+                        borderBottom: '2px solid black',
+                    },
+                },
+                p: {
+                    span: {
+                        a: {
+                            color: '#f5df4d !important',
+                            '&:hover': {
+                                borderBottom: 0,
+                            },
+                        },
+                    },
+                },
+            },
+            blue: {
+                backgroundColor: 'blue',
+                color: 'white',
+                borderColor: 'white',
+                a: {
+                    color: 'white',
+                    fontWeight: 'bold',
+                    textDecoration: 'none',
+                    boderBottom: 0,
+                    transition: 'border-bottom 0.2s ease-in-out',
+                    '&:hover': {
+                        borderBottom: '2px solid white',
+                    },
+                    '&:visited, &:active, &:focus': {
+                        color: 'white',
+                    },
+                },
+                p: {
+                    span: {
+                        a: {
+                            color: '#0060b4 !important',
+                            '&:hover': {
+                                borderBottom: 0,
+                            },
+                        },
+                    },
+                },
+            },
+            red: {
+                backgroundColor: 'red',
+                color: 'white',
+                borderColor: 'white',
+                a: {
+                    color: 'white',
+                    fontWeight: 'bold',
+                    textDecoration: 'none',
+                    boderBottom: 0,
+                    transition: 'border-bottom 0.2s ease-in-out',
+                    '&:hover': {
+                        borderBottom: '2px solid white',
+                    },
+                    '&:visited, &:active, &:focus': {
+                        color: 'white',
+                    },
+                },
+                p: {
+                    span: {
+                        a: {
+                            color: '#d93d33 !important',
+                            '&:hover': {
+                                borderBottom: 0,
+                            },
+                        },
+                    },
+                },
             },
         },
+        servicesBlock: {
+            backgroundColor: 'white',
+            color: 'black',
+            width: '100%',
+            py: 6,
+            minHeight: '100vh',
+            display: 'flex',
+            alignItems: 'center',
+        },
+        footerRowTwo: {
+            display: 'flex',
+            px: 4,
+            py: 4,
+            width: '100%',
+            justifyContent: 'center',
+        },
     },
+
     divs: {
         offcanvas: {
             display: 'flex',
@@ -779,731 +1165,376 @@ const theme = {
                 m: 0,
             },
         },
+        serviceBlockLinks: {
+            maxWidth: '100%',
+            display: 'flex',
+            alignItems: 'center',
+            px: 4,
+            borderBottom: '0.01rem solid black',
+            background: 'offWhite',
+            transition: 'background-color 500ms ease-in',
+            '&:hover': {
+                backgroundColor: 'yellow',
+            },
+        },
     },
 
-    layout: {
-        header: {
-            default: {
-                svg: {
-                    fill: 'white',
+    footers: {
+        section: {
+            minHeight: 'initial',
+        },
+        default: {
+            backgroundColor: 'black',
+            color: 'white',
+            a: {
+                color: 'white',
+                '&:hover, &:visited, &:active, &:focus': {
+                    color: 'white',
                 },
-                nav: {
-                    a: {
+            },
+            svg: {
+                fill: 'white',
+            },
+            form: {
+                input: {
+                    borderBottomColor: 'white',
+                    '&:not(:focus)': { color: 'white' },
+                },
+                'input[type="checkbox"]': {
+                    borderColor: 'white',
+                    '&:after': {
                         color: 'white',
-                        textDecoration: 'none',
-                        '&:hover, &:focus, &.active': {
-                            opacity: 0.9,
-                        },
                     },
                 },
-                div: {
-                    button: {
-                        svg: {
-                            background: 'white',
-                        },
+                textarea: {
+                    borderBottomColor: 'white',
+                    '&:not(:focus)': { color: 'white', backgroundColor: 'black' },
+                },
+                button: {
+                    backgroundColor: 'white',
+                    color: 'black',
+                },
+                errors: {
+                    input: {
+                        borderBottomColor: 'yellow',
                     },
-                },
-            },
-            white: {
-                svg: {
-                    fill: 'black',
-                },
-                nav: {
-                    a: {
-                        color: 'black',
-                        textDecoration: 'none',
-                        '&:hover, &:focus, &.active': {
-                            opacity: 0.9,
-                        },
-                    },
-                },
-                div: {
-                    button: {
-                        svg: {
-                            background: 'black',
-                        },
-                    },
-                },
-            },
-            postwhite: {
-                svg: {
-                    fill: 'white',
-                },
-                nav: {
-                    a: {
-                        color: 'white',
-                        textDecoration: 'none',
-                        '&:hover, &:focus, &.active': {
-                            opacity: 0.9,
-                        },
-                    },
-                },
-                div: {
-                    button: {
-                        svg: {
-                            background: 'white',
-                        },
-                    },
-                },
-            },
-            black: {
-                svg: {
-                    fill: 'white',
-                },
-                nav: {
-                    a: {
-                        color: 'white',
-                        textDecoration: 'none',
-                        '&:hover, &:focus, &.active': {
-                            opacity: 0.9,
-                        },
-                    },
-                },
-                div: {
-                    button: {
-                        svg: {
-                            background: 'white',
-                        },
-                    },
-                },
-            },
-            altblack: {
-                svg: {
-                    fill: 'white',
-                },
-                nav: {
-                    a: {
-                        color: 'white',
-                        textDecoration: 'none',
-                        '&:hover, &:focus, &.active': {
-                            opacity: 0.9,
-                        },
-                    },
-                },
-                div: {
-                    button: {
-                        svg: {
-                            background: 'white',
-                        },
-                    },
-                },
-            },
-            yellow: {
-                svg: {
-                    fill: 'black',
-                },
-                nav: {
-                    a: {
-                        color: 'black',
-                        textDecoration: 'none',
-                        '&:hover, &:focus, &.active': {
-                            opacity: 0.9,
-                        },
-                    },
-                },
-                div: {
-                    button: {
-                        svg: {
-                            background: 'black',
-                        },
-                    },
-                },
-            },
-            altyellow: {
-                svg: {
-                    fill: 'black',
-                },
-                nav: {
-                    a: {
-                        color: 'black',
-                        textDecoration: 'none',
-                        '&:hover, &:focus, &.active': {
-                            opacity: 0.9,
-                        },
-                    },
-                },
-                div: {
-                    button: {
-                        svg: {
-                            background: 'black',
-                        },
-                    },
-                },
-            },
-            red: {
-                borderColor: 'white',
-                svg: {
-                    fill: 'white',
-                },
-                nav: {
-                    a: {
-                        color: 'white',
-                        textDecoration: 'none',
-                        '&:hover, &:focus, &.active': {
-                            opacity: 0.9,
-                        },
-                    },
-                },
-                div: {
-                    button: {
-                        svg: {
-                            background: 'white',
+                    'input[type="checkbox"]': {
+                        borderColor: 'yellow',
+                        '&:after': {
+                            color: 'yellow',
                         },
                     },
                 },
             },
         },
-        main: {
-            default: {
-                backgroundColor: 'white',
-            },
-            white: {
-                backgroundColor: 'white',
-            },
-            postwhite: {
-                backgroundColor: 'white',
-            },
-            black: {
-                backgroundColor: 'black',
-                color: 'white',
-                a: {
-                    color: 'white',
-                    '&:hover': {
-                        color: 'white',
-                    },
-                    '&:visited': {
-                        color: 'rgba(255, 255, 255, 0.8)',
-                    },
-                },
-            },
-            altblack: {
-                backgroundColor: 'white',
+        white: {
+            backgroundColor: 'white',
+            color: 'black',
+            a: {
                 color: 'black',
-            },
-            yellow: {
-                backgroundColor: 'yellow',
-            },
-            altyellow: {
-                backgroundColor: 'white',
-            },
-            red: {
-                backgroundColor: 'red',
-                color: 'white',
-                a: {
-                    color: 'white',
-                    '&:hover': {
-                        textDecoration: 'none',
-                        color: 'white',
-                    },
-                    '&:visited': {
-                        color: 'rgba(255, 255, 255, 0.8)',
-                    },
-                },
-            },
-        },
-        block: {
-            white: {
-                backgroundColor: 'white',
-                color: 'black',
-                borderColor: 'black',
-                a: {
+                '&:hover, &:visited, &:active, &:focus': {
                     color: 'black',
-                    fontWeight: 'bold',
-                    textDecoration: 'none',
-                    boderBottom: 0,
-                    transition: 'border-bottom 0.2s ease-in-out',
-                    '&:hover': {
-                        borderBottom: '2px solid black',
-                    },
-                },
-                p: {
-                    span: {
-                        a: {
-                            color: 'white !important',
-                            '&:hover': {
-                                borderBottom: 0,
-                            },
-                        },
-                    },
-                },
-                // figure: {
-                //     margin: '0 0 1em',
-                //     span: {
-                //         display: 'inline-block',
-                //     },
-                // },
-            },
-            yellow: {
-                backgroundColor: 'yellow',
-                color: 'black',
-                borderColor: 'black',
-                a: {
-                    color: 'black',
-                    fontWeight: 'bold',
-                    textDecoration: 'none',
-                    boderBottom: 0,
-                    transition: 'border-bottom 0.2s ease-in-out',
-                    '&:hover': {
-                        borderBottom: '2px solid black',
-                    },
-                },
-                p: {
-                    span: {
-                        a: {
-                            color: '#f5df4d !important',
-                            '&:hover': {
-                                borderBottom: 0,
-                            },
-                        },
-                    },
-                },
-                // figure: {
-                //     margin: '0 0 1em',
-                //     span: {
-                //         display: 'inline-block',
-                //     },
-                // },
-            },
-            blue: {
-                backgroundColor: 'blue',
-                color: 'white',
-                borderColor: 'white',
-                a: {
-                    color: 'white',
-                    fontWeight: 'bold',
-                    textDecoration: 'none',
-                    boderBottom: 0,
-                    transition: 'border-bottom 0.2s ease-in-out',
-                    '&:hover': {
-                        borderBottom: '2px solid white',
-                    },
-                    '&:visited, &:active, &:focus': {
-                        color: 'white',
-                    },
-                },
-                p: {
-                    span: {
-                        a: {
-                            color: '#0060b4 !important',
-                            '&:hover': {
-                                borderBottom: 0,
-                            },
-                        },
-                    },
-                },
-                // figure: {
-                //     margin: '0 0 1em',
-                //     span: {
-                //         display: 'inline-block',
-                //     },
-                // },
-            },
-            red: {
-                backgroundColor: 'red',
-                color: 'white',
-                borderColor: 'white',
-                a: {
-                    color: 'white',
-                    fontWeight: 'bold',
-                    textDecoration: 'none',
-                    boderBottom: 0,
-                    transition: 'border-bottom 0.2s ease-in-out',
-                    '&:hover': {
-                        borderBottom: '2px solid white',
-                    },
-                    '&:visited, &:active, &:focus': {
-                        color: 'white',
-                    },
-                },
-                p: {
-                    span: {
-                        a: {
-                            color: '#d93d33 !important',
-                            '&:hover': {
-                                borderBottom: 0,
-                            },
-                        },
-                    },
-                },
-                // figure: {
-                //     margin: '0 0 1em',
-                //     span: {
-                //         display: 'inline-block',
-                //     },
-                // },
-            },
-        },
-        footer: {
-            default: {
-                backgroundColor: 'black',
-                color: 'white',
-                a: {
-                    color: 'white',
-                    '&:hover, &:visited, &:active, &:focus': {
-                        color: 'white',
-                    },
-                },
-                svg: {
-                    fill: 'white',
-                },
-                form: {
-                    input: {
-                        borderBottomColor: 'white',
-                        '&:not(:focus)': { color: 'white' },
-                    },
-                    'input[type="checkbox"]': {
-                        borderColor: 'white',
-                        '&:after': {
-                            color: 'white',
-                        },
-                    },
-                    textarea: {
-                        borderBottomColor: 'white',
-                        '&:not(:focus)': { color: 'white', backgroundColor: 'black' },
-                    },
-                    button: {
-                        backgroundColor: 'white',
-                        color: 'black',
-                    },
-                    errors: {
-                        input: {
-                            borderBottomColor: 'yellow',
-                        },
-                        'input[type="checkbox"]': {
-                            borderColor: 'yellow',
-                            '&:after': {
-                                color: 'yellow',
-                            },
-                        },
-                    },
                 },
             },
-            white: {
-                backgroundColor: 'white',
-                color: 'black',
-                a: {
-                    color: 'black',
-                    '&:hover, &:visited, &:active, &:focus': {
+            svg: {
+                fill: 'black',
+            },
+            form: {
+                input: {
+                    borderBottomColor: 'black',
+                    '&:not(:focus)': { color: 'black' },
+                },
+                'input[type="checkbox"]': {
+                    borderColor: 'black',
+                    '&:after': {
                         color: 'black',
                     },
                 },
-                svg: {
-                    fill: 'black',
+                textarea: {
+                    borderBottomColor: 'black',
+                    '&:not(:focus)': { color: 'black', backgroundColor: 'white' },
                 },
-                form: {
-                    input: {
-                        borderBottomColor: 'black',
-                        '&:not(:focus)': { color: 'black' },
-                    },
-                    'input[type="checkbox"]': {
-                        borderColor: 'black',
-                        '&:after': {
-                            color: 'black',
-                        },
-                    },
-                    textarea: {
-                        borderBottomColor: 'black',
-                        '&:not(:focus)': { color: 'black', backgroundColor: 'white' },
-                    },
-                    button: {
-                        backgroundColor: 'black',
-                        color: 'white',
-                    },
-                    errors: {
-                        input: {
-                            borderBottomColor: 'red',
-                        },
-                        'input[type="checkbox"]': {
-                            borderColor: 'red',
-                            '&:after': {
-                                color: 'red',
-                            },
-                        },
-                    },
-                },
-            },
-            postwhite: {
-                backgroundColor: 'white',
-                color: 'black',
-                a: {
-                    color: 'black',
-                    '&:hover, &:visited, &:active, &:focus': {
-                        color: 'black',
-                    },
-                },
-                svg: {
-                    fill: 'black',
-                },
-                form: {
-                    input: {
-                        borderBottomColor: 'black',
-                        '&:not(:focus)': { color: 'black' },
-                    },
-                    'input[type="checkbox"]': {
-                        borderColor: 'black',
-                        '&:after': {
-                            color: 'black',
-                        },
-                    },
-                    textarea: {
-                        borderBottomColor: 'black',
-                        '&:not(:focus)': { color: 'black', backgroundColor: 'white' },
-                    },
-                    button: {
-                        backgroundColor: 'black',
-                        color: 'white',
-                    },
-                    errors: {
-                        input: {
-                            borderBottomColor: 'red',
-                        },
-                        'input[type="checkbox"]': {
-                            borderColor: 'red',
-                            '&:after': {
-                                color: 'red',
-                            },
-                        },
-                    },
-                },
-            },
-            black: {
-                backgroundColor: 'black',
-                color: 'white',
-                a: {
+                button: {
+                    backgroundColor: 'black',
                     color: 'white',
-                    '&:hover, &:visited, &:active, &:focus': {
-                        color: 'white',
-                    },
                 },
-                svg: {
-                    fill: 'white',
-                },
-                form: {
+                errors: {
                     input: {
-                        borderBottomColor: 'white',
-                        '&:not(:focus)': { color: 'white' },
+                        borderBottomColor: 'red',
                     },
                     'input[type="checkbox"]': {
-                        borderColor: 'white',
+                        borderColor: 'red',
                         '&:after': {
-                            color: 'white',
-                        },
-                    },
-                    textarea: {
-                        borderBottomColor: 'white',
-                        '&:not(:focus)': { color: 'white', backgroundColor: 'black' },
-                    },
-                    button: {
-                        backgroundColor: 'black',
-                        color: 'white',
-                    },
-                    errors: {
-                        input: {
-                            borderBottomColor: 'yellow',
-                        },
-                        'input[type="checkbox"]': {
-                            borderColor: 'yellow',
-                            '&:after': {
-                                color: 'yellow',
-                            },
-                        },
-                    },
-                },
-            },
-            altblack: {
-                backgroundColor: 'black',
-                color: 'white',
-                a: {
-                    color: 'white',
-                    '&:hover, &:visited, &:active, &:focus': {
-                        color: 'white',
-                    },
-                },
-                svg: {
-                    fill: 'white',
-                },
-                form: {
-                    input: {
-                        borderBottomColor: 'white',
-                        '&:not(:focus)': { color: 'white' },
-                    },
-                    'input[type="checkbox"]': {
-                        borderColor: 'white',
-                        '&:after': {
-                            color: 'white',
-                        },
-                    },
-                    textarea: {
-                        borderBottomColor: 'white',
-                        '&:not(:focus)': { color: 'white', backgroundColor: 'black' },
-                    },
-                    button: {
-                        backgroundColor: 'white',
-                        color: 'black',
-                    },
-                    errors: {
-                        input: {
-                            borderBottomColor: 'yellow',
-                        },
-                        'input[type="checkbox"]': {
-                            borderColor: 'yellow',
-                            '&:after': {
-                                color: 'yellow',
-                            },
-                        },
-                    },
-                },
-            },
-            yellow: {
-                backgroundColor: 'yellow',
-                color: 'black',
-                a: {
-                    color: 'black',
-                    '&:hover, &:visited, &:active, &:focus': {
-                        color: 'black',
-                    },
-                },
-                svg: {
-                    fill: 'black',
-                },
-                form: {
-                    input: {
-                        borderBottomColor: 'black',
-                        '&:not(:focus)': { color: 'black' },
-                    },
-                    'input[type="checkbox"]': {
-                        borderColor: 'black',
-                        '&:after': {
-                            color: 'black',
-                        },
-                    },
-                    textarea: {
-                        borderBottomColor: 'black',
-                        '&:not(:focus)': { color: 'black', backgroundColor: 'yellow' },
-                    },
-                    button: {
-                        backgroundColor: 'black',
-                        color: 'yellow',
-                    },
-                    errors: {
-                        input: {
-                            borderBottomColor: 'red',
-                        },
-                        'input[type="checkbox"]': {
-                            borderColor: 'red',
-                            '&:after': {
-                                color: 'red',
-                            },
-                        },
-                    },
-                },
-            },
-            altyellow: {
-                backgroundColor: 'black',
-                color: 'white',
-                a: {
-                    color: 'white',
-                    '&:hover, &:visited, &:active, &:focus': {
-                        color: 'white',
-                    },
-                },
-                svg: {
-                    fill: 'white',
-                },
-                form: {
-                    input: {
-                        borderBottomColor: 'white',
-                        '&:not(:focus)': { color: 'white' },
-                    },
-                    'input[type="checkbox"]': {
-                        borderColor: 'white',
-                        '&:after': {
-                            color: 'white',
-                        },
-                    },
-                    textarea: {
-                        borderBottomColor: 'white',
-                        '&:not(:focus)': { color: 'white', backgroundColor: 'black' },
-                    },
-                    button: {
-                        backgroundColor: 'white',
-                        color: 'black',
-                    },
-                    errors: {
-                        input: {
-                            borderBottomColor: 'red',
-                        },
-                        'input[type="checkbox"]': {
-                            borderColor: 'red',
-                            '&:after': {
-                                color: 'red',
-                            },
-                        },
-                    },
-                },
-            },
-            red: {
-                backgroundColor: 'red',
-                color: 'white',
-                a: {
-                    color: 'white',
-                    '&:hover, &:visited, &:active, &:focus': {
-                        color: 'white',
-                    },
-                },
-                svg: {
-                    fill: 'white',
-                },
-                form: {
-                    input: {
-                        borderBottomColor: 'white',
-                        '&:not(:focus)': { color: 'white' },
-                    },
-                    'input[type="checkbox"]': {
-                        borderColor: 'white',
-                        '&:after': {
-                            color: 'white',
-                        },
-                    },
-                    textarea: {
-                        borderBottomColor: 'white',
-                        '&:not(:focus)': { color: 'white', backgroundColor: 'red' },
-                    },
-                    button: {
-                        backgroundColor: 'white',
-                        color: 'red',
-                    },
-                    errors: {
-                        input: {
-                            borderBottomColor: 'yellow',
-                        },
-                        'input[type="checkbox"]': {
-                            borderColor: 'yellow',
-                            '&:after': {
-                                color: 'yellow',
-                            },
+                            color: 'red',
                         },
                     },
                 },
             },
         },
-        // project: {
-        //     p: {
-        //         color: 'white',
-        //         a: {
-        //             color: 'white',
-        //             '&:hover, &:active, &:visited': {
-        //                 color: 'white',
-        //             },
-        //         },
-        //     },
-        //     figure: {
-        //         margin: '0 0 1em',
-        //         span: {
-        //             display: 'inline-block',
-        //         },
-        //     },
-        // },
+        postwhite: {
+            backgroundColor: 'white',
+            color: 'black',
+            a: {
+                color: 'black',
+                '&:hover, &:visited, &:active, &:focus': {
+                    color: 'black',
+                },
+            },
+            svg: {
+                fill: 'black',
+            },
+            form: {
+                input: {
+                    borderBottomColor: 'black',
+                    '&:not(:focus)': { color: 'black' },
+                },
+                'input[type="checkbox"]': {
+                    borderColor: 'black',
+                    '&:after': {
+                        color: 'black',
+                    },
+                },
+                textarea: {
+                    borderBottomColor: 'black',
+                    '&:not(:focus)': { color: 'black', backgroundColor: 'white' },
+                },
+                button: {
+                    backgroundColor: 'black',
+                    color: 'white',
+                },
+                errors: {
+                    input: {
+                        borderBottomColor: 'red',
+                    },
+                    'input[type="checkbox"]': {
+                        borderColor: 'red',
+                        '&:after': {
+                            color: 'red',
+                        },
+                    },
+                },
+            },
+        },
+        black: {
+            backgroundColor: 'black',
+            color: 'white',
+            a: {
+                color: 'white',
+                '&:hover, &:visited, &:active, &:focus': {
+                    color: 'white',
+                },
+            },
+            svg: {
+                fill: 'white',
+            },
+            form: {
+                input: {
+                    borderBottomColor: 'white',
+                    '&:not(:focus)': { color: 'white' },
+                },
+                'input[type="checkbox"]': {
+                    borderColor: 'white',
+                    '&:after': {
+                        color: 'white',
+                    },
+                },
+                textarea: {
+                    borderBottomColor: 'white',
+                    '&:not(:focus)': { color: 'white', backgroundColor: 'black' },
+                },
+                button: {
+                    backgroundColor: 'black',
+                    color: 'white',
+                },
+                errors: {
+                    input: {
+                        borderBottomColor: 'yellow',
+                    },
+                    'input[type="checkbox"]': {
+                        borderColor: 'yellow',
+                        '&:after': {
+                            color: 'yellow',
+                        },
+                    },
+                },
+            },
+        },
+        altblack: {
+            backgroundColor: 'black',
+            color: 'white',
+            a: {
+                color: 'white',
+                '&:hover, &:visited, &:active, &:focus': {
+                    color: 'white',
+                },
+            },
+            svg: {
+                fill: 'white',
+            },
+            form: {
+                input: {
+                    borderBottomColor: 'white',
+                    '&:not(:focus)': { color: 'white' },
+                },
+                'input[type="checkbox"]': {
+                    borderColor: 'white',
+                    '&:after': {
+                        color: 'white',
+                    },
+                },
+                textarea: {
+                    borderBottomColor: 'white',
+                    '&:not(:focus)': { color: 'white', backgroundColor: 'black' },
+                },
+                button: {
+                    backgroundColor: 'white',
+                    color: 'black',
+                },
+                errors: {
+                    input: {
+                        borderBottomColor: 'yellow',
+                    },
+                    'input[type="checkbox"]': {
+                        borderColor: 'yellow',
+                        '&:after': {
+                            color: 'yellow',
+                        },
+                    },
+                },
+            },
+        },
+        yellow: {
+            backgroundColor: 'yellow',
+            color: 'black',
+            a: {
+                color: 'black',
+                '&:hover, &:visited, &:active, &:focus': {
+                    color: 'black',
+                },
+            },
+            svg: {
+                fill: 'black',
+            },
+            form: {
+                input: {
+                    borderBottomColor: 'black',
+                    '&:not(:focus)': { color: 'black' },
+                },
+                'input[type="checkbox"]': {
+                    borderColor: 'black',
+                    '&:after': {
+                        color: 'black',
+                    },
+                },
+                textarea: {
+                    borderBottomColor: 'black',
+                    '&:not(:focus)': { color: 'black', backgroundColor: 'yellow' },
+                },
+                button: {
+                    backgroundColor: 'black',
+                    color: 'yellow',
+                },
+                errors: {
+                    input: {
+                        borderBottomColor: 'red',
+                    },
+                    'input[type="checkbox"]': {
+                        borderColor: 'red',
+                        '&:after': {
+                            color: 'red',
+                        },
+                    },
+                },
+            },
+        },
+        altyellow: {
+            backgroundColor: 'black',
+            color: 'white',
+            a: {
+                color: 'white',
+                '&:hover, &:visited, &:active, &:focus': {
+                    color: 'white',
+                },
+            },
+            svg: {
+                fill: 'white',
+            },
+            form: {
+                input: {
+                    borderBottomColor: 'white',
+                    '&:not(:focus)': { color: 'white' },
+                },
+                'input[type="checkbox"]': {
+                    borderColor: 'white',
+                    '&:after': {
+                        color: 'white',
+                    },
+                },
+                textarea: {
+                    borderBottomColor: 'white',
+                    '&:not(:focus)': { color: 'white', backgroundColor: 'black' },
+                },
+                button: {
+                    backgroundColor: 'white',
+                    color: 'black',
+                },
+                errors: {
+                    input: {
+                        borderBottomColor: 'red',
+                    },
+                    'input[type="checkbox"]': {
+                        borderColor: 'red',
+                        '&:after': {
+                            color: 'red',
+                        },
+                    },
+                },
+            },
+        },
+        red: {
+            backgroundColor: 'red',
+            color: 'white',
+            a: {
+                color: 'white',
+                '&:hover, &:visited, &:active, &:focus': {
+                    color: 'white',
+                },
+            },
+            svg: {
+                fill: 'white',
+            },
+            form: {
+                input: {
+                    borderBottomColor: 'white',
+                    '&:not(:focus)': { color: 'white' },
+                },
+                'input[type="checkbox"]': {
+                    borderColor: 'white',
+                    '&:after': {
+                        color: 'white',
+                    },
+                },
+                textarea: {
+                    borderBottomColor: 'white',
+                    '&:not(:focus)': { color: 'white', backgroundColor: 'red' },
+                },
+                button: {
+                    backgroundColor: 'white',
+                    color: 'red',
+                },
+                errors: {
+                    input: {
+                        borderBottomColor: 'yellow',
+                    },
+                    'input[type="checkbox"]': {
+                        borderColor: 'yellow',
+                        '&:after': {
+                            color: 'yellow',
+                        },
+                    },
+                },
+            },
+        },
     },
 }
 export default theme

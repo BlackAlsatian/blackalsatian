@@ -16,14 +16,7 @@ const ServicesBlock = () => {
     return (
         <section
             sx={{
-                backgroundColor: 'offWhite',
-                color: 'black',
-                width: '100%',
-                py: 6,
-                minHeight: '100vh',
-                zIndex: 20,
-                display: 'flex',
-                alignItems: 'center',
+                variant: 'sections.servicesBlock',
             }}
             id='services'
         >

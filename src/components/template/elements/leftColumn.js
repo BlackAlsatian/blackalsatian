@@ -4,15 +4,15 @@ import { Box, Heading } from 'theme-ui'
 const LeftColumn = ({ heading, title, page }) => {
     return (
         <Box
-            p={[4, 4, 3, 6]}
+            p={[3, 3, 2, 5]}
             sx={{
                 textAlign: ['left', 'left', 'right'],
                 flex: [null, null, 1],
                 width: ['100%', null],
                 display: 'flex',
                 flexDirection: 'column',
-                justifyContent: page ? null : 'center',
                 alignItems: !page ? ['flex-start', 'flex-start', 'flex-end'] : null,
+                justifyContent: page ? null : 'center',
                 borderRight: [0, 0, `1px solid`],
             }}
         >
@@ -22,7 +22,7 @@ const LeftColumn = ({ heading, title, page }) => {
                     as={'h2'}
                     sx={{
                         fontSize: [4, 3, 4, 5],
-                        fontWeight: 'thin',
+                        fontWeight: ['bold', 'bold', 'thin', 'thin'],
                         lineHeight: 'none',
                         mb: 4,
                         letterSpacing: 'tighter',

@@ -4,7 +4,7 @@ import parse from 'html-react-parser'
 
 const ProjectContent = ({ project, pageStyle }) => {
     return (
-        <section sx={{ py: [2, 2, 5], minHeight: 'initial', variant: 'layout.main.' + pageStyle }}>
+        <section sx={{ py: [2, 2, 5], minHeight: 'initial', variant: 'main.' + pageStyle }}>
             <Container px={1}>
                 <Flex
                     sx={{
@@ -84,7 +84,6 @@ const ProjectContent = ({ project, pageStyle }) => {
                         sx={{
                             flex: [null, null, 3],
                             width: ['100%', null],
-                            // variant: 'layout.project',
                         }}
                     >
                         {parse(project.content)}

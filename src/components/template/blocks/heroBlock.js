@@ -9,15 +9,15 @@ const HeroBlock = ({ featuredImage, color, title, intro }) => {
     return (
         <Flex
             as='section'
-            backgroundColor='white'
+            backgroundColor='#111827'
             sx={{
                 position: 'relative',
-                // alignItems: 'center',
-                // width: '100%',
+                color: `${color}`,
                 py: 0,
                 flexDirection: 'column',
+                alignItems: 'normal',
+                // width: '100%',
                 // minHeight: '100vh',
-                color: `${color}`,
             }}
         >
             <GatsbyImage
@@ -33,12 +33,13 @@ const HeroBlock = ({ featuredImage, color, title, intro }) => {
                     filter: 'brightness(80%)',
                 }}
             />
-            <Container p={4} sx={{ position: 'absolute', pt: ['45vh', '45vh', '55vh'], minHeight: '100vh' }}>
+            <Container p={4} sx={{ position: 'absolute', pt: ['52vh', '52vh', '55vh'], minHeight: '100vh' }}>
                 <Heading
                     as='h1'
                     sx={{
                         fontSize: [7, 10],
                         letterSpacing: 'tighter',
+                        lineHeight: 'none',
                         textShadow: '0 0 4rem rgba(0, 0, 0, 0.5)',
                     }}
                 >

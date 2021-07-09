@@ -18,7 +18,7 @@ const Layout = ({ children }) => {
                 flexDirection: 'column',
                 minHeight: '100vh',
                 overflow: 'hidden',
-                variant: 'layout.main.' + pageStyle,
+                variant: 'main.' + pageStyle,
             }}
             id='start'
         >

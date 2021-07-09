@@ -69,8 +69,8 @@ const PortfolioIndex = ({ data }) => {
                             page
                         />
                         <Box
-                            py={[0, 0, 4]}
-                            pr={[0, 0, 6]}
+                            py={[3, 3, 5]}
+                            pr={[3, 3, 5]}
                             sx={{
                                 flex: [null, null, 3],
                                 width: ['100%', null],

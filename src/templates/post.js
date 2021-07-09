@@ -41,10 +41,17 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
             {featuredImage?.fluid ? (
                 <Flex
                     as='section'
+                    backgroundColor='#111827'
                     sx={{
                         position: 'relative',
-                        color: 'white',
+                        // width: '100%',
                         py: 0,
+                        flexDirection: 'column',
+                        // alignItems: 'normal',
+                        // justifyContent: 'center',
+                        variant: 'sections.pageHeaders.' + pageStyle,
+                        animation: 'fadeBlockIn 200ms ease-in both',
+                        animationDelay: '50ms',
                     }}
                 >
                     <GatsbyImage
@@ -61,19 +68,32 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
                             filter: 'brightness(40%)',
                         }}
                     />
-                    <Container p={4} sx={{ position: 'absolute', pt: ['35vh', '35vh', '45vh'], minHeight: '100vh' }}>
+                    <Container
+                        p={4}
+                        sx={{ position: 'absolute', pt: ['45vh', '45vh', '50vh'], minHeight: '100vh', mx: 'auto' }}
+                    >
                         <Heading
                             as='h1'
                             sx={{
                                 fontSize: [6, 7, 7, 9],
                                 letterSpacing: 'tighter',
+                                lineHeight: 'none',
                                 textShadow: '0 0 4rem rgba(0, 0, 0, 0.5)',
+                                animation: 'fadeBlockIn 400ms ease-in both',
+                                animationDelay: '300ms',
                             }}
-                            itemProp='headline'
                         >
                             {parse(post.title)}
                         </Heading>
-                        <Box sx={{ fontSize: [2, 2, 3], my: 0, textShadow: '0 0 3rem rgba(0, 0, 0, 0.5)' }}>
+                        <Box
+                            sx={{
+                                fontSize: [2, 2, 3],
+                                my: 0,
+                                textShadow: '0 0 3rem rgba(0, 0, 0, 0.5)',
+                                animation: 'fadeBlockIn 400ms ease-in both',
+                                animationDelay: '500ms',
+                            }}
+                        >
                             {parse(post.excerpt)}
                         </Box>
                     </Container>
@@ -83,7 +103,13 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
             )}
 
             {!!post.content && (
-                <section sx={{ py: 5 }}>
+                <section
+                    sx={{
+                        py: 5,
+                        minHeight: 'initial',
+                        variant: 'main.' + pageStyle,
+                    }}
+                >
                     <Container px={1}>
                         <Flex
                             sx={{
@@ -91,7 +117,7 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
                             }}
                         >
                             <Box
-                                p={[4, 4, 3, 6]}
+                                p={[3, 3, 2, 5]}
                                 sx={{
                                     textAlign: ['left', 'left', 'right'],
                                     flex: [null, null, 1],
@@ -107,7 +133,7 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
                                     as='h3'
                                     sx={{
                                         fontSize: [4, 3, 4, 5],
-                                        fontWeight: 'thin',
+                                        fontWeight: ['bold', 'bold', 'thin', 'thin'],
                                         lineHeight: 1,
                                         mb: 4,
                                         letterSpacing: 'tighter',
@@ -141,8 +167,8 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
                                 </div>
                             </Box>
                             <Box
-                                py={[0, 0, 4]}
-                                px={[4, 4, 5]}
+                                py={[3, 3, 2, 5]}
+                                px={[3, 3, 5]}
                                 sx={{
                                     flex: [null, null, 3],
                                     width: ['100%', null],
@@ -163,7 +189,7 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
                     nextName={next && parse(next.title)}
                     backgroundColor='black'
                     color='white'
-                    swipeColor='white'
+                    swipeColor='#fff'
                 />
             </section>
         </>

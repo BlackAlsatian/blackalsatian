@@ -382,9 +382,9 @@ const GetForm = ({ option, buttonName, buttonUrl, backgroundColor, buttonBackgro
                                     required: "Without your consent, we won't be able to contact you. *sad face*",
                                 })}
                             />
-                            <span sx={{ fontSize: '0.75rem', paddingLeft: '0.3rem' }}>
-                                Yes, I understand that by signing up for this guide, Black Alsatian saves this
-                                information for the sole purpose of contacting me. I have read and understood the{' '}
+                            <span sx={{ fontSize: '0.75rem', paddingLeft: '0.8rem' }}>
+                                Yes, I understand Black Alsatian saves the information I'm submitting for the sole
+                                purpose of contacting me. I have read and understood the{' '}
                                 <Link
                                     to='/terms-of-use/'
                                     title='Black Alsatian Terms of Use'
@@ -468,7 +468,7 @@ const GetForm = ({ option, buttonName, buttonUrl, backgroundColor, buttonBackgro
                                     required: "Without your consent, we won't be able to contact you. *sad face*",
                                 })}
                             />
-                            <span sx={{ fontSize: '0.75rem', paddingLeft: '0.3rem' }}>
+                            <span sx={{ fontSize: '0.75rem', paddingLeft: '0.8rem' }}>
                                 Yes, I understand that Black Alsatian saves this information for the sole purpose of
                                 contacting me regarding my query. I have read and understood the{' '}
                                 <Link

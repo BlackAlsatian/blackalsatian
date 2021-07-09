@@ -21,7 +21,7 @@ const ContentBlock = ({
     return (
         <section
             sx={{
-                variant: 'layout.block.' + backgroundColor,
+                variant: 'sections.blocks.' + backgroundColor,
             }}
             id={anchor}
         >
@@ -45,7 +45,7 @@ const ContentBlock = ({
                     >
                         <BlockText text={text} />
                         {buttonName && option !== 'none' && (
-                            <LazyLoad height='100%' offset={100} once>
+                            <LazyLoad height='100%' offset={200} once>
                                 <GetForm
                                     option={option}
                                     buttonName={buttonName}

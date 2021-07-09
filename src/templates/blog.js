@@ -53,7 +53,11 @@ const BlogIndex = ({ data, pageContext: { nextPagePath, previousPagePath, pageNu
             {pathname === '/blog/' && <PageHeader title={pageTitle} intro={content} headerStyle={pageStyle} />}
             <section
                 sx={{
-                    variant: 'sections.noypadding',
+                    py: 0,
+                    display: 'block',
+                    alignItems: 'normal',
+                    minHeight: 'initial',
+                    variant: 'sections.pageHeaders.' + pageStyle,
                 }}
             >
                 {pathname !== '/blog/' && (
@@ -75,6 +79,8 @@ const BlogIndex = ({ data, pageContext: { nextPagePath, previousPagePath, pageNu
                                 mb: 6,
                                 display: 'block',
                                 width: '65%',
+                                animation: 'fadeBlockIn 400ms ease-in both',
+                                animationDelay: '500ms',
                             }}
                         >
                             {'Web Development & Digital Trends From Around The Web: Page ' + pageNumber}

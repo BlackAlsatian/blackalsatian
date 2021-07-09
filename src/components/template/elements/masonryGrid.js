@@ -7,26 +7,31 @@ const MasonryGrid = ({ dataNodes, heading, viewAllLink, headerType }) => {
     return (
         <section
             sx={{
-                px: [3, 3, 6],
-                variant: 'sections.masonry',
+                px: [1, 1, 6],
+                backgroundColor: 'white',
+                variant: 'sections.masonryWrapper',
             }}
         >
-            <div>
-                <Heading as='h3' sx={{ ml: [4, 4, 0] }}>
+            <div
+                sx={{
+                    variant: 'sections.masonryWrapper.header',
+                }}
+            >
+                <Heading as='h3' sx={{ mx: [4, 4, 0] }}>
                     {heading}
                 </Heading>
             </div>
-            <div
-                sx={{
-                    columnCount: [1, 2, 3],
-                }}
-            >
+            <div sx={{ columnCount: [1, 2, 3], variant: 'sections.masonryWrapper.grid' }}>
                 {dataNodes.map((node) => (
                     <MasonryTileLink key={node.id} node={node} headerType={headerType} />
                 ))}
             </div>
             {viewAllLink && (
-                <div>
+                <div
+                    sx={{
+                        variant: 'sections.masonryWrapper.footer',
+                    }}
+                >
                     <MasonryGridViewAllLink url={viewAllLink} />
                 </div>
             )}

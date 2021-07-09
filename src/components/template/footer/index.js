@@ -46,11 +46,11 @@ const Footer = ({ siteTitle, pageStyle }) => {
     return (
         <footer
             sx={{
-                variant: 'layout.footer.' + pageStyle,
+                variant: 'footers.' + pageStyle,
             }}
             id='contact'
         >
-            <section>
+            <section sx={{ variant: 'sections.noypadding' }}>
                 <Flex
                     p={4}
                     sx={{
@@ -64,7 +64,7 @@ const Footer = ({ siteTitle, pageStyle }) => {
                 >
                     <ContactDetails />
                     <div sx={{ flex: [null, null, 1], p: 4 }}>
-                        <Heading as='h4' sx={{ pb: 3, fontSize: 2 }}>
+                        <Heading as='h4' sx={{ mb: 4, fontSize: 2 }}>
                             Web Development Services
                         </Heading>
                         <ServiceNav />
@@ -76,14 +76,14 @@ const Footer = ({ siteTitle, pageStyle }) => {
                             width: [null, null, '100%'],
                         }}
                     >
-                        <LazyLoad height='100%' offset={100} once>
+                        <LazyLoad height='100%' offset={200} once>
                             <GetForm
                                 option='enquiry'
                                 buttonName='Fetch!'
                                 // backgroundColor={bgcolor}
                                 // buttonBackground={textcolor}
                                 formStyle='inputs.underline'
-                                footerError={'layout.footer.' + pageStyle}
+                                footerError={'footer.' + pageStyle}
                             />
                         </LazyLoad>
                     </div>
@@ -91,12 +91,9 @@ const Footer = ({ siteTitle, pageStyle }) => {
             </section>
             <section
                 sx={{
-                    display: 'flex',
                     alignItems: [null, null, 'flex-end'],
-                    justifyContent: 'center',
                     flexDirection: ['column', 'column', 'row'],
-                    p: 4,
-                    width: '100%',
+                    variant: 'sections.footerRowTwo',
                 }}
             >
                 <div sx={{ flex: 1, mx: 1, my: [3, 3, null] }}>
@@ -142,9 +139,9 @@ const Footer = ({ siteTitle, pageStyle }) => {
                 <div
                     sx={{
                         flex: 1,
-                        mx: 1,
+                        mx: [null, null, 1],
                         my: [3, 3, null],
-                        textAlign: [null, null, 'right'],
+                        textAlign: ['left', 'left', 'right'],
                     }}
                 >
                     <SocialIcons />

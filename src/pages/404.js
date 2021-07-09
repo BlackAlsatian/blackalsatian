@@ -40,15 +40,14 @@ const NotFoundPage = ({ location }) => {
                         404
                     </Heading>
                     <Box sx={{ fontSize: [3, 4], my: 1, textShadow: '0 0 3rem rgba(0, 0, 0, 0.3)' }}>
-                        Awks. {brokenPathName} doesn't exist.
-                        <br />
-                        This is not the route you're looking for.
-                        <br />
-                        But if you're looking for awesome web developers that really know their stuff or a kick-ass
-                        digital marketing solution,{' '}
-                        <Link to='/' sx={{ color: 'black' }}>
-                            check this out.
-                        </Link>
+                        <p>Awks. This is not the route you were looking for.</p>
+                        <p sx={{ fontSize: '0.9rem' }}>{brokenPathName} doesn't exist.</p>
+                        <p sx={{ fontSize: '1.1rem' }}>
+                            Seeing as we're here, why not check out our website, {` `}
+                            <Link to='/' sx={{ color: 'black' }}>
+                                check out our cool site.
+                            </Link>
+                        </p>
                     </Box>
                 </Container>
             </section>

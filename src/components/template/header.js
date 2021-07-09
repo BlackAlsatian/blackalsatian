@@ -46,8 +46,7 @@ const Header = ({ pageStyle }) => {
     return (
         <header
             sx={{
-                // variant: 'layout.header.' + headerStyle,
-                variant: 'layout.header.' + pageStyle,
+                variant: 'header.' + pageStyle,
             }}
         >
             <Link to='/' title='Black Alsatian Web Development Company'>
