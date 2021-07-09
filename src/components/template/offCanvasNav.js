@@ -23,26 +23,12 @@ const OffCanvas = ({ navLinks }) => {
                 handleMenuItemClick()
             }}
             sx={{
-                display: 'flex',
-                alignItems: 'center',
-                width: '100%',
-                top: 0,
-                left: 0,
-                right: 0,
-                position: 'fixed',
-                p: [2, 3],
-                zIndex: 20,
-                height: '100vh',
-                backgroundColor: 'rgba(0, 0, 0, 0.9)',
+                variant: 'divs.offcanvas',
             }}
             style={OffCanvasAnimation}
         >
             <Flex
                 sx={{
-                    m: 0,
-                    display: 'flex',
-                    flexDirection: 'column',
-                    transition: 'opacity 750ms ease-in',
                     opacity: isOpen ? 0.9 : 0,
                 }}
             >
@@ -52,19 +38,7 @@ const OffCanvas = ({ navLinks }) => {
                             key={item.id}
                             to={item.url}
                             sx={{
-                                color: 'offWhite',
-                                '&:hover, &:focus, &.active': {
-                                    color: 'offWhite',
-                                },
-                                cursor: 'pointer',
                                 fontSize: [6, 7, 9],
-                                lineHeight: 'tight',
-                                fontWeight: 'black',
-                                textDecoration: 'none',
-                                px: 3,
-                                '&:last-child': {
-                                    pr: 0,
-                                },
                             }}
                         >
                             {item.label}

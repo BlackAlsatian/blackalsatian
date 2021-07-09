@@ -190,14 +190,22 @@ const theme = {
                 },
             },
             header: {
+                display: 'flex',
+                alignItems: 'center',
+                top: 0,
+                left: 0,
+                right: 0,
+                p: [3, 3],
+                position: 'absolute',
+                zIndex: 10,
                 nav: {
-                    a: {
+                    '& > a': {
                         cursor: 'pointer',
                         fontSize: 1,
                         fontWeight: 'black',
                         textDecoration: 'none',
                         px: 3,
-                        '&:last-child': {
+                        '&:last-of-type': {
                             pr: 0,
                         },
                     },
@@ -205,6 +213,41 @@ const theme = {
             },
             main: {
                 flex: 1,
+                div: {
+                    div: {
+                        '& > section': {
+                            display: 'flex',
+                            alignItems: 'center',
+                            minHeight: '100vh',
+                            width: '100%',
+                            py: 6,
+                        },
+                    },
+                },
+            },
+            footer: {
+                width: '100%',
+                fontSize: 0,
+                fontWeight: 'normal',
+            },
+            article: {
+                display: 'block',
+                // alignItems: 'center',
+                // flexDirection: 'column',
+                // minHeight: '100vh',
+                header: {
+                    display: 'block',
+                    p: 0,
+                    m: 0,
+                    minHeight: '100vh',
+                },
+                '& > section': {
+                    display: 'flex',
+                    alignItems: 'center',
+                    minHeight: '100vh',
+                    width: '100%',
+                    py: 6,
+                },
             },
             p: {
                 mb: 4,
@@ -214,9 +257,9 @@ const theme = {
                 fontWeight: 'heading',
                 lineHeight: 'heading',
                 m: 0,
-                mb: '1.5rem',
-                fontSize: 6,
-                mt: 2,
+                // mb: '1.5rem',
+                // fontSize: 6,
+                // mt: 2,
             },
             h2: {
                 fontFamily: 'heading',
@@ -597,6 +640,52 @@ const theme = {
         },
     },
     sections: {
+        // other sections
+        testimonials: {
+            display: 'block',
+            alignItems: 'normal',
+            backgroundColor: 'yellow',
+        },
+        masonry: {
+            display: 'block',
+            width: '100%',
+            minHeight: '100vh',
+            backgroundColor: 'white',
+            div: {
+                width: '100%',
+                h3: {
+                    fontSize: 5,
+                    fontWeight: 'normal',
+                },
+            },
+            '& > div:first-of-type': {
+                pb: 6,
+                h3: {
+                    fontSize: 5,
+                    fontWeight: 'normal',
+                },
+            },
+            '& > div:nth-of-type(2)': {
+                columnGap: 4,
+                counterReset: 'item-counter',
+                px: 3,
+                pb: 5,
+            },
+            '& > div:nth-of-type(3)': {
+                backgroundColor: 'transparent',
+                textAlign: 'center',
+            },
+        },
+        noypadding: {
+            display: 'block',
+            alignItems: 'normal',
+            minHeight: 'initial',
+            py: 0,
+        },
+        // postheader: {
+        //
+        // },
+
         // used by pageheaders
         black: {
             pageheader: {
@@ -614,6 +703,80 @@ const theme = {
             pageheader: {
                 backgroundColor: 'yellow',
                 color: 'black',
+            },
+        },
+    },
+    divs: {
+        offcanvas: {
+            display: 'flex',
+            alignItems: 'center',
+            width: '100%',
+            top: 0,
+            left: 0,
+            right: 0,
+            position: 'fixed',
+            p: [2, 3],
+            zIndex: 20,
+            height: '100vh',
+            backgroundColor: 'rgba(0, 0, 0, 0.9)',
+            div: {
+                m: 0,
+                flexDirection: 'column',
+                transition: 'opacity 750ms ease-in',
+                a: {
+                    color: 'offWhite',
+                    '&:hover, &:focus, &:active, &:visited': {
+                        color: 'offWhite',
+                    },
+                    cursor: 'pointer',
+                    lineHeight: 'tight',
+                    fontWeight: 'black',
+                    textDecoration: 'none',
+                    px: 3,
+                    '&:last-child': {
+                        pr: 0,
+                    },
+                },
+            },
+        },
+        hamburger: {
+            position: 'fixed',
+            top: 0,
+            bottom: 0,
+            right: 0,
+            alignItems: 'center',
+            zIndex: 30,
+            button: {
+                svg: {
+                    width: 6,
+                    height: 'px',
+                    borderRadius: '5px',
+                    position: 'relative',
+                    ml: 'auto',
+                    transformOrigin: '1px',
+                    transition: 'opacity 300ms, transform 300ms',
+                    boxShadow: '0 0 5px 5px  rgba(0, 0, 0, 0.05)',
+                },
+            },
+            span: {
+                position: 'fixed',
+                width: 1,
+                height: 1,
+                padding: 0,
+                margin: -1,
+                overflow: 'hidden',
+                clip: 'rect(0, 0, 0, 0)',
+                whiteSpace: 'nowrap',
+                borderWidth: 0,
+            },
+        },
+        pagesnav: {
+            ul: {
+                display: `flex`,
+                flexWrap: `wrap`,
+                justifyContent: `space-between`,
+                listStyle: `none`,
+                m: 0,
             },
         },
     },

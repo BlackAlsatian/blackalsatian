@@ -12,10 +12,11 @@ const HeroBlock = ({ featuredImage, color, title, intro }) => {
             backgroundColor='white'
             sx={{
                 position: 'relative',
-                alignItems: 'center',
-                width: '100%',
+                // alignItems: 'center',
+                // width: '100%',
+                py: 0,
                 flexDirection: 'column',
-                minHeight: '100vh',
+                // minHeight: '100vh',
                 color: `${color}`,
             }}
         >

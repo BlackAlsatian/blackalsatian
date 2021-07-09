@@ -37,134 +37,125 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
                 isBlogPost
             />
 
-            <article itemScope itemType='http://schema.org/Article'>
-                <header>
-                    {featuredImage?.fluid ? (
-                        <section
-                            backgroundColor='white'
+            {/* <section itemScope itemType='http://schema.org/Article'> */}
+            {featuredImage?.fluid ? (
+                <Flex
+                    as='section'
+                    sx={{
+                        position: 'relative',
+                        color: 'white',
+                        py: 0,
+                    }}
+                >
+                    <GatsbyImage
+                        image={featuredImage.fluid}
+                        alt={featuredImage.alt || post.title}
+                        fadeIn='false'
+                        loading='eager'
+                        objectPosition='50% 50%'
+                        backgroundColor='white'
+                        sx={{
+                            position: 'relative',
+                            width: '100%',
+                            minHeight: '100vh',
+                            filter: 'brightness(40%)',
+                        }}
+                    />
+                    <Container p={4} sx={{ position: 'absolute', pt: ['35vh', '35vh', '45vh'], minHeight: '100vh' }}>
+                        <Heading
+                            as='h1'
                             sx={{
-                                display: 'flex',
-                                position: 'relative',
-                                alignItems: 'center',
-                                width: '100%',
-                                flexDirection: 'column',
-                                minHeight: '100vh',
-                                color: 'white',
+                                fontSize: [6, 7, 7, 9],
+                                letterSpacing: 'tighter',
+                                textShadow: '0 0 4rem rgba(0, 0, 0, 0.5)',
+                            }}
+                            itemProp='headline'
+                        >
+                            {parse(post.title)}
+                        </Heading>
+                        <Box sx={{ fontSize: [2, 2, 3], my: 0, textShadow: '0 0 3rem rgba(0, 0, 0, 0.5)' }}>
+                            {parse(post.excerpt)}
+                        </Box>
+                    </Container>
+                </Flex>
+            ) : (
+                <PageHeader title={parse(post.title)} intro={parse(post.excerpt)} headerStyle={pageStyle} />
+            )}
+
+            {!!post.content && (
+                <section sx={{ py: 5 }}>
+                    <Container px={1}>
+                        <Flex
+                            sx={{
+                                flexDirection: ['column', 'column', 'row'],
                             }}
                         >
-                            <GatsbyImage
-                                image={featuredImage.fluid}
-                                alt={featuredImage.alt || post.title}
-                                fadeIn='false'
-                                loading='eager'
-                                objectPosition='50% 50%'
-                                backgroundColor='white'
+                            <Box
+                                p={[4, 4, 3, 6]}
                                 sx={{
-                                    position: 'relative',
-                                    width: '100%',
-                                    minHeight: '100vh',
-                                    filter: 'brightness(40%)',
+                                    textAlign: ['left', 'left', 'right'],
+                                    flex: [null, null, 1],
+                                    width: ['100%', null],
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    alignItems: ['flex-start', 'flex-start', 'flex-end'],
+                                    // justifyContent: 'center',
+                                    borderRight: [0, 0, '1px solid black'],
                                 }}
-                            />
-                            <Container
-                                p={4}
-                                sx={{ position: 'absolute', pt: ['35vh', '35vh', '45vh'], minHeight: '100vh' }}
                             >
                                 <Heading
-                                    as='h1'
+                                    as='h3'
                                     sx={{
-                                        fontSize: [6, 7, 7, 9],
+                                        fontSize: [4, 3, 4, 5],
+                                        fontWeight: 'thin',
+                                        lineHeight: 1,
+                                        mb: 4,
                                         letterSpacing: 'tighter',
-                                        textShadow: '0 0 4rem rgba(0, 0, 0, 0.5)',
                                     }}
-                                    itemProp='headline'
                                 >
                                     {parse(post.title)}
                                 </Heading>
-                                <Box sx={{ fontSize: [2, 2, 3], my: 0, textShadow: '0 0 3rem rgba(0, 0, 0, 0.5)' }}>
-                                    {parse(post.excerpt)}
-                                </Box>
-                            </Container>
-                        </section>
-                    ) : (
-                        <PageHeader title={parse(post.title)} intro={parse(post.excerpt)} headerStyle={pageStyle} />
-                    )}
-                </header>
-
-                {!!post.content && (
-                    <section itemProp='articleBody' sx={{ py: 5, zIndex: 20 }}>
-                        <Container px={1}>
-                            <Flex
+                                <Bio author={post.author.node} />
+                                <p>
+                                    <span
+                                        sx={{
+                                            color: 'muted',
+                                            textAlign: ['left', 'left', 'right'],
+                                        }}
+                                    >
+                                        {post.date}
+                                    </span>
+                                </p>
+                                <div
+                                    sx={{
+                                        py: [2, 2, 5],
+                                        pl: [null, null, 5],
+                                        lineHeight: 'loose',
+                                    }}
+                                >
+                                    {post.tags.nodes.map(({ name, id }) => (
+                                        <Badge key={id} variant='primary' mx={1}>
+                                            {name}
+                                        </Badge>
+                                    ))}
+                                </div>
+                            </Box>
+                            <Box
+                                py={[0, 0, 4]}
+                                px={[4, 4, 5]}
                                 sx={{
-                                    flexDirection: ['column', 'column', 'row'],
+                                    flex: [null, null, 3],
+                                    width: ['100%', null],
                                 }}
                             >
-                                <Box
-                                    p={[4, 4, 3, 6]}
-                                    sx={{
-                                        textAlign: ['left', 'left', 'right'],
-                                        flex: [null, null, 1],
-                                        width: ['100%', null],
-                                        display: 'flex',
-                                        flexDirection: 'column',
-                                        alignItems: ['flex-start', 'flex-start', 'flex-end'],
-                                        // justifyContent: 'center',
-                                        borderRight: [0, 0, '1px solid black'],
-                                    }}
-                                >
-                                    <Heading
-                                        as='h3'
-                                        sx={{
-                                            fontSize: [4, 3, 4, 5],
-                                            fontWeight: 'thin',
-                                            lineHeight: 1,
-                                            mb: 4,
-                                            letterSpacing: 'tighter',
-                                        }}
-                                    >
-                                        {parse(post.title)}
-                                    </Heading>
-                                    <Bio author={post.author.node} />
-                                    <p>
-                                        <span
-                                            sx={{
-                                                color: 'muted',
-                                                textAlign: ['left', 'left', 'right'],
-                                            }}
-                                        >
-                                            {post.date}
-                                        </span>
-                                    </p>
-                                    <div
-                                        sx={{
-                                            py: [2, 2, 5],
-                                            pl: [null, null, 5],
-                                            lineHeight: 'loose',
-                                        }}
-                                    >
-                                        {post.tags.nodes.map(({ name, id }) => (
-                                            <Badge key={id} variant='primary' mx={1}>
-                                                {name}
-                                            </Badge>
-                                        ))}
-                                    </div>
-                                </Box>
-                                <Box
-                                    py={[0, 0, 4]}
-                                    px={[4, 4, 5]}
-                                    sx={{
-                                        flex: [null, null, 3],
-                                        width: ['100%', null],
-                                    }}
-                                >
-                                    {parse(post.content)}
-                                </Box>
-                            </Flex>
-                        </Container>
-                    </section>
-                )}
-            </article>
-            <section>
+                                {parse(post.content)}
+                            </Box>
+                        </Flex>
+                    </Container>
+                </section>
+            )}
+            {/* </section> */}
+            <section sx={{ variant: 'sections.noypadding' }}>
                 <PagesNav
                     previousPagePath={previous && previous.uri}
                     nextPagePath={next && next.uri}

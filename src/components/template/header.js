@@ -46,14 +46,6 @@ const Header = ({ pageStyle }) => {
     return (
         <header
             sx={{
-                display: 'flex',
-                alignItems: 'center',
-                top: 0,
-                left: 0,
-                right: 0,
-                p: [3, 3],
-                position: 'absolute',
-                zIndex: 10,
                 // variant: 'layout.header.' + headerStyle,
                 variant: 'layout.header.' + pageStyle,
             }}
@@ -67,31 +59,12 @@ const Header = ({ pageStyle }) => {
             <OffCanvas navLinks={navLinks} />
             <div
                 sx={{
-                    position: 'fixed',
-                    top: 0,
-                    bottom: 0,
-                    right: 0,
-                    alignItems: 'center',
                     display: ['flex', 'flex', 'none'],
-                    zIndex: 30,
+                    variant: 'divs.hamburger',
                 }}
             >
                 <MenuIcon />
-                <span
-                    sx={{
-                        position: 'fixed',
-                        width: 1,
-                        height: 1,
-                        padding: 0,
-                        margin: -1,
-                        overflow: 'hidden',
-                        clip: 'rect(0, 0, 0, 0)',
-                        whiteSpace: 'nowrap',
-                        borderWidth: 0,
-                    }}
-                >
-                    Open main menu
-                </span>
+                <span>Open main menu</span>
             </div>
         </header>
     )

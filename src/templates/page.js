@@ -58,7 +58,7 @@ const PageTemplate = ({ data: { page, pageblocks } }) => {
                         <PageHeader title={parse(page.title)} intro={page.pageintro} headerStyle={pageStyle} />
                         <section
                             sx={{
-                                py: 5,
+                                variant: 'sections.noypadding',
                             }}
                         >
                             <Container p={1}>

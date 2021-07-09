@@ -4,7 +4,7 @@ import AniLink from 'gatsby-plugin-transition-link/AniLink'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import parse from 'html-react-parser'
 
-const ProjectHeader = ({ previous, project }) => {
+const ProjectHeader = ({ previous, project, pageStyle }) => {
     const featuredImage = {
         fluid: project.featuredImage?.node?.main?.childImageSharp?.gatsbyImageData,
         alt: project.featuredImage?.node?.altText || ``,
@@ -12,11 +12,11 @@ const ProjectHeader = ({ previous, project }) => {
     return (
         <section
             sx={{
-                display: 'flex',
                 flexDirection: 'column',
                 minHeight: '40vh',
                 pt: '10vh',
-                backgroundColor: 'black',
+                pb: 0,
+                variant: 'layout.main.' + pageStyle,
             }}
         >
             <Flex
@@ -25,8 +25,6 @@ const ProjectHeader = ({ previous, project }) => {
                     justifyContent: 'space-between',
                     flexDirection: ['column', 'column', 'row'],
                     px: [4, 4, 5],
-                    color: 'white',
-                    textDecoration: 'none',
                 }}
             >
                 <Heading
@@ -49,7 +47,14 @@ const ProjectHeader = ({ previous, project }) => {
                     {parse(project.excerpt)}
                 </div>
             </Flex>
-            <Box px={[null, null, 5]} py={[3, 3, null]}>
+            <Box
+                mt={3}
+                px={[null, null, 5]}
+                py={[3, 3, null]}
+                sx={{
+                    width: 'full',
+                }}
+            >
                 <AniLink
                     as='button'
                     cover
@@ -69,12 +74,12 @@ const ProjectHeader = ({ previous, project }) => {
                         transition: '200ms',
                         fontSize: 3,
                         fontWeight: 'black',
-                        '&:hover, &:active, &:focus': {
-                            color: '#f5df4d',
+                        '&:hover': {
+                            color: '#f5df4d !important',
                             backgroundColor: 'transparent',
                             boxShadow: 'none',
                         },
-                        '&:visited': {
+                        '&:visited, &:active, &:focus': {
                             color: 'white',
                         },
                     }}

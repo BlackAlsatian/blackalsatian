@@ -4,12 +4,11 @@ import parse from 'html-react-parser'
 
 const ProjectContent = ({ project, pageStyle }) => {
     return (
-        <section sx={{ py: [2, 2, 5], backgroundColor: 'black', variant: 'layout.' + pageStyle + '.main' }}>
+        <section sx={{ py: [2, 2, 5], minHeight: 'initial', variant: 'layout.main.' + pageStyle }}>
             <Container px={1}>
                 <Flex
                     sx={{
                         flexDirection: ['column', 'column', 'row'],
-                        color: 'white',
                     }}
                 >
                     <Box
@@ -49,14 +48,14 @@ const ProjectContent = ({ project, pageStyle }) => {
                                     variant: 'buttons.simple',
                                     display: 'inline-block',
                                     backgroundColor: 'white',
-                                    color: '#111827',
+                                    color: '#111827  !important',
                                     textDecoration: 'none',
                                     boxShadow: 'xl',
                                     '&:hover': {
                                         boxShadow: 'none',
                                     },
                                     '&:visited, &:active, &:focus': {
-                                        color: '#111827',
+                                        color: '#111827 !important',
                                     },
                                 }}
                             >

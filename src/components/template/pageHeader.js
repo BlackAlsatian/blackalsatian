@@ -5,9 +5,7 @@ const PageHeader = ({ title, intro, headerStyle }) => {
     return (
         <section
             sx={{
-                display: 'flex',
-                alignItems: 'center',
-                minHeight: '100vh',
+                py: 0,
                 pt: ['35vh', '35vh', '40vh'],
                 variant: 'sections.' + headerStyle + '.pageheader',
             }}

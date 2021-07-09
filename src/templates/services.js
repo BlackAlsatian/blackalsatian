@@ -51,7 +51,11 @@ const ServicesIndex = ({ data }) => {
                 dateModified={page.modifiedGmt}
             />
             <PageHeader title={parse(page.title)} intro={page.pageintro} headerStyle={pageStyle} />
-            <section>
+            <section
+                sx={{
+                    variant: 'sections.noypadding',
+                }}
+            >
                 <Container sx={{ overflow: 'hidden' }}>
                     {services.map((service, i) => {
                         const title = service.title

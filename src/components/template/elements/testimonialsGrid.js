@@ -5,12 +5,8 @@ const TestimonialsGrid = ({ children, heading }) => {
     return (
         <section
             sx={{
-                width: '100%',
-                minHeight: '100vh',
-                py: 6,
                 px: [3, 3, 6],
-                zIndex: 20,
-                backgroundColor: 'yellow',
+                variant: 'sections.testimonials',
             }}
         >
             <div

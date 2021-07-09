@@ -21,12 +21,6 @@ const ContentBlock = ({
     return (
         <section
             sx={{
-                width: '100%',
-                py: 6,
-                minHeight: '100vh',
-                zIndex: 20,
-                display: 'flex',
-                alignItems: 'center',
                 variant: 'layout.block.' + backgroundColor,
             }}
             id={anchor}

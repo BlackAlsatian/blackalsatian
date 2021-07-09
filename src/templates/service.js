@@ -33,7 +33,7 @@ const PageTemplate = ({ data: { previous, next, service } }) => {
                 dateModified={service.modifiedGmt}
             />
             <PageHeader title={parse(service.title)} intro={parse(service.excerpt)} headerStyle={pageStyle} />
-            <section sx={{ backgroundColor: 'white' }}>
+            <section sx={{ backgroundColor: 'white', variant: 'sections.noypadding' }}>
                 <Flex
                     sx={{
                         alignItems: [null, null, 'center'],
@@ -43,13 +43,17 @@ const PageTemplate = ({ data: { previous, next, service } }) => {
                         pb: 4,
                     }}
                 >
-                    <Box sx={{ flex: 2, borderRight: [null, null, '0.01rem solid black'] }}>
+                    <Box sx={{ flex: 2 }}>
                         {featuredImage?.fluid && (
                             <GatsbyImage image={featuredImage.fluid} alt={featuredImage.alt || service.title} />
                         )}
                     </Box>
 
-                    <Box py={4} px={[0, 0, 6]} sx={{ flex: 3, variant: 'layout' }}>
+                    <Box
+                        py={4}
+                        px={[0, 0, 6]}
+                        sx={{ flex: 3, borderLeft: [null, null, '0.01rem solid black'], variant: 'layout' }}
+                    >
                         {!!service.content && (
                             <Flex
                                 sx={{
@@ -62,7 +66,11 @@ const PageTemplate = ({ data: { previous, next, service } }) => {
                     </Box>
                 </Flex>
             </section>
-            <section>
+            <section
+                sx={{
+                    variant: 'sections.noypadding',
+                }}
+            >
                 <PagesNav
                     previousPagePath={previous && previous.uri}
                     nextPagePath={next && next.uri}

@@ -13,7 +13,7 @@ import PagesNav from '../components/pagesNav'
 
 const BlogIndex = ({ data, pageContext: { nextPagePath, previousPagePath, pageNumber }, location: { pathname } }) => {
     const { setPageStyle } = useContext(PageStyleContext)
-    console.log(pageNumber)
+    // console.log(pageNumber)
     const pageStyle = 'white'
 
     useLayoutEffect(() => {
@@ -51,7 +51,11 @@ const BlogIndex = ({ data, pageContext: { nextPagePath, previousPagePath, pageNu
                 // featuredImage={page.featuredImage?.node?.og?.childImageSharp?.gatsbyImageData?.src}
             />
             {pathname === '/blog/' && <PageHeader title={pageTitle} intro={content} headerStyle={pageStyle} />}
-            <section>
+            <section
+                sx={{
+                    variant: 'sections.noypadding',
+                }}
+            >
                 {pathname !== '/blog/' && (
                     <Container
                         sx={{
@@ -67,9 +71,10 @@ const BlogIndex = ({ data, pageContext: { nextPagePath, previousPagePath, pageNu
                                 letterSpacing: 'tighter',
                                 fontSize: 4,
                                 fontWeight: 'bold',
-                                my: 4,
+                                mt: 7,
+                                mb: 6,
                                 display: 'block',
-                                width: '50%',
+                                width: '65%',
                             }}
                         >
                             {'Web Development & Digital Trends From Around The Web: Page ' + pageNumber}
@@ -162,7 +167,11 @@ const BlogIndex = ({ data, pageContext: { nextPagePath, previousPagePath, pageNu
                 </Container>
             </section>
 
-            <section>
+            <section
+                sx={{
+                    variant: 'sections.noypadding',
+                }}
+            >
                 <PagesNav
                     previousPagePath={previousPagePath && previousPagePath}
                     nextPagePath={nextPagePath && nextPagePath}

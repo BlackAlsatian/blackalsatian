@@ -3,15 +3,14 @@ import AniLink from 'gatsby-plugin-transition-link/AniLink'
 
 const PagesNav = ({ previousPagePath, nextPagePath, previousName, nextName, backgroundColor, color, swipeColor }) => {
     return (
-        <div>
+        <div
+            sx={{
+                variant: 'divs.pagesnav',
+            }}
+        >
             <ul
                 sx={{
-                    display: `flex`,
-                    flexWrap: `wrap`,
-                    justifyContent: `space-between`,
-                    listStyle: `none`,
                     p: [3, 3, 4],
-                    m: 0,
                 }}
             >
                 <li sx={{ m: 3 }}>

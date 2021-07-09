@@ -22,16 +22,8 @@ const MenuIcon = () => {
                 height='100%'
                 viewBox='0 0 100 80'
                 sx={{
-                    width: 6,
-                    height: 'px',
                     background: isOpen && 'white',
-                    borderRadius: '5px',
-                    position: 'relative',
-                    ml: 'auto',
-                    transformOrigin: '1px',
                     transform: isOpen ? 'rotate(45deg)' : 'rotate(0)',
-                    transition: 'opacity 300ms, transform 300ms',
-                    boxShadow: '0 0 5px 5px  rgba(0, 0, 0, 0.05)',
                 }}
             >
                 <rect width='100' height='20' rx='8'></rect>
@@ -46,16 +38,8 @@ const MenuIcon = () => {
                 height='100%'
                 viewBox='0 0 100 80'
                 sx={{
-                    width: 6,
-                    height: 'px',
                     background: isOpen && 'white',
-                    borderRadius: '5px',
-                    position: 'relative',
-                    ml: 'auto',
-                    transformOrigin: '1px',
                     opacity: isOpen ? '0' : '1',
-                    transition: 'opacity 300ms, transform 300ms',
-                    boxShadow: '0 0 5px 5px rgba(0, 0, 0, 0.05)',
                 }}
             >
                 <rect width='100' height='20' rx='8'></rect>
@@ -67,16 +51,8 @@ const MenuIcon = () => {
                 height='100%'
                 viewBox='0 0 100 80'
                 sx={{
-                    width: 6,
-                    height: 'px',
                     background: isOpen && 'white',
-                    borderRadius: '5px',
-                    position: 'relative',
-                    ml: 'auto',
-                    transformOrigin: '1px',
                     transform: isOpen ? 'rotate(-45deg)' : 'rotate(0)',
-                    transition: 'opacity 300ms, transform 300ms',
-                    boxShadow: '0 0 5px 5px  rgba(0, 0, 0, 0.05)',
                 }}
             >
                 <rect width='100' height='20' rx='8'></rect>

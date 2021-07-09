@@ -27,26 +27,20 @@ const ProjectTemplate = ({ data: { previous, portfolio, next } }) => {
                 datePublished={portfolio.dateGmt}
                 dateModified={portfolio.modifiedGmt}
             />
-            <div
-                sx={{
-                    backgroundColor: 'black',
-                }}
-            >
-                <ProjectHeader project={portfolio} />
+            <ProjectHeader project={portfolio} pageStyle={pageStyle} />
 
-                <ProjectContent project={portfolio} pageStyle={pageStyle} />
-                <section sx={{ backgroundColor: 'black' }}>
-                    <PagesNav
-                        previousPagePath={previous && previous.uri}
-                        nextPagePath={next && next.uri}
-                        previousName={previous && parse(previous.title)}
-                        nextName={next && parse(next.title)}
-                        backgroundColor='white'
-                        color='#111827'
-                        swipeColor='#111827'
-                    />
-                </section>
-            </div>
+            <ProjectContent project={portfolio} pageStyle={pageStyle} />
+            <section sx={{ backgroundColor: 'black', variant: 'sections.noypadding' }}>
+                <PagesNav
+                    previousPagePath={previous && previous.uri}
+                    nextPagePath={next && next.uri}
+                    previousName={previous && parse(previous.title)}
+                    nextName={next && parse(next.title)}
+                    backgroundColor='white'
+                    color='#111827'
+                    swipeColor='#111827'
+                />
+            </section>
         </>
     )
 }
