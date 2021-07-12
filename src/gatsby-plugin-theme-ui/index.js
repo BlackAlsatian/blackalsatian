@@ -378,7 +378,7 @@ const theme = {
             },
             blockquote: {
                 fontFamily: 'serif',
-                fontSize: 2,
+                fontSize: 3,
                 borderTop: '0.01rem solid black',
                 borderBottom: '0.025rem solid black',
                 p: '2.2rem 2rem 2.2rem 2rem',
