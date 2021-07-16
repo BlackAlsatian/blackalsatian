@@ -1342,8 +1342,8 @@ const theme = {
                     '&:not(:focus)': { color: 'white', backgroundColor: 'black' },
                 },
                 button: {
-                    backgroundColor: 'black',
-                    color: 'white',
+                    backgroundColor: 'white',
+                    color: 'black',
                 },
                 errors: {
                     input: {
