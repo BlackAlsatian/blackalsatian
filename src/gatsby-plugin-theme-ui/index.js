@@ -204,6 +204,16 @@ const theme = {
                     // transform: 'translate3d(0, 0, 0)',
                 },
             },
+            '@keyframes fadeBlockOut': {
+                from: {
+                    opacity: 1,
+                    // transform: 'translate3d(0, -20%, 0)',
+                },
+                to: {
+                    opacity: 0,
+                    // transform: 'translate3d(0, 0, 0)',
+                },
+            },
             fontFamily: 'body',
             lineHeight: 'body',
             fontWeight: 'body',

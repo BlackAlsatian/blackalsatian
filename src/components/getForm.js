@@ -4,6 +4,7 @@ import { Label, Input, Box, Button, Spinner, Alert, Textarea } from 'theme-ui'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import axios from 'axios'
+import Notification from './notification'
 
 import { handleErrorColor, phoneRegExp, emailRegExp, sendGA, leadInfo } from '../components/helpers'
 
@@ -69,7 +70,7 @@ const GetForm = ({ option, buttonName, buttonUrl, backgroundColor, buttonBackgro
                         sendGA('generate_lead', option, data.tags)
                         setTimeout(() => {
                             setMessageAlert(false)
-                        }, 2500)
+                        }, 5000)
                     }
                     // console.log(response)
                 },
@@ -506,17 +507,28 @@ const GetForm = ({ option, buttonName, buttonUrl, backgroundColor, buttonBackgro
             )}
 
             {/* success alert */}
-            {messageAlert && (
-                <Alert
-                    sx={{
-                        color: `${btnColor}`,
-                        bg: `${buttonBackground}`,
-                        my: 3,
-                    }}
-                >
-                    Pleased to meet you! Chat soon.
-                </Alert>
-            )}
+            {/* {messageAlert && ( 
+                // <Alert
+                //   sx={{
+                //       color: `${btnColor}`,
+                //       bg: `${buttonBackground}`,
+                //       my: 3,
+                //   }}
+                // >
+                //    Pleased to meet you! Chat soon.
+                // </Alert>*/}
+            <Notification
+                // color={btnColor}
+                // bgColor={buttonBackground}
+                color={errorColor === 'yellow' ? 'black' : 'white'}
+                bgColor={errorColor}
+                // message="We'll get in touch as soon as humanly possible."
+                message={
+                    option === 'lead' ? 'Please keep an eye on your inbox.' : "I'll tell a human to contact you ASAP."
+                }
+                showAlert={messageAlert}
+            />
+            {/* // )} */}
 
             {/* button */}
             {formSubmitting ? (
@@ -544,6 +556,15 @@ const GetForm = ({ option, buttonName, buttonUrl, backgroundColor, buttonBackgro
                     >
                         {buttonName || 'Fetch!'}
                     </Button>
+                    {/* <Alert
+                        sx={{
+                            color: `${btnColor}`,
+                            bg: `${buttonBackground}`,
+                            my: 3,
+                        }}
+                    >
+                        Pleased to meet you! Chat soon.
+                    </Alert> */}
                 </>
             )}
         </Box>
