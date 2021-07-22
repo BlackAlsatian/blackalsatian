@@ -1,10 +1,10 @@
 /** @jsxImportSource theme-ui */
 import { Container, Heading, Flex, Box } from 'theme-ui'
-import AniLink from 'gatsby-plugin-transition-link/AniLink'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import parse from 'html-react-parser'
+import AnimatedSwipeButton from '../elements/animatedSwipeButton'
 
-const ProjectHeader = ({ previous, project, pageStyle }) => {
+const ProjectHeader = ({ project }) => {
     const featuredImage = {
         fluid: project.featuredImage?.node?.main?.childImageSharp?.gatsbyImageData,
         alt: project.featuredImage?.node?.altText || ``,
@@ -17,12 +17,11 @@ const ProjectHeader = ({ previous, project, pageStyle }) => {
                 minHeight: '40vh',
                 pt: '10vh',
                 pb: 0,
-                variant: 'main.' + pageStyle,
+                variant: 'main.black',
             }}
         >
             <Flex
                 sx={{
-                    display: 'flex',
                     justifyContent: 'space-between',
                     flexDirection: ['column', 'column', 'row'],
                     px: [4, 4, 5],
@@ -32,64 +31,43 @@ const ProjectHeader = ({ previous, project, pageStyle }) => {
                     as='h1'
                     sx={{
                         fontSize: [6, 8],
-                        // lineHeight: 'none',
-                        // letterSpacing: 'tighter',
                         textShadow: 'none',
                         pr: 5,
                     }}
                 >
                     {parse(project.title)}
                 </Heading>
-                <div
+                <Box
+                    as='div'
                     sx={{
                         pl: 5,
                         textAlign: 'right',
                     }}
                 >
                     {parse(project.excerpt)}
-                </div>
+                </Box>
             </Flex>
             <Box
-                mt={3}
-                px={[null, null, 5]}
+                as='div'
+                px={[4, 4, 5]}
                 py={[3, 3, null]}
                 sx={{
                     width: 'full',
                 }}
             >
-                <AniLink
-                    as='button'
-                    cover
-                    duration={0.5}
+                <AnimatedSwipeButton
+                    name='← Back to Portfolio'
+                    url='/portfolio/'
                     direction='left'
-                    bg='#111827'
-                    to={previous ? previous.uri : '/portfolio/'}
+                    swipeColor='#111827'
+                    linkRelation='back'
+                    backgroundColor='transparent'
+                    textColor='white'
+                    hoverColor='#f5df4d'
                     replace
-                    rel='back'
-                    title='Back'
-                    sx={{
-                        variant: 'buttons.simple',
-                        backgroundColor: 'transparent',
-                        color: 'white',
-                        textDecoration: 'none',
-                        boxShadow: 'xl',
-                        transition: '200ms',
-                        fontSize: 3,
-                        fontWeight: 'black',
-                        '&:hover': {
-                            color: '#f5df4d !important',
-                            backgroundColor: 'transparent',
-                            boxShadow: 'none',
-                        },
-                        '&:visited, &:active, &:focus': {
-                            color: 'white',
-                        },
-                    }}
-                >
-                    ← Back
-                </AniLink>
+                />
             </Box>
-            <Container p={[3, 3, 5]}>
+            <Container p={[3, 3, 4]}>
                 {featuredImage?.fluid && (
                     <GatsbyImage image={featuredImage.fluid} alt={featuredImage.alt || parse(project.title)} />
                 )}

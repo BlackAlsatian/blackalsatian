@@ -1,37 +1,12 @@
 /** @jsxImportSource theme-ui */
-import { Box, Heading } from 'theme-ui'
+import { Heading } from 'theme-ui'
+import LeftColumnWrapper from './leftColumnWrapper'
+import LeftColumnHeading from './leftColumnHeading'
 
-const LeftColumn = ({ heading, title, page }) => {
+const LeftColumn = ({ heading, title, page, rightBorderColor, headerSize }) => {
     return (
-        <Box
-            px={[4, 4, 6]}
-            py={[5, 5, null]}
-            sx={{
-                textAlign: ['left', 'left', 'right'],
-                flex: [null, null, 1],
-                width: ['100%', null],
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: !page ? ['flex-start', 'flex-start', 'flex-end'] : null,
-                justifyContent: page ? null : 'center',
-                borderRight: [0, 0, `1px solid`],
-            }}
-        >
-            {heading && (
-                <Heading
-                    // as={headerSize || 'h2'}
-                    as={'h2'}
-                    sx={{
-                        fontSize: [4, 3, 4, 5],
-                        fontWeight: ['bold', 'bold', 'thin', 'thin'],
-                        lineHeight: 'none',
-                        mb: 4,
-                        letterSpacing: 'tighter',
-                    }}
-                >
-                    {heading}
-                </Heading>
-            )}
+        <LeftColumnWrapper page={page} rightBorderColor={rightBorderColor}>
+            {heading && <LeftColumnHeading heading={heading} headerSize={headerSize} />}
             {title && (
                 <Heading
                     as='h3'
@@ -45,7 +20,7 @@ const LeftColumn = ({ heading, title, page }) => {
                     {title}
                 </Heading>
             )}
-        </Box>
+        </LeftColumnWrapper>
     )
 }
 export default LeftColumn

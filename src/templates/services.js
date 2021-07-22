@@ -63,9 +63,6 @@ const ServicesIndex = ({ data }) => {
                             fluid: service.featuredImage?.node?.main?.childImageSharp?.gatsbyImageData,
                             alt: service.featuredImage?.node?.altText || ``,
                         }
-                        {
-                            /* console.log(featuredImage) */
-                        }
                         return (
                             <AniLink
                                 cover
@@ -78,6 +75,7 @@ const ServicesIndex = ({ data }) => {
                                 sx={{
                                     color: 'black',
                                     textDecoration: 'none',
+                                    fontWeight: 'normal',
                                 }}
                             >
                                 {isOdd(i) ? (

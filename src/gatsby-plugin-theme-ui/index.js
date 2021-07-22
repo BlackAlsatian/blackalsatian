@@ -187,6 +187,14 @@ const theme = {
     breakpoints: ['640px', '768px', '1024px', '1280px', '1520px'],
     styles: {
         root: {
+            fontFamily: 'body',
+            lineHeight: 'body',
+            fontWeight: 'body',
+            body: {
+                minHeight: '100vh',
+                // WebkitFontSmoothing: 'antialiased',
+                // MozOsxFontSmoothing: 'grayscale',
+            },
             scrollBehavior: 'smooth',
             '@media screen and (prefersReducedMotion: reduce)': {
                 scrollBehavior: 'auto',
@@ -220,20 +228,10 @@ const theme = {
             '@keyframes fadeBlockOut': {
                 from: {
                     opacity: 1,
-                    // transform: 'translate3d(0, -20%, 0)',
                 },
                 to: {
                     opacity: 0,
-                    // transform: 'translate3d(0, 0, 0)',
                 },
-            },
-            fontFamily: 'body',
-            lineHeight: 'body',
-            fontWeight: 'body',
-            body: {
-                minHeight: '100vh',
-                // WebkitFontSmoothing: 'antialiased',
-                // MozOsxFontSmoothing: 'grayscale',
             },
             a: {
                 color: 'black',
@@ -270,7 +268,7 @@ const theme = {
             },
             main: {
                 flex: 1,
-                counterReset: 'css-counter -1',
+                // counterReset: 'css-counter -1',
                 section: {
                     display: 'flex',
                     alignItems: 'center',
@@ -279,13 +277,12 @@ const theme = {
                     width: '100%',
                     p: 0,
                     m: 0,
-                    // py: 6,
-                    // opacity: 0,
-                    counterIncrement: 'css-counter',
+                    // counterIncrement: 'css-counter',
                     animation: 'fadeBlockIn 200ms ease-in both',
-                    '& :nth-of-type(counter(css-counter))': {
-                        animationDelay: 'counter(css-counter)s',
-                    },
+                    // '&:nth-of-type(counter(css-counter))': {
+                    // animationDelay: 'counter(css-counter)s',
+                    animationDelay: '250ms',
+                    // },
                 },
             },
             footer: {
@@ -306,76 +303,49 @@ const theme = {
                 mb: 4,
             },
             h1: {
-                // fontFamily: 'heading',
-                // fontWeight: 'heading',
+                variant: 'text.heading',
                 lineHeight: 'none',
                 letterSpacing: 'tighter',
                 textShadow: 'heading',
-                // m: 0,
             },
             h2: {
-                // fontFamily: 'heading',
-                // fontWeight: 'heading',
-                // lineHeight: 'heading',
-                // m: 0,
+                variant: 'text.heading',
                 mb: '1.5rem',
                 fontSize: 5,
                 mt: 2,
             },
             h3: {
-                // fontFamily: 'heading',
-                // fontWeight: 'heading',
-                // lineHeight: 'heading',
-                // m: 0,
+                variant: 'text.heading',
+                variant: 'text.heading',
                 mb: '1.5rem',
                 fontSize: 4,
                 mt: 3,
-                a: {
-                    color: 'black',
-                    textDecoration: 'underline',
-                    fontWeight: 'bold',
-                    '&:hover': {
-                        textDecoration: 'none',
-                    },
-                    '&:visited': {
-                        color: 'rgba(0, 0, 0, 0.8)',
-                    },
-                },
             },
             h4: {
-                // fontFamily: 'heading',
-                // fontWeight: 'heading',
-                // lineHeight: 'heading',
-                // m: 0,
+                variant: 'text.heading',
                 mb: '1.5rem',
                 fontSize: 3,
-                a: {
-                    color: 'black',
-                    textDecoration: 'underline',
-                    fontWeight: 'bold',
-                    '&:hover': {
-                        textDecoration: 'none',
-                    },
-                    '&:visited': {
-                        color: 'rgba(0, 0, 0, 0.8)',
-                    },
-                },
             },
             h5: {
-                // fontFamily: 'heading',
-                // fontWeight: 'heading',
-                // lineHeight: 'heading',
-                // m: 0,
+                variant: 'text.heading',
                 mb: '1.5rem',
                 fontSize: 2,
             },
             h6: {
-                // fontFamily: 'heading',
-                // fontWeight: 'heading',
-                // lineHeight: 'heading',
-                // m: 0,
+                variant: 'text.heading',
                 mb: 2,
                 fontSize: 1,
+            },
+            a: {
+                color: 'black',
+                textDecoration: 'underline',
+                fontWeight: 'bold',
+                '&:hover': {
+                    textDecoration: 'none',
+                },
+                '&:visited': {
+                    color: 'rgba(0, 0, 0, 0.8)',
+                },
             },
             code: {},
             pre: {},
@@ -385,33 +355,30 @@ const theme = {
                 height: '1px',
                 m: 3,
             },
-            ul: {
-                m: '1.5rem',
-            },
-            li: {
-                a: {
-                    color: 'black',
-                    textDecoration: 'underline',
-                    fontWeight: 'bold',
-                    '&:hover': {
-                        textDecoration: 'none',
-                    },
-                    '&:visited': {
-                        color: 'rgba(0, 0, 0, 0.8)',
-                    },
-                },
-            },
+            // ul: {
+            //     m: '1.5rem',
+            //     flexList: {
+            //         display: `flex`,
+            //         flexWrap: `wrap`,
+            //         justifyContent: `space-between`,
+            //         listStyle: `none`,
+            //         m: 0,
+            //     },
+            // },
             blockquote: {
                 fontFamily: 'serif',
                 fontSize: 3,
                 borderTop: '0.01rem solid black',
                 borderBottom: '0.025rem solid black',
-                p: '2.2rem 2rem 2.2rem 2rem',
+                padding: '2.2rem 2rem 2.2rem 2rem',
                 m: '2.75rem 0',
                 textAlign: 'left',
                 fontStyle: 'oblique',
                 lineHeight: 'tight',
                 textAlign: 'center',
+                p: {
+                    my: 0,
+                },
             },
             figure: {
                 my: 4,
@@ -437,6 +404,16 @@ const theme = {
             fontSize: [3, 4],
             my: 1,
             textShadow: 'heading',
+        },
+    },
+    uls: {
+        m: '1.5rem',
+        flexList: {
+            display: `flex`,
+            flexWrap: `wrap`,
+            justifyContent: `space-between`,
+            listStyle: `none`,
+            m: 0,
         },
     },
     buttons: {
@@ -702,7 +679,6 @@ const theme = {
             },
         },
     },
-
     header: {
         default: {
             svg: {
@@ -883,7 +859,6 @@ const theme = {
             },
         },
     },
-
     main: {
         default: {
             backgroundColor: 'white',
@@ -932,7 +907,6 @@ const theme = {
             },
         },
     },
-
     sections: {
         pageHeaders: {
             // used by pageheaders
@@ -1007,24 +981,37 @@ const theme = {
                 backgroundColor: 'white',
                 color: 'black',
                 borderColor: 'black',
-                a: {
-                    color: 'black',
-                    fontWeight: 'bold',
-                    textDecoration: 'none',
-                    boderBottom: 0,
-                    transition: 'border-bottom 0.2s ease-in-out',
-                    '&:hover': {
-                        borderBottom: '2px solid black',
-                    },
-                },
+                // a: {
+                //     // color: 'black',
+                //     // fontWeight: 'bold',
+                //     textDecoration: 'none',
+                //     boderBottom: 0,
+                //     transition: 'border-bottom 0.2s ease-in-out',
+                //     '&:hover': {
+                //         borderBottom: '2px solid black',
+                //     },
+                // },
                 p: {
                     span: {
                         a: {
                             color: 'white !important',
+                            backgroundColor: 'black',
                             '&:hover': {
                                 borderBottom: 0,
                             },
                         },
+                    },
+                },
+                'input[type=checkbox]': {
+                    borderColor: 'black',
+                    '&:after': {
+                        color: 'black',
+                    },
+                },
+                button: {
+                    backgroundColor: 'black',
+                    '&:active, &:focus, &:hover': {
+                        backgroundColor: 'black',
                     },
                 },
             },
@@ -1032,16 +1019,16 @@ const theme = {
                 backgroundColor: 'yellow',
                 color: 'black',
                 borderColor: 'black',
-                a: {
-                    color: 'black',
-                    fontWeight: 'bold',
-                    textDecoration: 'none',
-                    boderBottom: 0,
-                    transition: 'border-bottom 0.2s ease-in-out',
-                    '&:hover': {
-                        borderBottom: '2px solid black',
-                    },
-                },
+                // a: {
+                //     // color: 'black',
+                //     // fontWeight: 'bold',
+                //     textDecoration: 'none',
+                //     boderBottom: 0,
+                //     transition: 'border-bottom 0.2s ease-in-out',
+                //     '&:hover': {
+                //         borderBottom: '2px solid black',
+                //     },
+                // },
                 p: {
                     span: {
                         a: {
@@ -1059,13 +1046,13 @@ const theme = {
                 borderColor: 'white',
                 a: {
                     color: 'white',
-                    fontWeight: 'bold',
-                    textDecoration: 'none',
-                    boderBottom: 0,
-                    transition: 'border-bottom 0.2s ease-in-out',
-                    '&:hover': {
-                        borderBottom: '2px solid white',
-                    },
+                    // fontWeight: 'bold',
+                    // textDecoration: 'none',
+                    // boderBottom: 0,
+                    // transition: 'border-bottom 0.2s ease-in-out',
+                    // '&:hover': {
+                    //     borderBottom: '2px solid white',
+                    // },
                     '&:visited, &:active, &:focus': {
                         color: 'white',
                     },
@@ -1087,13 +1074,13 @@ const theme = {
                 borderColor: 'white',
                 a: {
                     color: 'white',
-                    fontWeight: 'bold',
-                    textDecoration: 'none',
-                    boderBottom: 0,
-                    transition: 'border-bottom 0.2s ease-in-out',
-                    '&:hover': {
-                        borderBottom: '2px solid white',
-                    },
+                    // fontWeight: 'bold',
+                    // textDecoration: 'none',
+                    // boderBottom: 0,
+                    // transition: 'border-bottom 0.2s ease-in-out',
+                    // '&:hover': {
+                    //     borderBottom: '2px solid white',
+                    // },
                     '&:visited, &:active, &:focus': {
                         color: 'white',
                     },
@@ -1119,10 +1106,10 @@ const theme = {
             // display: 'flex',
             // alignItems: 'center',
         },
-        portfolioPage: {
-            backgroundColor: 'black',
-            color: 'white',
-        },
+        // portfolioPage: {
+        // backgroundColor: 'black',
+        // color: 'white',
+        // },
         footerRowTwo: {
             display: 'flex',
             px: 4,
@@ -1130,7 +1117,6 @@ const theme = {
             width: '100%',
         },
     },
-
     divs: {
         offcanvas: {
             display: 'flex',
@@ -1195,15 +1181,15 @@ const theme = {
                 borderWidth: 0,
             },
         },
-        pagesnav: {
-            ul: {
-                display: `flex`,
-                flexWrap: `wrap`,
-                justifyContent: `space-between`,
-                listStyle: `none`,
-                m: 0,
-            },
-        },
+        // pagesnav: {
+        //     ul: {
+        //         display: `flex`,
+        //         flexWrap: `wrap`,
+        //         justifyContent: `space-between`,
+        //         listStyle: `none`,
+        //         m: 0,
+        //     },
+        // },
         serviceBlockLinks: {
             maxWidth: '100%',
             display: 'flex',
@@ -1217,7 +1203,6 @@ const theme = {
             },
         },
     },
-
     footers: {
         section: {
             minHeight: 'initial',
@@ -1299,12 +1284,12 @@ const theme = {
                 },
                 errors: {
                     input: {
-                        borderBottomColor: 'red',
+                        borderBottomColor: 'blue',
                     },
                     'input[type="checkbox"]': {
-                        borderColor: 'red',
+                        borderColor: 'blue',
                         '&:after': {
-                            color: 'red',
+                            color: 'blue',
                         },
                     },
                 },
@@ -1343,12 +1328,12 @@ const theme = {
                 },
                 errors: {
                     input: {
-                        borderBottomColor: 'red',
+                        borderBottomColor: 'blue',
                     },
                     'input[type="checkbox"]': {
-                        borderColor: 'red',
+                        borderColor: 'blue',
                         '&:after': {
-                            color: 'red',
+                            color: 'blue',
                         },
                     },
                 },
@@ -1519,12 +1504,12 @@ const theme = {
                 },
                 errors: {
                     input: {
-                        borderBottomColor: 'red',
+                        borderBottomColor: 'yellow',
                     },
                     'input[type="checkbox"]': {
-                        borderColor: 'red',
+                        borderColor: 'yellow',
                         '&:after': {
-                            color: 'red',
+                            color: 'yellow',
                         },
                     },
                 },

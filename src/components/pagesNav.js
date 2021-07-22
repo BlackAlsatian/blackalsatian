@@ -1,83 +1,41 @@
 /** @jsxImportSource theme-ui */
-import AniLink from 'gatsby-plugin-transition-link/AniLink'
+import AnimatedSwipeButton from './template/elements/animatedSwipeButton'
 
 const PagesNav = ({ previousPagePath, nextPagePath, previousName, nextName, backgroundColor, color, swipeColor }) => {
     return (
-        <div
-            sx={{
-                variant: 'divs.pagesnav',
-            }}
-        >
+        <div>
             <ul
                 sx={{
                     p: [3, 3, 4],
+                    variant: 'uls.flexList',
                 }}
             >
                 <li sx={{ m: 3 }}>
                     {previousPagePath && (
                         <>
-                            <AniLink
-                                cover
-                                duration={0.5}
+                            <AnimatedSwipeButton
+                                name={previousName ? '← ' + previousName : '← Previous'}
+                                url={previousPagePath}
                                 direction='right'
-                                bg={swipeColor || '#111827'}
-                                to={previousPagePath}
-                                rel='prev'
-                                title={previousName || 'Previous'}
-                                sx={{
-                                    variant: 'buttons.simple',
-                                    backgroundColor: `${backgroundColor}`,
-                                    color: `${color} !important`,
-                                    textDecoration: 'none',
-                                    boxShadow: 'xl',
-                                    transition: '200ms',
-                                    py: 3,
-                                    px: 4,
-                                    fontSize: 3,
-                                    fontWeight: 'black',
-                                    lineHeight: '2.5',
-                                    '&:hover': {
-                                        backgroundColor: `${backgroundColor}`,
-                                        boxShadow: 'none',
-                                    },
-                                }}
-                            >
-                                ← {previousName || 'Previous'}
-                            </AniLink>
-                            <br />
+                                swipeColor={swipeColor}
+                                linkRelation='prev'
+                                backgroundColor={backgroundColor}
+                                textColor={color}
+                            />
                         </>
                     )}
                 </li>
                 <li sx={{ m: 3 }}>
                     {nextPagePath && (
-                        <AniLink
-                            cover
-                            duration={0.5}
+                        <AnimatedSwipeButton
+                            name={nextName ? nextName + ' →' : 'Next →'}
+                            url={nextPagePath}
                             direction='left'
-                            bg={swipeColor || '#111827'}
-                            to={nextPagePath}
-                            rel='next'
-                            title={nextName || 'Next'}
-                            sx={{
-                                variant: 'buttons.simple',
-                                backgroundColor: `${backgroundColor}`,
-                                color: `${color} !important`,
-                                textDecoration: 'none',
-                                boxShadow: 'xl',
-                                transition: '200ms',
-                                py: 3,
-                                px: 4,
-                                fontSize: 3,
-                                fontWeight: 'black',
-                                lineHeight: '2.5',
-                                '&:hover': {
-                                    backgroundColor: `${backgroundColor}`,
-                                    boxShadow: 'none',
-                                },
-                            }}
-                        >
-                            {nextName || 'Next'} →
-                        </AniLink>
+                            swipeColor={swipeColor}
+                            linkRelation='next'
+                            backgroundColor={backgroundColor}
+                            textColor={color}
+                        />
                     )}
                 </li>
             </ul>

@@ -48,7 +48,7 @@ const PortfolioIndex = ({ data }) => {
                 dateModified={page.modifiedGmt}
             />
             <PageHeader title={parse(page.title)} intro={page.pageintro} headerStyle={pageStyle} />
-            <ColumnSection sectionVariant='sections.portfolioPage'>
+            <ColumnSection>
                 <LeftColumn
                     heading={page.pagesubheading}
                     title={page.pagesubtitle}

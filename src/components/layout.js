@@ -1,4 +1,5 @@
 /** @jsxImportSource theme-ui */
+import { Flex } from 'theme-ui'
 import { useContext } from 'react'
 import { PageStyleContext } from './pageStyleProvider'
 import Header from './template/header'
@@ -12,9 +13,8 @@ const Layout = ({ children }) => {
     const scroll = useHasScrolled(1500)
     const consentScroll = useHasScrolled(50)
     return (
-        <div
+        <Flex
             sx={{
-                display: 'flex',
                 flexDirection: 'column',
                 minHeight: '100vh',
                 overflow: 'hidden',
@@ -27,7 +27,7 @@ const Layout = ({ children }) => {
             <Footer siteTitle='Black Alsatian' pageStyle={pageStyle} />
             <GoToTopButton visible={scroll} />
             <CookieConsent visible={consentScroll} />
-        </div>
+        </Flex>
     )
 }
 

@@ -130,7 +130,7 @@ const BlogIndex = ({ data, pageContext: { nextPagePath, previousPagePath, pageNu
                     nextPagePath={nextPagePath && nextPagePath}
                     backgroundColor='white'
                     color='black'
-                    swipeColor='black'
+                    swipeColor='white'
                 />
             </section>
         </>

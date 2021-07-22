@@ -27,10 +27,10 @@ const ProjectTemplate = ({ data: { previous, portfolio, next } }) => {
                 datePublished={portfolio.dateGmt}
                 dateModified={portfolio.modifiedGmt}
             />
-            <ProjectHeader project={portfolio} pageStyle={pageStyle} />
+            <ProjectHeader project={portfolio} />
 
-            <ProjectContent project={portfolio} pageStyle={pageStyle} />
-            <section sx={{ backgroundColor: 'black', variant: 'sections.noypadding' }}>
+            <ProjectContent project={portfolio} />
+            <section sx={{ variant: 'sections.noypadding' }}>
                 <PagesNav
                     previousPagePath={previous && previous.uri}
                     nextPagePath={next && next.uri}

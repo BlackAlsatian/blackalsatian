@@ -41,10 +41,9 @@ const PageTemplate = ({ data: { previous, next, service } }) => {
                         pt: [5, 5, 6],
                         px: 4,
                         pb: 4,
-                        flexShrink: 'none',
                     }}
                 >
-                    <Box sx={{ flex: 2 }}>
+                    <Box sx={{ flex: 2, flexShrink: 'none' }}>
                         {featuredImage?.fluid && (
                             <GatsbyImage image={featuredImage.fluid} alt={featuredImage.alt || service.title} />
                         )}

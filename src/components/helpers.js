@@ -11,7 +11,7 @@ export function getHeight() {
 // temporary hacky way of changing error text colours for specific pages
 export function handleErrorColor(backgroundColor) {
     if (backgroundColor === 'white' || backgroundColor === 'yellow') {
-        return 'red'
+        return 'blue'
     } else {
         return 'yellow'
     }
