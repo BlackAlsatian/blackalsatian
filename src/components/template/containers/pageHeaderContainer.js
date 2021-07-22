@@ -1,4 +1,5 @@
 /** @jsxImportSource theme-ui */
+import React from 'react'
 import { Container } from 'theme-ui'
 
 const PageHeaderContainer = ({ children }) => {
@@ -20,4 +21,4 @@ const PageHeaderContainer = ({ children }) => {
     )
 }
 
-export default PageHeaderContainer
+export default React.memo(PageHeaderContainer)

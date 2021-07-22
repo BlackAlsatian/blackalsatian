@@ -1,4 +1,5 @@
 /** @jsxImportSource theme-ui */
+import React from 'react'
 import { Flex } from 'theme-ui'
 import { Link } from 'gatsby'
 import parse from 'html-react-parser'
@@ -24,4 +25,4 @@ const Nav = ({ navLinks }) => {
     )
 }
 
-export default Nav
+export default React.memo(Nav)

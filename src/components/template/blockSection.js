@@ -1,4 +1,5 @@
 /** @jsxImportSource theme-ui */
+import React from 'react'
 import LazyLoad from 'react-lazyload'
 import BlockText from '../blockText'
 import LeftColumn from './elements/leftColumn'
@@ -40,4 +41,4 @@ const ContentBlock = ({
         </ColumnSection>
     )
 }
-export default ContentBlock
+export default React.memo(ContentBlock)

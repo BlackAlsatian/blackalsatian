@@ -1,4 +1,5 @@
 /** @jsxImportSource theme-ui */
+import React from 'react'
 import { Container, Flex } from 'theme-ui'
 
 const ColumnSection = ({ children, props, sectionVariant }) => {
@@ -24,4 +25,4 @@ const ColumnSection = ({ children, props, sectionVariant }) => {
     )
 }
 
-export default ColumnSection
+export default React.memo(ColumnSection)

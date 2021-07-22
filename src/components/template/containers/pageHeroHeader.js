@@ -1,4 +1,5 @@
 /** @jsxImportSource theme-ui */
+import React from 'react'
 import { Flex } from 'theme-ui'
 
 const PageHeroHeader = ({ children, containerVariant }) => {
@@ -15,4 +16,4 @@ const PageHeroHeader = ({ children, containerVariant }) => {
     )
 }
 
-export default PageHeroHeader
+export default React.memo(PageHeroHeader)

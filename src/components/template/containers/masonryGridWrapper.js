@@ -1,4 +1,5 @@
 /** @jsxImportSource theme-ui */
+import React from 'react'
 import { Flex, Heading } from 'theme-ui'
 import MasonryGridViewAllLink from '../elements/masonryGridViewAllLink'
 
@@ -36,4 +37,4 @@ const MasonryGridWrapper = ({ children, heading, viewAllLink, background }) => {
     )
 }
 
-export default MasonryGridWrapper
+export default React.memo(MasonryGridWrapper)

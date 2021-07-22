@@ -307,10 +307,12 @@ const theme = {
                 lineHeight: 'none',
                 letterSpacing: 'tighter',
                 textShadow: 'heading',
+                //hypens examples
                 // WebkitHyphens: 'auto',
                 // MozHyphens: 'auto',
                 // MsHyphens: 'auto',
                 // hyphens: 'auto',
+                //word-wrap / break-word / etc
                 overflowWrap: 'break-word',
                 wordWrap: 'break-word',
                 MsWordBreak: 'break-all',
@@ -319,6 +321,15 @@ const theme = {
                 MozHyphens: 'auto',
                 WebkitHyphens: 'auto',
                 hyphens: 'auto',
+                // min-content
+                // width: "-moz-min-content",    /* Firefox */
+                // width: "-webkit-min-content", /* Chrome */
+                // width: "min-content",
+                //max-content
+                // width: 'intrinsic',           /* Safari/WebKit uses a non-standard name */
+                // width: '-moz-max-content',    /* Firefox/Gecko */
+                // width: '-webkit-max-content', /* Chrome */
+                // width: 'max-content',
             },
             h2: {
                 variant: 'text.heading',

@@ -1,4 +1,5 @@
 /** @jsxImportSource theme-ui */
+import React from 'react'
 import { Flex } from 'theme-ui'
 import { useStaticQuery, graphql, Link } from 'gatsby'
 import parse from 'html-react-parser'
@@ -29,4 +30,4 @@ const ServiceNav = ({ handleMenuClick }) => {
     )
 }
 
-export default ServiceNav
+export default React.memo(ServiceNav)

@@ -1,4 +1,5 @@
 /** @jsxImportSource theme-ui */
+import React from 'react'
 import { Flex } from 'theme-ui'
 import { Link } from 'gatsby'
 import { useContext } from 'react'
@@ -49,4 +50,4 @@ const OffCanvas = ({ navLinks }) => {
         </animated.div>
     )
 }
-export default OffCanvas
+export default React.memo(OffCanvas)

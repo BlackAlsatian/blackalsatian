@@ -1,4 +1,5 @@
 /** @jsxImportSource theme-ui */
+import React from 'react'
 import { Heading, Paragraph } from 'theme-ui'
 import PageHeroHeader from './containers/pageHeroHeader'
 import PageHeaderContainer from './containers/pageHeaderContainer'
@@ -24,4 +25,4 @@ const PageHeader = ({ title, intro, headerStyle }) => {
     )
 }
 
-export default PageHeader
+export default React.memo(PageHeader)
