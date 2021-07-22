@@ -48,7 +48,7 @@ const Footer = ({ siteTitle, pageStyle }) => {
             sx={{
                 variant: 'footers.' + pageStyle,
                 animation: 'fadeBlockIn 400ms ease-in both',
-                animationDelay: '500ms',
+                animationDelay: '50ms',
             }}
             id='contact'
         >

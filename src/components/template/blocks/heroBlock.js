@@ -28,7 +28,7 @@ const HeroBlock = ({ featuredImage, title, intro }) => {
                 <Heading
                     as='h1'
                     sx={{
-                        fontSize: [7, 10],
+                        fontSize: [6, 10],
                     }}
                 >
                     {parse(title)}

@@ -12,6 +12,7 @@ import Bio from '../components/bio'
 import PagesNav from '../components/pagesNav'
 import PageHeroHeader from '../components/template/containers/pageHeroHeader'
 import PageHeaderContainer from '../components/template/containers/pageHeaderContainer'
+import { removeTags } from '../components/helpers'
 
 const BlogPostTemplate = ({ data: { previous, next, post } }) => {
     // console.log({ pageContext })
@@ -26,6 +27,8 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
         alt: post.featuredImage?.node?.altText || ``,
     }
     const seoImgSrc = getSrc(post.featuredImage.node.og)
+
+    const postExcerpt = removeTags(post.excerpt)
     return (
         <>
             <SEO
@@ -61,18 +64,18 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
                             as='h1'
                             sx={{
                                 // fontSize: [6, 7, 7, 9],
-                                fontSize: [6, 10],
+                                fontSize: [6, 8, 10],
                                 animation: 'fadeBlockIn 400ms ease-in both',
                                 animationDelay: '300ms',
                             }}
                         >
                             {parse(post.title)}
                         </Heading>
-                        <Paragraph sx={{ variant: 'paragraph.pageHeading' }}>{parse(post.excerpt)}</Paragraph>
+                        <Paragraph sx={{ variant: 'paragraph.pageHeading' }}>{parse(postExcerpt)}</Paragraph>
                     </PageHeaderContainer>
                 </PageHeroHeader>
             ) : (
-                <PageHeader title={parse(post.title)} intro={parse(post.excerpt)} headerStyle={pageStyle} />
+                <PageHeader title={parse(post.title)} intro={parse(postExcerpt)} headerStyle={pageStyle} />
             )}
 
             {!!post.content && (

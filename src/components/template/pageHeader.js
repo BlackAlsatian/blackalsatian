@@ -11,7 +11,7 @@ const PageHeader = ({ title, intro, headerStyle }) => {
                     as='h1'
                     sx={{
                         // fontSize: [6, 7, 7, 10],
-                        fontSize: [6, 10],
+                        fontSize: [6, 8, 10],
                         animation: 'fadeBlockIn 400ms ease-in both',
                         animationDelay: '300ms',
                     }}

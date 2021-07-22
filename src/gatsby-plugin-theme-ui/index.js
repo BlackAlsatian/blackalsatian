@@ -83,7 +83,7 @@ const theme = {
         inner: 'inset 0 2px 4px 0 rgba(0, 0, 0, 0.06)',
         outline: '0 0 0 3px rgba(66, 153, 225, 0.5)',
         none: 'none',
-        heading: '0 0 32px rgba(0, 0, 0, 0.3)',
+        heading: '1px 1px 16px rgba(0, 0, 0, 0.1)',
     },
     radii: {
         none: 0,
@@ -164,7 +164,7 @@ const theme = {
         screenWidth: '100vw',
         container: 1280,
     },
-    space: [0, '0.25rem', '0.5rem', '1rem', '2rem', '4rem', '8rem', '16rem', '32rem'],
+    space: [0, '0.25rem', '0.5rem', '1rem', '2rem', '4rem', '8rem', '10rem', '12rem', '16rem', '32rem'],
     text: {
         heading: {
             fontFamily: 'heading',
@@ -278,10 +278,10 @@ const theme = {
                     p: 0,
                     m: 0,
                     // counterIncrement: 'css-counter',
-                    animation: 'fadeBlockIn 200ms ease-in both',
+                    // animation: 'fadeBlockIn 200ms ease-in both',
                     // '&:nth-of-type(counter(css-counter))': {
                     // animationDelay: 'counter(css-counter)s',
-                    animationDelay: '250ms',
+                    // animationDelay: '250ms',
                     // },
                 },
             },
@@ -307,6 +307,18 @@ const theme = {
                 lineHeight: 'none',
                 letterSpacing: 'tighter',
                 textShadow: 'heading',
+                // WebkitHyphens: 'auto',
+                // MozHyphens: 'auto',
+                // MsHyphens: 'auto',
+                // hyphens: 'auto',
+                overflowWrap: 'break-word',
+                wordWrap: 'break-word',
+                MsWordBreak: 'break-all',
+                wordBreak: 'break-word',
+                MsHyphens: 'auto',
+                MozHyphens: 'auto',
+                WebkitHyphens: 'auto',
+                hyphens: 'auto',
             },
             h2: {
                 variant: 'text.heading',
@@ -404,6 +416,7 @@ const theme = {
             fontSize: [3, 4],
             my: 1,
             textShadow: 'heading',
+            lineHeight: 'none',
         },
     },
     uls: {
@@ -1166,7 +1179,7 @@ const theme = {
                     ml: 'auto',
                     transformOrigin: '1px',
                     transition: 'opacity 300ms, transform 300ms',
-                    boxShadow: '0 0 5px 5px  rgba(0, 0, 0, 0.05)',
+                    boxShadow: '0 0 3px 3px  rgba(0, 0, 0, 0.02)',
                 },
             },
             span: {

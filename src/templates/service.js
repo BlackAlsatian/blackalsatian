@@ -8,6 +8,7 @@ import parse from 'html-react-parser'
 import SEO from '../components/seo'
 import PageHeader from '../components/template/pageHeader'
 import PagesNav from '../components/pagesNav'
+import { removeTags } from '../components/helpers'
 
 const PageTemplate = ({ data: { previous, next, service } }) => {
     const { setPageStyle } = useContext(PageStyleContext)
@@ -21,7 +22,7 @@ const PageTemplate = ({ data: { previous, next, service } }) => {
         alt: service.featuredImage?.node?.altText || ``,
     }
     const seoImgSrc = getSrc(service.featuredImage?.node?.og)
-
+    const serviceExcerpt = removeTags(service.excerpt)
     return (
         <>
             <SEO
@@ -32,8 +33,8 @@ const PageTemplate = ({ data: { previous, next, service } }) => {
                 datePublished={service.dateGmt}
                 dateModified={service.modifiedGmt}
             />
-            <PageHeader title={parse(service.title)} intro={parse(service.excerpt)} headerStyle={pageStyle} />
-            <section sx={{ backgroundColor: 'white', variant: 'sections.noypadding' }}>
+            <PageHeader title={parse(service.title)} intro={parse(serviceExcerpt)} headerStyle={pageStyle} />
+            <Box as='section' sx={{ backgroundColor: 'white', variant: 'sections.noypadding' }}>
                 <Flex
                     sx={{
                         alignItems: [null, null, 'center'],
@@ -65,7 +66,7 @@ const PageTemplate = ({ data: { previous, next, service } }) => {
                         )}
                     </Box>
                 </Flex>
-            </section>
+            </Box>
             <section
                 sx={{
                     variant: 'sections.noypadding',

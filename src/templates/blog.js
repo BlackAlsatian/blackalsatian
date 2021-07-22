@@ -1,5 +1,6 @@
 /** @jsxImportSource theme-ui */
-import { Container, Heading } from 'theme-ui'
+import { Box, Container, Heading } from 'theme-ui'
+import parse from 'html-react-parser'
 import { useLayoutEffect, useContext } from 'react'
 import { PageStyleContext } from '../components/pageStyleProvider'
 import { graphql } from 'gatsby'
@@ -49,7 +50,8 @@ const BlogIndex = ({ data, pageContext: { nextPagePath, previousPagePath, pageNu
                 // featuredImage={page.featuredImage?.node?.og?.childImageSharp?.gatsbyImageData?.src}
             />
             {pathname === '/blog/' && <PageHeader title={pageTitle} intro={content} headerStyle={pageStyle} />}
-            <section
+            <Box
+                as='section'
                 sx={{
                     display: 'block',
                     alignItems: 'normal',
@@ -68,13 +70,12 @@ const BlogIndex = ({ data, pageContext: { nextPagePath, previousPagePath, pageNu
                         <Heading
                             as='h1'
                             sx={{
-                                lineHeight: 'tight',
-                                letterSpacing: 'tighter',
+                                // lineHeight: 'tight',
                                 fontSize: 4,
-                                fontWeight: 'bold',
+                                // fontWeight: 'bold',
                                 mt: 7,
                                 mb: 6,
-                                display: 'block',
+                                // display: 'block',
                                 width: '65%',
                                 animation: 'fadeBlockIn 400ms ease-in both',
                                 animationDelay: '500ms',
@@ -118,9 +119,10 @@ const BlogIndex = ({ data, pageContext: { nextPagePath, previousPagePath, pageNu
                         )
                     })}
                 </Container>
-            </section>
+            </Box>
 
-            <section
+            <Box
+                as='section'
                 sx={{
                     variant: 'sections.noypadding',
                 }}
@@ -132,7 +134,7 @@ const BlogIndex = ({ data, pageContext: { nextPagePath, previousPagePath, pageNu
                     color='black'
                     swipeColor='white'
                 />
-            </section>
+            </Box>
         </>
     )
 }
