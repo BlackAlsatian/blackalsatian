@@ -1,8 +1,9 @@
 /** @jsxImportSource theme-ui */
 import { useStaticQuery, graphql } from 'gatsby'
-import { Container, Flex, Box } from 'theme-ui'
+import { Box } from 'theme-ui'
 import ServiceLink from '../elements/serviceLink'
 import LeftColumn from '../elements/leftColumn'
+import ColumnSection from '../containers/columnSection'
 
 const ServicesBlock = () => {
     const services = useStaticQuery(graphql`
@@ -14,36 +15,23 @@ const ServicesBlock = () => {
     `)
     const serviceLinks = services.wpMenu.menuItems.nodes
     return (
-        <section
-            sx={{
-                variant: 'sections.servicesBlock',
-            }}
-            id='services'
-        >
-            <Container px={1}>
-                <Flex
-                    sx={{
-                        flexDirection: ['column', 'column', 'row'],
-                    }}
-                >
-                    <LeftColumn
-                        heading='Everything you need to get your brand out on the world-wide web.'
-                        title='"Web Design & Digital Marketing Services"'
-                    />
-                    <Box
-                        pr={[null, null, 4]}
-                        sx={{
-                            flex: [null, null, 3],
-                            width: ['100%', null],
-                        }}
-                    >
-                        {serviceLinks.map((item) => (
-                            <ServiceLink key={item.id} item={item} />
-                        ))}
-                    </Box>
-                </Flex>
-            </Container>
-        </section>
+        <ColumnSection sectionVariant='sections.servicesBlock' id='services'>
+            <LeftColumn
+                heading='Everything you need to get your brand out on the world-wide web.'
+                title='"Web Design & Digital Marketing Services"'
+            />
+            <Box
+                pr={[null, null, 4]}
+                sx={{
+                    flex: [null, null, 3],
+                    width: ['100%', null],
+                }}
+            >
+                {serviceLinks.map((item) => (
+                    <ServiceLink key={item.id} item={item} />
+                ))}
+            </Box>
+        </ColumnSection>
     )
 }
 

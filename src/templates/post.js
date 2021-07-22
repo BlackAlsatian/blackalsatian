@@ -1,5 +1,5 @@
 /** @jsxImportSource theme-ui */
-import { Container, Heading, Flex, Box, Badge } from 'theme-ui'
+import { Container, Heading, Flex, Box, Badge, Paragraph } from 'theme-ui'
 import { useLayoutEffect, useContext } from 'react'
 import { PageStyleContext } from '../components/pageStyleProvider'
 import { graphql } from 'gatsby'
@@ -10,6 +10,8 @@ import SEO from '../components/seo'
 import PageHeader from '../components/template/pageHeader'
 import Bio from '../components/bio'
 import PagesNav from '../components/pagesNav'
+import PageHeroHeader from '../components/template/containers/pageHeroHeader'
+import PageHeaderContainer from '../components/template/containers/pageHeaderContainer'
 
 const BlogPostTemplate = ({ data: { previous, next, post } }) => {
     // console.log({ pageContext })
@@ -39,14 +41,7 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
 
             {/* <section itemScope itemType='http://schema.org/Article'> */}
             {featuredImage?.fluid ? (
-                <Flex
-                    as='section'
-                    backgroundColor='#111827'
-                    sx={{
-                        position: 'relative',
-                        variant: 'sections.pageHeaders.' + pageStyle,
-                    }}
-                >
+                <PageHeroHeader containerVariant='default'>
                     <GatsbyImage
                         image={featuredImage.fluid}
                         alt={featuredImage.alt || post.title}
@@ -61,41 +56,21 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
                             filter: 'brightness(40%)',
                         }}
                     />
-                    <Container
-                        p={4}
-                        sx={{
-                            position: 'absolute',
-                            pt: ['45vh', '45vh', '50vh'],
-                            minHeight: '100vh',
-                            mx: 'auto',
-                        }}
-                    >
+                    <PageHeaderContainer>
                         <Heading
                             as='h1'
                             sx={{
-                                fontSize: [6, 7, 7, 9],
-                                letterSpacing: 'tighter',
-                                lineHeight: 'none',
-                                textShadow: '0 0 4rem rgba(0, 0, 0, 0.5)',
+                                // fontSize: [6, 7, 7, 9],
+                                fontSize: [6, 10],
                                 animation: 'fadeBlockIn 400ms ease-in both',
                                 animationDelay: '300ms',
                             }}
                         >
                             {parse(post.title)}
                         </Heading>
-                        <Box
-                            sx={{
-                                fontSize: [2, 2, 3],
-                                my: 0,
-                                textShadow: '0 0 3rem rgba(0, 0, 0, 0.5)',
-                                animation: 'fadeBlockIn 400ms ease-in both',
-                                animationDelay: '500ms',
-                            }}
-                        >
-                            {parse(post.excerpt)}
-                        </Box>
-                    </Container>
-                </Flex>
+                        <Paragraph sx={{ variant: 'paragraph.pageHeading' }}>{parse(post.excerpt)}</Paragraph>
+                    </PageHeaderContainer>
+                </PageHeroHeader>
             ) : (
                 <PageHeader title={parse(post.title)} intro={parse(post.excerpt)} headerStyle={pageStyle} />
             )}

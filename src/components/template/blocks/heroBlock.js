@@ -1,20 +1,15 @@
 /** @jsxImportSource theme-ui */
-import { Container, Flex, Heading } from 'theme-ui'
+import { Heading, Paragraph } from 'theme-ui'
 import parse from 'html-react-parser'
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
+import PageHeroHeader from '../containers/pageHeroHeader'
+import PageHeaderContainer from '../containers/pageHeaderContainer'
 
-const HeroBlock = ({ featuredImage, color, title, intro }) => {
+const HeroBlock = ({ featuredImage, title, intro }) => {
     // const { featuredImage, color, title, intro } = props
     const featuredImageData = getImage(featuredImage.node.main)
     return (
-        <Flex
-            as='section'
-            backgroundColor='#111827'
-            sx={{
-                position: 'relative',
-                color: `${color}`,
-            }}
-        >
+        <PageHeroHeader containerVariant='default'>
             <GatsbyImage
                 image={featuredImageData}
                 alt={featuredImage.node.altText || title}
@@ -29,21 +24,18 @@ const HeroBlock = ({ featuredImage, color, title, intro }) => {
                     filter: 'brightness(80%)',
                 }}
             />
-            <Container p={4} sx={{ position: 'absolute', pt: ['52vh', '52vh', '55vh'], minHeight: '100vh' }}>
+            <PageHeaderContainer>
                 <Heading
                     as='h1'
                     sx={{
                         fontSize: [7, 10],
-                        letterSpacing: 'tighter',
-                        lineHeight: 'none',
-                        textShadow: '0 0 4rem rgba(0, 0, 0, 0.5)',
                     }}
                 >
                     {parse(title)}
                 </Heading>
-                <p sx={{ fontSize: [3, 4], my: 0, textShadow: '0 0 3rem rgba(0, 0, 0, 0.5)' }}>{parse(intro)}</p>
-            </Container>
-        </Flex>
+                <Paragraph sx={{ variant: 'paragraph.pageHeading' }}>{parse(intro)}</Paragraph>
+            </PageHeaderContainer>
+        </PageHeroHeader>
     )
 }
 

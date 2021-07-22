@@ -1,9 +1,10 @@
 /** @jsxImportSource theme-ui */
-import { Container, Flex, Box } from 'theme-ui'
 import LazyLoad from 'react-lazyload'
 import BlockText from '../blockText'
-import LeftColumn from '../template/elements/leftColumn'
+import LeftColumn from './elements/leftColumn'
+import RightColumn from './elements/rightColumn'
 import GetForm from '../getForm'
+import ColumnSection from './containers/columnSection'
 
 const ContentBlock = ({
     backgroundColor,
@@ -19,48 +20,24 @@ const ContentBlock = ({
     headerSize,
 }) => {
     return (
-        <section
-            sx={{
-                py: [5, 5, 6],
-                variant: 'sections.blocks.' + backgroundColor,
-            }}
-            id={anchor}
-        >
-            <Container px={1}>
-                <Flex
-                    sx={{
-                        flexDirection: ['column', 'column', 'row'],
-                    }}
-                >
-                    <LeftColumn heading={heading} title={title} headerSize={headerSize} />
-                    <Box
-                        // py={[4, 4, 5]}
-                        px={[4, 4, 6]}
-                        sx={{
-                            flex: [null, null, 3],
-                            width: ['100%', null],
-                            display: 'flex',
-                            flexDirection: 'column',
-                            justifyContent: 'center',
-                        }}
-                    >
-                        <BlockText text={text} />
-                        {buttonName && option !== 'none' && (
-                            <LazyLoad height='100%' offset={200} once>
-                                <GetForm
-                                    option={option}
-                                    buttonName={buttonName}
-                                    buttonUrl={buttonUrl}
-                                    backgroundColor={backgroundColor}
-                                    buttonBackground={buttonBackground}
-                                    formStyle='inputs.background'
-                                />
-                            </LazyLoad>
-                        )}
-                    </Box>
-                </Flex>
-            </Container>
-        </section>
+        <ColumnSection sectionVariant={'sections.blocks.' + backgroundColor} id={anchor}>
+            <LeftColumn heading={heading} title={title} headerSize={headerSize} />
+            <RightColumn>
+                <BlockText text={text} />
+                {buttonName && option !== 'none' && (
+                    <LazyLoad height='100%' offset={200} once>
+                        <GetForm
+                            option={option}
+                            buttonName={buttonName}
+                            buttonUrl={buttonUrl}
+                            backgroundColor={backgroundColor}
+                            buttonBackground={buttonBackground}
+                            formStyle='inputs.background'
+                        />
+                    </LazyLoad>
+                )}
+            </RightColumn>
+        </ColumnSection>
     )
 }
 export default ContentBlock

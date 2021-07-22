@@ -2,7 +2,7 @@
 import { useStaticQuery, graphql } from 'gatsby'
 import LazyLoad from 'react-lazyload'
 import TestimonialTile from '../elements/testimonialTile'
-import TestimonialsGrid from '../elements/testimonialsGrid'
+import MasonryGridWrapper from '../containers/masonryGridWrapper'
 
 const TestimonialsBlock = () => {
     const testimonialsData = useStaticQuery(graphql`
@@ -24,7 +24,7 @@ const TestimonialsBlock = () => {
     const testimonials = testimonialsData.allWpTestimonial
     const heading = 'See What Our Clients Say...'
     return (
-        <TestimonialsGrid heading={heading}>
+        <MasonryGridWrapper heading={heading} background='yellow'>
             <LazyLoad height='100%' offset={100} once>
                 {testimonials.nodes.map((testimonial) => {
                     return (
@@ -38,7 +38,7 @@ const TestimonialsBlock = () => {
                     )
                 })}
             </LazyLoad>
-        </TestimonialsGrid>
+        </MasonryGridWrapper>
     )
 }
 

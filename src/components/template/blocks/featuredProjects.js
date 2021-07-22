@@ -23,7 +23,13 @@ const FeaturedProjectsBlock = () => {
     const viewAllLink = '/portfolio/'
     return (
         <LazyLoad height='100%' offset={100} once>
-            <MasonryGrid dataNodes={dataNodes} heading={heading} viewAllLink={viewAllLink} headerType='p' />
+            <MasonryGrid
+                dataNodes={dataNodes}
+                heading={heading}
+                viewAllLink={viewAllLink}
+                headerType='p'
+                background='white'
+            />
         </LazyLoad>
     )
 }

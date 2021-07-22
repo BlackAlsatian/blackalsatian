@@ -3,13 +3,11 @@ import { Container, Heading } from 'theme-ui'
 import { useLayoutEffect, useContext } from 'react'
 import { PageStyleContext } from '../components/pageStyleProvider'
 import { graphql } from 'gatsby'
-import { GatsbyImage } from 'gatsby-plugin-image'
-import parse from 'html-react-parser'
 import AniLink from 'gatsby-plugin-transition-link/AniLink'
-import { getHeight } from '../components/helpers'
 import SEO from '../components/seo'
 import PageHeader from '../components/template/pageHeader'
 import PagesNav from '../components/pagesNav'
+import GridTile from '../components/template/elements/gridTile'
 
 const BlogIndex = ({ data, pageContext: { nextPagePath, previousPagePath, pageNumber }, location: { pathname } }) => {
     const { setPageStyle } = useContext(PageStyleContext)
@@ -115,57 +113,7 @@ const BlogIndex = ({ data, pageContext: { nextPagePath, previousPagePath, pageNu
                                 key={post.uri}
                                 title={post.title}
                             >
-                                <article
-                                    sx={{
-                                        height: getHeight(),
-                                        position: 'relative',
-                                        breakInside: 'avoid',
-                                        counterIncrement: 'item-counter',
-                                        mt: 4,
-                                        mb: 4,
-                                        '&:first-of-type': {
-                                            mt: 0,
-                                        },
-                                        boxShadow: 'xl',
-                                    }}
-                                >
-                                    {featuredImage?.fluid && (
-                                        <GatsbyImage
-                                            image={featuredImage.fluid}
-                                            alt={featuredImage.alt || post.title}
-                                            style={{
-                                                display: 'block',
-                                                position: 'relative',
-                                                height: '100%',
-                                            }}
-                                        />
-                                    )}
-                                    <div
-                                        sx={{
-                                            position: 'absolute',
-                                            bottom: 0,
-                                            width: '100%',
-                                            height: '100%',
-                                            px: 4,
-                                            py: 4,
-                                            display: 'flex',
-                                            flexDirection: 'column',
-                                            justifyContent: 'flex-end',
-                                            color: 'white',
-                                            backgroundColor: 'rgba(0, 0, 0, 0.6)',
-                                            transition: 'background-color 200ms ease-in',
-                                            '&:hover': {
-                                                backgroundColor: 'rgba(0, 0, 0, 0.3)',
-                                            },
-                                        }}
-                                    >
-                                        <Heading as='h4' sx={{ fontSize: 3 }}>
-                                            {parse(title)}
-                                        </Heading>
-                                        <small>{post.date}</small>
-                                        {parse(excerpt)}
-                                    </div>
-                                </article>
+                                <GridTile node={post} headerType='h2' />
                             </AniLink>
                         )
                     })}

@@ -1,5 +1,4 @@
 /** @jsxImportSource theme-ui */
-import { Container, Flex, Box } from 'theme-ui'
 import { useLayoutEffect, useContext } from 'react'
 import { PageStyleContext } from '../components/pageStyleProvider'
 import { graphql } from 'gatsby'
@@ -10,6 +9,8 @@ import Modules from '../components/modules'
 import SEO from '../components/seo'
 import PageHeader from '../components/template/pageHeader'
 import LeftColumn from '../components/template/elements/leftColumn'
+import RightColumn from '../components/template/elements/rightColumn'
+import ColumnSection from '../components/template/containers/columnSection'
 
 const PageTemplate = ({ data: { page, pageblocks } }) => {
     const { setPageStyle } = useContext(PageStyleContext)
@@ -56,38 +57,10 @@ const PageTemplate = ({ data: { page, pageblocks } }) => {
                 !pageTitles.includes(page.title) && (
                     <>
                         <PageHeader title={parse(page.title)} intro={page.pageintro} headerStyle={pageStyle} />
-                        <section
-                            sx={{
-                                py: [5, 5, 6],
-                                minHeight: 'initial',
-                                variant: 'main.' + pageStyle,
-                            }}
-                        >
-                            <Container px={1}>
-                                <Flex
-                                    sx={{
-                                        flexDirection: ['column', 'column', 'row'],
-                                    }}
-                                >
-                                    <LeftColumn
-                                        heading={page.pagesubheading}
-                                        title={page.pagesubtitle}
-                                        headerSize='h2'
-                                        page
-                                    />
-                                    <Box
-                                        // py={[3, 3, 5]}
-                                        px={[4, 4, 6]}
-                                        sx={{
-                                            flex: [null, null, 3],
-                                            width: ['100%', null],
-                                        }}
-                                    >
-                                        {page.content && parse(page.content)}
-                                    </Box>
-                                </Flex>
-                            </Container>
-                        </section>
+                        <ColumnSection sectionVariant={'main.' + pageStyle}>
+                            <LeftColumn heading={page.pagesubheading} title={page.pagesubtitle} headerSize='h2' page />
+                            <RightColumn>{page.content && parse(page.content)}</RightColumn>
+                        </ColumnSection>
                     </>
                 )
             )}

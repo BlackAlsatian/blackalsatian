@@ -9,6 +9,7 @@ import parse from 'html-react-parser'
 import SEO from '../components/seo'
 import PageHeader from '../components/template/pageHeader'
 import LeftColumn from '../components/template/elements/leftColumn'
+import ColumnSection from '../components/template/containers/columnSection'
 
 const PortfolioIndex = ({ data }) => {
     // const pageStyle = data.wpPage.pageStyle
@@ -47,115 +48,99 @@ const PortfolioIndex = ({ data }) => {
                 dateModified={page.modifiedGmt}
             />
             <PageHeader title={parse(page.title)} intro={page.pageintro} headerStyle={pageStyle} />
-
-            <section
-                sx={{
-                    py: 5,
-                    backgroundColor: 'black',
-                }}
-            >
-                <Container p={1}>
-                    <Flex
-                        sx={{
-                            flexDirection: ['column', 'column', 'row'],
-                            color: 'white',
-                        }}
-                    >
-                        <LeftColumn
-                            heading={page.pagesubheading}
-                            title={page.pagesubtitle}
-                            color='white'
-                            headerSize='h2'
-                            page
-                        />
-                        <Box
-                            py={[3, 3, 5]}
-                            pr={[3, 3, 5]}
-                            sx={{
-                                flex: [null, null, 3],
-                                width: ['100%', null],
-                                variant: 'layout',
-                            }}
-                        >
-                            <div sx={{ pl: [4, 4, 6], pr: [4, 4, null], pb: 5 }}>{parse(page.content)}</div>
-                            {portfolio.map((portfolio) => {
-                                const title = portfolio.title
-                                return (
-                                    <AniLink
-                                        cover
-                                        duration={0.5}
-                                        direction='left'
-                                        bg='#111827'
-                                        key={portfolio.uri}
-                                        to={portfolio.uri}
-                                        title={parse(title)}
+            <ColumnSection sectionVariant='sections.portfolioPage'>
+                <LeftColumn
+                    heading={page.pagesubheading}
+                    title={page.pagesubtitle}
+                    color='white'
+                    headerSize='h2'
+                    page
+                />
+                <Box
+                    py={[3, 3, 5]}
+                    pr={[3, 3, 5]}
+                    sx={{
+                        flex: [null, null, 3],
+                        width: ['100%', null],
+                    }}
+                >
+                    <div sx={{ pl: [4, 4, 6], pr: [4, 4, null], pb: 5 }}>{parse(page.content)}</div>
+                    {portfolio.map((portfolio) => {
+                        const title = portfolio.title
+                        return (
+                            <AniLink
+                                cover
+                                duration={0.5}
+                                direction='left'
+                                bg='#111827'
+                                key={portfolio.uri}
+                                to={portfolio.uri}
+                                title={parse(title)}
+                                sx={{
+                                    color: 'white',
+                                    textDecoration: 'none',
+                                    display: 'block',
+                                    width: '100%',
+                                    '&:hover, &:focus, &:active': {
+                                        color: '#f5df4d !important',
+                                    },
+                                    '&:visited': {
+                                        color: 'white',
+                                    },
+                                }}
+                            >
+                                <div
+                                    sx={{
+                                        maxWidth: '100%',
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        justifyContent: 'space-between',
+                                        pl: [1, 1, 6],
+                                        py: [3, 3, null],
+                                        minHeight: ['3rem', '3rem', '5rem'],
+                                        borderBottom: '0.01rem solid white',
+                                        transition: 'background 500ms ease-in',
+                                    }}
+                                >
+                                    <span sx={{ flex: 1, px: 2 }}>{portfolio.projectYear}</span>
+                                    <Heading
+                                        as='span'
                                         sx={{
-                                            color: 'white',
-                                            textDecoration: 'none',
-                                            display: 'block',
-                                            width: '100%',
-                                            '&:hover, &:focus, &:active': {
-                                                color: '#f5df4d !important',
-                                            },
-                                            '&:visited': {
-                                                color: 'white',
-                                            },
+                                            flex: 4,
+                                            fontSize: 2,
+                                            fontWeight: 'bold',
+                                            px: 2,
                                         }}
                                     >
-                                        <div
-                                            sx={{
-                                                maxWidth: '100%',
-                                                display: 'flex',
-                                                alignItems: 'center',
-                                                justifyContent: 'space-between',
-                                                pl: [1, 1, 6],
-                                                py: [3, 3, null],
-                                                minHeight: ['3rem', '3rem', '5rem'],
-                                                borderBottom: '0.01rem solid white',
-                                                transition: 'background 500ms ease-in',
-                                            }}
-                                        >
-                                            <span sx={{ flex: 1, px: 2 }}>{portfolio.projectYear}</span>
-                                            <Heading
-                                                as='span'
-                                                sx={{
-                                                    flex: 4,
-                                                    fontSize: 2,
-                                                    fontWeight: 'bold',
-                                                    px: 2,
-                                                }}
-                                            >
-                                                {parse(title)}
-                                            </Heading>
-                                            <div
-                                                sx={{
-                                                    flex: 2,
-                                                    fontSize: 0,
-                                                    px: 2,
-                                                }}
-                                            >
-                                                {portfolio.tags.nodes &&
-                                                    portfolio.tags.nodes.map(({ name, id }) => (
-                                                        <span
-                                                            sx={{
-                                                                m: 0,
-                                                                fontWeight: 'normal',
-                                                            }}
-                                                            key={id}
-                                                        >
-                                                            {' '}
-                                                            + {name}
-                                                        </span>
-                                                    ))}
-                                            </div>
-                                        </div>
-                                    </AniLink>
-                                )
-                            })}
-                        </Box>
-                    </Flex>
-                </Container>
-            </section>
+                                        {parse(title)}
+                                    </Heading>
+                                    <div
+                                        sx={{
+                                            flex: 2,
+                                            fontSize: 0,
+                                            px: 2,
+                                        }}
+                                    >
+                                        {portfolio.tags.nodes &&
+                                            portfolio.tags.nodes.map(({ name, id }) => (
+                                                <span
+                                                    sx={{
+                                                        m: 0,
+                                                        fontWeight: 'normal',
+                                                    }}
+                                                    key={id}
+                                                >
+                                                    {' '}
+                                                    + {name}
+                                                </span>
+                                            ))}
+                                    </div>
+                                </div>
+                            </AniLink>
+                        )
+                    })}
+                </Box>
+            </ColumnSection>
         </>
     )
 }

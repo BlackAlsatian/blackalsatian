@@ -10,7 +10,8 @@ const ProjectHeader = ({ previous, project, pageStyle }) => {
         alt: project.featuredImage?.node?.altText || ``,
     }
     return (
-        <section
+        <Flex
+            as='section'
             sx={{
                 flexDirection: 'column',
                 minHeight: '40vh',
@@ -31,8 +32,9 @@ const ProjectHeader = ({ previous, project, pageStyle }) => {
                     as='h1'
                     sx={{
                         fontSize: [6, 8],
-                        lineHeight: 'none',
-                        letterSpacing: 'tighter',
+                        // lineHeight: 'none',
+                        // letterSpacing: 'tighter',
+                        textShadow: 'none',
                         pr: 5,
                     }}
                 >
@@ -92,7 +94,7 @@ const ProjectHeader = ({ previous, project, pageStyle }) => {
                     <GatsbyImage image={featuredImage.fluid} alt={featuredImage.alt || parse(project.title)} />
                 )}
             </Container>
-        </section>
+        </Flex>
     )
 }
 
