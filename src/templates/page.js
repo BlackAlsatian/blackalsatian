@@ -5,7 +5,7 @@ import { graphql } from 'gatsby'
 import { getSrc } from 'gatsby-plugin-image'
 import HeroBlock from '../components/template/blocks/heroBlock'
 import parse from 'html-react-parser'
-import Module from '../components/module'
+import Modules from '../components/modules'
 import SEO from '../components/seo'
 import PageHeader from '../components/template/pageHeader'
 import LeftColumn from '../components/template/elements/leftColumn'
@@ -42,7 +42,8 @@ const PageTemplate = ({ data: { page, pageblocks } }) => {
                         title={pageblocks.blocks[0].innerBlocks[0].attributes.heroTitle}
                         intro={pageblocks.blocks[0].innerBlocks[0].attributes.heroIntro}
                     />
-                    {pageblocks.blocks &&
+                    {pageblocks.blocks && <Modules blockmodules={pageblocks.blocks} />}
+                    {/* {pageblocks.blocks &&
                         pageblocks.blocks.map(({ __typename, name, order, attributes, innerBlocks }) => (
                             <Module
                                 key={order}
@@ -51,7 +52,7 @@ const PageTemplate = ({ data: { page, pageblocks } }) => {
                                 innerBlocks={innerBlocks}
                                 attributes={attributes}
                             />
-                        ))}
+                        ))} */}
                 </>
             ) : (
                 !pageTitles.includes(page.title) && (

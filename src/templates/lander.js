@@ -4,7 +4,7 @@ import { useLayoutEffect, useContext } from 'react'
 import { PageStyleContext } from '../components/pageStyleProvider'
 import { getSrc } from 'gatsby-plugin-image'
 import HeroBlock from '../components/template/blocks/heroBlock'
-import Module from '../components/module'
+import Modules from '../components/modules'
 import SEO from '../components/seo'
 
 const LanderTemplate = ({ data: { lander, pageblocks } }) => {
@@ -34,7 +34,8 @@ const LanderTemplate = ({ data: { lander, pageblocks } }) => {
                 datePublished={lander.dateGmt}
                 dateModified={lander.modifiedGmt}
             />
-            {pageblocks.blocks &&
+            {pageblocks.blocks && <Modules blockmodules={pageblocks.blocks} />}
+            {/* {pageblocks.blocks &&
                 pageblocks.blocks.map(({ name, order, attributes, innerBlocks }) => (
                     <Module
                         key={order}
@@ -42,7 +43,7 @@ const LanderTemplate = ({ data: { lander, pageblocks } }) => {
                         innerBlocks={innerBlocks}
                         attributes={attributes}
                     />
-                ))}
+                ))} */}
         </>
     )
 }
@@ -66,15 +67,16 @@ export const landerQuery = graphql`
             seo {
                 metaDesc
             }
-            # blocks {
-            #     ...CoreCoverblock
-            #     ...BlackalsatianContentBlock
-            # }
         }
         pageblocks: wpBlockEditorContentNode(id: { eq: $id }) {
             blocks {
+                name
                 ...CoreCoverblock
                 ...BlackalsatianContentBlock
+                ...BlackalsatianServicesBlock
+                ...BlackalsatianLatestPostsBlock
+                ...BlackalsatianFeaturedProjectsBlock
+                ...BlackalsatianTestimonialsBlock
             }
         }
     }

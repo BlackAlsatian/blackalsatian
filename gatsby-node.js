@@ -3,7 +3,7 @@ const chunk = require(`lodash/chunk`)
 
 const LoadablePlugin = require('@loadable/webpack-plugin')
 
-exports.onCreateWebpackConfig = ({ stage, actions }) => {
+exports.onCreateWebpackConfig = ({ stage, getConfig, rules, loaders, plugins, actions }) => {
     actions.setWebpackConfig({
         plugins: [new LoadablePlugin()],
     })
