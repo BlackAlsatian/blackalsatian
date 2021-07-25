@@ -8,11 +8,11 @@ exports.onCreateWebpackConfig = ({ stage, getConfig, rules, loaders, plugins, ac
         plugins: [new LoadablePlugin()],
     })
 }
-exports.onCreateBabelConfig = ({ actions }) => {
-    actions.setBabelPlugin({
-        name: `@loadable/babel-plugin`,
-    })
-}
+// exports.onCreateBabelConfig = ({ actions }) => {
+//     actions.setBabelPlugin({
+//         name: `@loadable/babel-plugin`,
+//     })
+// }
 
 /**
  * exports.createPages, built-in Gatsby Node API to create pages 💡

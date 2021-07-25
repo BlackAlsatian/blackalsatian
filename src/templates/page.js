@@ -98,7 +98,6 @@ export const pageQuery = graphql`
         pageblocks: wpBlockEditorContentNode(id: { eq: $id }) {
             blocks {
                 name
-                order
                 ...CoreCoverblock
                 ...BlackalsatianContentBlock
                 ...BlackalsatianServicesBlock

@@ -21,7 +21,7 @@ function Modules({ blockmodules }) {
         }
 
         return (
-            <Fragment key={moduleIndex.toString()} id={`#Module__${moduleName}`}>
+            <Fragment key={moduleIndex.toString()}>
                 <Module attributes={attributes} innerBlocks={innerBlocks} module={module} fallback={fallback} />
             </Fragment>
         )
