@@ -4,7 +4,7 @@ import { useLayoutEffect, useContext } from 'react'
 import { PageStyleContext } from '../components/pageStyleProvider'
 import { getSrc } from 'gatsby-plugin-image'
 import HeroBlock from '../components/template/blocks/heroBlock'
-import Modules from '../components/modules'
+import Module from '../components/module'
 import SEO from '../components/seo'
 
 const LanderTemplate = ({ data: { lander, pageblocks } }) => {
@@ -36,7 +36,7 @@ const LanderTemplate = ({ data: { lander, pageblocks } }) => {
             />
             {pageblocks.blocks &&
                 pageblocks.blocks.map(({ name, order, attributes, innerBlocks }) => (
-                    <Modules
+                    <Module
                         key={order}
                         module={{ name: name, order: order }}
                         innerBlocks={innerBlocks}

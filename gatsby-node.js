@@ -1,6 +1,19 @@
 const path = require(`path`)
 const chunk = require(`lodash/chunk`)
 
+const LoadablePlugin = require('@loadable/webpack-plugin')
+
+exports.onCreateWebpackConfig = ({ stage, actions }) => {
+    actions.setWebpackConfig({
+        plugins: [new LoadablePlugin()],
+    })
+}
+exports.onCreateBabelConfig = ({ actions }) => {
+    actions.setBabelPlugin({
+        name: `@loadable/babel-plugin`,
+    })
+}
+
 /**
  * exports.createPages, built-in Gatsby Node API to create pages 💡
  *

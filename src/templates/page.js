@@ -5,7 +5,7 @@ import { graphql } from 'gatsby'
 import { getSrc } from 'gatsby-plugin-image'
 import HeroBlock from '../components/template/blocks/heroBlock'
 import parse from 'html-react-parser'
-import Modules from '../components/modules'
+import Module from '../components/module'
 import SEO from '../components/seo'
 import PageHeader from '../components/template/pageHeader'
 import LeftColumn from '../components/template/elements/leftColumn'
@@ -43,11 +43,11 @@ const PageTemplate = ({ data: { page, pageblocks } }) => {
                         intro={pageblocks.blocks[0].innerBlocks[0].attributes.heroIntro}
                     />
                     {pageblocks.blocks &&
-                        pageblocks.blocks.map(({ name, order, attributes, innerBlocks }) => (
-                            <Modules
+                        pageblocks.blocks.map(({ __typename, name, order, attributes, innerBlocks }) => (
+                            <Module
                                 key={order}
                                 // featuredImage={page.featuredImage}
-                                module={{ name: name, order: order }}
+                                module={{ name: name, order: order, typeName: __typename }}
                                 innerBlocks={innerBlocks}
                                 attributes={attributes}
                             />
@@ -100,6 +100,10 @@ export const pageQuery = graphql`
                 order
                 ...CoreCoverblock
                 ...BlackalsatianContentBlock
+                ...BlackalsatianServicesBlock
+                ...BlackalsatianLatestPostsBlock
+                ...BlackalsatianFeaturedProjectsBlock
+                ...BlackalsatianTestimonialsBlock
             }
         }
     }

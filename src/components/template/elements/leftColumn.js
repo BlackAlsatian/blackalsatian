@@ -14,7 +14,7 @@ const LeftColumn = ({ heading, title, page, rightBorderColor, headerSize }) => {
                         textTransform: 'uppercase',
                         fontSize: 0,
                         mt: [0, 0, 0],
-                        ml: ['auto', 'auto', null],
+                        // ml: ['auto', 'auto', null],
                     }}
                 >
                     {title}

@@ -268,6 +268,7 @@ const theme = {
             },
             main: {
                 flex: 1,
+                minHeight: '100vh',
                 // counterReset: 'css-counter -1',
                 section: {
                     display: 'flex',
@@ -289,6 +290,7 @@ const theme = {
                 width: '100%',
                 fontSize: 0,
                 fontWeight: 'normal',
+                position: 'relative',
             },
             // article: {
             //     display: 'block',

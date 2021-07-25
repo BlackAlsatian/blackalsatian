@@ -6,7 +6,7 @@ const LeftColumnHeading = ({ heading, headerSize }) => {
         <Heading
             as={headerSize || 'h2'}
             sx={{
-                fontSize: [4, 3, 4, 5],
+                fontSize: 5,
                 fontWeight: ['bold', 'bold', 'thin', 'thin'],
                 lineHeight: 'none',
                 mb: 4,

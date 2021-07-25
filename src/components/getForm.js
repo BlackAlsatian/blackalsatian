@@ -106,7 +106,7 @@ const GetForm = ({ option, buttonName, buttonUrl, backgroundColor, buttonBackgro
                 </p>
             )
         }
-        console.log(buttonBackground)
+        // console.log(buttonBackground)
         return (
             <p>
                 <span>

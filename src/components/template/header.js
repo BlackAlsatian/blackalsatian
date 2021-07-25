@@ -1,10 +1,12 @@
 /** @jsxImportSource theme-ui */
+import loadable from '@loadable/component'
 import { useStaticQuery, graphql } from 'gatsby'
 import { Link } from 'gatsby'
 import MenuIcon from '../menuIcon'
-import OffCanvas from './offCanvasNav'
 import Logo from '../logo'
 import Nav from '../nav'
+// import OffCanvas from './offCanvasNav'
+const OffCanvas = loadable(() => import('./offCanvasNav'))
 
 const Header = ({ pageStyle }) => {
     const data = useStaticQuery(graphql`

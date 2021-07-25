@@ -8,7 +8,7 @@ const ColumnSection = ({ children, props, sectionVariant }) => {
             as='section'
             {...props}
             sx={{
-                py: [5, 5, 6],
+                py: 6,
                 variant: sectionVariant,
             }}
         >

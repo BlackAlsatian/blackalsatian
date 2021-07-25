@@ -1,6 +1,7 @@
 import React, { useState, createContext } from 'react'
 
 export const PageStyleContext = createContext()
+PageStyleContext.displayName = 'PageStyle'
 
 const Provider = ({ children, element }) => {
     const [isOpen, setIsOpen] = useState(false)

@@ -102,6 +102,7 @@ export const fragments = graphql`
     }
 
     fragment CoreCoverblock on WpCoreCoverBlock {
+        __typename
         name
         attributes {
             ... on WpCoreCoverBlockAttributes {
@@ -139,6 +140,7 @@ export const fragments = graphql`
     }
 
     fragment BlackalsatianContentBlock on WpBlackalsatianContentBlock {
+        __typename
         name
         attributes {
             contentHeading
@@ -157,6 +159,26 @@ export const fragments = graphql`
             subtitle
             intro
         }
+    }
+
+    fragment BlackalsatianServicesBlock on WpBlackalsatianServicesBlock {
+        __typename
+        name
+    }
+
+    fragment BlackalsatianLatestPostsBlock on WpBlackalsatianLatestPostsBlock {
+        __typename
+        name
+    }
+
+    fragment BlackalsatianFeaturedProjectsBlock on WpBlackalsatianFeaturedProjectsBlock {
+        __typename
+        name
+    }
+
+    fragment BlackalsatianTestimonialsBlock on WpBlackalsatianTestimonialsBlock {
+        __typename
+        name
     }
 
     fragment WpMenuItems on WpMenu {

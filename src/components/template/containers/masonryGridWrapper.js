@@ -9,7 +9,7 @@ const MasonryGridWrapper = ({ children, heading, viewAllLink, background }) => {
             as='section'
             sx={{
                 px: [1, 1, 6],
-                py: [5, 5, 6],
+                py: 6,
                 backgroundColor: background,
                 variant: 'sections.masonryWrapper',
             }}
