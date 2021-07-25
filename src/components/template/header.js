@@ -1,12 +1,10 @@
 /** @jsxImportSource theme-ui */
-import loadable from '@loadable/component'
 import { useStaticQuery, graphql } from 'gatsby'
 import { Link } from 'gatsby'
 import MenuIcon from '../menuIcon'
 import Logo from '../logo'
 import Nav from '../nav'
-// import OffCanvas from './offCanvasNav'
-const OffCanvas = loadable(() => import('./offCanvasNav'))
+import OffCanvas from './offCanvasNav'
 
 const Header = ({ pageStyle }) => {
     const data = useStaticQuery(graphql`
@@ -18,33 +16,6 @@ const Header = ({ pageStyle }) => {
     `)
     const navLinks = data.wpMenu.menuItems.nodes
 
-    // const menuStyles = ['white', 'yellow', 'altyellow']
-    // const [headerStyle, setHeaderStyle] = useState('white')
-    // let headerStyle = 'white'
-
-    // if (menuStyles.includes(pageStyle)) {
-    //     // setHeaderStyle('black')
-    //     headerStyle = 'black'
-    // }
-    // console.log('PageStyle: ' + pageStyle, 'Headerstyle: ' + headerStyle)
-    // useEffect(() => {
-    // if (menuStyles.includes(pageStyle)) {
-    //     setHeaderStyle('black')
-    // }
-    // switch (pageStyle) {
-    //     case 'white':
-    //         setHeaderStyle('black')
-    //         break
-    //     case 'yellow':
-    //         setHeaderStyle('black')
-    //         break
-    //     case 'altyellow':
-    //         setHeaderStyle('black')
-    //         break
-    //     default:
-    //         setHeaderStyle('white')
-    // }
-    // }, [pageStyle])
     return (
         <header
             sx={{

@@ -1,6 +1,5 @@
 /** @jsxImportSource theme-ui */
 import { Box, Container, Heading } from 'theme-ui'
-import parse from 'html-react-parser'
 import { useLayoutEffect, useContext } from 'react'
 import { PageStyleContext } from '../components/pageStyleProvider'
 import { graphql } from 'gatsby'
@@ -98,11 +97,13 @@ const BlogIndex = ({ data, pageContext: { nextPagePath, previousPagePath, pageNu
                     }}
                 >
                     {posts.map((post) => {
-                        const title = post.title
+                        {
+                            /* const title = post.title
                         const excerpt = post.excerpt
                         const featuredImage = {
                             fluid: post.featuredImage?.node?.tile?.childImageSharp?.gatsbyImageData,
                             alt: post.featuredImage?.node?.altText || ``,
+                        } */
                         }
                         return (
                             <AniLink

@@ -1,9 +1,5 @@
 {
-    "plugins": [
-        ["@babel/plugin-proposal-decorators", { "legacy": true }],
-        "@babel/plugin-transform-react-jsx-source",
-        "@loadable/babel-plugin"
-    ],
+    "plugins": [["@babel/plugin-proposal-decorators", { "legacy": true }], "@babel/plugin-transform-react-jsx-source"],
     "presets": [
         [
             "babel-preset-gatsby",

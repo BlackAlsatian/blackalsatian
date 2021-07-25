@@ -43,16 +43,6 @@ const PageTemplate = ({ data: { page, pageblocks } }) => {
                         intro={pageblocks.blocks[0].innerBlocks[0].attributes.heroIntro}
                     />
                     {pageblocks.blocks && <Modules blockmodules={pageblocks.blocks} />}
-                    {/* {pageblocks.blocks &&
-                        pageblocks.blocks.map(({ __typename, name, order, attributes, innerBlocks }) => (
-                            <Module
-                                key={order}
-                                // featuredImage={page.featuredImage}
-                                module={{ name: name, order: order, typeName: __typename }}
-                                innerBlocks={innerBlocks}
-                                attributes={attributes}
-                            />
-                        ))} */}
                 </>
             ) : (
                 !pageTitles.includes(page.title) && (
