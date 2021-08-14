@@ -83,7 +83,7 @@ const SEO = ({
                         <meta property='og:title' content={pageTitle} />
                         <meta property='og:description' content={metaDescription} />
                         <meta property='og:image' content={image} />
-                        <meta property='fb:app_id' content={seo.fbAppID} />
+                        <meta property='fb:app_id' content={process.env.GATSBY_FBAPP_ID} />
 
                         {/* Twitter Card tags */}
                         <meta name='twitter:card' content='summary_large_image' />
