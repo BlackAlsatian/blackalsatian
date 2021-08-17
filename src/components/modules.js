@@ -7,8 +7,8 @@ function Modules({ blockmodules }) {
             const Module = blocks[module.__typename]
 
             if (!Module) {
-                throw new Error(`Module ${module.__typename} does not exist`)
-                // return null
+                // throw new Error(`Module ${module.__typename} does not exist`)
+                return null
             }
 
             return (
