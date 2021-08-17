@@ -21,7 +21,7 @@ const HeroBlock = ({ featuredImage, title, intro }) => {
                     position: 'relative',
                     width: '100%',
                     minHeight: '100vh',
-                    filter: 'brightness(80%)',
+                    filter: 'brightness(75%)',
                 }}
             />
             <PageHeaderContainer>

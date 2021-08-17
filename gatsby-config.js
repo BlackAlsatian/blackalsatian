@@ -129,17 +129,19 @@ module.exports = {
                     fallbackImageMaxWidth: 1000,
                 },
                 type: {
+                    // suggestion from Tyler
+                    // BlockEditorContentNode: { exclude: true }
                     MediaItem: {
                         localFile: {
                             requestConcurrency: process.env.GATSBY_REQUEST_CONCURRENCY_IMAGES,
                         },
                     },
-                    Category: {
-                        exclude: true,
-                    },
-                    BlockEditorPreview: {
-                        exclude: true,
-                    },
+                    // Category: {
+                    //     exclude: true,
+                    // },
+                    // BlockEditorPreview: {
+                    //     exclude: true,
+                    // },
                     Comment: {
                         exclude: true,
                     },
@@ -149,9 +151,9 @@ module.exports = {
                     UserRole: {
                         exclude: true,
                     },
-                    PostFormat: {
-                        exclude: true,
-                    },
+                    // PostFormat: {
+                    //     exclude: true,
+                    // },
                 },
             },
         },
