@@ -1,6 +1,15 @@
 const path = require(`path`)
 const chunk = require(`lodash/chunk`)
 
+exports.createSchemaCustomization = ({ actions }) => {
+    const { createTypes } = actions
+    const typeDefs = `
+      type WpBlockAttributesObject {
+        foobar: String
+      }
+    `
+    createTypes(typeDefs)
+}
 /**
  * exports.createPages, built-in Gatsby Node API to create pages 💡
  *

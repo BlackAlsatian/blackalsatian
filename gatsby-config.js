@@ -111,6 +111,8 @@ module.exports = {
                         showQueryVarsOnError: true,
                         copyQueryOnError: true,
                         panicOnError: true,
+                        // copyNodeSourcingQueryAndExit: 'WpBlockAttributesObject',
+                        // writeQueriesToDisk: true,
                     },
                 },
                 schema: {
@@ -136,12 +138,12 @@ module.exports = {
                             requestConcurrency: process.env.GATSBY_REQUEST_CONCURRENCY_IMAGES,
                         },
                     },
-                    // Category: {
-                    //     exclude: true,
-                    // },
-                    // BlockEditorPreview: {
-                    //     exclude: true,
-                    // },
+                    Category: {
+                        exclude: true,
+                    },
+                    BlockEditorPreview: {
+                        exclude: true,
+                    },
                     Comment: {
                         exclude: true,
                     },
@@ -151,9 +153,9 @@ module.exports = {
                     UserRole: {
                         exclude: true,
                     },
-                    // PostFormat: {
-                    //     exclude: true,
-                    // },
+                    PostFormat: {
+                        exclude: true,
+                    },
                 },
             },
         },

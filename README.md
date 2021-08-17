@@ -6,8 +6,8 @@ Powered by:
 
 -   ReactJS
 -   GatsbyJS
+-   WordPress
 -   WPGraphQL
--   WordPress (headless)
 -   Laravel
 
 [Visit](https://wwww.blackalsatian.co.za/)
