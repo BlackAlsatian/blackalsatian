@@ -4,8 +4,8 @@ import CTABlock from './ctaBlock'
 
 const CoverBlock = ({ attributes, innerBlocks }) => {
     // const { attributes, innerBlocks, featuredImage } = props
+    // console.log(attributes)
     const block = innerBlocks[0]
-    console.log(block)
     // if (block.name === 'blackalsatian/hero-block') {
     //     return (
     //         <HeroBlock

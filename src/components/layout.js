@@ -12,6 +12,10 @@ const Layout = ({ children }) => {
     const pageStyle = useContext(PageStyleContext).pageStyle
     const scroll = useHasScrolled(1500)
     const consentScroll = useHasScrolled(50)
+    console.log(
+        "%c Black Alsatian's web developer, https://bjorn.africa. JavaScript FTW!",
+        'background: #000000; padding:3px; font-size: 11px; color: #ffffff',
+    )
     return (
         <Flex
             sx={{
