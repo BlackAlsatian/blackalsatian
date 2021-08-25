@@ -14,7 +14,7 @@ const Layout = ({ children }) => {
     const consentScroll = useHasScrolled(50)
     console.log(
         "%c Black Alsatian's web developer, https://bjorn.africa. JavaScript FTW!",
-        'background: #000000; padding:3px; font-size: 11px; color: #ffffff',
+        'background: #111827; padding:3px; font-size: 11px; color: #ffffff',
     )
     return (
         <Flex
