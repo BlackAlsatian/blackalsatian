@@ -48,7 +48,7 @@ const GetForm = ({ option, buttonName, buttonUrl, backgroundColor, buttonBackgro
     })
 
     const onSubmit = (data) => {
-        console.log(data)
+        // console.log(data)
         setFormSubmitting(true)
         if (data.lastname !== '') {
             setFormSubmitting(false)
@@ -73,22 +73,18 @@ const GetForm = ({ option, buttonName, buttonUrl, backgroundColor, buttonBackgro
                 (response) => {
                     if (response.status === 201) {
                         setFormSubmitting(false)
-                        console.log('setSubmitting')
                         setMessageAlert(true)
-                        console.log('setAlert')
                         reset(getValues)
-                        console.log('reset')
-                        console.log(getValues)
                         sendGA('generate_lead', option, data.tags)
                         setTimeout(() => {
                             setMessageAlert(false)
                         }, 5000)
                     }
-                    console.log(response)
+                    // console.log(response)
                 },
                 (error) => {
-                    console.log(error.response)
-                    // console.log("There were errors. That's all I know.")
+                    // console.log(error.response)
+                    console.log("There were errors. That's all I know.")
                 },
             )
         }
