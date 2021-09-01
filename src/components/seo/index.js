@@ -113,9 +113,9 @@ const SEO = ({
 
 SEO.defaultProps = {
     isBlogPost: false,
-    description: ``,
-    url: ``,
-    author: ``,
+    description: '',
+    url: '',
+    author: '',
     featuredImage: null,
     datePublished: null,
 }

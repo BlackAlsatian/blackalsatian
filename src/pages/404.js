@@ -43,7 +43,7 @@ const NotFoundPage = ({ location }) => {
                         <p>Awks. This is not the route you were looking for.</p>
                         <p sx={{ fontSize: '0.9rem' }}>{brokenPathName} doesn't exist.</p>
                         <p sx={{ fontSize: '1.1rem' }}>
-                            Seeing as we're here, why not check out our website, {` `}
+                            Seeing as we're here, why not check out our website,{' '}
                             <Link to='/' sx={{ color: 'black' }}>
                                 check out our cool site.
                             </Link>

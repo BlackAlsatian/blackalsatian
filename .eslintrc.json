@@ -10,8 +10,9 @@
         "eslint:recommended",
         "plugin:react/recommended",
         "plugin:prettier/recommended",
-        "prettier/prettier",
-        "prettier/react",
+        // "prettier/prettier",
+        // "prettier/react",
+        "prettier",
         "plugin:react-hooks/recommended"
     ],
     "parserOptions": {

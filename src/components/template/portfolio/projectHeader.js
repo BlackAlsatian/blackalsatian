@@ -7,7 +7,7 @@ import AnimatedSwipeButton from '../elements/animatedSwipeButton'
 const ProjectHeader = ({ project }) => {
     const featuredImage = {
         fluid: project.featuredImage?.node?.main?.childImageSharp?.gatsbyImageData,
-        alt: project.featuredImage?.node?.altText || ``,
+        alt: project.featuredImage?.node?.altText || '',
     }
     return (
         <Flex

@@ -1,3 +1,8 @@
+/* eslint-disable no-console */
+/* eslint-disable react/no-unescaped-entities */
+/* eslint-disable quotes */
+/* eslint-disable react/react-in-jsx-scope */
+/* eslint-disable react/prop-types */
 /** @jsxImportSource theme-ui */
 import { Link } from 'gatsby'
 import { Label, Input, Box, Button, Spinner, Textarea } from 'theme-ui'
@@ -43,12 +48,15 @@ const GetForm = ({ option, buttonName, buttonUrl, backgroundColor, buttonBackgro
     })
 
     const onSubmit = (data) => {
-        // console.log(data)
+        console.log(data)
         setFormSubmitting(true)
         if (data.lastname !== '') {
             setFormSubmitting(false)
+
             setMessageAlert(true)
+
             reset(getValues)
+
             setTimeout(() => {
                 setMessageAlert(false)
             }, 2500)
@@ -65,18 +73,22 @@ const GetForm = ({ option, buttonName, buttonUrl, backgroundColor, buttonBackgro
                 (response) => {
                     if (response.status === 201) {
                         setFormSubmitting(false)
+                        console.log('setSubmitting')
                         setMessageAlert(true)
+                        console.log('setAlert')
                         reset(getValues)
+                        console.log('reset')
+                        console.log(getValues)
                         sendGA('generate_lead', option, data.tags)
                         setTimeout(() => {
                             setMessageAlert(false)
                         }, 5000)
                     }
-                    // console.log(response)
+                    console.log(response)
                 },
                 (error) => {
-                    // console.log(error.response)
-                    console.log("There were errors. That's all I know.")
+                    console.log(error.response)
+                    // console.log("There were errors. That's all I know.")
                 },
             )
         }

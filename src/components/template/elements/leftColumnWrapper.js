@@ -14,7 +14,7 @@ const LeftColumnWrapper = ({ children, rightBorderColor, page }) => {
                 flexDirection: 'column',
                 alignItems: !page ? ['flex-start', 'flex-start', 'flex-end'] : null,
                 justifyContent: page ? null : 'center',
-                borderRight: [0, 0, `1px solid`],
+                borderRight: [0, 0, '1px solid'],
                 borderColor: rightBorderColor ? rightBorderColor : 'black',
             }}
         >

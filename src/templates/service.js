@@ -19,7 +19,7 @@ const PageTemplate = ({ data: { previous, next, service } }) => {
     }, [pageStyle])
     const featuredImage = {
         fluid: service.featuredImage?.node?.main?.childImageSharp?.gatsbyImageData,
-        alt: service.featuredImage?.node?.altText || ``,
+        alt: service.featuredImage?.node?.altText || '',
     }
     const seoImgSrc = getSrc(service.featuredImage?.node?.og)
     const serviceExcerpt = removeTags(service.excerpt)

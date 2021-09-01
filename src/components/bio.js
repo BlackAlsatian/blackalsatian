@@ -16,7 +16,7 @@ const Bio = ({ author }) => {
             {avatarUrl && (
                 <div sx={{ flex: [1, 1, null], ml: 'auto' }}>
                     <Avatar
-                        alt={author?.firstName || ``}
+                        alt={author?.firstName || ''}
                         className='bio-avatar'
                         src={avatarUrl}
                         width={96}

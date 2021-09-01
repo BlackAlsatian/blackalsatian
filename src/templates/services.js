@@ -61,7 +61,7 @@ const ServicesIndex = ({ data }) => {
                         const title = service.title
                         const featuredImage = {
                             fluid: service.featuredImage?.node?.main?.childImageSharp?.gatsbyImageData,
-                            alt: service.featuredImage?.node?.altText || ``,
+                            alt: service.featuredImage?.node?.altText || '',
                         }
                         return (
                             <AniLink

@@ -150,8 +150,8 @@ const Footer = ({ siteTitle, pageStyle }) => {
                     <div>
                         <Link to='/terms-of-use/' sx={{ color: 'inherit' }}>
                             Terms of Use
-                        </Link>
-                        {` `}|{` `}
+                        </Link>{' '}
+                        |{' '}
                         <Link to='/privacy-policy/' sx={{ color: 'inherit' }}>
                             Privacy Policy
                         </Link>

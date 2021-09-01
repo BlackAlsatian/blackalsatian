@@ -24,7 +24,7 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
     }, [pageStyle])
     const featuredImage = {
         fluid: post.featuredImage?.node?.main?.childImageSharp?.gatsbyImageData,
-        alt: post.featuredImage?.node?.altText || ``,
+        alt: post.featuredImage?.node?.altText || '',
     }
     const seoImgSrc = getSrc(post.featuredImage.node.og)
 
@@ -36,7 +36,7 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
                 description={post.seo.metaDesc}
                 featuredImage={seoImgSrc && seoImgSrc}
                 url={post.uri}
-                author={post.author.node.firstName + ` ` + post.author.node.lastName}
+                author={post.author.node.firstName + ' ' + post.author.node.lastName}
                 datePublished={post.dateGmt}
                 dateModified={post.modifiedGmt}
                 isBlogPost

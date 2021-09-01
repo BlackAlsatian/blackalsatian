@@ -11,10 +11,10 @@ const OffCanvas = ({ navLinks }) => {
 
     const OffCanvasAnimation = useSpring({
         opacity: isOpen ? 0.9 : 0,
-        transform: isOpen ? `translateX(0)` : `translateX(100%)`,
+        transform: isOpen ? 'translateX(0)' : 'translateX(100%)',
         from: {
             opacity: 0,
-            transform: `translateX(100%)`,
+            transform: 'translateX(100%)',
         },
         config: config.wobbly,
     })

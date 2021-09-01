@@ -7,7 +7,7 @@ import parse from 'html-react-parser'
 const GridTile = ({ node, headerType }) => {
     const featuredImage = {
         fluid: node.featuredImage?.node?.tile?.childImageSharp?.gatsbyImageData,
-        alt: node.featuredImage?.node?.altText || ``,
+        alt: node.featuredImage?.node?.altText || '',
     }
     return (
         <article
