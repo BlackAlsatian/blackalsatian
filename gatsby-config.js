@@ -64,6 +64,16 @@ module.exports = {
         'gatsby-plugin-preact',
         'gatsby-plugin-react-helmet',
         {
+            resolve: 'gatsby-plugin-preconnect',
+            options: {
+                domains: [
+                    'https://www.google-analytics.com',
+                    'https://connect.facebook.net',
+                    'https://www.googletagmanager.com',
+                ],
+            },
+        },
+        {
             resolve: 'gatsby-plugin-google-tagmanager',
             options: {
                 id: process.env.GATSBY_GTM_TRACKING_ID,
