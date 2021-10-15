@@ -62,12 +62,6 @@ module.exports = {
     },
     plugins: [
         'gatsby-plugin-preact',
-        {
-            resolve: 'gatsby-plugin-preconnect',
-            options: {
-                domains: ['https://www.googletagmanager.com'],
-            },
-        },
         'gatsby-plugin-react-helmet',
         {
             resolve: 'gatsby-plugin-google-tagmanager',
