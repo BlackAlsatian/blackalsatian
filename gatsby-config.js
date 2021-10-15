@@ -73,32 +73,6 @@ module.exports = {
                 ],
             },
         },
-        {
-            resolve: 'gatsby-plugin-google-tagmanager',
-            options: {
-                id: process.env.GATSBY_GTM_TRACKING_ID,
-                includeInDevelopment: false,
-
-                // datalayer to be set before GTM is loaded
-                // should be an object or a function that is executed in the browser
-                //
-                // Defaults to null
-                defaultDataLayer: { platform: 'gatsby' },
-
-                // Specify optional GTM environment details.
-                // gtmAuth: 'YOUR_GOOGLE_TAGMANAGER_ENVIRONMENT_AUTH_STRING',
-                // gtmPreview: 'YOUR_GOOGLE_TAGMANAGER_ENVIRONMENT_PREVIEW_NAME',
-                dataLayerName: 'dataLayer',
-
-                // Name of the event that is triggered
-                // on every Gatsby route change.
-                //
-                // Defaults to gatsby-route-change
-                routeChangeEventName: 'route-change',
-                // Defaults to false
-                enableWebVitalsTracking: true,
-            },
-        },
         'gatsby-plugin-theme-ui',
         {
             resolve: 'gatsby-plugin-transition-link',
@@ -454,6 +428,32 @@ module.exports = {
         'gatsby-plugin-gatsby-cloud',
         'gatsby-plugin-offline',
         'gatsby-plugin-remove-generator',
+        {
+            resolve: 'gatsby-plugin-google-tagmanager',
+            options: {
+                id: process.env.GATSBY_GTM_TRACKING_ID,
+                includeInDevelopment: false,
+
+                // datalayer to be set before GTM is loaded
+                // should be an object or a function that is executed in the browser
+                //
+                // Defaults to null
+                defaultDataLayer: { platform: 'gatsby' },
+
+                // Specify optional GTM environment details.
+                // gtmAuth: 'YOUR_GOOGLE_TAGMANAGER_ENVIRONMENT_AUTH_STRING',
+                // gtmPreview: 'YOUR_GOOGLE_TAGMANAGER_ENVIRONMENT_PREVIEW_NAME',
+                dataLayerName: 'dataLayer',
+
+                // Name of the event that is triggered
+                // on every Gatsby route change.
+                //
+                // Defaults to gatsby-route-change
+                routeChangeEventName: 'route-change',
+                // Defaults to false
+                enableWebVitalsTracking: true,
+            },
+        },
         // {
         //     resolve: `gatsby-plugin-webpack-bundle-analyser-v2`,
         //     options: {
