@@ -233,17 +233,17 @@ const theme = {
                     opacity: 0,
                 },
             },
-            a: {
-                color: 'black',
-                textDecoration: 'underline',
-                fontWeight: 'bold',
-                '&:hover': {
-                    textDecoration: 'none',
-                },
-                '&:visited': {
-                    color: 'rgba(0, 0, 0, 0.8)',
-                },
-            },
+            // a: {
+            //     color: 'black',
+            //     textDecoration: 'underline',
+            //     fontWeight: 'bold',
+            //     '&:hover': {
+            //         textDecoration: 'none',
+            //     },
+            //     '&:visited': {
+            //         color: 'rgba(0, 0, 0, 0.8)',
+            //     },
+            // },
             header: {
                 display: 'flex',
                 alignItems: 'center',
@@ -341,7 +341,6 @@ const theme = {
             },
             h3: {
                 variant: 'text.heading',
-                variant: 'text.heading',
                 mb: '1.5rem',
                 fontSize: 4,
                 mt: 3,
@@ -397,7 +396,6 @@ const theme = {
                 borderBottom: '0.025rem solid black',
                 padding: '2.2rem 2rem 2.2rem 2rem',
                 m: '2.75rem 0',
-                textAlign: 'left',
                 fontStyle: 'oblique',
                 lineHeight: 'tight',
                 textAlign: 'center',
