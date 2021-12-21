@@ -67,8 +67,8 @@ module.exports = {
             resolve: 'gatsby-plugin-preconnect',
             options: {
                 domains: [
-                    'https://www.google-analytics.com',
-                    'https://connect.facebook.net',
+                    // 'https://www.google-analytics.com',
+                    // 'https://connect.facebook.net',
                     'https://www.googletagmanager.com',
                 ],
             },
