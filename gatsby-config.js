@@ -44,21 +44,21 @@ module.exports = {
     flags: {
         // prevents file downloads from being deleted during cache clearing events (other than gatsby clean which still deletes the entire cache)
         PRESERVE_FILE_DOWNLOAD_CACHE: true,
-        // prevents the webpack cache from deleted with the same caveat for gatsby clean
-        // PRESERVE_WEBPACK_CACHE: true,
-        // Enable all experiments aimed at improving develop server start time
+
         // FAST_DEV: true,
-        // (Umbrella Issue (​https://github.com/gatsbyjs/gatsby/discussions/28390​)) · Use React Fast Refresh instead of the legacy react-hot-loader for instantaneous feedback in your development server. Recommended for versions of React >= 17.0.
+        // Use React Fast Refresh instead of the legacy react-hot-loader for instantaneous feedback in your development server. Recommended for versions of React >= 17.0.
         // FAST_REFRESH: true,
-        // (Umbrella Issue (​https://github.com/gatsbyjs/gatsby/discussions/28138​)) · SSR pages on full reloads during develop. Helps you detect SSR bugs and fix them without needing to do full builds.
+        // SSR pages on full reloads during develop. Helps you detect SSR bugs and fix them without needing to do full builds.
         // DEV_SSR: true,
-        // (Umbrella Issue (​https://github.com/gatsbyjs/gatsby/discussions/27620​)) · Only run queries when needed instead of running all queries upfront. Speeds starting the develop server.
-        // QUERY_ON_DEMAND: true,
-        // LAZY_IMAGES: true,
+        // Only run queries when needed instead of running all queries upfront. Speeds starting the develop server.
         //EXPERIMENTAL
-        // (Umbrella Issue (​https://github.com/gatsbyjs/gatsby/discussions/27603​)) · Don`t process images during development until they`re requested from the browser. Speeds starting the develop server.
+        // Don`t process images during development until they`re requested from the browser. Speeds starting the develop server.
         // PARALLEL_SOURCING
-        //  (Umbrella Issue (https://gatsby.dev/parallel-sourcing-feedback)) · Run all source plugins at the same time instead of serially. For sites with multiple source plugins, this can speedup sourcing and transforming considerably.
+        // Run all source plugins at the same time instead of serially. For sites with multiple source plugins, this can speedup sourcing and transforming considerably.
+        LMDB_STORE: true,
+        // EXPERIMENTAL Store nodes in a persistent embedded database (vs in-memory). Lowers peak memory usage. Requires Node v14.10 or above.
+        PARALLEL_QUERY_RUNNING: true,
+        // EXPERIMENTAL Parallelize running page queries in order to better saturate all available cores. Improves time it takes to run queries during gatsby build. Requires Node v14.10 or above.
     },
     plugins: [
         'gatsby-plugin-preact',
