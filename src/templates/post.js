@@ -1,18 +1,17 @@
 /** @jsxImportSource theme-ui */
-import { Container, Heading, Flex, Box, Badge, Paragraph } from 'theme-ui'
-import { useLayoutEffect, useContext } from 'react'
-import { PageStyleContext } from '../components/pageStyleProvider'
 import { graphql } from 'gatsby'
-import parse from 'html-react-parser'
 import { GatsbyImage, getSrc } from 'gatsby-plugin-image'
-
-import SEO from '../components/seo'
-import PageHeader from '../components/template/pageHeader'
+import parse from 'html-react-parser'
+import { useContext, useLayoutEffect } from 'react'
+import { Badge, Box, Container, Flex, Heading, Paragraph } from 'theme-ui'
 import Bio from '../components/bio'
-import PagesNav from '../components/pagesNav'
-import PageHeroHeader from '../components/template/containers/pageHeroHeader'
-import PageHeaderContainer from '../components/template/containers/pageHeaderContainer'
 import { removeTags } from '../components/helpers'
+import PagesNav from '../components/pagesNav'
+import { PageStyleContext } from '../components/pageStyleProvider'
+import SEO from '../components/seo'
+import PageHeaderContainer from '../components/template/containers/pageHeaderContainer'
+import PageHeroHeader from '../components/template/containers/pageHeroHeader'
+import PageHeader from '../components/template/pageHeader'
 
 const BlogPostTemplate = ({ data: { previous, next, post } }) => {
     // console.log({ pageContext })
@@ -23,12 +22,12 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
         setPageStyle(pageStyle)
     }, [pageStyle])
     const featuredImage = {
-        fluid: post.featuredImage?.node?.main?.childImageSharp?.gatsbyImageData,
-        alt: post.featuredImage?.node?.altText || '',
+        fluid: post?.featuredImage?.node?.main?.childImageSharp?.gatsbyImageData,
+        alt: post?.featuredImage?.node?.altText || '',
     }
-    const seoImgSrc = getSrc(post.featuredImage.node.og)
+    const seoImgSrc = getSrc(post.featuredImage?.node?.og)
 
-    const postExcerpt = removeTags(post.excerpt)
+    const postExcerpt = removeTags(post?.excerpt)
     return (
         <>
             <SEO

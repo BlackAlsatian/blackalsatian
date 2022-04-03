@@ -1,5 +1,5 @@
-/** @jsxImportSource theme-ui */
-import { useStaticQuery, graphql } from 'gatsby'
+import { graphql, useStaticQuery } from 'gatsby'
+import React from 'react'
 import MasonryGrid from '../elements/masonryGrid'
 
 const LatestPostsBlock = () => {

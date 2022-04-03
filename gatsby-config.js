@@ -55,10 +55,8 @@ module.exports = {
         // Don`t process images during development until they`re requested from the browser. Speeds starting the develop server.
         // PARALLEL_SOURCING
         // Run all source plugins at the same time instead of serially. For sites with multiple source plugins, this can speedup sourcing and transforming considerably.
-        LMDB_STORE: true,
-        // EXPERIMENTAL Store nodes in a persistent embedded database (vs in-memory). Lowers peak memory usage. Requires Node v14.10 or above.
-        PARALLEL_QUERY_RUNNING: true,
-        // EXPERIMENTAL Parallelize running page queries in order to better saturate all available cores. Improves time it takes to run queries during gatsby build. Requires Node v14.10 or above.
+        // DETECT_NODE_MUTATIONS: true,
+        // Diagnostic mode to log any attempts to mutate node directly. Helpful when debugging missing data problems. See https://gatsby.dev/debugging-missing-data for more details.
     },
     plugins: [
         'gatsby-plugin-preact',

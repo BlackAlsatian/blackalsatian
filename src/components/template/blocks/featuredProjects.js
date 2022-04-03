@@ -1,6 +1,6 @@
-/** @jsxImportSource theme-ui */
+import { graphql, useStaticQuery } from 'gatsby'
+import React from 'react'
 import LazyLoad from 'react-lazyload'
-import { useStaticQuery, graphql } from 'gatsby'
 import MasonryGrid from '../elements/masonryGrid'
 
 const FeaturedProjectsBlock = () => {

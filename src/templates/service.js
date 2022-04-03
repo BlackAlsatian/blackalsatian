@@ -1,14 +1,14 @@
 /** @jsxImportSource theme-ui */
-import { Flex, Box } from 'theme-ui'
-import { useLayoutEffect, useContext } from 'react'
-import { PageStyleContext } from '../components/pageStyleProvider'
 import { graphql } from 'gatsby'
 import { GatsbyImage, getSrc } from 'gatsby-plugin-image'
 import parse from 'html-react-parser'
+import { useContext, useLayoutEffect } from 'react'
+import { Box, Flex } from 'theme-ui'
+import { removeTags } from '../components/helpers'
+import PagesNav from '../components/pagesNav'
+import { PageStyleContext } from '../components/pageStyleProvider'
 import SEO from '../components/seo'
 import PageHeader from '../components/template/pageHeader'
-import PagesNav from '../components/pagesNav'
-import { removeTags } from '../components/helpers'
 
 const PageTemplate = ({ data: { previous, next, service } }) => {
     const { setPageStyle } = useContext(PageStyleContext)
@@ -18,22 +18,22 @@ const PageTemplate = ({ data: { previous, next, service } }) => {
         setPageStyle(pageStyle)
     }, [pageStyle])
     const featuredImage = {
-        fluid: service.featuredImage?.node?.main?.childImageSharp?.gatsbyImageData,
-        alt: service.featuredImage?.node?.altText || '',
+        fluid: service?.featuredImage?.node?.main?.childImageSharp?.gatsbyImageData,
+        alt: service?.featuredImage?.node?.altText || '',
     }
-    const seoImgSrc = getSrc(service.featuredImage?.node?.og)
-    const serviceExcerpt = removeTags(service.excerpt)
+    const seoImgSrc = getSrc(service?.featuredImage?.node?.og)
+    const serviceExcerpt = removeTags(service?.excerpt)
     return (
         <>
             <SEO
-                title={service.title}
-                description={service.seo.metaDesc}
-                url={service.uri}
+                title={service?.title}
+                description={service?.seo?.metaDesc}
+                url={service?.uri}
                 featuredImage={seoImgSrc && seoImgSrc}
-                datePublished={service.dateGmt}
-                dateModified={service.modifiedGmt}
+                datePublished={service?.dateGmt}
+                dateModified={service?.modifiedGmt}
             />
-            <PageHeader title={parse(service.title)} intro={parse(serviceExcerpt)} headerStyle={pageStyle} />
+            <PageHeader title={parse(service?.title)} intro={parse(serviceExcerpt)} headerStyle={pageStyle} />
             <Box as='section' sx={{ backgroundColor: 'white', variant: 'sections.noypadding' }}>
                 <Flex
                     sx={{
@@ -46,7 +46,7 @@ const PageTemplate = ({ data: { previous, next, service } }) => {
                 >
                     <Box sx={{ flex: 2, flexShrink: 'none' }}>
                         {featuredImage?.fluid && (
-                            <GatsbyImage image={featuredImage.fluid} alt={featuredImage.alt || service.title} />
+                            <GatsbyImage image={featuredImage.fluid} alt={featuredImage.alt || service?.title} />
                         )}
                     </Box>
 
@@ -55,13 +55,13 @@ const PageTemplate = ({ data: { previous, next, service } }) => {
                         px={[0, 0, 6]}
                         sx={{ flex: 3, borderLeft: [null, null, '0.01rem solid black'], variant: 'layout' }}
                     >
-                        {!!service.content && (
+                        {!!service?.content && (
                             <Flex
                                 sx={{
                                     flexDirection: 'column',
                                 }}
                             >
-                                {parse(service.content)}
+                                {parse(service?.content)}
                             </Flex>
                         )}
                     </Box>

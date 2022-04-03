@@ -233,17 +233,6 @@ const theme = {
                     opacity: 0,
                 },
             },
-            // a: {
-            //     color: 'black',
-            //     textDecoration: 'underline',
-            //     fontWeight: 'bold',
-            //     '&:hover': {
-            //         textDecoration: 'none',
-            //     },
-            //     '&:visited': {
-            //         color: 'rgba(0, 0, 0, 0.8)',
-            //     },
-            // },
             header: {
                 display: 'flex',
                 alignItems: 'center',
@@ -292,15 +281,6 @@ const theme = {
                 fontWeight: 'normal',
                 position: 'relative',
             },
-            // article: {
-            //     display: 'block',
-            //     header: {
-            //         display: 'block',
-            //         p: 0,
-            //         m: 0,
-            //         minHeight: '100vh',
-            //     },
-            // },
             p: {
                 mb: 4,
             },
@@ -1220,7 +1200,7 @@ const theme = {
             alignItems: 'center',
             px: 4,
             borderBottom: '0.01rem solid black',
-            background: 'offWhite',
+            background: 'white',
             transition: 'background-color 500ms ease-in',
             '&:hover': {
                 backgroundColor: 'yellow',

@@ -1,5 +1,4 @@
-/** @jsxImportSource theme-ui */
-import { memo } from 'react'
+import React, { memo } from 'react'
 import Helmet from 'react-helmet'
 
 export default memo(

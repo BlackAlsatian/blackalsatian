@@ -1,4 +1,4 @@
-/** @jsxImportSource theme-ui */
+import React from 'react'
 // import HeroBlock from './heroBlock'
 import CTABlock from './ctaBlock'
 

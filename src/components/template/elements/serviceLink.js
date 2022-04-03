@@ -1,6 +1,6 @@
 /** @jsxImportSource theme-ui */
-import { Heading } from 'theme-ui'
 import { Link } from 'gatsby'
+import { Heading } from 'theme-ui'
 
 const ServiceLink = ({ item }) => {
     return (

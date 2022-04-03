@@ -1,13 +1,13 @@
 /** @jsxImportSource theme-ui */
 import { graphql } from 'gatsby'
-import { useLayoutEffect, useContext } from 'react'
-import { PageStyleContext } from '../components/pageStyleProvider'
 import { getSrc } from 'gatsby-plugin-image'
-import SEO from '../components/seo'
-import ProjectHeader from '../components/template/portfolio/projectHeader'
-import ProjectContent from '../components/template/portfolio/projectContent'
-import PagesNav from '../components/pagesNav'
 import parse from 'html-react-parser'
+import { useContext, useLayoutEffect } from 'react'
+import PagesNav from '../components/pagesNav'
+import { PageStyleContext } from '../components/pageStyleProvider'
+import SEO from '../components/seo'
+import ProjectContent from '../components/template/portfolio/projectContent'
+import ProjectHeader from '../components/template/portfolio/projectHeader'
 
 const ProjectTemplate = ({ data: { previous, portfolio, next } }) => {
     const { setPageStyle } = useContext(PageStyleContext)

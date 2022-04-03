@@ -1,11 +1,10 @@
-/** @jsxImportSource theme-ui */
 import { graphql } from 'gatsby'
-import { useLayoutEffect, useContext } from 'react'
-import { PageStyleContext } from '../components/pageStyleProvider'
 import { getSrc } from 'gatsby-plugin-image'
-import HeroBlock from '../components/template/blocks/heroBlock'
+import React, { useContext, useLayoutEffect } from 'react'
 import Modules from '../components/modules'
+import { PageStyleContext } from '../components/pageStyleProvider'
 import SEO from '../components/seo'
+import HeroBlock from '../components/template/blocks/heroBlock'
 
 const LanderTemplate = ({ data: { lander, pageblocks } }) => {
     const seoImgSrc = getSrc(lander.featuredImage?.node?.og)

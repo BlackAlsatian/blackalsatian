@@ -1,11 +1,10 @@
-/** @jsxImportSource theme-ui */
 import React from 'react'
 import LazyLoad from 'react-lazyload'
 import BlockText from '../blockText'
-import LeftColumn from './elements/leftColumn'
-import RightColumn from './elements/rightColumn'
 import GetForm from '../getForm'
 import ColumnSection from './containers/columnSection'
+import LeftColumn from './elements/leftColumn'
+import RightColumn from './elements/rightColumn'
 
 const ContentBlock = ({
     backgroundColor,

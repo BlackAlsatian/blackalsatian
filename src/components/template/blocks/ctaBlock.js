@@ -1,4 +1,4 @@
-/** @jsxImportSource theme-ui */
+import React from 'react'
 import BlockSection from '../blockSection'
 
 const CTABlock = ({

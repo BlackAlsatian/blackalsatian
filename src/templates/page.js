@@ -1,16 +1,15 @@
-/** @jsxImportSource theme-ui */
-import { useLayoutEffect, useContext } from 'react'
-import { PageStyleContext } from '../components/pageStyleProvider'
 import { graphql } from 'gatsby'
 import { getSrc } from 'gatsby-plugin-image'
-import HeroBlock from '../components/template/blocks/heroBlock'
 import parse from 'html-react-parser'
+import React, { useContext, useLayoutEffect } from 'react'
 import Modules from '../components/modules'
+import { PageStyleContext } from '../components/pageStyleProvider'
 import SEO from '../components/seo'
-import PageHeader from '../components/template/pageHeader'
+import HeroBlock from '../components/template/blocks/heroBlock'
+import ColumnSection from '../components/template/containers/columnSection'
 import LeftColumn from '../components/template/elements/leftColumn'
 import RightColumn from '../components/template/elements/rightColumn'
-import ColumnSection from '../components/template/containers/columnSection'
+import PageHeader from '../components/template/pageHeader'
 
 const PageTemplate = ({ data: { page, pageblocks } }) => {
     const { setPageStyle } = useContext(PageStyleContext)

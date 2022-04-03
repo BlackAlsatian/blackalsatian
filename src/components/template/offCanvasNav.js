@@ -1,10 +1,9 @@
 /** @jsxImportSource theme-ui */
-import React from 'react'
-import { Flex } from 'theme-ui'
-import { Link } from 'gatsby'
-import { useContext } from 'react'
-import { PageStyleContext } from '../pageStyleProvider'
 import { animated, config, useSpring } from '@react-spring/web'
+import { Link } from 'gatsby'
+import React, { useContext } from 'react'
+import { Flex } from 'theme-ui'
+import { PageStyleContext } from '../pageStyleProvider'
 
 const OffCanvas = ({ navLinks }) => {
     const { isOpen, handleMenuItemClick } = useContext(PageStyleContext)

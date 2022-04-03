@@ -1,8 +1,8 @@
-/** @jsxImportSource theme-ui */
-import { useStaticQuery, graphql } from 'gatsby'
+import { graphql, useStaticQuery } from 'gatsby'
+import React from 'react'
 import LazyLoad from 'react-lazyload'
-import TestimonialTile from '../elements/testimonialTile'
 import MasonryGridWrapper from '../containers/masonryGridWrapper'
+import TestimonialTile from '../elements/testimonialTile'
 
 const TestimonialsBlock = () => {
     const testimonialsData = useStaticQuery(graphql`
