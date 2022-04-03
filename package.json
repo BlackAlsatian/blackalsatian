@@ -2,14 +2,15 @@
   "name": "gatsby-starter-blackalsatian",
   "private": true,
   "description": "Black Alsatian website",
-  "version": "1.11.1",  "author": "Björn Potgieter <bjorn@blackalsatian.co.za>",
+  "version": "1.11.2",
+  "author": "Björn Potgieter <bjorn@blackalsatian.co.za>",
   "bugs": {
     "url": "https://bjorn.africa/"
   },
   "dependencies": {
     "@emotion/react": "^11.8.2",
     "@fontsource/montserrat": "^4.5.7",
-    "@mdx-js/react": "^1.6.22",
+    "@mdx-js/react": "^2.1.1",
     "@react-spring/web": "^9.4.4",
     "axios": "^0.26.1",
     "dotenv": "^16.0.0",
