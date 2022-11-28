@@ -72,3 +72,6 @@ yarn-error.log
 
 # my stuff
 .bak/
+
+# Docker 
+.devcontainer/
