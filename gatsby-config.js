@@ -1,7 +1,4 @@
-require('dotenv').config({
-    path: `.env.${process.env.NODE_ENV}`,
-})
-
+require('dotenv').config({ path: `.env.${process.env.NODE_ENV}` })
 module.exports = {
     siteMetadata: {
         title: 'Black Alsatian',
@@ -37,6 +34,7 @@ module.exports = {
         pubIconLogo: '/images/blackalsatian-icon-logo.png',
         blog: {
             title: 'Blog',
+            // eslint-disable-next-line quotes
             browserTitle: "A Web Design Company's Blog",
             intro: 'Latest trends in the world of web development & digital marketing',
         },
