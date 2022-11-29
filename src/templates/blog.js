@@ -3,6 +3,7 @@ import { Box, Container, Heading } from 'theme-ui'
 import { useLayoutEffect, useContext } from 'react'
 import { PageStyleContext } from '../components/pageStyleProvider'
 import { graphql } from 'gatsby'
+import PropTypes from 'prop-types'
 import AniLink from 'gatsby-plugin-transition-link/AniLink'
 import SEO from '../components/seo'
 import PageHeader from '../components/template/pageHeader'
@@ -140,11 +141,17 @@ const BlogIndex = ({ data, pageContext: { nextPagePath, previousPagePath, pageNu
     )
 }
 
+BlogIndex.propTypes = {
+    data: PropTypes.object,
+    pageContext: PropTypes.object,
+    location: PropTypes.string,
+}
+
 export default BlogIndex
 
 export const pageQuery = graphql`
     query WordPressPostArchive($offset: Int!, $postsPerPage: Int!) {
-        allWpPost(sort: { fields: [date], order: DESC }, limit: $postsPerPage, skip: $offset) {
+        allWpPost(sort: { date: DESC }, limit: $postsPerPage, skip: $offset) {
             nodes {
                 id
                 uri

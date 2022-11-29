@@ -1,9 +1,10 @@
-/** @jsxImportSource theme-ui */
-import { Container, Flex, Heading, Box } from 'theme-ui'
+/** @jsxImportSource theme-ui */ /* eslint-disable react/no-unknown-property */
+import { Heading, Box } from 'theme-ui'
 import { useLayoutEffect, useContext } from 'react'
 import { PageStyleContext } from '../components/pageStyleProvider'
 import { graphql } from 'gatsby'
 import { getSrc } from 'gatsby-plugin-image'
+import PropTypes from 'prop-types'
 import AniLink from 'gatsby-plugin-transition-link/AniLink'
 import parse from 'html-react-parser'
 import SEO from '../components/seo'
@@ -145,11 +146,15 @@ const PortfolioIndex = ({ data }) => {
     )
 }
 
+PortfolioIndex.propTypes = {
+    data: PropTypes.object,
+}
+
 export default PortfolioIndex
 
 export const pageQuery = graphql`
     query WordPressPortfolioIndex {
-        allWpPortfolio(sort: { order: DESC, fields: projectYear }) {
+        allWpPortfolio(sort: { projectYear: DESC }) {
             nodes {
                 uri
                 title
@@ -176,7 +181,6 @@ export const pageQuery = graphql`
                 metaDesc
             }
             ...PageFeaturedMediaFragment
-            # pageStyle
             pageintro
             pagesubheading
             pagesubtitle

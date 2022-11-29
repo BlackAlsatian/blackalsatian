@@ -1,5 +1,5 @@
-const path = require(`path`)
-const chunk = require(`lodash/chunk`)
+const path = require('path')
+const chunk = require('lodash/chunk')
 
 exports.createSchemaCustomization = ({ actions }) => {
     const { createTypes } = actions
@@ -62,7 +62,7 @@ const createIndividualBlogPostPages = async ({ posts, gatsbyUtilities }) =>
                 // Use the WordPress uri as the Gatsby page path
                 path: post.uri,
                 // blog post template
-                component: path.resolve(`./src/templates/post.js`),
+                component: path.resolve('./src/templates/post.js'),
                 // `context` is available in the template as a prop and
                 // as a variable in GraphQL.
                 context: {
@@ -84,7 +84,7 @@ const createIndividualPages = async ({ pages, gatsbyUtilities }) =>
         pages.map(({ page }) =>
             gatsbyUtilities.actions.createPage({
                 path: page.isFrontPage ? '/' : page.uri,
-                component: path.resolve(`./src/templates/page.js`),
+                component: path.resolve('./src/templates/page.js'),
                 context: {
                     id: page.id,
                     pageStyle: page.pageStyle,
@@ -99,7 +99,7 @@ const createIndividualServices = async ({ services, gatsbyUtilities }) =>
         services.map(({ previous, service, next }) =>
             gatsbyUtilities.actions.createPage({
                 path: service.uri,
-                component: path.resolve(`./src/templates/service.js`),
+                component: path.resolve('./src/templates/service.js'),
                 context: {
                     id: service.id,
                     previousPostId: previous ? previous.id : null,
@@ -116,7 +116,7 @@ const createIndividualProjects = async ({ portfolio, gatsbyUtilities }) =>
         portfolio.map(({ previous, portfolio, next }) =>
             gatsbyUtilities.actions.createPage({
                 path: portfolio.uri,
-                component: path.resolve(`./src/templates/project.js`),
+                component: path.resolve('./src/templates/project.js'),
                 context: {
                     id: portfolio.id,
                     previousPostId: previous ? previous.id : null,
@@ -133,7 +133,7 @@ const createIndividualLanders = async ({ landers, gatsbyUtilities }) =>
         landers.map(({ lander }) =>
             gatsbyUtilities.actions.createPage({
                 path: lander.uri,
-                component: path.resolve(`./src/templates/lander.js`),
+                component: path.resolve('./src/templates/lander.js'),
                 context: {
                     id: lander.id,
                     title: lander.title,
@@ -167,7 +167,7 @@ async function createBlogPostArchive({ posts, gatsbyUtilities }) {
             const getPagePath = (page) => {
                 if (page > 0 && page <= totalPages) {
                     // blog page nav urls
-                    return page === 1 ? `/blog/` : `/blog/${page}/`
+                    return page === 1 ? '/blog/' : `/blog/${page}/`
                 }
                 return null
             }
@@ -175,7 +175,7 @@ async function createBlogPostArchive({ posts, gatsbyUtilities }) {
             // createPage is an action passed to createPages
             await gatsbyUtilities.actions.createPage({
                 path: getPagePath(pageNumber),
-                component: path.resolve(`./src/templates/blog.js`),
+                component: path.resolve('./src/templates/blog.js'),
                 // `context` is available in the template as a prop and
                 // as a variable in GraphQL.
                 context: {
@@ -198,7 +198,7 @@ async function createBlogPostArchive({ posts, gatsbyUtilities }) {
 async function createServicesPage({ services, gatsbyUtilities }) {
     await gatsbyUtilities.actions.createPage({
         path: '/services/',
-        component: path.resolve(`./src/templates/services.js`),
+        component: path.resolve('./src/templates/services.js'),
         context: {
             ...services,
             pageStyle: 'altyellow',
@@ -210,7 +210,7 @@ async function createServicesPage({ services, gatsbyUtilities }) {
 async function createPortfolioPage({ portfolio, gatsbyUtilities }) {
     await gatsbyUtilities.actions.createPage({
         path: '/portfolio/',
-        component: path.resolve(`./src/templates/portfolio.js`),
+        component: path.resolve('./src/templates/portfolio.js'),
         context: {
             ...portfolio,
             // pageStyle: 'black',
@@ -223,15 +223,13 @@ async function createPortfolioPage({ portfolio, gatsbyUtilities }) {
  * We're passing in the utilities we got from createPages.
  */
 async function getPosts({ graphql, reporter }) {
-    const graphqlResult = await graphql(/* GraphQL */ `
+    const graphqlResult = await graphql(`
         query WpPosts {
-            # Query all WordPress blog posts sorted by date
-            allWpPost(sort: { fields: [date], order: DESC }, filter: { status: { eq: "publish" } }) {
+            allWpPost(sort: { date: DESC }, filter: { status: { eq: "publish" } }) {
                 edges {
                     previous {
                         id
                     }
-                    # note: this is GraphQL alias. Renames "node" to "post" because this "node" is a post!
                     post: node {
                         id
                         uri
@@ -244,7 +242,7 @@ async function getPosts({ graphql, reporter }) {
         }
     `)
     if (graphqlResult.errors) {
-        reporter.panicOnBuild(`There was an error loading your blog posts`, graphqlResult.errors)
+        reporter.panicOnBuild('There was an error loading your blog posts', graphqlResult.errors)
         return
     }
     return graphqlResult.data.allWpPost.edges
@@ -267,7 +265,7 @@ async function getPages({ graphql, reporter }) {
         }
     `)
     if (graphqlResult.errors) {
-        reporter.panicOnBuild(`There was an error loading your pages`, graphqlResult.errors)
+        reporter.panicOnBuild('There was an error loading your pages', graphqlResult.errors)
         return
     }
     return graphqlResult.data.allWpPage.edges
@@ -293,7 +291,7 @@ async function getServices({ graphql, reporter }) {
         }
     `)
     if (graphqlResult.errors) {
-        reporter.panicOnBuild(`There was an error loading your services`, graphqlResult.errors)
+        reporter.panicOnBuild('There was an error loading your services', graphqlResult.errors)
         return
     }
     return graphqlResult.data.allWpService.edges
@@ -320,7 +318,7 @@ async function getPortfolio({ graphql, reporter }) {
         }
     `)
     if (graphqlResult.errors) {
-        reporter.panicOnBuild(`There was an error loading your portfolio`, graphqlResult.errors)
+        reporter.panicOnBuild('There was an error loading your portfolio', graphqlResult.errors)
         return
     }
     return graphqlResult.data.allWpPortfolio.edges
@@ -339,7 +337,7 @@ async function getLanders({ graphql, reporter }) {
         }
     `)
     if (graphqlResult.errors) {
-        reporter.panicOnBuild(`There was an error loading your landers`, graphqlResult.errors)
+        reporter.panicOnBuild('There was an error loading your landers', graphqlResult.errors)
         return
     }
     return graphqlResult.data.allWpLander.edges

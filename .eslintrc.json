@@ -22,18 +22,28 @@
         "ecmaVersion": 6,
         "sourceType": "module"
     },
-    "plugins": ["@babel", "react", "prettier", "react-hooks"],
+    "plugins": [
+        "@babel",
+        "react",
+        "prettier",
+        "react-hooks"
+    ],
     "rules": {
         // "semi": ["off", "always"],
         // "quotes": ["error", "single"]
         "react/jsx-pascal-case": "off",
         "strict": 0,
         "no-console": "warn",
-        "quotes": ["warn", "single"],
+        "quotes": [
+            "warn",
+            "single"
+        ],
         "prettier/prettier": "error",
         "arrow-body-style": "off",
         "prefer-arrow-callback": "off",
         "react-hooks/rules-of-hooks": "error",
-        "react-hooks/exhaustive-deps": "warn"
+        "react-hooks/exhaustive-deps": "warn",
+        "react/jsx-uses-react": "off",
+        "react/react-in-jsx-scope": "off"
     }
 }

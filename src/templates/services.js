@@ -1,9 +1,9 @@
-/** @jsxImportSource theme-ui */
-import { Container } from 'theme-ui'
+/** @jsxImportSource theme-ui */ import { Container } from 'theme-ui'
 import { useLayoutEffect, useContext } from 'react'
 import { PageStyleContext } from '../components/pageStyleProvider'
 import { graphql } from 'gatsby'
 import { getSrc } from 'gatsby-plugin-image'
+import PropTypes from 'prop-types'
 import AniLink from 'gatsby-plugin-transition-link/AniLink'
 import parse from 'html-react-parser'
 import SEO from '../components/seo'
@@ -52,6 +52,7 @@ const ServicesIndex = ({ data }) => {
             />
             <PageHeader title={parse(page.title)} intro={page.pageintro} headerStyle={pageStyle} />
             <section
+                // eslint-disable-next-line react/no-unknown-property
                 sx={{
                     variant: 'sections.noypadding',
                 }}
@@ -100,11 +101,15 @@ const ServicesIndex = ({ data }) => {
     )
 }
 
+ServicesIndex.propTypes = {
+    data: PropTypes.object,
+}
+
 export default ServicesIndex
 
 export const pageQuery = graphql`
     query WordPressServicesIndex {
-        allWpService(sort: { order: DESC, fields: date }) {
+        allWpService(sort: { date: DESC }) {
             nodes {
                 id
                 uri
@@ -126,7 +131,6 @@ export const pageQuery = graphql`
                 metaDesc
             }
             ...PageFeaturedMediaFragment
-            # pageStyle
             pageintro
             pagesubheading
             pagesubtitle
