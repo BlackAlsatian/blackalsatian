@@ -42,19 +42,6 @@ module.exports = {
     flags: {
         // prevents file downloads from being deleted during cache clearing events (other than gatsby clean which still deletes the entire cache)
         PRESERVE_FILE_DOWNLOAD_CACHE: true,
-
-        // FAST_DEV: true,
-        // Use React Fast Refresh instead of the legacy react-hot-loader for instantaneous feedback in your development server. Recommended for versions of React >= 17.0.
-        // FAST_REFRESH: true,
-        // SSR pages on full reloads during develop. Helps you detect SSR bugs and fix them without needing to do full builds.
-        // DEV_SSR: true,
-        // Only run queries when needed instead of running all queries upfront. Speeds starting the develop server.
-        //EXPERIMENTAL
-        // Don`t process images during development until they`re requested from the browser. Speeds starting the develop server.
-        // PARALLEL_SOURCING
-        // Run all source plugins at the same time instead of serially. For sites with multiple source plugins, this can speedup sourcing and transforming considerably.
-        // DETECT_NODE_MUTATIONS: true,
-        // Diagnostic mode to log any attempts to mutate node directly. Helpful when debugging missing data problems. See https://gatsby.dev/debugging-missing-data for more details.
     },
     plugins: [
         'gatsby-plugin-preact',
