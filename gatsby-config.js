@@ -46,16 +46,6 @@ module.exports = {
     plugins: [
         'gatsby-plugin-preact',
         'gatsby-plugin-react-helmet',
-        {
-            resolve: 'gatsby-plugin-preconnect',
-            options: {
-                domains: [
-                    // 'https://www.google-analytics.com',
-                    // 'https://connect.facebook.net',
-                    'https://www.googletagmanager.com',
-                ],
-            },
-        },
         'gatsby-plugin-theme-ui',
         {
             resolve: 'gatsby-plugin-transition-link',
@@ -122,14 +112,6 @@ module.exports = {
             },
         },
         'gatsby-plugin-sass',
-        'gatsby-plugin-purgecss',
-        {
-            resolve: 'gatsby-source-filesystem',
-            options: {
-                name: 'images',
-                path: `${__dirname}/src/assets/images`,
-            },
-        },
         'gatsby-plugin-image',
         'gatsby-transformer-sharp',
         'gatsby-plugin-sharp',
@@ -410,7 +392,6 @@ module.exports = {
         },
         'gatsby-plugin-gatsby-cloud',
         'gatsby-plugin-offline',
-        'gatsby-plugin-remove-generator',
         {
             resolve: 'gatsby-plugin-google-tagmanager',
             options: {
