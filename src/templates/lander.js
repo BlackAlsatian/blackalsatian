@@ -1,12 +1,13 @@
 import { graphql } from 'gatsby'
 import { getSrc } from 'gatsby-plugin-image'
-import React, { useContext, useLayoutEffect } from 'react'
+import { useContext, useLayoutEffect } from 'react'
+import PropTypes from 'prop-types'
 import Modules from '../components/modules'
 import { PageStyleContext } from '../components/pageStyleProvider'
 import SEO from '../components/seo'
 import HeroBlock from '../components/template/blocks/heroBlock'
 
-const LanderTemplate = ({ data: { lander, pageblocks } }) => {
+const LanderTemplate = ({ data: { lander } }) => {
     const seoImgSrc = getSrc(lander.featuredImage?.node?.og)
     const { setPageStyle } = useContext(PageStyleContext)
 
@@ -14,9 +15,9 @@ const LanderTemplate = ({ data: { lander, pageblocks } }) => {
 
     useLayoutEffect(() => {
         setPageStyle(pageStyle)
-    }, [pageStyle])
+    }, [pageStyle, setPageStyle])
 
-    const HeroAttributes = pageblocks.blocks[0].innerBlocks[0].attributes
+    const HeroAttributes = lander.blocks[0].innerBlocks[0].attributes
     return (
         <>
             <HeroBlock
@@ -33,7 +34,7 @@ const LanderTemplate = ({ data: { lander, pageblocks } }) => {
                 datePublished={lander.dateGmt}
                 dateModified={lander.modifiedGmt}
             />
-            {pageblocks.blocks && <Modules blockmodules={pageblocks.blocks} />}
+            {lander.blocks && <Modules blockmodules={lander.blocks} />}
             {/* {pageblocks.blocks &&
                 pageblocks.blocks.map(({ name, order, attributes, innerBlocks }) => (
                     <Module
@@ -45,6 +46,10 @@ const LanderTemplate = ({ data: { lander, pageblocks } }) => {
                 ))} */}
         </>
     )
+}
+
+LanderTemplate.propTypes = {
+    data: PropTypes.object,
 }
 
 export default LanderTemplate
@@ -66,8 +71,6 @@ export const landerQuery = graphql`
             seo {
                 metaDesc
             }
-        }
-        pageblocks: wpBlockEditorContentNode(id: { eq: $id }) {
             blocks {
                 name
                 ...CoreCoverblock

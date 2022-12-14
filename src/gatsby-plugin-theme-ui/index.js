@@ -196,8 +196,8 @@ const theme = {
                 // MozOsxFontSmoothing: 'grayscale',
             },
             scrollBehavior: 'smooth',
-            '@media screen and (prefersReducedMotion: reduce)': {
-                scrollBehavior: 'auto',
+            '@media screen and (prefersReducedMotion: no-preference)': {
+                scrollBehavior: 'smooth',
             },
             '& ::selection ': {
                 backgroundColor: '#f5df4d',

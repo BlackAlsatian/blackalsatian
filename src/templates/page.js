@@ -1,7 +1,8 @@
 import { graphql } from 'gatsby'
 import { getSrc } from 'gatsby-plugin-image'
 import parse from 'html-react-parser'
-import React, { useContext, useLayoutEffect } from 'react'
+import { useContext, useLayoutEffect } from 'react'
+import PropTypes from 'prop-types'
 import Modules from '../components/modules'
 import { PageStyleContext } from '../components/pageStyleProvider'
 import SEO from '../components/seo'
@@ -11,17 +12,18 @@ import LeftColumn from '../components/template/elements/leftColumn'
 import RightColumn from '../components/template/elements/rightColumn'
 import PageHeader from '../components/template/pageHeader'
 
-const PageTemplate = ({ data: { page, pageblocks } }) => {
+const PageTemplate = ({ data: { page } }) => {
     const { setPageStyle } = useContext(PageStyleContext)
 
     const pageStyle = page.pageStyle
 
     useLayoutEffect(() => {
         setPageStyle(pageStyle)
-    }, [pageStyle])
+    }, [pageStyle, setPageStyle])
 
     const seoImgSrc = getSrc(page.featuredImage?.node?.og)
     const pageTitles = ['Services', 'Portfolio']
+
     return (
         <>
             <SEO
@@ -37,11 +39,11 @@ const PageTemplate = ({ data: { page, pageblocks } }) => {
                 <>
                     <HeroBlock
                         featuredImage={page.featuredImage}
-                        color={pageblocks.blocks[0].innerBlocks[0].attributes.heroFontColor}
-                        title={pageblocks.blocks[0].innerBlocks[0].attributes.heroTitle}
-                        intro={pageblocks.blocks[0].innerBlocks[0].attributes.heroIntro}
+                        color={page.blocks[0].innerBlocks[0].attributes.heroFontColor}
+                        title={page.blocks[0].innerBlocks[0].attributes.heroTitle}
+                        intro={page.blocks[0].innerBlocks[0].attributes.heroIntro}
                     />
-                    {pageblocks.blocks && <Modules blockmodules={pageblocks.blocks} />}
+                    {page.blocks && <Modules blockmodules={page.blocks} />}
                 </>
             ) : (
                 !pageTitles.includes(page.title) && (
@@ -56,6 +58,10 @@ const PageTemplate = ({ data: { page, pageblocks } }) => {
             )}
         </>
     )
+}
+
+PageTemplate.propTypes = {
+    data: PropTypes.object,
 }
 
 export default PageTemplate
@@ -83,8 +89,6 @@ export const pageQuery = graphql`
             seo {
                 metaDesc
             }
-        }
-        pageblocks: wpBlockEditorContentNode(id: { eq: $id }) {
             blocks {
                 name
                 ...CoreCoverblock
@@ -97,3 +101,14 @@ export const pageQuery = graphql`
         }
     }
 `
+// pageblocks: wpBlockEditorContentNodes(id: { eq: $id }) {
+//     blocks {
+//         name
+//         ...CoreCoverblock
+//         ...BlackalsatianContentBlock
+//         ...BlackalsatianServicesBlock
+//         ...BlackalsatianLatestPostsBlock
+//         ...BlackalsatianFeaturedProjectsBlock
+//         ...BlackalsatianTestimonialsBlock
+//     }
+// }

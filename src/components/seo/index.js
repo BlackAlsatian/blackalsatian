@@ -118,6 +118,7 @@ SEO.defaultProps = {
     author: '',
     featuredImage: null,
     datePublished: null,
+    dateModified: null,
 }
 
 SEO.propTypes = {
@@ -128,6 +129,7 @@ SEO.propTypes = {
     author: PropTypes.string,
     featuredImage: PropTypes.string,
     datePublished: PropTypes.string,
+    dateModified: PropTypes.string,
 }
 
 export default SEO
