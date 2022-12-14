@@ -1,5 +1,6 @@
 /** @jsxImportSource theme-ui */
 import { useContext } from 'react'
+import PropTypes from 'prop-types'
 import { Flex } from 'theme-ui'
 import CookieConsent from './cookie-notice/cookieConsent'
 import GoToTopButton from './goToTopButton'
@@ -30,6 +31,10 @@ const Layout = ({ children }) => {
             <CookieConsent visible={consentScroll} />
         </Flex>
     )
+}
+
+Layout.propTypes = {
+    children: PropTypes.node.isRequired,
 }
 
 export default Layout
