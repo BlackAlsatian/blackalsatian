@@ -1,5 +1,6 @@
 /** @jsxImportSource theme-ui */
 import { useContext } from 'react'
+// import { useScrollRestoration } from 'gatsby'
 import PropTypes from 'prop-types'
 import { Flex } from 'theme-ui'
 import CookieConsent from './cookie-notice/cookieConsent'
@@ -13,6 +14,7 @@ const Layout = ({ children }) => {
     const pageStyle = useContext(PageStyleContext).pageStyle
     const scroll = useHasScrolled(1500)
     const consentScroll = useHasScrolled(50)
+    // const doScrollRestoration = useScrollRestoration('page-scroll-restorer')
 
     return (
         <Flex
@@ -23,6 +25,7 @@ const Layout = ({ children }) => {
                 variant: 'main.' + pageStyle,
             }}
             id='start'
+            // {...doScrollRestoration}
         >
             <Header pageStyle={pageStyle} />
             <main>{children}</main>
