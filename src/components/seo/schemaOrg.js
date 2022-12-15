@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import Helmet from 'react-helmet'
+// import Helmet from 'react-helmet'
 
 const SchemaOrg = ({
     author,
@@ -94,10 +94,10 @@ const SchemaOrg = ({
         : baseSchema
 
     return (
-        <Helmet>
+        <>
             {/* Schema.org tags */}
             <script type='application/ld+json'>{JSON.stringify(schema)}</script>
-        </Helmet>
+        </>
     )
 }
 

@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { graphql } from 'gatsby'
 import { getSrc } from 'gatsby-plugin-image'
 import { useContext, useLayoutEffect } from 'react'
@@ -8,7 +9,6 @@ import SEO from '../components/seo'
 import HeroBlock from '../components/template/blocks/heroBlock'
 
 const LanderTemplate = ({ data: { lander } }) => {
-    const seoImgSrc = getSrc(lander.featuredImage?.node?.og)
     const { setPageStyle } = useContext(PageStyleContext)
 
     const pageStyle = 'default'
@@ -26,24 +26,7 @@ const LanderTemplate = ({ data: { lander } }) => {
                 title={HeroAttributes.heroTitle}
                 intro={HeroAttributes.heroIntro}
             />
-            <SEO
-                title={lander.title}
-                description={lander.seo?.metaDesc}
-                url={lander.uri}
-                featuredImage={seoImgSrc && seoImgSrc}
-                datePublished={lander.dateGmt}
-                dateModified={lander.modifiedGmt}
-            />
             {lander.blocks && <Modules blockmodules={lander.blocks} />}
-            {/* {pageblocks.blocks &&
-                pageblocks.blocks.map(({ name, order, attributes, innerBlocks }) => (
-                    <Module
-                        key={order}
-                        module={{ name: name, order: order }}
-                        innerBlocks={innerBlocks}
-                        attributes={attributes}
-                    />
-                ))} */}
         </>
     )
 }
@@ -53,6 +36,20 @@ LanderTemplate.propTypes = {
 }
 
 export default LanderTemplate
+
+export const Head = ({ data: { lander } }) => {
+    const seoImgSrc = getSrc(lander.featuredImage?.node?.og)
+    return (
+        <SEO
+            title={lander.title}
+            description={lander.seo?.metaDesc}
+            url={lander.uri}
+            featuredImage={seoImgSrc && seoImgSrc}
+            datePublished={lander.dateGmt}
+            dateModified={lander.modifiedGmt}
+        />
+    )
+}
 
 export const landerQuery = graphql`
     query LanderById(

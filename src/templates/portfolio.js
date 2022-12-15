@@ -1,4 +1,5 @@
 /** @jsxImportSource theme-ui */ /* eslint-disable react/no-unknown-property */
+/* eslint-disable react/prop-types */
 import { Heading, Box } from 'theme-ui'
 import { useLayoutEffect, useContext } from 'react'
 import { PageStyleContext } from '../components/pageStyleProvider'
@@ -13,26 +14,17 @@ import LeftColumn from '../components/template/elements/leftColumn'
 import ColumnSection from '../components/template/containers/columnSection'
 
 const PortfolioIndex = ({ data }) => {
-    // const pageStyle = data.wpPage.pageStyle
     const { setPageStyle } = useContext(PageStyleContext)
     const pageStyle = 'black'
     useLayoutEffect(() => {
         setPageStyle(pageStyle)
-    }, [pageStyle])
+    }, [pageStyle, setPageStyle])
     const portfolio = data.allWpPortfolio.nodes
     const page = data.wpPage
-    const seoImgSrc = getSrc(page.featuredImage?.node?.og)
+
     if (!portfolio.length) {
         return (
             <>
-                <SEO
-                    title={page.title}
-                    description={page.seo.metaDesc}
-                    url={page.uri}
-                    featuredImage={seoImgSrc && seoImgSrc}
-                    datePublished={page.dateGmt}
-                    dateModified={page.modifiedGmt}
-                />
                 <p>No blog projects found.</p>
             </>
         )
@@ -40,14 +32,6 @@ const PortfolioIndex = ({ data }) => {
 
     return (
         <>
-            <SEO
-                title={page.title}
-                description={page.seo.metaDesc}
-                url={page.uri}
-                featuredImage={seoImgSrc && seoImgSrc}
-                datePublished={page.dateGmt}
-                dateModified={page.modifiedGmt}
-            />
             <PageHeader title={parse(page.title)} intro={page.pageintro} headerStyle={pageStyle} />
             <ColumnSection>
                 <LeftColumn
@@ -151,6 +135,36 @@ PortfolioIndex.propTypes = {
 }
 
 export default PortfolioIndex
+
+export const Head = ({ data }) => {
+    const portfolio = data.allWpPortfolio.nodes
+    const page = data.wpPage
+    const seoImgSrc = getSrc(page.featuredImage?.node?.og)
+    if (!portfolio.length) {
+        return (
+            <>
+                <SEO
+                    title={page.title}
+                    description={page.seo.metaDesc}
+                    url={page.uri}
+                    featuredImage={seoImgSrc && seoImgSrc}
+                    datePublished={page.dateGmt}
+                    dateModified={page.modifiedGmt}
+                />
+            </>
+        )
+    }
+    return (
+        <SEO
+            title={page.title}
+            description={page.seo.metaDesc}
+            url={page.uri}
+            featuredImage={seoImgSrc && seoImgSrc}
+            datePublished={page.dateGmt}
+            dateModified={page.modifiedGmt}
+        />
+    )
+}
 
 export const pageQuery = graphql`
     query WordPressPortfolioIndex {

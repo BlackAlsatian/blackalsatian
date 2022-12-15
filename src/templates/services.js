@@ -1,4 +1,6 @@
-/** @jsxImportSource theme-ui */ import { Container } from 'theme-ui'
+/** @jsxImportSource theme-ui */
+/* eslint-disable react/prop-types */
+import { Container } from 'theme-ui'
 import { useLayoutEffect, useContext } from 'react'
 import { PageStyleContext } from '../components/pageStyleProvider'
 import { graphql } from 'gatsby'
@@ -20,21 +22,13 @@ const ServicesIndex = ({ data }) => {
 
     useLayoutEffect(() => {
         setPageStyle(pageStyle)
-    }, [pageStyle])
+    }, [pageStyle, setPageStyle])
     const services = data.allWpService.nodes
     const page = data.wpPage
-    const seoImgSrc = getSrc(page.featuredImage?.node?.og)
+
     if (!services.length) {
         return (
             <>
-                <SEO
-                    title={page.title}
-                    description={page.seo?.metaDesc}
-                    url={page.uri}
-                    featuredImage={seoImgSrc && seoImgSrc}
-                    datePublished={page.dateGmt}
-                    dateModified={page.modifiedGmt}
-                />
                 <p>No blog services found.</p>
             </>
         )
@@ -42,14 +36,6 @@ const ServicesIndex = ({ data }) => {
 
     return (
         <>
-            <SEO
-                title={page.title}
-                description={page.seo?.metaDesc}
-                url={page.uri}
-                featuredImage={seoImgSrc && seoImgSrc}
-                datePublished={page.dateGmt}
-                dateModified={page.modifiedGmt}
-            />
             <PageHeader title={parse(page.title)} intro={page.pageintro} headerStyle={pageStyle} />
             <section
                 // eslint-disable-next-line react/no-unknown-property
@@ -106,6 +92,37 @@ ServicesIndex.propTypes = {
 }
 
 export default ServicesIndex
+
+export const Head = ({ data }) => {
+    const services = data.allWpService.nodes
+    const page = data.wpPage
+    const seoImgSrc = getSrc(page.featuredImage?.node?.og)
+    if (!services.length) {
+        return (
+            <>
+                <SEO
+                    title={page.title}
+                    description={page.seo?.metaDesc}
+                    url={page.uri}
+                    featuredImage={seoImgSrc && seoImgSrc}
+                    datePublished={page.dateGmt}
+                    dateModified={page.modifiedGmt}
+                />
+                <p>No blog services found.</p>
+            </>
+        )
+    }
+    return (
+        <SEO
+            title={page.title}
+            description={page.seo?.metaDesc}
+            url={page.uri}
+            featuredImage={seoImgSrc && seoImgSrc}
+            datePublished={page.dateGmt}
+            dateModified={page.modifiedGmt}
+        />
+    )
+}
 
 export const pageQuery = graphql`
     query WordPressServicesIndex {

@@ -1,4 +1,5 @@
 /** @jsxImportSource theme-ui */
+/* eslint-disable react/prop-types */
 import { Box, Container, Heading } from 'theme-ui'
 import { useLayoutEffect, useContext } from 'react'
 import { PageStyleContext } from '../components/pageStyleProvider'
@@ -17,7 +18,7 @@ const BlogIndex = ({ data, pageContext: { nextPagePath, previousPagePath, pageNu
 
     useLayoutEffect(() => {
         setPageStyle(pageStyle)
-    }, [pageStyle])
+    }, [pageStyle, setPageStyle])
 
     const posts = data.allWpPost.nodes
 
@@ -25,17 +26,9 @@ const BlogIndex = ({ data, pageContext: { nextPagePath, previousPagePath, pageNu
 
     const content = data.site.siteMetadata.blog.intro
 
-    const browserTitle = data.site.siteMetadata.blog.browserTitle
-
     if (!posts.length) {
         return (
             <>
-                <SEO
-                    title={browserTitle}
-                    description={content}
-                    url={pathname}
-                    // featuredImage={page.featuredImage?.node?.og?.childImageSharp?.gatsbyImageData?.src}
-                />
                 <p>No blog posts found.</p>
             </>
         )
@@ -43,12 +36,6 @@ const BlogIndex = ({ data, pageContext: { nextPagePath, previousPagePath, pageNu
 
     return (
         <>
-            <SEO
-                title={pageNumber > 1 ? browserTitle + ' - Page ' + pageNumber : browserTitle}
-                description={pageNumber > 1 ? content + ' - Page ' + pageNumber : content}
-                url={pathname}
-                // featuredImage={page.featuredImage?.node?.og?.childImageSharp?.gatsbyImageData?.src}
-            />
             {pathname === '/blog/' && <PageHeader title={pageTitle} intro={content} headerStyle={pageStyle} />}
             <Box
                 as='section'
@@ -148,6 +135,33 @@ BlogIndex.propTypes = {
 }
 
 export default BlogIndex
+
+export const Head = ({ data, pageContext: { pageNumber }, location: { pathname } }) => {
+    const browserTitle = data.site.siteMetadata.blog.browserTitle
+
+    const posts = data.allWpPost.nodes
+
+    const content = data.site.siteMetadata.blog.intro
+
+    if (!posts.length) {
+        return (
+            <>
+                <SEO title={browserTitle} description={content} url={pathname} />
+                <p>No blog posts found.</p>
+            </>
+        )
+    }
+
+    return (
+        <>
+            <SEO
+                title={pageNumber > 1 ? browserTitle + ' - Page ' + pageNumber : browserTitle}
+                description={pageNumber > 1 ? content + ' - Page ' + pageNumber : content}
+                url={pathname}
+            />
+        </>
+    )
+}
 
 export const pageQuery = graphql`
     query WordPressPostArchive($offset: Int!, $postsPerPage: Int!) {

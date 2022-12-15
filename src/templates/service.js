@@ -1,8 +1,11 @@
 /** @jsxImportSource theme-ui */
+/* eslint-disable react/prop-types */
+/* eslint-disable react/no-unknown-property */
 import { graphql } from 'gatsby'
 import { GatsbyImage, getSrc } from 'gatsby-plugin-image'
 import parse from 'html-react-parser'
 import { useContext, useLayoutEffect } from 'react'
+import PropTypes from 'prop-types'
 import { Box, Flex } from 'theme-ui'
 import { removeTags } from '../components/helpers'
 import PagesNav from '../components/pagesNav'
@@ -10,29 +13,21 @@ import { PageStyleContext } from '../components/pageStyleProvider'
 import SEO from '../components/seo'
 import PageHeader from '../components/template/pageHeader'
 
-const PageTemplate = ({ data: { previous, next, service } }) => {
+const ServiceTemplate = ({ data: { previous, next, service } }) => {
     const { setPageStyle } = useContext(PageStyleContext)
 
     const pageStyle = 'altyellow'
     useLayoutEffect(() => {
         setPageStyle(pageStyle)
-    }, [pageStyle])
+    }, [pageStyle, setPageStyle])
     const featuredImage = {
         fluid: service?.featuredImage?.node?.main?.childImageSharp?.gatsbyImageData,
         alt: service?.featuredImage?.node?.altText || '',
     }
-    const seoImgSrc = getSrc(service?.featuredImage?.node?.og)
+
     const serviceExcerpt = removeTags(service?.excerpt)
     return (
         <>
-            <SEO
-                title={service?.title}
-                description={service?.seo?.metaDesc}
-                url={service?.uri}
-                featuredImage={seoImgSrc && seoImgSrc}
-                datePublished={service?.dateGmt}
-                dateModified={service?.modifiedGmt}
-            />
             <PageHeader title={parse(service?.title)} intro={parse(serviceExcerpt)} headerStyle={pageStyle} />
             <Box as='section' sx={{ backgroundColor: 'white', variant: 'sections.noypadding' }}>
                 <Flex
@@ -86,8 +81,25 @@ const PageTemplate = ({ data: { previous, next, service } }) => {
     )
 }
 
-export default PageTemplate
+ServiceTemplate.propTypes = {
+    data: PropTypes.object,
+}
 
+export default ServiceTemplate
+
+export const Head = ({ data: { service } }) => {
+    const seoImgSrc = getSrc(service?.featuredImage?.node?.og)
+    return (
+        <SEO
+            title={service?.title}
+            description={service?.seo?.metaDesc}
+            url={service?.uri}
+            featuredImage={seoImgSrc && seoImgSrc}
+            datePublished={service?.dateGmt}
+            dateModified={service?.modifiedGmt}
+        />
+    )
+}
 export const serviceQuery = graphql`
     query ServiceById(
         # these variables are passed in via createPage.pageContext in gatsby-node.js

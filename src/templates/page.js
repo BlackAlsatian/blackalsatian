@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { graphql } from 'gatsby'
 import { getSrc } from 'gatsby-plugin-image'
 import parse from 'html-react-parser'
@@ -21,20 +22,11 @@ const PageTemplate = ({ data: { page } }) => {
         setPageStyle(pageStyle)
     }, [pageStyle, setPageStyle])
 
-    const seoImgSrc = getSrc(page.featuredImage?.node?.og)
+    // const seoImgSrc = getSrc(page.featuredImage?.node?.og)
     const pageTitles = ['Services', 'Portfolio']
 
     return (
         <>
-            <SEO
-                title={page.title}
-                description={page.seo?.metaDesc}
-                url={page.uri}
-                featuredImage={seoImgSrc && seoImgSrc}
-                datePublished={page.dateGmt}
-                dateModified={page.modifiedGmt}
-                isFrontPage={page.isFrontPage}
-            />
             {page.isFrontPage ? (
                 <>
                     <HeroBlock
@@ -65,6 +57,22 @@ PageTemplate.propTypes = {
 }
 
 export default PageTemplate
+
+export const Head = ({ data: { page } }) => {
+    const seoImgSrc = getSrc(page.featuredImage?.node?.og)
+
+    return (
+        <SEO
+            title={page.title}
+            description={page.seo?.metaDesc}
+            url={page.uri}
+            featuredImage={seoImgSrc && seoImgSrc}
+            datePublished={page.dateGmt}
+            dateModified={page.modifiedGmt}
+            isFrontPage={page.isFrontPage}
+        />
+    )
+}
 
 export const pageQuery = graphql`
     query PageById(
@@ -101,14 +109,3 @@ export const pageQuery = graphql`
         }
     }
 `
-// pageblocks: wpBlockEditorContentNodes(id: { eq: $id }) {
-//     blocks {
-//         name
-//         ...CoreCoverblock
-//         ...BlackalsatianContentBlock
-//         ...BlackalsatianServicesBlock
-//         ...BlackalsatianLatestPostsBlock
-//         ...BlackalsatianFeaturedProjectsBlock
-//         ...BlackalsatianTestimonialsBlock
-//     }
-// }
