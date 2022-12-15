@@ -21,7 +21,7 @@ const ServiceTemplate = ({ data: { previous, next, service } }) => {
         setPageStyle(pageStyle)
     }, [pageStyle, setPageStyle])
     const featuredImage = {
-        fluid: service?.featuredImage?.node?.main?.childImageSharp?.gatsbyImageData,
+        fluid: service?.featuredImage?.node?.main,
         alt: service?.featuredImage?.node?.altText || '',
     }
 

@@ -22,7 +22,6 @@ const PageTemplate = ({ data: { page } }) => {
         setPageStyle(pageStyle)
     }, [pageStyle, setPageStyle])
 
-    // const seoImgSrc = getSrc(page.featuredImage?.node?.og)
     const pageTitles = ['Services', 'Portfolio']
 
     return (

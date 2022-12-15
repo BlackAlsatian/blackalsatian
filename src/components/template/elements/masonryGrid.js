@@ -1,4 +1,3 @@
-import React from 'react'
 import MasonryGridWrapper from '../containers/masonryGridWrapper'
 import MasonryTileLink from './masonryTileLink'
 

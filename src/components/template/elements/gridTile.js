@@ -1,12 +1,14 @@
 /** @jsxImportSource theme-ui */
+/* eslint-disable react/no-unknown-property */
 import { Heading } from 'theme-ui'
 import { GatsbyImage } from 'gatsby-plugin-image'
+import PropTypes from 'prop-types'
 import { getHeight } from '../../helpers'
 import parse from 'html-react-parser'
 
 const GridTile = ({ node, headerType }) => {
     const featuredImage = {
-        fluid: node.featuredImage?.node?.tile?.childImageSharp?.gatsbyImageData,
+        fluid: node.featuredImage?.node?.tile,
         alt: node.featuredImage?.node?.altText || '',
     }
     return (
@@ -62,6 +64,11 @@ const GridTile = ({ node, headerType }) => {
             </div>
         </article>
     )
+}
+
+GridTile.propTypes = {
+    node: PropTypes.node,
+    headerType: PropTypes.object,
 }
 
 export default GridTile

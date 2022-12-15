@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /** @jsxImportSource theme-ui */
 import { Heading, Paragraph } from 'theme-ui'
 import parse from 'html-react-parser'
@@ -6,8 +7,8 @@ import PageHeroHeader from '../containers/pageHeroHeader'
 import PageHeaderContainer from '../containers/pageHeaderContainer'
 
 const HeroBlock = ({ featuredImage, title, intro }) => {
-    // const { featuredImage, color, title, intro } = props
     const featuredImageData = getImage(featuredImage.node.main)
+
     return (
         <PageHeroHeader containerVariant='default'>
             <GatsbyImage

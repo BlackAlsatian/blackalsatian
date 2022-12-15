@@ -1,4 +1,6 @@
 /** @jsxImportSource theme-ui */
+/* eslint-disable react/prop-types */
+/* eslint-disable react/no-unknown-property */
 import React from 'react'
 import { Flex, Heading } from 'theme-ui'
 import MasonryGridViewAllLink from '../elements/masonryGridViewAllLink'
@@ -23,7 +25,7 @@ const MasonryGridWrapper = ({ children, heading, viewAllLink, background }) => {
                     {heading}
                 </Heading>
             </div>
-            <div sx={{ columnCount: [1, 2, 3], variant: 'sections.masonryWrapper.grid' }}>{children}</div>
+            <div sx={{ columnCount: [1, 2, 3, 3, 3], variant: 'sections.masonryWrapper.grid' }}>{children}</div>
             {viewAllLink && (
                 <div
                     sx={{

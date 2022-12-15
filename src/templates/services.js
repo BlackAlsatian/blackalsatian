@@ -47,7 +47,7 @@ const ServicesIndex = ({ data }) => {
                     {services.map((service, i) => {
                         const title = service.title
                         const featuredImage = {
-                            fluid: service.featuredImage?.node?.main?.childImageSharp?.gatsbyImageData,
+                            fluid: service.featuredImage?.node?.main,
                             alt: service.featuredImage?.node?.altText || '',
                         }
                         return (

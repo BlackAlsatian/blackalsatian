@@ -15,46 +15,6 @@ const SEO = ({
     dateModified,
     isFrontPage,
 }) => {
-    // const data = useStaticQuery(graphql`
-    //     query {
-    //         site {
-    //             siteMetadata {
-    //                 title
-    //                 description
-    //                 siteUrl
-    //                 image
-    //                 author {
-    //                     name
-    //                     twitter
-    //                     url
-    //                 }
-    //                 organization {
-    //                     name
-    //                     url
-    //                     logo
-    //                     email
-    //                     telephone
-    //                     pubLogo
-    //                 }
-    //                 twitter
-    //                 socialUrls {
-    //                     facebook
-    //                     instagram
-    //                     linkedin
-    //                     twitter
-    //                 }
-    //                 shortTitle
-    //                 pubLogo
-    //                 pubIconLogo
-    //                 lang
-    //                 fbAppId
-    //             }
-    //         }
-    //     }
-    // `)
-    // const {
-    //     site: { siteMetadata: seo },
-    // } = data
     const seo = useSiteMetadata()
 
     const metaDescription = isFrontPage ? seo.description : description || seo.description
@@ -62,15 +22,11 @@ const SEO = ({
     const defaultTitle = seo.title
     const image = isFrontPage ? `${seo.siteUrl}${seo.image}` : `${seo.siteUrl}${featuredImage || seo.image}`
     const canonicalUrl = url ? `${seo.siteUrl}${url}` : seo.siteUrl
-    // const publishedDate = isBlogPost ? datePublished : false
     const publishedDate = datePublished
     const modifiedDate = dateModified
 
     return (
         <>
-            {/* <Helmet titleTemplate={defaultTitle ? `%s | ${defaultTitle}` : null} defer={false}> */}
-            {/* <html lang='en' /> */}
-
             {/* General tags */}
             <title>{pageTitle}</title>
             <meta name='description' content={metaDescription} />
@@ -95,7 +51,7 @@ const SEO = ({
             <meta name='twitter:title' content={pageTitle} />
             <meta name='twitter:description' content={metaDescription} />
             <meta name='twitter:image' content={image} />
-            {/* </Helmet> */}
+
             <SchemaOrg
                 isBlogPost={isBlogPost}
                 title={pageTitle}

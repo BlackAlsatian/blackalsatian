@@ -1,12 +1,13 @@
 /** @jsxImportSource theme-ui */
 import { Container, Heading, Flex, Box } from 'theme-ui'
 import { GatsbyImage } from 'gatsby-plugin-image'
+import PropTypes from 'prop-types'
 import parse from 'html-react-parser'
 import AnimatedSwipeButton from '../elements/animatedSwipeButton'
 
 const ProjectHeader = ({ project }) => {
     const featuredImage = {
-        fluid: project.featuredImage?.node?.main?.childImageSharp?.gatsbyImageData,
+        fluid: project.featuredImage?.node?.main,
         alt: project.featuredImage?.node?.altText || '',
     }
     return (
@@ -74,6 +75,10 @@ const ProjectHeader = ({ project }) => {
             </Container>
         </Flex>
     )
+}
+
+ProjectHeader.propTypes = {
+    project: PropTypes.object,
 }
 
 export default ProjectHeader

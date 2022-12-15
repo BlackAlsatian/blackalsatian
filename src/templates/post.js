@@ -24,8 +24,9 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
     useLayoutEffect(() => {
         setPageStyle(pageStyle)
     }, [pageStyle, setPageStyle])
+
     const featuredImage = {
-        fluid: post?.featuredImage?.node?.main?.childImageSharp?.gatsbyImageData,
+        fluid: post?.featuredImage?.node?.main,
         alt: post?.featuredImage?.node?.altText || '',
     }
 
