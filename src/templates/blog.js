@@ -102,8 +102,11 @@ const BlogIndex = ({ data, pageContext: { nextPagePath, previousPagePath, pageNu
                                 to={post.uri}
                                 key={post.uri}
                                 title={post.title}
+                                style={{
+                                    display: 'inline-block',
+                                }}
                             >
-                                <GridTile node={post} headerType='h2' />
+                                <GridTile linkNode={post} headerType='h2' />
                             </AniLink>
                         )
                     })}

@@ -6,10 +6,10 @@ import PropTypes from 'prop-types'
 import { getHeight } from '../../helpers'
 import parse from 'html-react-parser'
 
-const GridTile = ({ node, headerType }) => {
+const GridTile = ({ linkNode, headerType }) => {
     const featuredImage = {
-        fluid: node.featuredImage?.node?.tile,
-        alt: node.featuredImage?.node?.altText || '',
+        fluid: linkNode.featuredImage?.node?.tile,
+        alt: linkNode.featuredImage?.node?.altText || '',
     }
     return (
         <article
@@ -30,7 +30,7 @@ const GridTile = ({ node, headerType }) => {
             {featuredImage?.fluid && (
                 <GatsbyImage
                     image={featuredImage.fluid}
-                    alt={featuredImage.alt || node.title}
+                    alt={featuredImage.alt || linkNode.title}
                     style={{
                         display: 'block',
                         position: 'relative',
@@ -57,18 +57,18 @@ const GridTile = ({ node, headerType }) => {
                 }}
             >
                 <Heading as={headerType} sx={{ fontSize: 3 }}>
-                    {node.title}
+                    {linkNode.title}
                 </Heading>
-                {node.date && <small>{node.date}</small>}
-                {parse(node.excerpt)}
+                {linkNode.date && <small>{linkNode.date}</small>}
+                {parse(linkNode.excerpt)}
             </div>
         </article>
     )
 }
 
 GridTile.propTypes = {
-    node: PropTypes.node,
-    headerType: PropTypes.object,
+    linkNode: PropTypes.object,
+    headerType: PropTypes.string,
 }
 
 export default GridTile
