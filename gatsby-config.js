@@ -189,207 +189,209 @@ module.exports = {
                 cache_busting_mode: 'none',
             },
         },
-        // {
-        //     resolve: 'gatsby-plugin-sitemap',
-        //     options: {
-        //         query: `
-        //         {
-        //             allWpPage (filter: {status: {eq: "publish"}}) {
-        //                 edges {
-        //                     node {
-        //                         id
-        //                         slug
-        //                         modifiedGmt
-        //                         featuredImage {
-        //                             node {
-        //                               localFile {
-        //                                 publicURL
-        //                               }
-        //                             }
-        //                         }
-        //                     }
-        //                 }
-        //             }
-        //             allWpPost (filter: {status: {eq: "publish"}}) {
-        //                 edges {
-        //                     node {
-        //                         id
-        //                         slug
-        //                         modifiedGmt
-        //                         featuredImage {
-        //                             node {
-        //                               localFile {
-        //                                 publicURL
-        //                               }
-        //                             }
-        //                         }
-        //                     }
-        //                 }
-        //             }
-        //             allWpService (filter: {status: {eq: "publish"}}) {
-        //                 edges {
-        //                     node {
-        //                         id
-        //                         slug
-        //                         modifiedGmt
-        //                         featuredImage {
-        //                             node {
-        //                               localFile {
-        //                                 publicURL
-        //                               }
-        //                             }
-        //                         }
-        //                     }
-        //                 }
-        //             }
-        //             allWpLander (filter: {status: {eq: "publish"}}) {
-        //                 edges {
-        //                     node {
-        //                         id
-        //                         slug
-        //                         modifiedGmt
-        //                         featuredImage {
-        //                             node {
-        //                               localFile {
-        //                                 publicURL
-        //                               }
-        //                             }
-        //                         }
-        //                     }
-        //                 }
-        //             }
-        //             allWpPortfolio (filter: {status: {eq: "publish"}}) {
-        //                 edges {
-        //                     node {
-        //                         id
-        //                         slug
-        //                         modifiedGmt
-        //                         featuredImage {
-        //                             node {
-        //                               localFile {
-        //                                 publicURL
-        //                               }
-        //                             }
-        //                         }
-        //                     }
-        //                 }
-        //             }
-        //         }`,
-        //         output: '/sitemap.xml',
-        //         mapping: {
-        //             allWpPage: {
-        //                 sitemap: 'pages',
-        //                 prefix: '/',
-        //                 // Custom Serializer
-        //                 serializer: (edges) => {
-        //                     return edges.map(({ node }) => {
-        //                         const PageFeaturedImagePath =
-        //                             node.featuredImage !== null
-        //                                 ? node.featuredImage.node.localFile.publicURL
-        //                                 : '/images/black-alsatian-dark-dog.png'
-        //                         return {
-        //                             node: {
-        //                                 id: node.id,
-        //                                 slug: node.slug,
-        //                                 updated_at: node.modifiedGmt,
-        //                                 feature_image: PageFeaturedImagePath,
-        //                             },
-        //                         }
-        //                     })
-        //                 },
-        //             },
-        //             allWpPost: {
-        //                 sitemap: 'blog',
-        //                 prefix: 'blog/',
-        //                 serializer: (edges) => {
-        //                     return edges.map(({ node }) => {
-        //                         const PostFeaturedImagePath =
-        //                             node.featuredImage !== null
-        //                                 ? node.featuredImage.node.localFile.publicURL
-        //                                 : '/images/black-alsatian-dark-dog.png'
-        //                         return {
-        //                             node: {
-        //                                 id: node.id,
-        //                                 slug: node.slug,
-        //                                 updated_at: node.modifiedGmt,
-        //                                 feature_image: PostFeaturedImagePath,
-        //                             },
-        //                         }
-        //                     })
-        //                 },
-        //             },
-        //             allWpService: {
-        //                 sitemap: 'services',
-        //                 prefix: 'services/',
-        //                 serializer: (edges) => {
-        //                     return edges.map(({ node }) => {
-        //                         const ServiceFeaturedImagePath =
-        //                             node.featuredImage !== null
-        //                                 ? node.featuredImage.node.localFile.publicURL
-        //                                 : '/images/black-alsatian-dark-dog.png'
-        //                         return {
-        //                             node: {
-        //                                 id: node.id,
-        //                                 slug: node.slug,
-        //                                 updated_at: node.modifiedGmt,
-        //                                 feature_image: ServiceFeaturedImagePath,
-        //                             },
-        //                         }
-        //                     })
-        //                 },
-        //             },
-        //             allWpLander: {
-        //                 sitemap: 'landers',
-        //                 prefix: 'x/',
-        //                 serializer: (edges) => {
-        //                     return edges.map(({ node }) => {
-        //                         const LanderFeaturedImagePath =
-        //                             node.featuredImage !== null
-        //                                 ? node.featuredImage.node.localFile.publicURL
-        //                                 : '/images/black-alsatian-dark-dog.png'
-        //                         return {
-        //                             node: {
-        //                                 id: node.id,
-        //                                 slug: node.slug,
-        //                                 updated_at: node.modifiedGmt,
-        //                                 feature_image: LanderFeaturedImagePath,
-        //                             },
-        //                         }
-        //                     })
-        //                 },
-        //             },
-        //             allWpPortfolio: {
-        //                 sitemap: 'portfolio',
-        //                 prefix: 'portfolio/',
-        //                 serializer: (edges) => {
-        //                     return edges.map(({ node }) => {
-        //                         const ProjectFeaturedImagePath =
-        //                             node.featuredImage !== null
-        //                                 ? node.featuredImage.node.localFile.publicURL
-        //                                 : '/images/black-alsatian-dark-dog.png'
-        //                         return {
-        //                             node: {
-        //                                 id: node.id,
-        //                                 slug: node.slug,
-        //                                 updated_at: node.modifiedGmt,
-        //                                 feature_image: ProjectFeaturedImagePath,
-        //                             },
-        //                         }
-        //                     })
-        //                 },
-        //             },
-        //         },
-        //         exclude: [
-        //             '/dev-404-page',
-        //             '/404',
-        //             '/404.html',
-        //             '/offline-plugin-app-shell-fallback',
-        //             '/the-web-design-company-with-a-difference',
-        //         ],
-        //         createLinkInHead: true,
-        //         addUncaughtPages: true,
-        //     },
-        // },
+        {
+            resolve: 'gatsby-plugin-sitemap',
+            options: {
+                query: `
+                {
+                    allWpPage (filter: {status: {eq: "publish"}}) {
+                        edges {
+                            node {
+                                id
+                                slug
+                                modifiedGmt
+                                featuredImage {
+                                    node {
+                                      localFile {
+                                        publicURL
+                                      }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    allWpPost (filter: {status: {eq: "publish"}}) {
+                        edges {
+                            node {
+                                id
+                                slug
+                                modifiedGmt
+                                featuredImage {
+                                    node {
+                                      localFile {
+                                        publicURL
+                                      }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    allWpService (filter: {status: {eq: "publish"}}) {
+                        edges {
+                            node {
+                                id
+                                slug
+                                modifiedGmt
+                                featuredImage {
+                                    node {
+                                      localFile {
+                                        publicURL
+                                      }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    allWpLander (filter: {status: {eq: "publish"}}) {
+                        edges {
+                            node {
+                                id
+                                slug
+                                modifiedGmt
+                                featuredImage {
+                                    node {
+                                      localFile {
+                                        publicURL
+                                      }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    allWpPortfolio (filter: {status: {eq: "publish"}}) {
+                        edges {
+                            node {
+                                id
+                                slug
+                                modifiedGmt
+                                featuredImage {
+                                    node {
+                                      localFile {
+                                        publicURL
+                                      }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }`,
+                // output: '/sitemap.xml',
+                resolveSiteUrl: () => siteUrl,
+                // mapping: {
+                // resolvePages: {
+                //     allWpPage: {
+                //         sitemap: 'pages',
+                //         prefix: '/',
+                //         // Custom Serializer
+                //         serializer: (edges) => {
+                //             return edges.map(({ node }) => {
+                //                 const PageFeaturedImagePath =
+                //                     node.featuredImage !== null
+                //                         ? node.featuredImage.node.localFile.publicURL
+                //                         : '/images/black-alsatian-dark-dog.png'
+                //                 return {
+                //                     node: {
+                //                         id: node.id,
+                //                         slug: node.slug,
+                //                         updated_at: node.modifiedGmt,
+                //                         feature_image: PageFeaturedImagePath,
+                //                     },
+                //                 }
+                //             })
+                //         },
+                //     },
+                //     allWpPost: {
+                //         sitemap: 'blog',
+                //         prefix: 'blog/',
+                //         serializer: (edges) => {
+                //             return edges.map(({ node }) => {
+                //                 const PostFeaturedImagePath =
+                //                     node.featuredImage !== null
+                //                         ? node.featuredImage.node.localFile.publicURL
+                //                         : '/images/black-alsatian-dark-dog.png'
+                //                 return {
+                //                     node: {
+                //                         id: node.id,
+                //                         slug: node.slug,
+                //                         updated_at: node.modifiedGmt,
+                //                         feature_image: PostFeaturedImagePath,
+                //                     },
+                //                 }
+                //             })
+                //         },
+                //     },
+                //     allWpService: {
+                //         sitemap: 'services',
+                //         prefix: 'services/',
+                //         serializer: (edges) => {
+                //             return edges.map(({ node }) => {
+                //                 const ServiceFeaturedImagePath =
+                //                     node.featuredImage !== null
+                //                         ? node.featuredImage.node.localFile.publicURL
+                //                         : '/images/black-alsatian-dark-dog.png'
+                //                 return {
+                //                     node: {
+                //                         id: node.id,
+                //                         slug: node.slug,
+                //                         updated_at: node.modifiedGmt,
+                //                         feature_image: ServiceFeaturedImagePath,
+                //                     },
+                //                 }
+                //             })
+                //         },
+                //     },
+                //     allWpLander: {
+                //         sitemap: 'landers',
+                //         prefix: 'x/',
+                //         serializer: (edges) => {
+                //             return edges.map(({ node }) => {
+                //                 const LanderFeaturedImagePath =
+                //                     node.featuredImage !== null
+                //                         ? node.featuredImage.node.localFile.publicURL
+                //                         : '/images/black-alsatian-dark-dog.png'
+                //                 return {
+                //                     node: {
+                //                         id: node.id,
+                //                         slug: node.slug,
+                //                         updated_at: node.modifiedGmt,
+                //                         feature_image: LanderFeaturedImagePath,
+                //                     },
+                //                 }
+                //             })
+                //         },
+                //     },
+                //     allWpPortfolio: {
+                //         sitemap: 'portfolio',
+                //         prefix: 'portfolio/',
+                //         serializer: (edges) => {
+                //             return edges.map(({ node }) => {
+                //                 const ProjectFeaturedImagePath =
+                //                     node.featuredImage !== null
+                //                         ? node.featuredImage.node.localFile.publicURL
+                //                         : '/images/black-alsatian-dark-dog.png'
+                //                 return {
+                //                     node: {
+                //                         id: node.id,
+                //                         slug: node.slug,
+                //                         updated_at: node.modifiedGmt,
+                //                         feature_image: ProjectFeaturedImagePath,
+                //                     },
+                //                 }
+                //             })
+                //         },
+                //     },
+                // },
+                excludes: [
+                    '/dev-404-page',
+                    '/404',
+                    '/404.html',
+                    '/offline-plugin-app-shell-fallback',
+                    '/the-web-design-company-with-a-difference',
+                ],
+                createLinkInHead: true,
+                // addUncaughtPages: true,
+            },
+        },
         'gatsby-plugin-gatsby-cloud',
         'gatsby-plugin-offline',
         {
