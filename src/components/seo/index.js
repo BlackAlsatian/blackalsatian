@@ -69,7 +69,7 @@ const SEO = ({
     return (
         <>
             {/* <Helmet titleTemplate={defaultTitle ? `%s | ${defaultTitle}` : null} defer={false}> */}
-            <html lang='en' />
+            {/* <html lang='en' /> */}
 
             {/* General tags */}
             <title>{pageTitle}</title>

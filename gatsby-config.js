@@ -45,7 +45,6 @@ module.exports = {
     },
     plugins: [
         'gatsby-plugin-preact',
-        'gatsby-plugin-react-helmet',
         'gatsby-plugin-theme-ui',
         {
             resolve: 'gatsby-plugin-transition-link',
@@ -86,9 +85,10 @@ module.exports = {
                     // suggestion from Tyler
                     // BlockEditorContentNode: { exclude: true }
                     MediaItem: {
-                        localFile: {
-                            requestConcurrency: process.env.GATSBY_REQUEST_CONCURRENCY_IMAGES,
-                        },
+                        // localFile: {
+                        //     requestConcurrency: process.env.GATSBY_REQUEST_CONCURRENCY_IMAGES,
+                        // },
+                        createFileNodes: false,
                     },
                     Category: {
                         exclude: true,

@@ -131,7 +131,7 @@ const BlogIndex = ({ data, pageContext: { nextPagePath, previousPagePath, pageNu
 BlogIndex.propTypes = {
     data: PropTypes.object,
     pageContext: PropTypes.object,
-    location: PropTypes.string,
+    location: PropTypes.object,
 }
 
 export default BlogIndex
