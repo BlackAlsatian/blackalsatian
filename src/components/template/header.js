@@ -1,6 +1,8 @@
 /** @jsxImportSource theme-ui */
+/* eslint-disable react/no-unknown-property */
 import { useStaticQuery, graphql } from 'gatsby'
 import { Link } from 'gatsby'
+import PropTypes from 'prop-types'
 import MenuIcon from '../menuIcon'
 import Logo from '../logo'
 import Nav from '../nav'
@@ -40,6 +42,10 @@ const Header = ({ pageStyle }) => {
             </div>
         </header>
     )
+}
+
+Header.propTypes = {
+    pageStyle: PropTypes.string,
 }
 
 export default Header
