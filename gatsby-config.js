@@ -1,4 +1,6 @@
+/* eslint-disable no-undef */
 require('dotenv').config({ path: `.env.${process.env.NODE_ENV}` })
+const siteUrl = 'https://www.blackalsatian.co.za'
 module.exports = {
     siteMetadata: {
         title: 'Black Alsatian',
@@ -44,7 +46,7 @@ module.exports = {
         PRESERVE_FILE_DOWNLOAD_CACHE: true,
     },
     plugins: [
-        'gatsby-plugin-preact',
+        // 'gatsby-plugin-preact',
         'gatsby-plugin-theme-ui',
         {
             resolve: 'gatsby-plugin-transition-link',
@@ -192,91 +194,61 @@ module.exports = {
         {
             resolve: 'gatsby-plugin-sitemap',
             options: {
-                query: `
-                {
-                    allWpPage (filter: {status: {eq: "publish"}}) {
-                        edges {
-                            node {
-                                id
-                                slug
-                                modifiedGmt
-                                featuredImage {
-                                    node {
-                                      localFile {
-                                        publicURL
-                                      }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    allWpPost (filter: {status: {eq: "publish"}}) {
-                        edges {
-                            node {
-                                id
-                                slug
-                                modifiedGmt
-                                featuredImage {
-                                    node {
-                                      localFile {
-                                        publicURL
-                                      }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    allWpService (filter: {status: {eq: "publish"}}) {
-                        edges {
-                            node {
-                                id
-                                slug
-                                modifiedGmt
-                                featuredImage {
-                                    node {
-                                      localFile {
-                                        publicURL
-                                      }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    allWpLander (filter: {status: {eq: "publish"}}) {
-                        edges {
-                            node {
-                                id
-                                slug
-                                modifiedGmt
-                                featuredImage {
-                                    node {
-                                      localFile {
-                                        publicURL
-                                      }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    allWpPortfolio (filter: {status: {eq: "publish"}}) {
-                        edges {
-                            node {
-                                id
-                                slug
-                                modifiedGmt
-                                featuredImage {
-                                    node {
-                                      localFile {
-                                        publicURL
-                                      }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }`,
+                // excludes: [
+                //     '/dev-404-page',
+                //     '/404',
+                //     '/404.html',
+                //     '/offline-plugin-app-shell-fallback',
+                //     '/the-web-design-company-with-a-difference',
+                // ],
+                // query: `
+                // {
+                //     allWpPage (filter: {status: {eq: "publish"}}) {
+                //         nodes {
+                //             slug
+                //         }
+                //     }
+                //     allWpPost (filter: {status: {eq: "publish"}}) {
+                //         nodes {
+                //             slug
+                //         }
+                //     }
+                //     allWpService (filter: {status: {eq: "publish"}}) {
+                //         nodes {
+                //             slug
+                //         }
+                //     }
+                //     allWpLander (filter: {status: {eq: "publish"}}) {
+                //         nodes {
+                //             slug
+                //         }
+                //     }
+                //     allWpPortfolio (filter: {status: {eq: "publish"}}) {
+                //         nodes {
+                //             slug
+                //         }
+                //     }
+                // }`,
                 // output: '/sitemap.xml',
                 resolveSiteUrl: () => siteUrl,
+                // resolvePages: ({ allSitePage: { nodes: allPages }, allWpContentNode: { nodes: allWpNodes } }) => {
+                //     const wpNodeMap = allWpNodes.reduce((acc, node) => {
+                //         const { uri } = node
+                //         acc[uri] = node
+
+                //         return acc
+                //     }, {})
+
+                //     return allPages.map((page) => {
+                //         return { ...page, ...wpNodeMap[page.path] }
+                //     })
+                // },
+                // serialize: ({ path, modifiedGmt }) => {
+                //     return {
+                //         url: path,
+                //         lastmod: modifiedGmt,
+                //     }
+                // },
                 // mapping: {
                 // resolvePages: {
                 //     allWpPage: {
@@ -381,14 +353,8 @@ module.exports = {
                 //         },
                 //     },
                 // },
-                excludes: [
-                    '/dev-404-page',
-                    '/404',
-                    '/404.html',
-                    '/offline-plugin-app-shell-fallback',
-                    '/the-web-design-company-with-a-difference',
-                ],
-                createLinkInHead: true,
+
+                // createLinkInHead: true,
                 // addUncaughtPages: true,
             },
         },

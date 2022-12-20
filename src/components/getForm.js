@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unknown-property */
 /* eslint-disable no-console */
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable quotes */
@@ -82,6 +83,7 @@ const GetForm = ({ option, buttonName, buttonUrl, backgroundColor, buttonBackgro
                     }
                     // console.log(response)
                 },
+                // eslint-disable-next-line no-unused-vars
                 (error) => {
                     // console.log(error.response)
                     console.log("There were errors. That's all I know.")
@@ -208,7 +210,7 @@ const GetForm = ({ option, buttonName, buttonUrl, backgroundColor, buttonBackgro
                     width: 0,
                     zIndex: -1,
                 }}
-                autocomplete='off'
+                autoComplete='off'
             />
 
             {(option === 'quote' || option === 'enquiry') && (

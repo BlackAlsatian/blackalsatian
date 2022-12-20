@@ -15,6 +15,7 @@ exports.createSchemaCustomization = ({ actions }) => {
  *
  * See https://www.gatsbyjs.com/docs/node-apis/#createPages for more info.
  */
+
 exports.createPages = async (gatsbyUtilities) => {
     // Query our posts from the GraphQL server
     const posts = await getPosts(gatsbyUtilities)
@@ -343,6 +344,7 @@ async function getPortfolio({ graphql, reporter }) {
     }
     return graphqlResult.data.allWpPortfolio.edges
 }
+
 async function getLanders({ graphql, reporter }) {
     const graphqlResult = await graphql(/* GraphQL */ `
         query WpLanders {

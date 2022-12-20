@@ -16,6 +16,8 @@
         "plugin:react-hooks/recommended"
     ],
     "parserOptions": {
+        "parser": "@babel/eslint-parser",
+        "requireConfigFile": false,
         "ecmaFeatures": {
             "jsx": true
         },
@@ -23,7 +25,7 @@
         "sourceType": "module"
     },
     "plugins": [
-        "@babel",
+        // "@babel",
         "react",
         "prettier",
         "react-hooks"

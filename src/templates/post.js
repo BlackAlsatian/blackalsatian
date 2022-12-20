@@ -39,7 +39,7 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
                     <GatsbyImage
                         image={featuredImage.fluid}
                         alt={featuredImage.alt || post.title}
-                        fadeIn='false'
+                        fadein='false'
                         loading='eager'
                         objectPosition='50% 50%'
                         backgroundColor='#111827'
