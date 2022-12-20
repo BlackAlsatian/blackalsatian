@@ -2,7 +2,11 @@
     "name": "gatsby-starter-blackalsatian",
     "private": true,
     "description": "Black Alsatian website",
+<<<<<<< HEAD
     "version": "1.15.0",
+=======
+    "version": "1.11.2",
+>>>>>>> gatsby-5-update
     "author": "Björn Potgieter <bjorn@blackalsatian.co.za>",
     "bugs": {
         "url": "https://bjorn.africa/"
@@ -74,4 +78,8 @@
         "clean": "gatsby clean",
         "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> gatsby-5-update
