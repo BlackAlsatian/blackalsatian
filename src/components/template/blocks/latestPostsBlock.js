@@ -5,7 +5,7 @@ import MasonryGrid from '../elements/masonryGrid'
 const LatestPostsBlock = () => {
     const latestPosts = useStaticQuery(graphql`
         query LatestPostsQuery {
-            allWpPost(limit: 6, filter: { status: { eq: "publish" } }, sort: { order: DESC, fields: date }) {
+            allWpPost(limit: 6, filter: { status: { eq: "publish" } }, sort: { date: DESC }) {
                 nodes {
                     id
                     uri

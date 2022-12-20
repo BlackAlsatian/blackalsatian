@@ -1,8 +1,11 @@
 /** @jsxImportSource theme-ui */
+/* eslint-disable react/prop-types */
+/* eslint-disable react/no-unknown-property */
 import { graphql } from 'gatsby'
 import { GatsbyImage, getSrc } from 'gatsby-plugin-image'
 import parse from 'html-react-parser'
 import { useContext, useLayoutEffect } from 'react'
+import PropTypes from 'prop-types'
 import { Badge, Box, Container, Flex, Heading, Paragraph } from 'theme-ui'
 import Bio from '../components/bio'
 import { removeTags } from '../components/helpers'
@@ -20,34 +23,23 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
     const pageStyle = 'postwhite'
     useLayoutEffect(() => {
         setPageStyle(pageStyle)
-    }, [pageStyle])
+    }, [pageStyle, setPageStyle])
+
     const featuredImage = {
-        fluid: post?.featuredImage?.node?.main?.childImageSharp?.gatsbyImageData,
+        fluid: post?.featuredImage?.node?.main,
         alt: post?.featuredImage?.node?.altText || '',
     }
-    const seoImgSrc = getSrc(post.featuredImage?.node?.og)
 
     const postExcerpt = removeTags(post?.excerpt)
     return (
         <>
-            <SEO
-                title={post.title}
-                description={post.seo.metaDesc}
-                featuredImage={seoImgSrc && seoImgSrc}
-                url={post.uri}
-                author={post.author.node.firstName + ' ' + post.author.node.lastName}
-                datePublished={post.dateGmt}
-                dateModified={post.modifiedGmt}
-                isBlogPost
-            />
-
             {/* <section itemScope itemType='http://schema.org/Article'> */}
             {featuredImage?.fluid ? (
                 <PageHeroHeader containerVariant='default'>
                     <GatsbyImage
                         image={featuredImage.fluid}
                         alt={featuredImage.alt || post.title}
-                        fadeIn='false'
+                        fadein='false'
                         loading='eager'
                         objectPosition='50% 50%'
                         backgroundColor='#111827'
@@ -173,7 +165,27 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
     )
 }
 
+BlogPostTemplate.propTypes = {
+    data: PropTypes.object,
+}
+
 export default BlogPostTemplate
+
+export const Head = ({ data: { post } }) => {
+    const seoImgSrc = getSrc(post.featuredImage?.node?.og)
+    return (
+        <SEO
+            title={post.title}
+            description={post.seo.metaDesc}
+            featuredImage={seoImgSrc && seoImgSrc}
+            url={post.uri}
+            author={post.author.node.firstName + ' ' + post.author.node.lastName}
+            datePublished={post.dateGmt}
+            dateModified={post.modifiedGmt}
+            isBlogPost
+        />
+    )
+}
 
 export const pageQuery = graphql`
     query BlogPostById(

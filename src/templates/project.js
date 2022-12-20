@@ -1,8 +1,11 @@
 /** @jsxImportSource theme-ui */
+/* eslint-disable react/prop-types */
+/* eslint-disable react/no-unknown-property */
 import { graphql } from 'gatsby'
 import { getSrc } from 'gatsby-plugin-image'
 import parse from 'html-react-parser'
 import { useContext, useLayoutEffect } from 'react'
+import PropTypes from 'prop-types'
 import PagesNav from '../components/pagesNav'
 import { PageStyleContext } from '../components/pageStyleProvider'
 import SEO from '../components/seo'
@@ -14,19 +17,10 @@ const ProjectTemplate = ({ data: { previous, portfolio, next } }) => {
     const pageStyle = 'black'
     useLayoutEffect(() => {
         setPageStyle(pageStyle)
-    }, [pageStyle])
+    }, [pageStyle, setPageStyle])
 
-    const seoImgSrc = getSrc(portfolio.featuredImage?.node?.og)
     return (
         <>
-            <SEO
-                title={portfolio.title}
-                description={portfolio.seo.metaDesc}
-                url={portfolio.uri}
-                featuredImage={seoImgSrc && seoImgSrc}
-                datePublished={portfolio.dateGmt}
-                dateModified={portfolio.modifiedGmt}
-            />
             <ProjectHeader project={portfolio} />
 
             <ProjectContent project={portfolio} />
@@ -45,8 +39,25 @@ const ProjectTemplate = ({ data: { previous, portfolio, next } }) => {
     )
 }
 
+ProjectTemplate.propTypes = {
+    data: PropTypes.object,
+}
+
 export default ProjectTemplate
 
+export const Head = ({ data: { portfolio } }) => {
+    const seoImgSrc = getSrc(portfolio.featuredImage?.node?.og)
+    return (
+        <SEO
+            title={portfolio.title}
+            description={portfolio.seo.metaDesc}
+            url={portfolio.uri}
+            featuredImage={seoImgSrc && seoImgSrc}
+            datePublished={portfolio.dateGmt}
+            dateModified={portfolio.modifiedGmt}
+        />
+    )
+}
 export const portfolioQuery = graphql`
     query PortfolioById(
         # these variables are passed in via createPage.pageContext in gatsby-node.js

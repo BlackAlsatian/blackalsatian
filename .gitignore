@@ -72,3 +72,9 @@ yarn-error.log
 
 # my stuff
 .bak/
+
+# Docker 
+.devcontainer/
+docker-compose*.yml
+Dockerfile
+.dockerignore

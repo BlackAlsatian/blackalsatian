@@ -5,21 +5,15 @@ export const fragments = graphql`
         featuredImage {
             node {
                 altText
-                main: localFile {
-                    childImageSharp {
-                        gatsbyImageData(quality: 80, placeholder: TRACED_SVG, layout: FULL_WIDTH, formats: [AUTO, WEBP])
-                    }
-                }
-                og: localFile {
-                    childImageSharp {
-                        gatsbyImageData(width: 1200, quality: 70)
-                    }
-                }
-                tile: localFile {
-                    childImageSharp {
-                        gatsbyImageData(width: 500, quality: 70, placeholder: TRACED_SVG, layout: CONSTRAINED)
-                    }
-                }
+                main: gatsbyImage(
+                    width: 1200
+                    quality: 80
+                    placeholder: DOMINANT_COLOR
+                    layout: FULL_WIDTH
+                    formats: [AUTO, WEBP]
+                )
+                og: gatsbyImage(width: 1200, quality: 70)
+                tile: gatsbyImage(width: 500, quality: 70, placeholder: DOMINANT_COLOR, layout: CONSTRAINED)
             }
         }
     }
@@ -28,16 +22,8 @@ export const fragments = graphql`
         featuredImage {
             node {
                 altText
-                main: localFile {
-                    childImageSharp {
-                        gatsbyImageData(quality: 80, placeholder: TRACED_SVG, layout: FULL_WIDTH)
-                    }
-                }
-                og: localFile {
-                    childImageSharp {
-                        gatsbyImageData(width: 1200, quality: 70)
-                    }
-                }
+                main: gatsbyImage(width: 1200, quality: 80, placeholder: DOMINANT_COLOR, layout: FULL_WIDTH)
+                og: gatsbyImage(width: 1200, quality: 70)
             }
         }
     }
@@ -46,16 +32,14 @@ export const fragments = graphql`
         featuredImage {
             node {
                 altText
-                main: localFile {
-                    childImageSharp {
-                        gatsbyImageData(quality: 85, placeholder: BLURRED, layout: FULL_WIDTH, formats: [AUTO, WEBP])
-                    }
-                }
-                og: localFile {
-                    childImageSharp {
-                        gatsbyImageData(width: 1200, quality: 70)
-                    }
-                }
+                main: gatsbyImage(
+                    width: 1200
+                    quality: 85
+                    placeholder: BLURRED
+                    layout: FULL_WIDTH
+                    formats: [AUTO, WEBP]
+                )
+                og: gatsbyImage(width: 1200, quality: 70)
             }
         }
     }
@@ -64,21 +48,9 @@ export const fragments = graphql`
         featuredImage {
             node {
                 altText
-                main: localFile {
-                    childImageSharp {
-                        gatsbyImageData(quality: 80, placeholder: TRACED_SVG, layout: FULL_WIDTH)
-                    }
-                }
-                og: localFile {
-                    childImageSharp {
-                        gatsbyImageData(width: 1200, quality: 70)
-                    }
-                }
-                tile: localFile {
-                    childImageSharp {
-                        gatsbyImageData(width: 500, quality: 70, placeholder: TRACED_SVG, layout: CONSTRAINED)
-                    }
-                }
+                main: gatsbyImage(width: 1200, quality: 80, placeholder: DOMINANT_COLOR, layout: FULL_WIDTH)
+                og: gatsbyImage(width: 1200, quality: 70)
+                tile: gatsbyImage(width: 500, quality: 70, placeholder: DOMINANT_COLOR, layout: CONSTRAINED)
             }
         }
     }
@@ -87,16 +59,8 @@ export const fragments = graphql`
         featuredImage {
             node {
                 altText
-                main: localFile {
-                    childImageSharp {
-                        gatsbyImageData(quality: 80, placeholder: TRACED_SVG, layout: FULL_WIDTH)
-                    }
-                }
-                og: localFile {
-                    childImageSharp {
-                        gatsbyImageData(width: 1200, quality: 70)
-                    }
-                }
+                main: gatsbyImage(width: 1200, quality: 80, placeholder: DOMINANT_COLOR, layout: FULL_WIDTH)
+                og: gatsbyImage(width: 1200, quality: 70)
             }
         }
     }

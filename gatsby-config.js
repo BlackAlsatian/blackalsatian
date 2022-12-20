@@ -1,7 +1,6 @@
-require('dotenv').config({
-    path: `.env.${process.env.NODE_ENV}`,
-})
-
+/* eslint-disable no-undef */
+require('dotenv').config({ path: `.env.${process.env.NODE_ENV}` })
+const siteUrl = 'https://www.blackalsatian.co.za'
 module.exports = {
     siteMetadata: {
         title: 'Black Alsatian',
@@ -37,6 +36,7 @@ module.exports = {
         pubIconLogo: '/images/blackalsatian-icon-logo.png',
         blog: {
             title: 'Blog',
+            // eslint-disable-next-line quotes
             browserTitle: "A Web Design Company's Blog",
             intro: 'Latest trends in the world of web development & digital marketing',
         },
@@ -44,33 +44,9 @@ module.exports = {
     flags: {
         // prevents file downloads from being deleted during cache clearing events (other than gatsby clean which still deletes the entire cache)
         PRESERVE_FILE_DOWNLOAD_CACHE: true,
-
-        // FAST_DEV: true,
-        // Use React Fast Refresh instead of the legacy react-hot-loader for instantaneous feedback in your development server. Recommended for versions of React >= 17.0.
-        // FAST_REFRESH: true,
-        // SSR pages on full reloads during develop. Helps you detect SSR bugs and fix them without needing to do full builds.
-        // DEV_SSR: true,
-        // Only run queries when needed instead of running all queries upfront. Speeds starting the develop server.
-        //EXPERIMENTAL
-        // Don`t process images during development until they`re requested from the browser. Speeds starting the develop server.
-        // PARALLEL_SOURCING
-        // Run all source plugins at the same time instead of serially. For sites with multiple source plugins, this can speedup sourcing and transforming considerably.
-        // DETECT_NODE_MUTATIONS: true,
-        // Diagnostic mode to log any attempts to mutate node directly. Helpful when debugging missing data problems. See https://gatsby.dev/debugging-missing-data for more details.
     },
     plugins: [
-        'gatsby-plugin-preact',
-        'gatsby-plugin-react-helmet',
-        {
-            resolve: 'gatsby-plugin-preconnect',
-            options: {
-                domains: [
-                    // 'https://www.google-analytics.com',
-                    // 'https://connect.facebook.net',
-                    'https://www.googletagmanager.com',
-                ],
-            },
-        },
+        // 'gatsby-plugin-preact',
         'gatsby-plugin-theme-ui',
         {
             resolve: 'gatsby-plugin-transition-link',
@@ -111,9 +87,10 @@ module.exports = {
                     // suggestion from Tyler
                     // BlockEditorContentNode: { exclude: true }
                     MediaItem: {
-                        localFile: {
-                            requestConcurrency: process.env.GATSBY_REQUEST_CONCURRENCY_IMAGES,
-                        },
+                        // localFile: {
+                        //     requestConcurrency: process.env.GATSBY_REQUEST_CONCURRENCY_IMAGES,
+                        // },
+                        createFileNodes: false,
                     },
                     Category: {
                         exclude: true,
@@ -137,14 +114,6 @@ module.exports = {
             },
         },
         'gatsby-plugin-sass',
-        'gatsby-plugin-purgecss',
-        {
-            resolve: 'gatsby-source-filesystem',
-            options: {
-                name: 'images',
-                path: `${__dirname}/src/assets/images`,
-            },
-        },
         'gatsby-plugin-image',
         'gatsby-transformer-sharp',
         'gatsby-plugin-sharp',
@@ -223,209 +192,174 @@ module.exports = {
             },
         },
         {
-            resolve: 'gatsby-plugin-advanced-sitemap',
+            resolve: 'gatsby-plugin-sitemap',
             options: {
-                query: `
-                {
-                    allWpPage (filter: {status: {eq: "publish"}}) {
-                        edges {
-                            node {
-                                id
-                                slug
-                                modifiedGmt
-                                featuredImage {
-                                    node {
-                                      localFile {
-                                        publicURL
-                                      }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    allWpPost (filter: {status: {eq: "publish"}}) {
-                        edges {
-                            node {
-                                id
-                                slug
-                                modifiedGmt
-                                featuredImage {
-                                    node {
-                                      localFile {
-                                        publicURL
-                                      }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    allWpService (filter: {status: {eq: "publish"}}) {
-                        edges {
-                            node {
-                                id
-                                slug
-                                modifiedGmt
-                                featuredImage {
-                                    node {
-                                      localFile {
-                                        publicURL
-                                      }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    allWpLander (filter: {status: {eq: "publish"}}) {
-                        edges {
-                            node {
-                                id
-                                slug
-                                modifiedGmt
-                                featuredImage {
-                                    node {
-                                      localFile {
-                                        publicURL
-                                      }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    allWpPortfolio (filter: {status: {eq: "publish"}}) {
-                        edges {
-                            node {
-                                id
-                                slug
-                                modifiedGmt
-                                featuredImage {
-                                    node {
-                                      localFile {
-                                        publicURL
-                                      }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }`,
-                output: '/sitemap.xml',
-                mapping: {
-                    allWpPage: {
-                        sitemap: 'pages',
-                        prefix: '/',
-                        // Custom Serializer
-                        serializer: (edges) => {
-                            return edges.map(({ node }) => {
-                                const PageFeaturedImagePath =
-                                    node.featuredImage !== null
-                                        ? node.featuredImage.node.localFile.publicURL
-                                        : '/images/black-alsatian-dark-dog.png'
-                                return {
-                                    node: {
-                                        id: node.id,
-                                        slug: node.slug,
-                                        updated_at: node.modifiedGmt,
-                                        feature_image: PageFeaturedImagePath,
-                                    },
-                                }
-                            })
-                        },
-                    },
-                    allWpPost: {
-                        sitemap: 'blog',
-                        prefix: 'blog/',
-                        serializer: (edges) => {
-                            return edges.map(({ node }) => {
-                                const PostFeaturedImagePath =
-                                    node.featuredImage !== null
-                                        ? node.featuredImage.node.localFile.publicURL
-                                        : '/images/black-alsatian-dark-dog.png'
-                                return {
-                                    node: {
-                                        id: node.id,
-                                        slug: node.slug,
-                                        updated_at: node.modifiedGmt,
-                                        feature_image: PostFeaturedImagePath,
-                                    },
-                                }
-                            })
-                        },
-                    },
-                    allWpService: {
-                        sitemap: 'services',
-                        prefix: 'services/',
-                        serializer: (edges) => {
-                            return edges.map(({ node }) => {
-                                const ServiceFeaturedImagePath =
-                                    node.featuredImage !== null
-                                        ? node.featuredImage.node.localFile.publicURL
-                                        : '/images/black-alsatian-dark-dog.png'
-                                return {
-                                    node: {
-                                        id: node.id,
-                                        slug: node.slug,
-                                        updated_at: node.modifiedGmt,
-                                        feature_image: ServiceFeaturedImagePath,
-                                    },
-                                }
-                            })
-                        },
-                    },
-                    allWpLander: {
-                        sitemap: 'landers',
-                        prefix: 'x/',
-                        serializer: (edges) => {
-                            return edges.map(({ node }) => {
-                                const LanderFeaturedImagePath =
-                                    node.featuredImage !== null
-                                        ? node.featuredImage.node.localFile.publicURL
-                                        : '/images/black-alsatian-dark-dog.png'
-                                return {
-                                    node: {
-                                        id: node.id,
-                                        slug: node.slug,
-                                        updated_at: node.modifiedGmt,
-                                        feature_image: LanderFeaturedImagePath,
-                                    },
-                                }
-                            })
-                        },
-                    },
-                    allWpPortfolio: {
-                        sitemap: 'portfolio',
-                        prefix: 'portfolio/',
-                        serializer: (edges) => {
-                            return edges.map(({ node }) => {
-                                const ProjectFeaturedImagePath =
-                                    node.featuredImage !== null
-                                        ? node.featuredImage.node.localFile.publicURL
-                                        : '/images/black-alsatian-dark-dog.png'
-                                return {
-                                    node: {
-                                        id: node.id,
-                                        slug: node.slug,
-                                        updated_at: node.modifiedGmt,
-                                        feature_image: ProjectFeaturedImagePath,
-                                    },
-                                }
-                            })
-                        },
-                    },
-                },
-                exclude: [
-                    '/dev-404-page',
-                    '/404',
-                    '/404.html',
-                    '/offline-plugin-app-shell-fallback',
-                    '/the-web-design-company-with-a-difference',
-                ],
-                createLinkInHead: true,
-                addUncaughtPages: true,
+                // excludes: [
+                //     '/dev-404-page',
+                //     '/404',
+                //     '/404.html',
+                //     '/offline-plugin-app-shell-fallback',
+                //     '/the-web-design-company-with-a-difference',
+                // ],
+                // query: `
+                // {
+                //     allWpPage (filter: {status: {eq: "publish"}}) {
+                //         nodes {
+                //             slug
+                //         }
+                //     }
+                //     allWpPost (filter: {status: {eq: "publish"}}) {
+                //         nodes {
+                //             slug
+                //         }
+                //     }
+                //     allWpService (filter: {status: {eq: "publish"}}) {
+                //         nodes {
+                //             slug
+                //         }
+                //     }
+                //     allWpLander (filter: {status: {eq: "publish"}}) {
+                //         nodes {
+                //             slug
+                //         }
+                //     }
+                //     allWpPortfolio (filter: {status: {eq: "publish"}}) {
+                //         nodes {
+                //             slug
+                //         }
+                //     }
+                // }`,
+                // output: '/sitemap.xml',
+                resolveSiteUrl: () => siteUrl,
+                // resolvePages: ({ allSitePage: { nodes: allPages }, allWpContentNode: { nodes: allWpNodes } }) => {
+                //     const wpNodeMap = allWpNodes.reduce((acc, node) => {
+                //         const { uri } = node
+                //         acc[uri] = node
+
+                //         return acc
+                //     }, {})
+
+                //     return allPages.map((page) => {
+                //         return { ...page, ...wpNodeMap[page.path] }
+                //     })
+                // },
+                // serialize: ({ path, modifiedGmt }) => {
+                //     return {
+                //         url: path,
+                //         lastmod: modifiedGmt,
+                //     }
+                // },
+                // mapping: {
+                // resolvePages: {
+                //     allWpPage: {
+                //         sitemap: 'pages',
+                //         prefix: '/',
+                //         // Custom Serializer
+                //         serializer: (edges) => {
+                //             return edges.map(({ node }) => {
+                //                 const PageFeaturedImagePath =
+                //                     node.featuredImage !== null
+                //                         ? node.featuredImage.node.localFile.publicURL
+                //                         : '/images/black-alsatian-dark-dog.png'
+                //                 return {
+                //                     node: {
+                //                         id: node.id,
+                //                         slug: node.slug,
+                //                         updated_at: node.modifiedGmt,
+                //                         feature_image: PageFeaturedImagePath,
+                //                     },
+                //                 }
+                //             })
+                //         },
+                //     },
+                //     allWpPost: {
+                //         sitemap: 'blog',
+                //         prefix: 'blog/',
+                //         serializer: (edges) => {
+                //             return edges.map(({ node }) => {
+                //                 const PostFeaturedImagePath =
+                //                     node.featuredImage !== null
+                //                         ? node.featuredImage.node.localFile.publicURL
+                //                         : '/images/black-alsatian-dark-dog.png'
+                //                 return {
+                //                     node: {
+                //                         id: node.id,
+                //                         slug: node.slug,
+                //                         updated_at: node.modifiedGmt,
+                //                         feature_image: PostFeaturedImagePath,
+                //                     },
+                //                 }
+                //             })
+                //         },
+                //     },
+                //     allWpService: {
+                //         sitemap: 'services',
+                //         prefix: 'services/',
+                //         serializer: (edges) => {
+                //             return edges.map(({ node }) => {
+                //                 const ServiceFeaturedImagePath =
+                //                     node.featuredImage !== null
+                //                         ? node.featuredImage.node.localFile.publicURL
+                //                         : '/images/black-alsatian-dark-dog.png'
+                //                 return {
+                //                     node: {
+                //                         id: node.id,
+                //                         slug: node.slug,
+                //                         updated_at: node.modifiedGmt,
+                //                         feature_image: ServiceFeaturedImagePath,
+                //                     },
+                //                 }
+                //             })
+                //         },
+                //     },
+                //     allWpLander: {
+                //         sitemap: 'landers',
+                //         prefix: 'x/',
+                //         serializer: (edges) => {
+                //             return edges.map(({ node }) => {
+                //                 const LanderFeaturedImagePath =
+                //                     node.featuredImage !== null
+                //                         ? node.featuredImage.node.localFile.publicURL
+                //                         : '/images/black-alsatian-dark-dog.png'
+                //                 return {
+                //                     node: {
+                //                         id: node.id,
+                //                         slug: node.slug,
+                //                         updated_at: node.modifiedGmt,
+                //                         feature_image: LanderFeaturedImagePath,
+                //                     },
+                //                 }
+                //             })
+                //         },
+                //     },
+                //     allWpPortfolio: {
+                //         sitemap: 'portfolio',
+                //         prefix: 'portfolio/',
+                //         serializer: (edges) => {
+                //             return edges.map(({ node }) => {
+                //                 const ProjectFeaturedImagePath =
+                //                     node.featuredImage !== null
+                //                         ? node.featuredImage.node.localFile.publicURL
+                //                         : '/images/black-alsatian-dark-dog.png'
+                //                 return {
+                //                     node: {
+                //                         id: node.id,
+                //                         slug: node.slug,
+                //                         updated_at: node.modifiedGmt,
+                //                         feature_image: ProjectFeaturedImagePath,
+                //                     },
+                //                 }
+                //             })
+                //         },
+                //     },
+                // },
+
+                // createLinkInHead: true,
+                // addUncaughtPages: true,
             },
         },
         'gatsby-plugin-gatsby-cloud',
         'gatsby-plugin-offline',
-        'gatsby-plugin-remove-generator',
         {
             resolve: 'gatsby-plugin-google-tagmanager',
             options: {

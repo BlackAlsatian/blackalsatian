@@ -1,7 +1,9 @@
 /** @jsxImportSource theme-ui */
+/* eslint-disable react/no-unknown-property */
 import { Flex, Heading } from 'theme-ui'
 import LazyLoad from 'react-lazyload'
 import { Link } from 'gatsby'
+import PropTypes from 'prop-types'
 import ContactDetails from './contactDetails'
 import Logo from '../../logo'
 import ServiceNav from '../../serviceNav'
@@ -160,6 +162,11 @@ const Footer = ({ siteTitle, pageStyle }) => {
             </section>
         </footer>
     )
+}
+
+Footer.propTypes = {
+    siteTitle: PropTypes.string,
+    pageStyle: PropTypes.string,
 }
 
 export default Footer

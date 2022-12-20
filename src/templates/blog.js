@@ -1,8 +1,10 @@
 /** @jsxImportSource theme-ui */
+/* eslint-disable react/prop-types */
 import { Box, Container, Heading } from 'theme-ui'
 import { useLayoutEffect, useContext } from 'react'
 import { PageStyleContext } from '../components/pageStyleProvider'
 import { graphql } from 'gatsby'
+import PropTypes from 'prop-types'
 import AniLink from 'gatsby-plugin-transition-link/AniLink'
 import SEO from '../components/seo'
 import PageHeader from '../components/template/pageHeader'
@@ -16,7 +18,7 @@ const BlogIndex = ({ data, pageContext: { nextPagePath, previousPagePath, pageNu
 
     useLayoutEffect(() => {
         setPageStyle(pageStyle)
-    }, [pageStyle])
+    }, [pageStyle, setPageStyle])
 
     const posts = data.allWpPost.nodes
 
@@ -24,17 +26,9 @@ const BlogIndex = ({ data, pageContext: { nextPagePath, previousPagePath, pageNu
 
     const content = data.site.siteMetadata.blog.intro
 
-    const browserTitle = data.site.siteMetadata.blog.browserTitle
-
     if (!posts.length) {
         return (
             <>
-                <SEO
-                    title={browserTitle}
-                    description={content}
-                    url={pathname}
-                    // featuredImage={page.featuredImage?.node?.og?.childImageSharp?.gatsbyImageData?.src}
-                />
                 <p>No blog posts found.</p>
             </>
         )
@@ -42,12 +36,6 @@ const BlogIndex = ({ data, pageContext: { nextPagePath, previousPagePath, pageNu
 
     return (
         <>
-            <SEO
-                title={pageNumber > 1 ? browserTitle + ' - Page ' + pageNumber : browserTitle}
-                description={pageNumber > 1 ? content + ' - Page ' + pageNumber : content}
-                url={pathname}
-                // featuredImage={page.featuredImage?.node?.og?.childImageSharp?.gatsbyImageData?.src}
-            />
             {pathname === '/blog/' && <PageHeader title={pageTitle} intro={content} headerStyle={pageStyle} />}
             <Box
                 as='section'
@@ -114,8 +102,11 @@ const BlogIndex = ({ data, pageContext: { nextPagePath, previousPagePath, pageNu
                                 to={post.uri}
                                 key={post.uri}
                                 title={post.title}
+                                style={{
+                                    display: 'inline-block',
+                                }}
                             >
-                                <GridTile node={post} headerType='h2' />
+                                <GridTile linkNode={post} headerType='h2' />
                             </AniLink>
                         )
                     })}
@@ -140,11 +131,44 @@ const BlogIndex = ({ data, pageContext: { nextPagePath, previousPagePath, pageNu
     )
 }
 
+BlogIndex.propTypes = {
+    data: PropTypes.object,
+    pageContext: PropTypes.object,
+    location: PropTypes.object,
+}
+
 export default BlogIndex
+
+export const Head = ({ data, pageContext: { pageNumber }, location: { pathname } }) => {
+    const browserTitle = data.site.siteMetadata.blog.browserTitle
+
+    const posts = data.allWpPost.nodes
+
+    const content = data.site.siteMetadata.blog.intro
+
+    if (!posts.length) {
+        return (
+            <>
+                <SEO title={browserTitle} description={content} url={pathname} />
+                <p>No blog posts found.</p>
+            </>
+        )
+    }
+
+    return (
+        <>
+            <SEO
+                title={pageNumber > 1 ? browserTitle + ' - Page ' + pageNumber : browserTitle}
+                description={pageNumber > 1 ? content + ' - Page ' + pageNumber : content}
+                url={pathname}
+            />
+        </>
+    )
+}
 
 export const pageQuery = graphql`
     query WordPressPostArchive($offset: Int!, $postsPerPage: Int!) {
-        allWpPost(sort: { fields: [date], order: DESC }, limit: $postsPerPage, skip: $offset) {
+        allWpPost(sort: { date: DESC }, limit: $postsPerPage, skip: $offset) {
             nodes {
                 id
                 uri
