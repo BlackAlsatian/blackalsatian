@@ -201,6 +201,38 @@ module.exports = {
                 //     '/offline-plugin-app-shell-fallback',
                 //     '/the-web-design-company-with-a-difference',
                 // ],
+                query: `
+                {
+                    allSitePage {
+                        nodes {
+                            path
+                        }
+                    }
+                    allWpContentNode(filter: {nodeType: {in: ["Post", "Page", "Service", "Portfolio", "Lander"]}}) {
+                        nodes {
+                            ... on WpPost {
+                                uri
+                                modifiedGmt
+                            }
+                            ... on WpPage {
+                                uri
+                                modifiedGmt
+                            }
+                            ... on WpService {
+                                uri
+                                modifiedGmt
+                            }
+                            ... on WpPortfolio {
+                                uri
+                                modifiedGmt
+                            } 
+                            ... on WpLander {
+                                uri
+                                modifiedGmt
+                            }
+                        }
+                    }
+                }`,
                 // query: `
                 // {
                 //     allWpPage (filter: {status: {eq: "publish"}}) {
@@ -231,24 +263,24 @@ module.exports = {
                 // }`,
                 // output: '/sitemap.xml',
                 resolveSiteUrl: () => siteUrl,
-                // resolvePages: ({ allSitePage: { nodes: allPages }, allWpContentNode: { nodes: allWpNodes } }) => {
-                //     const wpNodeMap = allWpNodes.reduce((acc, node) => {
-                //         const { uri } = node
-                //         acc[uri] = node
+                resolvePages: ({ allSitePage: { nodes: allPages }, allWpContentNode: { nodes: allWpNodes } }) => {
+                    const wpNodeMap = allWpNodes.reduce((acc, node) => {
+                        const { uri } = node
+                        acc[uri] = node
 
-                //         return acc
-                //     }, {})
+                        return acc
+                    }, {})
 
-                //     return allPages.map((page) => {
-                //         return { ...page, ...wpNodeMap[page.path] }
-                //     })
-                // },
-                // serialize: ({ path, modifiedGmt }) => {
-                //     return {
-                //         url: path,
-                //         lastmod: modifiedGmt,
-                //     }
-                // },
+                    return allPages.map((page) => {
+                        return { ...page, ...wpNodeMap[page.path] }
+                    })
+                },
+                serialize: ({ path, modifiedGmt }) => {
+                    return {
+                        url: path,
+                        lastmod: modifiedGmt,
+                    }
+                },
                 // mapping: {
                 // resolvePages: {
                 //     allWpPage: {
@@ -353,8 +385,7 @@ module.exports = {
                 //         },
                 //     },
                 // },
-
-                // createLinkInHead: true,
+                createLinkInHead: true,
                 // addUncaughtPages: true,
             },
         },
