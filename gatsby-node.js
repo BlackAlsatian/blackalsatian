@@ -102,16 +102,19 @@ const createIndividualBlogPostPages = async ({ posts, gatsbyUtilities }) =>
 // This function creates all the individual pages in this site
 const createIndividualPages = async ({ pages, gatsbyUtilities }) =>
     Promise.all(
-        pages.map(({ page }) =>
-            gatsbyUtilities.actions.createPage({
-                path: page.isFrontPage ? '/' : page.uri,
-                component: path.resolve('./src/templates/page.js'),
-                context: {
-                    id: page.id,
-                    pageStyle: page.pageStyle,
-                },
-            }),
-        ),
+        pages.map(({ page }) => {
+            if (page.title !== 'Blog') {
+                gatsbyUtilities.actions.createPage({
+                    // path: page.isFrontPage ? '/' : page.uri,
+                    path: page.uri,
+                    component: path.resolve('./src/templates/page.js'),
+                    context: {
+                        id: page.id,
+                        pageStyle: page.pageStyle,
+                    },
+                })
+            }
+        }),
     )
 
 // This function creates all the individual service pages in this site
