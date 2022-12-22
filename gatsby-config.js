@@ -70,12 +70,9 @@ module.exports = {
                 },
                 schema: {
                     timeout: 60000,
-                    // perPage: 20,
-                    // requestConcurrency: 5,
-                    // previewRequestConcurrency: 2,
-                    perPage: 20, // currently set to 100
-                    requestConcurrency: 5, // currently set to 5
-                    previewRequestConcurrency: 2, // currently set to 5
+                    perPage: 20,
+                    requestConcurrency: 2,
+                    previewRequestConcurrency: 1,
                 },
                 verbose: true,
                 excludeFieldNames: ['blocksJSON'],
@@ -204,7 +201,7 @@ module.exports = {
                             path
                         }
                     }
-                    allWpContentNode(filter: {nodeType: {in: ["Post", "Page", "Service", "Portfolio", "Lander"]}}) {
+                    allWpContentNode(filter: {nodeType: {in: [ "Page", "Service", "Lander", "Post", "Portfolio" ]}}) {
                         nodes {
                             ... on WpPost {
                                 uri
