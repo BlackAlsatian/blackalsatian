@@ -3,6 +3,7 @@ import { Fragment } from 'react'
 // import React from 'react'
 
 const BlockText = ({ text }) => {
-    return text.map(({ i, copy }) => <Fragment key={i}>{parse(copy)}</Fragment>)
+    // console.log(text)
+    return text.map(({ copy }, index) => <Fragment key={`${index}-paragraph`}>{parse(copy)}</Fragment>)
 }
 export default BlockText
