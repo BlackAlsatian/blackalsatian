@@ -32,14 +32,15 @@ export const phoneRegExp = /^(\+?\d{0,4})?\s?-?\s?(\(?\d{3}\)?)\s?-?\s?(\(?\d{3}
 export const emailRegExp = /^[^@ ]+@[^@ ]+\.[^@ .]{2,}$/
 
 // Fire Google Analytics tag
-export const sendGA = (eventName, context, tags) => {
+export const sendGA = (eventName, context, tags, inBrowser) => {
     if (process.env.NODE_ENV !== 'production') {
         // console.log('Development')
         // console.log('GTag fired!')
         // console.log('Event: ' + eventName, 'Type: ' + context, 'Info: ' + tags)
     } else {
         // console.log('Production')
-        if (typeof window !== 'undefined') {
+        // if (typeof window !== 'undefined') {
+        if (inBrowser) {
             // window.gtag('event', context)
             window.dataLayer.push({
                 event: eventName,
@@ -51,9 +52,11 @@ export const sendGA = (eventName, context, tags) => {
 }
 
 // Get lead info
-export const leadInfo = () => {
-    let referrerUrl = typeof window !== 'undefined' && window.location.origin
-    let pathUrl = typeof window !== 'undefined' && window.location.pathname
+export const leadInfo = (inBrowser) => {
+    // let referrerUrl = typeof window !== 'undefined' && window.location.origin
+    // let pathUrl = typeof window !== 'undefined' && window.location.pathname
+    let referrerUrl = inBrowser && window.location.origin
+    let pathUrl = inBrowser && window.location.pathname
 
     const leadInfo = { referrerUrl, pathUrl }
 

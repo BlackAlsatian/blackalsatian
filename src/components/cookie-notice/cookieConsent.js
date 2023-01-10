@@ -1,15 +1,16 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 // import { useLocation } from '@reach/router'
 // import { initializeAndTrack } from 'gatsby-plugin-gdpr-cookies'
-import { isBrowser } from '../helpers'
+// import { isBrowser } from '../helpers'
 import CookieCard from './cookieCard'
 
 // function isBrowser() {
 //     return typeof window !== 'undefined'
 // }
 
-function getValue(key, defaultValue) {
-    return isBrowser() && window.localStorage.getItem(key) ? JSON.parse(window.localStorage.getItem(key)) : defaultValue
+function getValue(key, defaultValue, inBrowser) {
+    // return isBrowser() && window.localStorage.getItem(key) ? JSON.parse(window.localStorage.getItem(key)) : defaultValue
+    return inBrowser && window.localStorage.getItem(key) ? JSON.parse(window.localStorage.getItem(key)) : defaultValue
 }
 
 function setValue(key, value) {
@@ -17,8 +18,11 @@ function setValue(key, value) {
 }
 
 function useStickyState(defaultValue, key) {
+    const [inBrowser, setInBrowser] = useState(false)
+    useEffect(() => setInBrowser(true), [])
+
     const [value, setter] = React.useState(() => {
-        return getValue(key, defaultValue)
+        return getValue(key, defaultValue, inBrowser)
     })
 
     useEffect(() => {
@@ -28,6 +32,7 @@ function useStickyState(defaultValue, key) {
     return [value, setter]
 }
 
+// eslint-disable-next-line react/prop-types
 const CookieConsent = ({ visible }) => {
     const exdays = 90
     const theDate = new Date()

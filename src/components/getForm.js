@@ -7,7 +7,7 @@
 /** @jsxImportSource theme-ui */
 import { Link } from 'gatsby'
 import { Label, Input, Box, Button, Spinner, Textarea } from 'theme-ui'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import axios from 'axios'
 import Notification from './notification'
@@ -21,6 +21,9 @@ const GetForm = ({ option, buttonName, buttonUrl, backgroundColor, buttonBackgro
     const errorColor = handleErrorColor(backgroundColor)
     const [messageAlert, setMessageAlert] = useState(false)
     const [formSubmitting, setFormSubmitting] = useState(false)
+    const [inBrowser, setInBrowser] = useState(false)
+
+    useEffect(() => setInBrowser(true), [])
 
     let btnColor = backgroundColor || 'white'
     const {
@@ -41,8 +44,8 @@ const GetForm = ({ option, buttonName, buttonUrl, backgroundColor, buttonBackgro
             subscribe: false,
             mailer_sync: option === 'lead' ? true : false,
             privacy_policy: option === 'lead' ? true : false,
-            page: leadInfo().pathUrl,
-            traffic_source: leadInfo().referrerUrl,
+            page: leadInfo(inBrowser).pathUrl,
+            traffic_source: leadInfo(inBrowser).referrerUrl,
             tags: option === 'lead' ? buttonUrl : option,
             website_id: `${process.env.GATSBY_BA_SITEID}`,
         },
@@ -76,7 +79,7 @@ const GetForm = ({ option, buttonName, buttonUrl, backgroundColor, buttonBackgro
                         setFormSubmitting(false)
                         setMessageAlert(true)
                         reset(getValues)
-                        sendGA('generate_lead', option, data.tags)
+                        sendGA('generate_lead', option, data.tags, inBrowser)
                         setTimeout(() => {
                             setMessageAlert(false)
                         }, 5000)

@@ -1,5 +1,5 @@
 import { graphql, useStaticQuery } from 'gatsby'
-import React from 'react'
+// import React from 'react'
 import LazyLoad from 'react-lazyload'
 import MasonryGrid from '../elements/masonryGrid'
 
