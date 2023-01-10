@@ -46,7 +46,7 @@ ProjectTemplate.propTypes = {
 export default ProjectTemplate
 
 export const Head = ({ data: { portfolio } }) => {
-    const seoImgSrc = getSrc(portfolio.featuredImage?.node?.og)
+    const seoImgSrc = getSrc(portfolio.featuredImage?.node?.main)
     return (
         <SEO
             title={portfolio.title}

@@ -139,7 +139,7 @@ export default PortfolioIndex
 export const Head = ({ data }) => {
     const portfolio = data.allWpPortfolio.nodes
     const page = data.wpPage
-    const seoImgSrc = getSrc(page.featuredImage?.node?.og)
+    const seoImgSrc = getSrc(page.featuredImage?.node?.main)
     if (!portfolio.length) {
         return (
             <>

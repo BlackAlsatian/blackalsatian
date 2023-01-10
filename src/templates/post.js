@@ -172,7 +172,7 @@ BlogPostTemplate.propTypes = {
 export default BlogPostTemplate
 
 export const Head = ({ data: { post } }) => {
-    const seoImgSrc = getSrc(post.featuredImage?.node?.og)
+    const seoImgSrc = getSrc(post.featuredImage?.node?.main)
     return (
         <SEO
             title={post.title}

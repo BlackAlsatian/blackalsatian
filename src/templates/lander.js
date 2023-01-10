@@ -38,7 +38,7 @@ LanderTemplate.propTypes = {
 export default LanderTemplate
 
 export const Head = ({ data: { lander } }) => {
-    const seoImgSrc = getSrc(lander.featuredImage?.node?.og)
+    const seoImgSrc = getSrc(lander.featuredImage?.node?.main)
     return (
         <SEO
             title={lander.title}

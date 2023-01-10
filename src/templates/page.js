@@ -58,7 +58,7 @@ PageTemplate.propTypes = {
 export default PageTemplate
 
 export const Head = ({ data: { page } }) => {
-    const seoImgSrc = getSrc(page.featuredImage?.node?.og)
+    const seoImgSrc = getSrc(page.featuredImage?.node?.main)
 
     return (
         <SEO

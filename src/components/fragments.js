@@ -12,7 +12,6 @@ export const fragments = graphql`
                     layout: FULL_WIDTH
                     formats: [AUTO, WEBP]
                 )
-                og: gatsbyImage(width: 1200, quality: 70)
                 tile: gatsbyImage(width: 500, quality: 70, placeholder: DOMINANT_COLOR, layout: CONSTRAINED)
             }
         }
@@ -23,7 +22,6 @@ export const fragments = graphql`
             node {
                 altText
                 main: gatsbyImage(width: 1200, quality: 80, placeholder: DOMINANT_COLOR, layout: FULL_WIDTH)
-                og: gatsbyImage(width: 1200, quality: 70)
             }
         }
     }
@@ -39,7 +37,6 @@ export const fragments = graphql`
                     layout: FULL_WIDTH
                     formats: [AUTO, WEBP]
                 )
-                og: gatsbyImage(width: 1200, quality: 70)
             }
         }
     }
@@ -49,7 +46,6 @@ export const fragments = graphql`
             node {
                 altText
                 main: gatsbyImage(width: 1200, quality: 80, placeholder: DOMINANT_COLOR, layout: FULL_WIDTH)
-                og: gatsbyImage(width: 1200, quality: 70)
                 tile: gatsbyImage(width: 500, quality: 70, placeholder: DOMINANT_COLOR, layout: CONSTRAINED)
             }
         }
@@ -60,7 +56,6 @@ export const fragments = graphql`
             node {
                 altText
                 main: gatsbyImage(width: 1200, quality: 80, placeholder: DOMINANT_COLOR, layout: FULL_WIDTH)
-                og: gatsbyImage(width: 1200, quality: 70)
             }
         }
     }

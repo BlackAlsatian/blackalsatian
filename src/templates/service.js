@@ -88,7 +88,7 @@ ServiceTemplate.propTypes = {
 export default ServiceTemplate
 
 export const Head = ({ data: { service } }) => {
-    const seoImgSrc = getSrc(service?.featuredImage?.node?.og)
+    const seoImgSrc = getSrc(service?.featuredImage?.node?.main)
     return (
         <SEO
             title={service?.title}

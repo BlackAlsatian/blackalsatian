@@ -96,7 +96,7 @@ export default ServicesIndex
 export const Head = ({ data }) => {
     const services = data.allWpService.nodes
     const page = data.wpPage
-    const seoImgSrc = getSrc(page.featuredImage?.node?.og)
+    const seoImgSrc = getSrc(page.featuredImage?.node?.main)
     if (!services.length) {
         return (
             <>
