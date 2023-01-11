@@ -82,7 +82,7 @@ module.exports = {
                 html: {
                     imageMaxWidth: 1200,
                     fallbackImageMaxWidth: 1000,
-                    createStaticFiles: true,
+                    // createStaticFiles: true,
                 },
                 type: {
                     MediaItem: {
