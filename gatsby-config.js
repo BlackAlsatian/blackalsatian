@@ -49,12 +49,12 @@ module.exports = {
     plugins: [
         // 'gatsby-plugin-preact',
         'gatsby-plugin-theme-ui',
-        {
-            resolve: 'gatsby-plugin-transition-link',
-            options: {
-                layout: require.resolve('./src/components/layout.js'),
-            },
-        },
+        // {
+        //     resolve: 'gatsby-plugin-transition-link',
+        //     options: {
+        //         layout: require.resolve('./src/components/layout.js'),
+        //     },
+        // },
         {
             resolve: 'gatsby-source-wordpress',
             options: {
