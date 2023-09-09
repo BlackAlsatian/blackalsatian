@@ -1,14 +1,13 @@
 /** @jsxImportSource theme-ui */
 /* eslint-disable react/no-unknown-property */
-import { Flex, Heading } from 'theme-ui'
-import LazyLoad from 'react-lazyload'
 import { Link } from 'gatsby'
 import PropTypes from 'prop-types'
-import ContactDetails from './contactDetails'
+import { Flex, Heading } from 'theme-ui'
+import GetForm from '../../getForm'
 import Logo from '../../logo'
 import ServiceNav from '../../serviceNav'
+import ContactDetails from './contactDetails'
 import SocialIcons from './socialIcons'
-import GetForm from '../../getForm'
 
 // const footerColors = {
 //     yellow: {
@@ -80,16 +79,14 @@ const Footer = ({ siteTitle, pageStyle }) => {
                             width: [null, null, '100%'],
                         }}
                     >
-                        <LazyLoad height='100%' offset={200} once>
-                            <GetForm
-                                option='enquiry'
-                                buttonName='Fetch!'
-                                // backgroundColor={bgcolor}
-                                // buttonBackground={textcolor}
-                                formStyle='inputs.underline'
-                                footerError={'footer.' + pageStyle}
-                            />
-                        </LazyLoad>
+                        <GetForm
+                            option='enquiry'
+                            buttonName='Fetch!'
+                            // backgroundColor={bgcolor}
+                            // buttonBackground={textcolor}
+                            formStyle='inputs.underline'
+                            footerError={'footer.' + pageStyle}
+                        />
                     </div>
                 </Flex>
             </section>

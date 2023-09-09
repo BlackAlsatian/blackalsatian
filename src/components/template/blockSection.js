@@ -1,5 +1,4 @@
 import React from 'react'
-import LazyLoad from 'react-lazyload'
 import BlockText from '../blockText'
 import GetForm from '../getForm'
 import ColumnSection from './containers/columnSection'
@@ -25,16 +24,14 @@ const ContentBlock = ({
             <RightColumn>
                 <BlockText text={text} />
                 {buttonName && option !== 'none' && (
-                    <LazyLoad height='100%' offset={200} once>
-                        <GetForm
-                            option={option}
-                            buttonName={buttonName}
-                            buttonUrl={buttonUrl}
-                            backgroundColor={backgroundColor}
-                            buttonBackground={buttonBackground}
-                            formStyle='inputs.background'
-                        />
-                    </LazyLoad>
+                    <GetForm
+                        option={option}
+                        buttonName={buttonName}
+                        buttonUrl={buttonUrl}
+                        backgroundColor={backgroundColor}
+                        buttonBackground={buttonBackground}
+                        formStyle='inputs.background'
+                    />
                 )}
             </RightColumn>
         </ColumnSection>
