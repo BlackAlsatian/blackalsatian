@@ -1,12 +1,14 @@
 /** @jsxImportSource theme-ui */
-import WhatsApp from '../../icons/whatsappIcon'
-import Phone from '../../icons/phoneIcon'
+import PropTypes from 'prop-types'
+import { Flex } from 'theme-ui'
 import Home from '../../icons/homeIcon'
+import Phone from '../../icons/phoneIcon'
+import WhatsApp from '../../icons/whatsappIcon'
 
 const ContactDetails = ({ textcolor }) => {
     return (
         <div sx={{ flex: [null, null, 1], p: [null, null, 4] }}>
-            <div sx={{ display: 'flex', alignItems: 'flex-start' }}>
+            <Flex sx={{ alignItems: 'flex-start' }}>
                 <div sx={{ p: 2 }}>
                     <a
                         href='https://wa.me/27605036601?text=Hi,%20I%20was%20just%20browsing%20your%20website%20and...'
@@ -31,7 +33,7 @@ const ContactDetails = ({ textcolor }) => {
                     </a>{' '}
                     (office hours)
                 </div>
-            </div>
+            </Flex>
             <div sx={{ display: 'flex', alignItems: 'flex-start' }}>
                 <div sx={{ p: 2 }}>
                     <Phone color={textcolor} width={28} height={28} />
@@ -66,6 +68,10 @@ const ContactDetails = ({ textcolor }) => {
             </div>
         </div>
     )
+}
+
+ContactDetails.propTypes = {
+    textcolor: PropTypes.string,
 }
 
 export default ContactDetails

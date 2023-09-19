@@ -5,7 +5,7 @@
         "node": true,
         "es6": true
     },
-    "parser": "@babel/eslint-parser",
+    // "parser": "@babel/eslint-parser",
     "extends": [
         "eslint:recommended",
         "plugin:react/recommended",
@@ -16,17 +16,17 @@
         "plugin:react-hooks/recommended"
     ],
     "parserOptions": {
-        "parser": "@babel/eslint-parser",
+        // "parser": "@babel/eslint-parser",
         "requireConfigFile": false,
         "ecmaFeatures": {
             "jsx": true
         },
-        "ecmaVersion": 6,
+        "ecmaVersion": 12,
         "sourceType": "module"
     },
     "plugins": [
         // "@babel",
-        "react",
+        // "react",
         "prettier",
         "react-hooks"
     ],
@@ -46,6 +46,15 @@
         "react-hooks/rules-of-hooks": "error",
         "react-hooks/exhaustive-deps": "warn",
         "react/jsx-uses-react": "off",
-        "react/react-in-jsx-scope": "off"
+        "react/react-in-jsx-scope": "off",
+        "react/no-unknown-property": [
+            2,
+            {
+                "ignore": [
+                    "jsx",
+                    "theme-ui"
+                ]
+            }
+        ]
     }
 }

@@ -1,19 +1,20 @@
 /** @jsxImportSource theme-ui */
 /* eslint-disable react/prop-types */
-import { Box, Container, Heading } from 'theme-ui'
-import { useLayoutEffect, useContext } from 'react'
-import { PageStyleContext } from '../components/pageStyleProvider'
 import { graphql } from 'gatsby'
 import PropTypes from 'prop-types'
-import AniLink from 'gatsby-plugin-transition-link/AniLink'
-import SEO from '../components/seo'
-import PageHeader from '../components/template/pageHeader'
+import { useContext, useLayoutEffect } from 'react'
+import { Box, Container, Heading } from 'theme-ui'
+import { PageStyleContext } from '../components/pageStyleProvider'
+// import AniLink from 'gatsby-plugin-transition-link/AniLink'
+import { Link } from 'gatsby'
 import PagesNav from '../components/pagesNav'
+import SEO from '../components/seo'
 import GridTile from '../components/template/elements/gridTile'
+import PageHeader from '../components/template/pageHeader'
 
 const BlogIndex = ({ data, pageContext: { nextPagePath, previousPagePath, pageNumber }, location: { pathname } }) => {
     const { setPageStyle } = useContext(PageStyleContext)
-    // console.log(pageNumber)
+    // console.log(pathname)
     const pageStyle = 'white'
 
     useLayoutEffect(() => {
@@ -94,9 +95,9 @@ const BlogIndex = ({ data, pageContext: { nextPagePath, previousPagePath, pageNu
                         } */
                         }
                         return (
-                            <AniLink
-                                paintDrip
-                                duration={0.5}
+                            <Link
+                                // paintDrip
+                                // duration={0.5}
                                 bg='white'
                                 color='white'
                                 to={post.uri}
@@ -107,7 +108,7 @@ const BlogIndex = ({ data, pageContext: { nextPagePath, previousPagePath, pageNu
                                 }}
                             >
                                 <GridTile linkNode={post} headerType='h2' />
-                            </AniLink>
+                            </Link>
                         )
                     })}
                 </Container>

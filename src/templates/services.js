@@ -1,19 +1,20 @@
 /** @jsxImportSource theme-ui */
 /* eslint-disable react/prop-types */
-import { Container } from 'theme-ui'
-import { useLayoutEffect, useContext } from 'react'
-import { PageStyleContext } from '../components/pageStyleProvider'
 import { graphql } from 'gatsby'
 import { getSrc } from 'gatsby-plugin-image'
 import PropTypes from 'prop-types'
-import AniLink from 'gatsby-plugin-transition-link/AniLink'
+import { useContext, useLayoutEffect } from 'react'
+import { Container } from 'theme-ui'
+import { PageStyleContext } from '../components/pageStyleProvider'
+// import AniLink from 'gatsby-plugin-transition-link/AniLink'
+import { Link } from 'gatsby'
 import parse from 'html-react-parser'
 import SEO from '../components/seo'
 import PageHeader from '../components/template/pageHeader'
 import ServiceImageLeft from '../components/template/services/serviceImageLeft'
 
-import ServiceImageRight from '../components/template/services/serviceImageRight'
 import { isOdd } from '../components/helpers'
+import ServiceImageRight from '../components/template/services/serviceImageRight'
 
 const ServicesIndex = ({ data }) => {
     const { setPageStyle } = useContext(PageStyleContext)
@@ -51,10 +52,10 @@ const ServicesIndex = ({ data }) => {
                             alt: service.featuredImage?.node?.altText || '',
                         }
                         return (
-                            <AniLink
+                            <Link
                                 cover
-                                duration={0.5}
-                                direction='left'
+                                // duration={0.5}
+                                // direction='left'
                                 bg='#f5df4d'
                                 key={service.slug}
                                 to={service.uri}
@@ -78,7 +79,7 @@ const ServicesIndex = ({ data }) => {
                                         description={parse(service.excerpt)}
                                     />
                                 )}
-                            </AniLink>
+                            </Link>
                         )
                     })}
                 </Container>

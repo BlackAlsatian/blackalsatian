@@ -1,8 +1,12 @@
 /** @jsxImportSource theme-ui */
 import { useContext } from 'react'
-import { Slice } from 'gatsby'
+// import { Slice } from 'gatsby'
 import PropTypes from 'prop-types'
 import { Flex } from 'theme-ui'
+import CookieConsent from '../components/cookieConsent'
+import GoToTopButton from '../components/goToTopButton'
+import Footer from '../components/template/footer/'
+import Header from '../components/template/header'
 import { useHasScrolled } from './hooks/useHasScrolled'
 import { PageStyleContext } from './pageStyleProvider'
 
@@ -21,11 +25,16 @@ const Layout = ({ children }) => {
             }}
             id='start'
         >
-            <Slice alias='header' pageStyle={pageStyle} />
+            {/* <Slice alias='header' pageStyle={pageStyle} /> */}
+            <Header pageStyle={pageStyle} />
             <main>{children}</main>
-            <Slice alias='footer' siteTitle='Black Alsatian' pageStyle={pageStyle} />
-            <Slice alias='go-to-top' visible={scroll} />
-            <Slice alias='cookie-consent' visible={consentScroll} />
+            {/* <Slice alias='footer' siteTitle='Black Alsatian' pageStyle={pageStyle} /> */}
+            console.log('Layout pageStyle: ', pageStyle)
+            <Footer pageStyle={pageStyle} siteTitle='Black Alsatian' />
+            {/* <Slice alias='go-to-top' visible={scroll} /> */}
+            <GoToTopButton visible={scroll} />
+            {/* <Slice alias='cookie-consent' visible={consentScroll} /> */}
+            <CookieConsent visible={consentScroll} />
         </Flex>
     )
 }

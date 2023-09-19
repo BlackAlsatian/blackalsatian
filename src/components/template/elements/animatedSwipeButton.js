@@ -1,5 +1,6 @@
 /** @jsxImportSource theme-ui */
-import AniLink from 'gatsby-plugin-transition-link/AniLink'
+// import AniLink from 'gatsby-plugin-transition-link/AniLink'
+import { Link } from 'gatsby'
 
 const AnimatedSwipeButton = ({
     props,
@@ -14,9 +15,9 @@ const AnimatedSwipeButton = ({
     hoverColor,
 }) => {
     return (
-        <AniLink
+        <Link
             {...props}
-            cover
+            cover='true'
             duration={0.5}
             direction={direction}
             bg={swipeColor ? swipeColor : '#111827'}
@@ -44,7 +45,7 @@ const AnimatedSwipeButton = ({
             }}
         >
             {name}
-        </AniLink>
+        </Link>
     )
 }
 

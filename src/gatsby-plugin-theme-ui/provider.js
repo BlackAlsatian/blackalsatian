@@ -1,4 +1,4 @@
-import { merge, ThemeProvider } from 'theme-ui'
+import { merge, ThemeUIProvider } from 'theme-ui'
 // import { useThemedStylesWithMdx } from '@theme-ui/mdx'
 import React from 'react'
 
@@ -22,13 +22,13 @@ const Root = ({ children }) => {
     const fullTheme = merge(themeWithPrism, localTheme)
 
     return (
-        <ThemeProvider theme={fullTheme}>
+        <ThemeUIProvider theme={fullTheme}>
             {/* <MDXProvider
         components={useThemedStylesWithMdx(useMDXComponents(components))}
       > */}
             {children}
             {/* </MDXProvider> */}
-        </ThemeProvider>
+        </ThemeUIProvider>
     )
 }
 

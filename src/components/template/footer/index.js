@@ -1,5 +1,4 @@
 /** @jsxImportSource theme-ui */
-/* eslint-disable react/no-unknown-property */
 import { Link } from 'gatsby'
 import PropTypes from 'prop-types'
 import { Flex, Heading } from 'theme-ui'
@@ -31,6 +30,7 @@ import SocialIcons from './socialIcons'
 // const footerStyles = ['yellow', 'red', 'white', 'postwhite']
 
 const Footer = ({ siteTitle, pageStyle }) => {
+    console.log('Footer pageStyle: ', pageStyle)
     // const [bgcolor, setBgcolor] = useState('black')
     // const [textcolor, setTextcolor] = useState('white')
     // let bgcolor = 'black'

@@ -1,17 +1,18 @@
 /** @jsxImportSource theme-ui */ /* eslint-disable react/no-unknown-property */
 /* eslint-disable react/prop-types */
-import { Heading, Box } from 'theme-ui'
-import { useLayoutEffect, useContext } from 'react'
-import { PageStyleContext } from '../components/pageStyleProvider'
 import { graphql } from 'gatsby'
 import { getSrc } from 'gatsby-plugin-image'
 import PropTypes from 'prop-types'
-import AniLink from 'gatsby-plugin-transition-link/AniLink'
+import { useContext, useLayoutEffect } from 'react'
+import { Box, Heading } from 'theme-ui'
+import { PageStyleContext } from '../components/pageStyleProvider'
+// import AniLink from 'gatsby-plugin-transition-link/AniLink'
+import { Link } from 'gatsby'
 import parse from 'html-react-parser'
 import SEO from '../components/seo'
-import PageHeader from '../components/template/pageHeader'
-import LeftColumn from '../components/template/elements/leftColumn'
 import ColumnSection from '../components/template/containers/columnSection'
+import LeftColumn from '../components/template/elements/leftColumn'
+import PageHeader from '../components/template/pageHeader'
 
 const PortfolioIndex = ({ data }) => {
     const { setPageStyle } = useContext(PageStyleContext)
@@ -53,10 +54,10 @@ const PortfolioIndex = ({ data }) => {
                     {portfolio.map((portfolio) => {
                         const title = portfolio.title
                         return (
-                            <AniLink
+                            <Link
                                 cover
-                                duration={0.5}
-                                direction='left'
+                                // duration={0.5}
+                                // direction='left'
                                 bg='#111827'
                                 key={portfolio.uri}
                                 to={portfolio.uri}
@@ -121,7 +122,7 @@ const PortfolioIndex = ({ data }) => {
                                             ))}
                                     </div>
                                 </div>
-                            </AniLink>
+                            </Link>
                         )
                     })}
                 </Box>

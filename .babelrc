@@ -4,7 +4,7 @@
             "babel-preset-gatsby",
             {
                 "reactRuntime": "automatic",
-                "reactImportSource": "@emotion/react"
+                // "reactImportSource": "@emotion/react"
             }
         ]
     ]
