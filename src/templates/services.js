@@ -9,6 +9,7 @@ import { PageStyleContext } from '../components/pageStyleProvider'
 // import AniLink from 'gatsby-plugin-transition-link/AniLink'
 import { Link } from 'gatsby'
 import parse from 'html-react-parser'
+import Layout from '../components/layout'
 import SEO from '../components/seo'
 import PageHeader from '../components/template/pageHeader'
 import ServiceImageLeft from '../components/template/services/serviceImageLeft'
@@ -29,14 +30,14 @@ const ServicesIndex = ({ data }) => {
 
     if (!services.length) {
         return (
-            <>
+            <Layout>
                 <p>No blog services found.</p>
-            </>
+            </Layout>
         )
     }
 
     return (
-        <>
+        <Layout>
             <PageHeader title={parse(page.title)} intro={page.pageintro} headerStyle={pageStyle} />
             <section
                 // eslint-disable-next-line react/no-unknown-property
@@ -53,7 +54,7 @@ const ServicesIndex = ({ data }) => {
                         }
                         return (
                             <Link
-                                cover
+                                cover='true'
                                 // duration={0.5}
                                 // direction='left'
                                 bg='#f5df4d'
@@ -84,7 +85,7 @@ const ServicesIndex = ({ data }) => {
                     })}
                 </Container>
             </section>
-        </>
+        </Layout>
     )
 }
 

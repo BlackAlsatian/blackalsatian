@@ -7,6 +7,7 @@ import { Box, Container, Heading } from 'theme-ui'
 import { PageStyleContext } from '../components/pageStyleProvider'
 // import AniLink from 'gatsby-plugin-transition-link/AniLink'
 import { Link } from 'gatsby'
+import Layout from '../components/layout'
 import PagesNav from '../components/pagesNav'
 import SEO from '../components/seo'
 import GridTile from '../components/template/elements/gridTile'
@@ -29,14 +30,14 @@ const BlogIndex = ({ data, pageContext: { nextPagePath, previousPagePath, pageNu
 
     if (!posts.length) {
         return (
-            <>
+            <Layout>
                 <p>No blog posts found.</p>
-            </>
+            </Layout>
         )
     }
 
     return (
-        <>
+        <Layout>
             {pathname === '/blog/' && <PageHeader title={pageTitle} intro={content} headerStyle={pageStyle} />}
             <Box
                 as='section'
@@ -128,7 +129,7 @@ const BlogIndex = ({ data, pageContext: { nextPagePath, previousPagePath, pageNu
                     swipeColor='white'
                 />
             </Box>
-        </>
+        </Layout>
     )
 }
 

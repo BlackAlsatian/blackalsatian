@@ -4,13 +4,14 @@
 import { graphql } from 'gatsby'
 import { GatsbyImage, getSrc } from 'gatsby-plugin-image'
 import parse from 'html-react-parser'
-import { useContext, useLayoutEffect } from 'react'
 import PropTypes from 'prop-types'
+import { useContext, useLayoutEffect } from 'react'
 import { Badge, Box, Container, Flex, Heading, Paragraph } from 'theme-ui'
 import Bio from '../components/bio'
 import { removeTags } from '../components/helpers'
-import PagesNav from '../components/pagesNav'
+import Layout from '../components/layout'
 import { PageStyleContext } from '../components/pageStyleProvider'
+import PagesNav from '../components/pagesNav'
 import SEO from '../components/seo'
 import PageHeaderContainer from '../components/template/containers/pageHeaderContainer'
 import PageHeroHeader from '../components/template/containers/pageHeroHeader'
@@ -32,7 +33,7 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
 
     const postExcerpt = removeTags(post?.excerpt)
     return (
-        <>
+        <Layout>
             {/* <section itemScope itemType='http://schema.org/Article'> */}
             {featuredImage?.fluid ? (
                 <PageHeroHeader containerVariant='default'>
@@ -161,7 +162,7 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
                     swipeColor='#fff'
                 />
             </section>
-        </>
+        </Layout>
     )
 }
 

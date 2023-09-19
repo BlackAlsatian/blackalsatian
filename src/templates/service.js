@@ -4,12 +4,13 @@
 import { graphql } from 'gatsby'
 import { GatsbyImage, getSrc } from 'gatsby-plugin-image'
 import parse from 'html-react-parser'
-import { useContext, useLayoutEffect } from 'react'
 import PropTypes from 'prop-types'
+import { useContext, useLayoutEffect } from 'react'
 import { Box, Flex } from 'theme-ui'
 import { removeTags } from '../components/helpers'
-import PagesNav from '../components/pagesNav'
+import Layout from '../components/layout'
 import { PageStyleContext } from '../components/pageStyleProvider'
+import PagesNav from '../components/pagesNav'
 import SEO from '../components/seo'
 import PageHeader from '../components/template/pageHeader'
 
@@ -27,7 +28,7 @@ const ServiceTemplate = ({ data: { previous, next, service } }) => {
 
     const serviceExcerpt = removeTags(service?.excerpt)
     return (
-        <>
+        <Layout>
             <PageHeader title={parse(service?.title)} intro={parse(serviceExcerpt)} headerStyle={pageStyle} />
             <Box as='section' sx={{ backgroundColor: 'white', variant: 'sections.noypadding' }}>
                 <Flex
@@ -77,7 +78,7 @@ const ServiceTemplate = ({ data: { previous, next, service } }) => {
                     swipeColor='#f5df4d'
                 />
             </section>
-        </>
+        </Layout>
     )
 }
 

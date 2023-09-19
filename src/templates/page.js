@@ -2,8 +2,9 @@
 import { graphql } from 'gatsby'
 import { getSrc } from 'gatsby-plugin-image'
 import parse from 'html-react-parser'
-import { useContext, useLayoutEffect } from 'react'
 import PropTypes from 'prop-types'
+import { useContext, useLayoutEffect } from 'react'
+import Layout from '../components/layout'
 import Modules from '../components/modules'
 import { PageStyleContext } from '../components/pageStyleProvider'
 import SEO from '../components/seo'
@@ -25,7 +26,7 @@ const PageTemplate = ({ data: { page } }) => {
     const pageTitles = ['Services', 'Portfolio']
 
     return (
-        <>
+        <Layout>
             {page.isFrontPage ? (
                 <>
                     <HeroBlock
@@ -47,7 +48,7 @@ const PageTemplate = ({ data: { page } }) => {
                     </>
                 )
             )}
-        </>
+        </Layout>
     )
 }
 

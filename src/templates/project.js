@@ -4,10 +4,11 @@
 import { graphql } from 'gatsby'
 import { getSrc } from 'gatsby-plugin-image'
 import parse from 'html-react-parser'
-import { useContext, useLayoutEffect } from 'react'
 import PropTypes from 'prop-types'
-import PagesNav from '../components/pagesNav'
+import { useContext, useLayoutEffect } from 'react'
+import Layout from '../components/layout'
 import { PageStyleContext } from '../components/pageStyleProvider'
+import PagesNav from '../components/pagesNav'
 import SEO from '../components/seo'
 import ProjectContent from '../components/template/portfolio/projectContent'
 import ProjectHeader from '../components/template/portfolio/projectHeader'
@@ -20,7 +21,7 @@ const ProjectTemplate = ({ data: { previous, portfolio, next } }) => {
     }, [pageStyle, setPageStyle])
 
     return (
-        <>
+        <Layout>
             <ProjectHeader project={portfolio} />
 
             <ProjectContent project={portfolio} />
@@ -35,7 +36,7 @@ const ProjectTemplate = ({ data: { previous, portfolio, next } }) => {
                     swipeColor='#111827'
                 />
             </section>
-        </>
+        </Layout>
     )
 }
 

@@ -9,6 +9,7 @@ import { PageStyleContext } from '../components/pageStyleProvider'
 // import AniLink from 'gatsby-plugin-transition-link/AniLink'
 import { Link } from 'gatsby'
 import parse from 'html-react-parser'
+import Layout from '../components/layout'
 import SEO from '../components/seo'
 import ColumnSection from '../components/template/containers/columnSection'
 import LeftColumn from '../components/template/elements/leftColumn'
@@ -25,14 +26,14 @@ const PortfolioIndex = ({ data }) => {
 
     if (!portfolio.length) {
         return (
-            <>
+            <Layout>
                 <p>No blog projects found.</p>
-            </>
+            </Layout>
         )
     }
 
     return (
-        <>
+        <Layout>
             <PageHeader title={parse(page.title)} intro={page.pageintro} headerStyle={pageStyle} />
             <ColumnSection>
                 <LeftColumn
@@ -55,7 +56,7 @@ const PortfolioIndex = ({ data }) => {
                         const title = portfolio.title
                         return (
                             <Link
-                                cover
+                                cover='true'
                                 // duration={0.5}
                                 // direction='left'
                                 bg='#111827'
@@ -127,7 +128,7 @@ const PortfolioIndex = ({ data }) => {
                     })}
                 </Box>
             </ColumnSection>
-        </>
+        </Layout>
     )
 }
 

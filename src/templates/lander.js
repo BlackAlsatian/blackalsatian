@@ -1,8 +1,9 @@
 /* eslint-disable react/prop-types */
 import { graphql } from 'gatsby'
 import { getSrc } from 'gatsby-plugin-image'
-import { useContext, useLayoutEffect } from 'react'
 import PropTypes from 'prop-types'
+import { useContext, useLayoutEffect } from 'react'
+import Layout from '../components/layout'
 import Modules from '../components/modules'
 import { PageStyleContext } from '../components/pageStyleProvider'
 import SEO from '../components/seo'
@@ -19,7 +20,7 @@ const LanderTemplate = ({ data: { lander } }) => {
 
     const HeroAttributes = lander.blocks[0].innerBlocks[0].attributes
     return (
-        <>
+        <Layout>
             <HeroBlock
                 featuredImage={lander.featuredImage}
                 color={HeroAttributes.heroFontColor}
@@ -27,7 +28,7 @@ const LanderTemplate = ({ data: { lander } }) => {
                 intro={HeroAttributes.heroIntro}
             />
             {lander.blocks && <Modules blockmodules={lander.blocks} />}
-        </>
+        </Layout>
     )
 }
 
