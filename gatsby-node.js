@@ -53,25 +53,25 @@ exports.createPages = async (gatsbyUtilities) => {
     // ..oh yes, and landers
     await createIndividualLanders({ landers, gatsbyUtilities })
 
-    // gatsbyUtilities.actions.createSlice({
-    //     id: 'header',
-    //     component: require.resolve('./src/components/template/header.js'),
-    // })
+    gatsbyUtilities.actions.createSlice({
+        id: 'header',
+        component: require.resolve('./src/components/template/header.js'),
+    })
 
-    // gatsbyUtilities.actions.createSlice({
-    //     id: 'footer',
-    //     component: require.resolve('./src/components/template/footer'),
-    // })
+    gatsbyUtilities.actions.createSlice({
+        id: 'footer',
+        component: require.resolve('./src/components/template/footer'),
+    })
 
-    // gatsbyUtilities.actions.createSlice({
-    //     id: 'go-to-top',
-    //     component: require.resolve('./src/components/goToTopButton.js'),
-    // })
+    gatsbyUtilities.actions.createSlice({
+        id: 'go-to-top',
+        component: require.resolve('./src/components/goToTopButton.js'),
+    })
 
-    // gatsbyUtilities.actions.createSlice({
-    //     id: 'cookie-consent',
-    //     component: require.resolve('./src/components/cookie-notice/cookieConsent.js'),
-    // })
+    gatsbyUtilities.actions.createSlice({
+        id: 'cookie-consent',
+        component: require.resolve('./src/components/cookie-notice/cookieConsent.js'),
+    })
 }
 
 // This function creates all the individual blog pages in this site
