@@ -86,10 +86,9 @@ module.exports = {
                 },
                 type: {
                     MediaItem: {
-                        localFile: {
-                            // Reduce concurrent media downloads to improve reliability in flaky networks
-                            requestConcurrency: 2,
-                        },
+                        // localFile: {
+                        //     requestConcurrency: process.env.GATSBY_REQUEST_CONCURRENCY_IMAGES,
+                        // },
                         excludeFieldNames: [
                             'contentNodes',
                             'seo',
