@@ -21,7 +21,7 @@ const Layout = ({ children }) => {
             id='start'
         >
             <Slice alias='header' pageStyle={pageStyle} />
-            <main>{children}</main>
+            <main id='main-content' role='main'>{children}</main>
             <Slice alias='footer' siteTitle='Black Alsatian' pageStyle={pageStyle} />
             <Slice alias='go-to-top' visible={scroll} />
             <Slice alias='cookie-consent' visible={consentScroll} />
