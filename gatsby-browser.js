@@ -4,12 +4,43 @@ import PageStyleProvider from './src/components/pageStyleProvider'
 
 easterEgg()
 
-// export const shouldUpdateScroll = ({ routerProps: { location }, getSavedScrollPosition }) => {
-//     const currentPosition = getSavedScrollPosition(location)
+// Control scroll position on route changes.
+// - For normal navigations, scroll to top.
+// - For back/forward, restore the saved position.
+// - For hash links (e.g. /page#section), scroll to the element if it exists.
+export const shouldUpdateScroll = ({
+	routerProps: { location },
+	prevRouterProps,
+	getSavedScrollPosition,
+}) => {
+	// Handle hash navigation: defer to element if present
+	if (location && location.hash) {
+		const id = decodeURIComponent(location.hash.substring(1))
+		const el = typeof document !== 'undefined' && document.getElementById(id)
+		if (el) {
+			// Defer to ensure DOM is ready
+			window.setTimeout(() => {
+				el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+			}, 0)
+			return false
+		}
+		// If the element isn't found, fall through to default behavior
+	}
 
-//     window.scrollTo(...(currentPosition || [0, 0]))
+	const savedPosition = getSavedScrollPosition(location)
 
-//     return false
-// }
+	// If we have a saved position (likely back/forward), restore it; otherwise go to top
+	window.setTimeout(() => {
+		if (savedPosition) {
+			const [x, y] = savedPosition
+			window.scrollTo(x, y)
+		} else {
+			window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
+		}
+	}, 0)
+
+	// Return false to prevent Gatsby from handling scroll automatically
+	return false
+}
 
 export const wrapRootElement = PageStyleProvider
