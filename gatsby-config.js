@@ -44,10 +44,9 @@ module.exports = {
     flags: {
         // prevents file downloads from being deleted during cache clearing events (other than gatsby clean which still deletes the entire cache)
         PRESERVE_FILE_DOWNLOAD_CACHE: true,
-        // DEV_SSR: true,
+            // DEV_SSR: true,
     },
     plugins: [
-        'gatsby-plugin-preact',
         'gatsby-plugin-theme-ui',
         // {
         //     resolve: 'gatsby-plugin-transition-link',
@@ -87,9 +86,10 @@ module.exports = {
                 },
                 type: {
                     MediaItem: {
-                        // localFile: {
-                        //     requestConcurrency: process.env.GATSBY_REQUEST_CONCURRENCY_IMAGES,
-                        // },
+                        localFile: {
+                            // Reduce concurrent media downloads to improve reliability in flaky networks
+                            requestConcurrency: 2,
+                        },
                         excludeFieldNames: [
                             'contentNodes',
                             'seo',
@@ -135,7 +135,6 @@ module.exports = {
                 //     },
                 //     UserRole: {
                 //         exclude: true,
-                //     },
                 //     PostFormat: {
                 //         exclude: true,
                 //     },
@@ -213,7 +212,7 @@ module.exports = {
                 //     CoreMediaTextBlockDeprecatedV5Attributes: { exclude: true },
                 //     CoreMissingBlock: { exclude: true },
                 //     CoreMoreBlock: { exclude: true },
-                //     CoreNavigationBlock: { exclude: true },
+        //     CoreNavigationBlock: { exclude: true },
                 //     CoreNavigationLinkBlock: { exclude: true },
                 //     CoreNavigationSubmenuBlock: { exclude: true },
                 //     CoreNextpageBlock: { exclude: true },
