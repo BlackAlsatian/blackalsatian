@@ -47,6 +47,14 @@ const CookieConsent = ({ visible }) => {
         // Ensure cookie is set site-wide; Secure requires HTTPS (expected in production)
         document.cookie = 'blackals-cookie-notice=true; ' + expires + '; path=/; SameSite=Lax; Secure'
         setBannerHidden(true)
+        // Inform listeners (e.g., analytics loader) that consent was granted
+        try {
+            if (typeof window !== 'undefined' && typeof window.dispatchEvent === 'function') {
+                window.dispatchEvent(new CustomEvent('ba:consent-granted'))
+            }
+        } catch (e) {
+            // ignore if CustomEvent unsupported
+        }
     }
     // const UnSetCookie = () => {
     //     document.cookie = 'blackals-cookie-notice=false; ' + expires + '; SameSite=Lax; Secure'

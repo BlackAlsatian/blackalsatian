@@ -17,13 +17,24 @@ export const onRenderBody = ({ setHtmlAttributes, setHeadComponents }) => {
                 j.async = true; j.src = 'https://www.googletagmanager.com/gtm.js?id=${gtmId}';
                 f.parentNode.insertBefore(j, f);
             }
-            function onFirstInteraction(){
-                ['scroll','mousemove','touchstart','keydown'].forEach(function(evt){ window.removeEventListener(evt, onFirstInteraction, { passive: true }); });
-                loadGTM();
-            }
-            ['scroll','mousemove','touchstart','keydown'].forEach(function(evt){ window.addEventListener(evt, onFirstInteraction, { passive: true }); });
-            if ('requestIdleCallback' in window) { requestIdleCallback(loadGTM, { timeout: 5000 }); }
-            else { window.addEventListener('load', function(){ setTimeout(loadGTM, 3000); }); }
+                        function hasConsent(){
+                                try {
+                                        return document.cookie.split('; ').some(function(c){ return c.indexOf('blackals-cookie-notice=true') === 0 || c.indexOf(' blackals-cookie-notice=true') > -1; });
+                                } catch(e) { return false; }
+                        }
+                        // If consent already granted, wait for a light interaction or idle to avoid competing with core work
+                        if (hasConsent()) {
+                                function onFirstInteraction(){
+                                        ['scroll','mousemove','touchstart','keydown'].forEach(function(evt){ window.removeEventListener(evt, onFirstInteraction, { passive: true }); });
+                                        loadGTM();
+                                }
+                                ['scroll','mousemove','touchstart','keydown'].forEach(function(evt){ window.addEventListener(evt, onFirstInteraction, { passive: true }); });
+                                if ('requestIdleCallback' in window) { requestIdleCallback(loadGTM, { timeout: 8000 }); }
+                                else { window.addEventListener('load', function(){ setTimeout(loadGTM, 6000); }); }
+                        } else {
+                                // No consent yet: only load when consent is granted
+                                window.addEventListener('ba:consent-granted', loadGTM, { once: true });
+                        }
         })();
         `
                 : null
