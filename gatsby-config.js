@@ -47,6 +47,7 @@ module.exports = {
             // DEV_SSR: true,
     },
     plugins: [
+        'gatsby-plugin-preact',
         'gatsby-plugin-theme-ui',
         // {
         //     resolve: 'gatsby-plugin-transition-link',
@@ -86,9 +87,9 @@ module.exports = {
                 },
                 type: {
                     MediaItem: {
-                        // localFile: {
-                        //     requestConcurrency: process.env.GATSBY_REQUEST_CONCURRENCY_IMAGES,
-                        // },
+                        localFile: {
+                            requestConcurrency: process.env.GATSBY_REQUEST_CONCURRENCY_IMAGES,
+                        },
                         excludeFieldNames: [
                             'contentNodes',
                             'seo',
