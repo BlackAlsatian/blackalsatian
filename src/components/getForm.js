@@ -7,7 +7,7 @@
 /** @jsxImportSource theme-ui */
 import { Link } from 'gatsby'
 import { Label, Input, Box, Button, Spinner, Textarea } from 'theme-ui'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useId } from 'react'
 import { useForm } from 'react-hook-form'
 import axios from 'axios'
 import Notification from './notification'
@@ -26,6 +26,8 @@ const GetForm = ({ option, buttonName, buttonUrl, backgroundColor, buttonBackgro
     useEffect(() => setInBrowser(true), [])
 
     let btnColor = backgroundColor || 'white'
+    const formId = useId()
+    const idFor = (suffix) => `${formId}-${suffix}`
     const {
         register,
         handleSubmit,
@@ -146,9 +148,9 @@ const GetForm = ({ option, buttonName, buttonUrl, backgroundColor, buttonBackgro
     return (
         <Box as='form' onSubmit={handleSubmit(onSubmit)}>
             {/* name */}
-            <Label htmlFor='name'>Name</Label>
+            <Label htmlFor={idFor('name')}>Name</Label>
             <Input
-                id='name'
+                id={idFor('name')}
                 name='name'
                 type='text'
                 mb={3}
@@ -187,7 +189,7 @@ const GetForm = ({ option, buttonName, buttonUrl, backgroundColor, buttonBackgro
 
             {/* lastname  */}
             <Label
-                htmlFor='lastname'
+                htmlFor={idFor('lastname')}
                 sx={{
                     opacity: 0,
                     position: 'absolute',
@@ -201,7 +203,7 @@ const GetForm = ({ option, buttonName, buttonUrl, backgroundColor, buttonBackgro
                 Lastname
             </Label>
             <Input
-                id='lastname'
+                id={idFor('lastname')}
                 name='lastname'
                 type='text'
                 sx={{
@@ -219,9 +221,9 @@ const GetForm = ({ option, buttonName, buttonUrl, backgroundColor, buttonBackgro
             {(option === 'quote' || option === 'enquiry') && (
                 <>
                     {/* number */}
-                    <Label htmlFor='number'>Number</Label>
+                    <Label htmlFor={idFor('number')}>Number</Label>
                     <Input
-                        id='number'
+                        id={idFor('number')}
                         name='number'
                         type='tel'
                         mb={3}
@@ -263,9 +265,9 @@ const GetForm = ({ option, buttonName, buttonUrl, backgroundColor, buttonBackgro
             )}
 
             {/* email */}
-            <Label htmlFor='email'>Email</Label>
+            <Label htmlFor={idFor('email')}>Email</Label>
             <Input
-                id='email'
+                id={idFor('email')}
                 type='email'
                 name='email'
                 mb={3}
@@ -306,9 +308,9 @@ const GetForm = ({ option, buttonName, buttonUrl, backgroundColor, buttonBackgro
             {/* message */}
             {(option === 'quote' || option === 'enquiry') && (
                 <>
-                    <Label htmlFor='message'>Message</Label>
+                    <Label htmlFor={idFor('message')}>Message</Label>
                     <Textarea
-                        id='message'
+                        id={idFor('message')}
                         name='message'
                         rows='4'
                         mb={3}
@@ -349,11 +351,11 @@ const GetForm = ({ option, buttonName, buttonUrl, backgroundColor, buttonBackgro
             {option === 'lead' ? (
                 <>
                     <Box mb={3}>
-                        <Label htmlFor='subscribe'>
+                        <Label htmlFor={idFor('subscribe')}>
                             <Box
                                 as='input'
                                 type='checkbox'
-                                id='subscribe'
+                                id={idFor('subscribe')}
                                 name='subscribe'
                                 defaultChecked={false}
                                 sx={{
@@ -435,11 +437,11 @@ const GetForm = ({ option, buttonName, buttonUrl, backgroundColor, buttonBackgro
             ) : (
                 <>
                     <Box mb={3}>
-                        <Label htmlFor='privacy_policy'>
+                        <Label htmlFor={idFor('privacy_policy')}>
                             <Box
                                 as='input'
                                 type='checkbox'
-                                id='privacy_policy'
+                                id={idFor('privacy_policy')}
                                 name='privacy_policy'
                                 defaultChecked={false}
                                 sx={{
