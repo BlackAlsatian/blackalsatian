@@ -47,7 +47,6 @@ module.exports = {
             // DEV_SSR: true,
     },
     plugins: [
-        'gatsby-plugin-preact',
         'gatsby-plugin-theme-ui',
         // {
         //     resolve: 'gatsby-plugin-transition-link',
