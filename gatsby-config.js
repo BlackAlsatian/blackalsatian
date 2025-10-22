@@ -44,7 +44,6 @@ module.exports = {
     flags: {
         // prevents file downloads from being deleted during cache clearing events (other than gatsby clean which still deletes the entire cache)
         PRESERVE_FILE_DOWNLOAD_CACHE: true,
-        PARTIAL_HYDRATION: true,
             // DEV_SSR: true,
     },
     plugins: [
@@ -420,32 +419,7 @@ module.exports = {
         },
         'gatsby-plugin-gatsby-cloud',
         'gatsby-plugin-offline',
-        {
-            resolve: 'gatsby-plugin-google-tagmanager',
-            options: {
-                id: process.env.GATSBY_GTM_TRACKING_ID,
-                includeInDevelopment: false,
-
-                // datalayer to be set before GTM is loaded
-                // should be an object or a function that is executed in the browser
-                //
-                // Defaults to null
-                defaultDataLayer: { platform: 'gatsby' },
-
-                // Specify optional GTM environment details.
-                // gtmAuth: 'YOUR_GOOGLE_TAGMANAGER_ENVIRONMENT_AUTH_STRING',
-                // gtmPreview: 'YOUR_GOOGLE_TAGMANAGER_ENVIRONMENT_PREVIEW_NAME',
-                dataLayerName: 'dataLayer',
-
-                // Name of the event that is triggered
-                // on every Gatsby route change.
-                //
-                // Defaults to gatsby-route-change
-                routeChangeEventName: 'route-change',
-                // Defaults to false
-                enableWebVitalsTracking: true,
-            },
-        },
+        // GTM is lazy-loaded via gatsby-ssr.js to reduce main-thread blocking
         // {
         //     resolve: `gatsby-plugin-webpack-bundle-analyser-v2`,
         //     options: {
