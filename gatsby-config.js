@@ -44,6 +44,7 @@ module.exports = {
     flags: {
         // prevents file downloads from being deleted during cache clearing events (other than gatsby clean which still deletes the entire cache)
         PRESERVE_FILE_DOWNLOAD_CACHE: true,
+        PARTIAL_HYDRATION: true,
             // DEV_SSR: true,
     },
     plugins: [
