@@ -1,8 +1,9 @@
+'use client'
 /** @jsxImportSource theme-ui */
-import { Container, Heading, Box } from 'theme-ui'
-import { useLayoutEffect, useContext } from 'react'
-import { PageStyleContext } from '../components/pageStyleProvider'
 import { Link } from 'gatsby'
+import { useContext, useLayoutEffect } from 'react'
+import { Box, Container, Heading } from 'theme-ui'
+import { PageStyleContext } from '../components/pageStyleProvider'
 import SEO from '../components/seo'
 
 const NotFoundPage = ({ location }) => {

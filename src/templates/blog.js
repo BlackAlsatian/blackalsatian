@@ -1,3 +1,4 @@
+'use client'
 /** @jsxImportSource theme-ui */
 /* eslint-disable react/prop-types */
 import { graphql } from 'gatsby'

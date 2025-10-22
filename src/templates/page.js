@@ -1,3 +1,4 @@
+'use client'
 /* eslint-disable react/prop-types */
 import { graphql } from 'gatsby'
 import { getSrc } from 'gatsby-plugin-image'

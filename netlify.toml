@@ -1,0 +1,22 @@
+# Netlify configuration for Black Alsatian
+
+[build]
+  command = "npm run build"
+  publish = "public"
+
+[build.environment]
+  NODE_VERSION = "22"
+  # Keep CI output clean and installs fast; .npmrc handles legacy peer deps
+  NPM_FLAGS = "--no-audit --no-fund"
+
+# Global security headers
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' data: https:; font-src 'self' data: https:; connect-src 'self' https:; frame-ancestors 'none';"
+
+    # Turn off powerful browser features by default
+    Permissions-Policy = "geolocation=(), microphone=(), camera=(), payment=(), usb=(), gyroscope=(), accelerometer=(), magnetometer=(), interest-cohort=()"
+
+    # Friendlier referrer policy
+    Referrer-Policy = "strict-origin-when-cross-origin"

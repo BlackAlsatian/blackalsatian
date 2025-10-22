@@ -1,4 +1,10 @@
 import './src/assets/scss/app.scss'
+// Font files imported via JS to avoid Sass @import deprecation warnings
+import '@fontsource/montserrat/latin-200.css'
+import '@fontsource/montserrat/latin-400-italic.css'
+import '@fontsource/montserrat/latin-400.css'
+import '@fontsource/montserrat/latin-700.css'
+import '@fontsource/montserrat/latin-900.css'
 import { easterEgg } from './src/components/easterEgg'
 import PageStyleProvider from './src/components/pageStyleProvider'
 

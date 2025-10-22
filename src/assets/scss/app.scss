@@ -1,3 +1,2 @@
-@import 'imports';
-// @import 'normalize.css';
-// @import 'custom';
+/* Global SCSS entry — font imports moved to gatsby-browser.js to avoid Sass @import deprecation warnings. */
+/* Add component and utility styles here using @use/@forward patterns if needed. */

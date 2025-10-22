@@ -1,3 +1,4 @@
+'use client'
 /** @jsxImportSource theme-ui */
 /* eslint-disable react/prop-types */
 /* eslint-disable react/no-unknown-property */

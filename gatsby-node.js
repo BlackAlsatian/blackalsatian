@@ -1,5 +1,7 @@
 const path = require('path')
 const chunk = require('lodash/chunk')
+ 
+// Note: We rely on gatsby-plugin-preact for aliasing React to Preact in client builds.
 
 exports.createSchemaCustomization = ({ actions }) => {
     const { createTypes } = actions
