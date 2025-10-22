@@ -50,3 +50,15 @@ export const shouldUpdateScroll = ({
 }
 
 export const wrapRootElement = PageStyleProvider
+
+// Mirror the GTM plugin's SPA behavior: push route-change events to dataLayer
+export const onRouteUpdate = ({ location, prevLocation }) => {
+	if (typeof window === 'undefined') return
+	// Skip the very first load to avoid double-counting with GTM's initial pageview
+	if (!prevLocation) return
+	window.dataLayer = window.dataLayer || []
+	window.dataLayer.push({
+		event: 'gatsby-route-change',
+		path: location && location.pathname ? location.pathname : window.location.pathname,
+	})
+}
