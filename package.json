@@ -10,6 +10,7 @@
     "dependencies": {
         "@emotion/react": "^11.11.1",
         "@fontsource/montserrat": "^5.0.8",
+    "@theme-ui/css": "0.17.2",
         "@react-spring/web": "^9.7.3",
         "axios": "^1.5.0",
         "dotenv": "^16.3.1",
@@ -22,21 +23,21 @@
         "gatsby-plugin-sass": "^6.12.0",
         "gatsby-plugin-sharp": "5.15.0",
         "gatsby-plugin-sitemap": "6.15.0",
-        "gatsby-plugin-theme-ui": "^0.16.1",
+    "gatsby-plugin-theme-ui": "0.17.2",
         "gatsby-plugin-utils": "4.15.0",
         "gatsby-source-filesystem": "5.15.0",
         "gatsby-source-wordpress": "7.16.0",
         "gatsby-transformer-sharp": "5.15.0",
-    "gatsby-plugin-preact": "7.15.0",
-    "preact": "10.27.2",
-    "preact-render-to-string": "6.6.3",
+        "gatsby-plugin-preact": "7.15.0",
+        "preact": "10.27.2",
+        "preact-render-to-string": "6.6.3",
         "html-react-parser": "^4.2.2",
         "lodash": "^4.17.21",
         "react": "18.2.0",
         "react-dom": "18.2.0",
         "react-hook-form": "^7.46.1",
         "sass": "^1.67.0",
-        "theme-ui": "^0.16.1"
+    "theme-ui": "0.17.2"
     },
     "devDependencies": {
         "babel-eslint": "^10.1.0",
@@ -45,7 +46,8 @@
         "eslint-config-prettier": "^9.0.0",
         "eslint-plugin-prettier": "^5.0.0",
         "eslint-plugin-react-hooks": "^4.6.0",
-        "prettier": "3.0.3"
+        "prettier": "3.0.3",
+        "webpack": "^5.91.0"
     },
     "homepage": "https://www.blackalsatian.co.za",
     "keywords": [
