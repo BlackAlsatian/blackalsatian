@@ -8,7 +8,9 @@ import '@fontsource/montserrat/latin-900.css'
 import { easterEgg } from './src/components/easterEgg'
 import PageStyleProvider from './src/components/pageStyleProvider'
 
-easterEgg()
+if (process.env.NODE_ENV !== 'production') {
+	easterEgg()
+}
 
 // Control scroll position on route changes.
 // - For normal navigations, scroll to top.

@@ -416,8 +416,8 @@ module.exports = {
                 createLinkInHead: true,
             },
         },
-        'gatsby-plugin-gatsby-cloud',
-        'gatsby-plugin-offline',
+    // 'gatsby-plugin-gatsby-cloud', // not needed on Netlify; removing reduces client JS
+    // 'gatsby-plugin-offline', // service worker can add runtime JS; removing to improve TBT
         // GTM is lazy-loaded via gatsby-ssr.js to reduce main-thread blocking
         // {
         //     resolve: `gatsby-plugin-webpack-bundle-analyser-v2`,

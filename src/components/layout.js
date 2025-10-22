@@ -23,7 +23,7 @@ const Layout = ({ children }) => {
             <Slice alias='header' pageStyle={pageStyle} />
             <main id='main-content' role='main'>{children}</main>
             <Slice alias='footer' siteTitle='Black Alsatian' pageStyle={pageStyle} />
-            <Slice alias='go-to-top' visible={scroll} />
+            {scroll && <Slice alias='go-to-top' visible={true} />}
             {consentScroll && <Slice alias='cookie-consent' visible={true} />}
         </Flex>
     )
