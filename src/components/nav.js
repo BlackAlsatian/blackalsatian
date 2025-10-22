@@ -1,6 +1,7 @@
 /** @jsxImportSource theme-ui */
 import { Link } from 'gatsby'
-import parse from 'html-react-parser'
+import safeParse from '../utils/safeParse'
+import { removeTags } from './helpers'
 import React from 'react'
 import { Flex } from 'theme-ui'
 
@@ -17,8 +18,8 @@ const Nav = ({ navLinks }) => {
             {navLinks.map(
                 (item) =>
                     item.label !== 'Home' && (
-                        <Link to={item.url} key={item.id} title={parse(item.label)}>
-                            {parse(item.label)}
+                        <Link to={item.url} key={item.id} title={removeTags(item.label)}>
+                            {safeParse(item.label)}
                         </Link>
                     ),
             )}

@@ -2,7 +2,7 @@
 /* eslint-disable react/prop-types */
 import { graphql } from 'gatsby'
 import { getSrc } from 'gatsby-plugin-image'
-import parse from 'html-react-parser'
+import safeParse from '../utils/safeParse'
 import PropTypes from 'prop-types'
 import { useContext, useLayoutEffect } from 'react'
 import Layout from '../components/layout'
@@ -41,10 +41,10 @@ const PageTemplate = ({ data: { page } }) => {
             ) : (
                 !pageTitles.includes(page.title) && (
                     <>
-                        <PageHeader title={parse(page.title)} intro={page.pageintro} headerStyle={pageStyle} />
+                        <PageHeader title={safeParse(page.title)} intro={page.pageintro} headerStyle={pageStyle} />
                         <ColumnSection sectionVariant={'main.' + pageStyle}>
                             <LeftColumn heading={page.pagesubheading} title={page.pagesubtitle} headerSize='h2' page />
-                            <RightColumn>{page.content && parse(page.content)}</RightColumn>
+                            <RightColumn>{page.content && safeParse(page.content)}</RightColumn>
                         </ColumnSection>
                     </>
                 )

@@ -9,7 +9,8 @@ import { Box, Heading } from 'theme-ui'
 import { PageStyleContext } from '../components/pageStyleProvider'
 // import AniLink from 'gatsby-plugin-transition-link/AniLink'
 import { Link } from 'gatsby'
-import parse from 'html-react-parser'
+import safeParse from '../utils/safeParse'
+import { removeTags } from '../components/helpers'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
 import ColumnSection from '../components/template/containers/columnSection'
@@ -35,7 +36,7 @@ const PortfolioIndex = ({ data }) => {
 
     return (
         <Layout>
-            <PageHeader title={parse(page.title)} intro={page.pageintro} headerStyle={pageStyle} />
+            <PageHeader title={safeParse(page.title)} intro={page.pageintro} headerStyle={pageStyle} />
             <ColumnSection>
                 <LeftColumn
                     heading={page.pagesubheading}
@@ -52,7 +53,7 @@ const PortfolioIndex = ({ data }) => {
                         width: ['100%', null],
                     }}
                 >
-                    <div sx={{ pl: [4, 4, 6], pr: [4, 4, null], pb: 5 }}>{parse(page.content)}</div>
+                    <div sx={{ pl: [4, 4, 6], pr: [4, 4, null], pb: 5 }}>{safeParse(page.content)}</div>
                     {portfolio.map((portfolio) => {
                         const title = portfolio.title
                         return (
@@ -63,7 +64,7 @@ const PortfolioIndex = ({ data }) => {
                                 bg='#111827'
                                 key={portfolio.uri}
                                 to={portfolio.uri}
-                                title={parse(title)}
+                                title={removeTags(title)}
                                 sx={{
                                     color: 'white',
                                     textDecoration: 'none',
@@ -100,7 +101,7 @@ const PortfolioIndex = ({ data }) => {
                                             px: 2,
                                         }}
                                     >
-                                        {parse(title)}
+                                        {safeParse(title)}
                                     </Heading>
                                     <div
                                         sx={{

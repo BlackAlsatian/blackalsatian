@@ -4,7 +4,7 @@
 /* eslint-disable react/no-unknown-property */
 import { graphql } from 'gatsby'
 import { GatsbyImage, getSrc } from 'gatsby-plugin-image'
-import parse from 'html-react-parser'
+import safeParse from '../utils/safeParse'
 import PropTypes from 'prop-types'
 import { useContext, useLayoutEffect } from 'react'
 import { Box, Flex } from 'theme-ui'
@@ -30,7 +30,7 @@ const ServiceTemplate = ({ data: { previous, next, service } }) => {
     const serviceExcerpt = removeTags(service?.excerpt)
     return (
         <Layout>
-            <PageHeader title={parse(service?.title)} intro={parse(serviceExcerpt)} headerStyle={pageStyle} />
+            <PageHeader title={safeParse(service?.title)} intro={safeParse(serviceExcerpt)} headerStyle={pageStyle} />
             <Box as='section' sx={{ backgroundColor: 'white', variant: 'sections.noypadding' }}>
                 <Flex
                     sx={{
@@ -58,7 +58,7 @@ const ServiceTemplate = ({ data: { previous, next, service } }) => {
                                     flexDirection: 'column',
                                 }}
                             >
-                                {parse(service?.content)}
+                                {safeParse(service?.content)}
                             </Flex>
                         )}
                     </Box>
@@ -72,8 +72,8 @@ const ServiceTemplate = ({ data: { previous, next, service } }) => {
                 <PagesNav
                     previousPagePath={previous && previous.uri}
                     nextPagePath={next && next.uri}
-                    previousName={previous && parse(previous.title)}
-                    nextName={next && parse(next.title)}
+                    previousName={previous && safeParse(previous.title)}
+                    nextName={next && safeParse(next.title)}
                     backgroundColor='yellow'
                     color='black'
                     swipeColor='#f5df4d'

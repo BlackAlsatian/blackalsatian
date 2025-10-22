@@ -3,8 +3,8 @@
 import { Heading } from 'theme-ui'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import PropTypes from 'prop-types'
-import { getHeight } from '../../helpers'
-import parse from 'html-react-parser'
+import { getHeight, removeTags } from '../../helpers'
+import safeParse from '../../../utils/safeParse'
 
 const GridTile = ({ linkNode, headerType }) => {
     const featuredImage = {
@@ -30,7 +30,7 @@ const GridTile = ({ linkNode, headerType }) => {
             {featuredImage?.fluid && (
                 <GatsbyImage
                     image={featuredImage.fluid}
-                    alt={featuredImage.alt || linkNode.title}
+                    alt={featuredImage.alt || removeTags(linkNode.title)}
                     style={{
                         display: 'block',
                         position: 'relative',
@@ -57,10 +57,10 @@ const GridTile = ({ linkNode, headerType }) => {
                 }}
             >
                 <Heading as={headerType} sx={{ fontSize: 3 }}>
-                    {linkNode.title}
+                    {safeParse(linkNode.title)}
                 </Heading>
                 {linkNode.date && <small>{linkNode.date}</small>}
-                {parse(linkNode.excerpt)}
+                {safeParse(linkNode.excerpt)}
             </div>
         </article>
     )

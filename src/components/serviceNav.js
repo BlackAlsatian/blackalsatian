@@ -2,7 +2,8 @@
 import React from 'react'
 import { Flex } from 'theme-ui'
 import { useStaticQuery, graphql, Link } from 'gatsby'
-import parse from 'html-react-parser'
+import safeParse from '../utils/safeParse'
+import { removeTags } from './helpers'
 
 const ServiceNav = ({ handleMenuClick }) => {
     const data = useStaticQuery(graphql`
@@ -19,11 +20,11 @@ const ServiceNav = ({ handleMenuClick }) => {
                 <Link
                     key={item.id}
                     to={item.url}
-                    title={parse(item.label)}
+                    title={removeTags(item.label)}
                     sx={{ pb: 3, fontWeight: 'normal' }}
                     onClick={handleMenuClick}
                 >
-                    {parse(item.label)}
+                    {safeParse(item.label)}
                 </Link>
             ))}
         </Flex>

@@ -2,7 +2,8 @@
 import { Container, Heading, Flex, Box } from 'theme-ui'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import PropTypes from 'prop-types'
-import parse from 'html-react-parser'
+import safeParse from '../../../utils/safeParse'
+import { removeTags } from '../../helpers'
 import AnimatedSwipeButton from '../elements/animatedSwipeButton'
 
 const ProjectHeader = ({ project }) => {
@@ -36,7 +37,7 @@ const ProjectHeader = ({ project }) => {
                         pr: 5,
                     }}
                 >
-                    {parse(project.title)}
+                    {safeParse(project.title)}
                 </Heading>
                 <Box
                     as='div'
@@ -45,7 +46,7 @@ const ProjectHeader = ({ project }) => {
                         textAlign: 'right',
                     }}
                 >
-                    {parse(project.excerpt)}
+                    {safeParse(project.excerpt)}
                 </Box>
             </Flex>
             <Box
@@ -70,7 +71,7 @@ const ProjectHeader = ({ project }) => {
             </Box>
             <Container p={[3, 3, 4]}>
                 {featuredImage?.fluid && (
-                    <GatsbyImage image={featuredImage.fluid} alt={featuredImage.alt || parse(project.title)} />
+                    <GatsbyImage image={featuredImage.fluid} alt={featuredImage.alt || removeTags(project.title)} />
                 )}
             </Container>
         </Flex>

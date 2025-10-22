@@ -1,7 +1,8 @@
 /* eslint-disable react/prop-types */
 /** @jsxImportSource theme-ui */
 import { Heading, Paragraph } from 'theme-ui'
-import parse from 'html-react-parser'
+import safeParse from '../../../utils/safeParse'
+import { removeTags } from '../../helpers'
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import PageHeroHeader from '../containers/pageHeroHeader'
 import PageHeaderContainer from '../containers/pageHeaderContainer'
@@ -13,7 +14,7 @@ const HeroBlock = ({ featuredImage, title, intro }) => {
         <PageHeroHeader containerVariant='default'>
             <GatsbyImage
                 image={featuredImageData}
-                alt={featuredImage.node.altText || title}
+                alt={featuredImage.node.altText || removeTags(title)}
                 loading='eager'
                 objectPosition='60% 40%'
                 objectFit='cover'
@@ -32,9 +33,9 @@ const HeroBlock = ({ featuredImage, title, intro }) => {
                         fontSize: [6, 10],
                     }}
                 >
-                    {parse(title)}
+                    {safeParse(title)}
                 </Heading>
-                <Paragraph sx={{ variant: 'paragraph.pageHeading' }}>{parse(intro)}</Paragraph>
+                <Paragraph sx={{ variant: 'paragraph.pageHeading' }}>{safeParse(intro)}</Paragraph>
             </PageHeaderContainer>
         </PageHeroHeader>
     )

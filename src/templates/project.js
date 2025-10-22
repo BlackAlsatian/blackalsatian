@@ -4,7 +4,7 @@
 /* eslint-disable react/no-unknown-property */
 import { graphql } from 'gatsby'
 import { getSrc } from 'gatsby-plugin-image'
-import parse from 'html-react-parser'
+import safeParse from '../utils/safeParse'
 import PropTypes from 'prop-types'
 import { useContext, useLayoutEffect } from 'react'
 import Layout from '../components/layout'
@@ -30,8 +30,8 @@ const ProjectTemplate = ({ data: { previous, portfolio, next } }) => {
                 <PagesNav
                     previousPagePath={previous && previous.uri}
                     nextPagePath={next && next.uri}
-                    previousName={previous && parse(previous.title)}
-                    nextName={next && parse(next.title)}
+                    previousName={previous && safeParse(previous.title)}
+                    nextName={next && safeParse(next.title)}
                     backgroundColor='white'
                     color='#111827'
                     swipeColor='#111827'

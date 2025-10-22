@@ -9,7 +9,7 @@ import { Container } from 'theme-ui'
 import { PageStyleContext } from '../components/pageStyleProvider'
 // import AniLink from 'gatsby-plugin-transition-link/AniLink'
 import { Link } from 'gatsby'
-import parse from 'html-react-parser'
+import safeParse from '../utils/safeParse'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
 import PageHeader from '../components/template/pageHeader'
@@ -39,7 +39,7 @@ const ServicesIndex = ({ data }) => {
 
     return (
         <Layout>
-            <PageHeader title={parse(page.title)} intro={page.pageintro} headerStyle={pageStyle} />
+            <PageHeader title={safeParse(page.title)} intro={page.pageintro} headerStyle={pageStyle} />
             <section
                 // eslint-disable-next-line react/no-unknown-property
                 sx={{
@@ -71,14 +71,14 @@ const ServicesIndex = ({ data }) => {
                                 {isOdd(i) ? (
                                     <ServiceImageRight
                                         image={featuredImage}
-                                        name={parse(title)}
-                                        description={parse(service.excerpt)}
+                                        name={safeParse(title)}
+                                        description={safeParse(service.excerpt)}
                                     />
                                 ) : (
                                     <ServiceImageLeft
                                         image={featuredImage}
-                                        name={parse(title)}
-                                        description={parse(service.excerpt)}
+                                        name={safeParse(title)}
+                                        description={safeParse(service.excerpt)}
                                     />
                                 )}
                             </Link>

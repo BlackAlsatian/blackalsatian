@@ -4,7 +4,7 @@
 /* eslint-disable react/no-unknown-property */
 import { graphql } from 'gatsby'
 import { GatsbyImage, getSrc } from 'gatsby-plugin-image'
-import parse from 'html-react-parser'
+import safeParse from '../utils/safeParse'
 import PropTypes from 'prop-types'
 import { useContext, useLayoutEffect } from 'react'
 import { Badge, Box, Container, Flex, Heading, Paragraph } from 'theme-ui'
@@ -62,13 +62,13 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
                                 animationDelay: '300ms',
                             }}
                         >
-                            {parse(post.title)}
+                            {safeParse(post.title)}
                         </Heading>
-                        <Paragraph sx={{ variant: 'paragraph.pageHeading' }}>{parse(postExcerpt)}</Paragraph>
+                        <Paragraph sx={{ variant: 'paragraph.pageHeading' }}>{safeParse(postExcerpt)}</Paragraph>
                     </PageHeaderContainer>
                 </PageHeroHeader>
             ) : (
-                <PageHeader title={parse(post.title)} intro={parse(postExcerpt)} headerStyle={pageStyle} />
+                <PageHeader title={safeParse(post.title)} intro={safeParse(postExcerpt)} headerStyle={pageStyle} />
             )}
 
             {!!post.content && (
@@ -110,7 +110,7 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
                                         animationDelay: '300ms',
                                     }}
                                 >
-                                    {parse(post.title)}
+                                    {safeParse(post.title)}
                                 </Heading>
                                 <Bio author={post.author.node} />
                                 <p>
@@ -145,7 +145,7 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
                                     width: ['100%', null],
                                 }}
                             >
-                                {parse(post.content)}
+                                {safeParse(post.content)}
                             </Box>
                         </Flex>
                     </Container>
@@ -156,8 +156,8 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
                 <PagesNav
                     previousPagePath={previous && previous.uri}
                     nextPagePath={next && next.uri}
-                    previousName={previous && parse(previous.title)}
-                    nextName={next && parse(next.title)}
+                    previousName={previous && safeParse(previous.title)}
+                    nextName={next && safeParse(next.title)}
                     backgroundColor='black'
                     color='white'
                     swipeColor='#fff'

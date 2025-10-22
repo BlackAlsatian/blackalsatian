@@ -1,5 +1,5 @@
 /** @jsxImportSource theme-ui */
-import parse from 'html-react-parser'
+import safeParse from '../../../utils/safeParse'
 import LeftApostrophe from '../../icons/leftApostrophe'
 import RightApostrophe from '../../icons/rightApostrophe'
 
@@ -39,7 +39,7 @@ const TestimonialTile = ({ content, author, role, company }) => {
                 }}
             >
                 <LeftApostrophe color='white' width={28} height={28} />
-                {parse(content)}
+                {safeParse(content)}
                 <span sx={{ textAlign: 'right' }}>
                     <RightApostrophe color='white' width={28} height={28} />
                 </span>

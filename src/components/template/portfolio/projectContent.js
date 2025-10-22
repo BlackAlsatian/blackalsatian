@@ -1,6 +1,7 @@
 /** @jsxImportSource theme-ui */
 import { Badge } from 'theme-ui'
-import parse from 'html-react-parser'
+import safeParse from '../../../utils/safeParse'
+import { removeTags } from '../../helpers'
 import ColumnSection from '../containers/columnSection'
 import RightColumn from '../elements/rightColumn'
 import LeftColumnWrapper from '../elements/leftColumnWrapper'
@@ -12,7 +13,9 @@ const ProjectContent = ({ project }) => {
         <ColumnSection sectionVariant={'main.black'}>
             <LeftColumnWrapper rightBorderColor='white' page={false}>
                 {project.projectYear && <LeftColumnHeading heading={project.projectYear} headerSize='h3' />}
-                {project.projectUrl && <ProjectVisitButton url={project.projectUrl} title={parse(project.title)} />}
+                {project.projectUrl && (
+                    <ProjectVisitButton url={project.projectUrl} title={removeTags(project.title)} />
+                )}
                 <div
                     sx={{
                         py: 4,
@@ -28,7 +31,7 @@ const ProjectContent = ({ project }) => {
                         ))}
                 </div>
             </LeftColumnWrapper>
-            <RightColumn>{parse(project.content)}</RightColumn>
+            <RightColumn>{safeParse(project.content)}</RightColumn>
         </ColumnSection>
     )
 }
