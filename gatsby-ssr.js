@@ -23,18 +23,44 @@ export const onRenderBody = ({ setHtmlAttributes, setHeadComponents }) => {
                                 j.async = true; j.src = 'https://www.googletagmanager.com/gtm.js?id=${gtmId}';
                                 f.parentNode.insertBefore(j, f);
                         }
-                        function hasConsent(){
+                                        function hasConsent(){
                                 try {
                                         return document.cookie.split('; ').some(function(c){ return c.indexOf('blackals-cookie-notice=true') === 0 || c.indexOf(' blackals-cookie-notice=true') > -1; });
                                 } catch(e) { return false; }
                         }
-                        if (isBot()) { return; }
+                                        function isZA(){
+                                                try {
+                                                        var nav = navigator || {};
+                                                        var lang = (nav.language || (nav.languages && nav.languages[0]) || '').toLowerCase();
+                                                        var tz = '';
+                                                        try { tz = (Intl && Intl.DateTimeFormat && Intl.DateTimeFormat().resolvedOptions && Intl.DateTimeFormat().resolvedOptions().timeZone) || ''; } catch(e) {}
+                                                        return /-za$/.test(lang) || (tz && tz.toLowerCase() === 'africa/johannesburg');
+                                                } catch(e) { return false; }
+                                        }
+                                        if (isBot()) { return; }
                         if (hasConsent()) {
                                 // Immediate load for returning users who already granted consent
                                 loadGTM();
                         } else {
-                                // No consent yet: only load when consent is granted
-                                window.addEventListener('ba:consent-granted', loadGTM, { once: true });
+                                                // No consent yet: only load when consent is granted
+                                                window.addEventListener('ba:consent-granted', loadGTM, { once: true });
+                                                // For South African users, treat interaction/time-on-page as implied consent (POPIA-friendly)
+                                                if (isZA()) {
+                                                        function grantImplied(){
+                                                                try {
+                                                                        document.cookie = 'blackals-cookie-notice=true; path=/; SameSite=Lax; Secure';
+                                                                        var ev = new CustomEvent('ba:consent-granted');
+                                                                        window.dispatchEvent(ev);
+                                                                } catch(e) {
+                                                                        // ignore
+                                                                }
+                                                        }
+                                                        var impliedOnce = false;
+                                                        function impliedHandler(){ if (impliedOnce) return; impliedOnce = true; ['scroll','mousemove','touchstart','keydown'].forEach(function(evt){ window.removeEventListener(evt, impliedHandler, { passive: true }); }); grantImplied(); }
+                                                        ['scroll','mousemove','touchstart','keydown'].forEach(function(evt){ window.addEventListener(evt, impliedHandler, { passive: true }); });
+                                                        // Fallback: grant after a short time on page
+                                                        setTimeout(function(){ impliedHandler(); }, 7000);
+                                                }
                         }
                 })();
                 `
