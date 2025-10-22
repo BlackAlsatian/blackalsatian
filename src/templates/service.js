@@ -4,7 +4,6 @@
 /* eslint-disable react/no-unknown-property */
 import { graphql } from 'gatsby'
 import { GatsbyImage, getSrc } from 'gatsby-plugin-image'
-import safeParse from '../utils/safeParse'
 import PropTypes from 'prop-types'
 import { useContext, useLayoutEffect } from 'react'
 import { Box, Flex } from 'theme-ui'
@@ -14,6 +13,7 @@ import { PageStyleContext } from '../components/pageStyleProvider'
 import PagesNav from '../components/pagesNav'
 import SEO from '../components/seo'
 import PageHeader from '../components/template/pageHeader'
+import safeParse from '../utils/safeParse'
 
 const ServiceTemplate = ({ data: { previous, next, service } }) => {
     const { setPageStyle } = useContext(PageStyleContext)

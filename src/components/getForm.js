@@ -5,14 +5,14 @@
 /* eslint-disable react/react-in-jsx-scope */
 /* eslint-disable react/prop-types */
 /** @jsxImportSource theme-ui */
-import { Link } from 'gatsby'
-import { Label, Input, Box, Button, Spinner, Textarea } from 'theme-ui'
-import { useEffect, useState, useId } from 'react'
-import { useForm } from 'react-hook-form'
 import axios from 'axios'
+import { Link } from 'gatsby'
+import { useEffect, useId, useState } from 'react'
+import { useForm } from 'react-hook-form'
+import { Box, Button, Input, Label, Spinner, Textarea } from 'theme-ui'
 import Notification from './notification'
 
-import { handleErrorColor, phoneRegExp, emailRegExp, sendGA, leadInfo } from '../components/helpers'
+import { emailRegExp, handleErrorColor, leadInfo, phoneRegExp, sendGA } from '../components/helpers'
 
 const GetForm = ({ option, buttonName, buttonUrl, backgroundColor, buttonBackground, formStyle, footerError }) => {
     if (option === 'contact') {

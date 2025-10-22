@@ -1,10 +1,10 @@
 /** @jsxImportSource theme-ui */
 /* eslint-disable react/no-unknown-property */
-import { Heading } from 'theme-ui'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import PropTypes from 'prop-types'
-import { getHeight, removeTags } from '../../helpers'
+import { Heading } from 'theme-ui'
 import safeParse from '../../../utils/safeParse'
+import { getHeight, removeTags } from '../../helpers'
 
 const GridTile = ({ linkNode, headerType }) => {
     const featuredImage = {

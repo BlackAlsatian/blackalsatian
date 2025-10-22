@@ -1,5 +1,5 @@
-import safeParse from '../utils/safeParse'
 import { Fragment } from 'react'
+import safeParse from '../utils/safeParse'
 // import React from 'react'
 
 const BlockText = ({ text }) => {

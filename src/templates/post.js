@@ -4,7 +4,6 @@
 /* eslint-disable react/no-unknown-property */
 import { graphql } from 'gatsby'
 import { GatsbyImage, getSrc } from 'gatsby-plugin-image'
-import safeParse from '../utils/safeParse'
 import PropTypes from 'prop-types'
 import { useContext, useLayoutEffect } from 'react'
 import { Badge, Box, Container, Flex, Heading, Paragraph } from 'theme-ui'
@@ -17,6 +16,7 @@ import SEO from '../components/seo'
 import PageHeaderContainer from '../components/template/containers/pageHeaderContainer'
 import PageHeroHeader from '../components/template/containers/pageHeroHeader'
 import PageHeader from '../components/template/pageHeader'
+import safeParse from '../utils/safeParse'
 
 const BlogPostTemplate = ({ data: { previous, next, post } }) => {
     // console.log({ pageContext })

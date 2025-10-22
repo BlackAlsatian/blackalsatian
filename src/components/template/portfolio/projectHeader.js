@@ -1,7 +1,7 @@
 /** @jsxImportSource theme-ui */
-import { Container, Heading, Flex, Box } from 'theme-ui'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import PropTypes from 'prop-types'
+import { Box, Container, Flex, Heading } from 'theme-ui'
 import safeParse from '../../../utils/safeParse'
 import { removeTags } from '../../helpers'
 import AnimatedSwipeButton from '../elements/animatedSwipeButton'

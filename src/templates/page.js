@@ -2,7 +2,6 @@
 /* eslint-disable react/prop-types */
 import { graphql } from 'gatsby'
 import { getSrc } from 'gatsby-plugin-image'
-import safeParse from '../utils/safeParse'
 import PropTypes from 'prop-types'
 import { useContext, useLayoutEffect } from 'react'
 import Layout from '../components/layout'
@@ -14,6 +13,7 @@ import ColumnSection from '../components/template/containers/columnSection'
 import LeftColumn from '../components/template/elements/leftColumn'
 import RightColumn from '../components/template/elements/rightColumn'
 import PageHeader from '../components/template/pageHeader'
+import safeParse from '../utils/safeParse'
 
 const PageTemplate = ({ data: { page } }) => {
     const { setPageStyle } = useContext(PageStyleContext)

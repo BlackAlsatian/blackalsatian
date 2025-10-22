@@ -9,13 +9,13 @@ import { Box, Heading } from 'theme-ui'
 import { PageStyleContext } from '../components/pageStyleProvider'
 // import AniLink from 'gatsby-plugin-transition-link/AniLink'
 import { Link } from 'gatsby'
-import safeParse from '../utils/safeParse'
 import { removeTags } from '../components/helpers'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
 import ColumnSection from '../components/template/containers/columnSection'
 import LeftColumn from '../components/template/elements/leftColumn'
 import PageHeader from '../components/template/pageHeader'
+import safeParse from '../utils/safeParse'
 
 const PortfolioIndex = ({ data }) => {
     const { setPageStyle } = useContext(PageStyleContext)

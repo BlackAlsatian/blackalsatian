@@ -1,7 +1,7 @@
 /** @jsxImportSource theme-ui */
+import { graphql, Link, useStaticQuery } from 'gatsby'
 import React from 'react'
 import { Flex } from 'theme-ui'
-import { useStaticQuery, graphql, Link } from 'gatsby'
 import safeParse from '../utils/safeParse'
 import { removeTags } from './helpers'
 

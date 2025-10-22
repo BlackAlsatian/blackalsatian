@@ -4,7 +4,6 @@
 /* eslint-disable react/no-unknown-property */
 import { graphql } from 'gatsby'
 import { getSrc } from 'gatsby-plugin-image'
-import safeParse from '../utils/safeParse'
 import PropTypes from 'prop-types'
 import { useContext, useLayoutEffect } from 'react'
 import Layout from '../components/layout'
@@ -13,6 +12,7 @@ import PagesNav from '../components/pagesNav'
 import SEO from '../components/seo'
 import ProjectContent from '../components/template/portfolio/projectContent'
 import ProjectHeader from '../components/template/portfolio/projectHeader'
+import safeParse from '../utils/safeParse'
 
 const ProjectTemplate = ({ data: { previous, portfolio, next } }) => {
     const { setPageStyle } = useContext(PageStyleContext)

@@ -1,11 +1,11 @@
 /* eslint-disable react/prop-types */
 /** @jsxImportSource theme-ui */
+import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import { Heading, Paragraph } from 'theme-ui'
 import safeParse from '../../../utils/safeParse'
 import { removeTags } from '../../helpers'
-import { GatsbyImage, getImage } from 'gatsby-plugin-image'
-import PageHeroHeader from '../containers/pageHeroHeader'
 import PageHeaderContainer from '../containers/pageHeaderContainer'
+import PageHeroHeader from '../containers/pageHeroHeader'
 
 const HeroBlock = ({ featuredImage, title, intro }) => {
     const featuredImageData = getImage(featuredImage.node.main)

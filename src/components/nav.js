@@ -1,9 +1,9 @@
 /** @jsxImportSource theme-ui */
 import { Link } from 'gatsby'
-import safeParse from '../utils/safeParse'
-import { removeTags } from './helpers'
 import React from 'react'
 import { Flex } from 'theme-ui'
+import safeParse from '../utils/safeParse'
+import { removeTags } from './helpers'
 
 const Nav = ({ navLinks }) => {
     return (

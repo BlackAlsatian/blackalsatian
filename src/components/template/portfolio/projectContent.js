@@ -3,9 +3,9 @@ import { Badge } from 'theme-ui'
 import safeParse from '../../../utils/safeParse'
 import { removeTags } from '../../helpers'
 import ColumnSection from '../containers/columnSection'
-import RightColumn from '../elements/rightColumn'
-import LeftColumnWrapper from '../elements/leftColumnWrapper'
 import LeftColumnHeading from '../elements/leftColumnHeading'
+import LeftColumnWrapper from '../elements/leftColumnWrapper'
+import RightColumn from '../elements/rightColumn'
 import ProjectVisitButton from './projectVisitButton'
 
 const ProjectContent = ({ project }) => {
