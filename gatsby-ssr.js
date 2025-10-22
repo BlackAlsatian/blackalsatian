@@ -1,7 +1,7 @@
 import './src/assets/scss/app.scss'
 import PageStyleProvider from './src/components/pageStyleProvider'
 
-export const onRenderBody = ({ setHtmlAttributes, setHeadComponents }) => {
+export const onRenderBody = ({ setHtmlAttributes, setHeadComponents, setPostBodyComponents }) => {
         setHtmlAttributes({ lang: 'en' })
         const gtmId = process.env.GATSBY_GTM_TRACKING_ID
                 const lazyGtm = gtmId
@@ -18,6 +18,13 @@ export const onRenderBody = ({ setHtmlAttributes, setHeadComponents }) => {
                                 if (window.__gtmLoaded) return;
                                 window.__gtmLoaded = true;
                                 window.dataLayer.push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+                                // Just-in-time preconnects to speed up GTM/GA without impacting initial head work
+                                try {
+                                        var l1 = document.createElement('link'); l1.rel = 'preconnect'; l1.href = 'https://www.googletagmanager.com'; l1.crossOrigin = '';
+                                        var l2 = document.createElement('link'); l2.rel = 'preconnect'; l2.href = 'https://www.google-analytics.com'; l2.crossOrigin = '';
+                                        var head = document.head || document.getElementsByTagName('head')[0];
+                                        head && head.appendChild(l1); head && head.appendChild(l2);
+                                } catch(e) {}
                                 var f = document.getElementsByTagName('script')[0];
                                 var j = document.createElement('script');
                                 j.async = true; j.src = 'https://www.googletagmanager.com/gtm.js?id=${gtmId}';
@@ -65,12 +72,8 @@ export const onRenderBody = ({ setHtmlAttributes, setHeadComponents }) => {
                 })();
                 `
                 : null
-        setHeadComponents([
-                // Preconnects help reduce connection setup time for analytics
-                <link key="preconnect-gtm" rel="preconnect" href="https://www.googletagmanager.com" crossOrigin="" />,
-                <link key="preconnect-ga" rel="preconnect" href="https://www.google-analytics.com" crossOrigin="" />,
-                gtmId && <script key="gtm-lazy" dangerouslySetInnerHTML={{ __html: lazyGtm }} />,
-        ].filter(Boolean))
+        // Keep head clean; inject analytics loader at end of body to minimize contention
+        setPostBodyComponents([gtmId && <script key="gtm-lazy" dangerouslySetInnerHTML={{ __html: lazyGtm }} />].filter(Boolean))
 }
 
 export const wrapRootElement = PageStyleProvider
