@@ -10,7 +10,7 @@ import ContactDetails from './contactDetails'
 import SocialIcons from './socialIcons'
 
 // Code-split the logo so header/footer share a single small chunk instead of duplicating it per-slice
-const Logo = lazy(() => import(/* webpackChunkName: "ba-logo" */ '../../logo'))
+const Logo = lazy(() => import(/* webpackChunkName: "ba-logo", webpackPreload: true */ '../../logo'))
 
 // const footerColors = {
 //     yellow: {
@@ -113,7 +113,12 @@ const Footer = ({ siteTitle, pageStyle }) => {
                         to='/'
                         title='Web development & online marketing by Black Alsatian'
                     >
-                        <Suspense fallback={<span aria-label='Black Alsatian' />}> 
+                        <Suspense
+                            fallback={
+                                // Reserve space to avoid any layout shift while the tiny logo chunk loads
+                                <span aria-label='Black Alsatian' style={{ display: 'inline-block', width: 200, height: 36 }} />
+                            }
+                        > 
                             <Logo />
                         </Suspense>
                     </Link>
