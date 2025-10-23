@@ -8,3 +8,8 @@ GATSBY_REQUEST_CONCURRENCY_IMAGES=
 # Do NOT put the backend domain in client-exposed envs.
 # Configure this only in Netlify environment (server-side only):
 # BACKEND_DOMAIN=https://api.example.com
+
+# Local development convenience (optional):
+# To post directly to a dev backend when running `gatsby develop`, create a .env.development.local
+# (git-ignored) file with:
+# GATSBY_API_URL=http://dev-backend.local/api/leads

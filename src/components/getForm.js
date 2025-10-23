@@ -67,9 +67,14 @@ const GetForm = ({ option, buttonName, buttonUrl, backgroundColor, buttonBackgro
                 setMessageAlert(false)
             }, 2500)
         } else {
+            // Prefer serverless proxy in production; allow direct backend URL in development when explicitly provided
+            const apiUrl =
+                process.env.NODE_ENV !== 'production' && process.env.GATSBY_API_URL
+                    ? process.env.GATSBY_API_URL
+                    : '/.netlify/functions/lead-proxy'
             axios({
                 method: 'post',
-                url: '/.netlify/functions/lead-proxy',
+                url: apiUrl,
                 headers: {
                     Accept: 'application/json',
                     'Content-Type': 'application/json',
