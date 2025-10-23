@@ -12,6 +12,31 @@ if (process.env.NODE_ENV !== 'production') {
 	easterEgg()
 }
 
+// Ensure any legacy service workers from previous deployments are removed
+export const onClientEntry = () => {
+	if (typeof navigator !== 'undefined' && 'serviceWorker' in navigator) {
+		try {
+			navigator.serviceWorker.getRegistrations().then((regs) => {
+				regs.forEach((reg) => {
+					try { reg.unregister() } catch (e) {}
+				})
+			})
+		} catch (e) {}
+	}
+	// Clear old Workbox/Gatsby caches that may reference removed offline assets
+	if (typeof caches !== 'undefined' && caches.keys) {
+		try {
+			caches.keys().then((keys) => {
+				keys.forEach((key) => {
+					if (/^(workbox|gatsby-plugin-offline|gatsby-runtime|gatsby-cache)/.test(key)) {
+						caches.delete(key)
+					}
+				})
+			})
+		} catch (e) {}
+	}
+}
+
 // Control scroll position on route changes.
 // - For normal navigations, scroll to top.
 // - For back/forward, restore the saved position.
