@@ -373,16 +373,15 @@ async function getLanders({ graphql, reporter }) {
 }
 
 // After build, generate a Netlify-compatible _headers file in public/
-// Uses env var GATSBY_BACKEND_DOMAIN to populate connect-src; falls back to https://hq.blackalsatian.com
+// Note: No backend origin is listed in connect-src since client requests go to same-origin functions
 exports.onPostBuild = async ({ reporter }) => {
-    const backend = process.env.GATSBY_BACKEND_DOMAIN || 'https://hq.blackalsatian.com'
     const csp = [
         "default-src 'self'",
         "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com",
         "style-src 'self' 'unsafe-inline'",
         "img-src 'self' data: https:",
         "font-src 'self' data:",
-        `connect-src 'self' ${backend} https://www.google-analytics.com https://region1.analytics.google.com https://stats.g.doubleclick.net https://www.googletagmanager.com`,
+        `connect-src 'self' https://www.google-analytics.com https://region1.analytics.google.com https://stats.g.doubleclick.net https://www.googletagmanager.com`,
         "worker-src 'self'",
         "manifest-src 'self'",
         "frame-ancestors 'none'",

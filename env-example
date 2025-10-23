@@ -1,9 +1,10 @@
 GATSBY_WPGRAPHQL_URL=
 GATSBY_FBAPP_ID=
-GATSBY_API_URL=
 GATSBY_GA_TRACKING_ID=
 GATSBY_GTM_TRACKING_ID=
 GATSBY_BA_SITEID=
-# Controls WP media download concurrency during sourcing.
-# Default (unset) uses plugin defaults (higher). Use a lower number for flaky networks.
-GATSBY_REQUEST_CONCURRENCY_IMAGES=3
+GATSBY_REQUEST_CONCURRENCY_IMAGES=
+
+# Do NOT put the backend domain in client-exposed envs.
+# Configure this only in Netlify environment (server-side only):
+# BACKEND_DOMAIN=https://api.example.com

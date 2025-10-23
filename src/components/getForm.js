@@ -69,7 +69,7 @@ const GetForm = ({ option, buttonName, buttonUrl, backgroundColor, buttonBackgro
         } else {
             axios({
                 method: 'post',
-                url: `${process.env.GATSBY_API_URL}`,
+                url: '/.netlify/functions/lead-proxy',
                 headers: {
                     Accept: 'application/json',
                     'Content-Type': 'application/json',
