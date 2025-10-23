@@ -12,28 +12,21 @@ if (process.env.NODE_ENV !== 'production') {
 	easterEgg()
 }
 
-// Ensure any legacy service workers from previous deployments are removed
+// Register a minimal Service Worker that cleans up legacy Workbox caches and provides an offline fallback.
 export const onClientEntry = () => {
 	if (typeof navigator !== 'undefined' && 'serviceWorker' in navigator) {
-		try {
-			navigator.serviceWorker.getRegistrations().then((regs) => {
-				regs.forEach((reg) => {
-					try { reg.unregister() } catch (e) {}
-				})
-			})
-		} catch (e) {}
-	}
-	// Clear old Workbox/Gatsby caches that may reference removed offline assets
-	if (typeof caches !== 'undefined' && caches.keys) {
-		try {
-			caches.keys().then((keys) => {
-				keys.forEach((key) => {
-					if (/^(workbox|gatsby-plugin-offline|gatsby-runtime|gatsby-cache)/.test(key)) {
-						caches.delete(key)
-					}
-				})
-			})
-		} catch (e) {}
+		// Defer registration slightly to avoid main-thread contention
+		window.addEventListener('load', () => {
+			try {
+				navigator.serviceWorker
+					.register('/sw.js')
+					.then((reg) => {
+						// Optional: force-update check on load
+						try { reg.update() } catch (e) {}
+					})
+					.catch(() => {})
+			} catch (e) {}
+		})
 	}
 }
 

@@ -1,5 +1,7 @@
 const path = require('path')
 const chunk = require('lodash/chunk')
+const fs = require('fs')
+const fsp = fs.promises
  
 // Note: We rely on gatsby-plugin-preact for aliasing React to Preact in client builds.
 
@@ -368,4 +370,33 @@ async function getLanders({ graphql, reporter }) {
         return
     }
     return graphqlResult.data.allWpLander.edges
+}
+
+// After build, generate a Netlify-compatible _headers file in public/
+// Uses env var GATSBY_BACKEND_DOMAIN to populate connect-src; falls back to https://hq.blackalsatian.com
+exports.onPostBuild = async ({ reporter }) => {
+    const backend = process.env.GATSBY_BACKEND_DOMAIN || 'https://hq.blackalsatian.com'
+    const csp = [
+        "default-src 'self'",
+        "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com",
+        "style-src 'self' 'unsafe-inline'",
+        "img-src 'self' data: https:",
+        "font-src 'self' data:",
+        `connect-src 'self' ${backend} https://www.google-analytics.com https://region1.analytics.google.com https://stats.g.doubleclick.net https://www.googletagmanager.com`,
+        "worker-src 'self'",
+        "manifest-src 'self'",
+        "frame-ancestors 'none'",
+    ].join('; ')
+
+    const permissions = "geolocation=(), microphone=(), camera=(), payment=(), usb=(), gyroscope=(), accelerometer=(), magnetometer=(), interest-cohort=()"
+    const referrer = 'strict-origin-when-cross-origin'
+
+    const headersContent = `/*\n  Content-Security-Policy: ${csp}\n  Permissions-Policy: ${permissions}\n  Referrer-Policy: ${referrer}\n\n`
+
+    try {
+        await fsp.writeFile(path.join('public', '_headers'), headersContent, 'utf8')
+        reporter.info('Wrote public/_headers with CSP/Permissions/Referrer policies')
+    } catch (e) {
+        reporter.warn('Failed to write public/_headers: ' + (e && e.message ? e.message : e))
+    }
 }
