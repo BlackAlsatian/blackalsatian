@@ -2,12 +2,15 @@
 /** @jsxImportSource theme-ui */
 import { Link } from 'gatsby'
 import PropTypes from 'prop-types'
+import { lazy, Suspense } from 'react'
 import { Flex, Heading } from 'theme-ui'
 import GetForm from '../../getForm'
-import Logo from '../../logo'
 import ServiceNav from '../../serviceNav'
 import ContactDetails from './contactDetails'
 import SocialIcons from './socialIcons'
+
+// Code-split the logo so header/footer share a single small chunk instead of duplicating it per-slice
+const Logo = lazy(() => import(/* webpackChunkName: "ba-logo" */ '../../logo'))
 
 // const footerColors = {
 //     yellow: {
@@ -110,7 +113,9 @@ const Footer = ({ siteTitle, pageStyle }) => {
                         to='/'
                         title='Web development & online marketing by Black Alsatian'
                     >
-                        <Logo />
+                        <Suspense fallback={<span aria-label='Black Alsatian' />}> 
+                            <Logo />
+                        </Suspense>
                     </Link>
                     <br />
                     Port Elizabeth, South Africa

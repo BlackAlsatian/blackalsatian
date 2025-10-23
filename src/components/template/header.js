@@ -3,10 +3,13 @@
 import { useStaticQuery, graphql } from 'gatsby'
 import { Link } from 'gatsby'
 import PropTypes from 'prop-types'
+import { lazy, Suspense } from 'react'
 import MenuIcon from '../menuIcon'
-import Logo from '../logo'
 import Nav from '../nav'
 import OffCanvas from './offCanvasNav'
+
+// Code-split the logo so header/footer share a single small chunk instead of duplicating it per-slice
+const Logo = lazy(() => import(/* webpackChunkName: "ba-logo" */ '../logo'))
 
 const Header = ({ pageStyle }) => {
     const data = useStaticQuery(graphql`
@@ -25,8 +28,9 @@ const Header = ({ pageStyle }) => {
             }}
         >
             <Link to='/' title='Black Alsatian Web Development Company'>
-                {/* <Logo color={headerStyle} /> */}
-                <Logo />
+                <Suspense fallback={<span aria-label='Black Alsatian' />}> 
+                    <Logo />
+                </Suspense>
             </Link>
             {/* <Nav navLinks={navLinks} color={headerStyle} /> */}
             <Nav navLinks={navLinks} />
