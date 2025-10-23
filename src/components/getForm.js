@@ -61,7 +61,8 @@ const GetForm = ({ option, buttonName, buttonUrl, backgroundColor, buttonBackgro
 
             setMessageAlert(true)
 
-            reset(getValues)
+            // Reset back to defaultValues
+            reset()
 
             setTimeout(() => {
                 setMessageAlert(false)
@@ -85,7 +86,8 @@ const GetForm = ({ option, buttonName, buttonUrl, backgroundColor, buttonBackgro
                     if (response.status === 201) {
                         setFormSubmitting(false)
                         setMessageAlert(true)
-                        reset(getValues)
+                        // Reset back to defaultValues
+                        reset()
                         sendGA('generate_lead', option, data.tags, inBrowser)
                         setTimeout(() => {
                             setMessageAlert(false)
