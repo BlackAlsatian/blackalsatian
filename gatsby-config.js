@@ -58,6 +58,15 @@ module.exports = {
             resolve: 'gatsby-source-wordpress',
             options: {
                 url: process.env.GATSBY_WPGRAPHQL_URL,
+                auth:
+                    process.env.WPGRAPHQL_BASIC_AUTH_USERNAME && process.env.WPGRAPHQL_BASIC_AUTH_PASSWORD
+                        ? {
+                              htaccess: {
+                                  username: process.env.WPGRAPHQL_BASIC_AUTH_USERNAME,
+                                  password: process.env.WPGRAPHQL_BASIC_AUTH_PASSWORD,
+                              },
+                          }
+                        : undefined,
                 debug: {
                     graphql: {
                         showQueryOnError: true,
