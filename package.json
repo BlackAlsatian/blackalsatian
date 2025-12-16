@@ -15,10 +15,8 @@
         "axios": "^1.5.0",
         "dotenv": "^16.3.1",
         "gatsby": "5.15.0",
-        "gatsby-plugin-gatsby-cloud": "^5.12.1",
         "gatsby-plugin-image": "3.15.0",
         "gatsby-plugin-manifest": "5.15.0",
-        "gatsby-plugin-offline": "6.15.0",
         "gatsby-plugin-sass": "^6.12.0",
         "gatsby-plugin-sharp": "5.15.0",
         "gatsby-plugin-sitemap": "6.15.0",
@@ -38,11 +36,11 @@
     "devDependencies": {
         "babel-eslint": "^10.1.0",
         "babel-preset-gatsby": "^3.12.0",
-        "gatsby-adapter-netlify": "^1.2.1",
         "eslint": "^8.49.0",
         "eslint-config-prettier": "^9.0.0",
         "eslint-plugin-prettier": "^5.0.0",
         "eslint-plugin-react-hooks": "^4.6.0",
+        "gatsby-adapter-netlify": "^1.2.1",
         "prettier": "3.0.3",
         "webpack": "^5.91.0"
     },
@@ -78,6 +76,17 @@
         "schema-utils@^4": {
             "ajv": "^8.17.1",
             "ajv-keywords": "^5.1.0"
+        },
+        "@expo/devcert": {
+            "glob": "10.5.0"
+        },
+        "eslint@7.32.0": {
+            "js-yaml": "3.14.2"
+        },
+        "tmp": "0.2.5",
+        "js-yaml": "4.1.1",
+        "gatsby": {
+            "cookie": "0.7.2"
         }
     }
 }
