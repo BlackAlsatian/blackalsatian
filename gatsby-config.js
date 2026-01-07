@@ -80,8 +80,8 @@ module.exports = {
                 schema: {
                     timeout: 120000,
                     perPage: 20,
-                    requestConcurrency: 5,
-                    // previewRequestConcurrency: 5,
+                    requestConcurrency: 2,
+                    previewRequestConcurrency: 2,
                 },
                 verbose: true,
                 excludeFieldNames: ['comments', 'blocksJSON', 'previewBlocks', 'previewBlocksJSON'],
