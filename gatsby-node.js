@@ -14,6 +14,53 @@ try {
         axios.defaults.headers.common['x-wpgraphql-bypass'] = normalizedToken
         axios.defaults.headers.post['x-wpgraphql-bypass'] = normalizedToken
     }
+
+    // Minimal diagnostics for Netlify-only 403s.
+    // Logs are intentionally sanitized (no tokens, no Authorization).
+    axios.interceptors.request.use((config) => {
+        try {
+            const url = config?.url || ''
+            const wpUrl = process.env.GATSBY_WPGRAPHQL_URL || ''
+            if (wpUrl && url && url.startsWith(wpUrl)) {
+                const headers = config.headers || {}
+                const hasBypassHeader =
+                    !!headers['x-wpgraphql-bypass'] ||
+                    !!headers['X-Wpgraphql-Bypass'] ||
+                    !!headers['X-WPGraphQL-Bypass']
+                const hasAxiosAuth = !!config.auth
+                console.log(
+                    `[wpgraphql-debug] request bypassHeader=${hasBypassHeader} basicAuth=${hasAxiosAuth}`
+                )
+            }
+        } catch (_e) {
+            // ignore
+        }
+        return config
+    })
+
+    axios.interceptors.response.use(
+        (r) => r,
+        (err) => {
+            try {
+                const status = err?.response?.status
+                const config = err?.config
+                const url = config?.url || ''
+                const wpUrl = process.env.GATSBY_WPGRAPHQL_URL || ''
+                if (status === 403 && wpUrl && url && url.startsWith(wpUrl)) {
+                    const headers = err?.response?.headers || {}
+                    const server = headers['server']
+                    const cfRay = headers['cf-ray']
+                    const contentType = headers['content-type']
+                    console.log(
+                        `[wpgraphql-debug] response 403 server=${server || ''} cf-ray=${cfRay || ''} content-type=${contentType || ''}`
+                    )
+                }
+            } catch (_e) {
+                // ignore
+            }
+            return Promise.reject(err)
+        }
+    )
 } catch (_e) {
     // ignore
 }
