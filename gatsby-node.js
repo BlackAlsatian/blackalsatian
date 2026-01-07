@@ -5,6 +5,24 @@ const fsp = fs.promises
  
 // Note: We rely on gatsby-plugin-preact for aliasing React to Preact in client builds.
 
+// Add build-time headers for WPGraphQL requests.
+// This lets Cloudflare/WAF bypass be based on a shared secret header,
+// instead of relying on Netlify's changing build IPs.
+exports.onPluginInit = ({ actions }) => {
+    const wpGraphqlUrl = process.env.GATSBY_WPGRAPHQL_URL
+    const bypassToken = process.env.WPGRAPHQL_CLOUDFLARE_BYPASS_TOKEN
+
+    if (!wpGraphqlUrl || !bypassToken) return
+    if (typeof actions?.setRequestHeaders !== 'function') return
+
+    actions.setRequestHeaders({
+        domain: wpGraphqlUrl,
+        headers: {
+            'x-wpgraphql-bypass': bypassToken,
+        },
+    })
+}
+
 exports.createSchemaCustomization = ({ actions }) => {
     const { createTypes } = actions
     const typeDefs = `
