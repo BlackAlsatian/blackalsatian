@@ -9,8 +9,10 @@ const fsp = fs.promises
 try {
     const axios = require('axios')
     const bypassToken = process.env.WPGRAPHQL_CLOUDFLARE_BYPASS_TOKEN
-    if (bypassToken) {
-        axios.defaults.headers.common['x-wpgraphql-bypass'] = bypassToken
+    const normalizedToken = bypassToken ? bypassToken.replace(/\s+/g, '') : null
+    if (normalizedToken) {
+        axios.defaults.headers.common['x-wpgraphql-bypass'] = normalizedToken
+        axios.defaults.headers.post['x-wpgraphql-bypass'] = normalizedToken
     }
 } catch (_e) {
     // ignore
