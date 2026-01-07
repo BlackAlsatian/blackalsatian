@@ -2,26 +2,21 @@ const path = require('path')
 const chunk = require('lodash/chunk')
 const fs = require('fs')
 const fsp = fs.promises
+
+// Ensure Cloudflare/WAF bypass header is sent on WPGraphQL requests.
+// gatsby-source-wordpress uses axios.create(), which inherits axios defaults.
+// This avoids relying on Gatsby's setRequestHeaders (which does not affect axios requests).
+try {
+    const axios = require('axios')
+    const bypassToken = process.env.WPGRAPHQL_CLOUDFLARE_BYPASS_TOKEN
+    if (bypassToken) {
+        axios.defaults.headers.common['x-wpgraphql-bypass'] = bypassToken
+    }
+} catch (_e) {
+    // ignore
+}
  
 // Note: We rely on gatsby-plugin-preact for aliasing React to Preact in client builds.
-
-// Add build-time headers for WPGraphQL requests.
-// This lets Cloudflare/WAF bypass be based on a shared secret header,
-// instead of relying on Netlify's changing build IPs.
-exports.onPluginInit = ({ actions }) => {
-    const wpGraphqlUrl = process.env.GATSBY_WPGRAPHQL_URL
-    const bypassToken = process.env.WPGRAPHQL_CLOUDFLARE_BYPASS_TOKEN
-
-    if (!wpGraphqlUrl || !bypassToken) return
-    if (typeof actions?.setRequestHeaders !== 'function') return
-
-    actions.setRequestHeaders({
-        domain: wpGraphqlUrl,
-        headers: {
-            'x-wpgraphql-bypass': bypassToken,
-        },
-    })
-}
 
 exports.createSchemaCustomization = ({ actions }) => {
     const { createTypes } = actions
