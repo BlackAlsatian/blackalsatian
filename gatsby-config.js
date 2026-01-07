@@ -63,7 +63,9 @@ module.exports = {
                         ? {
                               htaccess: {
                                   username: process.env.WPGRAPHQL_BASIC_AUTH_USERNAME,
-                                  password: process.env.WPGRAPHQL_BASIC_AUTH_PASSWORD,
+                                  // WordPress displays application passwords with spaces for readability.
+                                  // Basic auth expects the raw value (no spaces/newlines).
+                                  password: process.env.WPGRAPHQL_BASIC_AUTH_PASSWORD.replace(/\s+/g, ''),
                               },
                           }
                         : undefined,
