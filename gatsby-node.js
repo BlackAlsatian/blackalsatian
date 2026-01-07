@@ -2,6 +2,7 @@ const path = require('path')
 const chunk = require('lodash/chunk')
 const fs = require('fs')
 const fsp = fs.promises
+const https = require('https')
 
 // Ensure Cloudflare/WAF bypass header is sent on WPGraphQL requests.
 // gatsby-source-wordpress uses axios.create(), which inherits axios defaults.
@@ -63,6 +64,95 @@ try {
     )
 } catch (_e) {
     // ignore
+}
+
+// Netlify-only: make a single WPGraphQL request early and log sanitized response metadata.
+// This helps debug Cloudflare vs origin 403s even when Cloudflare Events UI is unavailable.
+exports.onPreInit = async ({ reporter }) => {
+    try {
+        if (!process.env.NETLIFY) return
+
+        const wpUrl = process.env.GATSBY_WPGRAPHQL_URL
+        if (!wpUrl) return
+
+        const bypassTokenRaw = process.env.WPGRAPHQL_CLOUDFLARE_BYPASS_TOKEN || ''
+        const bypassToken = bypassTokenRaw.replace(/\s+/g, '')
+
+        const username = process.env.WPGRAPHQL_BASIC_AUTH_USERNAME
+        const passwordRaw = process.env.WPGRAPHQL_BASIC_AUTH_PASSWORD || ''
+        const password = passwordRaw.replace(/\s+/g, '')
+
+        const headers = {
+            'content-type': 'application/json',
+        }
+
+        const sentBypassHeader = !!bypassToken
+        if (sentBypassHeader) {
+            headers['x-wpgraphql-bypass'] = bypassToken
+        }
+
+        const sentBasicAuth = !!(username && password)
+        if (sentBasicAuth) {
+            const basic = Buffer.from(`${username}:${password}`, 'utf8').toString('base64')
+            headers['authorization'] = `Basic ${basic}`
+        }
+
+        const body = JSON.stringify({
+            query: '{ generalSettings { url } }',
+        })
+
+        await new Promise((resolve) => {
+            const url = new URL(wpUrl)
+
+            const req = https.request(
+                {
+                    protocol: url.protocol,
+                    hostname: url.hostname,
+                    port: url.port || 443,
+                    path: url.pathname + url.search,
+                    method: 'POST',
+                    headers: {
+                        ...headers,
+                        'content-length': Buffer.byteLength(body),
+                    },
+                    timeout: 10_000,
+                },
+                (res) => {
+                    let data = ''
+                    res.setEncoding('utf8')
+                    res.on('data', (chunk) => {
+                        if (data.length < 200) data += chunk
+                    })
+                    res.on('end', () => {
+                        const server = res.headers['server'] || ''
+                        const cfRay = res.headers['cf-ray'] || ''
+                        const contentType = res.headers['content-type'] || ''
+                        const location = res.headers['location'] || ''
+                        const bodyPrefix = (data || '').slice(0, 120).replace(/\s+/g, ' ')
+
+                        reporter.info(
+                            `[wpgraphql-preflight] status=${res.statusCode} bypassHeader=${sentBypassHeader} basicAuth=${sentBasicAuth} server=${server} cf-ray=${cfRay} content-type=${contentType} location=${location} bodyPrefix=${JSON.stringify(bodyPrefix)}`
+                        )
+                        resolve()
+                    })
+                }
+            )
+
+            req.on('timeout', () => {
+                req.destroy(new Error('timeout'))
+            })
+
+            req.on('error', (e) => {
+                reporter.info(`[wpgraphql-preflight] error=${e.message}`)
+                resolve()
+            })
+
+            req.write(body)
+            req.end()
+        })
+    } catch (_e) {
+        // ignore
+    }
 }
  
 // Note: We rely on gatsby-plugin-preact for aliasing React to Preact in client builds.
