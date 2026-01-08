@@ -1,6 +1,28 @@
 /* eslint-disable no-undef */
 require('dotenv').config({ path: `.env.${process.env.NODE_ENV}` })
 const siteUrl = 'https://www.blackalsatian.co.za'
+
+const toPositiveInt = (value, fallback) => {
+    if (value === undefined || value === null || value === '') return fallback
+    const parsed = Number.parseInt(String(value), 10)
+    return Number.isFinite(parsed) && parsed > 0 ? parsed : fallback
+}
+
+const clamp = (value, min, max) => Math.max(min, Math.min(max, value))
+
+const isNetlify = process.env.NETLIFY === 'true'
+const wpPerPage = clamp(toPositiveInt(process.env.GATSBY_WP_PER_PAGE, 10), 5, 50)
+const wpRequestConcurrency = clamp(
+    toPositiveInt(process.env.GATSBY_WP_REQUEST_CONCURRENCY, isNetlify ? 1 : 2),
+    1,
+    5
+)
+const wpPreviewRequestConcurrency = clamp(
+    toPositiveInt(process.env.GATSBY_WP_PREVIEW_REQUEST_CONCURRENCY, isNetlify ? 1 : 2),
+    1,
+    5
+)
+const wpMediaRequestConcurrency = clamp(toPositiveInt(process.env.GATSBY_REQUEST_CONCURRENCY_IMAGES, 2), 1, 8)
 module.exports = {
     siteMetadata: {
         title: 'Black Alsatian',
@@ -79,9 +101,9 @@ module.exports = {
                 },
                 schema: {
                     timeout: 120000,
-                    perPage: 20,
-                    requestConcurrency: 2,
-                    previewRequestConcurrency: 2,
+                    perPage: wpPerPage,
+                    requestConcurrency: wpRequestConcurrency,
+                    previewRequestConcurrency: wpPreviewRequestConcurrency,
                 },
                 verbose: true,
                 excludeFieldNames: ['comments', 'blocksJSON', 'previewBlocks', 'previewBlocksJSON'],
@@ -98,7 +120,7 @@ module.exports = {
                 type: {
                     MediaItem: {
                         localFile: {
-                            requestConcurrency: process.env.GATSBY_REQUEST_CONCURRENCY_IMAGES,
+                            requestConcurrency: wpMediaRequestConcurrency,
                         },
                         excludeFieldNames: [
                             'contentNodes',

@@ -5,6 +5,12 @@ GATSBY_GTM_TRACKING_ID=
 GATSBY_BA_SITEID=
 GATSBY_REQUEST_CONCURRENCY_IMAGES=
 
+# Optional: tune WordPress sourcing load (integers).
+# Safe defaults apply if unset. For Netlify builds, defaults are conservative.
+GATSBY_WP_PER_PAGE=
+GATSBY_WP_REQUEST_CONCURRENCY=
+GATSBY_WP_PREVIEW_REQUEST_CONCURRENCY=
+
 # Do NOT put the backend domain in client-exposed envs.
 # Configure this only in Netlify environment (server-side only):
 # BACKEND_DOMAIN=https://api.example.com
