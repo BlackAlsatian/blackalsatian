@@ -10,6 +10,7 @@ GATSBY_REQUEST_CONCURRENCY_IMAGES=
 GATSBY_WP_PER_PAGE=
 GATSBY_WP_REQUEST_CONCURRENCY=
 GATSBY_WP_PREVIEW_REQUEST_CONCURRENCY=
+GATSBY_WP_TIMEOUT_MS=
 
 # Do NOT put the backend domain in client-exposed envs.
 # Configure this only in Netlify environment (server-side only):

@@ -11,7 +11,9 @@ const toPositiveInt = (value, fallback) => {
 const clamp = (value, min, max) => Math.max(min, Math.min(max, value))
 
 const isNetlify = process.env.NETLIFY === 'true'
-const wpPerPage = clamp(toPositiveInt(process.env.GATSBY_WP_PER_PAGE, 10), 5, 50)
+// Note: lowering perPage reduces payload size but increases total request count.
+// For overloaded origins, fewer total requests is often more stable.
+const wpPerPage = clamp(toPositiveInt(process.env.GATSBY_WP_PER_PAGE, 20), 5, 50)
 const wpRequestConcurrency = clamp(
     toPositiveInt(process.env.GATSBY_WP_REQUEST_CONCURRENCY, isNetlify ? 1 : 2),
     1,
@@ -23,6 +25,7 @@ const wpPreviewRequestConcurrency = clamp(
     5
 )
 const wpMediaRequestConcurrency = clamp(toPositiveInt(process.env.GATSBY_REQUEST_CONCURRENCY_IMAGES, 2), 1, 8)
+const wpTimeoutMs = clamp(toPositiveInt(process.env.GATSBY_WP_TIMEOUT_MS, isNetlify ? 300000 : 120000), 60000, 600000)
 module.exports = {
     siteMetadata: {
         title: 'Black Alsatian',
@@ -100,7 +103,7 @@ module.exports = {
                     },
                 },
                 schema: {
-                    timeout: 120000,
+                    timeout: wpTimeoutMs,
                     perPage: wpPerPage,
                     requestConcurrency: wpRequestConcurrency,
                     previewRequestConcurrency: wpPreviewRequestConcurrency,
