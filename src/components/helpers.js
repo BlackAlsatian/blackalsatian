@@ -10,10 +10,121 @@ export function getHeight() {
 
 // temporary hacky way of changing error text colours for specific pages
 export function handleErrorColor(backgroundColor) {
-    if (backgroundColor === 'white' || backgroundColor === 'yellow') {
-        return 'blue'
-    } else {
-        return 'yellow'
+    return getFormFeedbackPalette({ surfaceColor: backgroundColor }).fieldErrorColor
+}
+
+const FORM_COLOR_VALUES = {
+    black: '#111827',
+    white: '#ffffff',
+    yellow: '#f5df4d',
+    blue: '#0060b4',
+    red: '#d93d33',
+    offWhite: '#edf2f7',
+    gray: '#939597',
+}
+
+function parseHexColor(color) {
+    const hex = color.replace('#', '')
+
+    if (hex.length === 3) {
+        return {
+            r: parseInt(hex[0] + hex[0], 16),
+            g: parseInt(hex[1] + hex[1], 16),
+            b: parseInt(hex[2] + hex[2], 16),
+        }
+    }
+
+    if (hex.length === 6) {
+        return {
+            r: parseInt(hex.slice(0, 2), 16),
+            g: parseInt(hex.slice(2, 4), 16),
+            b: parseInt(hex.slice(4, 6), 16),
+        }
+    }
+
+    return null
+}
+
+function parseRgbColor(color) {
+    const matches = color.match(/\d+(\.\d+)?/g)
+
+    if (!matches || matches.length < 3) {
+        return null
+    }
+
+    return {
+        r: Number(matches[0]),
+        g: Number(matches[1]),
+        b: Number(matches[2]),
+    }
+}
+
+function getRgbColor(color) {
+    if (!color) {
+        return null
+    }
+
+    const resolvedColor = FORM_COLOR_VALUES[color] || color
+
+    if (resolvedColor.startsWith('#')) {
+        return parseHexColor(resolvedColor)
+    }
+
+    if (resolvedColor.startsWith('rgb')) {
+        return parseRgbColor(resolvedColor)
+    }
+
+    return null
+}
+
+function getRelativeLuminance(value) {
+    const channel = value / 255
+
+    if (channel <= 0.03928) {
+        return channel / 12.92
+    }
+
+    return ((channel + 0.055) / 1.055) ** 2.4
+}
+
+export function getContrastingTextColor(backgroundColor) {
+    const rgb = getRgbColor(backgroundColor)
+
+    if (!rgb) {
+        return backgroundColor === 'white' || backgroundColor === 'yellow' || backgroundColor === 'offWhite'
+            ? 'black'
+            : 'white'
+    }
+
+    const luminance =
+        0.2126 * getRelativeLuminance(rgb.r) +
+        0.7152 * getRelativeLuminance(rgb.g) +
+        0.0722 * getRelativeLuminance(rgb.b)
+
+    return luminance > 0.55 ? 'black' : 'white'
+}
+
+export function getFormFeedbackPalette({ surfaceColor = 'white', actionColor } = {}) {
+    const resolvedSurfaceColor = surfaceColor || 'white'
+    const resolvedActionColor =
+        actionColor || (getContrastingTextColor(resolvedSurfaceColor) === 'black' ? 'black' : 'white')
+    const fieldErrorColor =
+        resolvedSurfaceColor === 'yellow'
+            ? 'red'
+            : getContrastingTextColor(resolvedSurfaceColor) === 'black'
+            ? 'blue'
+            : 'yellow'
+
+    return {
+        actionColor: resolvedActionColor,
+        actionTextColor: getContrastingTextColor(resolvedActionColor),
+        errorAlertColor: fieldErrorColor,
+        errorAlertTextColor: getContrastingTextColor(fieldErrorColor),
+        fieldErrorColor,
+        surfaceColor: resolvedSurfaceColor,
+        surfaceTextColor: getContrastingTextColor(resolvedSurfaceColor),
+        successAlertColor: resolvedActionColor,
+        successAlertTextColor: getContrastingTextColor(resolvedActionColor),
     }
 }
 

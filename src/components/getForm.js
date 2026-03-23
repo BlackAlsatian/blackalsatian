@@ -7,32 +7,75 @@
 /** @jsxImportSource theme-ui */
 import axios from 'axios'
 import { Link } from 'gatsby'
-import { useEffect, useId, useState } from 'react'
+import { useEffect, useId, useRef, useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { Box, Button, Input, Label, Spinner, Textarea } from 'theme-ui'
+import { Box, Button, Flex, Input, Label, Spinner, Textarea } from 'theme-ui'
 import Notification from './notification'
 
-import { emailRegExp, handleErrorColor, leadInfo, phoneRegExp, sendGA } from '../components/helpers'
+import { emailRegExp, getFormFeedbackPalette, leadInfo, phoneRegExp, sendGA } from '../components/helpers'
 
-const GetForm = ({ option, buttonName, buttonUrl, backgroundColor, buttonBackground, formStyle, footerError }) => {
+const GetForm = ({ option, buttonName, buttonUrl, backgroundColor, buttonBackground, formStyle }) => {
     if (option === 'contact') {
         option = 'enquiry'
     }
-    const errorColor = handleErrorColor(backgroundColor)
-    const [messageAlert, setMessageAlert] = useState(false)
+    const feedbackPalette = getFormFeedbackPalette({ surfaceColor: backgroundColor, actionColor: buttonBackground })
+    const [formNotice, setFormNotice] = useState(null)
     const [formSubmitting, setFormSubmitting] = useState(false)
     const [inBrowser, setInBrowser] = useState(false)
+    const noticeTimeoutRef = useRef(null)
 
     useEffect(() => setInBrowser(true), [])
 
-    let btnColor = backgroundColor || 'white'
+    useEffect(() => {
+        return () => {
+            if (noticeTimeoutRef.current) {
+                clearTimeout(noticeTimeoutRef.current)
+            }
+        }
+    }, [])
+
+    const resolvedActionColor = buttonBackground || feedbackPalette.actionColor
+    const isUnderlineForm = formStyle === 'inputs.underline'
+    const fieldTextColor = isUnderlineForm ? feedbackPalette.surfaceTextColor : 'black'
+    const checkboxColor = isUnderlineForm ? feedbackPalette.surfaceTextColor : resolvedActionColor
+    const btnColor = backgroundColor || feedbackPalette.actionTextColor
+    const submitSuccessMessage =
+        option === 'lead' ? 'Please keep an eye on your inbox.' : "I'll tell a human to contact you ASAP."
+    const submitErrorMessage = 'Something went wrong while sending your message. Please try again in a moment.'
+
+    const showNotice = (status, message, timeoutMs) => {
+        if (noticeTimeoutRef.current) {
+            clearTimeout(noticeTimeoutRef.current)
+        }
+
+        setFormNotice({ message, status })
+
+        if (timeoutMs) {
+            noticeTimeoutRef.current = setTimeout(() => {
+                setFormNotice(null)
+                noticeTimeoutRef.current = null
+            }, timeoutMs)
+        }
+    }
+
+    const getFieldStyles = (hasError, includeRestBackground = false) => ({
+        borderBottomColor: hasError ? `${feedbackPalette.fieldErrorColor} !important` : resolvedActionColor || 'white',
+        color: fieldTextColor,
+        '&:focus': { color: 'black', backgroundColor: 'white' },
+        '&:not(:focus)': {
+            color: fieldTextColor,
+            ...(includeRestBackground
+                ? { backgroundColor: isUnderlineForm ? feedbackPalette.surfaceColor : 'white' }
+                : {}),
+        },
+    })
+
     const formId = useId()
     const idFor = (suffix) => `${formId}-${suffix}`
     const {
         register,
         handleSubmit,
         formState: { errors },
-        getValues,
         reset,
     } = useForm({
         mode: 'all',
@@ -53,27 +96,24 @@ const GetForm = ({ option, buttonName, buttonUrl, backgroundColor, buttonBackgro
         },
     })
 
-    const onSubmit = (data) => {
-        // console.log(data)
+    const onSubmit = async (data) => {
         setFormSubmitting(true)
+        setFormNotice(null)
+
         if (data.lastname !== '') {
             setFormSubmitting(false)
-
-            setMessageAlert(true)
-
-            // Reset back to defaultValues
             reset()
+            showNotice('success', submitSuccessMessage, 2500)
+            return
+        }
 
-            setTimeout(() => {
-                setMessageAlert(false)
-            }, 2500)
-        } else {
-            // Prefer serverless proxy in production; allow direct backend URL in development when explicitly provided
-            const apiUrl =
-                process.env.NODE_ENV !== 'production' && process.env.GATSBY_API_URL
-                    ? process.env.GATSBY_API_URL
-                    : '/.netlify/functions/lead-proxy'
-            axios({
+        const apiUrl =
+            process.env.NODE_ENV !== 'production' && process.env.GATSBY_API_URL
+                ? process.env.GATSBY_API_URL
+                : '/.netlify/functions/lead-proxy'
+
+        try {
+            const response = await axios({
                 method: 'post',
                 url: apiUrl,
                 headers: {
@@ -81,26 +121,22 @@ const GetForm = ({ option, buttonName, buttonUrl, backgroundColor, buttonBackgro
                     'Content-Type': 'application/json',
                 },
                 data: JSON.stringify(data),
-            }).then(
-                (response) => {
-                    if (response.status === 201) {
-                        setFormSubmitting(false)
-                        setMessageAlert(true)
-                        // Reset back to defaultValues
-                        reset()
-                        sendGA('generate_lead', option, data.tags, inBrowser)
-                        setTimeout(() => {
-                            setMessageAlert(false)
-                        }, 5000)
-                    }
-                    // console.log(response)
-                },
-                // eslint-disable-next-line no-unused-vars
-                (error) => {
-                    // console.log(error.response)
-                    console.log("There were errors. That's all I know.")
-                },
-            )
+            })
+
+            if (response.status === 201) {
+                setFormSubmitting(false)
+                reset()
+                sendGA('generate_lead', option, data.tags, inBrowser)
+                showNotice('success', submitSuccessMessage, 5000)
+                return
+            }
+
+            setFormSubmitting(false)
+            showNotice('error', submitErrorMessage, 6000)
+        } catch {
+            console.log("There were errors. That's all I know.")
+            setFormSubmitting(false)
+            showNotice('error', submitErrorMessage, 6000)
         }
     }
     if (option === 'btnonly') {
@@ -153,7 +189,7 @@ const GetForm = ({ option, buttonName, buttonUrl, backgroundColor, buttonBackgro
         )
     }
     return (
-        <Box as='form' onSubmit={handleSubmit(onSubmit)}>
+        <Box as='form' onSubmit={handleSubmit(onSubmit)} aria-busy={formSubmitting}>
             {/* name */}
             <Label htmlFor={idFor('name')}>Name</Label>
             <Input
@@ -162,12 +198,7 @@ const GetForm = ({ option, buttonName, buttonUrl, backgroundColor, buttonBackgro
                 type='text'
                 mb={3}
                 variant={formStyle}
-                sx={{
-                    borderBottomColor: errors.name ? `${errorColor}` + ' !important' : `${buttonBackground}` || 'white',
-                    color: `${buttonBackground}`,
-                    '&:focus, &:not(:focus)': { color: 'black' },
-                    variant: footerError && footerError.errors,
-                }}
+                sx={getFieldStyles(errors.name)}
                 aria-invalid={errors.name ? 'true' : 'false'}
                 {...register('name', {
                     required: 'Oops! You missed this field.',
@@ -184,7 +215,7 @@ const GetForm = ({ option, buttonName, buttonUrl, backgroundColor, buttonBackgro
             {errors.name && (
                 <div
                     sx={{
-                        color: `${errorColor}`,
+                        color: feedbackPalette.fieldErrorColor,
                         fontSize: '0.8rem',
                         fontWeight: 'bold',
                         pb: 3,
@@ -235,14 +266,7 @@ const GetForm = ({ option, buttonName, buttonUrl, backgroundColor, buttonBackgro
                         type='tel'
                         mb={3}
                         variant={formStyle}
-                        sx={{
-                            borderBottomColor: errors.number
-                                ? `${errorColor}` + ' !important'
-                                : `${buttonBackground}` || 'white',
-                            color: `${buttonBackground}`,
-                            '&:focus, &:not(:focus)': { color: 'black' },
-                            variant: footerError && footerError.errors,
-                        }}
+                        sx={getFieldStyles(errors.number)}
                         aria-invalid={errors.number ? 'true' : 'false'}
                         {...register('number', {
                             required: 'Oops! You missed this field.',
@@ -259,7 +283,7 @@ const GetForm = ({ option, buttonName, buttonUrl, backgroundColor, buttonBackgro
                     {errors.number && (
                         <div
                             sx={{
-                                color: `${errorColor}`,
+                                color: feedbackPalette.fieldErrorColor,
                                 fontSize: '0.8rem',
                                 fontWeight: 'bold',
                                 pb: 3,
@@ -279,14 +303,7 @@ const GetForm = ({ option, buttonName, buttonUrl, backgroundColor, buttonBackgro
                 name='email'
                 mb={3}
                 variant={formStyle}
-                sx={{
-                    borderBottomColor: errors.email
-                        ? `${errorColor}` + ' !important'
-                        : `${buttonBackground}` || 'white',
-                    color: `${buttonBackground}`,
-                    '&:focus, &:not(:focus)': { color: 'black' },
-                    variant: footerError && footerError.errors,
-                }}
+                sx={getFieldStyles(errors.email)}
                 {...register('email', {
                     required: 'Oops! You missed this field.',
                     pattern: {
@@ -302,7 +319,7 @@ const GetForm = ({ option, buttonName, buttonUrl, backgroundColor, buttonBackgro
             {errors.email && (
                 <div
                     sx={{
-                        color: `${errorColor}`,
+                        color: feedbackPalette.fieldErrorColor,
                         fontSize: '0.8rem',
                         fontWeight: 'bold',
                         pb: 3,
@@ -322,14 +339,7 @@ const GetForm = ({ option, buttonName, buttonUrl, backgroundColor, buttonBackgro
                         rows='4'
                         mb={3}
                         variant={formStyle}
-                        sx={{
-                            borderBottomColor: errors.message
-                                ? `${errorColor}` + ' !important'
-                                : `${buttonBackground}` || 'white',
-                            color: `${buttonBackground}`,
-                            '&:focus, &:not(:focus)': { color: 'black', backgroundColor: 'white' },
-                            variant: footerError && footerError.errors,
-                        }}
+                        sx={getFieldStyles(errors.message, true)}
                         aria-invalid={errors.message ? 'true' : 'false'}
                         {...register('message', {
                             required: 'How may we assist?',
@@ -342,7 +352,7 @@ const GetForm = ({ option, buttonName, buttonUrl, backgroundColor, buttonBackgro
                     {errors.message && (
                         <div
                             sx={{
-                                color: `${errorColor}`,
+                                color: feedbackPalette.fieldErrorColor,
                                 fontSize: '0.8rem',
                                 fontWeight: 'bold',
                                 pb: 3,
@@ -377,7 +387,7 @@ const GetForm = ({ option, buttonName, buttonUrl, backgroundColor, buttonBackgro
                                     width: 6,
                                     minWidth: 6,
                                     border: '2px solid',
-                                    borderColor: 'black',
+                                    borderColor: errors.subscribe ? feedbackPalette.fieldErrorColor : checkboxColor,
                                     display: 'inline-block',
                                     ':checked': {
                                         bg: 'transparent',
@@ -387,7 +397,7 @@ const GetForm = ({ option, buttonName, buttonUrl, backgroundColor, buttonBackgro
                                     ':after': {
                                         content: "'✓'",
                                         transform: 'scale(2)',
-                                        color: 'black',
+                                        color: errors.subscribe ? feedbackPalette.fieldErrorColor : checkboxColor,
                                         fontWeight: 'black',
                                         display: 'none',
                                         position: 'absolute',
@@ -412,7 +422,7 @@ const GetForm = ({ option, buttonName, buttonUrl, backgroundColor, buttonBackgro
                                 <Link
                                     to='/terms-of-use/'
                                     title='Black Alsatian Terms of Use'
-                                    sx={{ color: `${buttonBackground}`, '&:hover': { textDecoration: 'none' } }}
+                                    sx={{ color: resolvedActionColor, '&:hover': { textDecoration: 'none' } }}
                                 >
                                     Terms of Use
                                 </Link>{' '}
@@ -420,7 +430,7 @@ const GetForm = ({ option, buttonName, buttonUrl, backgroundColor, buttonBackgro
                                 <Link
                                     to='/privacy-policy/'
                                     title='Black Alsatian Privacy Policy'
-                                    sx={{ color: `${buttonBackground}`, '&:hover': { textDecoration: 'none' } }}
+                                    sx={{ color: resolvedActionColor, '&:hover': { textDecoration: 'none' } }}
                                 >
                                     Privacy Policy
                                 </Link>
@@ -431,7 +441,7 @@ const GetForm = ({ option, buttonName, buttonUrl, backgroundColor, buttonBackgro
                     {errors.subscribe && (
                         <div
                             sx={{
-                                color: `${errorColor}`,
+                                color: feedbackPalette.fieldErrorColor,
                                 fontSize: '0.8rem',
                                 fontWeight: 'bold',
                                 pb: 3,
@@ -463,7 +473,9 @@ const GetForm = ({ option, buttonName, buttonUrl, backgroundColor, buttonBackgro
                                     width: 6,
                                     minWidth: 6,
                                     border: '2px solid',
-                                    borderColor: buttonBackground,
+                                    borderColor: errors.privacy_policy
+                                        ? feedbackPalette.fieldErrorColor
+                                        : checkboxColor,
                                     display: 'inline-block',
                                     ':checked': {
                                         bg: 'transparent',
@@ -473,7 +485,7 @@ const GetForm = ({ option, buttonName, buttonUrl, backgroundColor, buttonBackgro
                                     ':after': {
                                         content: "'✓'",
                                         transform: 'scale(2)',
-                                        color: buttonBackground,
+                                        color: errors.privacy_policy ? feedbackPalette.fieldErrorColor : checkboxColor,
                                         fontWeight: 'black',
                                         display: 'none',
                                         position: 'absolute',
@@ -498,7 +510,7 @@ const GetForm = ({ option, buttonName, buttonUrl, backgroundColor, buttonBackgro
                                 <Link
                                     to='/terms-of-use/'
                                     title='Black Alsatian Terms of Use'
-                                    sx={{ color: `${buttonBackground}`, '&:hover': { textDecoration: 'none' } }}
+                                    sx={{ color: resolvedActionColor, '&:hover': { textDecoration: 'none' } }}
                                 >
                                     Terms of Use
                                 </Link>{' '}
@@ -506,7 +518,7 @@ const GetForm = ({ option, buttonName, buttonUrl, backgroundColor, buttonBackgro
                                 <Link
                                     to='/privacy-policy/'
                                     title='Black Alsatian Privacy Policy'
-                                    sx={{ color: `${buttonBackground}`, '&:hover': { textDecoration: 'none' } }}
+                                    sx={{ color: resolvedActionColor, '&:hover': { textDecoration: 'none' } }}
                                 >
                                     Privacy Policy
                                 </Link>
@@ -517,7 +529,7 @@ const GetForm = ({ option, buttonName, buttonUrl, backgroundColor, buttonBackgro
                     {errors.privacy_policy && (
                         <div
                             sx={{
-                                color: `${errorColor}`,
+                                color: feedbackPalette.fieldErrorColor,
                                 fontSize: '0.8rem',
                                 fontWeight: 'bold',
                                 pb: 3,
@@ -529,35 +541,42 @@ const GetForm = ({ option, buttonName, buttonUrl, backgroundColor, buttonBackgro
                 </>
             )}
 
-            {/* success alert */}
-
-            {/* {messageAlert && ( 
-                // <Alert
-                //   sx={{
-                //       color: `${btnColor}`,
-                //       bg: `${buttonBackground}`,
-                //       my: 3,
-                //   }}
-                // >
-                //    Pleased to meet you! Chat soon.
-                // </Alert>
-                 // )} */}
             <Notification
-                color={errorColor === 'yellow' ? 'black' : 'white'}
-                bgColor={errorColor}
-                message={
-                    option === 'lead' ? 'Please keep an eye on your inbox.' : "I'll tell a human to contact you ASAP."
+                color={
+                    formNotice?.status === 'error'
+                        ? feedbackPalette.errorAlertTextColor
+                        : feedbackPalette.successAlertTextColor
                 }
-                showAlert={messageAlert}
+                bgColor={
+                    formNotice?.status === 'error' ? feedbackPalette.errorAlertColor : feedbackPalette.successAlertColor
+                }
+                message={formNotice?.message}
+                showAlert={!!formNotice}
+                status={formNotice?.status}
+                title={formNotice?.status === 'error' ? 'Please Try Again' : 'Got It!'}
             />
 
             {/* button */}
             {formSubmitting ? (
-                <Spinner
+                <Flex
                     sx={{
-                        color: `${buttonBackground}`,
+                        alignItems: 'center',
+                        justifyContent: 'flex-end',
+                        color: resolvedActionColor,
+                        fontSize: 0,
+                        fontWeight: 'bold',
+                        gap: 2,
                     }}
-                />
+                    role='status'
+                    aria-live='polite'
+                >
+                    <Spinner
+                        sx={{
+                            color: resolvedActionColor,
+                        }}
+                    />
+                    <Box as='span'>Sending...</Box>
+                </Flex>
             ) : (
                 <>
                     <Button
@@ -566,11 +585,11 @@ const GetForm = ({ option, buttonName, buttonUrl, backgroundColor, buttonBackgro
                         ml='auto'
                         disabled={formSubmitting}
                         sx={{
-                            backgroundColor: `${buttonBackground}`,
-                            color: `${btnColor}`,
+                            backgroundColor: resolvedActionColor,
+                            color: btnColor,
                             boxShadow: 'xl',
                             '&:hover': {
-                                backgroundColor: `${buttonBackground}`,
+                                backgroundColor: resolvedActionColor,
                                 boxShadow: 'none',
                             },
                         }}

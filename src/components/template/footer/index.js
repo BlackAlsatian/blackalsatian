@@ -33,20 +33,20 @@ const Logo = lazy(() => import(/* webpackChunkName: "ba-logo", webpackPreload: t
 //
 // const footerStyles = ['yellow', 'red', 'white', 'postwhite']
 
-const Footer = ({ siteTitle, pageStyle }) => {
-    // const [bgcolor, setBgcolor] = useState('black')
-    // const [textcolor, setTextcolor] = useState('white')
-    // let bgcolor = 'black'
-    // let textcolor = 'white'
+const footerFormColors = {
+    default: { backgroundColor: 'black', buttonBackground: 'white' },
+    white: { backgroundColor: 'white', buttonBackground: 'black' },
+    postwhite: { backgroundColor: 'white', buttonBackground: 'black' },
+    black: { backgroundColor: 'black', buttonBackground: 'white' },
+    altblack: { backgroundColor: 'black', buttonBackground: 'white' },
+    yellow: { backgroundColor: 'yellow', buttonBackground: 'black' },
+    altyellow: { backgroundColor: 'black', buttonBackground: 'white' },
+    red: { backgroundColor: 'red', buttonBackground: 'white' },
+}
 
-    // useEffect(() => {
-    // if (footerStyles.includes(pageStyle)) {
-    //     // bgcolor = footerColors[pageStyle].bgcolor
-    //     // textcolor = footerColors[pageStyle].textcolor
-    //     setBgcolor(footerColors[pageStyle].bgcolor)
-    //     setTextcolor(footerColors[pageStyle].textcolor)
-    // }
-    // }, [pageStyle])
+const Footer = ({ siteTitle, pageStyle }) => {
+    const formColors = footerFormColors[pageStyle] || footerFormColors.default
+
     return (
         <footer
             sx={{
@@ -85,10 +85,9 @@ const Footer = ({ siteTitle, pageStyle }) => {
                         <GetForm
                             option='enquiry'
                             buttonName='Fetch!'
-                            // backgroundColor={bgcolor}
-                            // buttonBackground={textcolor}
+                            backgroundColor={formColors.backgroundColor}
+                            buttonBackground={formColors.buttonBackground}
                             formStyle='inputs.underline'
-                            footerError={'footer.' + pageStyle}
                         />
                     </div>
                 </Flex>
@@ -116,9 +115,12 @@ const Footer = ({ siteTitle, pageStyle }) => {
                         <Suspense
                             fallback={
                                 // Reserve space to avoid any layout shift while the tiny logo chunk loads
-                                <span aria-label='Black Alsatian' style={{ display: 'inline-block', width: 200, height: 36 }} />
+                                <span
+                                    aria-label='Black Alsatian'
+                                    style={{ display: 'inline-block', width: 200, height: 36 }}
+                                />
                             }
-                        > 
+                        >
                             <Logo />
                         </Suspense>
                     </Link>
